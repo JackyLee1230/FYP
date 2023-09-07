@@ -28,12 +28,12 @@ public class GameService {
     }
 
     public void removeGame(Game game){
-        Optional<Game> g = gameRepository.findGameByNameAndDeveloper(game.getName(), game.getDeveloper());
-        if(!g.isPresent()){
-            throw new IllegalStateException("Game Does Not Exist");
-        } else {
-            gameRepository.delete(game);
-        }
+//        Optional<Game> g = gameRepository.findGameByNameAndDevelopers(game.getName(), game.getDevelopers());
+//        if(!g.isPresent()){
+//            throw new IllegalStateException("Game Does Not Exist");
+//        } else {
+//            gameRepository.delete(game);
+//        }
     }
 
 }

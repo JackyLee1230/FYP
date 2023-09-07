@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,14 +19,17 @@ import java.util.Objects;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @NonNull private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @NonNull
+    private Integer id;
 
     private String name;
 
     private String releaseDate;
 
-    private String developer;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="game_developers")
+    private List<User> developers;
 
     private String publisher;
 
