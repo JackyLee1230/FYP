@@ -1,21 +1,11 @@
 package info.itzjacky.FYP;
 
-import info.itzjacky.FYP.Entity.Game;
-import info.itzjacky.FYP.Repository.GameRepository;
-import info.itzjacky.FYP.Service.GameService;
+import info.itzjacky.FYP.Game.GameRepository;
+import info.itzjacky.FYP.Game.GameService;
 import lombok.extern.apachecommons.CommonsLog;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
-import org.junit.platform.commons.logging.Logger;
-
-import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @Slf4j
