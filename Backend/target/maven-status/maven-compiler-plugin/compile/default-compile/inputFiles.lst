@@ -1,5 +1,15 @@
-/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Controller/GameController.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Entity/User.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Service/ReviewService.java
 /Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Repository/GameRepository.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Controller/ReviewController.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Entity/Review.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/FypApplication.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Controller/GameController.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Service/UserService.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Controller/UserController.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Repository/ReviewRepository.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Entity/Role.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Repository/UserRepository.java
 /Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Service/GameService.java
 /Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Entity/Game.java
-/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/FypApplication.java
+/Users/jacky/Desktop/FYP/Backend/src/main/java/info/itzjacky/FYP/Constants/UserConstants.java

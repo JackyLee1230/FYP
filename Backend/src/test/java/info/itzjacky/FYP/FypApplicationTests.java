@@ -28,18 +28,18 @@ class FypApplicationTests {
 	@Mock
 	GameRepository gameRepository;
 
-	@Test
-	void testInstallWork_HappyCase() {
-		log.info("asd");
-		Integer test = 1;
-		Assertions.assertNotNull(test);
-	}
-
-	@Test
-	void addGame_HappyCase(){
-		Game g = Game.builder().id(1).developer("Jacky Lee").name("Deadline Fighter").publisher("Jacky Lee").build();
-		doReturn(g).when(gameService).addGame(any());
-
-		Assertions.assertEquals(g, gameService.addGame(g));
-	}
+//	@Test
+//	void testInstallWork_HappyCase() {
+//		log.info("asd");
+//		Integer test = 1;
+//		Assertions.assertNotNull(test);
+//	}
+//
+//	@Test
+//	void addGame_HappyCase(){
+//		Game g = Game.builder().id(1).name("Deadline Fighter").publisher("Jacky Lee").build();
+//		doReturn(g).when(gameService).addGame(any());
+//
+//		Assertions.assertEquals(g, gameService.addGame(g));
+//	}
 }

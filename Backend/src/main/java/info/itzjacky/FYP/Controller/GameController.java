@@ -1,7 +1,6 @@
 package info.itzjacky.FYP.Controller;
 
 import info.itzjacky.FYP.Entity.Game;
-import info.itzjacky.FYP.Repository.GameRepository;
 import info.itzjacky.FYP.Service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

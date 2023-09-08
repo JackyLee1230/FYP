@@ -1,7 +1,6 @@
 package info.itzjacky.FYP.Service;
 
 import info.itzjacky.FYP.Entity.Review;
-import info.itzjacky.FYP.Entity.User;
 import info.itzjacky.FYP.Repository.ReviewRepository;
 import info.itzjacky.FYP.Repository.UserRepository;
 import org.slf4j.Logger;

@@ -1,6 +1,7 @@
-package info.itzjacky.FYP.Service;
+package info.itzjacky.FYP.Controller;
 
 import info.itzjacky.FYP.Entity.Review;
+import info.itzjacky.FYP.Service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
