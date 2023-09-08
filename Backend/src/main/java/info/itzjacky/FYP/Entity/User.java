@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -22,6 +23,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NonNull
+    @Column(insertable = true, updatable = true)
     private Integer id;
 
     @Column(unique = true)
@@ -39,14 +41,15 @@ public class User {
 
     private Integer numOfReviews;
 
-    private Role role;
+    @ElementCollection(targetClass = Role.class)
+    @Enumerated(EnumType.STRING)
+    private List<Role> role;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_developedGames")
+    @ManyToMany(mappedBy = "developers")
     private List<Game> developedGames;
 
-    @OneToMany
-    @JoinColumn(name="user_Reviews")
+    @OneToMany(mappedBy = "reviewer")
+    @JsonIgnore
     private List<Review> reviews;
 
 }

@@ -2,6 +2,10 @@ package info.itzjacky.FYP.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Builder
@@ -14,23 +18,37 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer reviewId;
+    private Integer id;
 
-//    @ManyToOne
-//    @JoinColumn(name="reviewReviewer")
-//    private User reviewer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
+    private User reviewer;
 
-    private String reviewDate;
+    @NonNull
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private String createdAt;
 
-    private Integer gameId;
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    public Date updatedAt;
+
+    @Version
+    private Integer version;
 
     private String publisher;
 
     private Float score;
 
-    private Float recommendationScore;
 
+    private boolean recommended;
+
+    @NonNull
     private String comment;
 
     private Integer Tester;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id", referencedColumnName = "id")
+    private Game reviewedGame;
 }

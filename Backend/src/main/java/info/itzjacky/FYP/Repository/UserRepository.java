@@ -21,4 +21,5 @@ public interface UserRepository extends JpaRepository<User,Integer>{
     Optional<User> findDevelopersByGame(Game game);
 
 
+    Optional<User> findUserByEmail(String email);
 }
