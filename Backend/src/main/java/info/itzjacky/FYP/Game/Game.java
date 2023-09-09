@@ -23,7 +23,7 @@ import java.util.Objects;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
@@ -49,7 +49,14 @@ public class Game {
 
     private Float recommendationScore;
 
-    private Integer Tester;
+    @ManyToMany
+    @JoinTable(
+            name = "game_testers",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    @JsonIgnore
+    private List<User> Tester;
 
     @OneToMany(mappedBy = "reviewedGame")
     @JsonIgnore

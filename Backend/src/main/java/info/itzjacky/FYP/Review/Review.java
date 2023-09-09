@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,29 +20,26 @@ import java.util.Date;
 public class Review {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
     private User reviewer;
 
     @NonNull
     @Column(name = "created_at")
     @CreationTimestamp
-    private String createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    public Date updatedAt;
+    public LocalDateTime updatedAt;
 
     @Version
     private Integer version;
 
-    private String publisher;
-
     private Float score;
-
 
     private boolean recommended;
 
@@ -51,7 +49,7 @@ public class Review {
 
     private Integer Tester;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game reviewedGame;
 }

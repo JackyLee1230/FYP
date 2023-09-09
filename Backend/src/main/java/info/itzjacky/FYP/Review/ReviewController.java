@@ -1,7 +1,9 @@
 package info.itzjacky.FYP.Review;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -12,33 +14,64 @@ public class ReviewController {
     @Autowired
     ReviewService reviewService;
 
-    @GetMapping("/getAllReviews")
+    @PostMapping("/getAllReviews")
     public List<Review> getAllReviews(){
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/getReviewByGameName")
-    public List<Review> getReviewByGameName(@RequestParam String gameName){
-        return reviewService.getReviewByGameName(gameName);
+
+    /*
+    * args gameId: Integer (Game.id)
+    */
+    @PostMapping("/getReviewsByGameId")
+    public List<Review> getReviewByGameId(@RequestBody ReviewRequest reviewReq){
+        try{
+            return reviewService.getReviewByGameId(reviewReq);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
     }
 
+    /*
+     * args
+     *  {
+     *     "reviewerId": Integer (User.id),
+     *    "score": Integer
+     *     "recommended": boolean,
+     *     "comment": String (varchar 10000),
+     *     "gameId": Integer (Game.id)
+     *   }
+     */
     @PostMapping("/addReview")
-    public Review addUser(@RequestBody Review review){
-        return reviewService.addReview(review);
+    public Review addUser(@RequestBody ReviewRequest reviewReq){
+        try{
+            return reviewService.addReview(reviewReq);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
     }
-//
-//    @PostMapping("/removeUser")
-//    public void removeUser(@RequestBody User user){
-//        userService.removeUser(user);
-//    }
-//
-//    @PostMapping("/removeUserByBane")
-//    public void removeUserByName(@RequestBody User user){
-//        userService.removeUserByName(user);
-//    }
-//
-//    @PostMapping("/findUserByName")
-//    public Optional<User> findUserByName(@RequestBody User user){
-//        return userService.findUserByName(user.getName());
-//    }
+
+    /*
+     * args reviewId: Integer
+     */
+    @PostMapping("/removeReview")
+    public void removeReview(@RequestBody ReviewRequest reviewReq){
+        try{
+            reviewService.removeReview(reviewReq);;
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    /*
+     * args numberOfReviews: Integer
+     */
+    @PostMapping("/getMostRecentReviews")
+    public List<Review> getMostRecentReviews(@RequestBody ReviewRequest reviewReq){
+        try{
+            return reviewService.getMostRecentReviews(reviewReq);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 }

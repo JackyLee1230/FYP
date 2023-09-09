@@ -21,7 +21,6 @@ public class UserService {
     }
 
     public User addUser(User user){
-        logger.info(user.toString());
         try{
             userRepository.save(user);
             return user;

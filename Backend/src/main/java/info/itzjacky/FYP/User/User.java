@@ -21,7 +21,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
@@ -33,6 +33,7 @@ public class User {
     private String email;
 
     @Column(updatable = true)
+    @JsonIgnore
     private String password;
 
     private String joinDate;
@@ -51,5 +52,8 @@ public class User {
     @OneToMany(mappedBy = "reviewer")
     @JsonIgnore
     private List<Review> reviews;
+
+    @ManyToMany(mappedBy = "Tester")
+    private List<Game> testedGames;
 
 }
