@@ -1,10 +1,15 @@
 package info.itzjacky.FYP.Review;
 
+import info.itzjacky.FYP.User.User;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -15,8 +20,8 @@ public class ReviewController {
     ReviewService reviewService;
 
     @PostMapping("/getAllReviews")
-    public List<Review> getAllReviews(){
-        return reviewService.getAllReviews();
+    public ResponseEntity<List<Review>> getAllReviews(){
+        return new ResponseEntity<>(reviewService.getAllReviews(), HttpStatus.OK);
     }
 
 
@@ -24,9 +29,9 @@ public class ReviewController {
     * args gameId: Integer (Game.id)
     */
     @PostMapping("/getReviewsByGameId")
-    public List<Review> getReviewByGameId(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<List<Review>> getReviewByGameId(@RequestBody ReviewRequest reviewReq){
         try{
-            return reviewService.getReviewByGameId(reviewReq);
+            return new ResponseEntity<>(reviewService.getReviewByGameId(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -43,9 +48,9 @@ public class ReviewController {
      *   }
      */
     @PostMapping("/addReview")
-    public Review addUser(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<Review> addUser(@RequestBody ReviewRequest reviewReq){
         try{
-            return reviewService.addReview(reviewReq);
+            return new ResponseEntity<>(reviewService.addReview(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -55,21 +60,23 @@ public class ReviewController {
      * args reviewId: Integer
      */
     @PostMapping("/removeReview")
-    public void removeReview(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<Void> removeReview(@RequestBody ReviewRequest reviewReq){
         try{
-            reviewService.removeReview(reviewReq);;
+            reviewService.removeReview(reviewReq);
+            return ResponseEntity.noContent().build();
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 
+
     /*
      * args numberOfReviews: Integer
      */
     @PostMapping("/getMostRecentReviews")
-    public List<Review> getMostRecentReviews(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<List<Review>> getMostRecentReviews(@RequestBody ReviewRequest reviewReq){
         try{
-            return reviewService.getMostRecentReviews(reviewReq);
+            return new ResponseEntity<>(reviewService.getMostRecentReviews(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
