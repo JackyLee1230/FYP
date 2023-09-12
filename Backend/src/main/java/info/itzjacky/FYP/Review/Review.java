@@ -52,4 +52,8 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game reviewedGame;
+
+    private Integer sentiment;
+
+    private LocalDateTime sentimentUpdatedAt;
 }

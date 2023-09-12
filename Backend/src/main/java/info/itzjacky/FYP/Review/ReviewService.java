@@ -5,15 +5,22 @@ import info.itzjacky.FYP.User.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ReviewService {
+
+    @Autowired
+    private Environment env;
 
     @Autowired
     ReviewRepository reviewRepository;
@@ -26,6 +33,48 @@ public class ReviewService {
 
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
+    }
+
+
+    public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException {
+        Runtime rt = Runtime.getRuntime();
+        Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
+        logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
+//        String processString = "python " + env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH") + " " + '\"' + review.getComment() + '\"';
+
+        try {
+            ProcessBuilder pb = new ProcessBuilder("python", env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH"), review.getComment());
+            pb.redirectErrorStream(true);
+
+
+            Process extractProcess = pb.start();
+            StringBuilder programOutput = new StringBuilder();
+
+            try (BufferedReader processOutputReader = new BufferedReader(
+                    new InputStreamReader(extractProcess.getInputStream()));)
+            {
+                String readLine;
+
+                while ((readLine = processOutputReader.readLine()) != null)
+                {
+                    programOutput.append(readLine + System.lineSeparator());
+                }
+
+                extractProcess.waitFor();
+            }
+            return Integer.parseInt(programOutput.toString().trim());
+
+//            BufferedReader input = new BufferedReader(new InputStreamReader(extractProcess.getInputStream()));
+//            String pyString = input.readLine();
+//            if(pyString == null){
+//                throw new IllegalStateException("Sentiment Analysis Failed! No Return from Python Script");
+//            }else {
+//                input.close();
+//                return Integer.parseInt(pyString);
+//            }
+        } catch (IOException | InterruptedException e) {
+            throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
+        }
     }
 
     public Review addReview(Review review){
