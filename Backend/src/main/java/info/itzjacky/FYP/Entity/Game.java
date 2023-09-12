@@ -37,8 +37,6 @@ public class Game {
 
     private Float recommendationScore;
 
-    private Integer Tester;
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

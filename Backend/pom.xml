@@ -15,6 +15,7 @@
 	<description>Final Year Project</description>
 	<properties>
 		<java.version>17</java.version>
+		<start-class>info.itzjacky.FYP.FypApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -74,7 +75,16 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<mainClass>info.itzjacky.FYP.FypApplication</mainClass>
+					<layout>JAR</layout>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
