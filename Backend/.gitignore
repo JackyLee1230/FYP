@@ -1,0 +1,51 @@
+# IDEA
+.idea/
+out/
+output/
+**/build/
+
+**/gradle_build/
+*.iml
+**/*.iml
+*.ipr
+*.iws
+
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Java
+# either the 3rd party diff or IDEA:
+*.java.orig
+
+# Package Files
+**/build/libs/*.jar
+*.war
+*.ear
+
+#maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Logging
+*.log
+*.log.gz
+*.log-*.gz
+logs/

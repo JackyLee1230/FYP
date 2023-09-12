@@ -22,3 +22,16 @@ The following guides illustrate how to use some features concretely:
 * [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
 * [Managing Transactions](https://spring.io/guides/gs/managing-transactions/)
 
+### Raspberry Pi Setup
+
+https://medium.com/geekculture/turn-your-raspberry-pi-into-a-server-to-run-your-java-spring-mvc-app-862214279587
+
+Do not create war file. Go to Maven->FYP->Lifecycle->package. Double click that to create a .jar file.  
+Then upload that file to raspberry pi. Place it under folder /var/springApp/  
+Run that file.
+```bash
+java -jar xxx.jar
+```
+
+Also, we need to create a assign user and password to access the mysql server, and the table.  
+Then we need to assign related permissions to the user.
