@@ -18,6 +18,8 @@ public class ReviewController {
 
     @Autowired
     ReviewService reviewService;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @PostMapping("/getAllReviews")
     public ResponseEntity<List<Review>> getAllReviews(){
@@ -34,6 +36,18 @@ public class ReviewController {
             return new ResponseEntity<>(reviewService.getReviewByGameId(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    /*
+    * args reviewId: Integer (Review.id)
+    */
+    @PostMapping("/sentimentAnalysis")
+    public ResponseEntity<Integer> sentimentAnalysisForReview(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.sentimentAnalysisForReview(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(500), e.getMessage());
         }
     }
 
