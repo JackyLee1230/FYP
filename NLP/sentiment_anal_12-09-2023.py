@@ -107,15 +107,15 @@ from sklearn.ensemble import RandomForestClassifier
 import pickle
 from pathlib import Path
 
-filename = Path("/Users/jacky/Desktop/FYP/NLP/steam-games-reviews-analysis-sentiment-analysis_model_12-09-2023.sav")
+filename = Path("NLP/steam-games-reviews-analysis-sentiment-analysis_model_12-09-2023.sav").resolve()
 loaded_model = pickle.load(open(filename, 'rb'))
 
 # we save the count vectorizer in section 5.5 also
-filename_count_vec = Path('/Users/jacky/Desktop/FYP/NLP/steam-games-reviews-analysis-sentiment-analysis_count_vectorizer_12-09-2023.pkl')
+filename_count_vec = Path('NLP/steam-games-reviews-analysis-sentiment-analysis_count_vectorizer_12-09-2023.pkl').resolve()
 loaded_count_vec = pickle.load(open(filename_count_vec, "rb"))
 
 # we save the fit tfidf (fit in pipeline2.fit())
-filename_tfidf = Path('/Users/jacky/Desktop/FYP/NLP/steam-games-reviews-analysis-sentiment-analysis_tfidf_12-09-2023.pkl')
+filename_tfidf = Path('NLP/steam-games-reviews-analysis-sentiment-analysis_tfidf_12-09-2023.pkl').resolve()
 loaded_tfidf = pickle.load(open(filename_tfidf, "rb"))
 
 pipeline_target = Pipeline([
