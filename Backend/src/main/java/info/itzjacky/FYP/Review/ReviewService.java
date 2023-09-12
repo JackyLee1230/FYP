@@ -1,7 +1,10 @@
 package info.itzjacky.FYP.Review;
 
+import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Game.GameRepository;
+import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,55 +34,52 @@ public class ReviewService {
     @Autowired
     private GameRepository gameRepository;
 
+    @Transactional
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
     }
 
 
+    @Transactional
     public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException {
         Runtime rt = Runtime.getRuntime();
         Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
         logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
-//        String processString = "python " + env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH") + " " + '\"' + review.getComment() + '\"';
-
         try {
             ProcessBuilder pb = new ProcessBuilder("python", env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH"), review.getComment());
             pb.redirectErrorStream(true);
-
-
             Process extractProcess = pb.start();
             StringBuilder programOutput = new StringBuilder();
-
             try (BufferedReader processOutputReader = new BufferedReader(
                     new InputStreamReader(extractProcess.getInputStream()));)
             {
                 String readLine;
-
                 while ((readLine = processOutputReader.readLine()) != null)
                 {
-                    programOutput.append(readLine + System.lineSeparator());
+                    programOutput.append(readLine).append(System.lineSeparator());
                 }
-
                 extractProcess.waitFor();
             }
+            review.setSentiment(Integer.parseInt(programOutput.toString().trim()));
+            review.setSentimentUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
             return Integer.parseInt(programOutput.toString().trim());
-
-//            BufferedReader input = new BufferedReader(new InputStreamReader(extractProcess.getInputStream()));
-//            String pyString = input.readLine();
-//            if(pyString == null){
-//                throw new IllegalStateException("Sentiment Analysis Failed! No Return from Python Script");
-//            }else {
-//                input.close();
-//                return Integer.parseInt(pyString);
-//            }
         } catch (IOException | InterruptedException e) {
             throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
         }
     }
 
+    @Transactional
     public Review addReview(Review review){
         try{
             reviewRepository.save(review);
+            Game game = review.getReviewedGame();
+            List<Review> reviews = reviewRepository.findReviewByGameId(game.getId());
+            float totalScore = 0;
+            for(Review r : reviews){
+                totalScore += r.getScore();
+            }
+            game.setScore(totalScore/reviews.size());
+            gameRepository.save(game);
             return review;
         }catch (Exception e){
             e.printStackTrace();
@@ -87,7 +87,24 @@ public class ReviewService {
         }
     }
 
+    @Transactional
+    public Float updateScoreOfGameByReview(Integer gameId){
+        List<Review> reviews = reviewRepository.findReviewByGameId(gameId);
+        float totalScore = 0;
+        for(Review r : reviews){
+            totalScore += r.getScore();
+        }
+        return totalScore/reviews.size();
+    }
+
+    @Transactional
     public Review addReview(ReviewRequest reviewRequest){
+        User reviewer = userRepository.findUserById(reviewRequest.getReviewerId());
+        Game game = gameRepository.findGameById(reviewRequest.getGameId());
+
+        if(reviewer == null || game == null || reviewRequest.getScore() == null || reviewRequest.getComment() == null){
+            throw new IllegalStateException("Cannot create Review");
+        }
         Review review = Review.builder()
                 .reviewer(userRepository.findUserById(reviewRequest.getReviewerId()))
                 .reviewedGame(gameRepository.findGameById(reviewRequest.getGameId()))
@@ -98,21 +115,28 @@ public class ReviewService {
                 .build();
         try{
             reviewRepository.save(review);
+            reviewRequest.setReviewId(review.getId());
+            sentimentAnalysisForReview(reviewRequest);
+            updateScoreOfGameByReview(reviewRequest.getGameId());
             return review;
         }catch (Exception e){
-            throw new IllegalStateException("Reviewer Does Not Exist");
+            e.printStackTrace();
+            throw new IllegalStateException("Cannot create Review");
         }
     }
 
+    @Transactional
     public void removeReviewByReviewerUsername(Review review){
         Optional<Review> r = reviewRepository.findReviewByReviewerName(review.getReviewer().getName());
         if(!r.isPresent()){
             throw new IllegalStateException("Reviewer Does Not Exist");
         } else {
             reviewRepository.delete(review);
+            updateScoreOfGameByReview(review.getReviewedGame().getId());
         }
     }
 
+    @Transactional
     public void removeReviewByReviewerUsername(String username){
         Optional<Review> r = reviewRepository.findReviewByReviewerName(username);
         if(!r.isEmpty()){
@@ -120,13 +144,16 @@ public class ReviewService {
         } else {
             Review review = r.get();
             reviewRepository.delete(review);
+            updateScoreOfGameByReview(review.getReviewedGame().getId());
         }
     }
 
+    @Transactional
     public void removeReview(ReviewRequest reviewReq){
         Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
         if(review != null){
             reviewRepository.delete(review);
+            updateScoreOfGameByReview(review.getReviewedGame().getId());
         } else {
             throw new IllegalStateException("Review Does Not Exist");
         }

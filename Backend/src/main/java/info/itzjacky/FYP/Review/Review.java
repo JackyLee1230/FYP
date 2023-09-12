@@ -34,7 +34,7 @@ public class Review {
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    public LocalDateTime updatedAt;
+    public Date updatedAt;
 
     @Version
     private Integer version;
@@ -55,5 +55,5 @@ public class Review {
 
     private Integer sentiment;
 
-    private LocalDateTime sentimentUpdatedAt;
+    private Date sentimentUpdatedAt;
 }
