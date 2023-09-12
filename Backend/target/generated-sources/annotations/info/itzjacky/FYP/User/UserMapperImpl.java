@@ -8,8 +8,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-09T13:15:30+0800",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Azul Systems, Inc.)"
+    date = "2023-09-12T21:38:02+0800",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8.1 (Homebrew)"
 )
 public class UserMapperImpl implements UserMapper {
 
