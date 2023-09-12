@@ -1,7 +1,9 @@
 package info.itzjacky.FYP.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -15,49 +17,68 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/getAllUser")
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
+    @GetMapping("/getAllUsers")
+    public ResponseEntity<List<User>> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+
     @PostMapping("/addUser")
-    public User addUser(@RequestBody User user){
+    public ResponseEntity<UserDto> addUser(@RequestBody User user){
         try{
-            return userService.addUser(user);
+            return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(userService.addUser(user)), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 
     @PostMapping("/removeUser")
-    public void removeUser(@RequestBody User user){
-        userService.removeUser(user);
+    public ResponseEntity<Void> removeUser(@RequestBody User user){
+        try {
+            userService.removeUser(user);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
     }
 
     @PostMapping("/removeUserByBane")
-    public void removeUserByName(@RequestBody User user){
-
-        userService.removeUserByName(user);
+    public ResponseEntity<Void> removeUserByName(@RequestBody User user){
+        try {
+            userService.removeUserByName(user);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
     }
 
     @PostMapping("/findUserByName")
-    public UserDto findUserByName(@RequestParam("name") String name){
-        Optional<User> u =  userService.findUserByName(name);
-        if(u.isPresent()){
-            return UserMapper.INSTANCE.userToUserDTO(u.get());
-        } else {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
+    public ResponseEntity<UserDto> findUserByName(@RequestParam("name") String name){
+        try {
+            Optional<User> u =  userService.findUserByName(name);
+
+            if (u.isPresent()) {
+                return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(u.get()), HttpStatus.OK);
+            } else {
+                throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 
     @PostMapping("/findUserByEmail")
-    public UserDto findUserByEmail(@RequestParam("email") String email){
-        System.out.println(email  + "is here ");
-        Optional<User> user = userService.findUserByEmail(email);
-        if(user.isPresent()){
-            return UserMapper.INSTANCE.userToUserDTO(user.get());
-        } else {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
+    public ResponseEntity<UserDto> findUserByEmail(@RequestParam("email") String email){
+        try {
+            System.out.println(email  + "is here ");
+            Optional<User> user = userService.findUserByEmail(email);
+            if(user.isPresent()){
+                return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(user.get()), HttpStatus.OK);
+            } else {
+                throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 }
