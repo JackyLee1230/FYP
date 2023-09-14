@@ -24,11 +24,11 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
     @NonNull
     private String name;
+    private String description;
     private String releaseDate;
     @ManyToMany
     @JoinTable(

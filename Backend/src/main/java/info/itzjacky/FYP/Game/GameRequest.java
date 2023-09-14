@@ -15,6 +15,7 @@ import java.util.List;
 public class GameRequest {
     private Integer id;
     private String name;
+    private String description;
     private String releaseDate;
     private List<User> developers;
     private boolean isInDevelopment;

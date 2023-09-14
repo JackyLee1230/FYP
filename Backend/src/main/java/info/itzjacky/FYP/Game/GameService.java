@@ -15,12 +15,27 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public Game addGame(Game game){
+    public Game addGame(GameRequest gameRequest){
         try{
-            gameRepository.save(game);
-            return game;
+            Game g = Game.builder()
+                    .name(gameRequest.getName())
+                    .description(gameRequest.getDescription())
+                    .genre(gameRequest.getGenre())
+                    .versions(List.of(gameRequest.getVersion()))
+                    .developerCompany(gameRequest.getDeveloperCompany())
+                    .developers(gameRequest.getDevelopers())
+                    .publisher(gameRequest.getPublisher())
+                    .isInDevelopment(gameRequest.isInDevelopment())
+                    .Tester(gameRequest.getTester())
+                    .platforms(gameRequest.getPlatforms())
+                    .releaseDate(gameRequest.getReleaseDate())
+                    .gameReviews(null)
+                    .build();
+            gameRepository.save(g);
+            return g;
         }catch (Exception e){
-            return null;
+            e.printStackTrace();
+            throw new IllegalStateException("Failed to create Game");
         }
     }
 
@@ -46,13 +61,15 @@ public class GameService {
         }
     }
 
-    public void removeGame(Game game){
-//        Optional<Game> g = gameRepository.findGameByNameAndDevelopers(game.getName(), game.getDevelopers());
-//        if(!g.isPresent()){
-//            throw new IllegalStateException("Game Does Not Exist");
-//        } else {
-//            gameRepository.delete(game);
-//        }
+    /*
+    arg: Integer (Game.id)
+     */
+    public void removeGame(GameRequest game){
+        try{
+            gameRepository.delete(gameRepository.findGameById(game.getId()));
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
     }
 
 }

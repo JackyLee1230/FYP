@@ -24,9 +24,9 @@ public class GameController {
 
 
     @PostMapping("/addGame")
-    public ResponseEntity<Game> addGame(@RequestBody Game game) {
+    public ResponseEntity<Game> addGame(@RequestBody GameRequest gameRequest) {
         try {
-            return new ResponseEntity<>(gameService.addGame(game), HttpStatus.OK);
+            return new ResponseEntity<>(gameService.addGame(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -42,9 +42,9 @@ public class GameController {
     }
 
     @PostMapping("/removeGame")
-    public ResponseEntity<Void> removeGame(@RequestBody Game game) {
+    public ResponseEntity<Void> removeGame(@RequestBody GameRequest gameRequest) {
         try {
-            gameService.removeGame(game);
+            gameService.removeGame(gameRequest);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());

@@ -103,10 +103,15 @@ public class ReviewService {
     }
 
     @Transactional
-    public Review addReview(ReviewRequest reviewRequest) throws SQLException {
+    public Review addReview(ReviewRequest reviewRequest) {
         User reviewer = userRepository.findUserById(reviewRequest.getReviewerId());
         Game game = gameRepository.findGameById(reviewRequest.getGameId());
-
+        if(game == null){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+        if(reviewer == null){
+            throw new IllegalStateException("Reviewer Does Not Exist");
+        }
         if(reviewer == null || game == null || reviewRequest.getScore() == null || reviewRequest.getComment() == null){
             throw new IllegalStateException("Cannot create Review");
         }
@@ -120,17 +125,17 @@ public class ReviewService {
                 .build();
         try{
             reviewRepository.save(review);
-            reviewer.setNumOfReviews(reviewer.getNumOfReviews() + 1);
+            reviewer.setNumOfReviews((reviewer.getNumOfReviews() == null ? 0 : reviewer.getNumOfReviews()) + 1);
             reviewer.setReviews(reviewRepository.findReviewByReviewerName(reviewer.getName()));
             userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewRequest);
             updateScoreOfGameByReview(reviewRequest.getGameId());
-            return review;
+            return reviewRepository.findReviewById(review.getId());
         } catch (IOException e){
-            throw new SQLException("Cannot create Review");
+            throw new IllegalStateException("Cannot create Review");
         } catch (DataIntegrityViolationException e){
-            throw new SQLException("Cannot create Review for the same game version twice! Please edit your old review instead!");
+            throw new IllegalStateException("Cannot create Review for the same game version twice! Please edit your old review instead!");
         }
     }
 
