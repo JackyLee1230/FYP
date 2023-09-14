@@ -17,7 +17,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+//@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id" }) })
+@Table(uniqueConstraints= @UniqueConstraint(columnNames = {"reviewer_id", "game_id"}))
 public class Review {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

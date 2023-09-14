@@ -27,11 +27,8 @@ public class Game {
     @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
-
     private String name;
-
     private String releaseDate;
-
     @ManyToMany
     @JoinTable(
             name = "game_developers",
@@ -40,15 +37,12 @@ public class Game {
     )
     @JsonIgnore
     private List<User> developers;
-
+    private boolean isInDevelopment;
+    private String version;
     private String developerCompany;
-
     private String publisher;
-
     private Float score;
-
     private Float recommendationScore;
-
     @ManyToMany
     @JoinTable(
             name = "game_testers",
@@ -57,13 +51,13 @@ public class Game {
     )
     @JsonIgnore
     private List<User> Tester;
-
     @OneToMany(mappedBy = "reviewedGame")
     @JsonIgnore
     private List<Review> gameReviews;
-
     @ElementCollection
     private List<String> genre;
+    @ElementCollection
+    private List<String> platforms;
 
     @Override
     public final boolean equals(Object o) {

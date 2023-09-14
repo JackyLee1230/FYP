@@ -9,13 +9,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.core.RepositoryCreationException;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.rmi.AccessException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,7 +103,7 @@ public class ReviewService {
     }
 
     @Transactional
-    public Review addReview(ReviewRequest reviewRequest){
+    public Review addReview(ReviewRequest reviewRequest) throws SQLException {
         User reviewer = userRepository.findUserById(reviewRequest.getReviewerId());
         Game game = gameRepository.findGameById(reviewRequest.getGameId());
 
@@ -119,9 +124,10 @@ public class ReviewService {
             sentimentAnalysisForReview(reviewRequest);
             updateScoreOfGameByReview(reviewRequest.getGameId());
             return review;
-        }catch (Exception e){
-            e.printStackTrace();
-            throw new IllegalStateException("Cannot create Review");
+        } catch (IOException e){
+            throw new SQLException("Cannot create Review");
+        } catch (DataIntegrityViolationException e){
+            throw new SQLException("Cannot create Review for the same game version twice! Please edit your old review instead!");
         }
     }
 
