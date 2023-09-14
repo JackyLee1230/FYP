@@ -17,7 +17,7 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     Optional<Review> findReviewsByReviewer(User user);
 
-    Optional<Review> findReviewByReviewerName(String name);
+    List<Review> findReviewByReviewerName(String name);
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.name = ?1")
     List<Review> findReviewByGameName(String gameName);

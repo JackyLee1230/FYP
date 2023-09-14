@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,15 @@ public class UserService {
     }
 
     public User addUser(User user){
+        if(user.getName() == null || user.getEmail() == null || user.getPassword() == null){
+            throw new IllegalStateException("User's Name, Email, Password cannot be null");
+        }
+        if(user.getRole() == null){
+            user.setRole(List.of(Role.USER));
+        }
         try{
+            user.setNumOfReviews(0);
+            user.setJoinDate(new Date().toString());
             userRepository.save(user);
             return user;
         }catch (Exception e){
@@ -44,7 +53,7 @@ public class UserService {
 
     public void removeUser(User user){
         if(user != null){
-            userRepository.delete(user);
+            userRepository.delete(userRepository.findUserById(user.getId()));
         }
     }
 

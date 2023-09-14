@@ -18,7 +18,9 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 //@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id" }) })
-@Table(uniqueConstraints= @UniqueConstraint(columnNames = {"reviewer_id", "game_id"}))
+//    a column that stores the game version, game has a one to many attribute call versions
+//    make this into the unique constraint
+@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id", "gameVersion" }) })
 public class Review {
 
 
@@ -50,11 +52,11 @@ public class Review {
     @NonNull
     private String comment;
 
-    private Integer Tester;
-
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Game reviewedGame;
+
+    private String gameVersion;
 
     private Integer sentiment;
 

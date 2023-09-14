@@ -120,6 +120,9 @@ public class ReviewService {
                 .build();
         try{
             reviewRepository.save(review);
+            reviewer.setNumOfReviews(reviewer.getNumOfReviews() + 1);
+            reviewer.setReviews(reviewRepository.findReviewByReviewerName(reviewer.getName()));
+            userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewRequest);
             updateScoreOfGameByReview(reviewRequest.getGameId());
@@ -133,24 +136,27 @@ public class ReviewService {
 
     @Transactional
     public void removeReviewByReviewerUsername(Review review){
-        Optional<Review> r = reviewRepository.findReviewByReviewerName(review.getReviewer().getName());
-        if(!r.isPresent()){
+        List<Review> r = reviewRepository.findReviewByReviewerName(review.getReviewer().getName());
+        if(r == null || r.isEmpty()){
             throw new IllegalStateException("Reviewer Does Not Exist");
         } else {
-            reviewRepository.delete(review);
-            updateScoreOfGameByReview(review.getReviewedGame().getId());
+            for(Review re : r){
+                reviewRepository.delete(re);
+                updateScoreOfGameByReview(re.getReviewedGame().getId());
+            }
         }
     }
 
     @Transactional
     public void removeReviewByReviewerUsername(String username){
-        Optional<Review> r = reviewRepository.findReviewByReviewerName(username);
+        List<Review> r = reviewRepository.findReviewByReviewerName(username);
         if(!r.isEmpty()){
             throw new IllegalStateException("Reviewer Does Not Exist");
         } else {
-            Review review = r.get();
-            reviewRepository.delete(review);
-            updateScoreOfGameByReview(review.getReviewedGame().getId());
+            for(Review review : r){
+                reviewRepository.delete(review);
+                updateScoreOfGameByReview(review.getReviewedGame().getId());
+            }
         }
     }
 

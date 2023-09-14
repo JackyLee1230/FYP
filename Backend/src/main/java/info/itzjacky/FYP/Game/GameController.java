@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Game;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -26,6 +27,15 @@ public class GameController {
     public ResponseEntity<Game> addGame(@RequestBody Game game) {
         try {
             return new ResponseEntity<>(gameService.addGame(game), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/addNewVersion")
+    public ResponseEntity<Game> addNewVersion(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.addNewVersion(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

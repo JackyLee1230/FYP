@@ -33,13 +33,13 @@ public class User {
     private String email;
 
     @Column(updatable = true)
-    @JsonIgnore
     private String password;
 
     private String joinDate;
 
     private Date lastActive;
 
+    @Column(columnDefinition = "integer default 0")
     private Integer numOfReviews;
 
     @ElementCollection(targetClass = Role.class)

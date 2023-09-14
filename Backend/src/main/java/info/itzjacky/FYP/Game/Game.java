@@ -27,6 +27,7 @@ public class Game {
     @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
+    @NonNull
     private String name;
     private String releaseDate;
     @ManyToMany
@@ -38,7 +39,6 @@ public class Game {
     @JsonIgnore
     private List<User> developers;
     private boolean isInDevelopment;
-    private String version;
     private String developerCompany;
     private String publisher;
     private Float score;
@@ -56,6 +56,8 @@ public class Game {
     private List<Review> gameReviews;
     @ElementCollection
     private List<String> genre;
+    @ElementCollection
+    private List<String> versions;
     @ElementCollection
     private List<String> platforms;
 
