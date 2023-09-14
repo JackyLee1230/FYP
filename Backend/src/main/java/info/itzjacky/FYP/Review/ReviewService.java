@@ -2,6 +2,8 @@ package info.itzjacky.FYP.Review;
 
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Game.GameRepository;
+import info.itzjacky.FYP.Kafka.KafkaMessage;
+import info.itzjacky.FYP.Kafka.Producer;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import jakarta.transaction.Transactional;
@@ -27,6 +29,9 @@ public class ReviewService {
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    Producer producer;
 
     Logger logger = LoggerFactory.getLogger(ReviewService.class);
     @Autowired
@@ -62,6 +67,7 @@ public class ReviewService {
             }
             review.setSentiment(Integer.parseInt(programOutput.toString().trim()));
             review.setSentimentUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
+            producer.send(new KafkaMessage(review.getId(), review.getComment()));
             return Integer.parseInt(programOutput.toString().trim());
         } catch (IOException | InterruptedException e) {
             throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
