@@ -17,6 +17,8 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     List<Review> findReviewsByReviewer(User user);
 
+    List<Review> findReviewsByReviewerId(Integer id);
+
     List<Review> findReviewByReviewerName(String name);
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.name = ?1")
@@ -24,7 +26,7 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1")
-    List<Review> findReviewByGameId(Integer gameId);
+    List<Review> findReviewsByGameId(Integer gameId);
 
 //    find top 5 most recent reviews
     @Query("SELECT r FROM Review r ORDER BY r.createdAt DESC")

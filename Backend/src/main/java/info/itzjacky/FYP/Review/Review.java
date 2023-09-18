@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Builder
@@ -61,4 +62,8 @@ public class Review {
     private Integer sentiment;
 
     private Date sentimentUpdatedAt;
+
+    @OneToMany(mappedBy = "review")
+    private List<ReviewComment> reviewComment;
 }
+

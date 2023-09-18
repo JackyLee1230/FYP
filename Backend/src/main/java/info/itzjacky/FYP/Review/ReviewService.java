@@ -73,12 +73,26 @@ public class ReviewService {
         }
     }
 
+    public List<Review> getReviewsByGameId(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getGameId() == null){
+            throw new IllegalStateException("Game ID Cannot Be Empty/Null");
+        }
+        return reviewRepository.findReviewsByGameId(reviewRequest.getGameId());
+    }
+
+    public List<Review> getReviewsByReviewerId(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getReviewerId() == null){
+            throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
+        }
+        return reviewRepository.findReviewsByReviewerId(reviewRequest.getReviewId());
+    }
+
     @Transactional
     public Review addReview(Review review){
         try{
             reviewRepository.save(review);
             Game game = review.getReviewedGame();
-            List<Review> reviews = reviewRepository.findReviewByGameId(game.getId());
+            List<Review> reviews = reviewRepository.findReviewsByGameId(game.getId());
             float totalScore = 0;
             for(Review r : reviews){
                 totalScore += r.getScore();
@@ -94,7 +108,7 @@ public class ReviewService {
 
     @Transactional
     public Float updateScoreOfGameByReview(Integer gameId){
-        List<Review> reviews = reviewRepository.findReviewByGameId(gameId);
+        List<Review> reviews = reviewRepository.findReviewsByGameId(gameId);
         float totalScore = 0;
         for(Review r : reviews){
             totalScore += r.getScore();
@@ -180,7 +194,7 @@ public class ReviewService {
         if(reviewReq == null || reviewReq.getGameId() == null){
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");
         }
-        List<Review> reviews = reviewRepository.findReviewByGameId(reviewReq.getGameId());
+        List<Review> reviews = reviewRepository.findReviewsByGameId(reviewReq.getGameId());
         if(reviews != null){
             return reviews;
         } else {
