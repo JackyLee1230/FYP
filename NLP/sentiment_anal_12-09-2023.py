@@ -101,11 +101,12 @@ def cleaning(s_list:list[str]):
 ####################
 
 from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
-from sklearn.ensemble import RandomForestClassifier
 
 import pickle
 from pathlib import Path
+import time
+
+start_time = time.time()
 
 filename = Path("../NLP/steam-games-reviews-analysis-sentiment-analysis_model_12-09-2023.sav").resolve()
 loaded_model = pickle.load(open(filename, 'rb'))
@@ -118,11 +119,15 @@ loaded_count_vec = pickle.load(open(filename_count_vec, "rb"))
 filename_tfidf = Path('../NLP/steam-games-reviews-analysis-sentiment-analysis_tfidf_12-09-2023.pkl').resolve()
 loaded_tfidf = pickle.load(open(filename_tfidf, "rb"))
 
+end_time = time.time()
+
 pipeline_target = Pipeline([
     ('count_vectorizer', loaded_count_vec),
     ('tfidf', loaded_tfidf),
     ('model', loaded_model)
 ])
+
+print(f'Loading the trained model takes {end_time - start_time} seconds')
 
 ####################
 # End of Load the trained model
@@ -134,18 +139,24 @@ def inference(s_list:list[str]):
     return result
 
 if __name__ == '__main__':
-    
+    total_start = time.time()
     # print(argv)
     
     parsingList = []
     
     for i in range(1,len(argv)):
         parsingList.append(argv[i])
-
+    clean_start = time.time()
     testing_list_2 = cleaning(parsingList)
+    clean_end = time.time()
+    print(f'Cleaning the text takes {clean_end - clean_start} seconds')
     # print(testing_list_2)
 
     result = inference(parsingList)
+    
+    infer_end = time.time()
+    print(f'Inference takes {infer_end - clean_end} seconds')
+    print(f'Total time: {infer_end - total_start} seconds')
 
     # print()
     # for i in range(len(parsingList)):

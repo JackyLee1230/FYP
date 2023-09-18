@@ -26,6 +26,24 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> login(@RequestBody UserRequest userRequest){
+        try{
+            return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(userService.login(userRequest)), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserDto> register(@RequestBody UserRequest userRequest){
+        try{
+            return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(userService.register(userRequest)), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
 
     @PostMapping("/addUser")
     public ResponseEntity<UserDto> addUser(@RequestBody User user){
