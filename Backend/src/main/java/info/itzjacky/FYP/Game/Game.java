@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table
+@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = { "name", "developerCompany" }) })
 @Builder
 @Getter
 @Setter
@@ -51,13 +51,18 @@ public class Game {
     )
     @JsonIgnore
     private List<User> Tester;
+
     @OneToMany(mappedBy = "reviewedGame")
     @JsonIgnore
     private List<Review> gameReviews;
+
     @ElementCollection
     private List<String> genre;
-    @ElementCollection
-    private List<String> versions;
+
+    @OneToMany(mappedBy = "versionedGame")
+    private List<GameVersion> versions;
+
+    private String version;
     @ElementCollection
     private List<String> platforms;
 

@@ -33,9 +33,18 @@ public class GameController {
     }
 
     @PostMapping("/addNewVersion")
-    public ResponseEntity<Game> addNewVersion(@RequestBody GameRequest gameRequest) {
+    public ResponseEntity<GameVersion> addNewVersion(@RequestBody GameRequest gameRequest) {
         try {
             return new ResponseEntity<>(gameService.addNewVersion(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/getAllVersions")
+    public ResponseEntity<List<GameVersion>> getAllVersions(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getAllVersions(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

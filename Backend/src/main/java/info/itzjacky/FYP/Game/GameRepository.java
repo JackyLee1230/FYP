@@ -17,4 +17,8 @@ public interface GameRepository extends JpaRepository<Game,Integer>{
     Optional<Game> findGamesByDeveloper(User developer);
 
 //    Optional<Game> findGameByNameAndDevelopers(String name, List<User> developer);
+
+    Optional<Game> findGameByNameAndAndDeveloperCompany(String name, String developerCompany);
 }
+
+

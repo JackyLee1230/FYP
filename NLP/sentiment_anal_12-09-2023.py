@@ -127,7 +127,6 @@ pipeline_target = Pipeline([
     ('model', loaded_model)
 ])
 
-print(f'Loading the trained model takes {end_time - start_time} seconds')
 
 ####################
 # End of Load the trained model
@@ -139,7 +138,6 @@ def inference(s_list:list[str]):
     return result
 
 if __name__ == '__main__':
-    total_start = time.time()
     # print(argv)
     
     parsingList = []
@@ -149,14 +147,9 @@ if __name__ == '__main__':
     clean_start = time.time()
     testing_list_2 = cleaning(parsingList)
     clean_end = time.time()
-    print(f'Cleaning the text takes {clean_end - clean_start} seconds')
     # print(testing_list_2)
 
     result = inference(parsingList)
-    
-    infer_end = time.time()
-    print(f'Inference takes {infer_end - clean_end} seconds')
-    print(f'Total time: {infer_end - total_start} seconds')
 
     # print()
     # for i in range(len(parsingList)):

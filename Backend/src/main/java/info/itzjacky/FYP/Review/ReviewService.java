@@ -118,16 +118,23 @@ public class ReviewService {
 
     @Transactional
     public Review addReview(ReviewRequest reviewRequest) {
-        User reviewer = userRepository.findUserById(reviewRequest.getReviewerId());
-        Game game = gameRepository.findGameById(reviewRequest.getGameId());
+        Game game = null;
+        User reviewer = null;
+        try{
+            reviewer = userRepository.findUserById(reviewRequest.getReviewerId());
+            game = gameRepository.findGameById(reviewRequest.getGameId());
+        }catch (Exception e){
+            throw new IllegalStateException("Cannot create Review");
+        }
+
         if(game == null){
             throw new IllegalStateException("Game Does Not Exist");
         }
         if(reviewer == null){
             throw new IllegalStateException("Reviewer Does Not Exist");
         }
-        if(reviewer == null || game == null || reviewRequest.getScore() == null || reviewRequest.getComment() == null){
-            throw new IllegalStateException("Cannot create Review");
+        if(reviewRequest.getScore() == null || reviewRequest.getComment() == null){
+            throw new IllegalStateException("Cannot create Incomplete Review");
         }
         Review review = Review.builder()
                 .reviewer(userRepository.findUserById(reviewRequest.getReviewerId()))
