@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Review;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,7 +19,7 @@ public class ReviewComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "commenter_id")
@@ -32,6 +33,7 @@ public class ReviewComment {
 
     @ManyToOne
     @JoinColumn(name = "review_id")
+    @JsonIgnore
     public Review review;
 
     @Column(length = 10000)

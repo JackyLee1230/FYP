@@ -33,6 +33,9 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository;
 
+    @Autowired
+    ReviewCommentRepository reviewCommentRepository;
+
     Logger logger = LoggerFactory.getLogger(ReviewService.class);
     @Autowired
     private UserRepository userRepository;
@@ -70,6 +73,31 @@ public class ReviewService {
             return Integer.parseInt(programOutput.toString().trim());
         } catch (IOException | InterruptedException e) {
             throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
+        }
+    }
+
+
+    public ReviewComment addReviewComment(ReviewCommentRequest reviewCommentRequest){
+        if(reviewCommentRequest.getComment().isEmpty() || reviewCommentRequest.getCommenterId() == null || reviewCommentRequest.getReviewId() == null){
+            throw new IllegalStateException("Cannot create Incomplete Review Comment");
+        }
+        try{
+            ReviewComment reviewComment = ReviewComment.builder().commenter(userRepository.findUserById(reviewCommentRequest.getCommenterId()))
+                    .review(reviewRepository.findReviewById(reviewCommentRequest.getReviewId()))
+                    .comment(reviewCommentRequest.getComment())
+                    .build();
+            reviewCommentRepository.save(reviewComment);
+            return reviewComment;
+        } catch (Exception e){
+            throw new IllegalStateException("Cannot create Review Comment");
+        }
+    }
+
+    public List<ReviewComment> getAllReviewCommentsById(ReviewCommentRequest reviewCommentRequest){
+        try {
+            return reviewCommentRepository.findReviewCommentsByReview(reviewRepository.findReviewById(reviewCommentRequest.getReviewId()));
+        } catch (Exception e){
+            throw new IllegalStateException("Cannot get Review Comments");
         }
     }
 
