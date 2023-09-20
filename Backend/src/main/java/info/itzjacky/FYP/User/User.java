@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Review.Review;
 import jakarta.persistence.*;
@@ -32,6 +33,7 @@ public class User {
     @Column(updatable = true, unique = true)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(updatable = true)
     private String password;
 

@@ -39,6 +39,26 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("getReviewsByGameIdAndVersion")
+    public ResponseEntity<List<Review>> getReviewsByGameIdAndVersion(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getReviewsByGameIdAndVersion(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/getReviewsByIdOrderByScore")
+    public ResponseEntity<List<Review>> getReviewsByIdOrderByScore(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getReviewsByIdOrderByScore(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+//    @PostMapping
+
     /*
     * args reviewId: Integer (Review.id)
     */

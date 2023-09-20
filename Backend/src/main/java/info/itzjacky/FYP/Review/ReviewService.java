@@ -166,14 +166,16 @@ public class ReviewService {
             throw new IllegalStateException("Cannot create Incomplete Review");
         }
 
-//        Check if the gameVersion exists
-        for(GameVersion ver: game.getVersions()){
-            if(ver.getVersion().equals(reviewRequest.getGameVersion())){
-                break;
+        if(reviewRequest.getGameVersion() == null){
+            for(GameVersion ver: game.getVersions()){
+                if(ver.getVersion().equals(reviewRequest.getGameVersion())){
+                    break;
+                }
             }
-            if(ver.equals(game.getVersions().get(game.getVersions().size() - 1))){
-                throw new IllegalStateException("Game Version Does Not Exist");
-            }
+        }
+
+        if(reviewRequest.getScore() < 0 || reviewRequest.getScore() > 100){
+            throw new IllegalStateException("Score Must Be Between 0 and 100");
         }
 
         Review review = Review.builder()
@@ -256,5 +258,30 @@ public class ReviewService {
             throw new IllegalStateException("Number of Reviews Cannot Be Empty/Null");
         }
         return reviewRepository.findMostRecentReviews(PageRequest.of(0,reviewReq.getNumberOfReviews()));
+    }
+
+    public List<Review> getReviewsByGameIdAndVersion(ReviewRequest reviewReq) {
+        if(reviewReq == null || reviewReq.getGameId() == null || reviewReq.getGameVersion() == null){
+            throw new IllegalStateException("Game ID/Game Version Cannot Be Empty/Null");
+        }
+        List<Review> reviews = reviewRepository.findReviewsByIdAndGameVersion(reviewReq.getGameId(), reviewReq.getGameVersion());
+        if(reviews != null){
+            return reviews;
+        } else {
+            throw new IllegalStateException("Review/Game Does Not Exist");
+        }
+    }
+
+
+    public List<Review> getReviewsByIdOrderByScore(ReviewRequest reviewReq) {
+        if(reviewReq == null || reviewReq.getGameId() == null){
+            throw new IllegalStateException("Game ID Cannot Be Empty/Null");
+        }
+        List<Review> reviews = reviewRepository.findReviewsByGameIdOrderByScore(reviewReq.getGameId());
+        if(reviews != null){
+            return reviews;
+        } else {
+            throw new IllegalStateException("Review/Game Does Not Exist");
+        }
     }
 }

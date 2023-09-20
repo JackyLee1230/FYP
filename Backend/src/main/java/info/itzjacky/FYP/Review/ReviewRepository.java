@@ -28,7 +28,13 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1")
     List<Review> findReviewsByGameId(Integer gameId);
 
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 ORDER BY r.score DESC")
+    List<Review> findReviewsByGameIdOrderByScore(Integer gameId);
+
 //    find top 5 most recent reviews
     @Query("SELECT r FROM Review r ORDER BY r.createdAt DESC")
     List<Review> findMostRecentReviews(PageRequest limit);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 AND r.gameVersion = ?2")
+    List<Review> findReviewsByIdAndGameVersion(Integer id, String gameVersion);
 }
