@@ -2,6 +2,7 @@ package info.itzjacky.FYP.Review;
 
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Game.GameRepository;
+import info.itzjacky.FYP.Game.GameVersion;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import jakarta.transaction.Transactional;
@@ -164,9 +165,21 @@ public class ReviewService {
         if(reviewRequest.getScore() == null || reviewRequest.getComment() == null){
             throw new IllegalStateException("Cannot create Incomplete Review");
         }
+
+//        Check if the gameVersion exists
+        for(GameVersion ver: game.getVersions()){
+            if(ver.getVersion().equals(reviewRequest.getGameVersion())){
+                break;
+            }
+            if(ver.equals(game.getVersions().get(game.getVersions().size() - 1))){
+                throw new IllegalStateException("Game Version Does Not Exist");
+            }
+        }
+
         Review review = Review.builder()
                 .reviewer(userRepository.findUserById(reviewRequest.getReviewerId()))
                 .reviewedGame(gameRepository.findGameById(reviewRequest.getGameId()))
+                .gameVersion(reviewRequest.getGameVersion() == null ? gameRepository.findGameById(reviewRequest.getGameId()).getVersion() : reviewRequest.getGameVersion())
                 .score(reviewRequest.getScore())
                 .comment(reviewRequest.getComment())
                 .recommended(reviewRequest.isRecommended())

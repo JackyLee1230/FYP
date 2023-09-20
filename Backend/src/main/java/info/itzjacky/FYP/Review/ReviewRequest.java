@@ -29,5 +29,7 @@ public class ReviewRequest {
 
     private Integer gameId;
 
+    private String gameVersion;
+
     private Integer numberOfReviews;
 }
