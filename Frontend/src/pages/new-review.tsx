@@ -12,7 +12,6 @@ const AddNewReview = () => {
     console.debug(data);
 
     try {
-      // Send a POST request to your API
       const response = await fetch('http://localhost:8080/api/game/addReview', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,7 +20,8 @@ const AddNewReview = () => {
 
       if (response.ok) {
         console.debug('Review added successfully');
-        router.push('/reviews');
+//      TODO: redirect to review page
+//      router.push('/reviews');
       } else {
         console.debug('Failed to add review');
       }

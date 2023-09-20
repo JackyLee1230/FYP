@@ -25,8 +25,8 @@ const AddNewGame = () => {
 
       if (response.ok) {
         console.debug('Game added successfully');
-  //TODO: redirect to game home page
-  //      router.push('/games');
+//      TODO: redirect to game home page
+//      router.push('/games');
       } else {
         console.debug('Failed to add game');
       }
