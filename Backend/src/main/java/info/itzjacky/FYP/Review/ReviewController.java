@@ -99,6 +99,9 @@ public class ReviewController {
         }
     }
 
+    /*
+    * args reviewId: Integer
+    */
     @PostMapping("/getAllReviewCommentsById")
     public ResponseEntity<List<ReviewComment>> getAllReviewCommentsById(@RequestBody ReviewCommentRequest reviewCommentRequest){
         try{
@@ -129,6 +132,19 @@ public class ReviewController {
     public ResponseEntity<List<Review>> getMostRecentReviews(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.getMostRecentReviews(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+
+    /*
+    * args reviewerId: Integer
+    */
+    @PostMapping("/getAllReviewsByUser")
+    public ResponseEntity<List<Review>> getAllReviewsByUser(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getAllReviewsByUser(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

@@ -90,10 +90,9 @@ public class UserController {
     }
 
     @PostMapping("/findUserByEmail")
-    public ResponseEntity<UserDto> findUserByEmail(@RequestParam("email") String email){
+    public ResponseEntity<UserDto> findUserByEmail(@RequestBody UserRequest userRequest){
         try {
-            System.out.println(email  + "is here ");
-            Optional<User> user = userService.findUserByEmail(email);
+            Optional<User> user = userService.findUserByEmail(userRequest.getEmail());
             if(user.isPresent()){
                 return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(user.get()), HttpStatus.OK);
             } else {

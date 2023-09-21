@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -92,6 +93,9 @@ public class UserService {
     }
 
     public Optional<User> findUserByEmail(String email){
+        if(email == null){
+            throw new IllegalStateException("Email Cannot Be Empty");
+        }
         return userRepository.findUserByEmail(email);
     }
 

@@ -5,25 +5,20 @@ import info.itzjacky.FYP.Game.GameRepository;
 import info.itzjacky.FYP.Game.GameVersion;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
+import info.itzjacky.FYP.Utils.Others;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.core.RepositoryCreationException;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.rmi.AccessException;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -138,11 +133,25 @@ public class ReviewService {
     @Transactional
     public Float updateScoreOfGameByReview(Integer gameId){
         List<Review> reviews = reviewRepository.findReviewsByGameId(gameId);
+        Game game = gameRepository.findGameById(gameId);
         float totalScore = 0;
+        float recommendedScore = 0;
         for(Review r : reviews){
             totalScore += r.getScore();
+            if(r.isRecommended()){
+                recommendedScore += Others.booleanToInt(r.isRecommended());
+            }
         }
+        game.setScore(totalScore/reviews.size());
+        game.setRecommendationScore(recommendedScore/reviews.size());
         return totalScore/reviews.size();
+    }
+
+    public List<Review> getAllReviewsByUser(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getReviewerId() == null){
+            throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
+        }
+        return reviewRepository.findReviewsByReviewerName(userRepository.findUserById(reviewRequest.getReviewerId()).getName());
     }
 
     @Transactional
@@ -190,7 +199,7 @@ public class ReviewService {
         try{
             reviewRepository.save(review);
             reviewer.setNumOfReviews((reviewer.getNumOfReviews() == null ? 0 : reviewer.getNumOfReviews()) + 1);
-            reviewer.setReviews(reviewRepository.findReviewByReviewerName(reviewer.getName()));
+            reviewer.setReviews(reviewRepository.findReviewsByReviewerName(reviewer.getName()));
             userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewRequest);
@@ -205,26 +214,13 @@ public class ReviewService {
 
     @Transactional
     public void removeReviewByReviewerUsername(Review review){
-        List<Review> r = reviewRepository.findReviewByReviewerName(review.getReviewer().getName());
+        List<Review> r = reviewRepository.findReviewsByReviewerName(review.getReviewer().getName());
         if(r == null || r.isEmpty()){
             throw new IllegalStateException("Reviewer Does Not Exist");
         } else {
             for(Review re : r){
                 reviewRepository.delete(re);
                 updateScoreOfGameByReview(re.getReviewedGame().getId());
-            }
-        }
-    }
-
-    @Transactional
-    public void removeReviewByReviewerUsername(String username){
-        List<Review> r = reviewRepository.findReviewByReviewerName(username);
-        if(!r.isEmpty()){
-            throw new IllegalStateException("Reviewer Does Not Exist");
-        } else {
-            for(Review review : r){
-                reviewRepository.delete(review);
-                updateScoreOfGameByReview(review.getReviewedGame().getId());
             }
         }
     }
