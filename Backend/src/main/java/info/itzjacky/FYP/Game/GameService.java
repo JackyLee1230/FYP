@@ -116,4 +116,13 @@ public class GameService {
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
+
+
+    public List<Game> findGamesByName(GameRequest gameRequest){
+        try{
+            return gameRepository.findGamesByName(gameRequest.getName());
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,6 +20,9 @@ public interface GameRepository extends JpaRepository<Game,Integer>{
 //    Optional<Game> findGameByNameAndDevelopers(String name, List<User> developer);
 
     Optional<Game> findGameByNameAndAndDeveloperCompany(String name, String developerCompany);
+
+    @Query("SELECT g FROM Game g WHERE g.name LIKE %:name%")
+    List<Game> findGamesByName(String name);
 }
 
 
