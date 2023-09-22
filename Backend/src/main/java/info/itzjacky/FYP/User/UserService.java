@@ -41,56 +41,56 @@ public class UserService {
         }
     }
 
-    public User login(UserRequest userRequest) {
-        try{
-            Optional<User> user = userRepository.findUserByEmail(userRequest.getEmail());
-            if(user.isPresent()){
-                if(user.get().getPassword().equals(userRequest.getPassword())){
-                    return user.get();
-                } else {
-                    throw new IllegalStateException("Incorrect Password");
-                }
-            } else {
-                throw new IllegalStateException("User Does Not Exist");
-            }
-        }catch (Exception e){
-            throw new IllegalStateException("Error Logging In");
-        }
-    }
+//    public User login(UserRequest userRequest) {
+//        try{
+//            Optional<User> user = userRepository.findUserByEmail(userRequest.getEmail());
+//            if(user.isPresent()){
+//                if(user.get().getPassword().equals(userRequest.getPassword())){
+//                    return user.get();
+//                } else {
+//                    throw new IllegalStateException("Incorrect Password");
+//                }
+//            } else {
+//                throw new IllegalStateException("User Does Not Exist");
+//            }
+//        }catch (Exception e){
+//            throw new IllegalStateException("Error Logging In");
+//        }
+//    }
 
-    @Transactional
-    public User register(UserRequest userRequest) {
-        User user = null;
-
-        try{
-            user = userRepository.findUserByEmailOrName(userRequest.getEmail(), userRequest.getName());
-        } catch (Exception e){
-            throw new IllegalStateException("Error Checking For Existing Users");
-        }
-
-        if(!RegEx.emailValidation(userRequest.getEmail())){
-            throw new IllegalStateException("Invalid Email Format");
-        }
-
-        try{
-            if (user != null){
-                throw new IllegalStateException("User Already Exists");
-            } else {
-                User newUser = new User();
-                newUser.setName(userRequest.getName());
-                newUser.setEmail(userRequest.getEmail());
-                newUser.setPassword(userRequest.getPassword());
-                newUser.setRole(List.of(Role.USER));
-                newUser.setNumOfReviews(0);
-                newUser.setJoinDate(new Date().toString());
-                newUser.setLastActive(new Date());
-                userRepository.save(newUser);
-                return newUser;
-            }
-        } catch (Exception e){
-            throw new IllegalStateException("Error Registering User");
-        }
-    }
+//    @Transactional
+//    public User register(UserRequest userRequest) {
+//        User user = null;
+//
+//        try{
+//            user = userRepository.findUserByEmailOrName(userRequest.getEmail(), userRequest.getName());
+//        } catch (Exception e){
+//            throw new IllegalStateException("Error Checking For Existing Users");
+//        }
+//
+//        if(!RegEx.emailValidation(userRequest.getEmail())){
+//            throw new IllegalStateException("Invalid Email Format");
+//        }
+//
+//        try{
+//            if (user != null){
+//                throw new IllegalStateException("User Already Exists");
+//            } else {
+//                User newUser = new User();
+//                newUser.setName(userRequest.getName());
+//                newUser.setEmail(userRequest.getEmail());
+//                newUser.setPassword(userRequest.getPassword());
+//                newUser.setRole(List.of(Role.USER));
+//                newUser.setNumOfReviews(0);
+//                newUser.setJoinDate(new Date().toString());
+//                newUser.setLastActive(new Date());
+//                userRepository.save(newUser);
+//                return newUser;
+//            }
+//        } catch (Exception e){
+//            throw new IllegalStateException("Error Registering User");
+//        }
+//    }
 
     public Optional<User> findUserByEmail(String email){
         if(email == null){

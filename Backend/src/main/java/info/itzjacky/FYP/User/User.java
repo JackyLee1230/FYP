@@ -6,7 +6,12 @@ import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Review.Review;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -18,12 +23,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@RequiredArgsConstructor
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     @Column(insertable = true, updatable = true)
     private Integer id;
 
@@ -44,7 +47,7 @@ public class User {
     @Column(columnDefinition = "integer default 0")
     private Integer numOfReviews;
 
-    @ElementCollection(targetClass = Role.class)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<Role> role;
 
@@ -58,4 +61,39 @@ public class User {
     @ManyToMany(mappedBy = "Tester")
     private List<Game> testedGames;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        for each role in the list of roles, create a new SimpleGrantedAuthority object
+
+        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role r : role) {
+            authorities.add(new SimpleGrantedAuthority(r.name()));
+        }
+        return authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
