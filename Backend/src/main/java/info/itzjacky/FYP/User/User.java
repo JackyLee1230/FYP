@@ -52,6 +52,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private List<Role> role;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 
@@ -69,10 +70,8 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        for each role in the list of roles, create a new SimpleGrantedAuthority object
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for (Role r : role) {
-            for (SimpleGrantedAuthority s : r.getAuthorities()) {
-                authorities.add(s);
-            }
+        for(int i = 0; i < this.role.size(); i++){
+            authorities.addAll(this.role.get(i).getAuthorities());
         }
         return authorities;
     }

@@ -24,7 +24,7 @@ public class JwtService {
     @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
 
-    @Value("${application.security.jwt.refresh-token.expiration}")
+    @Value("${application.security.jwt.refreshToken.expiration}")
     private long refreshExpiration;
 
     public String extractUsername(String token) {

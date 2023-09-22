@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.Auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.itzjacky.FYP.User.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class AuthenticationResponse {
     private String accessToken;
     @JsonProperty("refresh_token")
     private String refreshToken;
+    private User user;
 }

@@ -38,7 +38,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().user(savedUser).accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 
     @Transactional
@@ -54,7 +54,7 @@ public class AuthenticationService {
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().user(user).accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 
     private void revokeAllUserTokens(User user) {

@@ -25,7 +25,7 @@ public class GameRequest {
     private Float recommendationScore;
     private List<User> Tester;
     private List<Review> gameReviews;
-    private List<String> genre;
+    private List<GameGenre> genre;
     private String version;
     private List<String> versions;
     private List<String> platforms;

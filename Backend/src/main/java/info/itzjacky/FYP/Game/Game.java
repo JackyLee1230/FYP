@@ -57,7 +57,8 @@ public class Game {
     private List<Review> gameReviews;
 
     @ElementCollection
-    private List<String> genre;
+    @Enumerated(EnumType.STRING)
+    private List<GameGenre> genre;
 
     @OneToMany(mappedBy = "versionedGame")
     private List<GameVersion> versions;
