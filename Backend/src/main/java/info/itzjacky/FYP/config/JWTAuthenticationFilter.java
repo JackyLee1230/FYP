@@ -1,12 +1,12 @@
 package info.itzjacky.FYP.config;
 
+import info.itzjacky.FYP.Auth.TokenRepository;
 import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.CachingUserDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +23,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailService;
+    private final TokenRepository tokenRepository;
 
     @Override
     protected void doFilterInternal(
@@ -43,7 +44,10 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 //          user NOT yet authenticated
             UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
 //          check token validity
-            if(jwtService.isTokenVald(JWT, userDetails)) {
+            var isTokenValid = tokenRepository.findByToken(JWT)
+                    .map(token -> !token.isExpired() && !token.isRevoked())
+                    .orElse(false);
+            if(jwtService.isTokenVald(JWT, userDetails) && isTokenValid) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails,

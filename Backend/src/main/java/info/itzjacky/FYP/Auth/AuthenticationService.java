@@ -1,11 +1,15 @@
 package info.itzjacky.FYP.Auth;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.config.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository repository;
+    private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -29,9 +34,11 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .role(List.of(Role.USER))
                 .build();
-        repository.save(user);
+        var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        var refreshToken = jwtService.generateRefreshToken(user);
+        saveUserToken(savedUser, jwtToken);
+        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 
     @Transactional
@@ -44,6 +51,61 @@ public class AuthenticationService {
         );
         var user = repository.findUserByName(request.getName()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        var refreshToken = jwtService.generateRefreshToken(user);
+        revokeAllUserTokens(user);
+        saveUserToken(user, jwtToken);
+        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+    }
+
+    private void revokeAllUserTokens(User user) {
+        var tokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        if(tokens.isEmpty()){
+            return;
+        }
+        tokens.forEach(token -> {
+            token.setRevoked(true);
+            token.setExpired(true);
+        });
+        tokenRepository.saveAll(tokens);
+    }
+
+
+    private void saveUserToken(User user, String jwtToken) {
+        var token = Token.builder()
+                .user(user)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .revoked(false)
+                .expired(false)
+                .build();
+        tokenRepository.save(token);
+    }
+
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws java.io.IOException {
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String refreshToken;
+        final String username;
+        if (authHeader == null ||!authHeader.startsWith("Bearer ")) {
+            return;
+        }
+        refreshToken = authHeader.substring(7);
+        username = jwtService.extractUsername(refreshToken);
+        if (username != null) {
+            var user = this.repository.findUserByName(username)
+                    .orElseThrow();
+            if (jwtService.isTokenVald(refreshToken, user)) {
+                var accessToken = jwtService.generateToken(user);
+                revokeAllUserTokens(user);
+                saveUserToken(user, accessToken);
+                var authResponse = AuthenticationResponse.builder()
+                        .accessToken(accessToken)
+                        .refreshToken(refreshToken)
+                        .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }
+        }
     }
 }

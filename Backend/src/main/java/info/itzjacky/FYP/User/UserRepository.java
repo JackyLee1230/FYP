@@ -20,7 +20,6 @@ public interface UserRepository extends JpaRepository<User,Integer>{
     @Query("SELECT u FROM User u WHERE u.developedGames = ?1")
     Optional<User> findDevelopersByGame(Game game);
 
-
     Optional<User> findUserByEmail(String email);
 
     User findUserByEmailOrName(String email, String name);

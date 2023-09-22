@@ -2,6 +2,7 @@ package info.itzjacky.FYP.User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import info.itzjacky.FYP.Auth.Token;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Review.Review;
 import jakarta.persistence.*;
@@ -51,6 +52,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private List<Role> role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
+
     @ManyToMany(mappedBy = "developers")
     private List<Game> developedGames;
 
@@ -64,10 +68,11 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        for each role in the list of roles, create a new SimpleGrantedAuthority object
-
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (Role r : role) {
-            authorities.add(new SimpleGrantedAuthority(r.name()));
+            for (SimpleGrantedAuthority s : r.getAuthorities()) {
+                authorities.add(s);
+            }
         }
         return authorities;
     }

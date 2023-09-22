@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,14 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "yadeqHWNPDEaYeKYIj8IAtC9+buW/yhDgGAAhbImGV8fVR7vSP/k0lW0La9nZoLOGtv+hM+g3iYlBqMqMa3Bkg==";
+    @Value("${application.security.jwt.secret-key}")
+    private String SECRET_KEY;
+
+    @Value("${application.security.jwt.expiration}")
+    private long jwtExpiration;
+
+    @Value("${application.security.jwt.refresh-token.expiration}")
+    private long refreshExpiration;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -29,12 +37,12 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generatorToken(new HashMap<>(), userDetails);
+        return generateToken(new HashMap<>(), userDetails);
     }
 
-    public String generatorToken(
-            Map<String, Object> extraClaims,
-            UserDetails userDetails
+    public String buildToken(Map<String, Object> extraClaims,
+                             UserDetails userDetails,
+                             long expiration
     ) {
         return Jwts
                 .builder()
@@ -42,9 +50,30 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new java.util.Date(System.currentTimeMillis()))
 //                24 hours expiration
-                .setExpiration(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .setExpiration(new java.util.Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public String generateToken(
+            Map<String, Object> extraClaims,
+            UserDetails userDetails
+    ) {
+        return buildToken(extraClaims, userDetails, jwtExpiration);
+    }
+
+    public String generateRefreshToken(
+            UserDetails userDetails
+    ) {
+        return generateRefreshToken(new HashMap<>(), userDetails);
+    }
+
+
+    public String generateRefreshToken(
+            Map<String, Object> extraClaims,
+            UserDetails userDetails
+    ) {
+        return buildToken(extraClaims, userDetails, refreshExpiration);
     }
 
     public boolean isTokenVald(String token, UserDetails userDetails){
