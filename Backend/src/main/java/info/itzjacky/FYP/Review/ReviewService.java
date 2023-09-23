@@ -3,6 +3,7 @@ package info.itzjacky.FYP.Review;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Game.GameRepository;
 import info.itzjacky.FYP.Game.GameVersion;
+import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.Utils.Others;
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class ReviewService {
@@ -37,6 +39,8 @@ public class ReviewService {
     private UserRepository userRepository;
     @Autowired
     private GameRepository gameRepository;
+    @Autowired
+    private RabbitMQProducer rabbitMQProducer;
 
     @Transactional
     public List<Review> getAllReviews(){
@@ -45,7 +49,8 @@ public class ReviewService {
 
 
     @Transactional
-    public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException {
+    public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+        rabbitMQProducer.sendMessagetoRabbitMQ(reviewReq.getComment());
         Runtime rt = Runtime.getRuntime();
         Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
         logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
@@ -203,12 +208,17 @@ public class ReviewService {
             userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewRequest);
+
             updateScoreOfGameByReview(reviewRequest.getGameId());
             return reviewRepository.findReviewById(review.getId());
         } catch (IOException e){
             throw new IllegalStateException("Cannot create Review");
         } catch (DataIntegrityViolationException e){
             throw new IllegalStateException("Cannot create Review for the same game version twice! Please edit your old review instead!");
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

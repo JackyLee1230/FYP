@@ -1,15 +1,15 @@
 package info.itzjacky.FYP;
 
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-
-import org.apache.catalina.connector.Connector;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
-import org.apache.coyote.ajp.AbstractAjpProtocol;
-
-import java.util.Map;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 
 @SpringBootApplication
 public class FypApplication {
@@ -17,6 +17,7 @@ public class FypApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FypApplication.class, args);
 	}
+
 
 	// https://medium.com/geekculture/turn-your-raspberry-pi-into-a-server-to-run-your-java-spring-mvc-app-862214279587
 	// Section: Compiling Your Java Application

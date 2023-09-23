@@ -95,6 +95,11 @@
 			<artifactId>xz</artifactId>
 			<version>1.9</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>3.0.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
