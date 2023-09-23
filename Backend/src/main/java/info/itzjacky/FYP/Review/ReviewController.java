@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Review;
 
+import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
 import info.itzjacky.FYP.User.User;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class ReviewController {
     ReviewService reviewService;
     @Autowired
     private ReviewRepository reviewRepository;
+    @Autowired
+    private RabbitMQProducer rabbitMQProducer;
 
     @PostMapping("/getAllReviews")
     public ResponseEntity<List<Review>> getAllReviews(){
@@ -145,6 +148,17 @@ public class ReviewController {
     public ResponseEntity<List<Review>> getAllReviewsByUser(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.getAllReviewsByUser(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/testRabbitMQ")
+    public ResponseEntity<Void> testRabbitMQ(@RequestBody ReviewRequest reviewReq){
+        try{
+            String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
+            rabbitMQProducer.sendMessagetoRabbitMQ(toBeSentToPython);
+            return ResponseEntity.noContent().build();
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

@@ -50,31 +50,33 @@ public class ReviewService {
 
     @Transactional
     public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
-        rabbitMQProducer.sendMessagetoRabbitMQ(reviewReq.getComment());
-        Runtime rt = Runtime.getRuntime();
-        Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
-        logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
-        try {
-            ProcessBuilder pb = new ProcessBuilder("python", env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH"), review.getComment());
-            pb.redirectErrorStream(true);
-            Process extractProcess = pb.start();
-            StringBuilder programOutput = new StringBuilder();
-            try (BufferedReader processOutputReader = new BufferedReader(
-                    new InputStreamReader(extractProcess.getInputStream()));)
-            {
-                String readLine;
-                while ((readLine = processOutputReader.readLine()) != null)
-                {
-                    programOutput.append(readLine).append(System.lineSeparator());
-                }
-                extractProcess.waitFor();
-            }
-            review.setSentiment(Integer.parseInt(programOutput.toString().trim()));
-            review.setSentimentUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
-            return Integer.parseInt(programOutput.toString().trim());
-        } catch (IOException | InterruptedException e) {
-            throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
-        }
+        String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
+        rabbitMQProducer.sendMessagetoRabbitMQ(toBeSentToPython);
+//        Runtime rt = Runtime.getRuntime();
+//        Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
+//        logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
+//        try {
+//            ProcessBuilder pb = new ProcessBuilder("python", env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH"), review.getComment());
+//            pb.redirectErrorStream(true);
+//            Process extractProcess = pb.start();
+//            StringBuilder programOutput = new StringBuilder();
+//            try (BufferedReader processOutputReader = new BufferedReader(
+//                    new InputStreamReader(extractProcess.getInputStream()));)
+//            {
+//                String readLine;
+//                while ((readLine = processOutputReader.readLine()) != null)
+//                {
+//                    programOutput.append(readLine).append(System.lineSeparator());
+//                }
+//                extractProcess.waitFor();
+//            }
+//            review.setSentiment(Integer.parseInt(programOutput.toString().trim()));
+//            review.setSentimentUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
+//            return Integer.parseInt(programOutput.toString().trim());
+//        } catch (IOException | InterruptedException e) {
+//            throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
+//        }
+        return 1;
     }
 
 
