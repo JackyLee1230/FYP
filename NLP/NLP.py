@@ -85,12 +85,11 @@ def inference(s_list:list[str]):
 def callback(ch, method, properties, body):
     # Process the received message
     print("Received message:", body)
-    reviewId = str(body).split(";")[0]
-    comment = cleaning([str(body).split(";")[1]])
+    # find the first occurance of ; and split it intwo two parts
+    reviewId = str(body)[0: str(body).find(";")]
+    comment = str(body)[str(body).find(";")+1:]
     
     result = inference(comment)
-    
-
 
     # Acknowledge the message
     resultToBeSentBack = bytes( str(reviewId) + ";" + str(result[0]), 'utf-8')

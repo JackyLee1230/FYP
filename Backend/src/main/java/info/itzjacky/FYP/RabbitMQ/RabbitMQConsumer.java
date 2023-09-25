@@ -32,13 +32,20 @@ public class RabbitMQConsumer {
     @RabbitListener(queues = "${spring.rabbitmq.SentimentAnalysisResultQueueName}")
     public void receive(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
            throws IOException {
-        logger.info("Sentiment Analysis RESULT: Review ID: " + payload.split(";")[0].replace("b'", "") + " Sentiment: " + payload.split(";")[1]);
-        Review review = reviewRepository.findReviewById(Integer.valueOf(payload.split(";")[0].replace("b'", "")));
+        String result = payload.replace("b'", "");
+        String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
+        String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
+        if(reviewId == null || sentiment == null){
+            logger.warn("Sentiment got back with Non Existent Review ID: " + result);
+            return;
+        }
+        logger.info("Sentiment Analysis RESULT: Review ID: " + reviewId + " Sentiment: " + sentiment);
+        Review review = reviewRepository.findReviewById(Integer.valueOf(reviewId));
         if(review == null){
-            logger.warn("Sentiment got back with Non Existent Review ID: " + payload.split(";")[0].replace("b'", ""));
+            logger.warn("Sentiment got back with Non Existent Review ID: " + reviewId);
             return;
         } else {
-            review.setSentiment(Integer.valueOf(payload.split(";")[1].replace("'", "")));
+            review.setSentiment(Integer.valueOf(sentiment));
             reviewRepository.save(review);
         }
         channel.basicAck(tag, false);

@@ -49,7 +49,7 @@ public class ReviewService {
 
 
     @Transactional
-    public Integer sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+    public void sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
         rabbitMQProducer.sendMessagetoRabbitMQ(toBeSentToPython);
 //        Runtime rt = Runtime.getRuntime();
@@ -76,7 +76,6 @@ public class ReviewService {
 //        } catch (IOException | InterruptedException e) {
 //            throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
 //        }
-        return 1;
     }
 
 

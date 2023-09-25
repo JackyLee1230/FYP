@@ -66,9 +66,10 @@ public class ReviewController {
     * args reviewId: Integer (Review.id)
     */
     @PostMapping("/sentimentAnalysis")
-    public ResponseEntity<Integer> sentimentAnalysisForReview(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<Void> sentimentAnalysisForReview(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.sentimentAnalysisForReview(reviewReq), HttpStatus.OK);
+            reviewService.sentimentAnalysisForReview(reviewReq);
+            return ResponseEntity.noContent().build();
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(500), e.getMessage());
         }
