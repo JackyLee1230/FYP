@@ -22,6 +22,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class Game {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = true, updatable = true)

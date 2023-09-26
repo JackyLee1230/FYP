@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -54,6 +55,8 @@ public class AuthenticationService {
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
+//        remove old tokens that are more than 2 weeks old
+        tokenRepository.deleteAllByCreatedAtBefore(new Date(System.currentTimeMillis() - 1209600000));
         return AuthenticationResponse.builder().user(user).accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 
