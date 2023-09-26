@@ -31,17 +31,17 @@ public class RabbitMQConsumer {
     @Transactional
     @RabbitListener(queues = "${spring.rabbitmq.SentimentAnalysisResultQueueName}")
     public void receive(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
-           throws IOException {
+            throws IOException {
         String result = payload.replace("b'", "");
         String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
         String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
-        if(reviewId == null || sentiment == null){
+        if (reviewId == null || sentiment == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + result);
             return;
         }
         logger.info("Sentiment Analysis RESULT: Review ID: " + reviewId + " Sentiment: " + sentiment);
         Review review = reviewRepository.findReviewById(Integer.valueOf(reviewId));
-        if(review == null){
+        if (review == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + reviewId);
             return;
         } else {

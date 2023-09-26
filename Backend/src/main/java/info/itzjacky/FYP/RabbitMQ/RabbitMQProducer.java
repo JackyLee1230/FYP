@@ -17,7 +17,7 @@ public class RabbitMQProducer {
 
     Logger logger = LoggerFactory.getLogger(RabbitMQProducer.class);
 
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
     public RabbitMQProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
