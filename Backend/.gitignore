@@ -49,3 +49,9 @@ buildNumber.properties
 *.log.gz
 *.log-*.gz
 logs/
+
+# Class
+*.class
+
+# UserMapperImpl
+target/generated-sources/annotations/info/itzjacky/FYP/User/UserMapperImpl.java
