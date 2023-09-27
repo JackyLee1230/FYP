@@ -8,6 +8,7 @@ import type { GetServerSideProps } from 'next'
 
 type Param = {
   genres: string[]
+  isError: boolean
 }
 
 type RegisterGameData = {
@@ -23,19 +24,32 @@ type RegisterGameData = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // Call an external API endpoint to get the game genre data
-  const res = await axios.get('http://localhost:8080/api/game/getAllGameGenres');
-  const genres = await res.data;
+  let genres = null;
+  let isError = false;
+
+  try {
+    const res = await axios.get('http://localhost:8080/api/game/getAllGameGenres');
+
+    if(res.status === 200){
+      genres = await res.data;
+    }
+    else{
+      isError = true;
+    }
+  } catch (error) {{
+    isError = true;
+  }}
 
   // Return the props for the page component
   return {
     props: {
       genres,
+      isError,
     },
   };
 };
 
-function AddNewGame({ genres }: Param) {
+function AddNewGame({ genres, isError }: Param) {
   const router = useRouter();
 
   const [name, setName] = useState('');
@@ -45,7 +59,7 @@ function AddNewGame({ genres }: Param) {
   const [isInDevelopment, setIsInDevelopment] = useState(false);
   const [platforms, setPlatforms] = useState('');
   const [publisher, setPublisher] = useState('');
-  const [genre, setGenre] = useState<string[]>([genres[0]]);
+  const [genre, setGenre] = useState<string[]>(genres !== null ? [genres[0]] : [""]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,8 +98,17 @@ function AddNewGame({ genres }: Param) {
     setGenre(selectedOptions);
   };
 
-  
-  if(genres){
+  if(isError === true){
+    return (
+      <h1>500 Internal Server Error</h1>
+    )
+  }
+  else if(genres === null){
+    return (
+      <h1>Loading..</h1>
+    )
+  }
+  else{
     return (
       <div className="mt-4">
         <form onSubmit={onSubmit} className="space-y-4">
@@ -117,12 +140,6 @@ function AddNewGame({ genres }: Param) {
         </Link>
       </div>
     );
-  }
-
-  else{
-    return (
-      <h1>Loading..</h1>
-    )
   }
 };
 

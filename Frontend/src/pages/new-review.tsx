@@ -34,22 +34,20 @@ const AddNewReview = () => {
       releaseDate,
       comment
     };
+    console.debug(reviewData);
 
-    console.log(reviewData);
-
-
-    //try {
-    //  const response = await axios.post('http://localhost:8080/api/game/addReview', reviewData); // 
-    //  if (response.status === 200) {
-    //    console.debug('Review added successfully');
-//  //    TODO: redirect to review page
-//  //    router.push('/reviews');
-    //  } else {
-    //    console.debug('Failed to add review');
-    //  }
-    //} catch (error) {
-    //    console.error('Failed to add review');
-    //}
+    try {
+      const response = await axios.post('http://localhost:8080/api/game/addReview', reviewData); // 
+      if (response.status === 200) {
+        console.debug('Review added successfully');
+//      TODO: redirect to review page
+//      router.push('/reviews');
+      } else {
+        console.debug('Failed to add review');
+      }
+    } catch (error) {
+        console.error('Failed to add review');
+    }
   };
 
   return (
