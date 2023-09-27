@@ -1,5 +1,7 @@
 package info.itzjacky.FYP.Game;
 
+import java.util.List;
+
 public enum GameGenre {
     ACTION_AND_ADVENTURE,
     CLASSICS,
@@ -15,6 +17,11 @@ public enum GameGenre {
     RHYTHM,
     SURVIVAL,
     HORROR,
-    MMO
+    MMO;
+
+//    a function to return all the values of the enum
+    public static List<GameGenre> getAllGenres() {
+        return List.of(GameGenre.values());
+    }
 
 }

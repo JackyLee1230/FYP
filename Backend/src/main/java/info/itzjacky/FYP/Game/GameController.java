@@ -22,6 +22,11 @@ public class GameController {
         return new ResponseEntity<>(gameService.getAllGames(), HttpStatus.OK);
     }
 
+    @GetMapping("/getAllGameGenres")
+    public ResponseEntity<List<GameGenre>> getAllGameGenres() {
+        return new ResponseEntity<>(GameGenre.getAllGenres(), HttpStatus.OK);
+    }
+
 
     @PostMapping("/addGame")
     public ResponseEntity<Game> addGame(@RequestBody GameRequest gameRequest) {
