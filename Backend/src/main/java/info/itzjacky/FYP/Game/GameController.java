@@ -75,4 +75,13 @@ public class GameController {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
+
+    @PostMapping("/findGameById")
+    public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.findGameById(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 }

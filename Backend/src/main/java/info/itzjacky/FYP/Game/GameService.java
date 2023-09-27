@@ -50,6 +50,14 @@ public class GameService {
         }
     }
 
+    public Game findGameById(GameRequest gameRequest){
+        try{
+            return gameRepository.findGameById(gameRequest.getId());
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     @Transactional
     public GameVersion addNewVersion(GameRequest gameRequest){
         if(gameRequest.getGameVersion() == null){
