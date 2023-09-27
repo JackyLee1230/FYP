@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useForm, Controller  } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import 'tailwindcss/tailwind.css';
