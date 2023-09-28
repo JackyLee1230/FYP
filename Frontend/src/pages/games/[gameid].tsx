@@ -3,7 +3,9 @@ import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 
-import { GameInfo, GamePageProps } from "../../types/game";
+import { GameInfo, GamePageProps } from "@/types/game";
+import Platform, { getPlatform } from "@/types/gamePlatform";
+import Genre, { getGenre } from "@/types/gameGenre";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { gameid } = context.query;
@@ -108,7 +110,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
           {game.genre && game.genre.length > 0 ? (
             <ul className="list-disc list-inside">
               {game.genre.map((genre) => (
-                <li key={genre}>{genre}</li>
+                <li key={genre}>{getGenre(genre)}</li>
               ))}
             </ul>
           ) : (
@@ -140,7 +142,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
           {game.platforms && game.platforms.length > 0 ? (
             <ul className="list-disc list-inside">
               {game.platforms.map((platform) => (
-                <li key={platform}>{platform}</li>
+                <li key={platform}>{getPlatform(platform)}</li>
               ))}
             </ul>
           ) : (

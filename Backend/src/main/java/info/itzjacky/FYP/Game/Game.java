@@ -2,7 +2,6 @@ package info.itzjacky.FYP.Game;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import info.itzjacky.FYP.Review.Review;
-import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -67,8 +66,10 @@ public class Game {
     private List<GameVersion> versions;
 
     private String version;
+
     @ElementCollection
-    private List<String> platforms;
+    @Enumerated(EnumType.STRING)
+    private List<Platform> platforms;
 
     @Override
     public final boolean equals(Object o) {
