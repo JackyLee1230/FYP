@@ -1,0 +1,241 @@
+                                    app_name                                        review_text response  total_token_used
+0                                Tomb Raider  This game is really awesome! Great story, the ...                         -1
+1  Grand Theft Auto IV: The Complete Edition                             This game is AWESOME !                         -1
+2  Grand Theft Auto IV: The Complete Edition         i cant even play it i just wasted 20 bucks                         -1
+3                              Torchlight II  good game. but im not buying when its full price.                         -1
+4                         Hitman: Absolution                               Goood Game ,but hard                         -1
+Current balance: 484048
+
+
+
+
+handling input...
+input id: 0
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is really awesome! Great story, the gameplay is really entertaining and it\'s really hard to stop playing it when you\'re in to it! 9/10‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is really awesome! Great story, the gameplay is really entertaining and it\'s really hard to stop playing it when you\'re in to it! 9/10‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYBAP2jMgsJvmA65YmeNzErogMq', 'object': 'chat.completion', 'created': 1695720103, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 24, 'prompt_tokens': 125, 'total_tokens': 149}}
+{"positive": 1.0, "neutral": 0.0, "negative": 0.0}
+Total token used: 149
+Current balance: 483899
+
+
+
+HKU ChatGPT response:
+{'index': 0, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is really awesome! Great story, the gameplay is really entertaining and it\'s really hard to stop playing it when you\'re in to it! 9/10‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}', 'total_tokens_used': 149}
+Sleep duration: 4
+
+
+
+
+handling input...
+input id: 1
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is AWESOME !‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is AWESOME !‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYHAKmchONPBobSJl33jZxQuEIF', 'object': 'chat.completion', 'created': 1695720109, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{\n  "positive": 1.0,\n  "neutral": 0.0,\n  "negative": 0.0\n}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 29, 'prompt_tokens': 106, 'total_tokens': 135}}
+{
+  "positive": 1.0,
+  "neutral": 0.0,
+  "negative": 0.0
+}
+Total token used: 135
+
+
+
+HKU ChatGPT response:
+{'index': 1, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game is AWESOME !‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{\n  "positive": 1.0,\n  "neutral": 0.0,\n  "negative": 0.0\n}', 'total_tokens_used': 135}
+Sleep duration: 11
+Current balance: 483764
+
+
+
+
+handling input...
+input id: 2
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘i cant even play it i just wasted 20 bucks‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘i cant even play it i just wasted 20 bucks‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYUy137bNaSCEj42EQFHgK2v7Fy', 'object': 'chat.completion', 'created': 1695720122, 'model': 'gpt-35-turbo', 'prompt_annotations': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 0, "neutral": 0, "negative": 1}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 18, 'prompt_tokens': 108, 'total_tokens': 126}}
+{"positive": 0, "neutral": 0, "negative": 1}
+Total token used: 126
+
+
+
+HKU ChatGPT response:
+{'index': 2, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Grand Theft Auto IV: The Complete Edition, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘i cant even play it i just wasted 20 bucks‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 0, "neutral": 0, "negative": 1}', 'total_tokens_used': 126}
+Sleep duration: 6
+Current balance: 483638
+
+
+
+
+handling input...
+input id: 3
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Torchlight II, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘good game. but im not buying when its full price.‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Torchlight II, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘good game. but im not buying when its full price.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYc52B9LbBSB8LF0EZ2kGHHvaNO', 'object': 'chat.completion', 'created': 1695720130, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{\n  "positive": 0.5,\n  "neutral": 0.5,\n  "negative": 0\n}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 27, 'prompt_tokens': 106, 'total_tokens': 133}}
+{
+  "positive": 0.5,
+  "neutral": 0.5,
+  "negative": 0
+}
+Total token used: 133
+
+
+
+HKU ChatGPT response:
+{'index': 3, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Torchlight II, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘good game. but im not buying when its full price.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{\n  "positive": 0.5,\n  "neutral": 0.5,\n  "negative": 0\n}', 'total_tokens_used': 133}
+Sleep duration: 5
+Current balance: 483505
+
+
+
+
+handling input...
+input id: 4
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Hitman: Absolution, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Goood Game ,but hard‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Hitman: Absolution, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Goood Game ,but hard‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYiqZjtnRdKGZqb6tfYwJgHgEtH', 'object': 'chat.completion', 'created': 1695720136, 'model': 'gpt-35-turbo', 'prompt_annotations': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 0.8, "neutral": 0.2, "negative": 0}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 22, 'prompt_tokens': 100, 'total_tokens': 122}}
+{"positive": 0.8, "neutral": 0.2, "negative": 0}
+Total token used: 122
+
+
+
+HKU ChatGPT response:
+{'index': 4, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Hitman: Absolution, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Goood Game ,but hard‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 0.8, "neutral": 0.2, "negative": 0}', 'total_tokens_used': 122}
+Sleep duration: 5
+Current balance: 483383
+
+
+
+
+handling input...
+input id: 5
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game, representative of the simple idea of what an adventure really means, portrayed it in such a fun and captivating way. The perfect combination of combat, adventure, puzzles, and flexibility all evoked my faintest memories of the classical Tomb Raider survival but integrated it with the ideas that modern day games like Uncharted have. If you\'re looking to know what it truly means to be a survivor, then Tomb Raider is the perfect way to glimpse that breathtaking world through her eyes.‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game, representative of the simple idea of what an adventure really means, portrayed it in such a fun and captivating way. The perfect combination of combat, adventure, puzzles, and flexibility all evoked my faintest memories of the classical Tomb Raider survival but integrated it with the ideas that modern day games like Uncharted have. If you\'re looking to know what it truly means to be a survivor, then Tomb Raider is the perfect way to glimpse that breathtaking world through her eyes.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yYpaoCV6RDqqJ77D9itWQgjQzvw', 'object': 'chat.completion', 'created': 1695720143, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{\n    "positive": 1.0,\n    "neutral": 0.0,\n    "negative": 0.0\n}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 29, 'prompt_tokens': 189, 'total_tokens': 218}}
+{
+    "positive": 1.0,
+    "neutral": 0.0,
+    "negative": 0.0
+}
+Total token used: 218
+
+
+
+HKU ChatGPT response:
+{'index': 5, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Tomb Raider, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘This game, representative of the simple idea of what an adventure really means, portrayed it in such a fun and captivating way. The perfect combination of combat, adventure, puzzles, and flexibility all evoked my faintest memories of the classical Tomb Raider survival but integrated it with the ideas that modern day games like Uncharted have. If you\'re looking to know what it truly means to be a survivor, then Tomb Raider is the perfect way to glimpse that breathtaking world through her eyes.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{\n    "positive": 1.0,\n    "neutral": 0.0,\n    "negative": 0.0\n}', 'total_tokens_used': 218}
+Sleep duration: 32
+Current balance: 483165
+
+
+
+
+handling input...
+input id: 6
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Batman™: Arkham Knight, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘The Best in the series. It runs flawless. Yes there\'s no multi GPU support but it was running smooth on my system. 5960-x / 980 ti SLi. I dedicated one GPU to physx and it was just constant 60 FPS. only when there\'s dynamic smoke it gets a hit. I played the game for 60 hours, not a single crash, I got this on sale for 10$. Best 10$ bucks I spent. Highly recommended, keep an eye on it. GET IT in the next sale. Forget about people whining about crashing. it didn\'t for me.‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Batman™: Arkham Knight, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘The Best in the series. It runs flawless. Yes there\'s no multi GPU support but it was running smooth on my system. 5960-x / 980 ti SLi. I dedicated one GPU to physx and it was just constant 60 FPS. only when there\'s dynamic smoke it gets a hit. I played the game for 60 hours, not a single crash, I got this on sale for 10$. Best 10$ bucks I spent. Highly recommended, keep an eye on it. GET IT in the next sale. Forget about people whining about crashing. it didn\'t for me.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yZNHHqV31B1Br5XZU4cdrn99bx1', 'object': 'chat.completion', 'created': 1695720177, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 24, 'prompt_tokens': 222, 'total_tokens': 246}}
+{"positive": 1.0, "neutral": 0.0, "negative": 0.0}
+Total token used: 246
+
+
+
+HKU ChatGPT response:
+{'index': 6, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Batman™: Arkham Knight, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘The Best in the series. It runs flawless. Yes there\'s no multi GPU support but it was running smooth on my system. 5960-x / 980 ti SLi. I dedicated one GPU to physx and it was just constant 60 FPS. only when there\'s dynamic smoke it gets a hit. I played the game for 60 hours, not a single crash, I got this on sale for 10$. Best 10$ bucks I spent. Highly recommended, keep an eye on it. GET IT in the next sale. Forget about people whining about crashing. it didn\'t for me.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}', 'total_tokens_used': 246}
+Sleep duration: 5
+Current balance: 482919
+
+
+
+
+handling input...
+input id: 7
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Drunken Robot Pornography, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Title\'s misleading. Still worth playing. 7/10‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Drunken Robot Pornography, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Title\'s misleading. Still worth playing. 7/10‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yZVdUn1brScsWa7mvR7mNtIdOjf', 'object': 'chat.completion', 'created': 1695720185, 'model': 'gpt-35-turbo', 'prompt_annotations': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 0.6, "neutral": 0.4, "negative": 0}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 22, 'prompt_tokens': 106, 'total_tokens': 128}}
+{"positive": 0.6, "neutral": 0.4, "negative": 0}
+Total token used: 128
+
+
+
+HKU ChatGPT response:
+{'index': 7, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Drunken Robot Pornography, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘Title\'s misleading. Still worth playing. 7/10‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 0.6, "neutral": 0.4, "negative": 0}', 'total_tokens_used': 128}
+Sleep duration: 5
+Current balance: 482791
+
+
+
+
+handling input...
+input id: 8
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Call of Duty: Ghosts, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘You have 108 reason to buy this,but you have 0 reason to skipped this.‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Call of Duty: Ghosts, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘You have 108 reason to buy this,but you have 0 reason to skipped this.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yZbsqOf34ZiAuU8VEwDCa1CIkvU', 'object': 'chat.completion', 'created': 1695720191, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 24, 'prompt_tokens': 113, 'total_tokens': 137}}
+{"positive": 1.0, "neutral": 0.0, "negative": 0.0}
+Total token used: 137
+
+
+
+HKU ChatGPT response:
+{'index': 8, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Call of Duty: Ghosts, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘You have 108 reason to buy this,but you have 0 reason to skipped this.‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive": 1.0, "neutral": 0.0, "negative": 0.0}', 'total_tokens_used': 137}
+Sleep duration: 7
+Current balance: 482654
+File Saved in while loop.
+
+
+
+
+handling input...
+input id: 9
+chatgpt_messages_obj: [{'role': 'system', 'content': 'You are the producer of the game called Hero Academy, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘No one plays :(‘‘‘'}]
+intercepted new json data: {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Hero Academy, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘No one plays :(‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}
+
+
+
+gpt_response_interceptor response_json: {'id': 'chatcmpl-82yZluTBmfFqFWSxD6hDuugPP9fez', 'object': 'chat.completion', 'created': 1695720201, 'model': 'gpt-35-turbo', 'prompt_filter_results': [{'prompt_index': 0, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'choices': [{'index': 0, 'finish_reason': 'stop', 'message': {'role': 'assistant', 'content': '{"positive":0, "neutral":0, "negative":1}'}, 'content_filter_results': {'hate': {'filtered': False, 'severity': 'safe'}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': False, 'severity': 'safe'}}}], 'usage': {'completion_tokens': 15, 'prompt_tokens': 97, 'total_tokens': 112}}
+{"positive":0, "neutral":0, "negative":1}
+Total token used: 112
+Current balance: 482542
+
+
+
+HKU ChatGPT response:
+{'index': 9, 'request_json': {'model': 'gpt-35-turbo', 'messages': [{'role': 'system', 'content': 'You are the producer of the game called Hero Academy, who is analyzing the comments from players to find out how the players feel towards your game.'}, {'role': 'user', 'content': 'Determine from [\'positive\', \'neutral\', \'negative\']: probabilities. Provide them in JSON format with the following keys: positive, neutral, negative. Alternatively , state "NA". Do not output other things except the format. ‘‘‘No one plays :(‘‘‘'}], 'max_tokens': 500, 'temperature': 0, 'top_p': 1}, 'chatgpt_response_msg': '{"positive":0, "neutral":0, "negative":1}', 'total_tokens_used': 112}
+Sleep duration: 3
+--------------------
+End of Processing.
+--------------------
+                                    app_name                                        review_text                                           response  total_token_used
+0                                Tomb Raider  This game is really awesome! Great story, the ...  {"positive": 1.0, "neutral": 0.0, "negative": ...               149
+1  Grand Theft Auto IV: The Complete Edition                             This game is AWESOME !  {\n  "positive": 1.0,\n  "neutral": 0.0,\n  "n...               135
+2  Grand Theft Auto IV: The Complete Edition         i cant even play it i just wasted 20 bucks       {"positive": 0, "neutral": 0, "negative": 1}               126
+3                              Torchlight II  good game. but im not buying when its full price.  {\n  "positive": 0.5,\n  "neutral": 0.5,\n  "n...               133
+4                         Hitman: Absolution                               Goood Game ,but hard   {"positive": 0.8, "neutral": 0.2, "negative": 0}               122
+File Saved.
+program terminates.
