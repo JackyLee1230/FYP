@@ -100,6 +100,16 @@
 			<artifactId>spring-rabbit</artifactId>
 			<version>3.0.9</version>
 		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-core</artifactId>
+			<version>1.11.256</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.11.256</version>
+		</dependency>
 	</dependencies>
 
 	<build>

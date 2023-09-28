@@ -29,6 +29,8 @@ public class Game {
     private Integer id;
     @NonNull
     private String name;
+    @Column(insertable = true, updatable = true)
+    private String iconUrl;
     private String description;
     private String releaseDate;
     @ManyToMany
