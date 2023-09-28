@@ -1,7 +1,7 @@
-import React from 'react';
-import { GetServerSideProps } from 'next';
-import 'tailwindcss/tailwind.css';
-import axios from 'axios';
+import React from "react";
+import { GetServerSideProps } from "next";
+import "tailwindcss/tailwind.css";
+import axios from "axios";
 
 type GameInfo = {
   name: string;
@@ -21,6 +21,7 @@ type GameInfo = {
 type GamePageProps = {
   game: GameInfo | null;
   errorMessage: string;
+  iconUrl: string;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -28,18 +29,23 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let game = null;
   let errorMessage = null;
+  let iconUrl = null;
 
   try {
     // Fetch the game data from an API using Axios
-    const response = await axios.post('http://localhost:8080/api/game/findGameById', {id: gameid});
+    const response = await axios.post(
+      "http://localhost:8080/api/game/findGameById",
+      { id: gameid }
+    );
 
-    if(response.status === 200){
+    if (response.status === 200) {
       game = await response.data;
-    }
-    else{
+      if (game.iconUrl) {
+        iconUrl = `${process.env.GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
+      }
+    } else {
       errorMessage = response.statusText;
     }
-
   } catch (error: any) {
     console.error(error);
     errorMessage = error.toString();
@@ -49,21 +55,30 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       game,
       errorMessage,
+      iconUrl,
     },
   };
 };
 
-function GamePage({ game, errorMessage }: GamePageProps) {
-  if(errorMessage){
+function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
+  if (errorMessage) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
   }
 
-  if(!game) {
+  if (!game) {
     return <div className="text-center text-xl font-bold">Game not found</div>;
   }
 
-  return(
+  return (
     <div className="container mx-auto px-4 py-8">
+      {iconUrl ? (
+        <div className="text-5xl mb-4 font-bold">
+          <img src={iconUrl} alt={"Game Icon"}></img>
+        </div>
+      ) : (
+        <p className="text-5xl mb-4 font-bold">This game has no icon!</p>
+      )}
+
       <h1 className="text-4xl font-bold mb-4">{game.name}</h1>
       <p className="text-lg mb-4">{game.description}</p>
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -154,7 +169,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
         <div className="flex flex-col">
           <span className="font-bold">In Development:</span>
 
-          {typeof game.inDevelopment === 'boolean' ? (
+          {typeof game.inDevelopment === "boolean" ? (
             game.inDevelopment ? (
               <span>Yes</span>
             ) : (
@@ -170,3 +185,4 @@ function GamePage({ game, errorMessage }: GamePageProps) {
 }
 
 export default GamePage;
+

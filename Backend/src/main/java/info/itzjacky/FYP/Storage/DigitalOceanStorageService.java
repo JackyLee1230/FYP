@@ -132,37 +132,41 @@ public class DigitalOceanStorageService {
      */
     public List<String> listFiles() {
 
-        ListObjectsV2Result files = amazonS3Client.listObjectsV2(bucketName);
-
-        List<String> result = new ArrayList<>();
-
-        for(S3ObjectSummary file : files.getObjectSummaries()) {
-            System.out.println(file.getKey());
-            result.add(file.getKey());
-        }
-
-//        ListObjectsRequest listObjectsRequest =
-//                new ListObjectsRequest().withBucketName(bucketName).withEncodingType(null);
+//        ListObjectsV2Result files = amazonS3Client.listObjectsV2(bucketName);
 //
-//        List<String> files = new ArrayList<>();
-//        ObjectListing objects = amazonS3Client.listObjects(listObjectsRequest);
+//        List<String> result = new ArrayList<>();
 //
-//        while (true) {
-//            List<S3ObjectSummary> objectSummaries = objects.getObjectSummaries();
-//            if (objectSummaries.size() < 1) {
-//                break;
-//            }
-//
-//            for (S3ObjectSummary item : objectSummaries) {
-//                if (!item.getKey().endsWith("/"))
-//                    files.add(item.getKey());
-//            }
-//
-//            objects = amazonS3Client.listNextBatchOfObjects(objects);
+//        for(S3ObjectSummary file : files.getObjectSummaries()) {
+//            System.out.println(file.getKey());
+//            result.add(file.getKey());
 //        }
 
-        return result;
+        ListObjectsRequest listObjectsRequest =
+                new ListObjectsRequest().withBucketName(bucketName);
+
+        List<String> files = new ArrayList<>();
+        ObjectListing objects = amazonS3Client.listObjects(listObjectsRequest);
+
+        logger.info(objects.toString());
+
+        while (true) {
+            List<S3ObjectSummary> objectSummaries = objects.getObjectSummaries();
+            if (objectSummaries.isEmpty()) {
+                break;
+            }
+
+            for (S3ObjectSummary item : objectSummaries) {
+                if (!item.getKey().endsWith("/"))
+                    files.add(item.getKey());
+            }
+
+            objects = amazonS3Client.listNextBatchOfObjects(objects);
+        }
+
+//        return result;
+        return files;
     }
+
 
     private String contentType(final MultipartFile file) {
 

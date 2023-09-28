@@ -147,7 +147,7 @@ public class GameService {
             storageService.deleteFile("games/" + game.getId() + "/icon.jpg");
         }
         storageService.uploadFile("games/" + game.getId() + "/icon.jpg", file);
-        game.setIconUrl(file.getOriginalFilename());
+        game.setIconUrl("games/" + game.getId() + "/icon.jpg");
         gameRepository.save(game);
     }
 }

@@ -47,7 +47,6 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-
     @Transactional
     public void sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
