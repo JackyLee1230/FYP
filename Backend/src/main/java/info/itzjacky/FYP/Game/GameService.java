@@ -1,10 +1,12 @@
 package info.itzjacky.FYP.Game;
 
+import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.lang.model.type.ArrayType;
 import java.text.SimpleDateFormat;
@@ -21,6 +23,9 @@ public class GameService {
     Logger logger = LoggerFactory.getLogger(GameController.class);
     @Autowired
     private GameVersionRepository gameVersionRepository;
+
+    @Autowired
+    DigitalOceanStorageService storageService;
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();
@@ -132,5 +137,17 @@ public class GameService {
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
+    }
+
+    @Transactional
+    public void updateGameIcon(String gameId, MultipartFile file) {
+        Game game = gameRepository.findGameById(Integer.parseInt(gameId));
+
+        if(game.getIconUrl() != null){
+            storageService.deleteFile("games/" + game.getId() + "/icon.jpg");
+        }
+        storageService.uploadFile("games/" + game.getId() + "/icon.jpg", file);
+        game.setIconUrl("games/" + game.getId() + "/icon.jpg");
+        gameRepository.save(game);
     }
 }

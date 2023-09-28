@@ -4,8 +4,10 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -46,6 +48,15 @@ public class GameController {
         }
     }
 
+    @PostMapping(value = "/updateGameIcon", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
+    public ResponseEntity<String> updateGameIcon(@RequestParam("gameId") String gameId, @RequestBody MultipartFile file) {
+        try {
+            gameService.updateGameIcon(gameId, file);
+            return new ResponseEntity<>("Successfully uploaded", HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 
 
     @PostMapping("/getAllVersions")

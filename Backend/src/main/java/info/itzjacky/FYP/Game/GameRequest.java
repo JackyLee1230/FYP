@@ -28,7 +28,7 @@ public class GameRequest {
     private List<GameGenre> genre;
     private String version;
     private List<String> versions;
-    private List<String> platforms;
+    private List<Platform> platforms;
     private GameVersion gameVersion;
 
 }
