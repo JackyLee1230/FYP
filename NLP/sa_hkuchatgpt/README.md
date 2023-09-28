@@ -8,7 +8,7 @@ You should have chrome installed.
 
 requires the following packages. install as below
 
-requires pandas >= 2.1.0
+requires pandas >= 2.1.0, python = 3.9.18
 
 ```
 conda install pandas
@@ -81,6 +81,16 @@ BALANCE_LIMIT = 5000
 ```
 
 For reviewing your results, I prepared a file called _read_dataset_from_pickle.ipynb_ to load and show the .pkl file.
+
+## FAQs
+
+## MAC cerrtificate problem
+
+The browser will show a window that the connection is not https, thus stopping the program from running.
+
+Note: download the certificate from github, section 'Certificates'. [Github](https://github.com/wkeeling/selenium-wire)  
+Then follow the instruction in stackoverflow to install the certificate.
+[Stackoverflow](https://stackoverflow.com/questions/72201652/selenium-wire-your-connection-is-not-secure)
 
 ## Fine-tuning
 
