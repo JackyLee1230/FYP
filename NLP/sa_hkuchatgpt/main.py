@@ -217,6 +217,21 @@ def main():
                 time.sleep(no_of_sec_to_sleep)
 
                 chatgpt.run(chatgpt_input)      # re-run after handling rate limit alert.
+            elif chatgpt_response_index < 0:
+                # other errors 
+                # model error, usually contain some content in the prompt that violates the ChatGPT policy
+                # e.g. "message": "The response was filtered due to the prompt triggering Azure OpenAI’s content management policy. Please modify your prompt and retry. To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766",
+
+                # handling: handle the alert then just skip it :D
+
+                time.sleep(1)
+
+                # wait for any alert, then stop it
+                chatgpt.alert_handler()
+
+                time.sleep(1)
+
+                break
 
             elif chatgpt_response_index >= 0:
                 break

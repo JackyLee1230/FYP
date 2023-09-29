@@ -221,6 +221,23 @@ class HkuChatGPT:
 
                 # resend the message again to resume operation.
                 # self.run(self.processing_input_obj)
+            
+            # handle other statuscode , e.g. 400 (model error, the prompt violates the content policy)
+            # other possible from the source are: 403, 404, 500 (chatGPT is busy. Please resend the query), 401 (Timeout. Please login again).
+            # just skip them first...
+            else:
+                request_body = request.body.decode('utf-8')
+                request_json = json.loads(request_body)
+                # jump back to main thread to handle error                
+                self.output_queue.put(
+                    {
+                        'index': -request.response.status_code,
+                        'request_json': request_json,
+                        'chatgpt_response_msg': response_body_json,
+                        'total_tokens_used': 0
+                    }
+                )
+                
                                 
 
     def chatgpt_response_handler(self, request_json, response_json) -> int:
