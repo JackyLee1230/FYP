@@ -198,11 +198,12 @@ def main():
             # wait for output from chatgpt
             chatgpt_response = output_queue.get()
 
-            chatgpt_response_index = chatgpt_response['index']
+            # chatgpt_response_index = chatgpt_response['index']
+            chatgpt_response_status_code = chatgpt_response['status_code']
 
             # not using as -1 -> end of processing
             # 429 = statuscode for too many request
-            if chatgpt_response_index == -429:
+            if chatgpt_response_status_code == -429:
                 # msg example:
                 # "Rate limit is exceeded. Try again in 7 seconds."
                 chatgpt_response_msg = chatgpt_response['chatgpt_response_msg']
@@ -217,7 +218,7 @@ def main():
                 time.sleep(no_of_sec_to_sleep)
 
                 chatgpt.run(chatgpt_input)      # re-run after handling rate limit alert.
-            elif chatgpt_response_index < 0:
+            elif chatgpt_response_status_code < 0:
                 # other errors 
                 # model error, usually contain some content in the prompt that violates the ChatGPT policy
                 # e.g. "message": "The response was filtered due to the prompt triggering Azure OpenAI’s content management policy. Please modify your prompt and retry. To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766",
@@ -233,7 +234,7 @@ def main():
 
                 break
 
-            elif chatgpt_response_index >= 0:
+            elif chatgpt_response_status_code >= 0:
                 break
 
         # chatgpt_response = output_queue.get()

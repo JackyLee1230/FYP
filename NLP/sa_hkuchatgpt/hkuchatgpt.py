@@ -209,17 +209,18 @@ class HkuChatGPT:
             elif request.response.status_code == 429:
                 request_body = request.body.decode('utf-8')
                 request_json = json.loads(request_body)
-                # jump back to main thread to handle error                
+                # jump back to main thread to     
+                # resend the message again to resume operation.
                 self.output_queue.put(
                     {
-                        'index': -request.response.status_code,
+                        'index': self.local_processing_query_index,
+                        'status_code': -request.response.status_code,
                         'request_json': request_json,
                         'chatgpt_response_msg': response_body_json['message'],
                         'total_tokens_used': 0
                     }
                 )
 
-                # resend the message again to resume operation.
                 # self.run(self.processing_input_obj)
             
             # handle other statuscode , e.g. 400 (model error, the prompt violates the content policy)
@@ -231,7 +232,8 @@ class HkuChatGPT:
                 # jump back to main thread to handle error                
                 self.output_queue.put(
                     {
-                        'index': -request.response.status_code,
+                        'index': self.local_processing_query_index,
+                        'status_code': -request.response.status_code,
                         'request_json': request_json,
                         'chatgpt_response_msg': response_body_json,
                         'total_tokens_used': 0
@@ -257,6 +259,7 @@ class HkuChatGPT:
         # formulate the output object
         self.processing_output_obj = {
             'index': self.local_processing_query_index,
+            'status_code': 200,
             'request_json': request_json,
             'chatgpt_response_msg': chatgpt_response_msg,
             'total_tokens_used': total_tokens_used
