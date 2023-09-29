@@ -12,6 +12,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
+from selenium.common.exceptions import TimeoutException
+
 import time
 import json
 import traceback, sys
@@ -482,8 +484,20 @@ class HkuChatGPT:
             alert = self.driver.switch_to.alert
             alert.accept()
             print("alert accepted.")
-        except TimeoutError:
-            print("No rate limit alert.")
+
+        except TimeoutException as ex:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+
+            print("Timeout exception is thrown. No rate limit alert box. Program continues.")
+            print(traceback.print_exception(exc_type, exc_value, exc_traceback, file=sys.stdout))
+            return
+            
+        except Exception as e:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            
+            print("Other exceptions beside TimeoutException occur. Program continues.")
+            print(traceback.print_exception(exc_type, exc_value, exc_traceback, file=sys.stdout))
+            return
             
 
 def main(my_email:str, my_pw:str):
