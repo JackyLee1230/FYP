@@ -11,12 +11,14 @@ requires the following packages. install as below
 requires pandas >= 2.1.0, python = 3.9.18
 
 ```
-conda install pandas
-conda install numpy
-conda install selenium
+pip install pandas
+pip install numpy==2.1.0
+pip install selenium
 pip install selenium-wire
 pip install undetected-chromedriver
 ```
+
+You can also import the environment I newly created for running this program on windows machines. The name of the yml file is _hkuchatgpt_env.yml_
 
 ## Usage
 
@@ -45,7 +47,7 @@ I prepared a _main.py_ for running sentiment analysis labelling automatically us
 I also prepared a folder of randomly sampled comments (which are not targetting any specific genre/a title) from the steam comment dataset sourced from Kaggle. The comments should have no foul language (as they are replaced with '♥' symbol), nor meaningless Early Review Access comments (with only "Early Review Access"), as I filtered them out in a separate script namely _create_dataset.ipynb_
 
 Please go the the _main.py_ script and modify the name of the file to run with according to the instruction below.  
-Notice the version of pandas should be >= 2.1.0, as stated in the section **Setup**
+Notice the version of pandas should be >= 2.1.0, as stated in the section **Setup**. This is for reading and writing consistent pickle files.
 
 ### How to modify?
 
@@ -84,13 +86,26 @@ For reviewing your results, I prepared a file called _read_dataset_from_pickle.i
 
 ## FAQs
 
-## MAC cerrtificate problem
+## Certificate problem
 
 The browser will show a window that the connection is not https, thus stopping the program from running.
 
-Note: download the certificate from github, section 'Certificates'. [Github](https://github.com/wkeeling/selenium-wire)  
+Solution: download the certificate from github, section 'Certificates'. [Github](https://github.com/wkeeling/selenium-wire)  
+
+### Mac solution
 Then follow the instruction in stackoverflow to install the certificate.
 [Stackoverflow](https://stackoverflow.com/questions/72201652/selenium-wire-your-connection-is-not-secure)
+
+### Windows solution
+Then follow the instruction to open certificate settings in chrome. [Chrome Help](https://support.google.com/chrome/answer/95617?visit_id=638315579362582898-249855116&p=root_store&rd=1#root_store&zippy=%2Cmanage-device-certificates-on-mac-windows)
+
+Then a window like below should be pop up. Locate to the window/tab highlighted. Then inport the downloaded certificate.
+
+![certificate_win_pic_01](pic/certificate_win_pic_01.png)
+
+After importing, you should see the certificate at the list. The name is "Selenium Wire CA".
+
+If still not working, then locate to the third tab, and import the certificate again.
 
 ## Fine-tuning
 
