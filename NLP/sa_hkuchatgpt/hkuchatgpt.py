@@ -52,6 +52,12 @@ class HkuChatGPT:
             'enable_har': True
         }
 
+        self.JS_ADD_TEXT_TO_INPUT = """
+        var elm = arguments[0], txt = arguments[1];
+        elm.value += txt;
+        elm.dispatchEvent(new Event('change'));
+        """
+
     # --------------------
     # INTERCEPTOR
     # --------------------
@@ -351,6 +357,14 @@ class HkuChatGPT:
         print("input id:", self.local_processing_query_index)
         print('chatgpt_messages_obj:', self.chatgpt_messages_obj)
 
+    def _deEmojify(self, x):
+        regrex_pattern = re.compile(pattern = "["
+            u"\U0001F600-\U0001F64F"  # emoticons
+            u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+            u"\U0001F680-\U0001F6FF"  # transport & map symbols
+            u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                            "]+", flags = re.UNICODE)
+        return regrex_pattern.sub(r'', x)
 
     def send_request(self):
         '''press the "Send GPT-3.5" button to send a request to the hku server
@@ -362,7 +376,11 @@ class HkuChatGPT:
         # self.input_line.send_keys("Processing...")
         
         # show our input
-        self.input_line.send_keys(str(self.processing_input_obj))
+        # remove any emoji in the display as the text box does not allow that.
+        # but we keep the emojis in the request message.
+        self.input_line.send_keys(self._deEmojify(
+            str(self.processing_input_obj))
+        )
 
         # trigger the button and read the request, repeat the process
         self.send_gpt_btn.click()
