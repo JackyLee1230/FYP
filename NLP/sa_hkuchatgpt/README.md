@@ -11,11 +11,10 @@ requires the following packages. install as below
 requires pandas >= 2.1.0, python = 3.9.18
 
 ```
-pip install pandas
-pip install numpy==2.1.0
-pip install selenium
-pip install selenium-wire
-pip install undetected-chromedriver
+pip install pandas==2.1.0
+pip install selenium==4.12.0
+pip install selenium-wire==5.1.0
+pip install undetected-chromedriver==3.5.3
 ```
 
 You can also import the environment I newly created for running this program on windows machines. The name of the yml file is _hkuchatgpt_env.yml_
@@ -33,7 +32,7 @@ Fill in your own HKU email and pw
     }
     ```
 
-2. cd to this directory and run as below to test the functionality of the program.  
+2. cd to this directory and run as below to test the functionality of the program. A test run result file will be created.
 It runs 10 query which each costs on average 150 tokens.
 
     ```
@@ -75,7 +74,7 @@ REQUESTS_PER_MINUTE = 6     # fixed constant, set by the API
 NUM_OF_REQUESTS_PER_SAVE = REQUESTS_PER_MINUTE * 5
 ```
 
-Then find the variable.  
+Then find the variable _BALANCE_LIMIT_  
 This variable is to set the threshold of remaining tokens, such that the program will terminates, and saves all processed data, to avoid using all tokens available.
 
 ```python
@@ -109,6 +108,8 @@ If still not working, then locate to the third tab, and import the certificate a
 
 ## Fine-tuning
 
-For the messages to be sent to chatgpt, edit the messages parameter of the json in main.py
+For the messages to be sent to chatgpt, edit the messages parameter of the json in _main.py_
 
-For other parameters of chatgpt (which is Azure chatgpt), can add global parameters according to the stated examples in Azure chatgpt website. The link can be found in _hkuchatgpt.py_
+For other parameters, such as temperature, top_p, max_tok of chatgpt (which is Azure chatgpt), can add global parameters according to the stated examples in Azure chatgpt website. [Docs](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#completions).
+
+The parameters can be added within the function _modify_gpt_request()_ in _hkuchatgpt.py_
