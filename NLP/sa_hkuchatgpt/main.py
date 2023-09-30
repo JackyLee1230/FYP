@@ -166,7 +166,7 @@ def main():
 
     # CHANGE HERE !!
     # the remaining token that the programs stops if remaining token is below this number
-    BALANCE_LIMIT = 5000
+    BALANCE_LIMIT = 300
 
     # loop to go through requests
     while(True):
