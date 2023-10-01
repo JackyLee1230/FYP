@@ -102,6 +102,14 @@ public class ReviewService {
         }
     }
 
+    public Review getReviewById(ReviewRequest reviewRequest){
+        try {
+            return reviewRepository.findReviewById(reviewRequest.getReviewId());
+        } catch (Exception e){
+            throw new IllegalStateException("Cannot get Review");
+        }
+    }
+
     public List<Review> getReviewsByGameId(ReviewRequest reviewRequest){
         if(reviewRequest == null || reviewRequest.getGameId() == null){
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");

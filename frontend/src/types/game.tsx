@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export type GameInfo = {
   name: string;
   description: string;
@@ -15,6 +17,30 @@ export type GameInfo = {
 
 export type GamePageProps = {
   game: GameInfo | null;
+  errorMessage: string;
+  iconUrl: string;
+};
+
+export type GameReview = {
+  id: string;
+  gameId: string;
+  createdAt: string;
+  reviewer: User;
+  score: number;
+  recommended: boolean;
+  comment: string;
+  recommendationScore: number;
+  gameVersion: string;
+  sentiment: number;
+  sentimentUpdatedAt: string;
+  platforms: string[];
+  inDevelopment: boolean;
+  reviewedGame: GameInfo;
+};
+
+export type GameReviewPageProps = {
+  game: GameInfo | null;
+  review: GameReview | null;
   errorMessage: string;
   iconUrl: string;
 };

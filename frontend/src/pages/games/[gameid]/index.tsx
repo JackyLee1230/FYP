@@ -8,6 +8,7 @@ import Platform, { getPlatform } from "@/types/gamePlatform";
 import Genre, { getGenre } from "@/types/gameGenre";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  console.log(context);
   const { gameid } = context.query;
 
   let game = null;
@@ -17,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      "http://localhost:8080/api/game/findGameById",
+      "http://localhost:8080/api/review/getReviewsByGameId",
       { id: gameid }
     );
 
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       errorMessage = response.statusText;
     }
   } catch (error: any) {
-    console.error(error);
+    // console.error(error);
     errorMessage = error.toString();
   }
 

@@ -42,6 +42,18 @@ public class ReviewController {
         }
     }
 
+    /*
+     * args reviewId: Integer (review.id)
+     */
+    @PostMapping("/getReviewById")
+    public ResponseEntity<Review> getReviewByReviewId(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getReviewById(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("getReviewsByGameIdAndVersion")
     public ResponseEntity<List<Review>> getReviewsByGameIdAndVersion(@RequestBody ReviewRequest reviewReq){
         try{
