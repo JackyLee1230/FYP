@@ -1,6 +1,8 @@
 package info.itzjacky.FYP.Game;
 
 import org.apache.coyote.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -19,6 +21,8 @@ public class GameController {
     @Autowired
     GameService gameService;
 
+    Logger logger = LoggerFactory.getLogger(GameController.class);
+
     @GetMapping("/getAllGames")
     public ResponseEntity<List<Game>> getAllGames() {
         return new ResponseEntity<>(gameService.getAllGames(), HttpStatus.OK);
@@ -34,6 +38,16 @@ public class GameController {
     public ResponseEntity<Game> addGame(@RequestBody GameRequest gameRequest) {
         try {
             return new ResponseEntity<>(gameService.addGame(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/addGameWithIcon")
+    public ResponseEntity<Game> addGame(@RequestPart("data") GameRequest gameRequest, @RequestPart("icon") MultipartFile icon) {
+        try {
+            logger.info("Creating game with icon");
+            return new ResponseEntity<>(gameService.addGame(gameRequest, icon), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

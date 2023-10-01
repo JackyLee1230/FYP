@@ -102,7 +102,7 @@ public class ReviewService {
         }
     }
 
-    public Review getReviewById(ReviewRequest reviewRequest){
+    public Review findReviewById(ReviewRequest reviewRequest){
         try {
             return reviewRepository.findReviewById(reviewRequest.getReviewId());
         } catch (Exception e){

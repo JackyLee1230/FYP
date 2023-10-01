@@ -55,6 +55,35 @@ public class GameService {
         }
     }
 
+    @Transactional
+    public Game addGame(GameRequest gameRequest, MultipartFile icon){
+        try{
+            Game g = Game.builder()
+                    .name(gameRequest.getName())
+                    .description(gameRequest.getDescription())
+                    .genre(gameRequest.getGenre())
+                    .version(gameRequest.getGameVersion() == null ? "Latest" : gameRequest.getGameVersion().getVersion())
+                    .developerCompany(gameRequest.getDeveloperCompany())
+                    .developers(gameRequest.getDevelopers())
+                    .publisher(gameRequest.getPublisher())
+                    .isInDevelopment(gameRequest.isInDevelopment())
+                    .Tester(gameRequest.getTester())
+                    .platforms(gameRequest.getPlatforms())
+                    .releaseDate(gameRequest.getReleaseDate())
+                    .gameReviews(null)
+                    .build();
+            gameRepository.save(g);
+
+            updateGameIcon(g.getId().toString(), icon);
+            gameRepository.save(g);
+
+            return g;
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new IllegalStateException("Failed to create Game");
+        }
+    }
+
     public Game findGameById(GameRequest gameRequest){
         try{
             return gameRepository.findGameById(gameRequest.getId());

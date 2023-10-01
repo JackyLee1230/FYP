@@ -48,7 +48,7 @@ public class ReviewController {
     @PostMapping("/getReviewById")
     public ResponseEntity<Review> getReviewByReviewId(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.getReviewById(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findReviewById(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
