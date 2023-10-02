@@ -3,6 +3,8 @@ import Link from "next/link";
 import "tailwindcss/tailwind.css";
 import { GetServerSideProps } from "next";
 import axios from "axios";
+import Image from "next/image";
+import WebToolbar from "../components/toolbar"
 
 type GameInfo = {
   id: number;
@@ -60,50 +62,53 @@ const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
-        <img src="/logo.png" alt="CritiQ Icon" />
-        <h1 className="text-6xl font-bold">
-          Welcome to CritiQ, A Revolutional Game Testing and Evaluation Platform
-          with Machine Learning for Game Developers!
-        </h1>
+    <>
+      <WebToolbar/>
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
+          <Image src="/logo.png" width={528} height={160} alt="CritiQ Icon" />
+          <h1 className="text-6xl font-bold">
+            Welcome to CritiQ, A Revolutional Game Testing and Evaluation Platform
+            with Machine Learning for Game Developers!
+          </h1>
 
-        <div className="flex mt-6">
-          <Link
-            href="/new-game"
-            className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-          >
-            Add New Game
-          </Link>
+          <div className="flex mt-6">
+            <Link
+              href="/new-game"
+              className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              Add New Game
+            </Link>
 
-          <Link
-            href="/new-review"
-            className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
-          >
-            Add New Review
-          </Link>
-        </div>
+            <Link
+              href="/new-review"
+              className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+            >
+              Add New Review
+            </Link>
+          </div>
 
-        <div className="mt-6 w-full">
-          <h2 className="text-3xl font-bold mb-4">All Games</h2>
-          {games && games.length > 0 ? (
-            <div className="flex flex-col justify-center content-center flex-wrap mt-6">
-              {games.map((game) => (
-                <Link
-                  key={game.id}
-                  href={`/games/${game.id}`}
-                  className="w-fit m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
-                >
-                  {game.name}
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <h2 className="text-3xl font-bold mb-4">No games found</h2>
-          )}
-        </div>
-      </main>
-    </div>
+          <div className="mt-6 w-full">
+            <h2 className="text-3xl font-bold mb-4">All Games</h2>
+            {games && games.length > 0 ? (
+              <div className="flex flex-col justify-center content-center flex-wrap mt-6">
+                {games.map((game) => (
+                  <Link
+                    key={game.id}
+                    href={`/games/${game.id}`}
+                    className="w-fit m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
+                  >
+                    {game.name}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <h2 className="text-3xl font-bold mb-4">No games found</h2>
+            )}
+          </div>
+        </main>
+      </div>
+    </>
   );
 };
 
