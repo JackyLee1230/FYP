@@ -4,9 +4,10 @@ import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { format } from "date-fns";
 
-import { GameReview, GameReviewPageProps } from "@/types/game";
-import Platform, { getPlatform } from "@/types/gamePlatform";
-import Genre, { getGenre } from "@/types/gameGenre";
+import { GameReview, GameReviewPageProps } from "@/type/game";
+import Platform, { getPlatform } from "@/type/gamePlatform";
+import Genre, { getGenre } from "@/type/gameGenre";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { reviewid } = context.query;
@@ -54,6 +55,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Head>
+        <title>
+          Review: {review.reviewedGame.name} by {review.reviewer.name}
+        </title>
+      </Head>
       <h1 className="text-4xl font-bold mb-4">
         Review for {review.reviewedGame.name} by {review.reviewer.name}
       </h1>

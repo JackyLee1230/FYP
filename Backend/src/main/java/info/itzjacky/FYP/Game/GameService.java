@@ -50,7 +50,6 @@ public class GameService {
             gameRepository.save(g);
             return g;
         }catch (Exception e){
-            e.printStackTrace();
             throw new IllegalStateException("Failed to create Game");
         }
     }
@@ -79,7 +78,6 @@ public class GameService {
 
             return g;
         }catch (Exception e){
-            e.printStackTrace();
             throw new IllegalStateException("Failed to create Game");
         }
     }
@@ -135,7 +133,6 @@ public class GameService {
             gameVersionRepository.save(gameVersion);
             return gameVersion;
         }catch (Exception e){
-            e.printStackTrace();
             throw new IllegalStateException("Error Adding New Version to the Game");
         }
     }

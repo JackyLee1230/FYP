@@ -138,7 +138,6 @@ public class ReviewService {
             gameRepository.save(game);
             return review;
         }catch (Exception e){
-            e.printStackTrace();
             return null;
         }
     }

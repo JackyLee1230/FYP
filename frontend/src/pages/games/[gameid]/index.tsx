@@ -3,27 +3,36 @@ import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 
-import { GameInfo, GamePageProps } from "@/types/game";
-import Platform, { getPlatform } from "@/types/gamePlatform";
-import Genre, { getGenre } from "@/types/gameGenre";
+import { GameInfo, GamePageProps } from "@/type/game";
+import Platform, { getPlatform } from "@/type/gamePlatform";
+import Genre, { getGenre } from "@/type/gameGenre";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(context);
   const { gameid } = context.query;
 
   let game = null;
+  let reviews = null;
   let errorMessage = null;
   let iconUrl = null;
+
+  console.log("ASDASD" + gameid);
 
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      "http://localhost:8080/api/review/getReviewsByGameId",
+      "http://localhost:8080/api/game/findGameById",
       { id: gameid }
     );
+    const reviewsResponse = await axios.post(
+      "http://localhost:8080/api/review/getReviewsByGameId",
+      { gameId: gameid }
+    );
 
-    if (response.status === 200) {
+    if (response.status === 200 && reviewsResponse.status === 200) {
       game = await response.data;
+      reviews = await reviewsResponse.data;
       if (game.iconUrl) {
         iconUrl = `${process.env.GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
       }
@@ -38,13 +47,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       game,
+      reviews,
       errorMessage,
       iconUrl,
     },
   };
 };
 
-function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
+function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
   if (errorMessage) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
   }
@@ -55,6 +65,9 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Head>
+        <title>{game.name}</title>
+      </Head>
       {iconUrl ? (
         <div className="text-5xl mb-4 font-bold">
           <img src={iconUrl} alt={"Game Icon"}></img>
@@ -163,6 +176,33 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             <span className="text-gray-500">Unknown</span>
           )}
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        <div className="flex flex-col">
+          {reviews.length > 1 ? `Reviews [${reviews.length}]` : "Review [1]"}:
+        </div>
+
+        {reviews && reviews.length > 0 ? (
+          <div className="list-disc list-inside">
+            {reviews.map((review) => (
+              <div key={review.id} className="bg-gray-500 rounded-md ">
+                <div className="m-4">
+                  <p>
+                    Review By {review.reviewer.name} on {review.createdAt}:
+                    <br />
+                    Score: {review.score}
+                    <br />
+                  </p>
+                  <br />
+                  {review.comment}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <span className="text-gray-500">No Review Yet</span>
+        )}
       </div>
     </div>
   );

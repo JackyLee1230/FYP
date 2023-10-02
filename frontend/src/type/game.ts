@@ -1,6 +1,7 @@
 import { User } from "./user";
 
 export type GameInfo = {
+  id: string;
   name: string;
   description: string;
   releaseDate: string;
@@ -17,6 +18,7 @@ export type GameInfo = {
 
 export type GamePageProps = {
   game: GameInfo | null;
+  reviews: GameReview[];
   errorMessage: string;
   iconUrl: string;
 };

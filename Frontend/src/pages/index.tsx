@@ -1,8 +1,8 @@
-import React from 'react';
-import Link from 'next/link';
-import 'tailwindcss/tailwind.css';
-import { GetServerSideProps } from 'next';
-import axios from 'axios';
+import React from "react";
+import Link from "next/link";
+import "tailwindcss/tailwind.css";
+import { GetServerSideProps } from "next";
+import axios from "axios";
 
 type GameInfo = {
   id: number;
@@ -20,30 +20,30 @@ type GameInfo = {
   inDevelopment: boolean;
 };
 
-type LandingPageProps  = {
+type LandingPageProps = {
   games: GameInfo[];
   errorMessage: string;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-
   let games = null;
   let errorMessage = null;
 
   try {
-    const response = await axios.get('http://localhost:8080/api/game/getAllGames');
+    const response = await axios.get(
+      "http://localhost:8080/api/game/getAllGames"
+    );
     games = response.data;
 
-    if(response.status === 200){
+    if (response.status === 200) {
       games = await response.data;
-    }
-    else{
+    } else {
       errorMessage = response.statusText;
     }
   } catch (error: any) {
     // Handle the error
     console.error(error);
-    errorMessage = error.toString()
+    errorMessage = error.toString();
   }
 
   return {
@@ -54,34 +54,46 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const Dashboard = ({ games, errorMessage}: LandingPageProps) => {
-  if(errorMessage !== null){
+const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
+  if (errorMessage !== null) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
   }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
+        <img src="/logo.png" alt="CritiQ Icon" />
         <h1 className="text-6xl font-bold">
-          Welcome to CritiQ, A Revolutional Game Testing and Evaluation Platform with Machine Learning for Game Developers!
+          Welcome to CritiQ, A Revolutional Game Testing and Evaluation Platform
+          with Machine Learning for Game Developers!
         </h1>
 
         <div className="flex mt-6">
-          <Link href="/new-game" className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+          <Link
+            href="/new-game"
+            className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+          >
             Add New Game
           </Link>
 
-          <Link href="/new-review" className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+          <Link
+            href="/new-review"
+            className="m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
+          >
             Add New Review
           </Link>
         </div>
 
         <div className="mt-6 w-full">
           <h2 className="text-3xl font-bold mb-4">All Games</h2>
-          {games && games.length > 0 ? (  
+          {games && games.length > 0 ? (
             <div className="flex flex-col justify-center content-center flex-wrap mt-6">
               {games.map((game) => (
-                <Link key={game.id} href={`/games/${game.id}`}  className="w-fit m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700">
+                <Link
+                  key={game.id}
+                  href={`/games/${game.id}`}
+                  className="w-fit m-3 px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
+                >
                   {game.name}
                 </Link>
               ))}
@@ -96,3 +108,4 @@ const Dashboard = ({ games, errorMessage}: LandingPageProps) => {
 };
 
 export default Dashboard;
+
