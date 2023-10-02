@@ -4,7 +4,7 @@ import "tailwindcss/tailwind.css";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
-import WebToolbar from "../components/toolbar"
+import WebToolbar from "../components/Toolbar"
 
 type GameInfo = {
   id: number;
