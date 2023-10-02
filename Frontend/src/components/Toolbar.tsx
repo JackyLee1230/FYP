@@ -17,6 +17,9 @@ const Search = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
   },
+  '& .MuiInputBase-root': {
+    width: '100%',
+  },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -37,9 +40,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
   },
 }));
 
@@ -65,16 +65,14 @@ const WebToolbar = () => {
           <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
 
           <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Search>
-
-
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
 
           <IconButton edge="end" color="inherit" aria-label="profile" onClick={handleProfileRedirect}>
             <Avatar alt="User Avatar" src="/static/images/avatar/1.jpg" />
