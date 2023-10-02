@@ -1,4 +1,5 @@
-import { GameInfo } from "@/type/game";
+import { GameInfo, GameSearchType, allGameSearchTypes } from "@/type/game";
+import { getEnumValues } from "@/utils/Other";
 import axios from "axios";
 import { set } from "date-fns";
 import { useRouter } from "next/router";
@@ -7,6 +8,7 @@ import { useDebounce } from "usehooks-ts";
 
 export default function Search() {
   const [games, setGames] = useState<GameInfo[]>([]);
+  const [searchType, setSearchType] = useState<GameSearchType>("NAME");
   const [isSearching, setIsSearching] = useState(false);
   const [searchString, setSearchString] = useState("");
   const debouncedSearchString = useDebounce(searchString, 1000);
@@ -14,12 +16,23 @@ export default function Search() {
   const router = useRouter();
 
   useEffect(() => {
+    let apiUrl: string = "";
+    let body = {};
+    if (searchType === "NAME") {
+      apiUrl = "http://localhost:8080/api/game/findGamesByName";
+      body = {
+        name: debouncedSearchString,
+      };
+    } else if (searchType === "DEVELOPER") {
+      apiUrl = "http://localhost:8080/api/game/findGamesByDeveloperCompany";
+      body = {
+        developerCompany: debouncedSearchString,
+      };
+    }
+
     const fetchGames = async () => {
       setIsSearching(true);
-      const response = await axios.post(
-        "http://localhost:8080/api/game/findGamesByName",
-        { name: debouncedSearchString }
-      );
+      const response = await axios.post(apiUrl, body);
 
       if (response.status !== 200) {
         return;
@@ -34,7 +47,22 @@ export default function Search() {
 
   return (
     <>
-      <div>Game Search Page</div>
+      <div>Game Search Page With {searchType.toString()}</div>
+      <div className="flex flex-row gap-4 ml-8 bg-red-300">
+        {allGameSearchTypes.map((searchType) => {
+          return (
+            <button
+              className="mt-4 cursor-pointer"
+              key={searchType}
+              onClick={() => {
+                setSearchType(searchType);
+              }}
+            >
+              {searchType}
+            </button>
+          );
+        })}
+      </div>
 
       <input
         style={{

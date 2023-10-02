@@ -14,6 +14,7 @@ enum Genre {
   SURVIVAL = "Survival",
   HORROR = "Horror",
   MMO = "MMO",
+  MOBA = "MOBA",
 }
 
 export function getGenre(key: string): string {

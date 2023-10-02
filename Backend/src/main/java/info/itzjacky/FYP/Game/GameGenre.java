@@ -17,7 +17,8 @@ public enum GameGenre {
     RHYTHM,
     SURVIVAL,
     HORROR,
-    MMO;
+    MMO,
+    MOBA;
 
 //    a function to return all the values of the enum
     public static List<GameGenre> getAllGenres() {

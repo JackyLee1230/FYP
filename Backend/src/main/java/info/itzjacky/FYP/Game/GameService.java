@@ -90,6 +90,14 @@ public class GameService {
         }
     }
 
+    public List<Game> findGamesByDeveloperCompany(GameRequest gameRequest){
+        try{
+            return gameRepository.findGamesByDeveloperCompany(gameRequest.getDeveloperCompany());
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     @Transactional
     public GameVersion addNewVersion(GameRequest gameRequest){
         if(gameRequest.getGameVersion() == null){

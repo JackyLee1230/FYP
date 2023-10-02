@@ -46,4 +46,6 @@ export type GameReviewPageProps = {
   errorMessage: string;
   iconUrl: string;
 };
+export const allGameSearchTypes = ["NAME", "DEVELOPER"] as const;
+export type GameSearchType = (typeof allGameSearchTypes)[number];
 

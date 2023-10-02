@@ -14,6 +14,9 @@ public interface GameRepository extends JpaRepository<Game,Integer>{
 
     Game findGameById(Integer id);
 
+    @Query("SELECT g FROM Game g WHERE g.developerCompany LIKE %:developerCompany%")
+    List<Game> findGamesByDeveloperCompany(String developerCompany);
+
     @Query("SELECT g FROM Game g WHERE g.developers = ?1")
     Optional<Game> findGamesByDeveloper(User developer);
 
