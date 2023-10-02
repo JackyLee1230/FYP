@@ -8,6 +8,7 @@ import { GameReview, GameReviewPageProps } from "@/type/game";
 import Platform, { getPlatform } from "@/type/gamePlatform";
 import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
+import { formatTime } from "@/utils/StringUtils";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { reviewid } = context.query;
@@ -63,9 +64,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
       <h1 className="text-4xl font-bold mb-4">
         Review for {review.reviewedGame.name} by {review.reviewer.name}
       </h1>
-      <p className="text-lg mb-4">
-        Created At: {format(new Date(review.createdAt), "yyyy-MM-dd HH:mm:ss")}
-      </p>
+      <p className="text-lg mb-4">Created At: {formatTime(review.createdAt)}</p>
       <p className="text-lg mb-4">Score: {review.score}</p>
       <p className="text-lg mb-4">
         Recommended: {review.recommended ? "Yes" : "No"}

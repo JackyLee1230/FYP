@@ -7,6 +7,8 @@ import { GameInfo, GamePageProps } from "@/type/game";
 import Platform, { getPlatform } from "@/type/gamePlatform";
 import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { formatTime } from "@/utils/StringUtils";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(context);
@@ -55,6 +57,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
+  const router = useRouter();
+
   if (errorMessage) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
   }
@@ -186,13 +190,21 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
         {reviews && reviews.length > 0 ? (
           <div className="list-disc list-inside">
             {reviews.map((review) => (
-              <div key={review.id} className="bg-gray-500 rounded-md ">
+              <div
+                onClick={() => {
+                  router.push(`/review/${review.id}`);
+                }}
+                key={review.id}
+                className="bg-gray-500 rounded-md cursor-pointer"
+              >
                 <div className="m-4">
                   <p>
-                    Review By {review.reviewer.name} on {review.createdAt}:
+                    Review By {review.reviewer.name} on{" "}
+                    {formatTime(review.createdAt)}:
                     <br />
                     Score: {review.score}
                     <br />
+                    <p>AI Sentiment: {review.sentiment}</p>
                   </p>
                   <br />
                   {review.comment}
