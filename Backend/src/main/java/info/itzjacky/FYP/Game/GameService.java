@@ -98,6 +98,31 @@ public class GameService {
         }
     }
 
+    public List<Game> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(GameRequest gameRequest){
+        try{
+            GameGenre genre;
+            Platform platform;
+            try {
+                genre = GameGenre.valueOf(gameRequest.getName());
+            }catch (Exception e){
+                genre = null;
+            }
+            try{
+                platform = Platform.valueOf(gameRequest.getName());
+            } catch (Exception e) {
+                platform = null;
+            }
+            return gameRepository.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(
+                    gameRequest.getName(),
+                    genre,
+                    platform
+            );
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     @Transactional
     public GameVersion addNewVersion(GameRequest gameRequest){
         if(gameRequest.getGameVersion() == null){

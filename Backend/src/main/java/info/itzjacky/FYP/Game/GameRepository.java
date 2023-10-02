@@ -3,6 +3,7 @@ package info.itzjacky.FYP.Game;
 import info.itzjacky.FYP.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public interface GameRepository extends JpaRepository<Game,Integer>{
 
     @Query("SELECT g FROM Game g WHERE g.developerCompany LIKE %:developerCompany%")
     List<Game> findGamesByDeveloperCompany(String developerCompany);
+
+    @Query("SELECT g FROM Game g WHERE g.publisher LIKE %:developerCompany% or g.description LIKE %:developerCompany% or g.name LIKE %:developerCompany% or g.developerCompany LIKE %:developerCompany% or :genre MEMBER OF g.genre or :platform MEMBER OF g.platforms")
+    List<Game> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(@Param("developerCompany") String developerCompany, @Param("genre")GameGenre gameGenre, @Param("platform") Platform platform);
 
     @Query("SELECT g FROM Game g WHERE g.developers = ?1")
     Optional<Game> findGamesByDeveloper(User developer);

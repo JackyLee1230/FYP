@@ -118,4 +118,14 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
+
+    @PostMapping("/findGamesWithSearch")
+    public ResponseEntity<List<Game>> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
 }
