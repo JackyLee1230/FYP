@@ -14,4 +14,5 @@ public class ReviewCountResponse {
         private Integer numberOfPositiveReviews;
         private Integer numberOfNegativeReviews;
         private Integer numberOfNeutralReviews;
+        private Float averageScore;
 }

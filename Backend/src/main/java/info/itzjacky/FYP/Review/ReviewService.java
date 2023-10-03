@@ -306,11 +306,13 @@ public class ReviewService {
         Integer numberOfPositiveReviews = reviewRepository.countDistinctByPositiveSentiment(reviewRequest.getGameId());
         Integer numberOfNegativeReviews = reviewRepository.countDistinctByNegativeSentiment(reviewRequest.getGameId());
         Integer numberOfNeutralReviews = numberOfReviews - numberOfPositiveReviews - numberOfNegativeReviews;
+        Float averageScore = reviewRepository.avgScoreByGameId(reviewRequest.getGameId()).floatValue();
         return ReviewCountResponse.builder()
                 .numberOfReviews(numberOfReviews)
                 .numberOfPositiveReviews(numberOfPositiveReviews)
                 .numberOfNegativeReviews(numberOfNegativeReviews)
                 .numberOfNeutralReviews(numberOfNeutralReviews)
+                .averageScore(averageScore)
                 .build();
     }
 }
