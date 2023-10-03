@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface GameRepository extends JpaRepository<Game,Integer>{
+public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameRepository{
 
     Game findGameById(Integer id);
 
@@ -20,6 +20,12 @@ public interface GameRepository extends JpaRepository<Game,Integer>{
 
     @Query("SELECT g FROM Game g WHERE g.publisher LIKE %:developerCompany% or g.description LIKE %:developerCompany% or g.name LIKE %:developerCompany% or g.developerCompany LIKE %:developerCompany% or :genre MEMBER OF g.genre or :platform MEMBER OF g.platforms")
     List<Game> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(@Param("developerCompany") String developerCompany, @Param("genre")GameGenre gameGenre, @Param("platform") Platform platform);
+
+
+    @Query("SELECT g FROM Game g WHERE :platform MEMBER OF g.platforms")
+    List<Game> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreListOrAndPlatformsList(@Param("platform")Platform platform);
+
+//    List<Game> findGamesByNameContainingIgnoreCaseOrDeveloperCompanyContainingIgnoreCaseOr
 
     @Query("SELECT g FROM Game g WHERE g.developers = ?1")
     Optional<Game> findGamesByDeveloper(User developer);

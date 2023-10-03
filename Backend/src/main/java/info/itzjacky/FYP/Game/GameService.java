@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static info.itzjacky.FYP.Game.GameGenre.getGenreFromString;
+import static info.itzjacky.FYP.Game.Platform.getPlatformFromString;
+
 @Service
 public class GameService {
 
@@ -100,23 +103,46 @@ public class GameService {
 
     public List<Game> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(GameRequest gameRequest){
         try{
-            GameGenre genre;
-            Platform platform;
+            List<GameGenre> genreList;
+            List<Platform> platformList;
             try {
-                genre = GameGenre.valueOf(gameRequest.getName());
+                genreList = GameGenre.getGenreFromString(gameRequest.getName());
             }catch (Exception e){
-                genre = null;
+                genreList = null;
             }
             try{
-                platform = Platform.valueOf(gameRequest.getName());
+                platformList = getPlatformFromString(gameRequest.getName());
             } catch (Exception e) {
-                platform = null;
+                platformList = null;
             }
-            return gameRepository.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(
-                    gameRequest.getName(),
-                    genre,
-                    platform
+//            return gameRepository.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(
+//                    gameRequest.getName(),
+//                    genre,
+//                    platform
+//            );
+//            return gameRepository.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreListOrAndPlatformsList(
+////                    gameRequest.getName(),
+//                    genreList
+////                    platformList
+//            );
+            if(genreList == null) {
+                logger.info("null");
+            }else {
+                logger.info("Game Request: " + genreList.toString());
+            }
+
+            if(platformList == null) {
+                logger.info("null");
+            }else {
+                logger.info("Game Request: " + platformList.toString());
+            }
+
+            return gameRepository.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreListOrAndPlatformsList(
+////                    gameRequest.getName(),
+//                   platformList
+                    Platform.STEAM
             );
+
         } catch (Exception e){
             e.printStackTrace();
             throw new IllegalStateException("Game Does Not Exist");

@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public enum Platform {
@@ -42,6 +43,17 @@ public enum Platform {
 //    a function to return all the values of the enum
     public static List<Platform> getAllPlatforms() {
         return List.of(Platform.values());
+    }
+
+    public static List<Platform> getPlatformFromString(String platform) {
+        ArrayList<Platform> returnedList = new ArrayList<Platform>();
+        platform = platform.replace("_", "");
+        for (Platform p : Platform.values()) {
+            if (p.toString().replace("_","").toLowerCase().contains(platform.toLowerCase())) {
+                returnedList.add(p);
+            }
+        }
+        return returnedList.isEmpty() ? null : returnedList;
     }
 
 }
