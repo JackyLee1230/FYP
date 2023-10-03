@@ -11,11 +11,20 @@ export type GameInfo = {
   publisher: string;
   score: number;
   recommendationScore: number;
-  genre: string[];
-  versions: string[];
+  genre: Genre[];
+  versions: GameVersion[];
   version: string;
   platforms: string[];
   inDevelopment: boolean;
+};
+
+export type GameVersion = {
+  id: string;
+  versionedGame: GameInfo;
+  version: string;
+  releaseDate: string;
+  url: string;
+  createdAt: Date;
 };
 
 export type GamePageProps = {
@@ -48,12 +57,22 @@ export type GameReview = {
   reviewedGame: GameInfo;
 };
 
+export type GameReviewComment = {
+  id: string;
+  commenter: User;
+  createdAt: Date;
+  updatedAt: Date;
+  review: GameReview;
+  comment: string;
+};
+
 export type GameReviewPageProps = {
   game: GameInfo | null;
   review: GameReview | null;
   errorMessage: string;
   iconUrl: string;
 };
+
 export const allGameSearchTypes = ["NAME", "DEVELOPER"] as const;
 export type GameSearchType = (typeof allGameSearchTypes)[number];
 
