@@ -297,4 +297,20 @@ public class ReviewService {
             throw new IllegalStateException("Review/Game Does Not Exist");
         }
     }
+
+    public ReviewCountResponse getGameReviewsCount(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getGameId() == null){
+            throw new IllegalStateException("Game ID Cannot Be Empty/Null");
+        }
+        Integer numberOfReviews = reviewRepository.findReviewsByGameId(reviewRequest.getGameId()).size();
+        Integer numberOfPositiveReviews = reviewRepository.countDistinctByPositiveSentiment(reviewRequest.getGameId());
+        Integer numberOfNegativeReviews = reviewRepository.countDistinctByNegativeSentiment(reviewRequest.getGameId());
+        Integer numberOfNeutralReviews = numberOfReviews - numberOfPositiveReviews - numberOfNegativeReviews;
+        return ReviewCountResponse.builder()
+                .numberOfReviews(numberOfReviews)
+                .numberOfPositiveReviews(numberOfPositiveReviews)
+                .numberOfNegativeReviews(numberOfNegativeReviews)
+                .numberOfNeutralReviews(numberOfNeutralReviews)
+                .build();
+    }
 }

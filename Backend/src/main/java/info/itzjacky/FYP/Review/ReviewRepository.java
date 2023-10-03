@@ -21,6 +21,12 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     List<Review> findReviewsByReviewerName(String name);
 
+    @Query("SELECT count(r) FROM Review r WHERE r.sentiment = 1 and r.reviewedGame.id = ?1")
+    Integer countDistinctByPositiveSentiment(Integer gameId);
+
+    @Query("SELECT count(r) FROM Review r WHERE r.sentiment = -1 and r.reviewedGame.id = ?1")
+    Integer countDistinctByNegativeSentiment(Integer gameId);
+
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.name = ?1")
     List<Review> findReviewByGameName(String gameName);
 

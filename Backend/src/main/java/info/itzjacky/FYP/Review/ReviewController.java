@@ -176,4 +176,13 @@ public class ReviewController {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
+
+    @PostMapping("/getReviewCount")
+    public ResponseEntity<ReviewCountResponse> getReviewCount(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getGameReviewsCount(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 }
