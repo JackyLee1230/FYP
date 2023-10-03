@@ -18,21 +18,21 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
         StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE ");
 
         if (name != null) {
-            query.append(" (g.name LIKE '%").append(name).append("%') AND ");
+            query.append(" (g.name LIKE '%").append(name).append("%')");
         }
 
-
-        query.append("(");
-
         if( platforms !=null && platforms.size() > 0) {
+            query.append(" AND ");
+            query.append("(");
             for (int i = 0; i < platforms.size(); i++) {
                 query.append('"' +platforms.get(i).name() + '"').append(" MEMBER OF g.platforms");
                 if (i != platforms.size() - 1) {
                     query.append(" OR ");
                 }
             }
+            query.append(")");
         }
-        query.append(")");
+
         if(genres.size() > 0) {
             query.append(" AND ");
         }

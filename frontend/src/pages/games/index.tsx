@@ -48,27 +48,51 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function Search({ genres, platforms }: GameSearchPageProps) {
   const [games, setGames] = useState<GameInfo[]>([]);
-  const [searchType, setSearchType] = useState<GameSearchType>("NAME");
   const [isSearching, setIsSearching] = useState(false);
   const [searchString, setSearchString] = useState("");
+
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const debouncedSearchString = useDebounce(searchString, 1000);
+
+  const onSelectedGenresChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const options = event.target.options;
+    const value: string[] = [];
+    for (let i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    setSelectedGenres(value);
+  };
+
+  const onSelectedPlatformsChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const options = event.target.options;
+    const value: string[] = [];
+    for (let i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    setSelectedPlatforms(value);
+  };
 
   const router = useRouter();
 
-  useEffect(() => {
+  const search = async () => {
     let apiUrl: string = "";
     let body = {};
-    if (searchType === "NAME") {
-      apiUrl = "http://localhost:8080/api/game/findGamesByName";
-      body = {
-        name: debouncedSearchString,
-      };
-    } else if (searchType === "DEVELOPER") {
-      apiUrl = "http://localhost:8080/api/game/findGamesByDeveloperCompany";
-      body = {
-        developerCompany: debouncedSearchString,
-      };
-    }
+
+    apiUrl = "http://localhost:8080/api/game/findGamesWithSearch";
+    body = {
+      name: debouncedSearchString,
+      genre: selectedGenres,
+      platforms: selectedPlatforms,
+    };
 
     const fetchGames = async () => {
       setIsSearching(true);
@@ -83,54 +107,73 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
     if (debouncedSearchString !== "") {
       fetchGames();
     }
-  }, [debouncedSearchString]);
+  };
 
   return (
     <>
-      <div>Game Search Page With {searchType.toString()}</div>
-      <div className="flex flex-row gap-4 ml-8 bg-red-300">
-        {allGameSearchTypes.map((searchType) => {
-          return (
-            <button
-              className="mt-4 cursor-pointer"
-              key={searchType}
-              onClick={() => {
-                setSearchType(searchType);
-              }}
-            >
-              {searchType}
-            </button>
-          );
-        })}
+      <div>Game Search Page</div>
+
+      <div className="flex flex-row gap-x-5">
+        <input
+          style={{
+            color: "red",
+          }}
+          type="text"
+          value={searchString}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setSearchString(e.target.value);
+          }}
+        />
+
+        <div className="w-max">
+          <label>Choose genres:</label>
+
+          <select
+            name="genres"
+            id="genres"
+            multiple
+            onChange={(e) => {
+              onSelectedGenresChange(e);
+            }}
+          >
+            {genres &&
+              genres.map((genre) => {
+                return (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+
+        <div className="w-max">
+          <label>Choose platforms:</label>
+
+          <select
+            name="genres"
+            id="genres"
+            multiple
+            onChange={(e) => {
+              onSelectedPlatformsChange(e);
+            }}
+          >
+            {platforms &&
+              platforms.map((platform) => {
+                return (
+                  <option key={platform} value={platform}>
+                    {platform}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+
+        <button onClick={search} className="bg-red">
+          SEARCH
+        </button>
       </div>
-
-      <input
-        style={{
-          color: "red",
-        }}
-        type="text"
-        value={searchString}
-        onChange={(e) => {
-          console.log(e.target.value);
-          setSearchString(e.target.value);
-        }}
-      />
-      {/* a dropdown select */}
-
-      <>
-        <label>Choose a genre:</label>
-
-        <select name="genres" id="genres" multiple>
-          {genres &&
-            genres.map((genre) => {
-              return (
-                <option key={genre} value={genre}>
-                  {genre}
-                </option>
-              );
-            })}
-        </select>
-      </>
 
       {games && games.length > 0 ? (
         <>
@@ -138,13 +181,20 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
           {games.map((game) => {
             return (
               <div
-                className="mt-4 cursor-pointer"
+                className="mt-4 cursor-pointer gap-y-4 bg-red-200 rounded-md w-fit m-4"
                 key={game.id}
                 onClick={() => {
                   router.push(`/games/${game.id}`);
                 }}
               >
-                {game.name}
+                {game.name} by {game.developerCompany} [Released on{" "}
+                {game.releaseDate}]
+                <br />
+                [Genre: {game.genre.toString()}]
+                <br />
+                [Platforms: {game.platforms.toString()}]
+                <br />
+                {game.description}
               </div>
             );
           })}

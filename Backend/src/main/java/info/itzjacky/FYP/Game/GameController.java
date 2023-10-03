@@ -35,6 +35,10 @@ public class GameController {
         return new ResponseEntity<>(GameGenre.getAllGenres(), HttpStatus.OK);
     }
 
+    @GetMapping("/getAllGamePlatforms")
+    public ResponseEntity<List<Platform>> getAllGamePlatforms() {
+        return new ResponseEntity<>(Platform.getAllPlatforms(), HttpStatus.OK);
+    }
 
     @PostMapping("/addGame")
     public ResponseEntity<Game> addGame(@RequestBody GameRequest gameRequest) {
