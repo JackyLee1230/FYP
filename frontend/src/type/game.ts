@@ -1,3 +1,5 @@
+import Genre from "./gameGenre";
+import Platform from "./gamePlatform";
 import { User } from "./user";
 
 export type GameInfo = {
@@ -21,6 +23,12 @@ export type GamePageProps = {
   reviews: GameReview[];
   errorMessage: string;
   iconUrl: string;
+};
+
+export type GameSearchPageProps = {
+  genres: Genre[];
+  platforms: Platform[];
+  errorMessage: string;
 };
 
 export type GameReview = {

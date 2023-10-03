@@ -122,18 +122,9 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
     }
 
     @PostMapping("/findGamesWithSearch")
-    public ResponseEntity<List<Game>> findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(@RequestBody GameRequest gameRequest) {
-        try {
-            return new ResponseEntity<>(gameService.findGamesByDeveloperCompanyOrNameOrPublisherOrDescriptionOrGameGenreOrAndPlatforms(gameRequest), HttpStatus.OK);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
-        }
-    }
-
-    @PostMapping("/test")
     public ResponseEntity<List<Game>> test(@RequestBody GameRequest gameRequest) {
         try {
-            return new ResponseEntity<>(gameRepository.customFindGames(gameRequest.getPlatforms(), gameRequest.getGenre()), HttpStatus.OK);
+            return new ResponseEntity<>(gameRepository.customFindGames(gameRequest.getName(),gameRequest.getPlatforms(), gameRequest.getGenre()), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

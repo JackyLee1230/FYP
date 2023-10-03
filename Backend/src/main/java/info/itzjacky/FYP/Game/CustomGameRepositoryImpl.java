@@ -10,23 +10,31 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Game> customFindGames(List<Platform> platforms, List<GameGenre> genres) {
+    public List<Game> customFindGames(String name, List<Platform> platforms, List<GameGenre> genres) {
 
 //        for each platforms in platform, add part of the sql query where p MEMBER OF g.platforms
 //        if genre exist, add brackets around the genre part of the query
 
         StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE ");
-        if(genres.size() > 0) {
-            query.append("(");
+
+        if (name != null) {
+            query.append(" (g.name LIKE '%").append(name).append("%') AND ");
         }
-        for (int i = 0; i < platforms.size(); i++) {
-            query.append('"' +platforms.get(i).name() + '"').append(" MEMBER OF g.platforms");
-            if (i != platforms.size() - 1) {
-                query.append(" OR ");
+
+
+        query.append("(");
+
+        if( platforms !=null && platforms.size() > 0) {
+            for (int i = 0; i < platforms.size(); i++) {
+                query.append('"' +platforms.get(i).name() + '"').append(" MEMBER OF g.platforms");
+                if (i != platforms.size() - 1) {
+                    query.append(" OR ");
+                }
             }
         }
+        query.append(")");
         if(genres.size() > 0) {
-            query.append(") AND ");
+            query.append(" AND ");
         }
 //        for each genres in genres, add part of the sql query where p MEMBER OF g.genre
 //        first check if there are any platforms, if there are, add AND to the query
