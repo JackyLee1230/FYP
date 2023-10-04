@@ -16,6 +16,7 @@ export type GameInfo = {
   version: string;
   platforms: string[];
   inDevelopment: boolean;
+  gameReviews: GameReview[];
 };
 
 export type GameVersion = {

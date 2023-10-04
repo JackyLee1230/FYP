@@ -4,6 +4,7 @@ import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -129,6 +130,24 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
     public ResponseEntity<List<Game>> test(@RequestBody GameRequest gameRequest) {
         try {
             return new ResponseEntity<>(gameRepository.customFindGames(gameRequest.getName(),gameRequest.getPlatforms(), gameRequest.getGenre()), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/findTop10LatestGames")
+    public ResponseEntity<List<Game>> findTop10LatestGames() {
+        try {
+            return new ResponseEntity<>(gameService.findTop10LatestGames(), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/findTop10MostReviewedGames")
+    public ResponseEntity<List<Game>> findTop10MostReviewedGames() {
+        try {
+            return new ResponseEntity<>(gameService.findTop10MostReviewedGames(), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

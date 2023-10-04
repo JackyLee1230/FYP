@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,11 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
 
     @Query("SELECT g FROM Game g WHERE g.name LIKE %:name%")
     List<Game> findGamesByName(String name);
+
+
+//    write a query to get the top 10 games by number of reviews
+//    @Query("SELECT g FROM Game g ORDER BY SIZE(g.gameReviews) DESC")
+    List<Game> findTop10ByCreatedAt(Pageable pageable);
 }
 
 

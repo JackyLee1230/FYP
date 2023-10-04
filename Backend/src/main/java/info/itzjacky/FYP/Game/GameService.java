@@ -5,6 +5,9 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -234,5 +237,21 @@ public class GameService {
         storageService.uploadFile("games/" + game.getId() + "/icon.jpg", file);
         game.setIconUrl("games/" + game.getId() + "/icon.jpg");
         gameRepository.save(game);
+    }
+
+    public List<Game> findTop10LatestGames(){
+        try{
+            return gameRepository.findAll(PageRequest.of(0, 5, Sort.by("createdAt").descending())).getContent();
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
+    public List<Game> findTop10MostReviewedGames(){
+        try{
+            return gameRepository.top10MostReviewedGames();
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
     }
 }

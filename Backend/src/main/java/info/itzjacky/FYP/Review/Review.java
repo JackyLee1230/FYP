@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Review;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Game.Game;
 import jakarta.persistence.*;
@@ -53,6 +54,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("gameReviews")
     private Game reviewedGame;
 
     private String gameVersion;

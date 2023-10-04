@@ -49,5 +49,17 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
                 .getResultList();
     }
 
+    @Override
+    public List<Game> top10MostReviewedGames() {
+        // write a sql query to get the top 10 games by number of reviews
+
+        StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE SIZE(g.gameReviews) != 0 ORDER BY SIZE(g.gameReviews) DESC LIMIT 10");
+         List<Game> g = entityManager.createQuery(query.toString())
+                .getResultList();
+//        System.out.println("ASDBC");
+//         System.out.println(g.toString());
+        return g;
+    }
+
 
 }

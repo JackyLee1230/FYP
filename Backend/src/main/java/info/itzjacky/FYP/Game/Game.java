@@ -5,8 +5,10 @@ import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,7 +57,7 @@ public class Game {
     private List<User> Tester;
 
     @OneToMany(mappedBy = "reviewedGame")
-    @JsonIgnore
+//    @JsonIgnore
     private List<Review> gameReviews;
 
     @ElementCollection
@@ -70,6 +72,9 @@ public class Game {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private List<Platform> platforms;
+
+    @CreationTimestamp
+    private Date createdAt;
 
     @Override
     public final boolean equals(Object o) {
