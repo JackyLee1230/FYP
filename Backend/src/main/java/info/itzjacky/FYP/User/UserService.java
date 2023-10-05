@@ -1,5 +1,7 @@
 package info.itzjacky.FYP.User;
 
+import info.itzjacky.FYP.Game.Game;
+import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
 import info.itzjacky.FYP.Utils.RegEx;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -7,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +20,9 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DigitalOceanStorageService storageService;
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -39,6 +45,13 @@ public class UserService {
         }catch (Exception e){
             throw new IllegalStateException("User Already Exists");
         }
+    }
+
+    public User findUserById(Integer id){
+        if(id == null){
+            throw new IllegalStateException("User ID Cannot Be Empty");
+        }
+        return userRepository.findUserById(id);
     }
 
 //    public User login(UserRequest userRequest) {
@@ -116,8 +129,19 @@ public class UserService {
         }
     }
 
-
     public Optional<User> findUserByName(String name){
         return userRepository.findUserByName(name);
+    }
+
+    @Transactional
+    public void updateUserIcon(String userId, MultipartFile file) {
+        User user = userRepository.findUserById(Integer.parseInt(userId));
+
+        if(user.getIconUrl() != null){
+            storageService.deleteFile("users/" + user.getId() + "/icon.jpg");
+        }
+        storageService.uploadFile("users/" + user.getId() + "/icon.jpg", file);
+        user.setIconUrl("users/" + user.getId() + "/icon.jpg");
+        userRepository.save(user);
     }
 }

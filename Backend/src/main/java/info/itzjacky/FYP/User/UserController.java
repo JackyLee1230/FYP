@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -98,6 +100,30 @@ public class UserController {
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
             }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/findUserById")
+    public ResponseEntity<User> findUserById(@RequestBody UserRequest userRequest){
+        try {
+            User user = userService.findUserById(userRequest.getId());
+            if(user != null){
+                return new ResponseEntity<>(user, HttpStatus.OK);
+            } else {
+                throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping(value = "/updateUserIcon", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
+    public ResponseEntity<String> updateUserIcon(@RequestParam("userId") String userId, @RequestBody MultipartFile file) {
+        try {
+            userService.updateUserIcon(userId, file);
+            return new ResponseEntity<>("Successfully uploaded", HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

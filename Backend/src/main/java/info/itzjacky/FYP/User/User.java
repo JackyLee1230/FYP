@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.User;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.itzjacky.FYP.Auth.Token;
 import info.itzjacky.FYP.Game.Game;
@@ -60,8 +61,11 @@ public class User implements UserDetails {
     private List<Game> developedGames;
 
     @OneToMany(mappedBy = "reviewer")
-    @JsonIgnore
+    @JsonIgnoreProperties("reviewer")
     private List<Review> reviews;
+
+    @Column(insertable = true, updatable = true)
+    private String iconUrl;
 
     @ManyToMany(mappedBy = "Tester")
     private List<Game> testedGames;

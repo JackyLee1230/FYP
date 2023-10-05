@@ -37,7 +37,8 @@ public class UserDto {
 
     private List<Game> developedGames;
 
-    @JsonIgnore
     private List<Review> reviews;
+
+    private String iconUrl;
 
 }
