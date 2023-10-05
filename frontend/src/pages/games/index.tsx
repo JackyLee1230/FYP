@@ -51,6 +51,8 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchString, setSearchString] = useState("");
 
+  const [searchType, setSearchType] = useState<GameSearchType>("NAME");
+
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const debouncedSearchString = useDebounce(searchString, 1000);
@@ -87,9 +89,13 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
     let apiUrl: string = "";
     let body = {};
 
-    apiUrl = "http://localhost:8080/api/game/findGamesWithSearch";
+    apiUrl =
+      searchType == "NAME"
+        ? "http://localhost:8080/api/game/findGamesWithSearch"
+        : "http://localhost:8080/api/game/findGamesWithSearchDeveloper";
     body = {
       name: debouncedSearchString,
+      developerCompany: debouncedSearchString,
       genre: selectedGenres,
       platforms: selectedPlatforms,
     };
@@ -127,25 +133,45 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
         />
 
         <div className="w-max">
-          <label>Choose genres:</label>
+          <label>Choose search type:</label>
 
           <select
             name="genres"
             id="genres"
-            multiple
             onChange={(e) => {
-              onSelectedGenresChange(e);
+              setSearchType(e.target.value as GameSearchType);
             }}
           >
-            {genres &&
-              genres.map((genre) => {
-                return (
-                  <option key={genre} value={genre}>
-                    {genre}
-                  </option>
-                );
-              })}
+            {allGameSearchTypes.map((type) => {
+              return (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              );
+            })}
           </select>
+
+          <div className="w-max">
+            <label>Choose genres:</label>
+
+            <select
+              name="genres"
+              id="genres"
+              multiple
+              onChange={(e) => {
+                onSelectedGenresChange(e);
+              }}
+            >
+              {genres &&
+                genres.map((genre) => {
+                  return (
+                    <option key={genre} value={genre}>
+                      {genre}
+                    </option>
+                  );
+                })}
+            </select>
+          </div>
         </div>
 
         <div className="w-max">
