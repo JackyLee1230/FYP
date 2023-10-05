@@ -30,4 +30,5 @@ public class GameRequest {
     private List<String> versions;
     private List<Platform> platforms;
     private GameVersion gameVersion;
+    private Integer numOfGames;
 }

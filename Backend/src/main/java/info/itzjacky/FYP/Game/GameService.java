@@ -239,17 +239,23 @@ public class GameService {
         gameRepository.save(game);
     }
 
-    public List<Game> findTop10LatestGames(){
+    public List<Game> findTopLatestGames(GameRequest gameRequest){
         try{
-            return gameRepository.findAll(PageRequest.of(0, 5, Sort.by("createdAt").descending())).getContent();
+            if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
+                gameRequest.setNumOfGames(10);
+            }
+            return gameRepository.findAll(PageRequest.of(0, gameRequest.getNumOfGames(), Sort.by("createdAt").descending())).getContent();
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
 
-    public List<Game> findTop10MostReviewedGames(){
+    public List<Game> findTopMostReviewedGames(GameRequest gameRequest){
         try{
-            return gameRepository.top10MostReviewedGames();
+            if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
+                gameRequest.setNumOfGames(10);
+            }
+            return gameRepository.topMostReviewedGames(gameRequest.getNumOfGames());
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
