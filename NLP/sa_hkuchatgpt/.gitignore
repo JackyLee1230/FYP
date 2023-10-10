@@ -1,3 +1,6 @@
 secret.json
 
 *.pyc
+
+
+dataset_cleaned_heartless_sampled_20230927/data*/
