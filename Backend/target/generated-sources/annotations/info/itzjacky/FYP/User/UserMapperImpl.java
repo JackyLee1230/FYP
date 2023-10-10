@@ -8,8 +8,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-03T23:50:45+0800",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Azul Systems, Inc.)"
+    date = "2023-10-10T23:30:30+0800",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.33.0.v20230213-1046, environment: Java 17.0.6 (Eclipse Adoptium)"
 )
 public class UserMapperImpl implements UserMapper {
 
@@ -21,23 +21,24 @@ public class UserMapperImpl implements UserMapper {
 
         UserDto.UserDtoBuilder userDto = UserDto.builder();
 
-        userDto.id( user.getId() );
-        userDto.name( user.getName() );
+        List<Game> list = user.getDevelopedGames();
+        if ( list != null ) {
+            userDto.developedGames( new ArrayList<Game>( list ) );
+        }
         userDto.email( user.getEmail() );
+        userDto.iconUrl( user.getIconUrl() );
+        userDto.id( user.getId() );
         userDto.joinDate( user.getJoinDate() );
         userDto.lastActive( user.getLastActive() );
+        userDto.name( user.getName() );
         userDto.numOfReviews( user.getNumOfReviews() );
-        List<Role> list = user.getRole();
-        if ( list != null ) {
-            userDto.role( new ArrayList<Role>( list ) );
-        }
-        List<Game> list1 = user.getDevelopedGames();
+        List<Review> list1 = user.getReviews();
         if ( list1 != null ) {
-            userDto.developedGames( new ArrayList<Game>( list1 ) );
+            userDto.reviews( new ArrayList<Review>( list1 ) );
         }
-        List<Review> list2 = user.getReviews();
+        List<Role> list2 = user.getRole();
         if ( list2 != null ) {
-            userDto.reviews( new ArrayList<Review>( list2 ) );
+            userDto.role( new ArrayList<Role>( list2 ) );
         }
 
         return userDto.build();
@@ -51,23 +52,24 @@ public class UserMapperImpl implements UserMapper {
 
         User.UserBuilder user = User.builder();
 
-        user.id( userDto.getId() );
-        user.name( userDto.getName() );
+        List<Game> list = userDto.getDevelopedGames();
+        if ( list != null ) {
+            user.developedGames( new ArrayList<Game>( list ) );
+        }
         user.email( userDto.getEmail() );
+        user.iconUrl( userDto.getIconUrl() );
+        user.id( userDto.getId() );
         user.joinDate( userDto.getJoinDate() );
         user.lastActive( userDto.getLastActive() );
+        user.name( userDto.getName() );
         user.numOfReviews( userDto.getNumOfReviews() );
-        List<Role> list = userDto.getRole();
-        if ( list != null ) {
-            user.role( new ArrayList<Role>( list ) );
-        }
-        List<Game> list1 = userDto.getDevelopedGames();
+        List<Review> list1 = userDto.getReviews();
         if ( list1 != null ) {
-            user.developedGames( new ArrayList<Game>( list1 ) );
+            user.reviews( new ArrayList<Review>( list1 ) );
         }
-        List<Review> list2 = userDto.getReviews();
+        List<Role> list2 = userDto.getRole();
         if ( list2 != null ) {
-            user.reviews( new ArrayList<Review>( list2 ) );
+            user.role( new ArrayList<Role>( list2 ) );
         }
 
         return user.build();

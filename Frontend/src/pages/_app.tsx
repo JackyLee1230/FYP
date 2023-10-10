@@ -3,35 +3,29 @@ import type { AppProps } from "next/app";
 import { store } from "../../store";
 import { Provider } from "react-redux";
 import { StyledEngineProvider } from '@mui/material/styles';
-import {
-  experimental_extendTheme as materialExtendTheme,
-  Experimental_CssVarsProvider as MaterialCssVarsProvider,
-  THEME_ID as MATERIAL_THEME_ID,
-} from '@mui/material/styles';
-import { CssVarsProvider as JoyCssVarsProvider } from '@mui/joy/styles';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { themeOptions } from '../theme/MuiThemeOption'
 
 const cache = createCache({
   key: 'css',
   prepend: true,
-});
+})
 
-const materialTheme = materialExtendTheme();
+const theme = createTheme(themeOptions);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
-      <JoyCssVarsProvider>
-        <StyledEngineProvider injectFirst>
-          <Provider store={store}>
-            <CacheProvider value={cache}>
-              <Component {...pageProps} />
-            </CacheProvider>
-          </Provider>
-        </StyledEngineProvider>
-      </JoyCssVarsProvider>
-    </MaterialCssVarsProvider>
+    <ThemeProvider theme={theme}>
+      <StyledEngineProvider injectFirst>
+        <Provider store={store}>
+          <CacheProvider value={cache}>
+            <Component {...pageProps} />
+          </CacheProvider>
+        </Provider>
+      </StyledEngineProvider>
+    </ThemeProvider>
   );
 }
 
