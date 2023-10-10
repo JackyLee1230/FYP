@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Game;
 
+import jakarta.websocket.server.PathParam;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,8 +70,8 @@ public class GameController {
         }
     }
 
-    @PostMapping(value = "/updateGameIcon", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
-    public ResponseEntity<String> updateGameIcon(@RequestParam("gameId") String gameId, @RequestBody MultipartFile file) {
+    @PostMapping(value = "/updateGameIcon/{gameId}", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
+    public ResponseEntity<String> updateGameIcon(@PathVariable String gameId, @RequestBody MultipartFile file) {
         try {
             gameService.updateGameIcon(gameId, file);
             return new ResponseEntity<>("Successfully uploaded", HttpStatus.OK);

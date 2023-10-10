@@ -6,6 +6,7 @@ import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Date;
@@ -75,6 +76,9 @@ public class Game {
 
     @CreationTimestamp
     private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 
     @Override
     public final boolean equals(Object o) {

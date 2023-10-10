@@ -119,8 +119,8 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/updateUserIcon", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
-    public ResponseEntity<String> updateUserIcon(@RequestParam("userId") String userId, @RequestBody MultipartFile file) {
+    @PostMapping(value = "/updateUserIcon/{userId}", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
+    public ResponseEntity<String> updateUserIcon(@PathVariable String userId, @RequestBody MultipartFile file) {
         try {
             userService.updateUserIcon(userId, file);
             return new ResponseEntity<>("Successfully uploaded", HttpStatus.OK);
