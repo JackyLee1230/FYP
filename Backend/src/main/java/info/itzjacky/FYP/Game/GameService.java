@@ -227,6 +227,15 @@ public class GameService {
         }
     }
 
+//    only input 1 platform
+    public List<Game> findGamesByPlatform(GameRequest gameRequest){
+        try{
+            return gameRepository.findGamesByPlatforms(gameRequest.getPlatforms().get(0));
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     @Transactional
     public void updateGameIcon(String gameId, MultipartFile file) {
         Game game = gameRepository.findGameById(Integer.parseInt(gameId));

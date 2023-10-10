@@ -118,6 +118,15 @@ public class GameController {
         }
     }
 
+    @PostMapping("/findGamesByPlatform")
+    public ResponseEntity<List<Game>> findGamesByPlatform(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.findGamesByPlatform(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/findGamesByDeveloperCompany")
 public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameRequest gameRequest) {
         try {

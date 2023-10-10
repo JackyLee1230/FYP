@@ -31,6 +31,8 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
     @Query("SELECT g FROM Game g WHERE g.developers = ?1")
     Optional<Game> findGamesByDeveloper(User developer);
 
+    List<Game> findGamesByPlatforms(Platform platform);
+
 //    Optional<Game> findGameByNameAndDevelopers(String name, List<User> developer);
 
     Optional<Game> findGameByNameAndAndDeveloperCompany(String name, String developerCompany);
