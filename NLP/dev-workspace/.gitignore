@@ -1,0 +1,15 @@
+# sa folder
+*.pkl
+*.sav
+
+glove.6B
+
+prompt_engineering_test/
+
+# dataset folder
+dataset/sa/dataset.csv
+
+# base folder
+*.zip
+openai_key.txt
+fyp-environment.yml
