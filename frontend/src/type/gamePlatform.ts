@@ -29,5 +29,13 @@ export function getPlatform(key: string): string {
   return Platform[key as keyof typeof Platform];
 }
 
+export function getPlatformKey(value: string): string {
+  return (
+    Object.keys(Platform).find(
+      (key) => Platform[key as keyof typeof Platform] === value
+    ) || ""
+  );
+}
+
 export default Platform;
 
