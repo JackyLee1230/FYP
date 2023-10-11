@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       game = await response.data;
       reviews = await reviewsResponse.data;
       if (game.iconUrl) {
-        iconUrl = `${process.env.GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
+        iconUrl = `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
       }
     } else {
       errorMessage = response.statusText;
@@ -140,7 +140,7 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
           {game.versions && game.versions.length > 0 ? (
             <ul className="list-disc list-inside">
               {game.versions.map((version) => (
-                <li key={version}>{version}</li>
+                <li key={version.version}>{version.version}</li>
               ))}
             </ul>
           ) : (

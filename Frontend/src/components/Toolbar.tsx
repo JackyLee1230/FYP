@@ -3,6 +3,8 @@ import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, But
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from "next/image";
+import { useRouter } from 'next/router'
+import { useDebounce } from "usehooks-ts";
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -45,11 +47,32 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const WebToolbar = () => {
+  const [searchString, setSearchString] = useState<String>("")
+  const debouncedSearchString = useDebounce(searchString, 200);
   const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter()
 
   const handleProfileRedirect = () => {
     // Redirect to profile page
   };
+
+  const handleHomePageRedirect = () => {
+    router.push("/")
+  };
+
+
+  const handleNewGameRedirect = () => {
+    router.push("/new-game")
+  };
+
+  const handleNewReviewRedirect = () => {
+    router.push("/new-review")
+  };
+
+  const handleGameSearch = () => {
+    if(debouncedSearchString.trim().length > 0)
+      router.push(`/result/${debouncedSearchString}`)
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -63,19 +86,23 @@ const WebToolbar = () => {
       >
         <Toolbar 
           disableGutters 
-          sx={(theme) => ({
+          sx={{
             maxWidth: 1440, 
             alignSelf:"center", 
             gap: "12px",
             width: "100%"
-          })}
+          }}
         >
-          <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
+          <ButtonBase onClick={handleHomePageRedirect}>
+            <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
+          </ButtonBase>
+          
 
           <Button 
             variant="text" 
             size="large" 
             sx={{color: 'background.default', whiteSpace : "nowrap", flexShrink: 0, fontWeight: 500}}
+            onClick={handleNewGameRedirect}
           >
             Add Game
           </Button>
@@ -84,16 +111,29 @@ const WebToolbar = () => {
             variant="text" 
             size="large" 
             sx={{color: 'background.default', whiteSpace : "nowrap", flexShrink: 0, fontWeight: 500}}
+            onClick={handleNewReviewRedirect}
           >
             Add Review
           </Button>
 
-          <Search>
+          <Search
+            onKeyPress={(ev) => {
+              if (ev.key === 'Enter') {
+                handleGameSearch();
+                ev.preventDefault();
+              }
+            }}
+          >
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search Game…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={event=>{                                
+                setSearchString(event.target.value)
+              }}   
             />
-            <SearchIconWrapper>
+            <SearchIconWrapper
+              onClick={handleGameSearch}
+            >
               <SearchIcon />
             </SearchIconWrapper>
           </Search>

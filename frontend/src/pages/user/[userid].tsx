@@ -49,7 +49,7 @@ export default function User({ user }: UserPageProps) {
       {user.iconUrl ? (
         <img
           className="w-24 h-24 rounded-full mx-auto"
-          src={`${process.env.GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`}
+          src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`}
           alt="User icon"
         />
       ) : (
