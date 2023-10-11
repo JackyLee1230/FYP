@@ -31,6 +31,10 @@ public class Game {
     private Integer id;
     @NonNull
     private String name;
+    private boolean isDLC;
+    @ManyToOne
+    @JoinColumn(name = "base_game_id")
+    private Game BaseGame;
     @Column(insertable = true, updatable = true)
     private String iconUrl;
     private String description;

@@ -6,6 +6,8 @@ export type GameInfo = {
   iconUrl: any;
   id: string;
   name: string;
+  dlc: boolean;
+  baseGame: GameInfo;
   description: string;
   releaseDate: string;
   developerCompany: string;

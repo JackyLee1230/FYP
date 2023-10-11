@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
-import WebToolbar from "../../components/Toolbar"
-import { Box, Typography, Button, Divider, Pagination} from "@mui/material";
-import { useRouter } from 'next/router';
-import SearchGameCard from "../../components/SearchGameCard"
+import WebToolbar from "../../components/Toolbar";
+import { Box, Typography, Button, Divider, Pagination } from "@mui/material";
+import { useRouter } from "next/router";
+import SearchGameCard from "../../components/SearchGameCard";
 
 export type GameSearchPageProps = {
   gameData: GameInfo[];
@@ -31,6 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const response = await axios.post(apiUrl, body);
     if (response.status === 200) {
       gameData = await response.data;
+      console.log(gameData);
     } else {
       errorMessage = response.statusText;
     }
@@ -48,18 +49,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
-  const router = useRouter()
+  const router = useRouter();
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     setPage(value);
   };
 
   return (
     <>
-      <WebToolbar/>
-      <Box 
+      <WebToolbar />
+      <Box
         sx={{
           display: "flex",
           padding: "48px 128px",
@@ -75,10 +79,22 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6" component='div' sx={{color: "text.secondary"}}>Search Result for <Box display='inline' sx={{color: "text.primary", fontWeight: 700}}>{`"${router.query.searchString}"`}</Box></Typography>
-          <Button variant="contained" size="large" color="secondary">Advanced Search</Button>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ color: "text.secondary" }}
+          >
+            Search Result for{" "}
+            <Box
+              display="inline"
+              sx={{ color: "text.primary", fontWeight: 700 }}
+            >{`"${router.query.searchString}"`}</Box>
+          </Typography>
+          <Button variant="contained" size="large" color="secondary">
+            Advanced Search
+          </Button>
         </Box>
-        <Divider/>
+        <Divider />
 
         <Box
           sx={{
@@ -89,24 +105,54 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           }}
         >
           {gameData && gameData.length > 0 ? (
-
-            gameData.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((game) => (
-              <SearchGameCard key={game.id} gameData={game}/>
-            ))
+            gameData
+              .slice((page - 1) * rowsPerPage, page * rowsPerPage)
+              .map((game) => <SearchGameCard key={game.id} gameData={game} />)
           ) : (
             <>
               <Typography variant="h6">No Games Found</Typography>
 
-              {errorMessage? (
-                <Typography variant="body1" component='div' sx={{color: "text.secondary"}}>Error occurred during searching: {errorMessage}, please contact support for help</Typography>
+              {errorMessage ? (
+                <Typography
+                  variant="body1"
+                  component="div"
+                  sx={{ color: "text.secondary" }}
+                >
+                  Error occurred during searching: {errorMessage}, please
+                  contact support for help
+                </Typography>
               ) : (
-                <Typography variant="body1" component='div' sx={{color: "text.secondary"}}>We cannot find a result match with <Box display='inline' sx={{color: "text.primary", fontWeight: 700}}>{`"${router.query.searchString}"`}</Box>, Please double check the spelling and try again.</Typography>
+                <Typography
+                  variant="body1"
+                  component="div"
+                  sx={{ color: "text.secondary" }}
+                >
+                  We cannot find a result match with{" "}
+                  <Box
+                    display="inline"
+                    sx={{ color: "text.primary", fontWeight: 700 }}
+                  >{`"${router.query.searchString}"`}</Box>
+                  , Please double check the spelling and try again.
+                </Typography>
               )}
             </>
           )}
         </Box>
 
-        <Pagination color="primary" variant="outlined" size="large" count={Math.ceil(gameData.length / rowsPerPage)} page={page} onChange={handlePageChange} sx={{ '& .MuiPagination-ul': {alignItems: "center", justifyContent: "center"}}}/>
+        <Pagination
+          color="primary"
+          variant="outlined"
+          size="large"
+          count={Math.ceil(gameData.length / rowsPerPage)}
+          page={page}
+          onChange={handlePageChange}
+          sx={{
+            "& .MuiPagination-ul": {
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          }}
+        />
       </Box>
     </>
   );
