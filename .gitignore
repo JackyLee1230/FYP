@@ -1,1 +1,67 @@
 *.DS_Store
+
+# IDEA
+Backend/.idea/
+Backend/out/
+Backend/output/
+Backend/**/build/
+
+Backend/**/gradle_build/
+Backend/*.iml
+Backend/**/*.iml
+Backend/*.ipr
+Backend/*.iws
+
+
+# OSX
+Backend/.DS_Store
+Backend/.AppleDouble
+Backend/.LSOverride
+
+## Java
+# either the 3rd party diff or IDEA:
+Backend/*.java.orig
+
+# Package Files
+Backend/**/build/libs/*.jar
+Backend/*.war
+Backend/*.ear
+
+#maven
+Backend/target
+Backend/target/**
+Backend/pom.xml.tag
+Backend/pom.xml.releaseBackup
+Backend/pom.xml.versionsBackup
+Backend/pom.xml.next
+Backend/release.properties
+Backend/dependency-reduced-pom.xml
+Backend/buildNumber.properties
+Backend/.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+Backend/.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+Backend/.project
+# JDT-specific (Eclipse Java Development Tools)
+Backend/.classpath
+
+# Logging
+Backend/*.log
+Backend/*.log.gz
+Backend/*.log-*.gz
+Backend/logs/
+
+# Class
+Backend/*.class
+
+# UserMapperImpl
+Backend/target/generated-sources/annotations/info/itzjacky/FYP/User/UserMapperImpl.java
+Backend/target/classes
+Backend/target/FYP-0.0.1-SNAPSHOT.jar.original
+Backend/target/test-classes
+Backend/target/surefire-reports
+Backend/target/maven-status
+Backend/target/maven-archiver
+Backend/target/generated-test-sources
