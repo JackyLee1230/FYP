@@ -5,9 +5,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_GAMES_STORAGE_HOSTNAME,
+        hostname: 'fyp.sgp1.digitaloceanspaces.com',
         port: '',
-        pathname: process.env.NEXT_PUBLIC_GAMES_STORAGE_PATHNAME,
+        pathname: '/games/**',
       },
     ],
   },
