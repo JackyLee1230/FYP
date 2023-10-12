@@ -4,85 +4,65 @@ import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
 import WebToolbar from "../../components/Toolbar";
-import { Box, Typography, Button, Divider, Pagination } from "@mui/material";
+import { Popper, Box, Typography, Button, Divider, Pagination, Fade } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
+import AdvancedSearchBox from "../../components/AdvancedSearchBox";
 
 export type GameSearchPageProps = {
-  searchString: string;
-  games: GameInfo[];
-  totalPages: number;
+  gameData: GameInfo[];
   errorMessage: string;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { searchString } = context.query;
-  const apiUrl = "http://localhost:8080/api/game/findGamesByNamePaged";
+  const { gamename } = context.query;
+  const apiUrl = "http://localhost:8080/api/game/findGamesWithSearch";
   const body = {
-    name: searchString,
-    gamesPerPage: 1,
-    pageNum: 0,
+    name: gamename,
+    developerCompany: gamename,
+    genre: [],
+    platforms: [],
   };
 
-  let data = null;
+  let gameData = null;
   let errorMessage = null;
 
   try {
     const response = await axios.post(apiUrl, body);
     if (response.status === 200) {
-      data = await response.data;
+      gameData = await response.data;
     } else {
       errorMessage = response.statusText;
     }
   } catch (error: any) {
-    console.error(error);
     errorMessage = error.toString();
   }
 
-  const games = data.content;
-  const totalPages = data.totalPages;
-
   return {
     props: {
-      searchString,
-      games,
-      totalPages,
+      gameData,
       errorMessage,
     },
   };
 };
 
-function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSearchPageProps) {
-  const [gameData, setGameData] = useState(games);
-
+function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const router = useRouter();
   const [page, setPage] = useState<number>(1);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+  const [open, setOpen] = React.useState(false);
 
-  const handlePageChange = async (
+  const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    try {
-    const body = {
-      name: searchString,
-      gamesPerPage: 1,
-      pageNum: value-1,
-    };
-    const apiUrl = "http://localhost:8080/api/game/findGamesByNamePaged";
-
-    const response = await axios.post(apiUrl, body);
-    if (response.status === 200) {
-      games = await response.data.content;
-    } else {
-      errorMessage = response.statusText;
-    }
-    } catch (error: any) {
-      console.error(error);
-      errorMessage = error.toString();
-    }
-
-    setGameData(games);
     setPage(value);
+  };
+
+  const handlePopperClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+    setOpen((prev) => !prev);
   };
 
   return (
@@ -113,11 +93,21 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
             <Box
               display="inline"
               sx={{ color: "text.primary", fontWeight: 700 }}
-            >{`"${router.query.searchString}"`}</Box>
+            >{`"${router.query.gamename}"`}</Box>
           </Typography>
-          <Button variant="contained" size="large" color="secondary">
+          <Button variant="contained" size="large" color="secondary" onClick={handlePopperClick}>
             Advanced Search
           </Button>
+
+          <Popper open={open} anchorEl={anchorEl} placement='bottom-start' transition>
+            {({ TransitionProps }) => (
+              <Fade {...TransitionProps} timeout={350}>
+                <div>
+                  <AdvancedSearchBox />
+                </div>
+              </Fade>
+            )}
+          </Popper>
         </Box>
         <Divider />
 
@@ -130,7 +120,9 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
           }}
         >
           {gameData && gameData.length > 0 ? (
-            gameData.map((game) => <SearchGameCard key={game.id} gameData={game} />)
+            gameData
+              .slice((page - 1) * rowsPerPage, page * rowsPerPage)
+              .map((game) => <SearchGameCard key={game.id} gameData={game} />)
           ) : (
             <>
               <Typography variant="h6">No Games Found</Typography>
@@ -154,7 +146,7 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
                   <Box
                     display="inline"
                     sx={{ color: "text.primary", fontWeight: 700 }}
-                  >{`"${router.query.searchString}"`}</Box>
+                  >{`"${router.query.gamename}"`}</Box>
                   , Please double check the spelling and try again.
                 </Typography>
               )}
@@ -166,7 +158,7 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
           color="primary"
           variant="outlined"
           size="large"
-          count={totalPages}
+          count={Math.ceil(gameData.length / rowsPerPage)}
           page={page}
           onChange={handlePageChange}
           sx={{

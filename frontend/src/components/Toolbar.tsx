@@ -47,7 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const WebToolbar = () => {
-  const [searchString, setSearchString] = useState<String>("")
+  const [searchString, setSearchString] = useState<string>("")
   const debouncedSearchString = useDebounce(searchString, 200);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter()
@@ -71,7 +71,10 @@ const WebToolbar = () => {
 
   const handleGameSearch = () => {
     if(debouncedSearchString.trim().length > 0)
-      router.push(`/result/${debouncedSearchString}`)
+      router.push({
+        pathname: '/result',
+        query: { gamename: debouncedSearchString },
+      })
   }
 
   return (
