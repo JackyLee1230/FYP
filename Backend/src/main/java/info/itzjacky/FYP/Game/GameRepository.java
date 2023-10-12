@@ -1,12 +1,15 @@
 package info.itzjacky.FYP.Game;
 
+import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.User.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,10 +46,19 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
     @Query("SELECT count(*) FROM Game g WHERE g.name LIKE %:name%")
     Long countByName(String name);
 
+//    @Query("SELECT g FROM Game g WHERE g.name LIKE %:name%")
+//    @Query(nativeQuery=true,
+//            value="Select * from Game as g where g.name like %:name%",
+//            countQuery="SELECT count(*) FROM Game g WHERE g.name LIKE %:name%")
+//    List<Game> findGamesByNamePaged(@Param("name") String name, PageRequest limit);
+
+    @Query(nativeQuery = true, value = "select * from game g where g.name LIKE %:name%")
+    Page<Game> findGamesByNamePaged(String name, Pageable pageable);
+
 
 //    write a query to get the top 10 games by number of reviews
 //    @Query("SELECT g FROM Game g ORDER BY SIZE(g.gameReviews) DESC")
-    List<Game> findTop10ByCreatedAt(Pageable pageable);
+//    List<Game> findTop10ByCreatedAt(Pageable pageable);
 
 }
 

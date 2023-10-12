@@ -31,4 +31,6 @@ public class GameRequest {
     private List<Platform> platforms;
     private GameVersion gameVersion;
     private Integer numOfGames;
+    private Integer pageNum;
+    private Integer gamesPerPage;
 }

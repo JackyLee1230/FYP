@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.lang.model.type.ArrayType;
+import java.awt.print.Pageable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -226,6 +227,16 @@ public class GameService {
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
+
+    public Page<Game> findGamesByNamePaged(GameRequest gameRequest){
+        try{
+            return gameRepository.findGamesByNamePaged(gameRequest.getName(), PageRequest.of(0, 2));
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
+
 
 //    only input 1 platform
     public List<Game> findGamesByPlatform(GameRequest gameRequest){
