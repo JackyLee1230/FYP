@@ -230,7 +230,13 @@ public class GameService {
 
     public Page<Game> findGamesByNamePaged(GameRequest gameRequest){
         try{
-            return gameRepository.findGamesByNamePaged(gameRequest.getName(), PageRequest.of(0, 2));
+            if(gameRequest.getGamesPerPage() == null || gameRequest.getGamesPerPage() < 0 ){
+                gameRequest.setGamesPerPage(5);
+            }
+            if(gameRequest.getPageNum() == null || gameRequest.getPageNum() < 0 ){
+                gameRequest.setPageNum(0);
+            }
+            return gameRepository.findGamesByNamePaged(gameRequest.getName(), PageRequest.of(gameRequest.getPageNum(), gameRequest.getGamesPerPage()));
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
