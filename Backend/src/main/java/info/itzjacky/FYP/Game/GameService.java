@@ -269,4 +269,12 @@ public class GameService {
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
+
+    public Long countByName(GameRequest gameRequest) {
+        try{
+            return gameRepository.countByName(gameRequest.getName());
+        } catch (Exception e){
+            throw new IllegalStateException("Error finding games");
+        }
+    }
 }

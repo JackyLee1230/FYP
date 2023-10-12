@@ -40,10 +40,14 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
     @Query("SELECT g FROM Game g WHERE g.name LIKE %:name%")
     List<Game> findGamesByName(String name);
 
+    @Query("SELECT count(*) FROM Game g WHERE g.name LIKE %:name%")
+    Long countByName(String name);
+
 
 //    write a query to get the top 10 games by number of reviews
 //    @Query("SELECT g FROM Game g ORDER BY SIZE(g.gameReviews) DESC")
     List<Game> findTop10ByCreatedAt(Pageable pageable);
+
 }
 
 
