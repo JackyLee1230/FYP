@@ -83,6 +83,9 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             alignItems: "flex-start",
             gap: "12px",
             width: "100%",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
           }}
         >
           <Box
@@ -93,16 +96,14 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               alignSelf: "stretch",
             }}
           >
-            <Typography variant="h4" gutterBottom={false}>
+            <Typography variant="h4" gutterBottom={false} noWrap>
               {gameData?.name}{" "}
-              {gameData?.dlc === true && gameData?.baseGame !== null
-                ? `[${gameData?.baseGame.name} DLC]`
-                : ""}
             </Typography>
             <Typography
               variant="subtitle1"
               gutterBottom={false}
               color="text.secondary"
+              noWrap
             >
               {gameData?.developerCompany}
             </Typography>
@@ -172,54 +173,65 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             )}
           </Box>
 
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignSelf: "stretch",
+            }}
+          >
             <Typography
               variant="subtitle1"
               gutterBottom={false}
               color="text.secondary"
+              noWrap
             >{`${
-              gameData?.platforms.length > 1
-                ? `${gameData?.platforms[0]} ...more`
-                : gameData?.platforms[0]
-            } | ${gameData.releaseDate}`}</Typography>
+                gameData?.platforms.length > 1
+                  ? `${gameData?.platforms[0]} ...more`
+                  : gameData?.platforms[0]
+              } | ${gameData.releaseDate}
+                ${gameData?.dlc === true && gameData?.baseGame !== null ?
+                   `| (${gameData?.baseGame.name} DLC)` : ""}`}
+            </Typography>
           </Box>
         </Box>
 
-        <Box
-          sx={(theme) => ({
-            display: "flex",
-            width: "180px",
-            height: "220px",
-            transform: "rotate(12deg)",
-            justifyContent: "center",
-            alignItems: "center",
-            flexShrink: 0,
+        <Box sx={{display: "block"}}>
+          <Box
+            sx={(theme) => ({
+              display: "flex",
+              width: "180px",
+              height: "220px",
+              transform: "rotate(12deg)",
+              justifyContent: "center",
+              alignItems: "center",
+              flexShrink: 0,
 
-            position: "relative",
-            right: "-13px",
+              position: "relative",
+              right: "-13px",
 
-            borderRadius: "32px",
-            background:
-              gameData.score > 70
-                ? theme.palette.success.main
-                : gameData.score > 50
-                ? theme.palette.warning.main
-                : theme.palette.error.main,
-            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-          })}
-        >
-          <Typography
-            variant="h2"
-            gutterBottom={false}
-            color="background.default"
-            sx={{
-              transform: "rotate(-12deg)",
-              fontWeight: 700,
-              textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            }}
+              borderRadius: "32px",
+              background:
+                gameData.score > 70
+                  ? theme.palette.success.main
+                  : gameData.score > 50
+                  ? theme.palette.warning.main
+                  : theme.palette.error.main,
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            })}
           >
-            {Math.round(gameData.score).toString()}
-          </Typography>
+            <Typography
+              variant="h2"
+              gutterBottom={false}
+              color="background.default"
+              sx={{
+                transform: "rotate(-12deg)",
+                fontWeight: 700,
+                textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              }}
+            >
+              {Math.round(gameData.score).toString()}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </ButtonBase>
