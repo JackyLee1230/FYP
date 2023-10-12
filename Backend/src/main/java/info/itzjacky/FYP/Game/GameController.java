@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/game")
@@ -33,12 +34,12 @@ public class GameController {
     }
 
     @GetMapping("/getAllGameGenres")
-    public ResponseEntity<List<GameGenre>> getAllGameGenres() {
+    public ResponseEntity<List<Map<String, Integer>>> getAllGameGenres() {
         return new ResponseEntity<>(GameGenre.getAllGenres(), HttpStatus.OK);
     }
 
     @GetMapping("/getAllGamePlatforms")
-    public ResponseEntity<List<Platform>> getAllGamePlatforms() {
+    public ResponseEntity<List<Map<String, Integer>>> getAllGamePlatforms() {
         return new ResponseEntity<>(Platform.getAllPlatforms(), HttpStatus.OK);
     }
 
