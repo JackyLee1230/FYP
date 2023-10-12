@@ -1,6 +1,6 @@
+import { getGenre } from "../type/gameGenre";
 import { GameInfo } from "../type/game";
 import { Box, Typography, ButtonBase } from "@mui/material";
-import { getGenre } from "../type/gameGenre";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
