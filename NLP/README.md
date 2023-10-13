@@ -8,6 +8,8 @@ API to grab comments
 
 Ofiicial documentation: [Documentation](https://partner.steamgames.com/doc/store/getreviews)
 
+Supported Langauges: [Documentation](https://partner.steamgames.com/doc/store/localization/languages) (Look for the column 'API language code')
+
 A sample API call is on Postman, under folder Steamworks API.
 
 Scraping is safe, as long as not too frequent, quote  
