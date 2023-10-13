@@ -427,6 +427,8 @@ class HkuChatGPT:
                 self.driver.switch_to.window(w)
                 break
 
+        time.sleep(5)
+
         # now we are in the microsoft login window
         # get both textbox for email and pw, input them
         email_input = self.driver.find_element(By.CLASS_NAME, "input")
