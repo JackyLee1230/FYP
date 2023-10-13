@@ -15,13 +15,20 @@ export type GameSearchPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { gamename } = context.query;
-  const apiUrl = "http://localhost:8080/api/game/findGamesWithSearch";
+  const { gamename, developername, platform, genre } = context.query;
+
+  const searchType = !!gamename ? "game" : "developer";
+  
+  const apiUrl =
+  searchType == "game"
+    ? "http://localhost:8080/api/game/findGamesWithSearch"
+    : "http://localhost:8080/api/game/findGamesWithSearchDeveloper";
+
   const body = {
-    name: gamename,
-    developerCompany: gamename,
-    genre: [],
-    platforms: [],
+    name: !!gamename ? gamename : developername,
+    developerCompany: !!gamename ? gamename : developername,
+    genre: !(genre === undefined) ? typeof genre === "string" ? [genre] : genre : [],
+    platforms: !(platform === undefined) ? typeof platform === "string" ? [platform] : platform : [],
   };
 
   let gameData = null;
@@ -52,6 +59,11 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
+  const searchType = !!router.query.gamename ? "Game" : "Developer";
+  const searchString = router.query.gamename ?? router.query.developername;
+  const platform = router.query.platform;
+  const genre = router.query.genre;
+
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -89,17 +101,20 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             component="div"
             sx={{ color: "text.secondary" }}
           >
-            Search Result for{" "}
+          Search Result for{" "}
             <Box
               display="inline"
               sx={{ color: "text.primary", fontWeight: 700 }}
-            >{`"${router.query.gamename}"`}</Box>
+            >
+              {`"${searchString}"`}
+            </Box>
+            {" "} {` By ${searchType} Name`}
           </Typography>
           <Button variant="contained" size="large" color="secondary" onClick={handlePopperClick}>
             Advanced Search
           </Button>
 
-          <Popper open={open} anchorEl={anchorEl} placement='bottom-start' transition>
+          <Popper open={open} anchorEl={anchorEl} placement='bottom-start' transition keepMounted>
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <div>
@@ -134,7 +149,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
                   sx={{ color: "text.secondary" }}
                 >
                   Error occurred during searching: {errorMessage}, please
-                  contact support for help
+                  contact support for help.
                 </Typography>
               ) : (
                 <Typography
@@ -146,28 +161,36 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
                   <Box
                     display="inline"
                     sx={{ color: "text.primary", fontWeight: 700 }}
-                  >{`"${router.query.gamename}"`}</Box>
+                  >{`"${searchString}"`}</Box>
                   , Please double check the spelling and try again.
+                  {(platform || genre) && (
+                    <Box
+                      display="inline"
+                      sx={{ color: "text.secondary", fontWeight: 400 }}
+                    >{" "}Or to remove some of the filter attributes</Box>
+                  )}
                 </Typography>
               )}
             </>
           )}
         </Box>
 
-        <Pagination
-          color="primary"
-          variant="outlined"
-          size="large"
-          count={Math.ceil(gameData.length / rowsPerPage)}
-          page={page}
-          onChange={handlePageChange}
-          sx={{
-            "& .MuiPagination-ul": {
-              alignItems: "center",
-              justifyContent: "center",
-            },
-          }}
-        />
+        {gameData && gameData.length > 0 &&
+          <Pagination
+            color="primary"
+            variant="outlined"
+            size="large"
+            count={Math.ceil(gameData.length / rowsPerPage)}
+            page={page}
+            onChange={handlePageChange}
+            sx={{
+              "& .MuiPagination-ul": {
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            }}
+          />
+        }
       </Box>
     </>
   );

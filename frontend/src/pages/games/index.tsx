@@ -11,42 +11,11 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
+import { GenreList, getGenre } from "@/type/gameGenre";
+import { PlatformList, getPlatform } from "@/type/gamePlatform";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  let genres = null;
-  let platforms = null;
-  let errorMessage = null;
 
-  try {
-    // Fetch the game data from an API using Axios
-    const response = await axios.get(
-      "http://localhost:8080/api/game/getAllGameGenres"
-    );
-
-    const platformResponse = await axios.get(
-      "http://localhost:8080/api/game/getAllGamePlatforms"
-    );
-
-    if (response.status === 200 && platformResponse.status === 200) {
-      genres = await response.data;
-      platforms = await platformResponse.data;
-    } else {
-      errorMessage = response.statusText;
-    }
-  } catch (error: any) {
-    // console.error(error);
-    errorMessage = error.toString();
-  }
-  console.log(genres);
-  return {
-    props: {
-      genres,
-      platforms,
-    },
-  };
-};
-
-export default function Search({ genres, platforms }: GameSearchPageProps) {
+export default function Search() {
   const [games, setGames] = useState<GameInfo[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchString, setSearchString] = useState("");
@@ -162,11 +131,11 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
                 onSelectedGenresChange(e);
               }}
             >
-              {genres &&
-                genres.map((genre) => {
+              {GenreList &&
+                GenreList.map((genre) => {
                   return (
                     <option key={genre} value={genre}>
-                      {genre}
+                      {getGenre(genre)}
                     </option>
                   );
                 })}
@@ -185,11 +154,11 @@ export default function Search({ genres, platforms }: GameSearchPageProps) {
               onSelectedPlatformsChange(e);
             }}
           >
-            {platforms &&
-              platforms.map((platform) => {
+            {PlatformList &&
+              PlatformList.map((platform) => {
                 return (
                   <option key={platform} value={platform}>
-                    {platform}
+                    {getPlatform(platform)}
                   </option>
                 );
               })}

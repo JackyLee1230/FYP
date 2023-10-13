@@ -42,4 +42,8 @@ export enum GenreById {
   MOBA = 15,
 }
 
+export function getIdByGenre(key: string): number {
+  return GenreById[key as keyof typeof GenreById];
+}
+
 export default Genre;
