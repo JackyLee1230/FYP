@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import { useDebounce } from "usehooks-ts";
+import Link from 'next/link'
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -56,19 +57,6 @@ const WebToolbar = () => {
     // Redirect to profile page
   };
 
-  const handleHomePageRedirect = () => {
-    router.push("/")
-  };
-
-
-  const handleNewGameRedirect = () => {
-    router.push("/new-game")
-  };
-
-  const handleNewReviewRedirect = () => {
-    router.push("/new-review")
-  };
-
   const handleGameSearch = () => {
     if(debouncedSearchString.trim().length > 0)
       router.push({
@@ -96,7 +84,7 @@ const WebToolbar = () => {
             width: "100%"
           }}
         >
-          <ButtonBase onClick={handleHomePageRedirect}>
+          <ButtonBase LinkComponent={Link} href="/" sx={{borderRadius: 2}}>
             <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
           </ButtonBase>
           
@@ -105,7 +93,8 @@ const WebToolbar = () => {
             variant="text" 
             size="large" 
             sx={{color: 'background.default', whiteSpace : "nowrap", flexShrink: 0, fontWeight: 500}}
-            onClick={handleNewGameRedirect}
+            LinkComponent={Link} 
+            href="/new-game"
           >
             Add Game
           </Button>
@@ -114,7 +103,8 @@ const WebToolbar = () => {
             variant="text" 
             size="large" 
             sx={{color: 'background.default', whiteSpace : "nowrap", flexShrink: 0, fontWeight: 500}}
-            onClick={handleNewReviewRedirect}
+            LinkComponent={Link}
+            href="/new-review"
           >
             Add Review
           </Button>

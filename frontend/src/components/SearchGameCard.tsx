@@ -4,6 +4,7 @@ import { Box, Typography, ButtonBase } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import Link from 'next/link'
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -18,8 +19,9 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
 
   return (
     <ButtonBase
-      onClick={handleNewGamePageRedirect}
       sx={{ borderRadius: "12px 4px" }}
+      LinkComponent={Link}
+      href={`/games/${gameData.id}`}
     >
       <Box
         sx={(theme) => ({
