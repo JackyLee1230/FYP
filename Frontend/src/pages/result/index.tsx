@@ -118,7 +118,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <div>
-                  <AdvancedSearchBox />
+                  <AdvancedSearchBox setOpen={setOpen}/>
                 </div>
               </Fade>
             )}

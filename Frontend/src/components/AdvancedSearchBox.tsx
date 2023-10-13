@@ -5,7 +5,11 @@ import { PlatformList, getPlatform, getIdByPlatform } from "@/type/gamePlatform"
 import { useRouter } from "next/router";
 import { useDebounce } from 'usehooks-ts';
 
-const AdvancedSearchBox: React.FC = () => {
+type AdvancedSearchBoxProps = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
   const router = useRouter();
 
   const [searchString, setSearchString] = useState<string>("")
@@ -63,6 +67,8 @@ const AdvancedSearchBox: React.FC = () => {
           query: { developername: debouncedSearchString, genre: genreIdList, platform: platformIdList},
         })
       }
+
+      setOpen(false);
     }
   };
 
