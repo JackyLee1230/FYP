@@ -44,6 +44,12 @@ public class GameService {
                     .name(gameRequest.getName())
                     .description(gameRequest.getDescription())
                     .genre(gameRequest.getGenre())
+                    .isDLC(gameRequest.isDLC())
+                    .isFree(gameRequest.isFree())
+                    .legalNotice(gameRequest.getLegalNotice())
+                    .gamePage(gameRequest.getGamePage())
+                    .gamePrice(gameRequest.getGamePrice())
+                    .requiredAge(gameRequest.getRequiredAge())
                     .version(gameRequest.getGameVersion() == null ? "Latest" : gameRequest.getGameVersion().getVersion())
                     .developerCompany(gameRequest.getDeveloperCompany())
                     .developers(gameRequest.getDevelopers())
@@ -58,6 +64,36 @@ public class GameService {
             return g;
         }catch (Exception e){
             throw new IllegalStateException("Failed to create Game");
+        }
+    }
+
+    public Game updateGame(GameRequest gameRequest){
+        try{
+            if(gameRequest.getId() == null){
+                throw new IllegalStateException("Game Id Cannot be Null");
+            }
+            Game g = gameRepository.findGameById(gameRequest.getId());
+            g.setName(gameRequest.getName() == null ? g.getName() : gameRequest.getName());
+            g.setDescription(gameRequest.getDescription() == null ? g.getDescription() : gameRequest.getDescription());
+            g.setGenre(gameRequest.getGenre() == null ? g.getGenre() : gameRequest.getGenre());
+            g.setDLC(gameRequest.isDLC());
+            g.setFree(gameRequest.isFree());
+            g.setLegalNotice(gameRequest.getLegalNotice() == null ? g.getLegalNotice() : gameRequest.getLegalNotice());
+            g.setGamePage(gameRequest.getGamePage() == null ? g.getGamePage() : gameRequest.getGamePage());
+            g.setGamePrice(gameRequest.getGamePrice() == null ? g.getGamePrice() : gameRequest.getGamePrice());
+            g.setRequiredAge(gameRequest.getRequiredAge() == null ? g.getRequiredAge() : gameRequest.getRequiredAge());
+            g.setVersion(gameRequest.getGameVersion() == null ? g.getVersion() : gameRequest.getGameVersion().getVersion());
+            g.setDeveloperCompany(gameRequest.getDeveloperCompany() == null ? g.getDeveloperCompany() : gameRequest.getDeveloperCompany());
+            g.setDevelopers(gameRequest.getDevelopers() == null ? g.getDevelopers() : gameRequest.getDevelopers());
+            g.setPublisher(gameRequest.getPublisher() == null ? g.getPublisher() : gameRequest.getPublisher());
+            g.setInDevelopment(gameRequest.isInDevelopment());
+            g.setTester(gameRequest.getTester() == null ? g.getTester() : gameRequest.getTester());
+            g.setPlatforms(gameRequest.getPlatforms() == null ? g.getPlatforms() : gameRequest.getPlatforms());
+            g.setReleaseDate(gameRequest.getReleaseDate() == null ? g.getReleaseDate() : gameRequest.getReleaseDate());
+            gameRepository.save(g);
+            return g;
+        }catch (Exception e){
+            throw new IllegalStateException("Failed to update Game");
         }
     }
 

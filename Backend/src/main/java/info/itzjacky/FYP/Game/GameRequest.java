@@ -15,6 +15,13 @@ import java.util.List;
 public class GameRequest {
     private Integer id;
     private String name;
+    private boolean isDLC;
+    private boolean isFree;
+    private boolean isFullGame;
+    private String legalNotice;
+    private String gamePage;
+    private String gamePrice;
+    private String requiredAge;
     private String description;
     private String releaseDate;
     private List<User> developers;

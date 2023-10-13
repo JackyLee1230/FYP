@@ -32,6 +32,12 @@ public class Game {
     @NonNull
     private String name;
     private boolean isDLC;
+    private boolean isFree;
+    private boolean isFullGame;
+    private String legalNotice;
+    private String gamePage;
+    private String gamePrice;
+    private String requiredAge;
     @ManyToOne
     @JoinColumn(name = "base_game_id")
     private Game BaseGame;
