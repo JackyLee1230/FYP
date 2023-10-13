@@ -67,12 +67,24 @@ public class GameService {
         }
     }
 
+    public Game findGameByNameAndDeveloperCompany(GameRequest gameRequest){
+        try{
+            return gameRepository.findGameByNameAndAndDeveloperCompany(gameRequest.getName(), gameRequest.getDeveloperCompany()).orElseThrow(() -> new IllegalStateException("Game Does Not Exist"));
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     public Game updateGame(GameRequest gameRequest){
         try{
-            if(gameRequest.getId() == null){
-                throw new IllegalStateException("Game Id Cannot be Null");
+            Game g;
+            if(gameRequest.getId() != null){
+                g =  gameRepository.findGameById(gameRequest.getId());
+            } else if (gameRequest.getName() != null && gameRequest.getDeveloperCompany() != null){
+                g = gameRepository.findGameByNameAndAndDeveloperCompany(gameRequest.getName(), gameRequest.getDeveloperCompany()).orElseThrow(() -> new IllegalStateException("Game Does Not Exist"));
+            } else {
+                throw new IllegalStateException("Provide gameid / name+ developer company");
             }
-            Game g = gameRepository.findGameById(gameRequest.getId());
             g.setName(gameRequest.getName() == null ? g.getName() : gameRequest.getName());
             g.setDescription(gameRequest.getDescription() == null ? g.getDescription() : gameRequest.getDescription());
             g.setGenre(gameRequest.getGenre() == null ? g.getGenre() : gameRequest.getGenre());
