@@ -4,61 +4,33 @@ import Link from 'next/link';
 import 'tailwindcss/tailwind.css';
 import axios from 'axios';
 import type { GetServerSideProps } from 'next'
+import { GenreList, getGenre } from "@/type/gameGenre";
+import { PlatformList, getPlatform } from "@/type/gamePlatform";
 
 type RegisterGameData = {
   name: string;
   description: string;
   releaseDate: string;
   developerCompany: string;
-  isInDevelopment: boolean;
+  inDevelopment: boolean;
   platforms: string[];
   publisher: string;
   genre: string[];
   score: number | null;
 };
 
-type AddNewGameProps = {
-  genres: string[]
-  errorMessage: string
-}
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  let genres = null;
-  let errorMessage = null;
-
-  try {
-    const res = await axios.get('http://localhost:8080/api/game/getAllGameGenres');
-
-    if(res.status === 200){
-      genres = await res.data;
-    }
-    else{
-      errorMessage = res.statusText;
-    }
-  } catch (error: any) {{
-    console.error(error);
-    errorMessage = error.toString()
-  }}
-
-  return {
-    props: {
-      genres,
-      errorMessage,
-    },
-  };
-};
-
-function AddNewGame({ genres, errorMessage }: AddNewGameProps) {
+function AddNewGame() {
   const router = useRouter();
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
   const [developerCompany, setDeveloperCompany] = useState('');
-  const [isInDevelopment, setIsInDevelopment] = useState(false);
-  const [platforms, setPlatforms] = useState('');
+  const [inDevelopment, setIsInDevelopment] = useState(false);
   const [publisher, setPublisher] = useState('');
-  const [genre, setGenre] = useState<string[]>(genres !== null ? [genres[0]] : [""]);
+  const [genre, setGenre] = useState<string[]>([""]);
+  const [platforms, setPlatform] = useState<string[]>([""]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,8 +40,8 @@ function AddNewGame({ genres, errorMessage }: AddNewGameProps) {
       description,
       releaseDate,
       developerCompany,
-      isInDevelopment,
-      platforms: platforms.split(',').map((item: string) => item.trim()),
+      inDevelopment,
+      platforms,
       publisher,
       genre,
       score: 0
@@ -78,11 +50,11 @@ function AddNewGame({ genres, errorMessage }: AddNewGameProps) {
         
     try {
       const response = await axios.post('http://localhost:8080/api/game/addGame', registerGameData);
+      const gameId = response.data.id;
 
       if (response.status === 200) {
         console.debug('Game added successfully');
-//      TODO: redirect to game home page
-//      router.push('/games');
+        router.push(`/games/${gameId}`);
       } else {
         console.debug('Failed to add game');
       }
@@ -96,17 +68,11 @@ function AddNewGame({ genres, errorMessage }: AddNewGameProps) {
     setGenre(selectedOptions);
   };
 
-  if(errorMessage !== null){
-    return (
-      <div className="text-center text-xl font-bold">{errorMessage}</div>
-    )
-  }
-
-  if(genres === null){
-    return (
-      <div className="text-center text-xl font-bold">Loading......</div>
-    )
-  }
+  
+  const onPlatformChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setPlatform(selectedOptions);
+  };
 
   return (
     <div className="mt-4">
@@ -116,17 +82,26 @@ function AddNewGame({ genres, errorMessage }: AddNewGameProps) {
         <input value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} type="date" required className="w-full p-2 border border-gray-300 rounded" />
         <input value={developerCompany} onChange={(e) => setDeveloperCompany(e.target.value)} placeholder="Developer Company" required className="w-full p-2 border border-gray-300 rounded" />
         <label className="flex items-center space-x-2">
-          <input checked={isInDevelopment} onChange={(e) => setIsInDevelopment(e.target.checked)} type="checkbox" />
+          <input checked={inDevelopment} onChange={(e) => setIsInDevelopment(e.target.checked)} type="checkbox" />
           <span>Is in Development?</span>
         </label>
-        <input value={platforms} onChange={(e) => setPlatforms(e.target.value)} placeholder="Platforms (comma separated)" required className="w-full p-2 border border-gray-300 rounded" />
-        <input value={publisher} onChange={(e) => setPublisher(e.target.value)} placeholder="Publisher" required className="w-full p-2 border border-gray-300 rounded" />
+        <input value={publisher} onChange={(e) => setPublisher(e.target.value)} placeholder="Publisher" required className="w-full p-2 border border-gray-300 rounded" />   
+        <div className="flex items-center space-x-2">
+          <label htmlFor="platforms" className="text-lg font-bold mb-2">Select your game platform(s)</label>
+          <select value={platforms} onChange={onPlatformChange} id="platforms" className="border rounded p-2" multiple>
+            {PlatformList.map((platforms) => (
+              <option key={platforms} value={platforms}>
+                {getPlatform(platforms)}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="flex items-center space-x-2">
           <label htmlFor="genre" className="text-lg font-bold mb-2">Select your game genre(s)</label>
           <select value={genre} onChange={onGenreChange} id="genre" className="border rounded p-2" multiple>
-            {genres.map((genre) => (
+            {GenreList.map((genre) => (
               <option key={genre} value={genre}>
-                {genre}
+                {getGenre(genre)}
               </option>
             ))}
           </select>

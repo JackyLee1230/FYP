@@ -37,5 +37,34 @@ export function getPlatformKey(value: string): string {
   );
 }
 
+export const PlatformList = ["PS1", "PS2", "PS3", "PS4", "PS5", "XBOX", "XBOX_360", "XBOX_ONE", "XBOX_SERIES", "STEAM", "GOG", "ORIGIN", "MAC", "EPIC_GAMES", "NINTENDO_64", "NINTENDO_GAMECUBE", "NINTENDO_WII", "NINTENDO_WII_U", "NINTENDO_SWITCH", "NINTENDO_GAMEBOY", "NINTENDO_GAMEBOY_ADVANCE", "NINTENDO_GAMEBOY_COLOR", "NINTENDO_DS", "NINTENDO_3DS"]
+
+export enum PlatformById {
+  PS1 = 0,
+  PS2 = 1,
+  PS3 = 2,
+  PS4 = 3,
+  PS5 = 4,
+  XBOX = 5,
+  XBOX_360 = 6,
+  XBOX_ONE = 7,
+  XBOX_SERIES = 8,
+  STEAM = 9,
+  GOG = 10,
+  ORIGIN = 11,
+  MAC = 12,
+  EPIC_GAMES = 13,
+  NINTENDO_64 = 14,
+  NINTENDO_GAMECUBE = 15,
+  NINTENDO_WII = 16,
+  NINTENDO_WII_U = 17,
+  NINTENDO_SWITCH = 18,
+  NINTENDO_GAMEBOY = 19,
+  NINTENDO_GAMEBOY_ADVANCE = 20,
+  NINTENDO_GAMEBOY_COLOR = 21,
+  NINTENDO_DS = 22,
+  NINTENDO_3DS = 23,
+}
+
 export default Platform;
 

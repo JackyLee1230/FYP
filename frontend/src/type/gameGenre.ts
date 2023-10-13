@@ -21,5 +21,25 @@ export function getGenre(key: string): string {
   return Genre[key as keyof typeof Genre];
 }
 
-export default Genre;
+export const GenreList = ["ACTION_AND_ADVENTURE", "CLASSICS", "FAMILY_AND_KIDS", "INDIE", "PLATFORMER", "PUZZLE", "RPG", "SHOOTER", "SIMULATION", "SPORTS", "STRATEGY", "RHYTHM", "SURVIVAL", "HORROR", "MMO", "MOBA"]
 
+export enum GenreById {
+  ACTION_AND_ADVENTURE = 0,
+  CLASSICS = 1,
+  FAMILY_AND_KIDS = 2,
+  INDIE = 3,
+  PLATFORMER = 4,
+  PUZZLE = 5,
+  RPG = 6,
+  SHOOTER = 7,
+  SIMULATION = 8,
+  SPORTS = 9,
+  STRATEGY = 10,
+  RHYTHM = 11,
+  SURVIVAL = 12,
+  HORROR = 13,
+  MMO = 14,
+  MOBA = 15,
+}
+
+export default Genre;
