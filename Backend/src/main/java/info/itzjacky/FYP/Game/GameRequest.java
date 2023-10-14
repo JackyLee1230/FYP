@@ -42,4 +42,6 @@ public class GameRequest {
     private Integer numOfGames;
     private Integer pageNum;
     private Integer gamesPerPage;
+    private Boolean orderedByScore;
+    private Boolean orderedByReleaseDate;
 }

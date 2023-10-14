@@ -10,7 +10,7 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Game> customFindGames(String name, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment) {
+    public List<Game> customFindGames(String name, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment, Boolean orderedByScore, Boolean orderedByReleaseDate) {
 
 //        for each platforms in platform, add part of the sql query where p MEMBER OF g.platforms
 //        if genre exist, add brackets around the genre part of the query
@@ -48,13 +48,29 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
                 query.append(" OR ");
             }
         }
+
+        if (orderedByScore != null && orderedByReleaseDate != null) {
+            query.append(" ORDER BY ");
+            if (orderedByScore) {
+                query.append("g.score ");
+                if (orderedByReleaseDate) {
+                    query.append(", g.releaseDate DESC");
+                } else {
+                    query.append(" DESC");
+                }
+            }
+            if (orderedByScore == false && orderedByReleaseDate == true){
+                query.append("g.releaseDate DESC");
+            }
+        }
+
         System.out.println(query.toString());
         return (List<Game>) entityManager.createQuery(query.toString())
                 .getResultList();
     }
 
     @Override
-    public List<Game> customFindGamesDeveloper(String developer, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment) {
+    public List<Game> customFindGamesDeveloper(String developer, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment, Boolean orderedByScore, Boolean orderedByReleaseDate) {
 
 //        for each platforms in platform, add part of the sql query where p MEMBER OF g.platforms
 //        if genre exist, add brackets around the genre part of the query
@@ -92,6 +108,22 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
                 query.append(" OR ");
             }
         }
+
+        if (orderedByScore != null && orderedByReleaseDate != null) {
+            query.append(" ORDER BY ");
+            if (orderedByScore) {
+                query.append("g.score ");
+                if (orderedByReleaseDate) {
+                    query.append(", g.releaseDate DESC");
+                } else {
+                    query.append(" DESC");
+                }
+            }
+            if (orderedByScore == false && orderedByReleaseDate == true){
+                query.append("g.releaseDate DESC");
+            }
+        }
+
         System.out.println(query.toString());
         return (List<Game>) entityManager.createQuery(query.toString())
                 .getResultList();
