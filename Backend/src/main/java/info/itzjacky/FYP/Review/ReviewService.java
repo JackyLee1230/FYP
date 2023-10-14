@@ -205,7 +205,7 @@ public class ReviewService {
                 .gameVersion(reviewRequest.getGameVersion() == null ? gameRepository.findGameById(reviewRequest.getGameId()).getVersion() : reviewRequest.getGameVersion())
                 .score(reviewRequest.getScore())
                 .comment(reviewRequest.getComment())
-                .recommended(reviewRequest.isRecommended())
+                .recommended(reviewRequest.getRecommended())
                 .createdAt(new java.sql.Date(System.currentTimeMillis()))
                 .build();
         try{

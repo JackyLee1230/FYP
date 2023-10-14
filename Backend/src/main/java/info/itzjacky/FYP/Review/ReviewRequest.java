@@ -24,7 +24,7 @@ public class ReviewRequest {
 
     private Float score;
 
-    private boolean recommended;
+    private Boolean recommended;
 
     private String comment;
 

@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Game;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.User.User;
 import lombok.*;
@@ -12,12 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GameRequest {
     private Integer id;
     private String name;
-    private boolean isDLC;
-    private boolean isFree;
-    private boolean isFullGame;
+    private Boolean isDLC;
+    private Boolean isFree;
+    private Boolean isFullGame;
     private String legalNotice;
     private String gamePage;
     private String gamePrice;
@@ -25,7 +27,7 @@ public class GameRequest {
     private String description;
     private String releaseDate;
     private List<User> developers;
-    private boolean isInDevelopment;
+    private Boolean isInDevelopment;
     private String developerCompany;
     private String publisher;
     private Float score;

@@ -44,8 +44,8 @@ public class GameService {
                     .name(gameRequest.getName())
                     .description(gameRequest.getDescription())
                     .genre(gameRequest.getGenre())
-                    .isDLC(gameRequest.isDLC())
-                    .isFree(gameRequest.isFree())
+                    .isDLC(gameRequest.getIsDLC())
+                    .isFree(gameRequest.getIsFree())
                     .legalNotice(gameRequest.getLegalNotice())
                     .gamePage(gameRequest.getGamePage())
                     .gamePrice(gameRequest.getGamePrice())
@@ -54,7 +54,7 @@ public class GameService {
                     .developerCompany(gameRequest.getDeveloperCompany())
                     .developers(gameRequest.getDevelopers())
                     .publisher(gameRequest.getPublisher())
-                    .isInDevelopment(gameRequest.isInDevelopment())
+                    .isInDevelopment(gameRequest.getIsInDevelopment())
                     .Tester(gameRequest.getTester())
                     .platforms(gameRequest.getPlatforms())
                     .releaseDate(gameRequest.getReleaseDate())
@@ -88,8 +88,8 @@ public class GameService {
             g.setName(gameRequest.getName() == null ? g.getName() : gameRequest.getName());
             g.setDescription(gameRequest.getDescription() == null ? g.getDescription() : gameRequest.getDescription());
             g.setGenre(gameRequest.getGenre() == null ? g.getGenre() : gameRequest.getGenre());
-            g.setDLC(gameRequest.isDLC());
-            g.setFree(gameRequest.isFree());
+            g.setDLC(gameRequest.getIsDLC());
+            g.setFree(gameRequest.getIsFree());
             g.setLegalNotice(gameRequest.getLegalNotice() == null ? g.getLegalNotice() : gameRequest.getLegalNotice());
             g.setGamePage(gameRequest.getGamePage() == null ? g.getGamePage() : gameRequest.getGamePage());
             g.setGamePrice(gameRequest.getGamePrice() == null ? g.getGamePrice() : gameRequest.getGamePrice());
@@ -98,7 +98,7 @@ public class GameService {
             g.setDeveloperCompany(gameRequest.getDeveloperCompany() == null ? g.getDeveloperCompany() : gameRequest.getDeveloperCompany());
             g.setDevelopers(gameRequest.getDevelopers() == null ? g.getDevelopers() : gameRequest.getDevelopers());
             g.setPublisher(gameRequest.getPublisher() == null ? g.getPublisher() : gameRequest.getPublisher());
-            g.setInDevelopment(gameRequest.isInDevelopment());
+            g.setInDevelopment(gameRequest.getIsInDevelopment());
             g.setTester(gameRequest.getTester() == null ? g.getTester() : gameRequest.getTester());
             g.setPlatforms(gameRequest.getPlatforms() == null ? g.getPlatforms() : gameRequest.getPlatforms());
             g.setReleaseDate(gameRequest.getReleaseDate() == null ? g.getReleaseDate() : gameRequest.getReleaseDate());
@@ -120,7 +120,7 @@ public class GameService {
                     .developerCompany(gameRequest.getDeveloperCompany())
                     .developers(gameRequest.getDevelopers())
                     .publisher(gameRequest.getPublisher())
-                    .isInDevelopment(gameRequest.isInDevelopment())
+                    .isInDevelopment(gameRequest.getIsInDevelopment())
                     .Tester(gameRequest.getTester())
                     .platforms(gameRequest.getPlatforms())
                     .releaseDate(gameRequest.getReleaseDate())
