@@ -15,7 +15,7 @@ export type GameSearchPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { gamename, developername, platform, genre } = context.query;
+  const { gamename, developername, platform, genre, inDevelopment } = context.query;
 
   const searchType = !!gamename ? "game" : "developer";
   
@@ -29,6 +29,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     developerCompany: !!gamename ? gamename : developername,
     genre: !(genre === undefined) ? typeof genre === "string" ? [genre] : genre : [],
     platforms: !(platform === undefined) ? typeof platform === "string" ? [platform] : platform : [],
+    inDevelopment: inDevelopment === "null" ? null : inDevelopment === "true" ? true : false,
   };
 
   let gameData = null;
@@ -64,7 +65,6 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const platform = router.query.platform;
   const genre = router.query.genre;
 
-
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -94,6 +94,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           sx={{
             display: "flex",
             justifyContent: "space-between",
+            marginBottom: "12px",
           }}
         >
           <Typography

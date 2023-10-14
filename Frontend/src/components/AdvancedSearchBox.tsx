@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, TextField, Checkbox, FormControlLabel, Select, MenuItem, SelectChangeEvent, Divider, Typography, Button, InputLabel, FormControl, Grid, Collapse } from '@mui/material';
+import { Box, TextField, Checkbox, FormControlLabel, Select, MenuItem, SelectChangeEvent, Divider, Typography, Button, InputLabel, FormControl, Grid, Collapse, RadioGroup, Radio } from '@mui/material';
 import { GenreList, getGenre, getIdByGenre } from "@/type/gameGenre";
 import { PlatformList, getPlatform, getIdByPlatform } from "@/type/gamePlatform";
 import { useRouter } from "next/router";
@@ -17,6 +17,7 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
   const [searchType, setSearchType] = useState<'game' | 'developer'>('game');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
+  const [isInDevelopment, setIsInDevelopment] = useState<boolean | null>(null);
   const [openGenre, setOpenGenre] = useState(false);
   const [openPlatform, setOpenPlatform] = useState(false);
 
@@ -31,6 +32,22 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
   const handleSearchTypeChange = (event: SelectChangeEvent<"game" | "developer">) => {
     setSearchType(event.target.value as 'game' | 'developer');
   };
+
+  const handleIsInDevelopmentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if((event.target as HTMLInputElement).value === "null"){
+      setIsInDevelopment(null);
+      return;
+    }
+    if((event.target as HTMLInputElement).value === "true"){
+      setIsInDevelopment(true);
+      return;
+    }
+    if((event.target as HTMLInputElement).value === "false"){
+      setIsInDevelopment(false);
+      return;
+    }
+  };
+
 
   const handleGenreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const genre = event.target.name;
@@ -58,13 +75,13 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
       if(searchType === "game"){
         router.push({
           pathname: '/result',
-          query: { gamename: debouncedSearchString, genre: genreIdList, platform: platformIdList },
+          query: { gamename: debouncedSearchString, genre: genreIdList, platform: platformIdList, inDevelopment: isInDevelopment === null ? "null" : isInDevelopment},
         })
       }
       else{
         router.push({
           pathname: '/result',
-          query: { developername: debouncedSearchString, genre: genreIdList, platform: platformIdList},
+          query: { developername: debouncedSearchString, genre: genreIdList, platform: platformIdList, inDevelopment: isInDevelopment === null ? "null" : isInDevelopment},
         })
       }
 
@@ -92,7 +109,7 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
       <Box sx={{display: "flex", flexDirection: "column", gap: "24px"}}>
         <Box sx={{display: "flex", flexDirection: "column", gap: "8px"}}>
           <Typography color={"primary.main"} variant="h6" gutterBottom={false} sx={{fontWeight: 700}}>Genres</Typography>
-          <Button onClick={handleToggleGenre}>
+          <Button onClick={handleToggleGenre} variant="contained">
             {openGenre ? 'Hide Genres' : 'Show Genres'}
           </Button>
           <Collapse in={openGenre}>
@@ -118,7 +135,7 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
         </Box>
         <Box sx={{display: "flex", flexDirection: "column",  gap: "8px"}}>
           <Typography color={"primary.main"} variant="h6" gutterBottom={false} sx={{fontWeight: 700}}>Platforms</Typography>
-          <Button onClick={handleTogglePlatform}>
+          <Button onClick={handleTogglePlatform} variant="contained">
             {openPlatform ? 'Hide Platforms' : 'Show Platforms'}
           </Button>
           <Collapse in={openPlatform}>
@@ -141,6 +158,19 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
               ))}
             </Grid>
           </Collapse>
+        </Box>
+        <Box sx={{display: "flex", flexDirection: "row",  gap: "24px"}}>
+          <Typography color={"primary.main"} variant="h6" gutterBottom={false} sx={{fontWeight: 700}}>Game In Development</Typography>
+          <FormControl>
+            <RadioGroup
+              value={isInDevelopment}
+              onChange={handleIsInDevelopmentChange}
+            >
+              <FormControlLabel value="null" control={<Radio />} label="Show All Games" />
+              <FormControlLabel value="true" control={<Radio />} label="Show Games In Development" />
+              <FormControlLabel value="false" control={<Radio />} label="Exclude Games In Development" />
+            </RadioGroup>
+          </FormControl>
         </Box>
       </Box>
       <Divider/>
