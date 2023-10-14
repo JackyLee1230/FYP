@@ -10,12 +10,16 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Game> customFindGames(String name, List<Platform> platforms, List<GameGenre> genres) {
+    public List<Game> customFindGames(String name, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment) {
 
 //        for each platforms in platform, add part of the sql query where p MEMBER OF g.platforms
 //        if genre exist, add brackets around the genre part of the query
 
         StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE ");
+
+        if (isInDevelopment != null) {
+        query.append(" (g.isInDevelopment = ").append(isInDevelopment.toString()).append(") AND ");
+        }
 
         if (name != null) {
             query.append(" (g.name LIKE '%").append(name).append("%')");
@@ -50,12 +54,16 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
     }
 
     @Override
-    public List<Game> customFindGamesDeveloper(String developer, List<Platform> platforms, List<GameGenre> genres) {
+    public List<Game> customFindGamesDeveloper(String developer, List<Platform> platforms, List<GameGenre> genres, Boolean isInDevelopment) {
 
 //        for each platforms in platform, add part of the sql query where p MEMBER OF g.platforms
 //        if genre exist, add brackets around the genre part of the query
 
         StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE ");
+
+        if (isInDevelopment != null) {
+            query.append(" (g.isInDevelopment = ").append(isInDevelopment.toString()).append(") AND ");
+        }
 
         if (developer != null) {
             query.append(" (g.developerCompany LIKE '%").append(developer).append("%')");
