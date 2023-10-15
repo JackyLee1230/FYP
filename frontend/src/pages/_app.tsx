@@ -7,7 +7,7 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { themeOptions } from '../theme/MuiThemeOption'
-import Layout from "../components/Layout"
+import Layout from "../components/layout"
 
 const cache = createCache({
   key: 'css',
