@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
-import WebToolbar from "../../components/Toolbar";
 import { Popper, Box, Typography, Button, Divider, Pagination, Fade } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
@@ -20,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let isGamenameNull = gamename === "null" || gamename === undefined;
   const isDevelopernameNull = developername === "null" || developername === undefined;
 
-  let searchType = (isGamenameNull) ? "game" : "developer";
+  let searchType = !isGamenameNull ? "game" : "developer";
 
   if(isGamenameNull && isDevelopernameNull) {
     gamename = "";
@@ -80,6 +79,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
+    window.scrollTo(0, 0);
     setPage(value);
   };
 
@@ -90,7 +90,6 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
 
   return (
     <>
-      <WebToolbar />
       <Box
         sx={{
           display: "flex",
@@ -108,7 +107,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             marginBottom: "12px",
           }}
         >
-          {searchGamename && searchDevelopername ? (
+          {searchGamename || searchDevelopername ? (
           <Typography
             variant="h6"
             component="div"

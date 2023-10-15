@@ -7,6 +7,7 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { themeOptions } from '../theme/MuiThemeOption'
+import Layout from "../components/Layout"
 
 const cache = createCache({
   key: 'css',
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <StyledEngineProvider injectFirst>
         <Provider store={store}>
           <CacheProvider value={cache}>
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </CacheProvider>
         </Provider>
       </StyledEngineProvider>

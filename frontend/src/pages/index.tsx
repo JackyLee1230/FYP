@@ -4,7 +4,6 @@ import "tailwindcss/tailwind.css";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
-import WebToolbar from "../components/Toolbar"
 
 type GameInfo = {
   id: number;
@@ -63,7 +62,6 @@ const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
 
   return (
     <>
-      <WebToolbar/>
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
           <Image src="/logo.png" width={528} height={160} alt="CritiQ Icon" />

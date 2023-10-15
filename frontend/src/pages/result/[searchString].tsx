@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
-import WebToolbar from "../../components/Toolbar";
 import { Box, Typography, Button, Divider, Pagination } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
@@ -87,7 +86,6 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
 
   return (
     <>
-      <WebToolbar />
       <Box
         sx={{
           display: "flex",
