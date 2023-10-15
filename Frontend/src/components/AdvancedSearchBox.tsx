@@ -75,13 +75,13 @@ const AdvancedSearchBox = ({setOpen}: AdvancedSearchBoxProps) => {
       if(searchType === "game"){
         router.push({
           pathname: '/result',
-          query: { gamename: debouncedSearchString, genre: genreIdList, platform: platformIdList, inDevelopment: isInDevelopment === null ? "null" : isInDevelopment},
+          query: { gamename: debouncedSearchString, genre: genreIdList, platform: platformIdList, isInDevelopment : isInDevelopment === null ? "null" : isInDevelopment},
         })
       }
       else{
         router.push({
           pathname: '/result',
-          query: { developername: debouncedSearchString, genre: genreIdList, platform: platformIdList, inDevelopment: isInDevelopment === null ? "null" : isInDevelopment},
+          query: { developername: debouncedSearchString, genre: genreIdList, platform: platformIdList, isInDevelopment : isInDevelopment === null ? "null" : isInDevelopment},
         })
       }
 

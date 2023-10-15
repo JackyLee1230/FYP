@@ -58,11 +58,17 @@ const WebToolbar = () => {
   };
 
   const handleGameSearch = () => {
-    if(debouncedSearchString.trim().length > 0)
+    if(debouncedSearchString.trim().length > 0){
       router.push({
         pathname: '/result',
         query: { gamename: debouncedSearchString },
       })
+    }
+    else{
+      router.push({
+        pathname: '/result',
+      }) 
+    }
   }
 
   return (

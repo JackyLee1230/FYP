@@ -12,7 +12,7 @@ type RegisterGameData = {
   description: string;
   releaseDate: string;
   developerCompany: string;
-  inDevelopment: boolean;
+  isInDevelopment: boolean;
   platforms: string[];
   publisher: string;
   genre: string[];
@@ -27,7 +27,7 @@ function AddNewGame() {
   const [description, setDescription] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
   const [developerCompany, setDeveloperCompany] = useState('');
-  const [inDevelopment, setIsInDevelopment] = useState(false);
+  const [isInDevelopment, setIsInDevelopment] = useState(false);
   const [publisher, setPublisher] = useState('');
   const [genre, setGenre] = useState<string[]>([""]);
   const [platforms, setPlatform] = useState<string[]>([""]);
@@ -40,7 +40,7 @@ function AddNewGame() {
       description,
       releaseDate,
       developerCompany,
-      inDevelopment,
+      isInDevelopment,
       platforms,
       publisher,
       genre,
@@ -82,7 +82,7 @@ function AddNewGame() {
         <input value={releaseDate} onChange={(e) => setReleaseDate(e.target.value)} type="date" required className="w-full p-2 border border-gray-300 rounded" />
         <input value={developerCompany} onChange={(e) => setDeveloperCompany(e.target.value)} placeholder="Developer Company" required className="w-full p-2 border border-gray-300 rounded" />
         <label className="flex items-center space-x-2">
-          <input checked={inDevelopment} onChange={(e) => setIsInDevelopment(e.target.checked)} type="checkbox" />
+          <input checked={isInDevelopment} onChange={(e) => setIsInDevelopment(e.target.checked)} type="checkbox" />
           <span>Is in Development?</span>
         </label>
         <input value={publisher} onChange={(e) => setPublisher(e.target.value)} placeholder="Publisher" required className="w-full p-2 border border-gray-300 rounded" />   

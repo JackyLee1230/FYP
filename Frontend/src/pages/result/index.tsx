@@ -15,9 +15,18 @@ export type GameSearchPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { gamename, developername, platform, genre, inDevelopment } = context.query;
+  let { gamename, developername, platform, genre, isInDevelopment } = context.query;
 
-  const searchType = !!gamename ? "game" : "developer";
+  let isGamenameNull = gamename === "null" || gamename === undefined;
+  const isDevelopernameNull = developername === "null" || developername === undefined;
+
+  let searchType = (isGamenameNull) ? "game" : "developer";
+
+  if(isGamenameNull && isDevelopernameNull) {
+    gamename = "";
+    searchType = "game";
+    isGamenameNull = false;
+  }
   
   const apiUrl =
   searchType == "game"
@@ -25,11 +34,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     : "http://localhost:8080/api/game/findGamesWithSearchDeveloper";
 
   const body = {
-    name: !!gamename ? gamename : developername,
-    developerCompany: !!gamename ? gamename : developername,
+    name: !isGamenameNull ? gamename : developername,
+    developerCompany: !isGamenameNull ? gamename : developername,
     genre: !(genre === undefined) ? typeof genre === "string" ? [genre] : genre : [],
     platforms: !(platform === undefined) ? typeof platform === "string" ? [platform] : platform : [],
-    inDevelopment: inDevelopment === "null" ? null : inDevelopment === "true" ? true : false,
+    isInDevelopment: isInDevelopment === "null" ? null : isInDevelopment === "true" ? true : false,
   };
 
   let gameData = null;
@@ -61,7 +70,9 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const [open, setOpen] = React.useState(false);
   const searchType = !!router.query.gamename ? "Game" : "Developer";
-  const searchString = router.query.gamename ?? router.query.developername;
+  const searchGamename = router.query.gamename;
+  const searchDevelopername = router.query.developername;
+  const searchString = searchType === "Game" ? searchGamename : searchDevelopername;
   const platform = router.query.platform;
   const genre = router.query.genre;
 
@@ -97,12 +108,13 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             marginBottom: "12px",
           }}
         >
+          {searchGamename && searchDevelopername ? (
           <Typography
             variant="h6"
             component="div"
             sx={{ color: "text.secondary" }}
           >
-          Search Result for{" "}
+            Search Result for{" "}
             <Box
               display="inline"
               sx={{ color: "text.primary", fontWeight: 700 }}
@@ -111,6 +123,17 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             </Box>
             {" "} {` By ${searchType} Name`}
           </Typography>
+          ) : (
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ color: "text.secondary" }}
+            >
+              All Games
+            </Typography>
+          )}
+
+
           <Button variant="contained" size="large" color="secondary" onClick={handlePopperClick}>
             Advanced Search
           </Button>
