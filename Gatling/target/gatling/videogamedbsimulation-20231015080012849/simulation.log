@@ -1,0 +1,16 @@
+RUN	backend.VideoGameDbSimulation	videogamedbsimulation	1697356812849	 	3.9.0
+USER	Backend Stress Test	START	1697356820061
+REQUEST		Search game with name	1697356820074	1697356820135	KO	status.find.in([200, 209], 304), found 400
+USER	Backend Stress Test	START	1697356822047
+REQUEST		Search game with name	1697356822049	1697356822074	KO	status.find.in([200, 209], 304), found 400
+USER	Backend Stress Test	END	1697356822149
+USER	Backend Stress Test	START	1697356824047
+REQUEST		Search game with name	1697356824048	1697356824066	KO	status.find.in([200, 209], 304), found 400
+USER	Backend Stress Test	END	1697356824076
+USER	Backend Stress Test	START	1697356826047
+USER	Backend Stress Test	END	1697356826068
+REQUEST		Search game with name	1697356826048	1697356826069	KO	status.find.in([200, 209], 304), found 400
+USER	Backend Stress Test	START	1697356828049
+REQUEST		Search game with name	1697356828052	1697356828065	KO	status.find.in([200, 209], 304), found 400
+USER	Backend Stress Test	END	1697356828071
+USER	Backend Stress Test	END	1697356830068

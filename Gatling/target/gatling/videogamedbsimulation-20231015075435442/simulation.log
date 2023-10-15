@@ -1,0 +1,16 @@
+RUN	backend.VideoGameDbSimulation	videogamedbsimulation	1697356475442	 	3.9.0
+ERROR	url localhost:8080/api/game/getAllGames can't be parsed into an Uri: j.l.IllegalArgumentException: localhost:8080/api/game/getAllGames could not be parsed into a proper Uri, missing host: Failed to build request: Get all video games 	1697356482486
+USER	Video Game DB Stress Test	START	1697356482491
+ERROR	url localhost:8080/api/game/getAllGames can't be parsed into an Uri: j.l.IllegalArgumentException: localhost:8080/api/game/getAllGames could not be parsed into a proper Uri, missing host: Failed to build request: Get all video games 	1697356484481
+USER	Video Game DB Stress Test	START	1697356484481
+USER	Video Game DB Stress Test	END	1697356484494
+ERROR	url localhost:8080/api/game/getAllGames can't be parsed into an Uri: j.l.IllegalArgumentException: localhost:8080/api/game/getAllGames could not be parsed into a proper Uri, missing host: Failed to build request: Get all video games 	1697356486482
+USER	Video Game DB Stress Test	END	1697356486482
+USER	Video Game DB Stress Test	START	1697356486482
+ERROR	url localhost:8080/api/game/getAllGames can't be parsed into an Uri: j.l.IllegalArgumentException: localhost:8080/api/game/getAllGames could not be parsed into a proper Uri, missing host: Failed to build request: Get all video games 	1697356488481
+USER	Video Game DB Stress Test	START	1697356488481
+USER	Video Game DB Stress Test	END	1697356488484
+ERROR	url localhost:8080/api/game/getAllGames can't be parsed into an Uri: j.l.IllegalArgumentException: localhost:8080/api/game/getAllGames could not be parsed into a proper Uri, missing host: Failed to build request: Get all video games 	1697356490481
+USER	Video Game DB Stress Test	START	1697356490482
+USER	Video Game DB Stress Test	END	1697356490482
+USER	Video Game DB Stress Test	END	1697356492487

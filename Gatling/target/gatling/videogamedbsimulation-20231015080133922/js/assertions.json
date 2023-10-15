@@ -1,0 +1,10 @@
+{
+  "simulation": "backend.VideoGameDbSimulation",
+  "simulationId": "videogamedbsimulation-20231015080133922",
+  "start": 1697356900926,
+  "description": "",
+  "scenarios": ["Backend Stress Test"],
+  "assertions": [
+
+  ]
+}
