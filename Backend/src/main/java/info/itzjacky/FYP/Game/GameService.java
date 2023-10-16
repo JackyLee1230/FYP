@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.lang.model.type.ArrayType;
 import java.awt.print.Pageable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +41,7 @@ public class GameService {
 
     public Game addGame(GameRequest gameRequest){
         try{
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
             Game g = Game.builder()
                     .name(gameRequest.getName())
                     .description(gameRequest.getDescription())
@@ -57,12 +59,13 @@ public class GameService {
                     .isInDevelopment(gameRequest.getIsInDevelopment())
                     .Tester(gameRequest.getTester())
                     .platforms(gameRequest.getPlatforms())
-                    .releaseDate(gameRequest.getReleaseDate())
+                    .releaseDate(dateFormat.format(new SimpleDateFormat("dd/MM/yyyy").parse(gameRequest.getReleaseDate())))
                     .gameReviews(null)
                     .build();
             gameRepository.save(g);
             return g;
         }catch (Exception e){
+            e.printStackTrace();
             throw new IllegalStateException("Failed to create Game");
         }
     }
