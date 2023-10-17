@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+import time
 from typing import Iterable
 import requests
 import json
@@ -7,8 +8,10 @@ import re
 
 import pickle
 from pathlib import Path
+from collections import deque
 
 import scrapy
+from scrapy.exceptions import DontCloseSpider
 from scrapy.spiders import CrawlSpider
 
 import traceback
@@ -64,6 +67,12 @@ class SteamSpider(CrawlSpider):
             print(f'Number of apps in error_apps_list: {len(self.error_apps_list)}')
 
 
+    @classmethod
+    def from_crawler(cls, crawler, *args, **kwargs):
+        spider = super(SteamSpider, cls).from_crawler(crawler, *args, **kwargs)
+        crawler.signals.connect(spider.on_closed, signal=scrapy.signals.spider_closed)
+        return spider
+
     def start_requests(self) -> Iterable[Request]:
 
         all_app_ids = self.get_all_app_id()
@@ -71,14 +80,20 @@ class SteamSpider(CrawlSpider):
         # remove app_ids that already scrapped or excluded or error
         all_app_ids = set(all_app_ids) \
                 - set(map(int, set(self.apps_dict.keys()))) \
-                - set(self.excluded_apps_list) \
-                - set(self.error_apps_list)
+                - set(map(int, self.excluded_apps_list)) \
+                - set(map(int, self.error_apps_list))
+        
+        self.app_ids_queue = deque(all_app_ids)
 
+        print(f'Total number of remaining apps: {len(self.app_ids_queue)}')
+        
         # form request
-        for appid in all_app_ids:
-            request_url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
+        while len(self.app_ids_queue) > 0:
+            appid = self.app_ids_queue.popleft()
 
-            yield scrapy.Request(url=request_url, method='GET', callback=self.parse, errback=self.errback)
+            request_url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
+        
+            yield scrapy.Request(url=request_url, method='GET', callback=self.parse)
 
         return super().start_requests()
     
@@ -91,32 +106,25 @@ class SteamSpider(CrawlSpider):
             # further processing
             self.process_appdetails(response, appid)
 
-        # if response.status == 403:
-        #     print('Forbidden to access. Program shuts down.')
-        #     # save_checkpoints(apps_dict, excluded_apps_ids, filename_prefix, excluded_apps_ids_filename_prefix)
-        #     exit(0)
+        elif response.status == 429:
+            print(f'Too many requests. Readd the App ID {appid} to queue.')
+            self.app_ids_queue.append(appid)
 
-        # elif response.status == 429:
-        #     print('Too many requests. ')
+        elif response.status == 403:
+            print(f'Forbidden to access. Readd the App ID {appid} to queue.')
+            # save_checkpoints(apps_dict, excluded_apps_ids, filename_prefix, excluded_apps_ids_filename_prefix)
+            self.app_ids_queue.append(appid)
+
         else:
-            print(f"Error in App Id: {appid}. Fail to optain the game's info.")
-            
-            # excluded_apps_ids.append(appid)
+            print(f"Error in App Id: {appid}. Fail to optain the game's info. Add the app to error app list.")
+
+            self.error_apps_list.append(appid)
 
         # save for every N requests
-        if (self.item_count > 100):
+        if (self.item_count > 2000):
             self.save_checkpoints()
 
             self.item_count = 0
-
-    def errback(self, failure):
-        self.logger.error(repr(failure))
-
-        appid = re.search('appids=([0-9]*)', failure.value.response.url)[1]
-
-        print(f"Failure on App ID: {appid}. Add to error apps list.")
-
-        self.error_apps_list.append(appid)
 
 
     def process_appdetails(self, response, appid):
@@ -139,6 +147,19 @@ class SteamSpider(CrawlSpider):
         app_data = response_json['data']
 
         self.apps_dict[str(appid)] = app_data
+
+
+    def on_idle(self):
+        print("on_idle is called.")
+        self.save_checkpoints()
+        print('Checkpoints saved.')
+
+        raise DontCloseSpider()
+
+
+    def on_closed(self, reason):
+        print("SELF CLOSED is called.")
+        print(reason)
 
 
     def get_all_app_id(self):
