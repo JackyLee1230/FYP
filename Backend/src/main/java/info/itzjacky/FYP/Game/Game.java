@@ -6,6 +6,7 @@ import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -14,7 +15,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = { "name", "developerCompany" }) })
+@Table(name = "Game", indexes = {
+        @Index(name = "idx_game_name", columnList = "name"),
+        @Index(name = "idx_game_developercompany", columnList = "developerCompany"),
+        @Index(name = "idx_game_isindevelopment", columnList = "isInDevelopment"),
+}, uniqueConstraints = {
+        @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = {"name", "developerCompany"})
+})
 @Builder
 @Getter
 @Setter
@@ -52,6 +59,7 @@ public class Game {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     @JsonIgnore
+    @ToString.Exclude
     private List<User> developers;
     private boolean isInDevelopment;
     private String developerCompany;
@@ -65,17 +73,22 @@ public class Game {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     @JsonIgnore
+    @ToString.Exclude
     private List<User> Tester;
 
-    @OneToMany(mappedBy = "reviewedGame")
+    @OneToMany(mappedBy = "reviewedGame", fetch = FetchType.LAZY)
+    @ToString.Exclude
 //    @JsonIgnore
     private List<Review> gameReviews;
 
     @ElementCollection
+//add lazy fetch
+
     @Enumerated(EnumType.STRING)
     private List<GameGenre> genre;
 
-    @OneToMany(mappedBy = "versionedGame")
+    @OneToMany(mappedBy = "versionedGame", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<GameVersion> versions;
 
     private String version;

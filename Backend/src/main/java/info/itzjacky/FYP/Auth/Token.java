@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,5 +37,7 @@ public class Token {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+//    ignore the tokens field in the User class
+    @JsonIgnoreProperties("tokens")
     public User user;
 }

@@ -63,10 +63,19 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
                 query.append("g.releaseDate DESC");
             }
         }
+//        for every game, convert into DTO
 
         System.out.println(query.toString());
-        return (List<Game>) entityManager.createQuery(query.toString())
+        List<Game> result = (List<Game>) entityManager.createQuery(query.toString())
+//                .unwrap(org.hibernate.query.Query.class).setResultTransformer(new GameTransformer())
                 .getResultList();
+        for (Game game : result) {
+            game.setGameReviews(null);
+            game.setVersions(null);
+            game.setDevelopers(null);
+            game.setTester(null);
+        }
+        return result;
     }
 
     @Override

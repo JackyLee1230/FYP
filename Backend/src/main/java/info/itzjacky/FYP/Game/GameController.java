@@ -5,6 +5,7 @@ import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -119,6 +120,7 @@ public class GameController {
         }
     }
 
+    @Cacheable("findGamesByName")
     @PostMapping("/findGamesByName")
     public ResponseEntity<List<Game>> findGamesByName(@RequestBody GameRequest gameRequest) {
         try {

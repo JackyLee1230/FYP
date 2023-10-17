@@ -54,20 +54,25 @@ public class User implements UserDetails {
     private List<Role> role;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Token> tokens;
 
     @ManyToMany(mappedBy = "developers")
+    @ToString.Exclude
     private List<Game> developedGames;
 
-    @OneToMany(mappedBy = "reviewer")
+    @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("reviewer")
+    @ToString.Exclude
     private List<Review> reviews;
 
     @Column(insertable = true, updatable = true)
     private String iconUrl;
 
     @ManyToMany(mappedBy = "Tester")
+    @ToString.Exclude
     private List<Game> testedGames;
 
     @Override

@@ -63,7 +63,8 @@ public class Review {
 
     private Date sentimentUpdatedAt;
 
-    @OneToMany(mappedBy = "review")
+    @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<ReviewComment> reviewComment;
 }
 

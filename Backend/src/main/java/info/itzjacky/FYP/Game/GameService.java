@@ -1,7 +1,7 @@
 package info.itzjacky.FYP.Game;
 
 import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -271,6 +271,7 @@ public class GameService {
     }
 
 
+    @Transactional(readOnly = true)
     public List<Game> findGamesByName(GameRequest gameRequest){
         try{
             return gameRepository.findGamesByName(gameRequest.getName());
