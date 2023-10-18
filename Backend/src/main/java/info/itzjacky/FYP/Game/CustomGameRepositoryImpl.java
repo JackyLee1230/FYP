@@ -134,8 +134,16 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
         }
 
         System.out.println(query.toString());
-        return (List<Game>) entityManager.createQuery(query.toString())
+
+        List<Game> result = (List<Game>) entityManager.createQuery(query.toString())
                 .getResultList();
+        for (Game game : result) {
+            game.setGameReviews(null);
+            game.setVersions(null);
+            game.setDevelopers(null);
+            game.setTester(null);
+        }
+        return result;
     }
 
     @Override

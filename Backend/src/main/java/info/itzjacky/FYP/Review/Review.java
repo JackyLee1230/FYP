@@ -20,7 +20,12 @@ import java.util.List;
 //@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id" }) })
 //    a column that stores the game version, game has a one to many attribute call versions
 //    make this into the unique constraint
-@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id", "gameVersion" }) })
+@Table(name = "Review", indexes = {
+        @Index(name = "idx_review_reviewer_id", columnList = "reviewer_id"),
+        @Index(name = "idx_review_game_id", columnList = "game_id")
+}, uniqueConstraints = {
+        @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = {"reviewer_id", "game_id", "gameVersion"})
+})
 public class Review {
 
 

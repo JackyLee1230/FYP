@@ -77,9 +77,12 @@ public class UserController {
     }
 
     @PostMapping("/findUserByName")
-    public ResponseEntity<UserDto> findUserByName(@RequestParam("name") String name){
+    public ResponseEntity<UserDto> findUserByName(@RequestBody UserRequest userRequest){
         try {
-            Optional<User> u =  userService.findUserByName(name);
+            if (userRequest.getName() == null) {
+                throw new IllegalStateException("User Name Cannot Be Empty");
+            }
+            Optional<User> u =  userService.findUserByName(userRequest.getName());
 
             if (u.isPresent()) {
                 return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(u.get()), HttpStatus.OK);
