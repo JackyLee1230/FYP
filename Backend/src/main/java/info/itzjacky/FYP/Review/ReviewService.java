@@ -22,6 +22,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import static info.itzjacky.FYP.Utils.Others.booleanToInt;
+import static info.itzjacky.FYP.Utils.Others.intToBoolean;
+
 @Service
 public class ReviewService {
 
@@ -151,7 +154,7 @@ public class ReviewService {
         for(Review r : reviews){
             totalScore += r.getScore();
             if(r.isRecommended()){
-                recommendedScore += Others.booleanToInt(r.isRecommended());
+                recommendedScore += booleanToInt(r.isRecommended());
             }
         }
         game.setScore(totalScore/reviews.size());
@@ -257,7 +260,18 @@ public class ReviewService {
         if(reviewReq == null || reviewReq.getGameId() == null){
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");
         }
-        List<Review> reviews = reviewRepository.findReviewsByGameId(reviewReq.getGameId());
+        List<Review> reviews;
+        if(reviewReq.getRecommended() == null && reviewReq.getSentiment() == null){
+            reviews = reviewRepository.findReviewsByGameId(reviewReq.getGameId());
+        } else if (reviewReq.getSentiment() != null && reviewReq.getRecommended() == null) {
+            reviews = reviewRepository.findReviewsByGameIdAndSentiment(reviewReq.getGameId(), reviewReq.getSentiment());
+        } else if (reviewReq.getSentiment() == null && reviewReq.getRecommended() != null) {
+            reviews = reviewRepository.findReviewsByGameIdAndRecommended(reviewReq.getGameId(), reviewReq.getRecommended());
+        }
+        else {
+            reviews = reviewRepository.findReviewsByGameIdAndSentimentAndRecommended(reviewReq.getGameId(), reviewReq.getSentiment(), reviewReq.getRecommended());
+        }
+
         if(reviews != null){
             return reviews;
         } else {
@@ -277,7 +291,17 @@ public class ReviewService {
         if(reviewReq == null || reviewReq.getGameId() == null || reviewReq.getGameVersion() == null){
             throw new IllegalStateException("Game ID/Game Version Cannot Be Empty/Null");
         }
-        List<Review> reviews = reviewRepository.findReviewsByIdAndGameVersion(reviewReq.getGameId(), reviewReq.getGameVersion());
+        List<Review> reviews;
+        if(reviewReq.getRecommended() == null && reviewReq.getSentiment() == null){
+            reviews = reviewRepository.findReviewsByIdAndGameVersion(reviewReq.getGameId(),reviewReq.getGameVersion());
+        } else if (reviewReq.getSentiment() != null && reviewReq.getRecommended() == null) {
+            reviews = reviewRepository.findReviewsByIdAndGameVersionAndSentiment(reviewReq.getGameId(),reviewReq.getGameVersion(),reviewReq.getSentiment());
+        } else if (reviewReq.getSentiment() == null && reviewReq.getRecommended() != null) {
+            reviews = reviewRepository.findReviewsByIdAndGameVersionAndRecommended(reviewReq.getGameId(), reviewReq.getGameVersion(), reviewReq.getRecommended());
+        }
+        else {
+            reviews = reviewRepository.findReviewsByIdAndGameVersionAndSentimentAndRecommended(reviewReq.getGameId(),reviewReq.getGameVersion(), reviewReq.getSentiment(), reviewReq.getRecommended());
+        }
         if(reviews != null){
             return reviews;
         } else {

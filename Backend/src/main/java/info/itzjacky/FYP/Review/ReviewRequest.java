@@ -33,4 +33,6 @@ public class ReviewRequest {
     private String gameVersion;
 
     private Integer numberOfReviews;
+
+    private Integer sentiment;
 }

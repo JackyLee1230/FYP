@@ -37,6 +37,15 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1")
     List<Review> findReviewsByGameId(Integer gameId);
 
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2")
+    List<Review> findReviewsByGameIdAndSentiment(Integer gameId, Integer sentiment);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.recommended = ?2")
+    List<Review> findReviewsByGameIdAndRecommended(Integer gameId, Boolean recommended);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2 and r.recommended = ?3")
+    List<Review> findReviewsByGameIdAndSentimentAndRecommended(Integer gameId, Integer sentiment, Boolean recommended);
+
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 ORDER BY r.score DESC")
     List<Review> findReviewsByGameIdOrderByScore(Integer gameId);
 
@@ -46,4 +55,15 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 AND r.gameVersion = ?2")
     List<Review> findReviewsByIdAndGameVersion(Integer id, String gameVersion);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 AND r.gameVersion = ?2 and r.sentiment = ?3")
+    List<Review> findReviewsByIdAndGameVersionAndSentiment(Integer id, String gameVersion, Integer sentiment);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 AND r.gameVersion = ?2 and r.recommended = ?3")
+    List<Review> findReviewsByIdAndGameVersionAndRecommended(Integer id, String gameVersion, Boolean recommended);
+
+    @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 AND r.gameVersion = ?2 and r.recommended = ?3")
+    List<Review> findReviewsByIdAndGameVersionAndSentimentAndRecommended(Integer id, String gameVersion,Integer sentiment, Boolean recommended);
+
+
 }
