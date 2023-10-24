@@ -36,6 +36,12 @@ public class UserService {
         }
         if(user.getRole() == null){
             user.setRole(List.of(Role.USER));
+        }else {
+            for (Role role : user.getRole()) {
+                if (!role.getAllRoles().contains(role)) {
+                    throw new IllegalStateException("Invalid Role");
+                }
+            }
         }
         try{
             user.setNumOfReviews(0);

@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Review;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Game.Game;
@@ -34,6 +35,7 @@ public class Review {
     private Integer id;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
     private User reviewer;
 

@@ -66,8 +66,8 @@ public class User implements UserDetails {
     private List<Game> developedGames;
 
     @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("reviewer")
     @ToString.Exclude
+//
     private List<Review> reviews;
 
     @Column(insertable = true, updatable = true)
@@ -79,12 +79,13 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        for each role in the list of roles, create a new SimpleGrantedAuthority object
-        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for(int i = 0; i < this.role.size(); i++){
-            authorities.addAll(this.role.get(i).getAuthorities());
+        Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        for (Role role : this.getRole()){
+            for (SimpleGrantedAuthority authority : role.getAuthorities()){
+                grantedAuthorities.add(authority);
+            }
         }
-        return authorities;
+        return grantedAuthorities;
     }
 
     @Override

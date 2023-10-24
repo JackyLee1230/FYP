@@ -13,29 +13,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public enum Role {
     USER(Collections.emptySet()),
-    ADMIN(
-            Set.of(
-                    Permission.ADMIN_READ,
-                    Permission.ADMIN_UPDATE,
-                    Permission.ADMIN_CREATE,
-                    Permission.ADMIN_DELETE,
-                    Permission.DEVELOPER_READ,
-                    Permission.DEVELOPER_UPDATE,
-                    Permission.DEVELOPER_CREATE,
-                    Permission.DEVELOPER_DELETE
-            )
-    ),
-    DEVELOPER(
-            Set.of(
-                    Permission.DEVELOPER_READ,
-                    Permission.DEVELOPER_UPDATE,
-                    Permission.DEVELOPER_CREATE,
-                    Permission.DEVELOPER_DELETE
-            )
-    );
+    ADMIN(Collections.emptySet()),
+    DEVELOPER(Collections.emptySet());
 
     @Getter
     private final Set<Permission> permissions;
+
+
+//    get all roles
+    public List<Role> getAllRoles(){
+        return List.of(Role.values());
+    }
 
     public List<SimpleGrantedAuthority> getAuthorities() {
         var authorities = getPermissions()

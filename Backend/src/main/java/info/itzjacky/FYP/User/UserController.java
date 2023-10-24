@@ -48,9 +48,9 @@ public class UserController {
 
 
     @PostMapping("/addUser")
-    public ResponseEntity<UserDto> addUser(@RequestBody User user){
+    public ResponseEntity<User> addUser(@RequestBody User user){
         try{
-            return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(userService.addUser(user)), HttpStatus.OK);
+            return new ResponseEntity<>(userService.addUser(user), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -77,7 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/findUserByName")
-    public ResponseEntity<UserDto> findUserByName(@RequestBody UserRequest userRequest){
+    public ResponseEntity<User> findUserByName(@RequestBody UserRequest userRequest){
         try {
             if (userRequest.getName() == null) {
                 throw new IllegalStateException("User Name Cannot Be Empty");
@@ -85,7 +85,7 @@ public class UserController {
             Optional<User> u =  userService.findUserByName(userRequest.getName());
 
             if (u.isPresent()) {
-                return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(u.get()), HttpStatus.OK);
+                return new ResponseEntity<>(u.get(), HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
             }
@@ -95,11 +95,11 @@ public class UserController {
     }
 
     @PostMapping("/findUserByEmail")
-    public ResponseEntity<UserDto> findUserByEmail(@RequestBody UserRequest userRequest){
+    public ResponseEntity<User> findUserByEmail(@RequestBody UserRequest userRequest){
         try {
             Optional<User> user = userService.findUserByEmail(userRequest.getEmail());
             if(user.isPresent()){
-                return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(user.get()), HttpStatus.OK);
+                return new ResponseEntity<>(user.get(), HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
             }
