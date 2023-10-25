@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -65,6 +66,9 @@ public class Game {
     private String developerCompany;
     private String publisher;
     private Float score;
+    @Formula("100 - (SELECT COUNT(*) FROM game g WHERE g.score > score and g.score is not null) / (SELECT COUNT(*) FROM game g where g.score is not null) * 100")
+    private double percentile;
+
     private Float recommendationScore;
     @ManyToMany
     @JoinTable(
