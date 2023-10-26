@@ -86,9 +86,8 @@ public class Game {
     private List<Review> gameReviews;
 
     @ElementCollection
-//add lazy fetch
-
     @Enumerated(EnumType.STRING)
+    @Column(name="genre")
     private List<GameGenre> genre;
 
     @OneToMany(mappedBy = "versionedGame", fetch = FetchType.LAZY)
