@@ -110,8 +110,11 @@ def main():
     my_email, my_pw = load_secret_json(secret_json_path)
     
     # CHANGE HERE !!
-    dataset_folder = Path('dataset_cleaned_heartless_sampled_20230927').resolve()
-    base_file = Path(dataset_folder, 'dataset_cleaned_heartless_sampled_20230927_chunk_000.pkl').resolve()
+    # dataset_folder = Path('dataset_cleaned_heartless_sampled_20230927').resolve()
+    # base_file = Path(dataset_folder, 'dataset_cleaned_heartless_sampled_20230927_chunk_000.pkl').resolve()
+
+    dataset_folder = Path('dataset_cleaned_heartless_sampled_20231028').resolve()
+    base_file = Path(dataset_folder, 'dataset_cleaned_heartless_sampled_20231028_chunk_000.pkl').resolve()
 
     # create a folder to store ckpt under dataset folder
     ckpt_folder = Path(dataset_folder, base_file.stem + '/').resolve()
@@ -166,7 +169,7 @@ def main():
 
     # CHANGE HERE !!
     # the remaining token that the programs stops if remaining token is below this number
-    BALANCE_LIMIT = 300
+    BALANCE_LIMIT = 500
 
     # loop to go through requests
     while(True):

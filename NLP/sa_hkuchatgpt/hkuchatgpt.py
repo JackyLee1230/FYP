@@ -414,7 +414,7 @@ class HkuChatGPT:
         login_btn.click()
 
         # this requires stable WIFI/LAN network
-        time.sleep(3)
+        time.sleep(10)
 
         # wait to load a separate login page
         curr_window = self.driver.current_window_handle

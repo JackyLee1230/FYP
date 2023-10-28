@@ -59,6 +59,12 @@ base_file = Path(dataset_folder, 'dataset_cleaned_heartless_sampled_20230927_chu
 
 The variable _dataset_folder_ is the folder storing the sanpled comments, each with 3000 rows.
 
+**Change the string of the _dataset_folder_ to the folder you wanna work on
+
+```python
+dataset_folder = Path('dataset_cleaned_heartless_sampled_20231028').resolve()
+```
+
 **Change the string of _base_file_ variable to be one of the different chunks in the folder _dataset_folder_. Example:**
 
 ```python
