@@ -364,7 +364,7 @@ class HkuChatGPT:
         # hence special check in here
         # ref: https://coder.tw/?p=7487
         if os.name == 'nt':
-            print('chatgpt_messages_obj:', self.chatgpt_messages_obj.encode("utf8").decode("cp950", "ignore"))
+            print('chatgpt_messages_obj:', str(self.chatgpt_messages_obj).encode("utf8").decode("cp950", "ignore"))
         else:
             print('chatgpt_messages_obj:', self.chatgpt_messages_obj)
 
