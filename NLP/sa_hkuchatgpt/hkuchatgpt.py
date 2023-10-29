@@ -17,6 +17,7 @@ from selenium.common.exceptions import TimeoutException
 import time
 import json
 import traceback, sys
+import os
 
 from queue import Queue
 
@@ -101,7 +102,14 @@ class HkuChatGPT:
 
                 # NOTICE: the request modifying function
                 new_data = self.modify_gpt_request(data)
-                print('intercepted new json data:', new_data)
+
+                # window command line cannot print out unicode characters in original comment by default, unlinke linux
+                # hence special check in here
+                # ref: https://coder.tw/?p=7487
+                if os.name == 'nt':
+                    print('intercepted new json data:', str(new_data).encode("utf8").decode("cp950", "ignore"))
+                else:
+                    print('intercepted new json data:', new_data)
 
                 # replace the body with new json :D
                 request.body = json.dumps(new_data).encode('utf-8')
@@ -351,7 +359,14 @@ class HkuChatGPT:
         print('\n\n\n')
         print('handling input...')
         print("input id:", self.local_processing_query_index)
-        print('chatgpt_messages_obj:', self.chatgpt_messages_obj)
+
+        # window command line cannot print out unicode characters in comments by default, unlinke linux
+        # hence special check in here
+        # ref: https://coder.tw/?p=7487
+        if os.name == 'nt':
+            print('chatgpt_messages_obj:', self.chatgpt_messages_obj.encode("utf8").decode("cp950", "ignore"))
+        else:
+            print('chatgpt_messages_obj:', self.chatgpt_messages_obj)
 
     def _deEmojify(self, x):
         regrex_pattern = re.compile(pattern = "["
