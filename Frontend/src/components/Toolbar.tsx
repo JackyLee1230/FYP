@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase } from '@mui/material';
+import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase, Modal } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import { useDebounce } from "usehooks-ts";
 import Link from 'next/link'
+import SignInUpPanel from './signInUpPanel';
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -52,6 +53,7 @@ const WebToolbar = () => {
   const debouncedSearchString = useDebounce(searchString, 200);
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter()
+  const [openPanel, setOpenPanel] = useState(false);
 
   const handleProfileRedirect = () => {
     // Redirect to profile page
@@ -142,7 +144,21 @@ const WebToolbar = () => {
               <Avatar alt="User Avatar" src="/static/images/avatar/1.jpg" />
             </IconButton>
           ) : (
-            <Button variant="outlined" color="secondary" size="large" sx={{whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500}}>Register</Button>
+            <>
+              <Button variant="outlined" color="secondary" size="large" sx={{whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500}} onClick={() => setOpenPanel(true)}>Register</Button>
+
+              <Modal
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                open={openPanel}
+                onClose={() => setOpenPanel(false)}
+              >
+                <SignInUpPanel setOpen={setOpenPanel}/>
+              </Modal>
+            </>
           )}
         </Toolbar>
       </AppBar>
