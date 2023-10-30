@@ -1,6 +1,5 @@
 import React from "react";
 import LoginBox from "@/components/LoginBox";
-import SignInUpPanel from "@/components/signInUpPanel";
 import { Box } from "@mui/material";
 
 

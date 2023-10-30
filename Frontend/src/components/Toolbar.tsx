@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router'
 import { useDebounce } from "usehooks-ts";
 import Link from 'next/link'
-import SignInUpPanel from './signInUpPanel';
+import SignInUpPanel from './SignInUpPanel';
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
