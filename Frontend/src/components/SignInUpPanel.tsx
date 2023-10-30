@@ -10,7 +10,7 @@ type SignInUpPanelProps = {
 }
 
 const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
-  const [mode, setMode] = useState('register');
+  const [mode, setMode] = useState<'register' | 'login'>('register');
 
   return (
     <Box
@@ -57,8 +57,18 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
           label="Login"
         />
       </Tabs>
+      
+      <Box
+        sx={{display: mode === 'register' ? "block" : "none"}}
+      >
+        <ResiterBox />
+      </Box>
 
-      {mode === 'register' ? <ResiterBox /> : <LoginBox />}
+      <Box
+        sx={{display: mode === 'register' ? "none" : "block"}}
+      >
+        <LoginBox />
+      </Box>
     </Box>
   );
 };
