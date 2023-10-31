@@ -317,7 +317,7 @@ public class GameService {
         gameRepository.save(game);
     }
 
-    public List<Game> findTopLatestGames(GameRequest gameRequest){
+    public List<Game> getTopLatestGames(GameRequest gameRequest){
         try{
             if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
                 gameRequest.setNumOfGames(10);
@@ -328,7 +328,7 @@ public class GameService {
         }
     }
 
-    public List<Game> findTopMostReviewedGames(GameRequest gameRequest){
+    public List<Game> getTopMostReviewedGames(GameRequest gameRequest){
         try{
             if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
                 gameRequest.setNumOfGames(10);

@@ -185,19 +185,19 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
         }
     }
 
-    @PostMapping("/findTopLatestGames")
-    public ResponseEntity<List<Game>> findTop10LatestGames(@RequestBody GameRequest gameRequest) {
+    @PostMapping("/getTopLatestGames")
+    public ResponseEntity<List<Game>> getTop10LatestGames(@RequestBody GameRequest gameRequest) {
         try {
-            return new ResponseEntity<>(gameService.findTopLatestGames(gameRequest), HttpStatus.OK);
+            return new ResponseEntity<>(gameService.getTopLatestGames(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 
-    @PostMapping("/findTopMostReviewedGames")
+    @PostMapping("/getTopMostReviewedGames")
     public ResponseEntity<List<Game>> findTop10MostReviewedGames(@RequestBody GameRequest gameRequest) {
         try {
-            return new ResponseEntity<>(gameService.findTopMostReviewedGames(gameRequest), HttpStatus.OK);
+            return new ResponseEntity<>(gameService.getTopMostReviewedGames(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
