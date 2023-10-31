@@ -34,6 +34,9 @@ public class User implements UserDetails {
     @Column(insertable = true, updatable = true)
     private Integer id;
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean isPrivate;
+
     @Column(unique = true)
     private String name;
 
@@ -67,7 +70,6 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY)
     @ToString.Exclude
-//
     private List<Review> reviews;
 
     @Column(insertable = true, updatable = true)

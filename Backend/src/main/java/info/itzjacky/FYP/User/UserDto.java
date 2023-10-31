@@ -22,6 +22,8 @@ public class UserDto {
     @NonNull
     private Integer id;
 
+    private Boolean isPrivate;
+
     private String name;
 
     private String email;

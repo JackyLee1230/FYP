@@ -150,4 +150,25 @@ public class UserService {
         user.setIconUrl("users/" + user.getId() + "/icon.jpg");
         userRepository.save(user);
     }
+
+    @Transactional
+    public User togglePrivate(UserRequest userRequest) {
+        if(userRequest.getId() == null){
+            throw new IllegalStateException("User ID Cannot Be Empty");
+        }
+        User user = userRepository.findUserById(userRequest.getId());
+        if (user == null){
+            throw new IllegalStateException("User Does Not Exist");
+        }
+
+
+
+        if (user.getIsPrivate() == null) {
+            user.setIsPrivate(true);
+        } else {
+            user.setIsPrivate(!user.getIsPrivate());
+        }
+        userRepository.save(user);
+        return user;
+    }
 }

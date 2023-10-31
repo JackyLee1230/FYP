@@ -46,6 +46,14 @@ public class UserController {
 //        }
 //    }
 
+    @PostMapping("/togglePrivate")
+    public ResponseEntity<User> togglePrivate(@RequestBody UserRequest userRequest){
+        try{
+            return new ResponseEntity<>(userService.togglePrivate(userRequest), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 
     @PostMapping("/addUser")
     public ResponseEntity<User> addUser(@RequestBody User user){
@@ -66,7 +74,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/removeUserByBane")
+    @PostMapping("/removeUserByName")
     public ResponseEntity<Void> removeUserByName(@RequestBody User user){
         try {
             userService.removeUserByName(user);
