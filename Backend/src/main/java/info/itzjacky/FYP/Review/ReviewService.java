@@ -113,7 +113,7 @@ public class ReviewService {
         }
     }
 
-    public List<Review> getReviewsByGameId(ReviewRequest reviewRequest){
+    public List<Review> findReviewsByGameId(ReviewRequest reviewRequest){
         if(reviewRequest == null || reviewRequest.getGameId() == null){
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");
         }
@@ -162,7 +162,7 @@ public class ReviewService {
         return totalScore/reviews.size();
     }
 
-    public List<Review> getAllReviewsByUser(ReviewRequest reviewRequest){
+    public List<Review> findAllReviewsByUser(ReviewRequest reviewRequest){
         if(reviewRequest == null || reviewRequest.getReviewerId() == null){
             throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
         }
@@ -287,7 +287,7 @@ public class ReviewService {
         return reviewRepository.findMostRecentReviews(PageRequest.of(0,reviewReq.getNumberOfReviews()));
     }
 
-    public List<Review> getReviewsByGameIdAndVersion(ReviewRequest reviewReq) {
+    public List<Review> findReviewsByGameIdAndVersion(ReviewRequest reviewReq) {
         if(reviewReq == null || reviewReq.getGameId() == null || reviewReq.getGameVersion() == null){
             throw new IllegalStateException("Game ID/Game Version Cannot Be Empty/Null");
         }
@@ -310,7 +310,7 @@ public class ReviewService {
     }
 
 
-    public List<Review> getReviewsByIdOrderByScore(ReviewRequest reviewReq) {
+    public List<Review> findReviewsByIdOrderByScore(ReviewRequest reviewReq) {
         if(reviewReq == null || reviewReq.getGameId() == null){
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");
         }

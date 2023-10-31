@@ -161,8 +161,6 @@ public class UserService {
             throw new IllegalStateException("User Does Not Exist");
         }
 
-
-
         if (user.getIsPrivate() == null) {
             user.setIsPrivate(true);
         } else {

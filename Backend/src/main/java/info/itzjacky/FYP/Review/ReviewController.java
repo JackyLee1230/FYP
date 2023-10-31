@@ -33,10 +33,10 @@ public class ReviewController {
     /*
     * args gameId: Integer (Game.id)
     */
-    @PostMapping("/getReviewsByGameId")
+    @PostMapping("/findReviewsByGameId")
     public ResponseEntity<List<Review>> getReviewByGameId(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.getReviewByGameId(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findReviewsByGameId(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -45,8 +45,8 @@ public class ReviewController {
     /*
      * args reviewId: Integer (review.id)
      */
-    @PostMapping("/getReviewById")
-    public ResponseEntity<Review> getReviewByReviewId(@RequestBody ReviewRequest reviewReq){
+    @PostMapping("/findReviewById")
+    public ResponseEntity<Review> findReviewByReviewId(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.findReviewById(reviewReq), HttpStatus.OK);
         } catch (Exception e){
@@ -54,19 +54,19 @@ public class ReviewController {
         }
     }
 
-    @PostMapping("getReviewsByGameIdAndVersion")
+    @PostMapping("findReviewsByGameIdAndVersion")
     public ResponseEntity<List<Review>> getReviewsByGameIdAndVersion(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.getReviewsByGameIdAndVersion(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findReviewsByGameIdAndVersion(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
 
-    @PostMapping("/getReviewsByIdOrderByScore")
+    @PostMapping("/findReviewsByIdOrderByScore")
     public ResponseEntity<List<Review>> getReviewsByIdOrderByScore(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.getReviewsByIdOrderByScore(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findReviewsByIdOrderByScore(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
@@ -157,10 +157,10 @@ public class ReviewController {
     /*
     * args reviewerId: Integer
     */
-    @PostMapping("/getAllReviewsByUser")
-    public ResponseEntity<List<Review>> getAllReviewsByUser(@RequestBody ReviewRequest reviewReq){
+    @PostMapping("/findAllReviewsByUser")
+    public ResponseEntity<List<Review>> findAllReviewsByUser(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.getAllReviewsByUser(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findAllReviewsByUser(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

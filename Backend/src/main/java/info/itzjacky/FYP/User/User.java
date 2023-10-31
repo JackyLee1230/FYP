@@ -35,7 +35,7 @@ public class User implements UserDetails {
     private Integer id;
 
     @Column(columnDefinition = "boolean default false")
-    private boolean isPrivate;
+    private Boolean isPrivate;
 
     @Column(unique = true)
     private String name;
