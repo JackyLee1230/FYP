@@ -1,16 +1,21 @@
 package info.itzjacky.FYP.Auth;
 
+import info.itzjacky.FYP.User.User;
+import info.itzjacky.FYP.User.UserService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -18,6 +23,27 @@ import java.io.IOException;
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
+        return ResponseEntity.ok(authenticationService.forgotPassword(request));
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<User> resetPassword(@RequestBody ResetPasswordRequest request){
+        User u = userService.getUserByResetPasswordToken(request.getResetPasswordToken());
+        if (u == null || u.getResetPasswordExpires().before(new java.util.Date())) {
+            throw new IllegalStateException("Token Expired/Invalid");
+        }
+        return ResponseEntity.ok(userService.updatePassword(u, request.getPassword()));
+    }
+
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(

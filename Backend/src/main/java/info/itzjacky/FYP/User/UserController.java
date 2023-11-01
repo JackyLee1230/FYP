@@ -46,6 +46,15 @@ public class UserController {
 //        }
 //    }
 
+    @PostMapping("/getUserByResetPasswordToken")
+    public ResponseEntity<User> getUserByResetPasswordToken(@RequestBody UserRequest userRequest){
+        try{
+            return new ResponseEntity<>(userService.getUserByResetPasswordToken(userRequest.getResetPasswordToken()), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/togglePrivate")
     public ResponseEntity<User> togglePrivate(@RequestBody UserRequest userRequest){
         try{
@@ -105,9 +114,9 @@ public class UserController {
     @PostMapping("/findUserByEmail")
     public ResponseEntity<User> findUserByEmail(@RequestBody UserRequest userRequest){
         try {
-            Optional<User> user = userService.findUserByEmail(userRequest.getEmail());
-            if(user.isPresent()){
-                return new ResponseEntity<>(user.get(), HttpStatus.OK);
+            User user = userService.findUserByEmail(userRequest.getEmail());
+            if(user != null){
+                return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
             }

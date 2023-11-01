@@ -27,4 +27,7 @@ public class UserRequest {
     private List<Game> developedGames;
     private List<Review> reviews;
     private List<Game> testedGames;
+    private String resetPasswordToken;
+    private Date resetPasswordExpires;
+
 }

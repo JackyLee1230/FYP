@@ -5,18 +5,26 @@ import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.config.JwtService;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +34,48 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    @Value("${application.web.url}")
+    private String webUrl;
+
+    @Transactional
+    public String forgotPassword(ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
+        var user = repository.findUserByEmail(request.getEmail());
+        if (user == null) {
+            throw new IllegalStateException("User does not exist");
+        }
+        String token = UUID.randomUUID().toString().replace("-", "");
+        sendResetPasswordEmail(request.getEmail(), token);
+        user.setResetPasswordToken(token);
+//        2 hours expiry
+        user.setResetPasswordExpires(new Date(System.currentTimeMillis() + 7200000));
+        repository.save(user);
+        return "Email Sent";
+    }
+
+    public void sendResetPasswordEmail(String email, String token)
+    throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setFrom("critiqplatform@gmail.com", "CritiQ Support");
+        helper.setTo(email);
+
+        String subject = "CritiQ: Reset Password";
+
+        String content = "<p>Hello,</p>"
+                + "<p>You have requested to reset your password.</p>"
+                + "<p>Click the link below to reset your password:</p>"
+                + "<p><a href=\"" + webUrl + "/reset-password/" + token + "\">Reset Password</a></p>"
+                + "<br>"
+                + "<p>Ignore this email if you did not request to reset your password.</p>";
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        javaMailSender.send(message);
+    }
+
 
     @Transactional
     public AuthenticationResponse register(RegisterRequest request) {

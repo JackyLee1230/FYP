@@ -38,6 +38,14 @@ public class User implements UserDetails {
     private Boolean isPrivate;
 
     @Column(unique = true)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String resetPasswordToken;
+
+    @Column(unique = true)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Date resetPasswordExpires;
+
+    @Column(unique = true)
     private String name;
 
     @Column(updatable = true, unique = true)

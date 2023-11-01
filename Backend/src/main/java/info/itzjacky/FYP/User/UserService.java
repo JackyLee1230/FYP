@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,9 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     DigitalOceanStorageService storageService;
@@ -111,11 +115,54 @@ public class UserService {
 //        }
 //    }
 
-    public Optional<User> findUserByEmail(String email){
+    @Transactional
+    public void updateResetPasswordToken(String token, String email){
+        if(token == null || email == null){
+            throw new IllegalStateException("Token And Email Cannot Be Empty");
+        }
+        User user = userRepository.findUserByEmail(email);
+        if(user == null){
+            throw new IllegalStateException("User Does Not Exist");
+        }
+        user.setResetPasswordToken(token);
+        userRepository.save(user);
+    }
+
+    public User getUserByResetPasswordToken(String token){
+        if(token == null){
+            throw new IllegalStateException("Token Cannot Be Empty");
+        }
+        User u = userRepository.findUserByResetPasswordToken(token);
+        Date d = u.getResetPasswordExpires();
+        if (d != null && d.before(new Date())) {
+            throw new IllegalStateException("Token Has Expired");
+        }
+        u.setReviews(null);
+        return u;
+    }
+
+    public User updatePassword(User user, String newPassword) {
+        if(user == null || newPassword == null){
+            throw new IllegalStateException("User And New Password Cannot Be Empty");
+        }
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setResetPasswordToken(null);
+        user.setResetPasswordExpires(null);
+        userRepository.save(user);
+        user.setReviews(null);
+        user.setPassword(null);
+        return user;
+    }
+
+    public User findUserByEmail(String email){
         if(email == null){
             throw new IllegalStateException("Email Cannot Be Empty");
         }
-        return userRepository.findUserByEmail(email);
+        User u = userRepository.findUserByEmail(email);
+        if (u == null) {
+            throw new IllegalStateException("User Does Not Exist");
+        }
+        return u;
     }
 
     @Transactional
