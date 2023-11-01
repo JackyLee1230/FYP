@@ -2,6 +2,17 @@
 
 Folder for NLP and Data Analysis related stuff
 
+## Development environment
+
+Use miniforge to create a virtual environment to install them
+
+We only highlight the most critical packages that affect the code.
+
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|python|3.9.18|pickling 3.9 for max compatability across different packages|
+|pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
+
 ## WSL2
 
 According to offical documentation of tensorflow, WSL is required to use latest version of tensorflow with or without GPU.
