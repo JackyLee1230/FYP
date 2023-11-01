@@ -1,1 +1,5 @@
 *.DS_Store
+
+# temporary ignore (michael macbook)
+steam-reviews-scrapper-result-20231011.csv
+steam-reviews-scrapper-result-cleaned-20231011.pkl
