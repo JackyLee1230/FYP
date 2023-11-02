@@ -70,7 +70,8 @@ public class AuthenticationService {
                 + "<p>Click the link below to reset your password:</p>"
                 + "<p><a href=\"" + webUrl + "/reset-password/" + token + "\">Reset Password</a></p>"
                 + "<br>"
-                + "<p>Ignore this email if you did not request to reset your password.</p>";
+                + "<p>Ignore this email if you did not request to reset your password.</p>"
+                + "<p>This password reset request will expire after 2 hours.</p>";
         helper.setSubject(subject);
         helper.setText(content, true);
         javaMailSender.send(message);

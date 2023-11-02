@@ -1,0 +1,133 @@
+import React, { useEffect, useState } from 'react';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from '@mui/material';
+import { CustomInput } from "@/components/CustomInput";
+import axios from "axios";
+import { validateEmail } from "@/utils/Regex";
+
+async function sendForgotPassword(email: string) {
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/auth/forgot-password",
+      {
+        email: email,
+      }
+    ); //
+    if (response.status === 200) {
+      console.debug("Forgot password req sent successfully");
+      return(null);
+    } else {
+      console.debug("Failed to forgot password (response)", response);
+      return(response.data.message)
+    }
+  } catch (error: any) {
+    console.error("Failed to forgot password (error)", error);
+    return(error.response.data.message);
+  }
+}
+
+
+const ForgetPasswordBox = () => {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [serverError, setServerError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [time, setTime] = useState(60);
+  const [isWaiting, setIsWaiting] = useState(false);
+
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    if (isWaiting) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval as unknown as NodeJS.Timeout);
+    }
+    if (time < 0) {
+      setIsWaiting(false);
+    }
+    return () => clearInterval(interval as NodeJS.Timeout);
+  }, [isWaiting, time]);
+
+  function startTimer() {
+    setIsWaiting(!isWaiting);
+    setTime(60);
+  }
+
+  async function handleForgotPassword(email: string){
+    setIsLoading(true);
+    setEmailError("");
+    const error = await sendForgotPassword(email);
+    if (error) {
+      setServerError(error);
+    } else{
+      setServerError("");
+      startTimer();
+    }
+    setIsLoading(false);
+  }
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+        Enter your registered email address to reset password
+      </Typography>
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 2.5,
+        }}
+      >
+        <FormControl variant="standard" error={!!emailError}>
+          <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
+            Email Address
+          </InputLabel>
+          <CustomInput 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={!!emailError}
+          />
+          <FormHelperText>{emailError}</FormHelperText>
+        </FormControl>
+
+        {serverError && (
+          <Typography variant="body2" color="error">
+            {serverError}
+          </Typography>
+        )}
+
+        <Button 
+          variant="contained" 
+          type="submit" 
+          size="large" 
+          fullWidth
+          onClick={() => (
+            validateEmail(email) ? handleForgotPassword(email) : setEmailError("Invalid email address")
+          )}
+          disabled={isLoading || isWaiting}
+        >
+          Confirm
+        </Button>
+
+        {isWaiting && (
+          <Typography variant="body2" color="secondary">
+            Please wait {time} seconds before resending
+          </Typography>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+export default ForgetPasswordBox;

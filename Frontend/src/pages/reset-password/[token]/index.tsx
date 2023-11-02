@@ -1,7 +1,20 @@
 "use client";
+import { Box, styled, Typography } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
+import LockResetIcon from '@mui/icons-material/LockReset';
+import ResetPasswordBox from "@/components/ResetPasswordBox";
+
+type ResetPasswordPageProps = {
+  token: string;
+  errorMessage: string;
+}
+
+const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
+  fontSize: 100,
+  marginBottom: 16,
+  color: theme.palette.primary.main,
+}));
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { token } = context.query;
@@ -33,103 +46,52 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-async function sendForgotPassword(email: string) {
-  try {
-    const response = await axios.post(
-      "http://localhost:8080/api/auth/forgot-password",
-      {
-        email: email,
-      }
-    ); //
-    if (response.status === 200) {
-      console.debug("Forgot password req sent successfully");
-    } else {
-      console.debug("Failed to forgot password");
-    }
-  } catch (error) {
-    console.error("Failed to forgot password");
-  }
-}
 
-export default function ResetPassword({
-  token,
-  errorMessage,
-}: {
-  token: string;
-  errorMessage: string;
-}) {
-  const [noToken, setNoToken] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [newPasswordAgain, setNewPasswordAgain] = useState("");
-  const [pwNotMatch, setPwNotMatch] = useState(false);
-
-  async function resetPassword(token: String, password: String) {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/reset-password",
-        { resetPasswordToken: token, password: password }
-      );
-      if (response.status === 200) {
-        console.log("Password reset successfully");
-      } else {
-        console.debug("Failed to reset password");
-      }
-    } catch {
-      console.error("Failed to reset password");
-    }
-  }
-
-  useEffect(() => {
-    setPwNotMatch(
-      newPassword !== newPasswordAgain ||
-        newPassword === "" ||
-        newPasswordAgain === ""
-    );
-  }, [newPassword, newPasswordAgain]);
-
+function ResetPasswordPage({token, errorMessage}: ResetPasswordPageProps) {
   return (
-    <>
-      {noToken === false && errorMessage === null ? (
-        <div
-          style={{ margin: "auto", display: "flex", flexDirection: "column" }}
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "48px 128px"
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "white", 
+          borderRadius: 4, 
+          padding: "36px 48px", 
+          border: "0.8px solid",
+          borderColor: "divider",
+          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: "12px",
+            marginBottom: "12px",
+          }}
         >
-          {/* {token.toString()} */}
-          <input
-            type="text"
-            name="password"
-            onChange={(e) => setNewPassword(e.target.value)}
-            style={{ width: "40%" }}
-          />
-          <input
-            type="text"
-            name="passwordAgain"
-            onChange={(e) => setNewPasswordAgain(e.target.value)}
-            style={{ width: "40%" }}
-          />
+          <StyledLockResetIcon />
+          <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+            Reset Password
+          </Typography>
+        </Box>
 
-          <button
-            disabled={pwNotMatch}
-            onClick={() => {
-              resetPassword(token, newPassword);
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      ) : (
-        <>
-          {errorMessage === null ? (
-            <>
-              <div>If you requested a pw reset, pls check your email</div>
-            </>
-          ) : (
-            <>
-              <div>Token is invalid/expired</div>
-            </>
-          )}
-        </>
-      )}
-    </>
+        <ResetPasswordBox token={token} errorMessage={errorMessage} />
+      </Box>
+    </Box>
   );
 }
+
+export default ResetPasswordPage;
 

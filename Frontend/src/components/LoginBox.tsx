@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from '@mui/material';
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
+import Link from 'next/link'
 
-const LoginBox = () => {
+type LoginBoxProps = {
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const LoginBox = ({setOpen}: LoginBoxProps) => {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -47,8 +52,8 @@ const LoginBox = () => {
         justifyContent: 'center',
       }}
     >
-      <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600 }}>
-        Welcome back to CritiQ!
+      <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+        Welcome back to CritiQ
       </Typography>
       <form onSubmit={handleLogin}>
         <Box
@@ -92,7 +97,14 @@ const LoginBox = () => {
           <Button variant="contained" type="submit" size="large" fullWidth>
             Login
           </Button>
-          <Button variant="text" sx={{ textDecoration: "underline"}} size="small" >
+          <Button 
+            variant="text" 
+            sx={{ textDecoration: "underline"}} 
+            size="small" 
+            LinkComponent={Link} 
+            href="/forgot-password"
+            onClick={() => (setOpen ? setOpen(false) : null)}
+          >
             Forgot Passward?
           </Button>
         </Box>
