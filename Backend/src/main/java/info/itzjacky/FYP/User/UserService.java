@@ -145,6 +145,10 @@ public class UserService {
         if(user == null || newPassword == null){
             throw new IllegalStateException("User And New Password Cannot Be Empty");
         }
+//        check if decrypted password is equal to new password
+        if (passwordEncoder.matches(newPassword, user.getPassword())) {
+            throw new IllegalStateException("New Password Cannot Be The Same As Old Password");
+        }
         user.setPassword(passwordEncoder.encode(newPassword));
         user.setResetPasswordToken(null);
         user.setResetPasswordExpires(null);
