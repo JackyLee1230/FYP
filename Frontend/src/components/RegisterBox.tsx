@@ -71,7 +71,7 @@ const RegisterBox = () => {
         justifyContent: 'center',
       }}
     >
-      <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600 }}>
+      <Typography variant="h5" sx={{ marginBottom: 4, maxWidth: 600, fontWeight: 600, textAlign: "center" }}>
         Get started with a free CritiQ account to review and discover your favorite games!
       </Typography>
       <form onSubmit={handleRegister}>
@@ -97,7 +97,7 @@ const RegisterBox = () => {
 
           <FormControl variant="standard" error={!!emailError}>
             <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
-              Email
+              Email Address
             </InputLabel>
             <CustomInput
               value={email}
