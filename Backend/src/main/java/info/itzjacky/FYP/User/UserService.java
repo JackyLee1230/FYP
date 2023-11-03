@@ -133,6 +133,9 @@ public class UserService {
             throw new IllegalStateException("Token Cannot Be Empty");
         }
         User u = userRepository.findUserByResetPasswordToken(token);
+        if (u == null) {
+            throw new IllegalStateException("Token Has Expired");
+        }
         Date d = u.getResetPasswordExpires();
         if (d != null && d.before(new Date())) {
             throw new IllegalStateException("Token Has Expired");
