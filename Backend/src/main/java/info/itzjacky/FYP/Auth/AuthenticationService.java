@@ -96,13 +96,21 @@ public class AuthenticationService {
 
     @Transactional
     public AuthenticationResponse login(LoginRequest request) {
+//        if name contains '@', then find user by email
+        User user =  null;
+        if (request.getName().contains("@")) {
+            user = repository.findUserByEmail(request.getName());
+        } else {
+            user = repository.findUserByName(request.getName()).orElseThrow();
+        }
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getName(),
+                        user.getName(),
                         request.getPassword()
                 )
         );
-        var user = repository.findUserByName(request.getName()).orElseThrow();
+
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
