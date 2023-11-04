@@ -154,9 +154,10 @@ const WebToolbar = () => {
                   justifyContent: 'center',
                 }}
                 open={openPanel}
-                onClose={() => setOpenPanel(false)}
               >
-                <SignInUpPanel setOpen={setOpenPanel}/>
+                <Box>
+                  <SignInUpPanel setOpen={setOpenPanel}/>
+                </Box>
               </Modal>
             </>
           )}

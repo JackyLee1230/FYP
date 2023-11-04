@@ -3,9 +3,34 @@ import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
 import Link from 'next/link'
+import axios from 'axios';
 
 type LoginBoxProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+async function onLogin(username: string, password: string) {
+  {/* 
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/auth/login",
+      {
+        name: username,
+        password: password,
+      }
+    );
+    if (response.status === 200) {
+      console.debug("Login successful");
+      return(null);
+    } else {
+      console.debug("Failed to login (response)", response);
+      return(response.data.message)
+    }
+  } catch (error: any) {
+    console.error("Failed to login (error)", error);
+    return(error.response.data.message);
+  }
+  */}
 }
 
 const LoginBox = ({setOpen}: LoginBoxProps) => {
@@ -16,32 +41,35 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
   const [passwordError, setPasswordError] = useState('');
   const [LoginError, setLoginError] = useState('');
 
+  function verifyUsername(): boolean{
+    if (username === '') {
+      setUsernameError('Please enter your username or email address.');
+      return false;
+    } else {
+      setUsernameError('');
+      return true;
+    }
+  }
+
+  function verifyPassword(): boolean{
+    if (password === '') {
+      setPasswordError('Please enter your password.');
+      return false;
+    } else {
+      setPasswordError('');
+      return true;
+    }
+  }
+
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (username && password) {
-      setUsernameError('');
-      setPasswordError('');
-      onLogin(username, password);
-    } else {
-      if(!username){
-        setUsernameError('Please fill in your username.');
-      }
-      else{
-        setUsernameError('');
-      }
-      if(!password){
-        setPasswordError('Please fill in your password.');
-      }
-      else{
-        setPasswordError('');
-      }
+    if (!verifyUsername() || !verifyPassword()) {
       setLoginError('Please fill in all the fields.')
+      return;
     }
+
+    onLogin(username, password);
   };
-
-  const onLogin = (username: string, password: string) => {
-
-  }
 
   return (
     <Box
@@ -66,12 +94,13 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
         >
           <FormControl variant="standard" error={!!usernameError}>
             <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
-              User Name
+              User Name / Email Address
             </InputLabel>
             <CustomInput 
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               error={!!usernameError}
+              onBlur={verifyUsername}
             />
             <FormHelperText>{usernameError}</FormHelperText>
           </FormControl>
@@ -84,6 +113,8 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              error={!!passwordError}
+              onBlur={verifyPassword}
             />
             <FormHelperText>{passwordError}</FormHelperText>
           </FormControl>

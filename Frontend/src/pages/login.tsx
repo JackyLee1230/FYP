@@ -9,7 +9,6 @@ const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-
 function LoginPage() {
   return (
     <Box

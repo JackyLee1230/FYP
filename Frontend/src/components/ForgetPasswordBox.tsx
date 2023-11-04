@@ -57,11 +57,11 @@ const ForgetPasswordBox = () => {
 
   function verifyEmail(): boolean{
     if(email === ""){
-      setEmailError("Email cannot be empty");
+      setEmailError("Email address cannot be empty");
       return false;
     }
     else if(!validateEmail(email)){
-      setEmailError("Invalid email format");
+      setEmailError("Invalid email address format");
       return false;
     }
     else{

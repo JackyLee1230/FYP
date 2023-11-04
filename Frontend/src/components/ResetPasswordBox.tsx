@@ -44,16 +44,16 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   function verifyPassword(): boolean{
-    if(newPassword === "" || confirmNewPassword === ""){
+    if(!validatePassword(newPassword) || !validatePassword(confirmNewPassword)){
+      setPasswordError("Your password should have:\n 1. A minimum of 8 and a maximum of 16 characters\n 2. Contains both numbers and letters");
+      return false;
+    }
+    else if(newPassword === "" || confirmNewPassword === ""){
       setPasswordError("New Password cannot be empty");
       return false;
     }
     else if(newPassword !== confirmNewPassword){
       setPasswordError("Password does not match");
-      return false;
-    }
-    else if(!validatePassword(newPassword)){
-      setPasswordError("Your password should have:\n 1. A minimum of 8 and a maximum of 16 characters\n 2. Contains both numbers and letters");
       return false;
     }
     else{
