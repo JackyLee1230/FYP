@@ -55,7 +55,26 @@ const ForgetPasswordBox = () => {
     setTime(60);
   }
 
+  function verifyEmail(): boolean{
+    if(email === ""){
+      setEmailError("Email cannot be empty");
+      return false;
+    }
+    else if(!validateEmail(email)){
+      setEmailError("Invalid email format");
+      return false;
+    }
+    else{
+      setEmailError("");
+    }
+    return true;
+  }
+
   async function handleForgotPassword(email: string){
+    if(!verifyEmail()){
+      return;
+    }
+
     setIsLoading(true);
     setEmailError("");
     const error = await sendForgotPassword(email);
@@ -97,6 +116,7 @@ const ForgetPasswordBox = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={!!emailError}
+            onBlur={() => verifyEmail()}
           />
           <FormHelperText>{emailError}</FormHelperText>
         </FormControl>
@@ -113,7 +133,7 @@ const ForgetPasswordBox = () => {
           size="large" 
           fullWidth
           onClick={() => (
-            validateEmail(email) ? handleForgotPassword(email) : setEmailError("Invalid email address")
+            handleForgotPassword(email)
           )}
           disabled={isLoading || isWaiting}
         >
