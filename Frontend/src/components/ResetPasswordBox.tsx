@@ -54,7 +54,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
       return;
     }
     else if(!validatePassword(newPassword)){
-      setPasswordError("Password must contain 8 to 16 characters with number and letter");
+      setPasswordError("Your password should have:\n 1. A minimum of 8 and a maximum of 16 characters\n 2. Contains both numbers and letters");
       return;
     }
     else{
@@ -105,7 +105,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   onChange={(e) => setNewPassword(e.target.value)}
                   error={!!passwordError}
                 />
-                <FormHelperText>{passwordError}</FormHelperText>
+                <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
 
               <FormControl variant="standard" error={!!passwordError}>
@@ -118,7 +118,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   error={!!passwordError}
                 />
-                <FormHelperText>{passwordError}</FormHelperText>
+                <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
 
               {resetError !== "" && (
@@ -148,7 +148,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
 
               <Button 
                 variant="text" 
-                sx={{ textDecoration: "underline"}} 
+                sx={{ textDecoration: "underline", marginTop: 2.5}} 
                 size="small" 
                 LinkComponent={Link} 
                 href="/login"
