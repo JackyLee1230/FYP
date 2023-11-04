@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
+import info.itzjacky.FYP.Utils.RegEx;
 import info.itzjacky.FYP.config.JwtService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -42,6 +43,9 @@ public class AuthenticationService {
 
     @Transactional
     public String forgotPassword(ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
+        if(!RegEx.emailValidation(request.getEmail().toLowerCase())){
+            throw new IllegalStateException("Invalid Email format");
+        }
         var user = repository.findUserByEmail(request.getEmail());
         if (user == null) {
             throw new IllegalStateException("User does not exist");
@@ -80,6 +84,12 @@ public class AuthenticationService {
 
     @Transactional
     public AuthenticationResponse register(RegisterRequest request) {
+        if(!RegEx.emailValidation(request.getEmail().toLowerCase())){
+            throw new IllegalStateException("Invalid Email format");
+        }
+        if(!RegEx.passwordValidation(request.getPassword())){
+            throw new IllegalStateException("Password Must Be 8-16 Characters Long, Contain At Least 1 Letter And 1 Number");
+        }
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))

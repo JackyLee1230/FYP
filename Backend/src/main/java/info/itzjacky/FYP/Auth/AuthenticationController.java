@@ -2,6 +2,7 @@ package info.itzjacky.FYP.Auth;
 
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserService;
+import info.itzjacky.FYP.Utils.RegEx;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
