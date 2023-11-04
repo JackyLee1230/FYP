@@ -45,7 +45,7 @@ public class User implements UserDetails {
 //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Date resetPasswordExpires;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 14)
     private String name;
 
     @Column(updatable = true, unique = true)
