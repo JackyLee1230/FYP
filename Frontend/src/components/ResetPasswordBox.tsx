@@ -43,22 +43,28 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  
-  async function handlePasswordReset(token: String, password: String){
+  function verifyPassword(): boolean{
     if(newPassword === "" || confirmNewPassword === ""){
       setPasswordError("New Password cannot be empty");
-      return;
+      return false;
     }
     else if(newPassword !== confirmNewPassword){
       setPasswordError("Password does not match");
-      return;
+      return false;
     }
     else if(!validatePassword(newPassword)){
       setPasswordError("Your password should have:\n 1. A minimum of 8 and a maximum of 16 characters\n 2. Contains both numbers and letters");
-      return;
+      return false;
     }
     else{
       setPasswordError("");
+    }
+    return true;
+  }
+  
+  async function handlePasswordReset(token: String, password: String){
+    if(!verifyPassword()){
+      return;
     }
 
     setIsLoading(true);
@@ -104,6 +110,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   error={!!passwordError}
+                  onBlur={() => verifyPassword()}
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
@@ -117,6 +124,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   value={confirmNewPassword}
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   error={!!passwordError}
+                  onBlur={() => verifyPassword()}
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
