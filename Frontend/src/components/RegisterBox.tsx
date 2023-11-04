@@ -92,7 +92,10 @@ const RegisterBox = () => {
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!verifyUsername() || !verifyEmail() || !verifyPassword()){
+    const usernameValid = verifyUsername();
+    const passwordValid = verifyPassword();
+    const emailValid = verifyEmail();
+    if(!usernameValid || !passwordValid || !emailValid){
       setRegisterError('Please fill in all the fields.');
       return;
     }
@@ -157,6 +160,7 @@ const RegisterBox = () => {
               error={!!passwordError}
               type="password"
               onBlur={verifyPassword}
+              inputProps={{ maxLength: 16 }}
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>
@@ -171,6 +175,7 @@ const RegisterBox = () => {
               error={!!passwordError}
               type="password"
               onBlur={verifyPassword}
+              inputProps={{ maxLength: 16 }}
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>

@@ -111,6 +111,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   onChange={(e) => setNewPassword(e.target.value)}
                   error={!!passwordError}
                   onBlur={() => verifyPassword()}
+                  inputProps={{ maxLength: 16 }}
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
@@ -125,6 +126,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   error={!!passwordError}
                   onBlur={() => verifyPassword()}
+                  inputProps={{ maxLength: 16 }}
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>

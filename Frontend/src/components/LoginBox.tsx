@@ -63,11 +63,12 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!verifyUsername() || !verifyPassword()) {
+    const usernameValid = verifyUsername();
+    const passwordValid = verifyPassword();
+    if(!usernameValid || !passwordValid) {
       setLoginError('Please fill in all the fields.')
       return;
     }
-
     onLogin(username, password);
   };
 
@@ -101,6 +102,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               onChange={(e) => setUsername(e.target.value)}
               error={!!usernameError}
               onBlur={verifyUsername}
+              inputProps={{ maxLength: 14 }}
             />
             <FormHelperText>{usernameError}</FormHelperText>
           </FormControl>
@@ -115,6 +117,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               onChange={(e) => setPassword(e.target.value)}
               error={!!passwordError}
               onBlur={verifyPassword}
+              inputProps={{ maxLength: 16 }}
             />
             <FormHelperText>{passwordError}</FormHelperText>
           </FormControl>
