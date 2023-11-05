@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       { id: gameid }
     );
     const reviewsResponse = await axios.post(
-      "http://localhost:8080/api/review/getReviewsByGameId",
+      "http://localhost:8080/api/review/findReviewsByGameId",
       { gameId: gameid }
     );
 
@@ -184,7 +184,10 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
 
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div className="flex flex-col">
-          {reviews.length > 1 ? `Reviews [${reviews.length}]` : "Review [1]"}:
+          {reviews && reviews.length > 1
+            ? `Reviews [${reviews.length}]`
+            : "Review [1]"}
+          :
         </div>
 
         {reviews && reviews.length > 0 ? (

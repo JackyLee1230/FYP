@@ -1,7 +1,9 @@
 package info.itzjacky.FYP.Review;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Game.Game;
 import jakarta.persistence.*;
@@ -18,6 +20,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 //@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id" }) })
 //    a column that stores the game version, game has a one to many attribute call versions
 //    make this into the unique constraint
@@ -35,7 +40,6 @@ public class Review {
     private Integer id;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
     private User reviewer;
 

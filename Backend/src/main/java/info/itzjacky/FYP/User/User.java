@@ -1,8 +1,6 @@
 package info.itzjacky.FYP.User;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import info.itzjacky.FYP.Auth.Token;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Review.Review;
@@ -21,6 +19,9 @@ import java.util.List;
 @Table(name = "User", indexes = {
         @Index(name = "idx_user_name", columnList = "name")
 })
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 @Builder
 @Getter
 @Setter
@@ -77,6 +78,7 @@ public class User implements UserDetails {
     private List<Game> developedGames;
 
     @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY)
+    @JsonBackReference
     @ToString.Exclude
     private List<Review> reviews;
 
