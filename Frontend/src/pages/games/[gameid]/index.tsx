@@ -201,14 +201,14 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
                 className="bg-gray-500 rounded-md cursor-pointer"
               >
                 <div className="m-4">
-                  <p>
+                  <div>
                     Review By {review.reviewer.name} on{" "}
                     {formatTime(review.createdAt)}:
                     <br />
                     Score: {review.score}
                     <br />
                     <p>AI Sentiment: {review.sentiment}</p>
-                  </p>
+                  </div>
                   <br />
                   {review.comment}
                 </div>
