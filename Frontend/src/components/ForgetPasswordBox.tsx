@@ -117,6 +117,7 @@ const ForgetPasswordBox = () => {
             onChange={(e) => setEmail(e.target.value)}
             error={!!emailError}
             onBlur={() => verifyEmail()}
+            autoComplete="off"
           />
           <FormHelperText>{emailError}</FormHelperText>
         </FormControl>

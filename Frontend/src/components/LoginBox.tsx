@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from '@mui/material';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, FormControlLabel, Radio } from '@mui/material';
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
 import Link from 'next/link'
@@ -40,6 +40,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [LoginError, setLoginError] = useState('');
+  const [isRemembered, setIsRemembered] = useState(false);
 
   function verifyUsername(): boolean{
     if (username === '') {
@@ -103,6 +104,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               error={!!usernameError}
               onBlur={verifyUsername}
               inputProps={{ maxLength: 14 }}
+              autoComplete="username-or-email"
             />
             <FormHelperText>{usernameError}</FormHelperText>
           </FormControl>
@@ -118,10 +120,20 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               error={!!passwordError}
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
+              autoComplete="password"
             />
             <FormHelperText>{passwordError}</FormHelperText>
           </FormControl>
 
+          <FormControlLabel 
+            checked={isRemembered} 
+            control={<Radio checked={isRemembered} onClick={() => setIsRemembered(prev => !prev)}/>} 
+            label="Remember Me" 
+            sx={{
+              alignSelf: "flex-start",
+            }}
+          />
+          
           {LoginError && (
             <Typography variant="body2" color="error">
               {LoginError}

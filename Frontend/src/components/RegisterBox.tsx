@@ -133,6 +133,7 @@ const RegisterBox = () => {
               error={!!usernameError}
               onBlur={verifyUsername}
               inputProps={{ maxLength: 14 }}
+              autoComplete="off"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{usernameError}</FormHelperText>
           </FormControl>
@@ -146,6 +147,7 @@ const RegisterBox = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               onBlur={verifyEmail}
+              autoComplete="off"
             />
             <FormHelperText>{emailError}</FormHelperText>
           </FormControl>
@@ -161,6 +163,7 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
+              autoComplete="off"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>
@@ -176,6 +179,7 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
+              autoComplete="off"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>

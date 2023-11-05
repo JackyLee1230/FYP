@@ -112,6 +112,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   error={!!passwordError}
                   onBlur={() => verifyPassword()}
                   inputProps={{ maxLength: 16 }}
+                  autoComplete="off"
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
@@ -127,6 +128,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                   error={!!passwordError}
                   onBlur={() => verifyPassword()}
                   inputProps={{ maxLength: 16 }}
+                  autoComplete="off"
                 />
                 <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
               </FormControl>
