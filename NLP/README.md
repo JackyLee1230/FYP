@@ -13,6 +13,7 @@ We only highlight the most critical packages that affect the code.
 |python|3.9.18|pickling 3.9 for max compatability across different packages|
 |pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
 
+<<<<<<< Updated upstream
 ## WSL2
 
 According to offical documentation of tensorflow, WSL is required to use latest version of tensorflow with or without GPU.
@@ -186,6 +187,8 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
     Then follow the section "Open a remote folder or workspace" to use WSL as an environment in the VSCode command line, and have access to folders in WSL.
 
 
+=======
+>>>>>>> Stashed changes
 ## Steam API
 
 API to grab comments

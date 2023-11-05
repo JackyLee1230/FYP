@@ -119,3 +119,9 @@ For the messages to be sent to chatgpt, edit the messages parameter of the json 
 For other parameters, such as temperature, top_p, max_tok of chatgpt (which is Azure chatgpt), can add global parameters according to the stated examples in Azure chatgpt website. [Docs](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#completions).
 
 The parameters can be added within the function _modify_gpt_request()_ in _hkuchatgpt.py_
+
+## Post processing
+
+1. Run _read_dataset_from_pickle.ipynb_ to find out valid processed comments.
+
+2. Run _group_cleaned_dataset_from_pickle.ipynb_ to group processed pickle files into a single file of that month.
