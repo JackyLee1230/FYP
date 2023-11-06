@@ -10,6 +10,9 @@ import nltk
 
 from nltk.stem import SnowballStemmer
 
+import threading
+from concurrent.futures import ThreadPoolExecutor
+
 def clean(raw):
     """ Remove hyperlinks and markup """
     result = re.sub("<[a][^>]*>(.+?)</[a]>", 'Link.', raw)
@@ -52,18 +55,19 @@ def remove_punctuation(text):
 from nltk.corpus import stopwords
 
 def remove_stopword(text):
-   stop = set(stopwords.words("english"))
-   text = [word.lower() for word in text.split() if word.lower() not in stop]
+   global stop_nltk
+   text = [word.lower() for word in text.split() if word.lower() not in stop_nltk]
+
    return " ".join(text)
 
 def stemming(text):
-   stem=[]
-   # stopword = stopwords.words('english')
-   snowball_stemmer = SnowballStemmer('english')
-   word_tokens = nltk.word_tokenize(text)
-   stemmed_word = [snowball_stemmer.stem(word) for word in word_tokens]
-   stem=' '.join(stemmed_word)
-   return stem
+    stem=[]
+    global snowball_stemmer
+
+    word_tokens = nltk.word_tokenize(text)
+    stemmed_word = [snowball_stemmer.stem(word) for word in word_tokens]
+    stem=' '.join(stemmed_word)
+    return stem
 
 def cleaning(s_list:list[str]):
     _s_list = list(map(clean, s_list))
@@ -82,6 +86,47 @@ def inference(s_list:list[str]):
     result = pipeline_target.predict(s_list)
     return result
 
+
+# reference: https://cloud.tencent.com/developer/article/1838485 (example 5)
+
+# for threading
+local = threading.local()
+
+def init_connection():
+    # Establish connection
+    credentials = PlainCredentials('FYP', 'FYP')                                     
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='137.184.216.126', port=5672, credentials=credentials))
+    channel = connection.channel()
+
+    return channel, connection
+
+def consumer(ch, method, properties, body, inference_obj):
+
+    reviewId, comment = inference_obj
+
+    start_time = time.time()   
+    result = inference(comment)
+    end_time = time.time()
+    print('Time taken:', end_time-start_time)
+
+    # use a BlockingConnection per-thread
+    # reuse created BlockingConnection if the thread in the threadpool has created one
+    if not hasattr(local, 'channel'):
+        channel, _ = init_connection()
+        thread_id = threading.currentThread().ident
+        print(f'Thread {thread_id} created channel.')
+        local.channel = channel
+
+
+    # notify the RabbitQueue
+    # Acknowledge the message
+    resultToBeSentBack = bytes( str(reviewId) + ";" + str(result[0]), 'utf-8')
+    print(str(reviewId) + ";" + str(result[0]))
+    channel.basic_ack(delivery_tag=method.delivery_tag)
+    channel.basic_publish(exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
+
+
+
 def callback(ch, method, properties, body):
     # Process the received message
     start = time.time()
@@ -89,23 +134,17 @@ def callback(ch, method, properties, body):
     # find the first occurance of ; and split it intwo two parts
     reviewId = str(body)[0: str(body).find(";")]
     comment = str(body)[str(body).find(";")+1:]
+
+    # use thread pool executor to limit the number of threads spawned
+    threadpoolexecutor.submit(
+        consumer, ch, method, properties, body, (reviewId, comment)
+    )
     
-    result = inference(comment)
-    end = time.time()
-    print("Time taken: ", end - start)
-
-    # Acknowledge the message
-    resultToBeSentBack = bytes( str(reviewId) + ";" + str(result[0]), 'utf-8')
-    print(str(reviewId) + ";" + str(result[0]))
-    ch.basic_ack(delivery_tag=method.delivery_tag)
-    ch.basic_publish(exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
-
+    
 def listen_to_queue():
 
     # Establish connection
-    credentials = PlainCredentials('FYP', 'FYP')                                     
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='137.184.216.126', port=5672, credentials=credentials))
-    channel = connection.channel()
+    channel, connection = init_connection()
 
     # Declare the queue
     channel.queue_declare(queue='SentimentAnalysisQueue', durable=True)
@@ -117,6 +156,12 @@ def listen_to_queue():
         # Keep the program running
         channel.start_consuming()
     except KeyboardInterrupt:
+        # shutdown the threadpoolexecutor
+        # set cancel_futures to True as those un-run submissions cannot be fetched back to the backend
+        # once the connection is closed.
+        # posed data loss threat
+        threadpoolexecutor.shutdown(wait=True, cancel_futures=True)
+
         # Close the connection upon interrupt signal (e.g., Ctrl+C)
         channel.stop_consuming()
         connection.close()
@@ -133,12 +178,20 @@ if __name__ == "__main__":
     filename_tfidf = Path('../NLP/steam-games-reviews-analysis-sentiment-analysis_tfidf_12-09-2023.pkl').resolve()
     loaded_tfidf = pickle.load(open(filename_tfidf, "rb"))
 
-    end_time = time.time()
+
+    # preload every thing related to nltk to prevent from loading everytime   
+    stop_nltk = set(stopwords.words("english"))
+    snowball_stemmer = SnowballStemmer('english')
+
 
     pipeline_target = Pipeline([
         ('count_vectorizer', loaded_count_vec),
         ('tfidf', loaded_tfidf),
         ('model', loaded_model)
     ])
+
+    # create a threadpoolexecutor for multi-thread
+    n_threads = 5
+    threadpoolexecutor = ThreadPoolExecutor(max_workers=n_threads)
     
     listen_to_queue()
