@@ -90,6 +90,9 @@ public class AuthenticationService {
         if(!RegEx.passwordValidation(request.getPassword())){
             throw new IllegalStateException("Password Must Be 8-16 Characters Long, Contain At Least 1 Letter And 1 Number");
         }
+        if (repository.findUserByName(request.getName()).isPresent()) {
+            throw new IllegalStateException("User already exists");
+        }
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))

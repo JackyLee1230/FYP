@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -34,6 +36,16 @@ public class AuthenticationController {
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
         return ResponseEntity.ok(authenticationService.forgotPassword(request));
+    }
+
+    @PostMapping("/userAuth")
+    public ResponseEntity<User> userAuth(Principal principal){
+        Optional<User> u = userService.findUserByName(principal.getName());
+        if (u.isEmpty()) {
+            throw new IllegalStateException("User does not exist");
+        } else {
+            return ResponseEntity.ok(u.get());
+        }
     }
 
     @PostMapping("/reset-password")
