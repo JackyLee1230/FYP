@@ -3,34 +3,12 @@ import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, FormC
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
 import Link from 'next/link'
-import axios from 'axios';
+import { login } from "@/services/authService"
+import { setAuthCookies } from "@/libs/authHelper"
+import { useAuthContext } from '@/context/AuthContext'
 
 type LoginBoxProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-async function onLogin(username: string, password: string) {
-  {/* 
-  try {
-    const response = await axios.post(
-      "http://localhost:8080/api/auth/login",
-      {
-        name: username,
-        password: password,
-      }
-    );
-    if (response.status === 200) {
-      console.debug("Login successful");
-      return(null);
-    } else {
-      console.debug("Failed to login (response)", response);
-      return(response.data.message)
-    }
-  } catch (error: any) {
-    console.error("Failed to login (error)", error);
-    return(error.response.data.message);
-  }
-  */}
 }
 
 const LoginBox = ({setOpen}: LoginBoxProps) => {
@@ -40,7 +18,8 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [LoginError, setLoginError] = useState('');
-  const [isRemembered, setIsRemembered] = useState(false);
+  const [isTemporary, setIsTemporary] = useState(true);
+  const { setUser, setToken } = useAuthContext()
 
   function verifyUsername(): boolean{
     if (username === '') {
@@ -70,8 +49,24 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
       setLoginError('Please fill in all the fields.')
       return;
     }
-    onLogin(username, password);
+    onLogin();
   };
+
+  async function onLogin() {
+    try{
+      const response = await login(username, password);
+      if(response?.user) {
+        const access_token = response.access_token;
+        const refresh_token = response.refresh_token;
+        setAuthCookies(refresh_token, isTemporary);
+        setUser(response.user);
+        setToken(access_token);
+        //router.reload();
+      }
+    } catch (error: any) {
+      setLoginError(error.response.data.message)
+    } 
+  }
 
   return (
     <Box
@@ -126,8 +121,8 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
           </FormControl>
 
           <FormControlLabel 
-            checked={isRemembered} 
-            control={<Radio checked={isRemembered} onClick={() => setIsRemembered(prev => !prev)}/>} 
+            checked={!isTemporary} 
+            control={<Radio checked={!isTemporary} onClick={() => setIsTemporary(prev => !prev)}/>} 
             label="Remember Me" 
             sx={{
               alignSelf: "flex-start",

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase, Modal } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useEffect, useState } from 'react';
+import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase, Modal, Menu, MenuItem, ListItemIcon } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import { useDebounce } from "usehooks-ts";
 import Link from 'next/link'
 import SignInUpPanel from './SignInUpPanel';
+import { useAuthContext } from '@/context/AuthContext'
+import Logout from '@mui/icons-material/Logout';
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -54,6 +55,26 @@ const WebToolbar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter()
   const [openPanel, setOpenPanel] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleUserMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleUserMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  let { user, token } = useAuthContext();
+
+  useEffect(() => {
+    if(token || user){
+      setIsLogin(true);
+    }
+    else{
+      setIsLogin(false);
+    }
+  }, [token, user])
+
 
   const handleProfileRedirect = () => {
     // Redirect to profile page
@@ -140,26 +161,70 @@ const WebToolbar = () => {
           </Search>
 
           {isLogin ? (
-            <IconButton edge="end" color="inherit" aria-label="profile" onClick={handleProfileRedirect}>
-              <Avatar alt="User Avatar" src="/static/images/avatar/1.jpg" />
-            </IconButton>
-          ) : (
             <>
-              <Button variant="outlined" color="secondary" size="large" sx={{whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500}} onClick={() => setOpenPanel(true)}>Register</Button>
-
-              <Modal
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+              <IconButton edge="end" color="inherit" aria-label="profile" onClick={handleUserMenuOpen}>
+                <Avatar alt="User Avatar" src="/static/images/avatar/1.jpg" />
+              </IconButton>
+              
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleUserMenuClose}
+                onClick={handleUserMenuClose}
+                PaperProps={{
+                  elevation: 0,
+                  sx: {
+                    bgcolor: 'white',
+                    overflow: 'visible',
+                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                    marginTop: "4px",
+                    '&:before': {
+                      content: '""',
+                      display: 'block',
+                      position: 'absolute',
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: 'white',
+                      transform: 'translateY(-50%) rotate(45deg)',
+                      zIndex: 0,
+                    },
+                  },
                 }}
-                open={openPanel}
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
-                <Box>
-                  <SignInUpPanel setOpen={setOpenPanel}/>
-                </Box>
-              </Modal>
+                <MenuItem onClick={handleUserMenuClose}>
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={handleUserMenuClose}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Menu>
             </>
+          ) : (
+            token !== undefined && (
+              <>
+                <Button variant="outlined" color="secondary" size="large" sx={{whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500}} onClick={() => setOpenPanel(true)}>Register</Button>
+
+                <Modal
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  open={openPanel}
+                >
+                  <Box>
+                    <SignInUpPanel setOpen={setOpenPanel}/>
+                  </Box>
+                </Modal>
+              </>
+            )
           )}
         </Toolbar>
       </AppBar>

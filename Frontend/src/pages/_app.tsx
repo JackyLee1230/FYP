@@ -8,6 +8,7 @@ import createCache from '@emotion/cache';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { themeOptions } from '../theme/MuiThemeOption'
 import Layout from "../components/layout"
+import { AuthContextProvider } from "@/context/AuthContext";
 
 const cache = createCache({
   key: 'css',
@@ -22,9 +23,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <StyledEngineProvider injectFirst>
         <Provider store={store}>
           <CacheProvider value={cache}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <AuthContextProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </AuthContextProvider>
           </CacheProvider>
         </Provider>
       </StyledEngineProvider>
