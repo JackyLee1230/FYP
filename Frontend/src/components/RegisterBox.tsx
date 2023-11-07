@@ -115,7 +115,7 @@ const RegisterBox = () => {
         Get started with a free CritiQ account to review and discover your favorite games!
       </Typography>
       <form onSubmit={handleRegister}>
-      <Box
+        <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -133,7 +133,9 @@ const RegisterBox = () => {
               error={!!usernameError}
               onBlur={verifyUsername}
               inputProps={{ maxLength: 14 }}
-              autoComplete="off"
+              id="username"
+              name='username'
+              autoComplete="username"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{usernameError}</FormHelperText>
           </FormControl>
@@ -147,7 +149,9 @@ const RegisterBox = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               onBlur={verifyEmail}
-              autoComplete="off"
+              id="email"
+              name='email'
+              autoComplete="email"
             />
             <FormHelperText>{emailError}</FormHelperText>
           </FormControl>
@@ -163,7 +167,9 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
-              autoComplete="off"
+              id="password"
+              name='password'
+              autoComplete="new-password"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>
@@ -179,7 +185,9 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
-              autoComplete="off"
+              id='confirmPassword'
+              name='confirmPassword'
+              autoComplete="new-password"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
           </FormControl>

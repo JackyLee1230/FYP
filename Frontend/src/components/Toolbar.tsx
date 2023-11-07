@@ -10,6 +10,7 @@ import { useAuthContext } from '@/context/AuthContext'
 import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { logout } from "@/services/authService"
+import { User } from '@/type/user';
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -50,6 +51,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     fontSize: "15px",
   },
 }));
+
+function displayUserRole(user: User | null): string {
+  if(user){
+    if (user.role.length > 1) {
+      let filteredRoles = user.role.filter((r) => r !== "USER");
+      return filteredRoles.join(`\n`);
+    } else {
+      return user?.role.join(`\n`);
+    }
+  }
+  return "";
+}
 
 const WebToolbar = () => {
   const [searchString, setSearchString] = useState<string>("")
@@ -168,6 +181,9 @@ const WebToolbar = () => {
               onChange={event=>{                                
                 setSearchString(event.target.value)
               }}   
+              id="search-input"
+              name="search-input"
+              autoComplete='on'
             />
             <SearchIconWrapper
               onClick={handleGameSearch}
@@ -221,7 +237,7 @@ const WebToolbar = () => {
                     {user?.name}
                   </Typography>
                   <Typography variant="body1" sx={{color: "text.secondary"}}>
-                    {user?.role}
+                    {displayUserRole(user)}
                   </Typography>
                 </Box>
                 <Divider/>

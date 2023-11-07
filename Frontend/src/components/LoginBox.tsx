@@ -64,7 +64,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
         router.reload();
       }
     } catch (error: any) {
-      setLoginError(error.response.data.message)
+      setLoginError(error?.response?.data?.message ?? "Login failed, please try again later")
     } 
   }
 
@@ -98,7 +98,9 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               onChange={(e) => setUsername(e.target.value)}
               error={!!usernameError}
               onBlur={verifyUsername}
-              autoComplete="username-or-email"
+              id="username" 
+              name="username"
+              autoComplete="username"
             />
             <FormHelperText>{usernameError}</FormHelperText>
           </FormControl>
@@ -114,7 +116,9 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               error={!!passwordError}
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
-              autoComplete="password"
+              id="password" 
+              name="password"
+              autoComplete="current-password"
             />
             <FormHelperText>{passwordError}</FormHelperText>
           </FormControl>
