@@ -41,8 +41,10 @@ public class SecurityConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry
                         .addMapping("/**")
-                        .allowedOrigins("http://localhost:3000", "http://localhost:8080")
-                        .allowedMethods("POST", "GET", "PUT", "DELETE");
+                        .allowedOrigins("*")
+                        .allowedMethods("POST", "GET", "PUT", "DELETE")
+                        .allowedHeaders("*")
+                ;
             }
         };
     }
@@ -50,9 +52,9 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:3000");
-        corsConfiguration.addAllowedOrigin("http://localhost:8080");
+        corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.setAllowedMethods(java.util.List.of("POST", "GET", "PUT", "DELETE"));
+        corsConfiguration.setAllowedHeaders(java.util.List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;

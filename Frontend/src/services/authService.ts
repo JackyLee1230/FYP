@@ -37,6 +37,9 @@ export async function logout(access_token: string) {
     headers: {
       Authorization: `Bearer ${access_token}`,
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Allow-Credentials": "true",
     },
   })
     .then(function (response) {
