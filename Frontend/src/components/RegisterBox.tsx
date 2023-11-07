@@ -77,7 +77,7 @@ const RegisterBox = () => {
       return false;
     }
     else if(password === "" || confirmPassword === ""){
-      setPasswordError("New Password cannot be empty");
+      setPasswordError("Password cannot be empty");
       return false;
     }
     else if(password !== confirmPassword){

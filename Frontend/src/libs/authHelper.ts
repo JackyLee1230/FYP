@@ -30,7 +30,6 @@ export function setAuthCookies(refresh_token:string | null, isTemporary: boolean
 } 
 
 export function removeAuthCookies(): void {
-  console.log("here")
   deleteCookie('_u-token')
 }
 

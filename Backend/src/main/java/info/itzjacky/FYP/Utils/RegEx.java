@@ -12,7 +12,7 @@ public class RegEx {
     }
 
     public static boolean passwordValidation(String password) {
-        String regexPattern = "/^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,16}$/";
+        String regexPattern = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]\\{\\};':\"\\\\|,.<>\\/?]{8,16}$";
         return RegEx.patternMatches(password, regexPattern);
     }
 
