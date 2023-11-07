@@ -113,16 +113,22 @@ public class AuthenticationService {
         User user =  null;
         if (request.getName().contains("@")) {
             user = repository.findUserByEmail(request.getName());
+            if (user == null) {
+                throw new IllegalStateException("User does not exist");
+            }
         } else {
-            user = repository.findUserByName(request.getName()).orElseThrow();
+            user = repository.findUserByName(request.getName()).orElseThrow( () -> new IllegalStateException("User does not exist"));
         }
-
+        try{
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         user.getName(),
                         request.getPassword()
                 )
-        );
+        );}
+        catch (org.springframework.security.core.AuthenticationException e ){
+            throw new IllegalStateException("Incorrect Password");
+        }
 
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
