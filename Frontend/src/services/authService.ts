@@ -23,11 +23,14 @@ export async function register(username: string, email: string, password: string
 export async function logout(access_token: string) {
   await axios({
     method: 'POST',
-    url: "localhost:8080/api/auth/logout",
+    url: "http://localhost:8080/api/auth/logout",
     headers: {
           Authorization: `Bearer ${access_token}`
     }
+  }).then(function (response) {
+    console.debug("logout response: ", response);
+  }).catch(function (error) {
+    console.error("logout error: ", error);
   });
-
   removeAuthCookies();
 }

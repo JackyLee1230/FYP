@@ -61,7 +61,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
         setAuthCookies(refresh_token, isTemporary);
         setUser(response.user);
         setToken(access_token);
-        //router.reload();
+        router.reload();
       }
     } catch (error: any) {
       setLoginError(error.response.data.message)

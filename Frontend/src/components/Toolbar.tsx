@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase, Modal, Menu, MenuItem, ListItemIcon } from '@mui/material';
+import { AppBar, Toolbar, IconButton, InputBase, Avatar, styled, alpha, Box, Button, darken, ButtonBase, Modal, Menu, MenuItem, ListItemIcon, CircularProgress, Divider, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from "next/image";
 import { useRouter } from 'next/router'
@@ -8,6 +8,8 @@ import Link from 'next/link'
 import SignInUpPanel from './SignInUpPanel';
 import { useAuthContext } from '@/context/AuthContext'
 import Logout from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { logout } from "@/services/authService"
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -64,7 +66,7 @@ const WebToolbar = () => {
     setAnchorEl(null);
   };
 
-  let { user, token } = useAuthContext();
+  let { user, token, setUser, setToken } = useAuthContext();
 
   useEffect(() => {
     if(token || user){
@@ -79,6 +81,20 @@ const WebToolbar = () => {
   const handleProfileRedirect = () => {
     // Redirect to profile page
   };
+
+  const handleLogout = async () => {
+    onLogout();
+    setIsLogin(false);
+    setUser(null);
+    setToken(null);
+    handleUserMenuClose();
+  };
+
+  async function onLogout() {
+    if(token){
+      await logout(token);
+    }
+  }
 
   const handleGameSearch = () => {
     if(debouncedSearchString.trim().length > 0){
@@ -170,7 +186,6 @@ const WebToolbar = () => {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleUserMenuClose}
-                onClick={handleUserMenuClose}
                 PaperProps={{
                   elevation: 0,
                   sx: {
@@ -195,10 +210,28 @@ const WebToolbar = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
+                <Box
+                  sx={{
+                    display: 'block',
+                    padding: "0px 16px 8px 16px",
+                    zIndex: 0,
+                  }}
+                >
+                  <Typography variant="subtitle1" sx={{fontWeight: 500}}>
+                    {user?.name}
+                  </Typography>
+                  <Typography variant="body1" sx={{color: "text.secondary"}}>
+                    {user?.role}
+                  </Typography>
+                </Box>
+                <Divider/>
                 <MenuItem onClick={handleUserMenuClose}>
+                  <ListItemIcon>
+                    <AccountCircleIcon fontSize="small" />
+                  </ListItemIcon>
                   Profile
                 </MenuItem>
-                <MenuItem onClick={handleUserMenuClose}>
+                <MenuItem onClick={handleLogout}>
                   <ListItemIcon>
                     <Logout fontSize="small" />
                   </ListItemIcon>
@@ -207,7 +240,7 @@ const WebToolbar = () => {
               </Menu>
             </>
           ) : (
-            token !== undefined && (
+            token !== undefined ? (
               <>
                 <Button variant="outlined" color="secondary" size="large" sx={{whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500}} onClick={() => setOpenPanel(true)}>Register</Button>
 
@@ -224,6 +257,10 @@ const WebToolbar = () => {
                   </Box>
                 </Modal>
               </>
+            ) : (
+              <Box sx={{ display: 'flex' }}>
+                <CircularProgress color="secondary" />
+              </Box>
             )
           )}
         </Toolbar>
