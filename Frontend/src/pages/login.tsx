@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginBox from "@/components/LoginBox";
-import { Box, styled, Typography } from "@mui/material";
+import { Box, CircularProgress, styled, Typography } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
+import { useAuthContext } from '@/context/AuthContext'
+import { useRouter } from "next/router";
 
 const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
   fontSize: 100,
@@ -10,6 +12,17 @@ const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
 }));
 
 function LoginPage() {
+  const router = useRouter();
+  const { user, token } = useAuthContext()
+
+  useEffect(() => {
+    console.log(token);
+
+    if(user && token) {
+      router.push('/')
+    }
+  }, [user, token, router])
+
   return (
     <Box
       sx={{
@@ -50,7 +63,22 @@ function LoginPage() {
           </Typography>
         </Box>
 
-        <LoginBox />
+        {user && token ? (
+          <>
+            <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+              You are already logged in.
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
+              You will be redirected to the home page in a few seconds.
+            </Typography>
+          </>
+        ) : (
+          token === undefined ? (
+            <CircularProgress/>
+          ) : (
+            <LoginBox />
+          )
+        )}
       </Box>
     </Box>
   );

@@ -96,11 +96,12 @@ const WebToolbar = () => {
   };
 
   const handleLogout = async () => {
-    onLogout();
+    await onLogout();
     setIsLogin(false);
     setUser(null);
     setToken(null);
     handleUserMenuClose();
+    router.reload();
   };
 
   async function onLogout() {

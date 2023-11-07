@@ -86,7 +86,7 @@ const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
             </Link>
           </div>
 
-          <div className="mt-6 w-full">
+          {/*<div className="mt-6 w-full">
             <h2 className="text-3xl font-bold mb-4">All Games</h2>
             {games && games.length > 0 ? (
               <div className="flex flex-col justify-center content-center flex-wrap mt-6">
@@ -103,7 +103,7 @@ const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
             ) : (
               <h2 className="text-3xl font-bold mb-4">No games found</h2>
             )}
-          </div>
+          </div>*/}
         </main>
       </div>
     </>

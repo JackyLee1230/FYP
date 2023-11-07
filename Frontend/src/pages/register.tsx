@@ -1,7 +1,9 @@
 import React from "react";
 import RegisterBox from "@/components/RegisterBox";
-import { Box, styled, Typography } from "@mui/material";
+import { Box, CircularProgress, styled, Typography } from "@mui/material";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
+import { useAuthContext } from '@/context/AuthContext'
+import { useRouter } from "next/router";
 
 const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
   fontSize: 100,
@@ -11,6 +13,9 @@ const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
 
 
 function RegisterPage() {
+  const router = useRouter();
+  const { user, token } = useAuthContext()
+
   return (
     <Box
       sx={{
@@ -50,7 +55,17 @@ function RegisterPage() {
           </Typography>
         </Box>
 
-        <RegisterBox />
+        { user && token ? (
+          <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+            You cannot create an account while logged in. Please log out first.
+          </Typography>
+        ) : (
+          token === undefined ? (
+            <CircularProgress />
+          ) : (
+            <RegisterBox />
+          )
+        )}
       </Box>
     </Box>
   );
