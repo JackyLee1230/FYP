@@ -142,7 +142,11 @@ public class GameController {
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {
-            return new ResponseEntity<>(gameService.findGameById(gameRequest), HttpStatus.OK);
+            Game g = gameService.findGameById(gameRequest);
+            if (g.getBaseGame() != null) {
+                g.getBaseGame().setGameReviews(null);
+            }
+            return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

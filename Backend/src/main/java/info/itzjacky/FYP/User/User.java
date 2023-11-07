@@ -17,7 +17,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "User", indexes = {
-        @Index(name = "idx_user_name", columnList = "name")
+        @Index(name = "idx_user_name", columnList = "name"),
+        @Index(name = "idx_user_id_name", columnList = "id, name"),
+        @Index(name = "idx_user_email" , columnList = "email")
 })
 //@JsonIdentityInfo(
 //        generator = ObjectIdGenerators.PropertyGenerator.class,
