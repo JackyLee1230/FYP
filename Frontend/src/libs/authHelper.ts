@@ -17,7 +17,7 @@ export function setAuthCookies(refresh_token:string | null, isTemporary: boolean
       setCookie('_u-token', refresh_token, {
         secure: true,
         sameSite: 'none',
-        maxAge: isTemporary ? 7 * 24 * 60 * 60 : 0
+        maxAge: 7 * 24 * 60 * 60 
       })
     }
     else{
