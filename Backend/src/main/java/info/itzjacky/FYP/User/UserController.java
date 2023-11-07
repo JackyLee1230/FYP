@@ -99,10 +99,10 @@ public class UserController {
             if (userRequest.getName() == null) {
                 throw new IllegalStateException("User Name Cannot Be Empty");
             }
-            Optional<User> u =  userService.findUserByName(userRequest.getName());
+            User u =  userService.findUserByName(userRequest.getName());
 
-            if (u.isPresent()) {
-                return new ResponseEntity<>(u.get(), HttpStatus.OK);
+            if (u == null) {
+                return new ResponseEntity<>(u, HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
             }

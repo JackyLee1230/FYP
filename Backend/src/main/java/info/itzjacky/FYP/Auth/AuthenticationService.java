@@ -90,7 +90,7 @@ public class AuthenticationService {
         if(!RegEx.passwordValidation(request.getPassword())){
             throw new IllegalStateException("Password Must Be 8-16 Characters Long, Contain At Least 1 Letter And 1 Number");
         }
-        if (repository.findUserByName(request.getName()).isPresent()) {
+        if (repository.findUserByName(request.getName()) != null) {
             throw new IllegalStateException("User already exists");
         }
         var user = User.builder()
@@ -110,14 +110,17 @@ public class AuthenticationService {
     @Transactional
     public AuthenticationResponse login(LoginRequest request) {
 //        if name contains '@', then find user by email
-        User user =  null;
+        User user = null;
         if (request.getName().contains("@")) {
             user = repository.findUserByEmail(request.getName());
             if (user == null) {
                 throw new IllegalStateException("User does not exist");
             }
         } else {
-            user = repository.findUserByName(request.getName()).orElseThrow( () -> new IllegalStateException("User does not exist"));
+            user = repository.findUserByName(request.getName());
+            if (user == null) {
+                throw new IllegalStateException("User does not exist");
+            }
         }
         try{
         authenticationManager.authenticate(
@@ -176,8 +179,10 @@ public class AuthenticationService {
         refreshToken = authHeader.substring(7);
         username = jwtService.extractUsername(refreshToken);
         if (username != null) {
-            var user = this.repository.findUserByName(username)
-                    .orElseThrow();
+            var user = this.repository.findUserByName(username);
+            if (user == null) {
+                throw new IllegalStateException("User does not exist");
+            }
             if (jwtService.isTokenVald(refreshToken, user)) {
                 var accessToken = jwtService.generateToken(user);
                 revokeAllUserTokens(user);

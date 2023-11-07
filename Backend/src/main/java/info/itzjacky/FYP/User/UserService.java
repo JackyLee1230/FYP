@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +30,12 @@ public class UserService {
     DigitalOceanStorageService storageService;
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
+
+
+    public User getUserFromPrincipal(Principal principal) {
+        if (principal == null || principal.getName() == null) throw new IllegalStateException("User does not exist");
+        return this.findUserByName(principal.getName());
+    }
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -177,8 +184,8 @@ public class UserService {
 
     @Transactional
     public void removeUserByName(User user){
-        Optional<User> u = userRepository.findUserByName(user.getName());
-        if(!u.isPresent()){
+        User u = userRepository.findUserByName(user.getName());
+        if(u == null){
             throw new IllegalStateException("Username Does Not Exist");
         } else {
             userRepository.delete(user);
@@ -192,8 +199,14 @@ public class UserService {
         }
     }
 
-    public Optional<User> findUserByName(String name){
-        return userRepository.findUserByName(name);
+    public User
+    findUserByName(String name){
+        User u = userRepository.findUserByName(name);
+        if (u == null) {
+            throw new IllegalStateException("User Does Not Exist");
+        }else {
+            return u;
+        }
     }
 
     @Transactional

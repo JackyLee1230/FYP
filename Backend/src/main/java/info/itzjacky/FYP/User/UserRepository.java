@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User,Integer>{
 
     User findUserById(Integer id);
 
-    Optional<User> findUserByName(String name);
+    User findUserByName(String name);
 
 //    find all developers that developed a game
     @Query("SELECT u FROM User u WHERE u.developedGames = ?1")

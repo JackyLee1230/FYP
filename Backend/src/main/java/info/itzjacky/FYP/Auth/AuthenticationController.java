@@ -2,6 +2,7 @@ package info.itzjacky.FYP.Auth;
 
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserService;
+import info.itzjacky.FYP.Utils.Others;
 import info.itzjacky.FYP.Utils.RegEx;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,11 +41,11 @@ public class AuthenticationController {
 
     @PostMapping("/userAuth")
     public ResponseEntity<User> userAuth(Principal principal){
-        Optional<User> u = userService.findUserByName(principal.getName());
-        if (u.isEmpty()) {
+        User u = userService.getUserFromPrincipal(principal);
+        if (u == null) {
             throw new IllegalStateException("User does not exist");
         } else {
-            return ResponseEntity.ok(u.get());
+            return ResponseEntity.ok(u);
         }
     }
 
