@@ -98,7 +98,6 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
               onChange={(e) => setUsername(e.target.value)}
               error={!!usernameError}
               onBlur={verifyUsername}
-              inputProps={{ maxLength: 14 }}
               autoComplete="username-or-email"
             />
             <FormHelperText>{usernameError}</FormHelperText>
