@@ -93,6 +93,9 @@ public class AuthenticationService {
         if (repository.findUserByName(request.getName()) != null) {
             throw new IllegalStateException("User already exists");
         }
+        if (repository.findUserByEmail(request.getEmail()) != null) {
+            throw new IllegalStateException("Email already used by another user");
+        }
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
