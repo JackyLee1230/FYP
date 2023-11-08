@@ -2,13 +2,14 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
-
 import { GameInfo, GamePageProps } from "@/type/game";
 import Platform, { getPlatform } from "@/type/gamePlatform";
 import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { formatTime } from "@/utils/StringUtils";
+
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(context);
@@ -24,11 +25,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      "http://localhost:8080/api/game/findGameById",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
       { id: gameid }
     );
     const reviewsResponse = await axios.post(
-      "http://localhost:8080/api/review/findReviewsByGameId",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameId`,
       { gameId: gameid }
     );
 
