@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, styled, Link } from '@mui/material';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, styled, Link, CircularProgress } from '@mui/material';
 import { CustomInput } from "@/components/CustomInput";
 import axios from "axios";
 import ErrorIcon from '@mui/icons-material/Error';
 import { validatePassword } from "@/utils/Regex";
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
 type ResetPasswordProps = {
   token: string;
@@ -22,7 +23,6 @@ async function resetPassword(token: String, password: String) {
       { resetPasswordToken: token, password: password }
     );
     if (response.status === 200) {
-      console.log("Password reset successfully");
       return(null);
     } else {
       console.debug("Failed to reset password (response)", response);
@@ -70,6 +70,7 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
     setIsLoading(true);
     const response = await resetPassword(token, password);
     if(response === null){
+      displaySnackbarVariant("Password reset successfully. Please login with your new password.", "success");
       setIsSuccess(true);
     } else {
       setResetError(response);
@@ -143,18 +144,32 @@ const ResetPasswordBox = ({token, errorMessage}: ResetPasswordProps) => {
                 </Typography>
               )}
 
-              <Button 
-                variant="contained" 
-                type="submit" 
-                size="large" 
-                fullWidth
-                onClick={() => (
-                  handlePasswordReset(token, newPassword)
+              <Box sx={{ m: 1, position: 'relative' }}>
+                <Button 
+                  variant="contained" 
+                  type="submit" 
+                  size="large" 
+                  fullWidth
+                  onClick={() => (
+                    handlePasswordReset(token, newPassword)
+                  )}
+                  disabled={isLoading}
+                >
+                  Confirm Update
+                </Button>
+                {isLoading && (
+                  <CircularProgress
+                    size={24}
+                    sx={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      marginTop: '-12px',
+                      marginLeft: '-12px',
+                    }}
+                  />
                 )}
-                disabled={isLoading}
-              >
-                Confirm Update
-              </Button>
+              </Box>
             </Box>
           ) : (
             <>

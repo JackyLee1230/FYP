@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { themeOptions } from '../theme/MuiThemeOption'
 import Layout from "../components/layout"
 import { AuthContextProvider } from "@/context/AuthContext";
+import { SnackbarProvider } from "notistack";
 
 const cache = createCache({
   key: 'css',
@@ -25,7 +26,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <CacheProvider value={cache}>
             <AuthContextProvider>
               <Layout>
-                <Component {...pageProps} />
+                <SnackbarProvider maxSnack={3}>
+                  <Component {...pageProps} />
+                </SnackbarProvider>
               </Layout>
             </AuthContextProvider>
           </CacheProvider>

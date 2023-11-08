@@ -11,6 +11,7 @@ import Logout from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { logout } from "@/services/authService"
 import { User } from '@/type/user';
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
 const Search = styled('div')(({ theme }) => ({
   display: "flex",
@@ -101,6 +102,7 @@ const WebToolbar = () => {
     setUser(null);
     setToken(null);
     handleUserMenuClose();
+    displaySnackbarVariant("Logout successfully.", "success");
     router.reload();
   };
 

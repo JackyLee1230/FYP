@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { login } from "@/services/authService"
 import { setAuthCookies } from "@/libs/authHelper"
 import { useAuthContext } from '@/context/AuthContext'
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 type LoginBoxProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,7 +22,8 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
   const [passwordError, setPasswordError] = useState('');
   const [LoginError, setLoginError] = useState('');
   const [isTemporary, setIsTemporary] = useState(true);
-  const { setUser, setToken } = useAuthContext()
+  const [isLoading, setIsLoading] = useState(false);
+  const { setUser, setToken } = useAuthContext();
 
   function verifyUsername(): boolean{
     if (username === '') {
@@ -42,11 +46,13 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
   }
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     const usernameValid = verifyUsername();
     const passwordValid = verifyPassword();
     if(!usernameValid || !passwordValid) {
       setLoginError('Please fill in all the fields.')
+      setIsLoading(false);
       return;
     }
     onLogin();
@@ -61,10 +67,13 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
         setAuthCookies(refresh_token, isTemporary);
         setUser(response.user);
         setToken(access_token);
+        displaySnackbarVariant(`Login successful. Welcome back ${response?.user?.name}!`, "success");
         router.reload();
       }
+      setIsLoading(false);
     } catch (error: any) {
       setLoginError(error?.response?.data?.message ?? "Login failed, please try again later")
+      setIsLoading(false);
     } 
   }
 
@@ -80,6 +89,7 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
       <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
         Welcome back to CritiQ
       </Typography>
+
       <form onSubmit={handleLogin}>
         <Box
           sx={{
@@ -138,9 +148,29 @@ const LoginBox = ({setOpen}: LoginBoxProps) => {
             </Typography>
           )}
 
-          <Button variant="contained" type="submit" size="large" fullWidth>
-            Login
-          </Button>
+          <Box sx={{ m: 1, position: 'relative' }}>
+            <Button 
+              variant="contained" 
+              type="submit" 
+              size="large" 
+              fullWidth
+              disabled={isLoading}
+            >
+              Login
+            </Button>
+            {isLoading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px',
+                }}
+              />
+            )}
+          </Box>
           <Button 
             variant="text" 
             sx={{ textDecoration: "underline"}} 

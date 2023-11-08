@@ -4,6 +4,7 @@ import { Box, CircularProgress, styled, Typography } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import { useAuthContext } from '@/context/AuthContext'
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
   fontSize: 100,
@@ -16,71 +17,74 @@ function LoginPage() {
   const { user, token } = useAuthContext()
 
   useEffect(() => {
-    console.log(token);
-
     if(user && token) {
       router.push('/')
     }
   }, [user, token, router])
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 128px",
-      }}
-    >
+    <>
+      <Head>
+        <title>Login | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "white", 
-          borderRadius: 4, 
-          padding: "36px 48px", 
-          border: "0.8px solid",
-          borderColor: "divider",
-          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-          margin: "0 auto",
+          padding: "48px 128px",
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: "12px",
-            marginBottom: "12px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white", 
+            borderRadius: 4, 
+            padding: "36px 48px", 
+            border: "0.8px solid",
+            borderColor: "divider",
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            margin: "0 auto",
           }}
         >
-          <StyledLoginIcon />
-          <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
-            Login
-          </Typography>
-        </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            <StyledLoginIcon />
+            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+              Login
+            </Typography>
+          </Box>
 
-        {user && token ? (
-          <>
-            <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
-              You are already logged in.
-            </Typography>
-            <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
-              You will be redirected to the home page in a few seconds.
-            </Typography>
-          </>
-        ) : (
-          token === undefined ? (
-            <CircularProgress/>
+          {user && token ? (
+            <>
+              <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+                Logged in successfully
+              </Typography>
+              <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
+                You will be redirected to the home page in a few seconds.
+              </Typography>
+            </>
           ) : (
-            <LoginBox />
-          )
-        )}
+            token === undefined ? (
+              <CircularProgress/>
+            ) : (
+              <LoginBox />
+            )
+          )}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

@@ -103,12 +103,12 @@ export function isUserAuthorised(token: string): boolean {
   if (NEXT_PUBLIC_JWT_KEY) {
     jwt.verify(token, Buffer.from(NEXT_PUBLIC_JWT_KEY, 'base64'), function(err, decoded) {
       if (err) {
-        console.log("jwt.verify error: ", err)
+        console.error("jwt.verify error: ", err)
         return false;
       }
     });
     return true;
   }
-  console.log("NEXT_PUBLIC_JWT_KEY not found")
+  console.debug("NEXT_PUBLIC_JWT_KEY not found")
   return false;
 }

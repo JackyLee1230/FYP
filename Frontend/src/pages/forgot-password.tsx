@@ -2,6 +2,7 @@ import React from "react";
 import ForgetPasswordBox from "@/components/ForgetPasswordBox";
 import LockResetIcon from '@mui/icons-material/LockReset';
 import { Box, styled, Typography } from "@mui/material";
+import Head from "next/head";
 
 
 const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
@@ -13,47 +14,52 @@ const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
 
 function ForgotPasswordPage() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 128px"
-      }}
-    >
+    <>
+      <Head>
+        <title>Forget Password | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "white", 
-          borderRadius: 4, 
-          padding: "36px 48px", 
-          border: "0.8px solid",
-          borderColor: "divider",
-          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          padding: "48px 128px"
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: "12px",
-            marginBottom: "12px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white", 
+            borderRadius: 4, 
+            padding: "36px 48px", 
+            border: "0.8px solid",
+            borderColor: "divider",
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         >
-          <StyledLockResetIcon />
-          <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
-            Forget Password
-          </Typography>
-        </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            <StyledLockResetIcon />
+            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+              Forget Password
+            </Typography>
+          </Box>
 
-        <ForgetPasswordBox />
+          <ForgetPasswordBox />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import RegisterBox from "@/components/RegisterBox";
 import { Box, CircularProgress, styled, Typography } from "@mui/material";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 import { useAuthContext } from '@/context/AuthContext'
-import { useRouter } from "next/router";
+import Head from "next/head";
 
 const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
   fontSize: 100,
@@ -13,61 +13,70 @@ const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
 
 
 function RegisterPage() {
-  const router = useRouter();
   const { user, token } = useAuthContext()
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 128px"
-      }}
-    >
+    <>
+      <Head>
+        <title>Register | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "white", 
-          borderRadius: 4, 
-          padding: "36px 48px", 
-          border: "0.8px solid",
-          borderColor: "divider",
-          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          padding: "48px 128px"
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: "12px",
-            marginBottom: "12px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white", 
+            borderRadius: 4, 
+            padding: "36px 48px", 
+            border: "0.8px solid",
+            borderColor: "divider",
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         >
-          <StyledRegisterIcon />
-          <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
-            Register
-          </Typography>
-        </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            <StyledRegisterIcon />
+            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+              Register
+            </Typography>
+          </Box>
 
-        { user && token ? (
-          <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
-            You cannot create an account while logged in. Please log out first.
-          </Typography>
-        ) : (
-          token === undefined ? (
-            <CircularProgress />
+          { user && token ? (
+            <>
+              <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+                You are logged in
+              </Typography>
+              <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
+                You cannot create an account while logged in. Please log out first.
+              </Typography>
+            </>
           ) : (
-            <RegisterBox />
-          )
-        )}
+            token === undefined ? (
+              <CircularProgress />
+            ) : (
+              <RegisterBox />
+            )
+          )}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

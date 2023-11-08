@@ -4,6 +4,7 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import LockResetIcon from '@mui/icons-material/LockReset';
 import ResetPasswordBox from "@/components/ResetPasswordBox";
+import Head from "next/head";
 
 type ResetPasswordPageProps = {
   token: string;
@@ -49,47 +50,52 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function ResetPasswordPage({token, errorMessage}: ResetPasswordPageProps) {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 128px"
-      }}
-    >
+    <>
+      <Head>
+        <title>Reset Password | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "white", 
-          borderRadius: 4, 
-          padding: "36px 48px", 
-          border: "0.8px solid",
-          borderColor: "divider",
-          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          padding: "48px 128px"
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: "12px",
-            marginBottom: "12px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white", 
+            borderRadius: 4, 
+            padding: "36px 48px", 
+            border: "0.8px solid",
+            borderColor: "divider",
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         >
-          <StyledLockResetIcon />
-          <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
-            Reset Password
-          </Typography>
-        </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            <StyledLockResetIcon />
+            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+              Reset Password
+            </Typography>
+          </Box>
 
-        <ResetPasswordBox token={token} errorMessage={errorMessage} />
+          <ResetPasswordBox token={token} errorMessage={errorMessage} />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

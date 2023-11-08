@@ -1,37 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from '@mui/material';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, CircularProgress } from '@mui/material';
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
-import axios from 'axios';
+import { register } from "@/services/authService"
 import { validateUsername, validateEmail, validatePassword } from '@/utils/Regex';
-
-
-async function onRegister(username: string, email: string, password: string) {
-  {/*
-  try {
-    const response = await axios.post(
-      "http://localhost:8080/api/auth/register",
-      {
-        name: username,
-        email: email,
-        password: password,
-      }
-    );
-    if (response.status === 200) {
-      console.debug("Register successful");
-      return(null);
-    } else {
-      console.debug("Failed to register (response)", response);
-      return(response.data.message)
-    }
-  } catch (error: any) {
-    console.error("Failed to register (error)", error);
-    return(error.response.data.message);
-  }
-  */}
-}
+import { setAuthCookies } from "@/libs/authHelper"
+import { useAuthContext } from '@/context/AuthContext'
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
 const RegisterBox = () => {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [email, setEmail] = useState('');
@@ -40,6 +18,8 @@ const RegisterBox = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [registerError, setRegisterError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { setUser, setToken } = useAuthContext()
 
   function verifyUsername(): boolean{
     if(username === ""){
@@ -91,16 +71,34 @@ const RegisterBox = () => {
   }
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     const usernameValid = verifyUsername();
     const passwordValid = verifyPassword();
     const emailValid = verifyEmail();
     if(!usernameValid || !passwordValid || !emailValid){
       setRegisterError('Please fill in all the fields.');
+      setIsLoading(false);
       return;
     }
-    onRegister(username, email, password);
+    onRegister();
   };
+
+  async function onRegister() {
+    try{
+      const { user, refresh_token, access_token } = await register(username, email, password);
+      setAuthCookies(refresh_token, false);
+      setUser(user);
+      setToken(access_token);
+      displaySnackbarVariant("Register successfully. Please remember to verify your email address.", "success");
+      router.push('/');
+      setIsLoading(false);
+    } catch (error: any) {
+      console.error("Register failed", error);
+      setRegisterError(error?.response?.data?.message ?? "Register failed, please try again later")
+      setIsLoading(false);
+    } 
+  }
 
   return (
     <Box
@@ -133,8 +131,8 @@ const RegisterBox = () => {
               error={!!usernameError}
               onBlur={verifyUsername}
               inputProps={{ maxLength: 14 }}
-              id="username"
-              name='username'
+              id="new-username"
+              name='new-username'
               autoComplete="username"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{usernameError}</FormHelperText>
@@ -149,8 +147,8 @@ const RegisterBox = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={!!emailError}
               onBlur={verifyEmail}
-              id="email"
-              name='email'
+              id="new-email"
+              name='new-email'
               autoComplete="email"
             />
             <FormHelperText>{emailError}</FormHelperText>
@@ -167,8 +165,8 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
-              id="password"
-              name='password'
+              id="new-password"
+              name='new-password'
               autoComplete="new-password"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
@@ -185,8 +183,8 @@ const RegisterBox = () => {
               type="password"
               onBlur={verifyPassword}
               inputProps={{ maxLength: 16 }}
-              id='confirmPassword'
-              name='confirmPassword'
+              id='new-confirmPassword'
+              name='new-confirmPassword'
               autoComplete="new-password"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
@@ -197,9 +195,24 @@ const RegisterBox = () => {
               {registerError}
             </Typography>
           )}
-          <Button variant="contained" type="submit" size="large" fullWidth>
-            Register
-          </Button>
+
+          <Box sx={{ m: 1, position: 'relative' }}>
+            <Button variant="contained" type="submit" size="large" fullWidth disabled={isLoading}>
+              Register
+            </Button>
+            {isLoading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px',
+                }}
+              />
+            )}
+          </Box>
         </Box>
       </form>
     </Box>

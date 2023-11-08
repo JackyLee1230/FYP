@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography, Box, FormControl, InputLabel, FormHelperText } from '@mui/material';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, CircularProgress } from '@mui/material';
 import { CustomInput } from "@/components/CustomInput";
 import axios from "axios";
 import { validateEmail } from "@/utils/Regex";
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
 async function sendForgotPassword(email: string) {
   try {
@@ -82,6 +83,7 @@ const ForgetPasswordBox = () => {
       setServerError(error);
     } else{
       setServerError("");
+      displaySnackbarVariant("Reset password email sent successfully. Please check your email.", "success");
       startTimer();
     }
     setIsLoading(false);
@@ -130,18 +132,32 @@ const ForgetPasswordBox = () => {
           </Typography>
         )}
 
-        <Button 
-          variant="contained" 
-          type="submit" 
-          size="large" 
-          fullWidth
-          onClick={() => (
-            handleForgotPassword(email)
+        <Box sx={{ m: 1, position: 'relative' }}>
+          <Button 
+            variant="contained" 
+            type="submit" 
+            size="large" 
+            fullWidth
+            onClick={() => (
+              handleForgotPassword(email)
+            )}
+            disabled={isLoading || isWaiting}
+          >
+            Confirm
+          </Button>
+          {isLoading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px',
+                }}
+              />
           )}
-          disabled={isLoading || isWaiting}
-        >
-          Confirm
-        </Button>
+        </Box>
 
         {isWaiting && (
           <Typography variant="body2" color="secondary">

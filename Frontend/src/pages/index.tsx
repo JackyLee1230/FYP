@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
+import Head from 'next/head'
 
 type GameInfo = {
   id: number;
@@ -62,6 +63,9 @@ const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
 
   return (
     <>
+      <Head>
+        <title>CritiQ - Game Testing and Evaluation Platform with Machine Learning for Game Developers</title>
+      </Head>
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
           <Image src="/logo.png" width={528} height={160} alt="CritiQ Icon" />
