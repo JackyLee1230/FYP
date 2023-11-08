@@ -1,7 +1,8 @@
 import axios from "axios";
 import { removeAuthCookies } from "@/libs/authHelper";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export async function login(username: string, password: string) {
   const body = {
@@ -10,7 +11,16 @@ export async function login(username: string, password: string) {
   };
   const response = await axios.post(
     `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/login`,
-    body
+    body,
+    // add header for cors
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    }
   );
   return response.data;
 }
