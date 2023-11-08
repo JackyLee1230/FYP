@@ -7,6 +7,8 @@ import type { GetServerSideProps } from 'next'
 import { GenreList, getGenre } from "@/type/gameGenre";
 import { PlatformList, getPlatform } from "@/type/gamePlatform";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 type RegisterGameData = {
   name: string;
   description: string;
@@ -18,7 +20,6 @@ type RegisterGameData = {
   genre: string[];
   score: number | null;
 };
-
 
 function AddNewGame() {
   const router = useRouter();
@@ -49,7 +50,7 @@ function AddNewGame() {
     console.debug(registerGameData);
         
     try {
-      const response = await axios.post('http://localhost:8080/api/game/addGame', registerGameData);
+      const response = await axios.post(`${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/addGame`, registerGameData);
       const gameId = response.data.id;
 
       if (response.status === 200) {

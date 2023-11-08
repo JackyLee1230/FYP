@@ -1,9 +1,10 @@
 import React from "react";
-
 import { User, UserPageProps } from "@/type/user";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
+
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { userid } = context.query;
@@ -16,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      "http://localhost:8080/api/user/findUserById",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/findUserById`,
       { id: userid }
     );
 

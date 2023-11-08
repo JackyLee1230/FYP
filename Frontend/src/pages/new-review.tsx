@@ -4,6 +4,8 @@ import Link from 'next/link';
 import 'tailwindcss/tailwind.css';
 import axios from 'axios';
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 type ReviewData = {
   name: string;
   developer: string;
@@ -37,7 +39,7 @@ const AddNewReview = () => {
     console.debug(reviewData);
 
     try {
-      const response = await axios.post('http://localhost:8080/api/game/addReview', reviewData); // 
+      const response = await axios.post(`${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/addReview`, reviewData); // 
       if (response.status === 200) {
         console.debug('Review added successfully');
 //      TODO: redirect to review page

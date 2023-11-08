@@ -6,6 +6,7 @@ import axios from "axios";
 import jwt from "jsonwebtoken"
 
 const NEXT_PUBLIC_JWT_KEY  = process.env.NEXT_PUBLIC_JWT_KEY
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
 
 if(!NEXT_PUBLIC_JWT_KEY){
   throw new Error("NEXT_PUBLIC_JWT_KEY not found, check .env file")
@@ -38,7 +39,7 @@ export function removeAuthCookies(): void {
 
   await axios({
     method: 'POST',
-    url: "http://localhost:8080/api/auth/userAuth",
+    url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/userAuth`,
     responseType: 'json',
     headers: {
           Authorization: `Bearer ${access_token}`
@@ -64,7 +65,7 @@ export async function refreshAccessToken() {
 
   await axios({
     method: 'POST',
-    url: "http://localhost:8080/api/auth/refreshToken",
+    url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/refreshToken`,
     responseType: 'json',
     headers: {
           Authorization: `Bearer ${refresh_token}`

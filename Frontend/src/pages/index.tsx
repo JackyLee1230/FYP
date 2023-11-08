@@ -6,6 +6,8 @@ import axios from "axios";
 import Image from "next/image";
 import Head from 'next/head'
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 type GameInfo = {
   id: number;
   name: string;
@@ -33,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   try {
     const response = await axios.get(
-      "http://localhost:8080/api/game/getAllGames"
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`
     );
     games = response.data;
 

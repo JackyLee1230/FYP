@@ -14,6 +14,7 @@ import { useDebounce } from "usehooks-ts";
 import { GenreList, getGenre } from "@/type/gameGenre";
 import { PlatformList, getPlatform } from "@/type/gamePlatform";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
 
 export default function Search() {
   const [games, setGames] = useState<GameInfo[]>([]);
@@ -60,8 +61,8 @@ export default function Search() {
 
     apiUrl =
       searchType == "NAME"
-        ? "http://localhost:8080/api/game/findGamesWithSearch"
-        : "http://localhost:8080/api/game/findGamesWithSearchDeveloper";
+        ? `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearch`
+        : `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearchDeveloper`;
     body = {
       name: debouncedSearchString,
       developerCompany: debouncedSearchString,

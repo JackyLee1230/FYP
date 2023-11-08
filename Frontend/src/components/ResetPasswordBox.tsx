@@ -6,6 +6,8 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { validatePassword } from "@/utils/Regex";
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 type ResetPasswordProps = {
   token: string;
   errorMessage: string;
@@ -19,7 +21,7 @@ const StyledErrorIcon = styled(ErrorIcon)(({ theme }) => ({
 async function resetPassword(token: String, password: String) {
   try {
     const response = await axios.post(
-      "http://localhost:8080/api/auth/reset-password",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/reset-password`,
       { resetPasswordToken: token, password: password }
     );
     if (response.status === 200) {

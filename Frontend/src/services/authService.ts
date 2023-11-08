@@ -1,13 +1,15 @@
 import axios from "axios";
 import { removeAuthCookies } from "@/libs/authHelper";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 export async function login(username: string, password: string) {
   const body = {
     name: username,
     password: password,
   };
   const response = await axios.post(
-    "http://localhost:8080/api/auth/login",
+    `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/login`,
     body
   );
   return response.data;
@@ -24,7 +26,7 @@ export async function register(
     password: password,
   };
   const response = await axios.post(
-    "http://localhost:8080/api/auth/register",
+    `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/register`,
     body
   );
   return response.data;
@@ -33,7 +35,7 @@ export async function register(
 export async function logout(access_token: string) {
   await axios({
     method: "POST",
-    url: "http://localhost:8080/api/auth/logout",
+    url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/logout`,
     headers: {
       Authorization: `Bearer ${access_token}`,
       "Access-Control-Allow-Origin": "*",

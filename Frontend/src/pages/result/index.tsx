@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
 import AdvancedSearchBox from "../../components/AdvancedSearchBox";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 export type GameSearchPageProps = {
   gameData: GameInfo[];
   errorMessage: string;
@@ -29,8 +31,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   
   const apiUrl =
   searchType == "game"
-    ? "http://localhost:8080/api/game/findGamesWithSearch"
-    : "http://localhost:8080/api/game/findGamesWithSearchDeveloper";
+    ? `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearch`
+    : `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearchDeveloper`;
 
   const body = {
     name: !isGamenameNull ? gamename : developername,

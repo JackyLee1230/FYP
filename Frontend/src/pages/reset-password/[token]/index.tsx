@@ -17,6 +17,8 @@ const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { token } = context.query;
 
@@ -26,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      "http://localhost:8080/api/user/getUserByResetPasswordToken",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/getUserByResetPasswordToken`,
       { resetPasswordToken: token }
     );
     if (response.status === 200) {

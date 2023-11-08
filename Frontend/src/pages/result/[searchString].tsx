@@ -7,6 +7,8 @@ import { Box, Typography, Button, Divider, Pagination } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 export type GameSearchPageProps = {
   searchString: string;
   games: GameInfo[];
@@ -16,7 +18,7 @@ export type GameSearchPageProps = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { searchString } = context.query;
-  const apiUrl = "http://localhost:8080/api/game/findGamesByNamePaged";
+  const apiUrl = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesByNamePaged`;
   const body = {
     name: searchString,
     gamesPerPage: 1,
@@ -67,7 +69,7 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
       gamesPerPage: 1,
       pageNum: value-1,
     };
-    const apiUrl = "http://localhost:8080/api/game/findGamesByNamePaged";
+    const apiUrl = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesByNamePaged`;
 
     const response = await axios.post(apiUrl, body);
     if (response.status === 200) {

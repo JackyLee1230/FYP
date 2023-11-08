@@ -5,10 +5,12 @@ import axios from "axios";
 import { validateEmail } from "@/utils/Regex";
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+
 async function sendForgotPassword(email: string) {
   try {
     const response = await axios.post(
-      "http://localhost:8080/api/auth/forgot-password",
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/forgot-password`,
       {
         email: email,
       }
