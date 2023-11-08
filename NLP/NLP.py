@@ -12,6 +12,7 @@ from nltk.stem import SnowballStemmer
 
 import threading
 from concurrent.futures import ThreadPoolExecutor
+import functools
 
 def clean(raw):
     """ Remove hyperlinks and markup """
@@ -100,6 +101,19 @@ def init_connection():
 
     return channel, connection
 
+# setup is based on https://github.com/pika/pika/blob/main/examples/basic_consumer_threaded.py
+
+def ack_message(channel, delivery_tag):
+    """Note that `channel` must be the same pika channel instance via which
+    the message being ACKed was retrieved (AMQP protocol constraint).
+    """
+    if channel.is_open:
+        channel.basic_ack(delivery_tag)
+    else:
+        # Channel is already closed, so we can't ACK this message;
+        # log and/or do something that makes sense for your app in this case.
+        pass
+
 def consumer(ch, method, properties, body, inference_obj):
 
     reviewId, comment = inference_obj
@@ -112,25 +126,30 @@ def consumer(ch, method, properties, body, inference_obj):
     # use a BlockingConnection per-thread
     # reuse created BlockingConnection if the thread in the threadpool has created one
     if not hasattr(local, 'channel'):
-        channel, _ = init_connection()
+        thread_channel, _ = init_connection()
         thread_id = threading.currentThread().ident
         print(f'Thread {thread_id} created channel.')
-        local.channel = channel
+        local.channel = thread_channel
 
+
+    # forming the result
+    resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
+    print(f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
     # notify the RabbitQueue
-    # Acknowledge the message
-    resultToBeSentBack = bytes( str(reviewId) + ";" + str(result[0]), 'utf-8')
-    print(str(reviewId) + ";" + str(result[0]))
-    channel.basic_ack(delivery_tag=method.delivery_tag)
-    channel.basic_publish(exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
+    # acknowledge finish processing the msg to the channel in the main thread
+    cb = functools.partial(ack_message, ch, method.delivery_tag)
+    ch.connection.add_callback_threadsafe(cb)
+
+    # use the local thread channel to send back the result (to maintain thread-safe queue)
+    thread_channel.basic_publish(exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
 
 
 
 def callback(ch, method, properties, body):
     # Process the received message
-    start = time.time()
     print("Received message:", body)
+    # TODO: propose a JSON-like formating for msg
     # find the first occurance of ; and split it intwo two parts
     reviewId = str(body)[0: str(body).find(";")]
     comment = str(body)[str(body).find(";")+1:]
@@ -149,8 +168,11 @@ def listen_to_queue():
     # Declare the queue
     channel.queue_declare(queue='SentimentAnalysisQueue', durable=True)
 
+    channel.basic_qos(prefetch_count=5)
+
     # Start consuming messages
-    channel.basic_consume(queue='SentimentAnalysisQueue', on_message_callback=callback)
+    on_message_callback = functools.partial(callback)
+    channel.basic_consume(queue='SentimentAnalysisQueue', on_message_callback=on_message_callback)
 
     try:
         # Keep the program running
@@ -165,6 +187,7 @@ def listen_to_queue():
         # Close the connection upon interrupt signal (e.g., Ctrl+C)
         channel.stop_consuming()
         connection.close()
+     
 
 if __name__ == "__main__":
     filename = Path("../NLP/steam-games-reviews-analysis-sentiment-analysis_model_12-09-2023.sav").resolve()
