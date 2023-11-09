@@ -37,7 +37,15 @@ export async function register(
   };
   const response = await axios.post(
     `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/register`,
-    body
+    body,
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    }
   );
   return response.data;
 }
