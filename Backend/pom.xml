@@ -17,7 +17,18 @@
 		<java.version>17</java.version>
 		<start-class>info.itzjacky.FYP.FypApplication</start-class>
 	</properties>
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<dependencies>
+		<dependency>
+			<groupId>com.github.valb3r.letsencrypt-helper</groupId>
+			<artifactId>letsencrypt-helper-tomcat</artifactId>
+			<version>0.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
