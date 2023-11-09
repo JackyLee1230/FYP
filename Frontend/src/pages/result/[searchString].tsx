@@ -29,7 +29,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let errorMessage = null;
 
   try {
-    const response = await axios.post(apiUrl, body);
+    const response = await axios.post(apiUrl, 
+      body,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
     if (response.status === 200) {
       data = await response.data;
     } else {
@@ -71,7 +81,18 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
     };
     const apiUrl = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesByNamePaged`;
 
-    const response = await axios.post(apiUrl, body);
+    const response = await axios.post(
+      apiUrl, 
+      body,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
     if (response.status === 200) {
       games = await response.data.content;
     } else {

@@ -22,7 +22,15 @@ async function resetPassword(token: String, password: String) {
   try {
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/reset-password`,
-      { resetPasswordToken: token, password: password }
+      { resetPasswordToken: token, password: password },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
     if (response.status === 200) {
       return(null);

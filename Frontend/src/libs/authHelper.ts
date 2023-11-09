@@ -42,7 +42,11 @@ export function removeAuthCookies(): void {
     url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/userAuth`,
     responseType: 'json',
     headers: {
-          Authorization: `Bearer ${access_token}`
+      Authorization: `Bearer ${access_token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Allow-Credentials": "true",
     }
   })
   .then(function (response) {
@@ -68,7 +72,11 @@ export async function refreshAccessToken() {
     url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/refreshToken`,
     responseType: 'json',
     headers: {
-          Authorization: `Bearer ${refresh_token}`
+      Authorization: `Bearer ${refresh_token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Allow-Credentials": "true",
     }
   })
   .then(function (response) {

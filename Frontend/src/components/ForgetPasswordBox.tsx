@@ -13,8 +13,16 @@ async function sendForgotPassword(email: string) {
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/forgot-password`,
       {
         email: email,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
       }
-    ); //
+    ); 
     if (response.status === 200) {
       console.debug("Forgot password req sent successfully");
       return(null);

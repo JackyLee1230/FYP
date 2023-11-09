@@ -46,7 +46,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let errorMessage = null;
 
   try {
-    const response = await axios.post(apiUrl, body);
+    const response = await axios.post(
+      apiUrl, 
+      body,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
     if (response.status === 200) {
       gameData = await response.data;
     } else {

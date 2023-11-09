@@ -26,11 +26,27 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
-      { id: gameid }
+      { id: gameid },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
     const reviewsResponse = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameId`,
-      { gameId: gameid }
+      { gameId: gameid },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
 
     if (response.status === 200 && reviewsResponse.status === 200) {

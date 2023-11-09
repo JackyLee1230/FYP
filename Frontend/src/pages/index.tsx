@@ -35,7 +35,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   try {
     const response = await axios.get(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
     games = response.data;
 

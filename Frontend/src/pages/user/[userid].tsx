@@ -18,7 +18,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/findUserById`,
-      { id: userid }
+      { id: userid },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
 
     if (response.status === 200) {

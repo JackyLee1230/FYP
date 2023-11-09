@@ -12,7 +12,6 @@ export async function login(username: string, password: string) {
   const response = await axios.post(
     `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/login`,
     body,
-    // add header for cors
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
