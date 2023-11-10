@@ -3,8 +3,11 @@ import { User, UserPageProps } from "@/type/user";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
+import RoleChip from "@/components/RoleChip";
+import { Stack } from "@mui/material";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { userid } = context.query;
@@ -64,6 +67,7 @@ export default function User({ user }: UserPageProps) {
       ) : (
         <div className="w-24 h-24 rounded-full mx-auto bg-gray-200" />
       )}
+      <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
       {user.name}
       <br />

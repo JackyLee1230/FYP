@@ -31,6 +31,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "@/services/authService";
 import { User } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import RoleChip from "./RoleChip";
 
 const Search = styled("div")(({ theme }) => ({
   display: "flex",
@@ -268,7 +269,13 @@ const WebToolbar = () => {
                     {user?.name}
                   </Typography>
                   <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                    {displayUserRole(user)}
+                    {user?.role && (
+                      <RoleChip
+                        role={user!.role}
+                        direction="column"
+                        includeUser={false}
+                      />
+                    )}
                   </Typography>
                 </Box>
                 <Divider />
