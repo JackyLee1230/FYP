@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,6 +29,16 @@ public class GameController {
     Logger logger = LoggerFactory.getLogger(GameController.class);
     @Autowired
     private GameRepository gameRepository;
+
+    @PostMapping("/addDeveloperToGame")
+    public ResponseEntity<Boolean> addDeveloperToGame(@RequestBody GameRequest gameRequest) {
+        try {
+            Boolean result = gameService.addDeveloperToGame(gameRequest);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 
     @GetMapping("/getAllGames")
     public ResponseEntity<List<Game>> getAllGames() {
@@ -139,6 +150,7 @@ public class GameController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {

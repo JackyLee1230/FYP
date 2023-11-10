@@ -1,6 +1,9 @@
 package info.itzjacky.FYP.Game;
 
 import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
+import info.itzjacky.FYP.User.User;
+import info.itzjacky.FYP.User.UserRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +34,9 @@ public class GameService {
     Logger logger = LoggerFactory.getLogger(GameController.class);
     @Autowired
     private GameVersionRepository gameVersionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     DigitalOceanStorageService storageService;
@@ -345,5 +351,30 @@ public class GameService {
         } catch (Exception e){
             throw new IllegalStateException("Error finding games");
         }
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
+    public boolean addDeveloperToGame(GameRequest gameRequest) {
+        if (gameRequest.getDeveloperId() == null) {
+            throw new IllegalStateException("Developer Id Cannot be Null");
+        }
+        if (gameRequest.getId() == null) {
+            throw new IllegalStateException("Game Id Cannot be Null");
+        }
+        Game game = null;
+        User developer = null;
+        try {
+            game = gameRepository.findGameById(gameRequest.getId());
+            developer = userRepository.findUserById(gameRequest.getDeveloperId());
+        } catch (Exception e) {
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+        if (game.getDevelopers().contains(developer)) {
+            throw new IllegalStateException("User is already a developer for the game");
+        }
+        game.getDevelopers().add(developer);
+        gameRepository.save(game);
+        return true;
     }
 }

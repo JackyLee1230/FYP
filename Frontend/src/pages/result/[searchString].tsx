@@ -6,8 +6,10 @@ import { GameInfo } from "@/type/game";
 import { Box, Typography, Button, Divider, Pagination } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
+import Head from "next/head";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export type GameSearchPageProps = {
   searchString: string;
@@ -29,17 +31,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let errorMessage = null;
 
   try {
-    const response = await axios.post(apiUrl, 
-      body,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
+    const response = await axios.post(apiUrl, body, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    });
     if (response.status === 200) {
       data = await response.data;
     } else {
@@ -63,7 +62,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSearchPageProps) {
+function GameSearchPage({
+  searchString,
+  games,
+  totalPages,
+  errorMessage,
+}: GameSearchPageProps) {
   const [gameData, setGameData] = useState(games);
 
   const router = useRouter();
@@ -74,30 +78,26 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
     value: number
   ) => {
     try {
-    const body = {
-      name: searchString,
-      gamesPerPage: 1,
-      pageNum: value-1,
-    };
-    const apiUrl = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesByNamePaged`;
+      const body = {
+        name: searchString,
+        gamesPerPage: 1,
+        pageNum: value - 1,
+      };
+      const apiUrl = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesByNamePaged`;
 
-    const response = await axios.post(
-      apiUrl, 
-      body,
-      {
+      const response = await axios.post(apiUrl, body, {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           "Access-Control-Allow-Credentials": "true",
         },
+      });
+      if (response.status === 200) {
+        games = await response.data.content;
+      } else {
+        errorMessage = response.statusText;
       }
-    );
-    if (response.status === 200) {
-      games = await response.data.content;
-    } else {
-      errorMessage = response.statusText;
-    }
     } catch (error: any) {
       console.error(error);
       errorMessage = error.toString();
@@ -109,6 +109,9 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
 
   return (
     <>
+      <Head>
+        <title>Search : {`"${router.query.searchString}"`} | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
@@ -151,7 +154,9 @@ function GameSearchPage({searchString, games, totalPages, errorMessage }: GameSe
           }}
         >
           {gameData && gameData.length > 0 ? (
-            gameData.map((game) => <SearchGameCard key={game.id} gameData={game} />)
+            gameData.map((game) => (
+              <SearchGameCard key={game.id} gameData={game} />
+            ))
           ) : (
             <>
               <Typography variant="h6">No Games Found</Typography>

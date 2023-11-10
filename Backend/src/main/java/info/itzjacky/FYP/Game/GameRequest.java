@@ -16,6 +16,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GameRequest {
     private Integer id;
+    private Integer developerId;
     private String name;
     private Boolean isDLC;
     private Boolean isFree;

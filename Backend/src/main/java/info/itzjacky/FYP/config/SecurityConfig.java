@@ -9,6 +9,7 @@ import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     private final JWTAuthenticationFilter jwtAuthFilter;
@@ -76,18 +78,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
-            .csrf()
-            .disable()
                 .cors(Customizer.withDefaults())
             .authorizeRequests()
                 .expressionHandler(webExpressionHandler())
-            .requestMatchers("/**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
+                .requestMatchers("**").permitAll()
+                .anyRequest().authenticated()
             .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
@@ -98,7 +95,7 @@ public class SecurityConfig {
                 )
         ;
 
-        return http.build();
+        return http.csrf().disable().build();
 
     }
 }

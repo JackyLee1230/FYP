@@ -3,12 +3,26 @@ import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
-import { Popper, Box, Typography, Button, Divider, Pagination, Fade, Select, MenuItem, FormControl, SelectChangeEvent } from "@mui/material";
+import {
+  Popper,
+  Box,
+  Typography,
+  Button,
+  Divider,
+  Pagination,
+  Fade,
+  Select,
+  MenuItem,
+  FormControl,
+  SelectChangeEvent,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
 import AdvancedSearchBox from "../../components/AdvancedSearchBox";
+import Head from "next/head";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export type GameSearchPageProps = {
   gameData: GameInfo[];
@@ -16,48 +30,59 @@ export type GameSearchPageProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let { gamename, developername, platform, genre, isInDevelopment } = context.query;
+  let { gamename, developername, platform, genre, isInDevelopment } =
+    context.query;
 
   let isGamenameNull = gamename === "null" || gamename === undefined;
-  const isDevelopernameNull = developername === "null" || developername === undefined;
+  const isDevelopernameNull =
+    developername === "null" || developername === undefined;
 
   let searchType = !isGamenameNull ? "game" : "developer";
 
-  if(isGamenameNull && isDevelopernameNull) {
+  if (isGamenameNull && isDevelopernameNull) {
     gamename = "";
     searchType = "game";
     isGamenameNull = false;
   }
-  
+
   const apiUrl =
-  searchType == "game"
-    ? `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearch`
-    : `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearchDeveloper`;
+    searchType == "game"
+      ? `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearch`
+      : `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGamesWithSearchDeveloper`;
 
   const body = {
     name: !isGamenameNull ? gamename : developername,
     developerCompany: !isGamenameNull ? gamename : developername,
-    genre: !(genre === undefined) ? typeof genre === "string" ? [genre] : genre : [],
-    platforms: !(platform === undefined) ? typeof platform === "string" ? [platform] : platform : [],
-    isInDevelopment: isInDevelopment === "null" ? null : isInDevelopment === "true" ? true : false,
+    genre: !(genre === undefined)
+      ? typeof genre === "string"
+        ? [genre]
+        : genre
+      : [],
+    platforms: !(platform === undefined)
+      ? typeof platform === "string"
+        ? [platform]
+        : platform
+      : [],
+    isInDevelopment:
+      isInDevelopment === "null"
+        ? null
+        : isInDevelopment === "true"
+        ? true
+        : false,
   };
 
   let gameData = null;
   let errorMessage = null;
 
   try {
-    const response = await axios.post(
-      apiUrl, 
-      body,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
+    const response = await axios.post(apiUrl, body, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    });
     if (response.status === 200) {
       gameData = await response.data;
     } else {
@@ -86,7 +111,8 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const searchType = !!router.query.gamename ? "Game" : "Developer";
   const searchGamename = router.query.gamename;
   const searchDevelopername = router.query.developername;
-  const searchString = searchType === "Game" ? searchGamename : searchDevelopername;
+  const searchString =
+    searchType === "Game" ? searchGamename : searchDevelopername;
   const platform = router.query.platform;
   const genre = router.query.genre;
 
@@ -104,15 +130,17 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   };
 
   const handleOrderSorting = (event: SelectChangeEvent) => {
-    setOrder(event.target.value as string)
+    setOrder(event.target.value as string);
 
     if (event.target.value === "score") {
-      setGameInfoData([...gameData].sort((a, b) => (a.score < b.score ? 1 : -1)));
-    }
-    else if (event.target.value === "releaseDate") {
-      setGameInfoData([...gameData].sort((a, b) => (a.releaseDate < b.releaseDate ? 1 : -1)));
-    }
-    else{
+      setGameInfoData(
+        [...gameData].sort((a, b) => (a.score < b.score ? 1 : -1))
+      );
+    } else if (event.target.value === "releaseDate") {
+      setGameInfoData(
+        [...gameData].sort((a, b) => (a.releaseDate < b.releaseDate ? 1 : -1))
+      );
+    } else {
       setGameInfoData(gameData);
     }
     setPage(1);
@@ -121,12 +149,14 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   useEffect(() => {
     if (gameData) {
       if (order === "score") {
-        setGameInfoData([...gameData].sort((a, b) => (a.score < b.score ? 1 : -1)));
-      }
-      else if (order === "releaseDate") {
-        setGameInfoData([...gameData].sort((a, b) => (a.releaseDate < b.releaseDate ? 1 : -1)));
-      }
-      else{
+        setGameInfoData(
+          [...gameData].sort((a, b) => (a.score < b.score ? 1 : -1))
+        );
+      } else if (order === "releaseDate") {
+        setGameInfoData(
+          [...gameData].sort((a, b) => (a.releaseDate < b.releaseDate ? 1 : -1))
+        );
+      } else {
         setGameInfoData(gameData);
       }
     }
@@ -134,6 +164,9 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
 
   return (
     <>
+      <Head>
+        <title>Search: {searchString} | CritiQ</title>
+      </Head>
       <Box
         sx={{
           display: "flex",
@@ -152,20 +185,20 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           }}
         >
           {searchGamename || searchDevelopername ? (
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ color: "text.secondary" }}
-          >
-            Search Result for{" "}
-            <Box
-              display="inline"
-              sx={{ color: "text.primary", fontWeight: 700 }}
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ color: "text.secondary" }}
             >
-              {`"${searchString}"`}
-            </Box>
-            {" "} {` By ${searchType} Name`}
-          </Typography>
+              Search Result for{" "}
+              <Box
+                display="inline"
+                sx={{ color: "text.primary", fontWeight: 700 }}
+              >
+                {`"${searchString}"`}
+              </Box>{" "}
+              {` By ${searchType} Name`}
+            </Typography>
           ) : (
             <Typography
               variant="h6"
@@ -176,25 +209,40 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             </Typography>
           )}
 
-
-          <Box sx={{display: "flex", flexDirection: "row", gap: "12px"}}>
+          <Box sx={{ display: "flex", flexDirection: "row", gap: "12px" }}>
             <FormControl sx={{ minWidth: 146 }}>
-              <Select color="secondary" value={order} onChange={handleOrderSorting} autoWidth={false}>
-                <MenuItem value='relevance'>Relevance</MenuItem>
-                <MenuItem value='score'>Score</MenuItem>
-                <MenuItem value='releaseDate'>Release Date</MenuItem>
+              <Select
+                color="secondary"
+                value={order}
+                onChange={handleOrderSorting}
+                autoWidth={false}
+              >
+                <MenuItem value="relevance">Relevance</MenuItem>
+                <MenuItem value="score">Score</MenuItem>
+                <MenuItem value="releaseDate">Release Date</MenuItem>
               </Select>
             </FormControl>
 
-            <Button variant="contained" size="large" color="secondary" onClick={handlePopperClick}>
+            <Button
+              variant="contained"
+              size="large"
+              color="secondary"
+              onClick={handlePopperClick}
+            >
               Advanced Search
             </Button>
 
-            <Popper open={open} anchorEl={anchorEl} placement='bottom-start' transition keepMounted>
+            <Popper
+              open={open}
+              anchorEl={anchorEl}
+              placement="bottom-start"
+              transition
+              keepMounted
+            >
               {({ TransitionProps }) => (
                 <Fade {...TransitionProps} timeout={350}>
                   <div>
-                    <AdvancedSearchBox setOpen={setOpen}/>
+                    <AdvancedSearchBox setOpen={setOpen} />
                   </div>
                 </Fade>
               )}
@@ -244,7 +292,10 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
                     <Box
                       display="inline"
                       sx={{ color: "text.secondary", fontWeight: 400 }}
-                    >{" "}Or to remove some of the filter attributes</Box>
+                    >
+                      {" "}
+                      Or to remove some of the filter attributes
+                    </Box>
                   )}
                 </Typography>
               )}
@@ -252,7 +303,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           )}
         </Box>
 
-        {gameInfoData && gameInfoData.length > 0 &&
+        {gameInfoData && gameInfoData.length > 0 && (
           <Pagination
             color="primary"
             variant="outlined"
@@ -267,7 +318,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
               },
             }}
           />
-        }
+        )}
       </Box>
     </>
   );
