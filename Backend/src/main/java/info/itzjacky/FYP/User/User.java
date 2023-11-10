@@ -6,6 +6,7 @@ import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Review.Review;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -58,14 +59,22 @@ public class User implements UserDetails {
     @Column(updatable = true)
     private String password;
 
-    private Integer age;
+    @Column(updatable = true)
+    private Date birthday;
 
+    @Formula("(TIMESTAMPDIFF(YEAR,birthday,CURDATE()))")
+    private String age;
+
+    @Column(updatable = true)
     private String ageGroup;
 
+    @Column(updatable = true)
     private Gender gender;
 
+    @Column(updatable = true)
     private String joinDate;
 
+    @Column(updatable = true)
     private Date lastActive;
 
     @Column(columnDefinition = "integer default 0")

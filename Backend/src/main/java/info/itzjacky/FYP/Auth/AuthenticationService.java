@@ -24,6 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -34,6 +36,7 @@ public class AuthenticationService {
     private final UserRepository repository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     @Autowired
@@ -97,11 +100,18 @@ public class AuthenticationService {
         if (repository.findUserByEmail(request.getEmail()) != null) {
             throw new IllegalStateException("Email already used by another user");
         }
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = formatter.parse(request.getBirthday());
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
-                .age(request.getAge())
+                .birthday(date)
                 .ageGroup(Others.getAgeGroupFromAge(request.getAge()))
                 .gender(request.getGender())
                 .isPrivate(false)
@@ -144,6 +154,8 @@ public class AuthenticationService {
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
+        user.setLastActive(new Date());
+        userRepository.save(user);
 //        remove old tokens that are more than 2 weeks old
         tokenRepository.deleteAllByCreatedAtBefore(new Date(System.currentTimeMillis() - 1209600000));
         return AuthenticationResponse.builder().user(user).accessToken(jwtToken).refreshToken(refreshToken).build();
