@@ -306,7 +306,7 @@ const WebToolbar = () => {
                 }}
                 open={openPanel}
               >
-                <Box 
+                <Box
                   sx={{
                     maxHeight: "100vh",
                     overflowY: "auto",

@@ -4,9 +4,10 @@ import "tailwindcss/tailwind.css";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import Image from "next/image";
-import Head from 'next/head'
+import Head from "next/head";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 type GameInfo = {
   id: number;
@@ -29,59 +30,58 @@ type LandingPageProps = {
   errorMessage: string;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  let games = null;
-  let errorMessage = null;
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   let games = null;
+//   let errorMessage = null;
 
-  try {
-    const response = await axios.get(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
-    games = response.data;
+//   try {
+//     const response = await axios.get(
+//       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`,
+//       {
+//         headers: {
+//           "Access-Control-Allow-Origin": "*",
+//           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+//           "Access-Control-Allow-Headers": "Content-Type, Authorization",
+//           "Access-Control-Allow-Credentials": "true",
+//         },
+//       }
+//     );
+//     games = response.data;
 
-    if (response.status === 200) {
-      games = await response.data;
-    } else {
-      errorMessage = response.statusText;
-    }
-  } catch (error: any) {
-    // Handle the error
-    console.error(error);
-    errorMessage = error.toString();
-  }
+//     if (response.status === 200) {
+//       games = await response.data;
+//     } else {
+//       errorMessage = response.statusText;
+//     }
+//   } catch (error: any) {
+//     // Handle the error
+//     console.error(error);
+//     errorMessage = error.toString();
+//   }
 
-  return {
-    props: {
-      games,
-      errorMessage,
-    },
-  };
-};
+//   return {
+//     props: {
+//       games,
+//       errorMessage,
+//     },
+//   };
+// };
 
-const Dashboard = ({ games, errorMessage }: LandingPageProps) => {
-  if (errorMessage !== null) {
-    return <div className="text-center text-xl font-bold">{errorMessage}</div>;
-  }
-
+const Dashboard = () => {
   return (
     <>
       <Head>
-        <title>CritiQ - Game Testing and Evaluation Platform with Machine Learning for Game Developers</title>
+        <title>
+          CritiQ - Game Testing and Evaluation Platform with Machine Learning
+          for Game Developers
+        </title>
       </Head>
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <main className="flex flex-col items-center justify-center w-9/12 flex-1 text-center">
           <Image src="/logo.png" width={528} height={160} alt="CritiQ Icon" />
           <h1 className="text-6xl font-bold">
-            Welcome to CritiQ, A Revolutional Game Testing and Evaluation Platform
-            with Machine Learning for Game Developers!
+            Welcome to CritiQ, A Revolutional Game Testing and Evaluation
+            Platform with Machine Learning for Game Developers!
           </h1>
 
           <div className="flex mt-6">

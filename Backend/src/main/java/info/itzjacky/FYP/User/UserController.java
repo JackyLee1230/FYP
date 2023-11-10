@@ -1,5 +1,7 @@
 package info.itzjacky.FYP.User;
 
+import info.itzjacky.FYP.Review.Review;
+import info.itzjacky.FYP.Review.ReviewRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class UserController {
     UserService userService;
 
     Logger logger = LoggerFactory.getLogger(UserController.class);
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -129,6 +133,8 @@ public class UserController {
     public ResponseEntity<User> findUserById(@RequestBody UserRequest userRequest){
         try {
             User user = userService.findUserById(userRequest.getId());
+//            List<Review> reviews = reviewRepository.findReviewsByReviewer(user);
+//            user.setReviews(reviews);
             if(user != null){
                 return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
