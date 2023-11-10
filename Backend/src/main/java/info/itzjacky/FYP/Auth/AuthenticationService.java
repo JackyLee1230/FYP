@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
+import info.itzjacky.FYP.Utils.Others;
 import info.itzjacky.FYP.Utils.RegEx;
 import info.itzjacky.FYP.config.JwtService;
 import jakarta.mail.MessagingException;
@@ -100,6 +101,9 @@ public class AuthenticationService {
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
+                .age(request.getAge())
+                .ageGroup(Others.getAgeGroupFromAge(request.getAge()))
+                .gender(request.getGender())
                 .isPrivate(false)
                 .role(List.of(Role.USER))
                 .build();

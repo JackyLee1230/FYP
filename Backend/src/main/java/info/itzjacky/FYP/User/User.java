@@ -58,6 +58,12 @@ public class User implements UserDetails {
     @Column(updatable = true)
     private String password;
 
+    private Integer age;
+
+    private String ageGroup;
+
+    private Gender gender;
+
     private String joinDate;
 
     private Date lastActive;
