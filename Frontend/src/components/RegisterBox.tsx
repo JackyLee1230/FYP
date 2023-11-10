@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, CircularProgress } from '@mui/material';
+import { Button, Typography, Box, FormControl, InputLabel, FormHelperText, CircularProgress, Autocomplete, Select, MenuItem } from '@mui/material';
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
 import { register } from "@/services/authService"
@@ -7,6 +7,7 @@ import { validateUsername, validateEmail, validatePassword } from '@/utils/Regex
 import { setAuthCookies } from "@/libs/authHelper"
 import { useAuthContext } from '@/context/AuthContext'
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
+import { genderList, getGender } from '@/type/user';
 
 const RegisterBox = () => {
   const router = useRouter();
@@ -17,6 +18,12 @@ const RegisterBox = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  console.log(birthDate);
+  const [birthDateError, setBirthDateError] = useState('');
+  const [gender, setGender] = useState(genderList[0]);
+  const todayDate = new Date();
+  const maxDateString = new Date(todayDate.getFullYear() - 13, todayDate.getMonth(), todayDate.getDate()).toISOString().split('T')[0];
   const [registerError, setRegisterError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setToken } = useAuthContext()
@@ -70,14 +77,30 @@ const RegisterBox = () => {
     return true;
   }
 
+  function verifyBirthDate(): boolean{
+    if(birthDate === ""){
+      setBirthDateError("Birth date cannot be empty");
+      return false;
+    }
+    else if(birthDate > maxDateString){
+      setBirthDateError("You must be at least 13 years old to register an account");
+      return false;
+    }
+    else{
+      setBirthDateError("");
+    }
+    return true;
+  } 
+
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
     e.preventDefault();
     const usernameValid = verifyUsername();
     const passwordValid = verifyPassword();
     const emailValid = verifyEmail();
-    if(!usernameValid || !passwordValid || !emailValid){
-      setRegisterError('Please fill in all the fields.');
+    const birthDateValid = verifyBirthDate();
+    if(!usernameValid || !passwordValid || !emailValid || !birthDateValid){
+      setRegisterError('Please fill in all the fields correctly.');
       setIsLoading(false);
       return;
     }
@@ -86,7 +109,7 @@ const RegisterBox = () => {
 
   async function onRegister() {
     try{
-      const { user, refresh_token, access_token } = await register(username, email, password);
+      const { user, refresh_token, access_token } = await register(username, email, password, birthDate, gender);
       setAuthCookies(refresh_token, false);
       setUser(user);
       setToken(access_token);
@@ -188,6 +211,47 @@ const RegisterBox = () => {
               autoComplete="new-password"
             />
             <FormHelperText sx={{whiteSpace: "pre-wrap"}}>{passwordError}</FormHelperText>
+          </FormControl>
+
+          <FormControl variant="standard" error={!!birthDateError}>
+            <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
+              Birth Date
+            </InputLabel>
+            <CustomInput
+              value={birthDate}
+              onChange={(e) => setBirthDate(e.target.value)}
+              error={!!birthDateError}
+              type="date"
+              onBlur={verifyBirthDate}
+              id='bday'
+              name='bday'
+              autoComplete="bday"
+              inputProps={{ max: todayDate.toISOString().split('T')[0] }}
+            />
+            <FormHelperText>{birthDateError}</FormHelperText>
+          </FormControl>
+
+          <FormControl variant="standard">
+            <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
+              Gender
+            </InputLabel>
+            <Select
+              value={gender}
+              onChange={(e) => setGender(e.target.value as string)}
+              input={<CustomInput />}
+              sx={{
+                width: 351,
+                ".MuiSelect-icon": {
+                  marginRight: 1,
+                },
+              }}
+            >
+              {genderList.map((value) => (
+                <MenuItem key={value} value={value}>
+                  {getGender(value)}
+                </MenuItem>
+              ))}
+            </Select>
           </FormControl>
 
           {registerError && (

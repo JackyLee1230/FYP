@@ -27,12 +27,16 @@ export async function login(username: string, password: string) {
 export async function register(
   username: string,
   email: string,
-  password: string
+  password: string,
+  birthDate: string,
+  gender: string
 ) {
   const body = {
     name: username,
     email: email,
     password: password,
+    birthday: birthDate,
+    gender: gender
   };
   const response = await axios.post(
     `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/register`,
