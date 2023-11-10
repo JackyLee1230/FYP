@@ -8,6 +8,7 @@ import {
   FormHelperText,
   FormControlLabel,
   Radio,
+  IconButton,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
@@ -17,6 +18,8 @@ import { setAuthCookies } from "@/libs/authHelper";
 import { useAuthContext } from "@/context/AuthContext";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import CircularProgress from "@mui/material/CircularProgress";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 type LoginBoxProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +31,7 @@ const LoginBox = ({ setOpen }: LoginBoxProps) => {
   const [usernameError, setUsernameError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const [LoginError, setLoginError] = useState("");
   const [isTemporary, setIsTemporary] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -131,23 +135,36 @@ const LoginBox = ({ setOpen }: LoginBoxProps) => {
             <FormHelperText>{usernameError}</FormHelperText>
           </FormControl>
 
-          <FormControl variant="standard" error={!!passwordError}>
-            <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
-              Password
-            </InputLabel>
-            <CustomInput
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              error={!!passwordError}
-              onBlur={verifyPassword}
-              inputProps={{ maxLength: 16 }}
-              id="password"
-              name="password"
-              autoComplete="current-password"
-            />
-            <FormHelperText>{passwordError}</FormHelperText>
-          </FormControl>
+          <Box sx={{ position: "relative" }}>
+            <FormControl variant="standard" error={!!passwordError}>
+              <InputLabel shrink sx={{ fontWeight: 500, fontSize: "20px" }}>
+                Password
+              </InputLabel>
+              <CustomInput
+                type={isShowPassword? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={!!passwordError}
+                onBlur={verifyPassword}
+                inputProps={{ maxLength: 16 }}
+                id="password"
+                name="password"
+                autoComplete="current-password"
+              />
+              <FormHelperText>{passwordError}</FormHelperText>
+            </FormControl>
+            <IconButton
+              size="small"
+              sx={{
+                position: "absolute",
+                top: "42%",
+                right: "2%",
+              }}
+              onClick={() => setIsShowPassword((prev) => !prev)}
+            >
+              {isShowPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+            </IconButton>
+          </Box>
 
           <FormControlLabel
             checked={!isTemporary}
