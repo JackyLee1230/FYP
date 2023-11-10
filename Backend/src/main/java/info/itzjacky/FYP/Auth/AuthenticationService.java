@@ -107,12 +107,15 @@ public class AuthenticationService {
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
+        long diff = new Date().getTime() - date.getTime();
+        long age = diff / (24 * 60 * 60 * 1000) / 365;
+        request.setAge((int) age);
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
                 .birthday(date)
-                .ageGroup(Others.getAgeGroupFromAge(request.getAge()))
+                .ageGroup(Others.getAgeGroupFromAge((int) age))
                 .gender(request.getGender())
                 .isPrivate(false)
                 .role(List.of(Role.USER))
