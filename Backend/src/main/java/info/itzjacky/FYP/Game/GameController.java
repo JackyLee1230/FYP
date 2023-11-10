@@ -30,6 +30,7 @@ public class GameController {
     @Autowired
     private GameRepository gameRepository;
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/addDeveloperToGame")
     public ResponseEntity<Boolean> addDeveloperToGame(@RequestBody GameRequest gameRequest) {
         try {
@@ -150,7 +151,6 @@ public class GameController {
         }
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {
