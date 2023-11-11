@@ -9,7 +9,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { formatTime } from "@/utils/StringUtils";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(context);
@@ -36,22 +37,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         },
       }
     );
-    const reviewsResponse = await axios.post(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameId`,
-      { gameId: gameid },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
+    // const reviewsResponse = await axios.post(
+    //   `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameId`,
+    //   { gameId: gameid },
+    //   {
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    //       "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    //       "Access-Control-Allow-Credentials": "true",
+    //     },
+    //   }
+    // );
 
-    if (response.status === 200 && reviewsResponse.status === 200) {
+    if (response.status === 200) {
       game = await response.data;
-      reviews = await reviewsResponse.data;
       if (game.iconUrl) {
         iconUrl = `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
       }
@@ -66,14 +66,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       game,
-      reviews,
       errorMessage,
       iconUrl,
     },
   };
 };
 
-function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
+function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const router = useRouter();
 
   if (errorMessage) {
@@ -83,6 +82,8 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
   if (!game) {
     return <div className="text-center text-xl font-bold">Game not found</div>;
   }
+
+  console.log(game);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -201,15 +202,15 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
 
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div className="flex flex-col">
-          {reviews && reviews.length > 1
-            ? `Reviews [${reviews.length}]`
+          {game.gameReviews && game.gameReviews.length > 1
+            ? `Reviews [${game.gameReviews.length}]`
             : "Review [1]"}
           :
         </div>
 
-        {reviews && reviews.length > 0 ? (
+        {game.gameReviews && game.gameReviews.length > 0 ? (
           <div className="list-disc list-inside">
-            {reviews.map((review) => (
+            {game.gameReviews.map((review) => (
               <div
                 onClick={() => {
                   router.push(`/review/${review.id}`);
@@ -219,8 +220,8 @@ function GamePage({ game, reviews, errorMessage, iconUrl }: GamePageProps) {
               >
                 <div className="m-4">
                   <div>
-                    Review By {review.reviewer.name} on{" "}
-                    {formatTime(review.createdAt)}:
+                    Review By {review.reviewer?.name} on{" "}
+                    {/* {formatTime(review.createdAt)}: */}
                     <br />
                     Score: {review.score}
                     <br />
