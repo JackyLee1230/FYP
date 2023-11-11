@@ -1,6 +1,8 @@
 package info.itzjacky.FYP.Game;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
@@ -23,6 +25,9 @@ import java.util.Objects;
 }, uniqueConstraints = {
         @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = {"name", "developerCompany"})
 })
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Builder
 @Getter
 @Setter
