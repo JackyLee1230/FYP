@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FypApplication<FYP>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "info.itzjacky.FYP.FypApplication",
+            "projectName": "FYP",
+            "args": "--spring.profiles.active=local",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
