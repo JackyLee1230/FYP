@@ -221,7 +221,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 <div className="m-4">
                   <div>
                     Review By {review.reviewer?.name} on{" "}
-                    {/* {formatTime(review.createdAt)}: */}
+                    {formatTime(review.createdAt)}:
                     <br />
                     Score: {review.score}
                     <br />
