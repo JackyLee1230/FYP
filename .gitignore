@@ -55,6 +55,8 @@ Backend/logs/
 
 # Class
 Backend/*.class
+Gatling/target/test-classes/*.class
+Gatling/target/test-classes/backend/*.class
 
 # UserMapperImpl
 Backend/target/generated-sources/annotations/info/itzjacky/FYP/User/UserMapperImpl.java
