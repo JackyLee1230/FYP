@@ -1,7 +1,10 @@
 package info.itzjacky.FYP.Review;
 
+import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.User.User;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -33,9 +36,11 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.name = ?1")
     List<Review> findReviewByGameName(String gameName);
 
-
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1")
     List<Review> findReviewsByGameId(Integer gameId);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1")
+    Page<Review> findReviewsByGameIdPaged(Integer gameId, Pageable pageable);
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2")
     List<Review> findReviewsByGameIdAndSentiment(Integer gameId, Integer sentiment);

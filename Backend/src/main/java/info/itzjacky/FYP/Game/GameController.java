@@ -154,9 +154,13 @@ public class GameController {
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {
+            logger.info(String.valueOf(gameRequest));
             Game g = gameService.findGameById(gameRequest);
             if (g.getBaseGame() != null) {
                 g.getBaseGame().setGameReviews(null);
+            }
+            if (gameRequest.getIncludeReviews() != null && !gameRequest.getIncludeReviews()) {
+                g.setGameReviews(null);
             }
             return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {

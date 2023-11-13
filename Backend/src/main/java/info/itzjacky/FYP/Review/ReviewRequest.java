@@ -35,4 +35,8 @@ public class ReviewRequest {
     private Integer numberOfReviews;
 
     private Integer sentiment;
+
+    private Integer reviewsPerPage;
+
+    private Integer pageNum;
 }

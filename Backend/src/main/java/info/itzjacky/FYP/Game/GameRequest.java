@@ -45,4 +45,5 @@ public class GameRequest {
     private Integer gamesPerPage;
     private Boolean orderedByScore;
     private Boolean orderedByReleaseDate;
+    private Boolean includeReviews;
 }

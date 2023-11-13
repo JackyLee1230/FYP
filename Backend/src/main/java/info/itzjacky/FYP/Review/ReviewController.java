@@ -4,6 +4,7 @@ import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
 import info.itzjacky.FYP.User.User;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,20 @@ public class ReviewController {
     public ResponseEntity<List<Review>> getReviewByGameId(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.findReviewsByGameId(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    /*
+     * args gameId: Integer (Game.id)
+     *      reviewsPerPage: Integer
+     *      pageNum: Integer
+     */
+    @PostMapping("/findReviewsByGameIdPaged")
+    public ResponseEntity<Page<Review>> getReviewByGameIdPaged(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.findReviewsByGameIdPaged(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

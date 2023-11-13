@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -118,6 +119,19 @@ public class ReviewService {
             throw new IllegalStateException("Game ID Cannot Be Empty/Null");
         }
         return reviewRepository.findReviewsByGameId(reviewRequest.getGameId());
+    }
+
+    public Page<Review> findReviewsByGameIdPaged(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getGameId() == null){
+            throw new IllegalStateException("Game ID Cannot Be Empty/Null");
+        }
+        if(reviewRequest.getReviewsPerPage() == null || reviewRequest.getReviewsPerPage() < 0 ){
+            reviewRequest.setReviewsPerPage(5);
+        }
+        if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
+            reviewRequest.setPageNum(0);
+        }
+        return reviewRepository.findReviewsByGameIdPaged(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
     }
 
     public List<Review> getReviewsByReviewerId(ReviewRequest reviewRequest){
