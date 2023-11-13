@@ -69,6 +69,15 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/findReviewByReviewerIdPaged")
+    public ResponseEntity<Review> findReviewByReviewerIdPaged(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.findReviewById(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("findReviewsByGameIdAndVersion")
     public ResponseEntity<List<Review>> getReviewsByGameIdAndVersion(@RequestBody ReviewRequest reviewReq){
         try{
@@ -176,6 +185,19 @@ public class ReviewController {
     public ResponseEntity<List<Review>> findAllReviewsByUser(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.findAllReviewsByUser(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+
+    /*
+     * args reviewerId: Integer
+     */
+    @PostMapping("/findAllReviewsByUserPaged")
+    public ResponseEntity<Page<Review>> findAllReviewsByUserPaged(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.findAllReviewsByUserPaged(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

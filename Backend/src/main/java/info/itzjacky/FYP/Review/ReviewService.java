@@ -183,6 +183,20 @@ public class ReviewService {
         return reviewRepository.findReviewsByReviewerName(userRepository.findUserById(reviewRequest.getReviewerId()).getName());
     }
 
+    public Page<Review> findAllReviewsByUserPaged(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getReviewerId() == null){
+            throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
+        }
+        if (reviewRequest.getReviewsPerPage() == null || reviewRequest.getReviewsPerPage() < 0) {
+            reviewRequest.setReviewsPerPage(5);
+        }
+        if (reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0){
+            reviewRequest.setPageNum(0);
+        }
+            logger.info(reviewRequest.toString());
+        return reviewRepository.fidnReviewsByReviewerIdPaged(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+    }
+
     @Transactional
     public Review addReview(ReviewRequest reviewRequest) {
         Game game = null;
