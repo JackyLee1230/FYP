@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.11",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.5.9",
+    "@vercel/analytics": "^1.1.1",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.1",
     "chart.js": "^4.4.0",
