@@ -2,8 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { store } from "../../store";
 import { Provider } from "react-redux";
-import { StyledEngineProvider } from "@mui/material/styles";
-import { CacheProvider } from "@emotion/react";
+import { StyledEngineProvider } from "@mui/material/styles";  
 import createCache from "@emotion/cache";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { themeOptions } from "../theme/MuiThemeOption";
@@ -24,16 +23,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <StyledEngineProvider injectFirst>
         <Provider store={store}>
-          <CacheProvider value={cache}>
-            <AuthContextProvider>
-              <Layout>
-                <SnackbarProvider maxSnack={3}>
-                  <Component {...pageProps} />
-                  <Analytics />
-                </SnackbarProvider>
-              </Layout>
-            </AuthContextProvider>
-          </CacheProvider>
+          <AuthContextProvider>
+            <Layout>
+              <SnackbarProvider maxSnack={3}>
+                <Component {...pageProps} />
+                <Analytics />
+              </SnackbarProvider>
+            </Layout>
+          </AuthContextProvider>
         </Provider>
       </StyledEngineProvider>
     </ThemeProvider>
