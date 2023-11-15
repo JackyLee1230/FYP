@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import info.itzjacky.FYP.Game.Platform;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Game.Game;
 import jakarta.persistence.*;
@@ -51,6 +52,13 @@ public class Review {
     @Column(name = "updated_at")
     @UpdateTimestamp
     public Date updatedAt;
+
+    @Column(updatable = true)
+    public String playTime;
+
+    @Column(updatable = true)
+    @Enumerated(EnumType.STRING)
+    public Platform platform;
 
     @Version
     private Integer version;
