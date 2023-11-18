@@ -110,7 +110,13 @@ function GameSearchPage({
   return (
     <>
       <Head>
-        <title>Search : {`"${router.query.searchString}"`} | CritiQ</title>
+        <title>
+          Search
+          {router.query.searchString !== ""
+            ? ` : ${router.query.searchString}`
+            : ""}
+          | CritiQ
+        </title>
       </Head>
       <Box
         sx={{
