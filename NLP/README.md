@@ -13,7 +13,6 @@ We only highlight the most critical packages that affect the code.
 |python|3.9.18|pickling 3.9 for max compatability across different packages|
 |pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
 
-<<<<<<< Updated upstream
 ## WSL2
 
 According to offical documentation of tensorflow, WSL is required to use latest version of tensorflow with or without GPU.
@@ -129,7 +128,7 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
     Create a new virtual environment in miniforge (e.g. fyp-test-wsl)
 
     ```
-    conda create --name fyp-test-wsl python=3.9.18 pandas=2.1.0 numpy scikit-learn=1.3.0 seaborn
+    conda create --name fyp-test-wsl python=3.9.18 pandas=2.1.0 numpy scikit-learn=1.3.0 seaborn matplotlib 
 
     conda activate fyp-test-wsl
     ```
@@ -187,8 +186,27 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
     Then follow the section "Open a remote folder or workspace" to use WSL as an environment in the VSCode command line, and have access to folders in WSL.
 
 
-=======
->>>>>>> Stashed changes
+### WSL commands
+
+Shutdown all wsl
+```terminal
+wsl --shutdown
+```
+
+Show running 
+
+```terminal
+wsl --list --running
+
+wsl --l --running
+```
+
+Change ram allocation for wsl: [tutorial](https://learn.microsoft.com/en-us/answers/questions/1296124/how-to-increase-memory-and-cpu-limits-for-wsl2-win)
+
+Optimizing wsl environment from time to time (like freeing space or ram optimization): [YouTube](https://youtu.be/4PwClrUCqJM)
+
+Additional config for wsl: [Microsoft](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig)
+
 ## Steam API
 
 API to grab comments
