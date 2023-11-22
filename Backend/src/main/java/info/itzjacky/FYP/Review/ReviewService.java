@@ -3,6 +3,7 @@ package info.itzjacky.FYP.Review;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Game.GameRepository;
 import info.itzjacky.FYP.Game.GameVersion;
+import info.itzjacky.FYP.Game.Platform;
 import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
@@ -226,6 +227,19 @@ public class ReviewService {
             }
         }
 
+        if(reviewRequest.getPlatform() != null){
+            boolean platformExists = false;
+            for(Platform platform : game.getPlatforms()){
+                if(platform.equals(reviewRequest.getPlatform())){
+                    platformExists = true;
+                    break;
+                }
+            }
+            if(!platformExists){
+                throw new IllegalStateException("This Platform is not supported by this game!");
+            }
+        }
+
         if(reviewRequest.getScore() < 0 || reviewRequest.getScore() > 100){
             throw new IllegalStateException("Score Must Be Between 0 and 100");
         }
@@ -237,6 +251,8 @@ public class ReviewService {
                 .score(reviewRequest.getScore())
                 .comment(reviewRequest.getComment())
                 .recommended(reviewRequest.getRecommended())
+                .playTime(reviewRequest.getPlayTime() == null ? "N/A" : reviewRequest.getPlayTime())
+                .platform(reviewRequest.getPlatform() == null ? null : reviewRequest.getPlatform())
                 .createdAt(new java.sql.Date(System.currentTimeMillis()))
                 .build();
         try{

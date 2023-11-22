@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.Review;
 
 import info.itzjacky.FYP.Game.Game;
+import info.itzjacky.FYP.Game.Platform;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,4 +40,11 @@ public class ReviewRequest {
     private Integer reviewsPerPage;
 
     private Integer pageNum;
+
+    private String playTime;
+
+    private Platform platform;
+
+
+
 }
