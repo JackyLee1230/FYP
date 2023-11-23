@@ -1,5 +1,7 @@
 package info.itzjacky.FYP.User;
 
+import info.itzjacky.FYP.Auth.AuthenticationController;
+import info.itzjacky.FYP.Auth.AuthenticationService;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/user")
@@ -23,9 +26,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    AuthenticationService authenticationService;
+
     Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private ReviewRepository reviewRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -54,6 +62,37 @@ public class UserController {
     public ResponseEntity<User> getUserByResetPasswordToken(@RequestBody UserRequest userRequest){
         try{
             return new ResponseEntity<>(userService.getUserByResetPasswordToken(userRequest.getResetPasswordToken()), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/getUserByVerificationToken")
+    public ResponseEntity<User> getUserByVerificationToken(@RequestBody UserRequest userRequest){
+        try{
+            logger.info(userRequest.toString());
+            return new ResponseEntity<>(userService.getUserByVerificationToken(userRequest.getVerificationToken()), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/sendVerifyEmail")
+    public ResponseEntity<Void> sendVerifyEmail(@RequestBody UserRequest userRequest){
+        try{
+            logger.info(userRequest.toString());
+            User user = userService.findUserByEmail(userRequest.getEmail());
+            if(user == null){
+                throw new IllegalStateException("User Not Found");
+            }
+            if(user.getIsVerified() == true) {
+                throw new IllegalStateException("User Already Verified");
+            }
+            String token = UUID.randomUUID().toString().replace("-", "");
+            authenticationService.sendVerifyEmail(userRequest.getEmail(), token);
+            user.setVerificationToken(token);
+            userRepository.save(user);
+            return ResponseEntity.noContent().build();
         }catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

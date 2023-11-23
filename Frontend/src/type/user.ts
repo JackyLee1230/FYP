@@ -21,9 +21,10 @@ export type User = {
   age: number;
   ageGroup: string;
   gender: string;
+  isVerified: boolean;
 };
 
-export const genderList = ["MALE", "FEMALE", "OTHER", "UNDISCLOSED"]
+export const genderList = ["MALE", "FEMALE", "OTHER", "UNDISCLOSED"];
 
 enum Gender {
   MALE = "Male",
@@ -35,3 +36,4 @@ enum Gender {
 export function getGender(key: string): string {
   return Gender[key as keyof typeof Gender];
 }
+

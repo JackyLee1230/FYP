@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
-import { Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -49,6 +49,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
+const sendVerifyEmail = async (email: string) => {
+  try {
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/sendVerifyEmail`,
+      { email: email },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+  } catch (error: any) {
+    console.error(error);
+  }
+};
+
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
 
@@ -69,6 +88,21 @@ export default function User({ user }: UserPageProps) {
       )}
       <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
+      {user.isVerified === null || user.isVerified === false ? (
+        <>
+          <Button
+            variant="contained"
+            onClick={() => {
+              sendVerifyEmail(user.email);
+            }}
+          >
+            Not verified, Click to resend Verify Email
+          </Button>
+          <br />
+        </>
+      ) : (
+        <div>Verified</div>
+      )}
       {user.name}
       <br />
       {user.email}

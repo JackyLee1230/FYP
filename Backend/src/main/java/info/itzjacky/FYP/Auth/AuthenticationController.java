@@ -63,7 +63,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
-    ) {
+    ) throws MessagingException, UnsupportedEncodingException {
         return ResponseEntity.ok(authenticationService.register(request));
     }
 

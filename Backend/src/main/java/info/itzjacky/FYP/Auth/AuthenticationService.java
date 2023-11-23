@@ -3,6 +3,7 @@ package info.itzjacky.FYP.Auth;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
+import info.itzjacky.FYP.User.UserController;
 import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.Utils.Others;
 import info.itzjacky.FYP.Utils.RegEx;
@@ -13,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -44,6 +47,8 @@ public class AuthenticationService {
 
     @Value("${application.web.url}")
     private String webUrl;
+
+    Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     @Transactional
     public String forgotPassword(ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
@@ -85,9 +90,31 @@ public class AuthenticationService {
         javaMailSender.send(message);
     }
 
+    public void sendVerifyEmail(String email, String token)
+            throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setFrom("critiqplatform@gmail.com", "CritiQ Support");
+        helper.setTo(email);
+
+        String subject = "CritiQ: Verify Account";
+
+        String content = "<p>Hello,</p>"
+                + "<p>You have registered an account with CritiQ.</p>"
+                + "<p>Click the link below to verify your account:</p>"
+                + "<p><a href=\"" + webUrl + "/verify/" + token + "\">Verify Account</a></p>"
+                + "<br>"
+                + "<p>Ignore this email if you did not registered on our platform.</p>";
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        logger.info(webUrl + "/verify/" + token);
+        javaMailSender.send(message);
+    }
+
 
     @Transactional
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws MessagingException, UnsupportedEncodingException {
         if(!RegEx.emailValidation(request.getEmail().toLowerCase())){
             throw new IllegalStateException("Invalid Email format");
         }
@@ -110,6 +137,7 @@ public class AuthenticationService {
         long diff = new Date().getTime() - date.getTime();
         long age = diff / (24 * 60 * 60 * 1000) / 365;
         request.setAge((int) age);
+        String token = UUID.randomUUID().toString().replace("-", "");
         var user = User.builder()
                 .name(request.getName())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -119,10 +147,12 @@ public class AuthenticationService {
                 .gender(request.getGender())
                 .isPrivate(false)
                 .role(List.of(Role.USER))
+                .verificationToken(token)
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
+        sendVerifyEmail(request.getEmail(), token);
         saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder().user(savedUser).accessToken(jwtToken).refreshToken(refreshToken).build();
     }

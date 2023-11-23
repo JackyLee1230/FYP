@@ -151,6 +151,25 @@ public class UserService {
         return u;
     }
 
+    /*
+    * get the user using the verification token, and then set the user's isVerified to true
+     */
+    @Transactional
+    public User getUserByVerificationToken(String token){
+        if(token == null){
+            throw new IllegalStateException("Token Cannot Be Empty");
+        }
+        User u = userRepository.findUserByVerificationToken(token);
+        if (u == null) {
+            throw new IllegalStateException("Invalid Verification Token");
+        }
+        u.setIsVerified(Boolean.TRUE);
+        userRepository.save(u);
+        u.setReviews(null);
+        u.setVerificationToken(null);
+        return u;
+    }
+
     public User updatePassword(User user, String newPassword) {
         if(!RegEx.passwordValidation(newPassword)){
             throw new IllegalStateException("Password Must Be 8-16 Characters Long, Contain At Least 1 Letter And 1 Number");

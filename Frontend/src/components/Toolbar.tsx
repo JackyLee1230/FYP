@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import {
   AppBar,
@@ -32,6 +33,7 @@ import { logout } from "@/services/authService";
 import { User } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import RoleChip from "./RoleChip";
+import { redirect } from "next/navigation";
 
 const Search = styled("div")(({ theme }) => ({
   display: "flex",
@@ -110,8 +112,8 @@ const WebToolbar = () => {
     }
   }, [token, user]);
 
-  const handleProfileRedirect = () => {
-    // Redirect to profile page
+  const handleProfileRedirect = (id: String) => {
+    router.push(`/user/${id}`);
   };
 
   const handleLogout = async () => {
@@ -279,7 +281,11 @@ const WebToolbar = () => {
                   </Typography>
                 </Box>
                 <Divider />
-                <MenuItem onClick={handleUserMenuClose}>
+                <MenuItem
+                  onClick={() => {
+                    handleProfileRedirect(user!.id);
+                  }}
+                >
                   <ListItemIcon>
                     <AccountCircleIcon fontSize="small" />
                   </ListItemIcon>
