@@ -8,6 +8,9 @@ import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { formatTime } from "@/utils/StringUtils";
+import Link from "next/link";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import _ from "lodash";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -100,6 +103,24 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
 
       <h1 className="text-4xl font-bold mb-4">{game.name}</h1>
       <p className="text-lg mb-4">{game.description}</p>
+      {game.dlc && game.dlc === true && (
+        <p>
+          <PriorityHighIcon />
+          This DLC/Expandsion requires the base game{" "}
+          <Link href={`/games/${game.baseGame.id}`}>
+            {game.baseGame.name}
+          </Link>{" "}
+          to play!
+        </p>
+      )}
+
+      {!!game.percentile && (
+        <p>
+          This game ranks in the top {_.round(game.percentile, 1)}% of all games
+          on CritiQ!
+        </p>
+      )}
+
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="flex flex-col">
           <span className="font-bold">Release Date:</span>

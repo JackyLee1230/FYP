@@ -20,6 +20,7 @@ export type GameInfo = {
   platforms: string[];
   inDevelopment: boolean;
   gameReviews: GameReview[];
+  percentile: number;
 };
 
 export type GameVersion = {
