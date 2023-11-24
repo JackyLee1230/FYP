@@ -143,6 +143,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
                 .birthday(date)
+                .joinDate(formatter.format(new Date()))
                 .ageGroup(Others.getAgeGroupFromAge((int) age))
                 .gender(request.getGender())
                 .isPrivate(false)
