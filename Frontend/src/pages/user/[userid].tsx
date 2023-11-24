@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
 import { Button, Stack } from "@mui/material";
+import Head from "next/head";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -77,6 +78,9 @@ export default function User({ user }: UserPageProps) {
 
   return (
     <>
+      <Head>
+        <title>{user.name ?? "Invalid User"} | CritiQ</title>
+      </Head>
       {user.iconUrl ? (
         <img
           className="w-24 h-24 rounded-full mx-auto"

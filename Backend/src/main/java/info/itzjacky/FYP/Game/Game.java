@@ -25,9 +25,9 @@ import java.util.Objects;
 }, uniqueConstraints = {
         @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = {"name", "developerCompany"})
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 @Builder
 @Getter
 @Setter

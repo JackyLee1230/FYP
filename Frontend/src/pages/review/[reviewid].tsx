@@ -9,7 +9,8 @@ import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
 import { formatTime } from "@/utils/StringUtils";
 
-const NEXT_PUBLIC_BACKEND_PATH_PREFIX  = process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { reviewid } = context.query;
@@ -21,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/getReviewById`,
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewById`,
       { reviewId: reviewid },
       {
         headers: {
@@ -67,7 +68,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
     <div className="container mx-auto px-4 py-8">
       <Head>
         <title>
-          Review: {review.reviewedGame.name} by {review.reviewer.name}
+          {review.reviewedGame.name} Review: {review.reviewer.name} | CritiQ
         </title>
       </Head>
       <h1 className="text-4xl font-bold mb-4">
