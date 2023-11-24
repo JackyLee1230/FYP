@@ -148,6 +148,7 @@ public class AuthenticationService {
                 .isPrivate(false)
                 .role(List.of(Role.USER))
                 .verificationToken(token)
+                .isVerified(false)
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
