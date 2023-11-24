@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
 import { Button, Stack } from "@mui/material";
 import Head from "next/head";
+import { useAuthContext } from "@/context/AuthContext";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -71,6 +72,7 @@ const sendVerifyEmail = async (email: string) => {
 
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
+  const auth = useAuthContext();
 
   if (user == null) {
     return <div>User not found</div>;
@@ -92,21 +94,22 @@ export default function User({ user }: UserPageProps) {
       )}
       <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
-      {user.isVerified === null || user.isVerified === false ? (
-        <>
-          <Button
-            variant="contained"
-            onClick={() => {
-              sendVerifyEmail(user.email);
-            }}
-          >
-            Not verified, Click to resend Verify Email
-          </Button>
-          <br />
-        </>
-      ) : (
-        <div>Verified</div>
-      )}
+      {(user.isVerified === null || user.isVerified === false) &&
+        auth.user &&
+        user.id === auth.user.id && (
+          <>
+            <Button
+              variant="contained"
+              onClick={() => {
+                sendVerifyEmail(user.email);
+              }}
+            >
+              Not verified, Click to resend Verify Email
+            </Button>
+            <br />
+          </>
+        )}
+      {user.isVerified && <div>Verified</div>}
       {user.name}
       <br />
       {user.email}
