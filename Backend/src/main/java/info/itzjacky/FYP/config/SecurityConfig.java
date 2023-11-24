@@ -82,6 +82,7 @@ public class SecurityConfig {
             .authorizeRequests()
                 .expressionHandler(webExpressionHandler())
                 .requestMatchers("**").permitAll()
+                .requestMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
