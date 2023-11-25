@@ -40,13 +40,15 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
 
     Optional: you may move the wsl whole system to a separate drive after setup (the whole subsystem is just like a file in windows file explorer. [Video](https://youtu.be/Fim4rwyjYrs) or [Text](https://github.com/LpCodes/Moving-WSL-Distribution-to-Another-Drive))
 
-3. Install CUDA by following the instructions in Step 3 of Nvidia CUDA installation instruction [Link](https://docs.nvidia.com/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment). Downloading the wsl distribution of CUDA toolkit, and follow the instruction to install. (Ref: https://hackmd.io/@Kailyn/HkSTXL9xK
+3. Install git lfs for fetching large files (like model weights or other)
+
+4. Install CUDA by following the instructions in Step 3 of Nvidia CUDA installation instruction [Link](https://docs.nvidia.com/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment). Downloading the wsl distribution of CUDA toolkit, and follow the instruction to install. (Ref: https://hackmd.io/@Kailyn/HkSTXL9xK
 
     Note that select the version that is at/above the requirement of pytorch and tensorflow. For pytorch, can directly refer to the requirement of the latest version. For tensorflow, can refer to the version  build table [Link](https://www.tensorflow.org/install/source) (Tested build configuration)
 
     For pytorch, the max cuda version is CUDA 12.1, while for tensorflow, the version 2.14.0 supports CUDA 11.8 (or above ?)
 
-4. Then install cuDNN by following the steps in [Installing cuDNN On Linux](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html). 
+5. Then install cuDNN by following the steps in [Installing cuDNN On Linux](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html). 
 
     For pytorch, it seems no cuDNN is required. For tensorflow, the cuDNN version is 8.7 (or above). Checking the release date, I picked cuDNN 8.9.0 (for 12.x). Download the "Local Installer for Linux x86_64(Tar)"
 
@@ -112,13 +114,13 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
     drwxr-xr-x  2 root root 4096 May  2 05:34 src
     ```
 
-5. Install [miniforge](https://github.com/conda-forge/miniforge) from their Github. Right and copy the link for the distribution "Linux x86_64 (amd64)". Then run the following command and install.
+6. Install [miniforge](https://github.com/conda-forge/miniforge) from their Github. Right and copy the link for the distribution "Linux x86_64 (amd64)". Then run the following command and install.
 
     ```
     wget <the_link_you_copied>
     ```
 
-6. Environment setup
+7. Environment setup
 
     I prepared the wsl environment with python=3.9.18, and the latest tf and pytorch (with gpu support) at our development. (pytorch=2.1, tensorflow=2.14.0). Can directly import the .yml file and an environment is created. (name of the file: _fyp-test-wsl_pytorch_tf.yml_) (Note that seaborn and other web-scraping tools are not installed.)
 
@@ -168,7 +170,7 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
     python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
     ```
 
-7. Setup VSCode to have access to WSL environment. [Setup](https://code.visualstudio.com/docs/remote/wsl). Follow the process in "Installation". Quote as below
+8. Setup VSCode to have access to WSL environment. [Setup](https://code.visualstudio.com/docs/remote/wsl). Follow the process in "Installation". Quote as below
 
     Installation
     To get started, you need to:
