@@ -49,5 +49,5 @@ RUN mamba init bash &&\
 
 
 # run
-CMD [ "conda", "run", "-n", "fyp-nlp-production", "python", "NLP.py" ]
+ENTRYPOINT [ "conda", "run", "-n", "fyp-nlp-production", "python", "NLP.py" ]
 
