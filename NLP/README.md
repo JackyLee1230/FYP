@@ -209,6 +209,20 @@ Optimizing wsl environment from time to time (like freeing space or ram optimiza
 
 Additional config for wsl: [Microsoft](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig)
 
+## Docker env creation
+
+create a conda environment with following commands for merely running NLP.py
+
+```
+conda create --name fyp-nlp-production python=3.9.18 pika=1.3.1 scikit-learn=1.3.0 nltk=3.8.1 
+```
+
+Then export the env as a yml file with only packages specified
+
+```
+conda env export --from-history > docker_conda_env_list.yml
+```
+
 ## Steam API
 
 API to grab comments
