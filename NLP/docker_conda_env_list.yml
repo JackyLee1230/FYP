@@ -1,0 +1,9 @@
+name: fyp-nlp-production
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.18
+  - pika=1.3.1
+  - nltk=3.8.1
+  - scikit-learn=1.3.0
+prefix: /root/miniforge3/envs/fyp-nlp-production
