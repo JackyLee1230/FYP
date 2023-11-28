@@ -37,12 +37,14 @@ public class RabbitMQConsumer {
         String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
         if (reviewId == null || sentiment == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + result);
+            channel.basicAck(tag, false);
             return;
         }
         logger.info("Sentiment Analysis RESULT: Review ID: " + reviewId + " Sentiment: " + sentiment);
         Review review = reviewRepository.findReviewById(Integer.valueOf(reviewId));
         if (review == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + reviewId);
+            channel.basicAck(tag, false);
             return;
         } else {
             review.setSentiment(Integer.valueOf(sentiment));

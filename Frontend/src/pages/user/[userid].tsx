@@ -7,6 +7,7 @@ import RoleChip from "@/components/RoleChip";
 import { Button, Stack } from "@mui/material";
 import Head from "next/head";
 import { useAuthContext } from "@/context/AuthContext";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -69,6 +70,24 @@ const sendVerifyEmail = async (email: string) => {
     console.error(error);
   }
 };
+const togglePrivate = async (id: string) => {
+  try {
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/togglePrivate`,
+      { id: id },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+  } catch (error: any) {
+    console.error(error);
+  }
+};
 
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
@@ -94,6 +113,23 @@ export default function User({ user }: UserPageProps) {
       )}
       <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
+      {}
+      <Button
+        variant="contained"
+        onClick={() => {
+          togglePrivate(user.id)
+            .then(() => {
+              displaySnackbarVariant("Toggled Private", "success");
+            })
+            .catch((error) => {
+              displaySnackbarVariant("Failed to Toggle Private", "error");
+            });
+        }}
+      >
+        Private:
+        {user.isPrivate !== null ? user.isPrivate.toString() : "False"} Click to
+        Toggle
+      </Button>
       {(user.isVerified === null || user.isVerified === false) &&
         auth.user &&
         user.id === auth.user.id && (
@@ -101,7 +137,19 @@ export default function User({ user }: UserPageProps) {
             <Button
               variant="contained"
               onClick={() => {
-                sendVerifyEmail(user.email);
+                sendVerifyEmail(user.email)
+                  .then(() => {
+                    displaySnackbarVariant(
+                      "Verification Email Sent",
+                      "success"
+                    );
+                  })
+                  .catch((error) => {
+                    displaySnackbarVariant(
+                      "Failed to Send Verification Email",
+                      "error"
+                    );
+                  });
               }}
             >
               Not verified, Click to resend Verify Email

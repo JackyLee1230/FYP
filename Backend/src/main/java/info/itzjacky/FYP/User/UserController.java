@@ -101,6 +101,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("#userRequest.id == authentication.principal.id")
     @PostMapping("/togglePrivate")
     public ResponseEntity<User> togglePrivate(@RequestBody UserRequest userRequest){
         try{

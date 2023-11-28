@@ -22,6 +22,7 @@ export type User = {
   ageGroup: string;
   gender: string;
   isVerified: boolean;
+  isPrivate: boolean;
 };
 
 export const genderList = ["MALE", "FEMALE", "OTHER", "UNDISCLOSED"];

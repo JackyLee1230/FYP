@@ -125,6 +125,12 @@ public class User implements UserDetails {
     )
     private List<Review> dislikedReviews;
 
+    @Formula("(SELECT COUNT(*) FROM review_likes rl WHERE rl.user_id = id)")
+    private Integer numberOfLikes;
+
+    @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.user_id = id)")
+    private Integer numberOfDislikes;
+
     @Column(insertable = true, updatable = true)
     private String iconUrl;
 
