@@ -23,6 +23,10 @@ public class ReviewRequest {
 
     private Integer reviewerId;
 
+    private Integer likerId;
+
+    private Reaction reaction;
+
     private Float score;
 
     private Boolean recommended;
@@ -44,6 +48,8 @@ public class ReviewRequest {
     private String playTime;
 
     private Platform platform;
+
+    private boolean isPositive;
 
 
 

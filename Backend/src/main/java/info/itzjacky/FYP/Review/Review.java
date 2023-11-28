@@ -10,6 +10,7 @@ import info.itzjacky.FYP.Game.Game;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 import java.util.List;
@@ -81,6 +82,20 @@ public class Review {
     private Integer sentiment;
 
     private Date sentimentUpdatedAt;
+
+    @ManyToMany(mappedBy = "likedReviews", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<User> likes;
+
+    @Formula("(SELECT COUNT(*) FROM review_likes rl WHERE rl.review_id = id)")
+    private Integer numberOfLikes;
+
+    @ManyToMany(mappedBy = "dislikedReviews", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<User> dislikes;
+
+    @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.review_id = id)")
+    private Integer numberOfDislikes;
 
     @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
     @ToString.Exclude

@@ -105,6 +105,26 @@ public class User implements UserDetails {
     @ToString.Exclude
     private List<Review> reviews;
 
+    @ManyToMany
+    @ToString.Exclude
+//    @JsonIgnore
+    @JoinTable(
+            name = "review_likes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "review_id")
+    )
+    private List<Review> likedReviews;
+
+    @ManyToMany
+    @ToString.Exclude
+//    @JsonIgnore
+    @JoinTable(
+            name = "review_dislikes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "review_id")
+    )
+    private List<Review> dislikedReviews;
+
     @Column(insertable = true, updatable = true)
     private String iconUrl;
 

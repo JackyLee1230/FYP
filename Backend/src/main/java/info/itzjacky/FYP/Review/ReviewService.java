@@ -21,7 +21,9 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static info.itzjacky.FYP.Utils.Others.booleanToInt;
@@ -98,6 +100,132 @@ public class ReviewService {
             throw new IllegalStateException("Cannot create Review Comment");
         }
     }
+
+    public Object reaction(ReviewRequest reviewRequest) {
+        if (reviewRequest.getLikerId() == null || reviewRequest.getReviewId() == null) {
+            throw new IllegalStateException("Cannot like/dislike review");
+        }
+//        make a map with like=false and dislike= false
+        HashMap<String, Boolean> reactionMap = new HashMap<String, Boolean>();
+        reactionMap.put("like", false);
+        reactionMap.put("dislike", false);
+
+        try {
+            Review review = reviewRepository.findReviewById(reviewRequest.getReviewId());
+            User liker = userRepository.findUserById(reviewRequest.getLikerId());
+            if (review == null || liker == null) {
+                throw new IllegalStateException("Cannot like/dislike review");
+            }
+            if(Reaction.LIKE.equals(reviewRequest.getReaction())){
+                if (review.getLikes().contains(liker)) { // already liked
+                    logger.info("already liked");
+                    List<User> newLikes = review.getLikes();
+                    newLikes.remove(liker);
+                    review.setLikes(newLikes);
+//                    remove this review from the user's liked reviews
+                    List<Review> newLikedReviews = liker.getLikedReviews();
+                    newLikedReviews.remove(review);
+                    liker.setLikedReviews(newLikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    return reactionMap;
+                }
+                else if (review.getDislikes().contains(liker)) {
+                    logger.info("user change from dislike to like");
+                    //                    user change from dislike to like
+                    List<User> newLikes = review.getLikes();
+                    newLikes.add(liker);
+                    review.setLikes(newLikes);
+
+                    List<User> newDislikes = review.getDislikes();
+                    newDislikes.remove(liker);
+                    review.setDislikes(newDislikes);
+//                    remove this review from the user's liked reviews
+                    List<Review> newLikedReviews = liker.getLikedReviews();
+                    newLikedReviews.remove(review);
+                    liker.setLikedReviews(newLikedReviews);
+                    List<Review> newDislikedReviews = liker.getDislikedReviews();
+                    newDislikedReviews.add(review);
+                    liker.setDislikedReviews(newDislikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    reactionMap.put("like", true);
+                    return reactionMap;
+                }
+                else { // new like
+                    logger.info("new like");
+                    review.getLikes().add(liker);
+                    List<User> newLikes = review.getLikes();
+                    newLikes.add(liker);
+                    review.setLikes(newLikes);
+//                    add this review to the user's liked reviews
+                    List<Review> newLikedReviews = liker.getLikedReviews();
+                    newLikedReviews.add(review);
+                    liker.setLikedReviews(newLikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    reactionMap.put("like", true);
+                    return reactionMap;
+                }
+            } else if(Reaction.DISLIKE.equals(reviewRequest.getReaction())) {
+                if (review.getDislikes().contains(liker)) { // already disliked
+                    logger.info("already disliked");
+                    List<User> newDislikes = review.getDislikes();
+                    newDislikes.remove(liker);
+                    review.setDislikes(newDislikes);
+//                    remove this review from the user's disliked reviews
+                    List<Review> newDislikedReviews = liker.getDislikedReviews();
+                    newDislikedReviews.remove(review);
+                    liker.setDislikedReviews(newDislikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    reactionMap.put("dislike", false);
+                    return reactionMap;
+                }
+                else if (review.getLikes().contains(liker)) {
+                    logger.info("user change from like to dislike");
+//                    user change from like to dislike
+                    List<User> newLikes = review.getLikes();
+                    newLikes.remove(liker);
+                    review.setLikes(newLikes);
+
+                    List<User> newDislikes = review.getDislikes();
+                    newDislikes.add(liker);
+                    review.setDislikes(newDislikes);
+//                    remove this review from the user's liked reviews
+                    List<Review> newLikedReviews = liker.getLikedReviews();
+                    newLikedReviews.remove(review);
+                    liker.setLikedReviews(newLikedReviews);
+                    List<Review> newDislikedReviews = liker.getDislikedReviews();
+                    newDislikedReviews.add(review);
+                    liker.setDislikedReviews(newDislikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    reactionMap.put("dislike", true);
+                    return reactionMap;
+                }
+                else { // new dislike
+                    logger.info("new dislike");
+                    List<User> newDislikes = review.getDislikes();
+                    newDislikes.add(liker);
+                    review.setDislikes(newDislikes);
+//                    add this review to the user's disliked reviews
+                    List<Review> newDislikedReviews = liker.getDislikedReviews();
+                    newDislikedReviews.add(review);
+                    liker.setDislikedReviews(newDislikedReviews);
+                    userRepository.save(liker);
+                    reviewRepository.save(review);
+                    reactionMap.put("dislike", true);
+                    return reactionMap;
+                }
+            }
+
+        } catch (Exception e) {
+            throw new IllegalStateException("Cannot like/dislike review");
+        }
+        return null;
+    }
+
 
     public List<ReviewComment> getAllReviewCommentsById(ReviewCommentRequest reviewCommentRequest){
         try {

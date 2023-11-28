@@ -96,6 +96,15 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/reaction")
+    public ResponseEntity<Object> reaction(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.reaction(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
 //    @PostMapping
 
     /*
