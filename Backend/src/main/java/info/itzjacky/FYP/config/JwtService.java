@@ -1,10 +1,13 @@
 package info.itzjacky.FYP.config;
 
+import info.itzjacky.FYP.User.User;
+import info.itzjacky.FYP.User.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,9 @@ public class JwtService {
     @Value("${application.security.jwt.refreshToken.expiration}")
     private long refreshExpiration;
 
+    @Autowired
+    UserService userService;
+
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -37,7 +43,10 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        HashMap<String, Object> extraClaims = new HashMap<>();
+        User u = userService.findUserByName(userDetails.getUsername());
+        extraClaims.put("id", u.getId());
+        return generateToken(extraClaims, userDetails);
     }
 
     public String buildToken(Map<String, Object> extraClaims,
