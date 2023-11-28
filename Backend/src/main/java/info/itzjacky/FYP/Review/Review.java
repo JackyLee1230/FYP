@@ -100,5 +100,7 @@ public class Review {
     @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<ReviewComment> reviewComment;
+
+    private Boolean sponsored;
 }
 

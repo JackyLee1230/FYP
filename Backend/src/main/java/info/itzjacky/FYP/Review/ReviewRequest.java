@@ -49,7 +49,9 @@ public class ReviewRequest {
 
     private Platform platform;
 
-    private boolean isPositive;
+    private Boolean isPositive;
+
+    private Boolean isSponsored;
 
 
 

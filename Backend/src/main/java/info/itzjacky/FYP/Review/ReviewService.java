@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -379,9 +380,14 @@ public class ReviewService {
                 .score(reviewRequest.getScore())
                 .comment(reviewRequest.getComment())
                 .recommended(reviewRequest.getRecommended())
+                .numberOfDislikes(0)
+                .numberOfDislikes(0)
+                .likes(new ArrayList<User>())
+                .dislikes(new ArrayList<User>())
                 .playTime(reviewRequest.getPlayTime() == null ? "N/A" : reviewRequest.getPlayTime())
                 .platform(reviewRequest.getPlatform() == null ? null : reviewRequest.getPlatform())
                 .createdAt(new java.sql.Date(System.currentTimeMillis()))
+                .sponsored(reviewRequest.getIsSponsored() == null ? false : reviewRequest.getIsSponsored())
                 .build();
         try{
             reviewRepository.save(review);
