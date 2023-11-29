@@ -309,10 +309,10 @@ class HkuChatGPT:
 
 
         # get the input line
-        self.input_line = self.driver.find_element(By.XPATH, "//*[@id=\"root\"]/div/div[2]/div/div[3]/div[1]/div[2]/textarea[1]")
+        self.input_line = self.driver.find_element(By.XPATH, "//*[@id=\"root\"]/div/div[2]/div/div[3]/div[1]/div[2]/div/textarea[1]")
 
         # get the send GPT-3.5 button
-        self.send_gpt_btn = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[3]/div[2]/div[2]/div")
+        self.send_gpt_btn = self.driver.find_element(By.XPATH, "//*[@id=\"sendButton\"]")
 
         # wait for the balance feedback
         # it gives the initial balance value (handled in chatgpt_balance_handler(), triggered by response interceptor)
