@@ -20,7 +20,7 @@ const AddNewReview = () => {
   const { user, token } = useAuthContext()
   useEffect(() => {
     if(user && token) {
-      setReviewerId(Number(user.id));
+      setReviewerId(user.id);
     }
   }, [user, token])
 
