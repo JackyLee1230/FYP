@@ -112,7 +112,7 @@ const WebToolbar = () => {
     }
   }, [token, user]);
 
-  const handleProfileRedirect = (id: String) => {
+  const handleProfileRedirect = (id: number) => {
     router.push(`/user/${id}`);
   };
 
