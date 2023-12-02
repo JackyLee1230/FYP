@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.User;
 
+import info.itzjacky.FYP.Auth.AuthenticationService;
 import info.itzjacky.FYP.Game.Game;
 import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
 import info.itzjacky.FYP.Utils.RegEx;
@@ -34,7 +35,7 @@ public class UserService {
 
     public User getUserFromPrincipal(Principal principal) {
         if (principal == null || principal.getName() == null) throw new IllegalStateException("User does not exist");
-        return this.findUserByName(principal.getName());
+        return this.findUserByEmail(principal.getName());
     }
 
     public List<User> getAllUsers(){
@@ -218,8 +219,7 @@ public class UserService {
         }
     }
 
-    public User
-    findUserByName(String name){
+    public User findUserByName(String name){
         User u = userRepository.findUserByName(name);
         if (u == null) {
             throw new IllegalStateException("User Does Not Exist");
@@ -257,5 +257,28 @@ public class UserService {
         }
         userRepository.save(user);
         return user;
+    }
+
+    @Transactional
+    public User updateUsername(UserRequest userRequest) {
+        if(userRequest.getName() == null || userRequest.getName().isEmpty() || userRequest.getId() == null){
+            throw new IllegalStateException("Username Cannot Be Empty");
+        }
+//        check username against regex
+        if(!RegEx.usernameValidation(userRequest.getName())){
+            throw new IllegalStateException("Username Must Be 4-14 Characters Long, With no Space and @ Symbol");
+        }
+
+//        find other users with the same username
+        User userWithNewName = userRepository.findUserByName(userRequest.getName());
+
+        if (userWithNewName != null) {
+            throw new IllegalStateException("Username Already Taken");
+        }
+
+        User u = userRepository.findUserById(userRequest.getId());
+        u.setName(userRequest.getName());
+        userRepository.save(u);
+        return u;
     }
 }

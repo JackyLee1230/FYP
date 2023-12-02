@@ -54,7 +54,9 @@ const RegisterBox = () => {
       setUsernameError("Username cannot be empty");
       return false;
     } else if (!validateUsername(username)) {
-      setUsernameError("Your username cannot contain any spaces or @ symbols.");
+      setUsernameError(
+        "Your username must be 4 to 14 characters long with no spaces or @ symbols."
+      );
       return false;
     } else {
       setUsernameError("");

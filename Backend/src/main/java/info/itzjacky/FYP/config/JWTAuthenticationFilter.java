@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.config;
 
 import info.itzjacky.FYP.Auth.TokenRepository;
+import info.itzjacky.FYP.User.UserRepository;
 import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,6 +25,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailService;
     private final TokenRepository tokenRepository;
+    private final UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(
@@ -42,7 +44,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         username = jwtService.extractUsername(JWT);
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 //          user NOT yet authenticated
-            UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
+//            UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
+            UserDetails userDetails = (UserDetails) userRepository.findUserByEmail(username);
 //          check token validity
             var isTokenValid = tokenRepository.findByToken(JWT)
                     .map(token -> !token.isExpired() && !token.isRevoked())

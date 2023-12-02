@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 import Head from "next/head";
 import { useAuthContext } from "@/context/AuthContext";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
@@ -52,13 +52,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const sendVerifyEmail = async (email: string) => {
+const sendVerifyEmail = async (email: string, token: string) => {
   try {
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/sendVerifyEmail`,
       { email: email },
       {
         headers: {
+          Authorization: `Bearer ${token}`,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
@@ -70,13 +71,39 @@ const sendVerifyEmail = async (email: string) => {
     console.error(error);
   }
 };
-const togglePrivate = async (id: string) => {
+
+const togglePrivate = async (id: number, token: string) => {
   try {
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/togglePrivate`,
       { id: id },
       {
         headers: {
+          Authorization: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+  } catch (error: any) {
+    console.error(error);
+  }
+};
+
+const submitChangeUsername = async (
+  id: number,
+  username: string,
+  token: string
+) => {
+  try {
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/updateUsername`,
+      { id: id, name: username },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
@@ -92,6 +119,8 @@ const togglePrivate = async (id: string) => {
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
+
+  const [newUsername, setNewUsername] = React.useState<string>("");
 
   if (user == null) {
     return <div>User not found</div>;
@@ -113,11 +142,40 @@ export default function User({ user }: UserPageProps) {
       )}
       <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
+      {auth.user && user.id === auth.user.id && (
+        <>
+          Change Your Username:
+          <TextField
+            variant="outlined"
+            onChange={(e) => {
+              setNewUsername(e.target.value);
+            }}
+          ></TextField>
+          <Button
+            variant="contained"
+            onClick={() => {
+              submitChangeUsername(user.id, newUsername, auth.token!)
+                .then(() => {
+                  displaySnackbarVariant(
+                    "Username changing... Please wait...",
+                    "success"
+                  );
+                })
+                .catch((e) => {
+                  displaySnackbarVariant("Failed to change username", "error");
+                });
+            }}
+          >
+            Submit
+          </Button>
+        </>
+      )}
+      <br />
       {}
       <Button
         variant="contained"
         onClick={() => {
-          togglePrivate(user.id)
+          togglePrivate(user.id, auth.token!)
             .then(() => {
               displaySnackbarVariant("Toggled Private", "success");
             })
@@ -137,7 +195,7 @@ export default function User({ user }: UserPageProps) {
             <Button
               variant="contained"
               onClick={() => {
-                sendVerifyEmail(user.email)
+                sendVerifyEmail(user.email, auth.token!)
                   .then(() => {
                     displaySnackbarVariant(
                       "Verification Email Sent",

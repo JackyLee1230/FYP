@@ -11,12 +11,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -78,10 +82,11 @@ public class UserController {
         }
     }
 
-    // pre authorize check userrequest's id is the same as the principal's id
-    @PreAuthorize("#userRequest.email == authentication.principal.email")
     @PostMapping("/sendVerifyEmail")
-    public ResponseEntity<Void> sendVerifyEmail(@RequestBody UserRequest userRequest){
+    public ResponseEntity<Void> sendVerifyEmail(@RequestBody UserRequest userRequest, @AuthenticationPrincipal User u){
+        if (u == null || !Objects.equals(u.getId(), userRequest.getId())) {
+            throw new AccessDeniedException("Access Denied");
+        }
         try{
             logger.info(userRequest.toString());
             User user = userService.findUserByEmail(userRequest.getEmail());
@@ -101,11 +106,25 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("#userRequest.id == authentication.principal.id")
     @PostMapping("/togglePrivate")
-    public ResponseEntity<User> togglePrivate(@RequestBody UserRequest userRequest){
+    public ResponseEntity<User> togglePrivate(@RequestBody UserRequest userRequest, @AuthenticationPrincipal User u){
+        if (u == null || !Objects.equals(u.getId(), userRequest.getId())) {
+            throw new AccessDeniedException("Access Denied");
+        }
         try{
             return new ResponseEntity<>(userService.togglePrivate(userRequest), HttpStatus.OK);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/updateUsername")
+    public ResponseEntity<User> updateUsername(@RequestBody UserRequest userRequest, @AuthenticationPrincipal User u){
+        if (u == null || !Objects.equals(u.getId(), userRequest.getId())) {
+            throw new AccessDeniedException("Access Denied");
+        }
+        try{
+            return new ResponseEntity<>(userService.updateUsername(userRequest), HttpStatus.OK);
         }catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }

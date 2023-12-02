@@ -27,4 +27,9 @@ public class RegEx {
         String regexPattern = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
         return RegEx.patternMatches(email, regexPattern);
     }
+
+    public static boolean usernameValidation(String name){
+        String regexPattern = "^[^\\s@]{4,14}$";
+        return RegEx.patternMatches(name, regexPattern);
+    }
 }

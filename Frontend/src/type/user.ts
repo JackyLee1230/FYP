@@ -8,7 +8,7 @@ export type UserPageProps = {
 };
 
 export type User = {
-  id: string;
+  id: number;
   iconUrl: string;
   name: string;
   email: string;

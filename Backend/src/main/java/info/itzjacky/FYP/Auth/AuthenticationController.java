@@ -42,6 +42,7 @@ public class AuthenticationController {
 
     @PostMapping("/userAuth")
     public ResponseEntity<User> userAuth(Principal principal){
+        System.out.println(principal.toString());
         User u = userService.getUserFromPrincipal(principal);
         if (u == null) {
             throw new IllegalStateException("User does not exist");

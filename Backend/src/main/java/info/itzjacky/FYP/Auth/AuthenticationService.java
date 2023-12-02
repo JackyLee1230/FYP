@@ -23,6 +23,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,13 @@ public class AuthenticationService {
     private String webUrl;
 
     Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
+
+    public boolean hasId(UUID ID) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findUserByName(username);
+        return user.getId().equals(ID);
+    }
+
 
     @Transactional
     public String forgotPassword(ForgotPasswordRequest request) throws MessagingException, UnsupportedEncodingException {
@@ -121,7 +129,11 @@ public class AuthenticationService {
         if(!RegEx.passwordValidation(request.getPassword())){
             throw new IllegalStateException("Password Must Be 8-16 Characters Long, Contain At Least 1 Letter And 1 Number");
         }
-        if (repository.findUserByName(request.getName()) != null) {
+        try {
+            if (repository.findUserByName(request.getName()) != null) {
+                throw new IllegalStateException("User already exists");
+            }}
+        catch (Exception e){
             throw new IllegalStateException("User already exists");
         }
         if (repository.findUserByEmail(request.getEmail()) != null) {
@@ -193,6 +205,7 @@ public class AuthenticationService {
         userRepository.save(user);
 //        remove old tokens that are more than 2 weeks old
         tokenRepository.deleteAllByCreatedAtBefore(new Date(System.currentTimeMillis() - 1209600000));
+        logger.info(jwtToken);
         return AuthenticationResponse.builder().user(user).accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 
@@ -233,7 +246,7 @@ public class AuthenticationService {
         refreshToken = authHeader.substring(7);
         username = jwtService.extractUsername(refreshToken);
         if (username != null) {
-            var user = this.repository.findUserByName(username);
+            var user = this.repository.findUserByEmail(username);
             if (user == null) {
                 throw new IllegalStateException("User does not exist");
             }
