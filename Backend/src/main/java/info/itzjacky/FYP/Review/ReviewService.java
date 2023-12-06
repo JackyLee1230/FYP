@@ -57,6 +57,7 @@ public class ReviewService {
 
     @Transactional
     public void sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+        logger.info("Sentiment Analysis SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
         rabbitMQProducer.sendMessagetoRabbitMQ(toBeSentToPython);
 //        Runtime rt = Runtime.getRuntime();
