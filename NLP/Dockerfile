@@ -49,5 +49,5 @@ RUN mamba init bash &&\
 
 
 # run
-ENTRYPOINT [ "conda", "run", "-n", "fyp-nlp-production", "python", "NLP.py" ]
+ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "fyp-nlp-production", "python", "NLP.py" ]
 
