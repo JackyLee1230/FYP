@@ -48,6 +48,7 @@ public class RabbitMQConsumer {
             return;
         } else {
             review.setSentiment(Integer.valueOf(sentiment));
+            review.setSentimentUpdatedAt(new java.util.Date());
             reviewRepository.save(review);
         }
         channel.basicAck(tag, false);
