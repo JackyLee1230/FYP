@@ -38,6 +38,10 @@ public class User implements UserDetails {
     @Column(insertable = true, updatable = true)
     private Integer id;
 
+    @Column(updatable = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String location;
+
     @Column(columnDefinition = "boolean default false")
     private Boolean isPrivate;
 
@@ -45,14 +49,15 @@ public class User implements UserDetails {
     private Boolean isVerified;
 
     @Column(unique = true)
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String resetPasswordToken;
 
     @Column(unique = true)
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Date resetPasswordExpires;
 
     @Column(unique = true)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String verificationToken;
 
     @Column(unique = true, length = 14)

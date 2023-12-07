@@ -197,6 +197,17 @@ public class AuthenticationService {
             throw new IllegalStateException("Incorrect Password");
         }
 
+        if (request.getLocation() != null) {
+            if (user.getLocation() != null) {
+                if (!(user.getLocation().equals(request.getLocation()))) { // new location
+                    user.setLocation(request.getLocation());
+                }
+            }
+        } else {
+            user.setLocation("Unknown");
+        }
+
+
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
