@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Auth;
 
+import com.maxmind.geoip2.exception.GeoIp2Exception;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserService;
 import info.itzjacky.FYP.Utils.Others;
@@ -71,9 +72,9 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(
-            @RequestBody LoginRequest request
-    ) {
-        return ResponseEntity.ok(authenticationService.login(request));
+            @RequestBody LoginRequest request, HttpServletRequest httpServletRequest
+    ) throws IOException, GeoIp2Exception {
+        return ResponseEntity.ok(authenticationService.login(request, httpServletRequest));
     }
 
     @PostMapping("/refreshToken")

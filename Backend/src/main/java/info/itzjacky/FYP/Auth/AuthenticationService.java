@@ -1,6 +1,9 @@
 package info.itzjacky.FYP.Auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import info.itzjacky.FYP.GeoLocation.GeoIP;
+import info.itzjacky.FYP.GeoLocation.GeoIPLocationServiceImpl;
 import info.itzjacky.FYP.User.Role;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserController;
@@ -27,6 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,6 +47,7 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final GeoIPLocationServiceImpl geoIpLocationService;
     @Autowired
     private JavaMailSender javaMailSender;
 
@@ -172,7 +177,7 @@ public class AuthenticationService {
     }
 
     @Transactional
-    public AuthenticationResponse login(LoginRequest request) {
+    public AuthenticationResponse login(LoginRequest request, HttpServletRequest httpServletRequest) throws IOException, GeoIp2Exception {
 //        if name contains '@', then find user by email
         User user = null;
         if (request.getName().contains("@")) {
@@ -196,11 +201,14 @@ public class AuthenticationService {
         catch (org.springframework.security.core.AuthenticationException e ){
             throw new IllegalStateException("Incorrect Password");
         }
+        String parsedIP = httpServletRequest.getRemoteAddr().equals("0:0:0:0:0:0:0:1") ? "185.225.234.79" : httpServletRequest.getRemoteAddr();
+        logger.warn("GeoIP: Running as DEV Environment, Location will be treated as Hong Kong!");
+        GeoIP geoip = geoIpLocationService.getIpLocation(parsedIP);
 
-        if (request.getLocation() != null) {
+        if (geoip != null && geoip.getCity() != null) {
             if (user.getLocation() != null) {
-                if (!(user.getLocation().equals(request.getLocation()))) { // new location
-                    user.setLocation(request.getLocation());
+                if (!(user.getLocation().equals(geoip.getCity()))) { // new location
+                    user.setLocation(geoip.getCity());
                 }
             }
         } else {
