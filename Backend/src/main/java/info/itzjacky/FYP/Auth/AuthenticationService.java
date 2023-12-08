@@ -202,7 +202,10 @@ public class AuthenticationService {
             throw new IllegalStateException("Incorrect Password");
         }
         String parsedIP = httpServletRequest.getRemoteAddr().equals("0:0:0:0:0:0:0:1") ? "185.225.234.79" : httpServletRequest.getRemoteAddr();
-        logger.warn("GeoIP: Running as DEV Environment, Location will be treated as Hong Kong!");
+        if (httpServletRequest.getRemoteAddr().equals("0:0:0:0:0:0:0:1")){
+            logger.warn("GeoIP: Running as DEV Environment, Location will be treated as Hong Kong!");
+        }
+
         GeoIP geoip = geoIpLocationService.getIpLocation(parsedIP);
 
         if (geoip != null && geoip.getCity() != null) {

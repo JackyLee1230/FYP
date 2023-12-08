@@ -48,15 +48,15 @@ public class User implements UserDetails {
     @Column(columnDefinition = "boolean default false", updatable = true, unique = true)
     private Boolean isVerified;
 
-    @Column(unique = true)
+    @Column()
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String resetPasswordToken;
 
-    @Column(unique = true)
+    @Column()
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Date resetPasswordExpires;
 
-    @Column(unique = true)
+    @Column()
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String verificationToken;
 
