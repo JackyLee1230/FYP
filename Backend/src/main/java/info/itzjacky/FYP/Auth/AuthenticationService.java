@@ -213,6 +213,8 @@ public class AuthenticationService {
                 if (!(user.getLocation().equals(geoip.getCity()))) { // new location
                     user.setLocation(geoip.getCity());
                 }
+            } else {
+                user.setLocation(geoip.getCity());
             }
         } else {
             user.setLocation("Unknown");
