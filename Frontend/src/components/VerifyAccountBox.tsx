@@ -38,8 +38,8 @@ const VerifyAccountBox = ({user, errorMessage}: ResetPasswordProps) => {
           }}
         >
           <StyledErrorIcon />
-          <Typography variant="body1" color="error" sx={{ fontWeight: 600, textAlign: "center" }}>
-            The link you have entered is not valid for verifying your account. Please check the email you created your account with for the correct link.
+          <Typography variant="body1" color="error" sx={{ fontWeight: 600, textAlign: "left" }}>
+            The link you have entered is not valid for verifying your account. <br/>Please check the email you created your account with for the correct link.
           </Typography>
         </Box>
       ) : (

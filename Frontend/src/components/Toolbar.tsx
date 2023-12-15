@@ -75,18 +75,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function displayUserRole(user: User | null): string {
-  if (user) {
-    if (user.role.length > 1) {
-      let filteredRoles = user.role.filter((r) => r !== "USER");
-      return filteredRoles.join(`\n`);
-    } else {
-      return user?.role.join(`\n`);
-    }
-  }
-  return "";
-}
-
 const WebToolbar = () => {
   const [searchString, setSearchString] = useState<string>("");
   const debouncedSearchString = useDebounce(searchString, 50);
@@ -103,6 +91,8 @@ const WebToolbar = () => {
   };
 
   let { user, token, setUser, setToken } = useAuthContext();
+
+  console.log(user)
 
   useEffect(() => {
     if (token || user) {
