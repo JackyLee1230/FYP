@@ -51,7 +51,8 @@ public class GameService {
             Game g = Game.builder()
                     .name(gameRequest.getName())
                     .description(gameRequest.getDescription())
-                    .genre(gameRequest.getGenre())
+                    // only allow 3 max genres
+                    .genre(gameRequest.getGenre().size() > 3 ? gameRequest.getGenre().subList(0, 3) : gameRequest.getGenre())
                     .isDLC(gameRequest.getIsDLC())
                     .isFree(gameRequest.getIsFree())
                     .legalNotice(gameRequest.getLegalNotice())
@@ -96,7 +97,7 @@ public class GameService {
             }
             g.setName(gameRequest.getName() == null ? g.getName() : gameRequest.getName());
             g.setDescription(gameRequest.getDescription() == null ? g.getDescription() : gameRequest.getDescription());
-            g.setGenre(gameRequest.getGenre() == null ? g.getGenre() : gameRequest.getGenre());
+            g.setGenre(gameRequest.getGenre() == null ? g.getGenre() : (gameRequest.getGenre().size() > 3 ? gameRequest.getGenre().subList(0, 3) : gameRequest.getGenre()));
             g.setDLC(gameRequest.getIsDLC());
             g.setFree(gameRequest.getIsFree());
             g.setLegalNotice(gameRequest.getLegalNotice() == null ? g.getLegalNotice() : gameRequest.getLegalNotice());
