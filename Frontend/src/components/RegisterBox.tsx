@@ -138,7 +138,7 @@ const RegisterBox = () => {
       setUser(user);
       setToken(access_token);
       displaySnackbarVariant(
-        "Register successfully. Please remember to verify your email address.",
+        "Register successfully. An email has been sent for you to verify your account.",
         "success"
       );
       router.push("/");

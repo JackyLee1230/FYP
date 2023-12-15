@@ -2,19 +2,18 @@
 import { Box, styled, Typography } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import LockResetIcon from "@mui/icons-material/LockReset";
-import ResetPasswordBox from "@/components/ResetPasswordBox";
+import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
 import Head from "next/head";
 import { useAuthContext } from "@/context/AuthContext";
 import Link from "next/link";
-import { error } from "console";
+import VerifyAccountBox from "@/components/VerifyAccountBox";
 
 type VerifyPageProps = {
   token: string;
   errorMessage: string;
 };
 
-const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
+const StyledSafetyCheckIcon = styled(SafetyCheckIcon)(({ theme }) => ({
   fontSize: 100,
   marginBottom: 16,
   color: theme.palette.primary.main,
@@ -92,27 +91,22 @@ function VerifyPage({ token, errorMessage }: VerifyPageProps) {
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
         >
-          {errorMessage != null ? (
-            <>ERROR {errorMessage}</>
-          ) : (
-            <>
-              <br />
-              Thank you!
-              <br />
-              Your account has been verified.
-              {user != null && (
-                <Link href={`/user/${user.id}`}>
-                  <Typography
-                    variant="h6"
-                    color="primary"
-                    sx={{ fontWeight: 600, textAlign: "center" }}
-                  >
-                    To Profile
-                  </Typography>
-                </Link>
-              )}
-            </>
-          )}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            <StyledSafetyCheckIcon />
+            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+              Verify Account
+            </Typography>
+          </Box>
+          <VerifyAccountBox user={user} errorMessage={errorMessage} />
         </Box>
       </Box>
     </>
