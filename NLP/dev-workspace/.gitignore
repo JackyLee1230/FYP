@@ -2,6 +2,8 @@
 *.pkl
 *.sav
 
+*.pyc
+
 glove.6B
 
 prompt_engineering_test/
