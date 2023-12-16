@@ -92,7 +92,7 @@ const WebToolbar = () => {
 
   let { user, token, setUser, setToken } = useAuthContext();
 
-  console.log(user)
+  console.log(user);
 
   useEffect(() => {
     if (token || user) {
@@ -219,7 +219,14 @@ const WebToolbar = () => {
                 aria-label="profile"
                 onClick={handleUserMenuOpen}
               >
-                <Avatar alt="User Avatar" src="/static/images/avatar/1.jpg" />
+                <Avatar
+                  alt="User Avatar"
+                  src={
+                    user?.iconUrl != null
+                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`
+                      : "/static/images/avatar/1.jpg"
+                  }
+                />
               </IconButton>
 
               <Menu
