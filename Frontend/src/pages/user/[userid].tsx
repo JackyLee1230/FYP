@@ -143,28 +143,33 @@ export default function User({ user }: UserPageProps) {
       ) : (
         <div className="w-24 h-24 rounded-full mx-auto bg-gray-200" />
       )}
-      <Button
-        variant="contained"
-        onClick={() => {
-          setUpdateIconOpen(true);
-        }}
-      >
-        UPDATE USER ICON
-      </Button>
-      <Modal
-        open={updateIconOpen}
-        onClose={() => {
-          setUpdateIconOpen(false);
-        }}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 12,
-        }}
-      >
-        <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
-      </Modal>
+      {auth.user && user.id === auth.user.id && (
+        <>
+          {" "}
+          <Button
+            variant="contained"
+            onClick={() => {
+              setUpdateIconOpen(true);
+            }}
+          >
+            UPDATE USER ICON
+          </Button>
+          <Modal
+            open={updateIconOpen}
+            onClose={() => {
+              setUpdateIconOpen(false);
+            }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 12,
+            }}
+          >
+            <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
+          </Modal>
+        </>
+      )}
       <br />
       <br />
       <br />
