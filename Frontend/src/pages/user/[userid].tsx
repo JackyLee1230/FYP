@@ -4,7 +4,8 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
-import { Button, Stack, TextField } from "@mui/material";
+import UpdateUserIcon from "@/components/UpdateUserIcon";
+import { Button, Modal, Stack, TextField } from "@mui/material";
 import Head from "next/head";
 import { useAuthContext } from "@/context/AuthContext";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
@@ -120,6 +121,8 @@ export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
 
+  const [updateIconOpen, setUpdateIconOpen] = React.useState<boolean>(false);
+
   const [newUsername, setNewUsername] = React.useState<string>("");
 
   if (user == null) {
@@ -140,6 +143,31 @@ export default function User({ user }: UserPageProps) {
       ) : (
         <div className="w-24 h-24 rounded-full mx-auto bg-gray-200" />
       )}
+      <Button
+        variant="contained"
+        onClick={() => {
+          setUpdateIconOpen(true);
+        }}
+      >
+        UPDATE USER ICON
+      </Button>
+      <Modal
+        open={updateIconOpen}
+        onClose={() => {
+          setUpdateIconOpen(false);
+        }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 12,
+        }}
+      >
+        <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
+      </Modal>
+      <br />
+      <br />
+      <br />
       <RoleChip role={user.role} direction="row" includeUser={true} />
       <br />
       {auth.user && user.id === auth.user.id && (
