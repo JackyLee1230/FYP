@@ -24,8 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let errorMessage = null;
   let iconUrl = null;
 
-  console.log("ASDASD" + gameid);
-
   try {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
