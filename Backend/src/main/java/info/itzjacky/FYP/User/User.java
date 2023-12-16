@@ -88,7 +88,8 @@ public class User implements UserDetails {
     @Column(updatable = true)
     private Date lastActive;
 
-    @Column(columnDefinition = "integer default 0")
+//    @Column(columnDefinition = "integer default 0")
+    @Formula("(SELECT COUNT(*) FROM review r WHERE r.reviewer_id = id)")
     private Integer numOfReviews;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -105,7 +106,9 @@ public class User implements UserDetails {
     @ToString.Exclude
     private List<Game> developedGames;
 
-    @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "reviewer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+//    cascade so if the user is deleted, the review is deleted
+
 //    @JsonBackReference
     @ToString.Exclude
     private List<Review> reviews;
