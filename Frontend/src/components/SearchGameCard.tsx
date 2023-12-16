@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import Link from 'next/link'
+import { getScoreColor } from "@/utils/DynamicScore"
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -212,14 +213,9 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               right: "-13px",
 
               borderRadius: "32px",
-              background:
-                gameData.score > 70
-                  ? theme.palette.success.main
-                  : gameData.score > 50
-                  ? theme.palette.warning.main
-                  : theme.palette.error.main,
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             })}
+            bgcolor={`${getScoreColor(gameData.percentile)}.main`}
           >
             <Typography
               variant="h2"

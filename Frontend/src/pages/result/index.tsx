@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         : platform
       : [],
     isInDevelopment:
-      isInDevelopment === "null"
+      isInDevelopment === "null" || isInDevelopment === undefined || isInDevelopment === null
         ? null
         : isInDevelopment === "true"
         ? true
@@ -161,6 +161,11 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
       }
     }
   }, [gameData, order]);
+
+  useEffect(() => {
+    setPage(1);
+  }
+  , [gameInfoData]);
 
   return (
     <>
