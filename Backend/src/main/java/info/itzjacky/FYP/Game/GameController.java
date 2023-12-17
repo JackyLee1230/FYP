@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.Game;
 
+import info.itzjacky.FYP.Review.Review;
 import jakarta.websocket.server.PathParam;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
@@ -161,6 +162,9 @@ public class GameController {
             }
             if (gameRequest.getIncludeReviews() != null && !gameRequest.getIncludeReviews()) {
                 g.setGameReviews(null);
+            }
+            for (Review review : g.getGameReviews()) {
+                review.getReviewer().setReviews(null);
             }
             return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {
