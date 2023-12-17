@@ -1,0 +1,5 @@
+# sa folder
+*.pkl
+*.sav
+
+*.pyc

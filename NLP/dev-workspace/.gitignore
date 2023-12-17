@@ -1,7 +1,3 @@
-# sa folder
-*.pkl
-*.sav
-
 *.pyc
 
 glove.6B
