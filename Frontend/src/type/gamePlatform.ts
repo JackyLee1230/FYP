@@ -26,6 +26,8 @@ enum Platform {
   NINTENDO_SUPER_NINTENDO = "Super Nintendo",
   NINTENDO_DS = "Nintendo DS",
   NINTENDO_3DS = "Nintendo 3DS",
+  MOBILE = "Mobile",
+  APPLE_ARCADE = "Apple Arcade",
 }
 
 export function getPlatform(key: string): string {
@@ -40,7 +42,37 @@ export function getPlatformKey(value: string): string {
   );
 }
 
-export const PlatformList = ["STEAM", "MAC", "GOG", "EPIC_GAMES", "ORIGIN", "NINTENDO_SWITCH", "NINTENDO_3DS", "NINTENDO_DS", "NINTENDO_WII", "NINTENDO_WII_U", "NINTENDO_GAMECUBE", "NINTENDO_64", "NINTENDO_GAMEBOY", "NINTENDO_GAMEBOY_ADVANCE", "NINTENDO_GAMEBOY_COLOR", "NINTENDO_GAME_AND_WATCH", "NINTENDO_ENTERTAINMENT_SYSTEM", "NINTENDO_SUPER_NINTENDO", "PS1", "PS2", "PS3", "PS4", "PS5", "XBOX", "XBOX_360", "XBOX_ONE", "XBOX_SERIES"]
+export const PlatformList = [
+  "STEAM",
+  "MAC",
+  "GOG",
+  "EPIC_GAMES",
+  "ORIGIN",
+  "NINTENDO_SWITCH",
+  "NINTENDO_3DS",
+  "NINTENDO_DS",
+  "NINTENDO_WII",
+  "NINTENDO_WII_U",
+  "NINTENDO_GAMECUBE",
+  "NINTENDO_64",
+  "NINTENDO_GAMEBOY",
+  "NINTENDO_GAMEBOY_ADVANCE",
+  "NINTENDO_GAMEBOY_COLOR",
+  "NINTENDO_GAME_AND_WATCH",
+  "NINTENDO_ENTERTAINMENT_SYSTEM",
+  "NINTENDO_SUPER_NINTENDO",
+  "PS1",
+  "PS2",
+  "PS3",
+  "PS4",
+  "PS5",
+  "XBOX",
+  "XBOX_360",
+  "XBOX_ONE",
+  "XBOX_SERIES",
+  "MOBILE",
+  "APPLE_ARCADE",
+];
 
 export enum PlatformById {
   STEAM = 0,
@@ -67,9 +99,11 @@ export enum PlatformById {
   PS4 = 21,
   PS5 = 22,
   XBOX = 23,
-  XBOX_360 =24,
-  XBOX_ONE =25,
-  XBOX_SERIES=26
+  XBOX_360 = 24,
+  XBOX_ONE = 25,
+  XBOX_SERIES = 26,
+  MOBILE = 27,
+  APPLE_ARCADE = 28,
 }
 
 export function getIdByPlatform(key: string): number {

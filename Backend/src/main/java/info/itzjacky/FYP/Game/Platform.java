@@ -34,6 +34,8 @@ public enum Platform {
     XBOX_360(24),
     XBOX_ONE(25),
     XBOX_SERIES(26),
+    MOBILE(27),
+    APPLE_ARCADE(28),
     ;
 
     private int id;
