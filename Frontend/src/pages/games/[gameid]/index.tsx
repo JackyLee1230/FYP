@@ -404,7 +404,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Version: </b>{`${game?.version ?? "Unknown" }`}
+                    <b>Version: </b>{`${game?.version ? game?.version : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -413,7 +413,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Released On: </b>{`${game?.releaseDate ?? "Unknown"}`}
+                    <b>Released On: </b>{`${game?.releaseDate ? game?.releaseDate : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -422,7 +422,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Developed By: </b>{`${game?.developerCompany ?? "Unknown"}`}
+                    <b>Developed By: </b>{`${game?.developerCompany ? game?.developerCompany : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -431,7 +431,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Published By: </b>{`${game?.publisher ?? "Unknown"}`}
+                    <b>Published By: </b>{`${game?.publisher ? game?.publisher : "Unknown"}`}
                 </Typography>
               </Box>
 
