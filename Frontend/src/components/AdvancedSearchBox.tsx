@@ -90,38 +90,37 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
   };
 
   const handleSearchRedirect = () => {
-    if (debouncedSearchString.trim().length > 0) {
-      const genreIdList = selectedGenres.map((genre) => getIdByGenre(genre));
-      const platformIdList = selectedPlatforms.map((platform) =>
-        getIdByPlatform(platform)
-      );
+    const genreIdList = selectedGenres.map((genre) => getIdByGenre(genre));
+    const platformIdList = selectedPlatforms.map((platform) =>
+      getIdByPlatform(platform)
+    );
 
-      if (searchType === "game") {
-        router.push({
-          pathname: "/result",
-          query: {
-            gamename: debouncedSearchString,
-            genre: genreIdList,
-            platform: platformIdList,
-            isInDevelopment:
-              isInDevelopment === null ? "null" : isInDevelopment,
-          },
-        });
-      } else {
-        router.push({
-          pathname: "/result",
-          query: {
-            developername: debouncedSearchString,
-            genre: genreIdList,
-            platform: platformIdList,
-            isInDevelopment:
-              isInDevelopment === null ? "null" : isInDevelopment,
-          },
-        });
-      }
-
-      setOpen(false);
+    if (searchType === "game") {
+      router.push({
+        pathname: "/result",
+        query: {
+          gamename: debouncedSearchString === "" ? null : debouncedSearchString,
+          genre: genreIdList,
+          platform: platformIdList,
+          isInDevelopment:
+            isInDevelopment === null ? "null" : isInDevelopment,
+        },
+      });
+    } else {
+      router.push({
+        pathname: "/result",
+        query: {
+          developername: debouncedSearchString === "" ? null : debouncedSearchString,
+          genre: genreIdList,
+          platform: platformIdList,
+          isInDevelopment:
+            isInDevelopment === null ? "null" : isInDevelopment,
+        },
+      });
     }
+
+    setOpen(false);
+    
   };
 
   return (
@@ -264,7 +263,6 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
           </Select>
         </FormControl>
         <TextField
-          error={debouncedSearchString.trim().length === 0}
           placeholder="Search..."
           fullWidth
           variant="outlined"

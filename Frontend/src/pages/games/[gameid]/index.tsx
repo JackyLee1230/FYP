@@ -210,31 +210,28 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                         gap: "16px",
                       }}
                     >
-                        {game.genre.map((genre, index) => (
-                          (index < 3 &&
-                            <Box
-                              key={genre}
-                              sx={(theme) => ({
-                                borderRadius: "8px",
-                                border: "1px solid",
-                                borderColor: theme.palette.background.default,
-                                background: theme.palette.info.main,
-                                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                                display: "flex",
-                                padding: "4px 16px",
-                                justifyContent: "center",
-                                alignItems: "center",
-                              })}
-                            >
-                              <Typography
-                                variant="h6"
-                                color="background.default"
-                              >
-                                {getGenre(genre)}
-                              </Typography>
-                            </Box>
-                          )
-                        ))}
+                      <Box
+                        sx={(theme) => ({
+                          borderRadius: "8px",
+                          border: "1px solid",
+                          borderColor: theme.palette.background.default,
+                          background: theme.palette.info.main,
+                          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                          display: "flex",
+                          padding: "4px 16px",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        })}
+                      >
+                        <Typography
+                          variant="h6"
+                          color="background.default"
+                        >
+                          {game.genre && game.genre.length > 0 && game.genre.slice(0, 3).map((genre) => (
+                            getGenre(genre)
+                          )).join(", ")}
+                        </Typography>
+                      </Box>
                     </Box>
                   )}
                 </Box>
@@ -378,7 +375,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 }}
               >
                 <Typography 
-                  variant="subtitle1"
+                  variant="h6"
                   color="text.primary"
                   sx={{
                     display: "-webkit-box",
@@ -392,7 +389,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   {`${game.description ?? "No Description"}`}
                 </Typography>
                 <Typography 
-                  variant="body2"
+                  variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -401,7 +398,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   <b>Platform(s): </b>{game?.platforms && game?.platforms.length > 0 ? game?.platforms.map((platform) => getPlatform(platform)).join(", ") : "Unknown"}
                 </Typography>
                 <Typography
-                  variant="body2"
+                  variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -410,7 +407,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     <b>Version: </b>{`${game?.version ?? "Unknown" }`}
                 </Typography>
                 <Typography
-                  variant="body2"
+                  variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -419,7 +416,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     <b>Released On: </b>{`${game?.releaseDate ?? "Unknown"}`}
                 </Typography>
                 <Typography
-                  variant="body2"
+                  variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -428,7 +425,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     <b>Developed By: </b>{`${game?.developerCompany ?? "Unknown"}`}
                 </Typography>
                 <Typography
-                  variant="body2"
+                  variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
