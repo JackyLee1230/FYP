@@ -5,6 +5,7 @@ import info.itzjacky.FYP.User.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -54,6 +55,9 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
 
     @Query(nativeQuery = true, value = "select * from game g where g.name LIKE %:name%")
     Page<Game> findGamesByNamePaged(String name, Pageable pageable);
+
+    @Query("SELECT g FROM Game g WHERE g.BaseGame.id = :id")
+    List<Game> findGamesByBaseGame(Integer id);
 
 
 //    write a query to get the top 10 games by number of reviews

@@ -35,6 +35,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @RequiredArgsConstructor
+//@NamedEntityGraph(
+//        name = "Game.exceptPercentile",
+//        attributeNodes = {
+//                @NamedAttributeNode("name"),
+//                @NamedAttributeNode("id"),
+//                @NamedAttributeNode("isDLC"),
+//                @NamedAttributeNode("description"),
+//        }
+//)
 public class Game {
 
 
@@ -45,6 +54,10 @@ public class Game {
     @NonNull
     private String name;
     private boolean isDLC;
+
+    @Transient
+    private List<Game> DLCS;
+
     private boolean isFree;
     private boolean isFullGame;
     private String legalNotice;
@@ -73,7 +86,8 @@ public class Game {
     private String publisher;
     private Float score;
     @Formula("100 - (SELECT COUNT(*) FROM game g WHERE g.score > score and g.score is not null) / (SELECT COUNT(*) FROM game g where g.score is not null) * 100")
-    private double percentile;
+    @Basic(fetch = FetchType.LAZY)
+    private Double percentile;
 
     private Float recommendationScore;
     @ManyToMany
