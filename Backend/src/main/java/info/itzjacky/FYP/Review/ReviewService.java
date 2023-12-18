@@ -399,7 +399,13 @@ public class ReviewService {
             sentimentAnalysisForReview(reviewRequest);
 
             updateScoreOfGameByReview(reviewRequest.getGameId());
-            return reviewRepository.findReviewById(review.getId());
+            Review rFinal = reviewRepository.findReviewById(review.getId());
+            rFinal.getReviewer().setReviews(null);
+            rFinal.getReviewedGame().setGameReviews(null);
+            if (rFinal.getReviewedGame().getBaseGame() != null){
+                rFinal.getReviewedGame().getBaseGame().setGameReviews(null);
+            }
+            return rFinal;
         } catch (IOException e){
             throw new IllegalStateException("Cannot create Review");
         } catch (DataIntegrityViolationException e){

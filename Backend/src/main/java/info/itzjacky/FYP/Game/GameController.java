@@ -1,8 +1,8 @@
 package info.itzjacky.FYP.Game;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import info.itzjacky.FYP.Review.Review;
-import jakarta.websocket.server.PathParam;
-import org.apache.coyote.Response;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -178,8 +180,36 @@ public class GameController {
                 g.setDLCS(null);
             }
 
+            if (gameRequest.getIncludePlatformReviews() == true) {
+                List<PlatformReview> platformReviews = new ArrayList<>();
+                HashMap<Platform, PlatformReview> pHashmap = new HashMap<>();
+                for(Platform p: g.getPlatforms()) {
+                    PlatformReview platformReview = new PlatformReview();
+                    platformReview.setPlatform(p);
+                    platformReview.setAverage(0.0);
+                    platformReview.setReviewCount(0);
+                    pHashmap.put(p, platformReview);
+                }
+                for (Review review : g.getGameReviews()) {
+                    Platform p = review.getPlatform();
+                    if (p == null) {
+                        continue;
+                    }
+                    PlatformReview platformReview = pHashmap.get(p);
+                    platformReview.setAverage((platformReview.getAverage() * platformReview.getReviewCount() + review.getScore())/ (platformReview.getReviewCount() + 1));
+                    platformReview.setReviewCount(platformReview.getReviewCount() + 1);
+                }
+                for (Map.Entry<Platform, PlatformReview> entry : pHashmap.entrySet()) {
+                    platformReviews.add(entry.getValue());
+                }
+                g.setPlatformReviews(platformReviews);
+            }
+
+
+
             return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }

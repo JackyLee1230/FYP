@@ -12,6 +12,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
+import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.List;
@@ -57,6 +58,8 @@ public class Game {
 
     @Transient
     private List<Game> DLCS;
+    @Transient
+    private List<PlatformReview> platformReviews;
 
     private boolean isFree;
     private boolean isFullGame;
