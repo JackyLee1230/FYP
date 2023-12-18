@@ -18,7 +18,7 @@ We only highlight the most critical packages that affect the code.
 |matplotlib|3.7.3|
 |tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux.|
 |pytorch (GPU)|2.1.0|Main stable version at setup|
-|huggingface-hub|0.17.3|Main stable version at setup|
+|transformers|4.35.0|Main stable version at setup|
 
 
 ## WSL2
