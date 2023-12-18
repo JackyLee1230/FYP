@@ -385,7 +385,7 @@ public class ReviewService {
                 .numberOfDislikes(0)
                 .likes(new ArrayList<User>())
                 .dislikes(new ArrayList<User>())
-                .playTime(reviewRequest.getPlayTime() == null ? "N/A" : reviewRequest.getPlayTime())
+                .playTime(reviewRequest.getPlayTime() == null ? null : reviewRequest.getPlayTime())
                 .platform(reviewRequest.getPlatform() == null ? null : reviewRequest.getPlatform())
                 .createdAt(new java.sql.Date(System.currentTimeMillis()))
                 .sponsored(reviewRequest.getIsSponsored() == null ? false : reviewRequest.getIsSponsored())

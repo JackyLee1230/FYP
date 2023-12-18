@@ -56,6 +56,7 @@ public class Game {
     private Game BaseGame;
     @Column(insertable = true, updatable = true)
     private String iconUrl;
+    @Column(insertable = true, updatable = true, length = 5000)
     private String description;
     private String releaseDate;
     @ManyToMany

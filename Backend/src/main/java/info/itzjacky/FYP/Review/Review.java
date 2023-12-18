@@ -55,7 +55,7 @@ public class Review {
     public Date updatedAt;
 
     @Column(updatable = true)
-    public String playTime;
+    public Integer playTime;
 
     @Column(updatable = true)
     @Enumerated(EnumType.STRING)

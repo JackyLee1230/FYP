@@ -45,7 +45,7 @@ public class ReviewRequest {
 
     private Integer pageNum;
 
-    private String playTime;
+    private Integer playTime;
 
     private Platform platform;
 
