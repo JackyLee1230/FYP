@@ -57,9 +57,11 @@ export type GameReview = {
   gameVersion: string;
   sentiment: number;
   sentimentUpdatedAt: string;
-  platforms: string[];
   inDevelopment: boolean;
   reviewedGame: GameInfo;
+  playTime: number;
+  platform: string;
+  reviewComments: GameReviewComment[];
 };
 
 export type GameReviewComment = {

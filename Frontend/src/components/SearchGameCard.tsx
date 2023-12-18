@@ -193,7 +193,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
                   : gameData?.platforms[0]
               } | ${gameData.releaseDate}
                 ${gameData?.dlc === true && gameData?.baseGame !== null ?
-                   `| (${gameData?.baseGame.name} DLC)` : ""}`}
+                   `| ${gameData?.baseGame.name} DLC` : ""}`}
             </Typography>
           </Box>
         </Box>
