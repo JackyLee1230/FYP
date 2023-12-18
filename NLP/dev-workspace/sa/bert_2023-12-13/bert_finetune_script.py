@@ -17,7 +17,7 @@ import str_cleaning_functions
 import dataset_loader
 
 DATASET_SIZE = 240
-DATASET_IS_BALANCED = True
+DATASET_IS_BALANCED = False
 
 training_name = 'bert-finetune_{}k_{}'.format(
     DATASET_SIZE,
@@ -112,9 +112,9 @@ trainer = MyTrainer(
 print('\n\n')
 print('FINETUNING BERT with {}k dataset, is_balanced: {}'.format(DATASET_SIZE, DATASET_IS_BALANCED))
 
-trainer.train()
+# trainer.train()
 
-# trainer.train(resume_from_checkpoint=True)
+trainer.train(resume_from_checkpoint=True)
 
 print('\n')
 print("FINETUNING COMPLETED")
@@ -126,59 +126,61 @@ trainer.save_model(str(Path.joinpath(training_storing_folder, training_name+'_mo
 print('MODEL SAVED')
 print('\n\n')
 
-# Evaluate model
-
-print("Evaluating on test set")
-print(trainer.predict(
-    ds_test
-))
-print()
-
-X_imbal_valid = cleaning_arr(X_imbal_valid)
-X_bal_valid = cleaning_arr(X_bal_valid)
-
-X_imbal_valid = X_imbal_valid.to_numpy()
-y_imbal_valid = y_imbal_valid.to_numpy()
-X_bal_valid = X_bal_valid.to_numpy()
-y_bal_valid = y_bal_valid.to_numpy()
-
-ds_imbal_valid = Dataset.from_dict({
-    "text": [str(s) for s in list(X_imbal_valid.flatten())],
-    "label": list(y_imbal_valid)
-})
-
-ds_bal_valid = Dataset.from_dict({
-    "text": [str(s) for s in list(X_bal_valid.flatten())],
-    "label": list(y_bal_valid)
-})
-
-# apply tokenizer to the dataset
-ds_imbal_valid = ds_imbal_valid.map(tokenize_dataset, batched=True)
-ds_bal_valid = ds_bal_valid.map(tokenize_dataset, batched=True)
-
-print("Evaluating on validation set (imbalanced)")
-print(trainer.predict(
-    ds_imbal_valid
-))
-print()
-
-print("Evaluating on validation set (balanced)")
-print(trainer.predict(
-    ds_bal_valid
-))
-print()
-
 # save pipeline
 from transformers import pipeline
 my_pipeline = pipeline(
     'text-classification',
     model=AutoModelForSequenceClassification.from_pretrained(
-        f'{training_name}_model',
+        str(Path.joinpath(training_storing_folder, training_name+'_model')),
     tokenizer=tokenizer)
 )
 
 my_pipeline.save_pretrained(str(Path.joinpath(training_storing_folder, training_name+'_pipeline')))
 
 print('PIPELINE SAVED')
-print()
+print('\n\n')
+
+
+# Evaluate model
+
+# print("Evaluating on test set")
+# print(trainer.predict(
+#     ds_test
+# ))
+# print()
+
+# X_imbal_valid = cleaning_arr(X_imbal_valid)
+# X_bal_valid = cleaning_arr(X_bal_valid)
+
+# X_imbal_valid = X_imbal_valid.to_numpy()
+# y_imbal_valid = y_imbal_valid.to_numpy()
+# X_bal_valid = X_bal_valid.to_numpy()
+# y_bal_valid = y_bal_valid.to_numpy()
+
+# ds_imbal_valid = Dataset.from_dict({
+#     "text": [str(s) for s in list(X_imbal_valid.flatten())],
+#     "label": list(y_imbal_valid)
+# })
+
+# ds_bal_valid = Dataset.from_dict({
+#     "text": [str(s) for s in list(X_bal_valid.flatten())],
+#     "label": list(y_bal_valid)
+# })
+
+# # apply tokenizer to the dataset
+# ds_imbal_valid = ds_imbal_valid.map(tokenize_dataset, batched=True)
+# ds_bal_valid = ds_bal_valid.map(tokenize_dataset, batched=True)
+
+# print("Evaluating on validation set (imbalanced)")
+# print(trainer.predict(
+#     ds_imbal_valid
+# ))
+# print()
+
+# print("Evaluating on validation set (balanced)")
+# print(trainer.predict(
+#     ds_bal_valid
+# ))
+# print()
+
 print('SCRIPT ENDED')
