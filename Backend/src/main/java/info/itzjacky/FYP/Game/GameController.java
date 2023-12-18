@@ -180,7 +180,7 @@ public class GameController {
                 g.setDLCS(null);
             }
 
-            if (gameRequest.getIncludePlatformReviews() == true) {
+            if (gameRequest.getIncludePlatformReviews() != null && gameRequest.getIncludePlatformReviews() == true) {
                 List<PlatformReview> platformReviews = new ArrayList<>();
                 HashMap<Platform, PlatformReview> pHashmap = new HashMap<>();
                 for(Platform p: g.getPlatforms()) {
