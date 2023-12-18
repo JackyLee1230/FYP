@@ -166,13 +166,18 @@ public class GameController {
             for (Review review : g.getGameReviews()) {
                 review.getReviewer().setReviews(null);
             }
-//            find games that have base game id of this game
-            List<Game> DLCS = gameRepository.findGamesByBaseGame(g.getId());
-            for (Game DLC : DLCS) {
-                DLC.setGameReviews(null);
-                DLC.setBaseGame(null);
+//            find DLC games that have base game id of this game
+            if (!g.isDLC()) {
+                List<Game> DLCS = gameRepository.findGamesByBaseGame(g.getId());
+                for (Game DLC : DLCS) {
+                    DLC.setGameReviews(null);
+                    DLC.setBaseGame(null);
+                }
+                g.setDLCS(DLCS);
+            } else {
+                g.setDLCS(null);
             }
-            g.setDLCS(DLCS);
+
             return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
