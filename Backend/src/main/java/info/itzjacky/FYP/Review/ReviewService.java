@@ -260,7 +260,7 @@ public class ReviewService {
             reviewRequest.setPageNum(0);
         }
         // check sort by must be either "score" or "recency"
-        if (reviewRequest.getSortBy() == null || (!reviewRequest.getSortBy().equals("Score") && !reviewRequest.getSortBy().equals("Recency"))) {
+        if (reviewRequest.getSortBy() == null || (!reviewRequest.getSortBy().equals("score") && !reviewRequest.getSortBy().equals("recency"))) {
             reviewRequest.setSortBy("recency");
         }
         if (reviewRequest.getRecommended() == null) {
