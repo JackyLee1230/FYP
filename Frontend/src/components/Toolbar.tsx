@@ -52,6 +52,7 @@ const Search = styled("div")(({ theme }) => ({
   },
   paddingLeft: "0px",
   justifyContent: "space-between",
+  overflow: "hidden",
 }));
 
 const SearchIconWrapper = styled(ButtonBase)(({ theme }) => ({
@@ -158,6 +159,7 @@ const WebToolbar = () => {
             <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
           </ButtonBase>
 
+         {/*
           <Button
             variant="text"
             size="large"
@@ -187,7 +189,7 @@ const WebToolbar = () => {
           >
             Add Review
           </Button>
-
+         */}
           <Search
             onKeyPress={(ev) => {
               if (ev.key === "Enter") {
