@@ -262,7 +262,12 @@ public class ReviewService {
         if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
             reviewRequest.setPageNum(0);
         }
-        return reviewRepository.findReviewsByGameIdPaged(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+        Page<Review> r =  reviewRepository.findReviewsByGameIdPaged(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+        for (Review review : r.getContent()){
+            review.getReviewer().setReviews(null);
+            review.setReviewedGame(null);
+        }
+        return r;
     }
 
     public Page<Review> findReviewsByGameIdAndRecommendedPaged(ReviewRequest reviewRequest){
@@ -275,7 +280,12 @@ public class ReviewService {
         if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
             reviewRequest.setPageNum(0);
         }
-        return reviewRepository.findReviewsByGameIdAndRecommendedPaged(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+        Page<Review> r = reviewRepository.findReviewsByGameIdAndRecommendedPaged(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+        for (Review review : r.getContent()){
+            review.getReviewer().setReviews(null);
+            review.setReviewedGame(null);
+        }
+        return r;
     }
 
     public List<Review> getReviewsByReviewerId(ReviewRequest reviewRequest){

@@ -121,7 +121,6 @@ public class DigitalOceanStorageService {
             logger.info("AmazonClientException Message: " + clientException.getMessage());
             throw clientException;
         }
-
         return null;
     }
 
