@@ -53,6 +53,8 @@ public class ReviewRequest {
 
     private Boolean isSponsored;
 
+    private String sortBy;
+
 
 
 }

@@ -43,11 +43,16 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     List<Review> findReviewsByGameId(Integer gameId);
 
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 order by r.created_at desc")
-    Page<Review> findReviewsByGameIdPaged(Integer gameId, Pageable pageable);
+    Page<Review> findReviewsByGameIdPagedSortByCreatedAt(Integer gameId, Pageable pageable);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 order by r.score desc")
+    Page<Review> findReviewsByGameIdPagedSortByScore(Integer gameId, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 order by r.created_at desc")
-    Page<Review> findReviewsByGameIdAndRecommendedPaged(Integer gameId, Boolean Recommended, Pageable pageable);
+    Page<Review> findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(Integer gameId, Boolean Recommended, Pageable pageable);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 order by r.score desc")
+    Page<Review> findReviewsByGameIdAndRecommendedPagedSortByScore(Integer gameId, Boolean Recommended, Pageable pageable);
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2")
     List<Review> findReviewsByGameIdAndSentiment(Integer gameId, Integer sentiment);

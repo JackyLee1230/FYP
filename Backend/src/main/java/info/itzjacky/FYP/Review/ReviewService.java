@@ -21,10 +21,7 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 import static info.itzjacky.FYP.Utils.Others.booleanToInt;
@@ -262,15 +259,32 @@ public class ReviewService {
         if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
             reviewRequest.setPageNum(0);
         }
+        // check sort by must be either "score" or "recency"
+        if (reviewRequest.getSortBy() == null || (!reviewRequest.getSortBy().equals("Score") && !reviewRequest.getSortBy().equals("Recency"))) {
+            reviewRequest.setSortBy("recency");
+        }
         if (reviewRequest.getRecommended() == null) {
-            Page<Review> r = reviewRepository.findReviewsByGameIdPaged(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            Page<Review> r = null;
+            if (Objects.equals(reviewRequest.getSortBy(), "recency")){
+                r = reviewRepository.findReviewsByGameIdPagedSortByCreatedAt(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            } else {
+                r = reviewRepository.findReviewsByGameIdPagedSortByScore(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
             }
             return r;
         } else {
-            Page<Review> r = reviewRepository.findReviewsByGameIdAndRecommendedPaged(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            Page<Review> r = null;
+            if (Objects.equals(reviewRequest.getSortBy(), "recency")) {
+                r =  reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+            else {
+                r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
@@ -289,7 +303,7 @@ public class ReviewService {
         if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
             reviewRequest.setPageNum(0);
         }
-        Page<Review> r = reviewRepository.findReviewsByGameIdAndRecommendedPaged(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+        Page<Review> r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
         for (Review review : r.getContent()){
             review.getReviewer().setReviews(null);
             review.setReviewedGame(null);
