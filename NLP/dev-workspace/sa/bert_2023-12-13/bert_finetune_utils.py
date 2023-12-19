@@ -3,6 +3,9 @@ import numpy as np
 from transformers import TrainerCallback
 from transformers.integrations import is_tensorboard_available
 
+
+# reference: https://stackoverflow.com/questions/73281901/is-there-a-way-to-plot-training-and-validation-losses-on-the-same-graph-with-hug
+
 def custom_rewrite_logs(d, mode):
     '''If you want to combine train and eval for other metrics besides the loss then custom_rewrite_logs should be modified accordingly.'''
     new_d = {}
@@ -144,6 +147,25 @@ class CombinedTensorBoardCallback(TrainerCallback):
             tbw.close()
         self.tb_writers = None
 
+
+# reference: https://stackoverflow.com/questions/67457480/how-to-get-the-accuracy-per-epoch-or-step-for-the-huggingface-transformers-train
+
+from copy import deepcopy
+class EvaluateTrainDatasetAtEndOfEpochCallback(TrainerCallback):
+    
+    def __init__(self, trainer) -> None:
+        super().__init__()
+        self._trainer = trainer
+    
+    def on_epoch_end(self, args, state, control, **kwargs):
+        if control.should_evaluate:
+            control_copy = deepcopy(control)
+            self._trainer.evaluate(eval_dataset=self._trainer.train_dataset, metric_key_prefix="train")
+            return control_copy
+
+
+
+
 import evaluate
 
 metric_acc = evaluate.load("accuracy")
@@ -162,6 +184,8 @@ def compute_metrics(eval_pred):
 
 
 # override original trainer to add evaluation on training dataset as well
+# https://stackoverflow.com/questions/67457480/how-to-get-the-accuracy-per-epoch-or-step-for-the-huggingface-transformers-train
+# https://stackoverflow.com/questions/76914119/validation-and-training-loss-when-using-huggingface
 
 import math
 import time
@@ -202,11 +226,14 @@ class MyTrainer(Trainer):
                 A dictionary containing the evaluation loss and the potential metrics computed from the predictions. The
                 dictionary also contains the epoch number which comes from the training state.
             """
+        
+        # commented lines are combined evaluation on training dataset
+
         # memory metrics - must set up as early as possible
         self._memory_tracker.start()
 
         eval_dataloader = self.get_eval_dataloader(eval_dataset)
-        train_dataloader = self.get_train_dataloader()
+        # train_dataloader = self.get_train_dataloader()
         start_time = time.time()
 
         eval_loop = self.prediction_loop if self.args.use_legacy_prediction_loop else self.evaluation_loop
@@ -220,13 +247,13 @@ class MyTrainer(Trainer):
             metric_key_prefix=metric_key_prefix,
         )
 
-        train_output = eval_loop(
-            train_dataloader,
-            description='Training Evaluation',
-            prediction_loss_only=True if self.compute_metrics is None else None,
-            ignore_keys=ignore_keys,
-            metric_key_prefix="train",
-        )
+        # train_output = eval_loop(
+        #     train_dataloader,
+        #     description='Training Evaluation',
+        #     prediction_loss_only=True if self.compute_metrics is None else None,
+        #     ignore_keys=ignore_keys,
+        #     metric_key_prefix="train",
+        # )
 
         total_batch_size = self.args.eval_batch_size * self.args.world_size
         if f"{metric_key_prefix}_jit_compilation_time" in eval_output.metrics:
@@ -240,19 +267,22 @@ class MyTrainer(Trainer):
             )
         )
 
-        train_n_samples = len(self.train_dataset)
-        train_output.metrics.update(speed_metrics('train', start_time, train_n_samples))
-        self.log(train_output.metrics | eval_output.metrics)
+        self.log(eval_output.metrics)
+
+        # train_n_samples = len(self.train_dataset)
+        # train_output.metrics.update(speed_metrics('train', start_time, train_n_samples))
+        # self.log(train_output.metrics | eval_output.metrics)
 
         if DebugOption.TPU_METRICS_DEBUG in self.args.debug:
             # tpu-comment: Logging debug metrics for PyTorch/XLA (compile, execute times, ops, etc.)
             xm.master_print(met.metrics_report())
 
-        self.control = self.callback_handler.on_evaluate(self.args, self.state, self.control, train_output.metrics)
+        # self.control = self.callback_handler.on_evaluate(self.args, self.state, self.control, train_output.metrics)
         self.control = self.callback_handler.on_evaluate(self.args, self.state, self.control, eval_output.metrics)
 
         self._memory_tracker.stop_and_update_metrics(eval_output.metrics)
-        self._memory_tracker.stop_and_update_metrics(train_output.metrics)
+        # self._memory_tracker.stop_and_update_metrics(train_output.metrics)
 
         # only works in Python >= 3.9
-        return train_output.metrics | eval_output.metrics
+        return eval_output.metrics
+        # return train_output.metrics | eval_output.metrics

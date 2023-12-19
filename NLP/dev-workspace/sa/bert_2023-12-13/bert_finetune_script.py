@@ -6,7 +6,7 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
 from datasets import Dataset
 
-from bert_finetune_utils import MyTrainer, compute_metrics, CombinedTensorBoardCallback
+from bert_finetune_utils import EvaluateTrainDatasetAtEndOfEpochCallback, MyTrainer, compute_metrics, CombinedTensorBoardCallback
 
 import sys
  
@@ -16,7 +16,7 @@ sys.path.append('../')
 import str_cleaning_functions
 import dataset_loader
 
-DATASET_SIZE = 240
+DATASET_SIZE = 480
 DATASET_IS_BALANCED = False
 
 training_name = 'bert-finetune_{}k_{}'.format(
@@ -98,7 +98,19 @@ training_args = TrainingArguments(output_dir=Path.joinpath(training_storing_fold
                                   load_best_model_at_end=True)
 
 
-trainer = MyTrainer(
+# trainer = MyTrainer(
+#     model=model,
+#     args=training_args,
+#     # train_dataset=ds_train_small,
+#     # eval_dataset=ds_test_small,
+#     train_dataset=ds_train,
+#     eval_dataset=ds_test,
+#     compute_metrics=compute_metrics,
+#     callbacks=[CombinedTensorBoardCallback]
+# )
+
+
+trainer = Trainer(
     model=model,
     args=training_args,
     # train_dataset=ds_train_small,
@@ -108,13 +120,14 @@ trainer = MyTrainer(
     compute_metrics=compute_metrics,
     callbacks=[CombinedTensorBoardCallback]
 )
+trainer.add_callback(EvaluateTrainDatasetAtEndOfEpochCallback(trainer))
 
 print('\n\n')
 print('FINETUNING BERT with {}k dataset, is_balanced: {}'.format(DATASET_SIZE, DATASET_IS_BALANCED))
 
-# trainer.train()
+trainer.train()
 
-trainer.train(resume_from_checkpoint=True)
+# trainer.train(resume_from_checkpoint=True)
 
 print('\n')
 print("FINETUNING COMPLETED")
@@ -131,8 +144,8 @@ from transformers import pipeline
 my_pipeline = pipeline(
     'text-classification',
     model=AutoModelForSequenceClassification.from_pretrained(
-        str(Path.joinpath(training_storing_folder, training_name+'_model')),
-    tokenizer=tokenizer)
+        str(Path.joinpath(training_storing_folder, training_name+'_model'))),
+    tokenizer=tokenizer
 )
 
 my_pipeline.save_pretrained(str(Path.joinpath(training_storing_folder, training_name+'_pipeline')))
