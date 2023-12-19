@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { use, useCallback, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
-import { GameInfo, GamePageProps } from "@/type/game";
+import { GameInfo, GamePageProps, GameReview } from "@/type/game";
 import Platform, { getPlatform } from "@/type/gamePlatform";
 import Genre, { getGenre } from "@/type/gameGenre";
 import Head from "next/head";
@@ -29,7 +29,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { gameid } = context.query;
 
   let game = null;
-  let reviews = null;
   let errorMessage = null;
   let iconUrl = null;
 
@@ -37,7 +36,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
-      { id: gameid },
+      { id: gameid,
+        includeReviews: false,
+        inclinudePlatformReviews: false
+      },
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -47,18 +49,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         },
       }
     );
-    // const reviewsResponse = await axios.post(
-    //   `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameId`,
-    //   { gameId: gameid },
-    //   {
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-    //       "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    //       "Access-Control-Allow-Credentials": "true",
-    //     },
-    //   }
-    // );
 
     if (response.status === 200) {
       game = await response.data;
@@ -69,7 +59,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       errorMessage = response.statusText;
     }
   } catch (error: any) {
-    // console.error(error);
     errorMessage = error.toString();
   }
 
@@ -87,13 +76,59 @@ const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
+const fetchReview = async (gameId: string, recommended: boolean | null) => {
+  let review = null;
+  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameIdPaged`;
+  const body = { gameId: gameId, reviewsPerPage: 12, pageNum: 0, recommended: recommended};
+  try {
+    const response = await axios.post(
+      apiAddress,
+      body,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      review = await response.data.content;
+    }
+  } catch (error: any) {
+    console.error(error);
+  }
+
+  return review;
+}
+
 function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const router = useRouter();
   const [reviewTypeValue, setReviewTypeValue] = useState(0);
+  const [reviews, setReviews] = useState<null | GameReview[]>(null);
+  const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
 
   const handleReviewTypeChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setReviewTypeValue(newValue);
   }
+
+  const handleReviewFetch = useCallback(async (recommended: boolean | null) => {
+    if (game) {
+      setIsReviewLoading(true);
+      const reviews = await fetchReview(game.id, recommended);
+      console.log(reviews);
+      setReviews(reviews);
+      setIsReviewLoading(false);
+    }
+  }, [game]);
+
+  useEffect(() => {
+    console.log("here")
+
+    handleReviewFetch(reviewTypeValue === 0 ? null : reviewTypeValue === 1 ? true : false);
+  }, [handleReviewFetch, reviewTypeValue]);
 
   if (errorMessage) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
@@ -102,9 +137,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   if (!game) {
     return <div className="text-center text-xl font-bold">Game not found</div>;
   }
-
-  console.log(game);
-
+  
   return (
     <div>
       <Head>
@@ -525,7 +558,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
         </Box>
 
         <Box>
-          <Divider sx={{ margin: "24px 0px" }} textAlign="left">
+          <Divider sx={{ margin: "12px 0px" }} textAlign="left">
             <Box sx={{display: "flex", flexDirection: "row", gap: "12px", justifyContent: "center", alignItems: "center"}}>
               <Typography variant="h4" color="secondary.main" sx={{ fontWeight: 700}}>
                 User Reviews
@@ -542,22 +575,37 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             indicatorColor="secondary"
             textColor="secondary"
             variant="fullWidth"
+            sx={{
+              marginBottom: "12px",
+            }}
           >
             <Tab label="All Review"/>
             <Tab label="Positive"/>
             <Tab label="Negative" />
           </Tabs>
-          <Grid container rowSpacing={{xs: 2, lg: 4}} columnSpacing={2}>
-            {game.gameReviews && game.gameReviews.length > 0 ? (
-              game.gameReviews.map((review) => (
-                <Grid item xs={12} lg={6} key={review.id}>
-                  <GameReviewCard review={review}/>
-                </Grid>
-              ))
-            ) : (
-              <span className="text-gray-500">No Review Yet</span>
-            )}
-          </Grid>
+
+          {isReviewLoading ?
+          (<Box sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "164px"}}>
+              <CircularProgress
+                size={56}
+                thickness={4}
+                color="secondary"
+              />
+            </Box>) : 
+            (reviews && reviews.length > 0  ? 
+              (<Grid container rowSpacing={{xs: 2, lg: 4}} columnSpacing={2}>
+                {reviews.map((review) => (
+                    <Grid item xs={12} lg={6} key={review.id}>
+                      <GameReviewCard review={review}/>
+                    </Grid>
+                  )
+                )}
+              </Grid>) : 
+              (<Box>
+                <Typography variant="subtitle1" color="secondary.main" sx={{ fontWeight: 500}}>
+                  No Reviews
+                </Typography>
+              </Box>))}
         </Box>
       </Box>
 
