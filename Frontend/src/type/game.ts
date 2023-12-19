@@ -3,6 +3,7 @@ import Platform from "./gamePlatform";
 import { User } from "./user";
 
 export type GameInfo = {
+  gamePage: string;
   iconUrl: any;
   id: string;
   name: string;

@@ -11,15 +11,32 @@ import { formatTime } from "@/utils/StringUtils";
 import Link from "next/link";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import _ from "lodash";
-import { Box, Button, Typography, styled, Tooltip, CircularProgress, circularProgressClasses, ButtonBase, Divider, Grid, Tabs, Tab, Select, MenuItem, FormControl } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  styled,
+  Tooltip,
+  CircularProgress,
+  circularProgressClasses,
+  ButtonBase,
+  Divider,
+  Grid,
+  Tabs,
+  Tab,
+  Select,
+  MenuItem,
+  FormControl,
+} from "@mui/material";
 import Image from "next/image";
 import { alpha } from "@mui/material";
-import BrokenImageIcon from '@mui/icons-material/BrokenImage';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import { EarlyAccessDefinition, DLCDefinition } from "@/utils/Definition";
 import { getScoreColor } from "@/utils/DynamicScore";
 import GameReviewCard from "@/components/GameReviewCard";
+import { getStoreIcons } from "@/utils/GameLinksIcons";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -35,10 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // Fetch the game data from an API using Axios
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
-      { id: gameid,
-        includeReviews: false,
-        inclinudePlatformReviews: false
-      },
+      { id: gameid, includeReviews: false, inclinudePlatformReviews: false },
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -75,23 +89,29 @@ const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
-const fetchReview = async (gameId: string, recommended: boolean | null, sortBy: "recency" | "score") => {
+const fetchReview = async (
+  gameId: string,
+  recommended: boolean | null,
+  sortBy: "recency" | "score"
+) => {
   let review = null;
   const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameIdPaged`;
-  const body = { gameId: gameId, reviewsPerPage: 12, pageNum: 0, recommended: recommended, sortBy: sortBy};
+  const body = {
+    gameId: gameId,
+    reviewsPerPage: 12,
+    pageNum: 0,
+    recommended: recommended,
+    sortBy: sortBy,
+  };
   try {
-    const response = await axios.post(
-      apiAddress,
-      body,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
+    const response = await axios.post(apiAddress, body, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    });
 
     if (response.status === 200) {
       review = await response.data.content;
@@ -101,7 +121,7 @@ const fetchReview = async (gameId: string, recommended: boolean | null, sortBy: 
   }
 
   return review;
-}
+};
 
 function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [reviewTypeValue, setReviewTypeValue] = useState(0);
@@ -109,21 +129,29 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
 
-  const handleReviewTypeChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleReviewTypeChange = (
+    event: React.ChangeEvent<{}>,
+    newValue: number
+  ) => {
     setReviewTypeValue(newValue);
-  }
+  };
 
-  const handleReviewFetch = useCallback(async (recommended: boolean | null) => {
-    if (game) {
-      setIsReviewLoading(true);
-      const reviews = await fetchReview(game.id, recommended, sortBy);
-      setReviews(reviews);
-      setIsReviewLoading(false);
-    }
-  }, [game, sortBy]);
+  const handleReviewFetch = useCallback(
+    async (recommended: boolean | null) => {
+      if (game) {
+        setIsReviewLoading(true);
+        const reviews = await fetchReview(game.id, recommended, sortBy);
+        setReviews(reviews);
+        setIsReviewLoading(false);
+      }
+    },
+    [game, sortBy]
+  );
 
   useEffect(() => {
-    handleReviewFetch(reviewTypeValue === 0 ? null : reviewTypeValue === 1 ? true : false);
+    handleReviewFetch(
+      reviewTypeValue === 0 ? null : reviewTypeValue === 1 ? true : false
+    );
   }, [handleReviewFetch, reviewTypeValue, sortBy]);
 
   if (errorMessage) {
@@ -133,7 +161,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   if (!game) {
     return <div className="text-center text-xl font-bold">Game not found</div>;
   }
-  
+
   return (
     <div>
       <Head>
@@ -181,7 +209,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               height: "516px",
               width: "100%",
               display: "flex",
-              position: "relative", 
+              position: "relative",
             }}
           >
             {iconUrl ? (
@@ -190,7 +218,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 src={iconUrl}
                 alt="Game Icon"
                 fill
-                style={{objectFit: "cover"}}
+                style={{ objectFit: "cover" }}
               />
             ) : (
               <Box
@@ -209,151 +237,146 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 </Typography>
               </Box>
             )}
+            <Box
+              sx={{
+                position: "absolute",
+                display: "flex",
+                padding: "24px 42px",
+                width: "100%",
+                height: "100%",
+              }}
+            >
               <Box
                 sx={{
                   position: "absolute",
-                  display: "flex",
-                  padding: "24px 42px",
-                  width: "100%",
-                  height: "100%",
+                  right: "42px",
                 }}
               >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    right: "42px",
-                  }}
-                >
-                  <Button variant="contained" color="primary" >
-                      more
-                  </Button>
-                </Box>
-                <Box
-                  sx={{
-                    position: "absolute",
-                    right: "42px",
-                    bottom: "24px",
-                  }}
-                >
-                  {game.genre && game.genre.length > 0 && (
+                <Button variant="contained" color="primary">
+                  more
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  position: "absolute",
+                  right: "42px",
+                  bottom: "24px",
+                }}
+              >
+                {game.genre && game.genre.length > 0 && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "flex-start",
+                      alignSelf: "stretch",
+                      gap: "16px",
+                    }}
+                  >
                     <Box
-                      sx={{
+                      sx={(theme) => ({
+                        borderRadius: "8px",
+                        border: "1px solid",
+                        borderColor: theme.palette.background.default,
+                        background: theme.palette.info.main,
+                        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                         display: "flex",
+                        padding: "4px 16px",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      })}
+                    >
+                      <Typography variant="h6" color="background.default">
+                        {game.genre &&
+                          game.genre.length > 0 &&
+                          game.genre
+                            .slice(0, 3)
+                            .map((genre) => getGenre(genre))
+                            .join(", ")}
+                      </Typography>
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: "42px",
+                  bottom: "24px",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "16px",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-end",
+                }}
+              >
+                {game.inDevelopment && (
+                  <Tooltip title={EarlyAccessDefinition}>
+                    <Box
+                      sx={(theme) => ({
+                        borderRadius: "64px",
+                        background: theme.palette.secondary.main,
+                        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset",
+                        display: "flex",
+                        padding: "12px 32px",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "12px",
                         flexDirection: "row",
-                        alignItems: "flex-start",
-                        alignSelf: "stretch",
-                        gap: "16px",
+                      })}
+                    >
+                      <Typography variant="h4" color="background.default">
+                        Early Access
+                      </Typography>
+                      <HelpOutlineIcon
+                        sx={{
+                          fontSize: "24px",
+                          color: "background.default",
+                        }}
+                      />
+                    </Box>
+                  </Tooltip>
+                )}
+                {game.dlc && game.baseGame && (
+                  <Tooltip title={DLCDefinition(game?.baseGame?.name)}>
+                    <ButtonBase
+                      LinkComponent={Link}
+                      href={`/games/${game?.baseGame?.id}`}
+                      sx={{
+                        borderRadius: "32px",
+                        overflow: "hidden",
                       }}
                     >
                       <Box
                         sx={(theme) => ({
-                          borderRadius: "8px",
-                          border: "1px solid",
-                          borderColor: theme.palette.background.default,
                           background: theme.palette.info.main,
-                          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                          boxShadow:
+                            "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset",
                           display: "flex",
                           padding: "4px 16px",
                           justifyContent: "center",
                           alignItems: "center",
-                        })}
-                      >
-                        <Typography
-                          variant="h6"
-                          color="background.default"
-                        >
-                          {game.genre && game.genre.length > 0 && game.genre.slice(0, 3).map((genre) => (
-                            getGenre(genre)
-                          )).join(", ")}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  )}
-                </Box>
-                <Box
-                  sx={{
-                    position: "absolute",
-                    left: "42px",
-                    bottom: "24px",
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "16px",
-                    justifyContent: "flex-end",
-                    alignItems: "flex-end",
-                  }}
-                >
-                  {game.inDevelopment && (
-                    <Tooltip title={EarlyAccessDefinition}> 
-                      <Box
-                        sx={(theme) => ({
-                          borderRadius: "64px",
-                          background: theme.palette.secondary.main,
-                          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset",
-                          display: "flex",
-                          padding: "12px 32px",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          gap: "12px",
+                          gap: "8px",
                           flexDirection: "row",
+                          height: "fit-content",
                         })}
                       >
-                        <Typography
-                          variant="h4"
-                          color="background.default"
-                        >
-                          Early Access
+                        <Typography variant="h5" color="background.default">
+                          DLC
                         </Typography>
-                        <HelpOutlineIcon 
+                        <ArrowCircleRightOutlinedIcon
                           sx={{
-                            fontSize: "24px",
+                            fontSize: "16px",
                             color: "background.default",
                           }}
                         />
                       </Box>
-                    </Tooltip>
-                  )}
-                  {game.dlc && game.baseGame && (
-                    <Tooltip title={DLCDefinition(game?.baseGame?.name)}>
-                      <ButtonBase
-                        LinkComponent={Link} 
-                        href={`/games/${game?.baseGame?.id}`}
-                        sx={{
-                          borderRadius: "32px",
-                          overflow: "hidden",
-                        }}
-                      >
-                        <Box
-                          sx={(theme) => ({
-                            background: theme.palette.info.main,
-                            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset",
-                            display: "flex",
-                            padding: "4px 16px",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            gap: "8px",
-                            flexDirection: "row",
-                            height: "fit-content"
-                          })}
-                        >
-                          <Typography
-                            variant="h5"
-                            color="background.default"
-                          >
-                            DLC
-                          </Typography>
-                          <ArrowCircleRightOutlinedIcon 
-                            sx={{
-                              fontSize: "16px",
-                              color: "background.default",
-                            }}
-                          />
-                        </Box>
-                      </ButtonBase>
-                    </Tooltip>
-                  )}
-                </Box>
+                    </ButtonBase>
+                  </Tooltip>
+                )}
               </Box>
+            </Box>
           </Box>
 
           <Box
@@ -375,8 +398,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 alignSelf: "stretch",
               }}
             >
-              <Typography 
-                variant="h4" 
+              <Typography
+                variant="h4"
                 color="text.primary"
                 sx={{
                   fontWeight: 700,
@@ -409,28 +432,33 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   wordBreak: "break-word",
                 }}
               >
-                <Typography 
+                <Typography
                   variant="h6"
                   color="text.primary"
                   sx={{
                     display: "-webkit-box",
-                    WebkitBoxOrient: 'vertical',
+                    WebkitBoxOrient: "vertical",
                     WebkitLineClamp: 3,
-                    textOverflow: 'ellipsis',
+                    textOverflow: "ellipsis",
                     fontWeight: 500,
                     overflow: "hidden",
                   }}
                 >
                   {`${game.description ?? "No Description"}`}
                 </Typography>
-                <Typography 
+                <Typography
                   variant="subtitle1"
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
                   }}
                 >
-                  <b>Platform(s): </b>{game?.platforms && game?.platforms.length > 0 ? game?.platforms.map((platform) => getPlatform(platform)).join(", ") : "Unknown"}
+                  <b>Platform(s): </b>
+                  {game?.platforms && game?.platforms.length > 0
+                    ? game?.platforms
+                        .map((platform) => getPlatform(platform))
+                        .join(", ")
+                    : "Unknown"}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -439,7 +467,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Version: </b>{`${game?.version ? game?.version : "Unknown"}`}
+                  <b>Version: </b>
+                  {`${game?.version ? game?.version : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -448,7 +477,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Released On: </b>{`${game?.releaseDate ? game?.releaseDate : "Unknown"}`}
+                  <b>Released On: </b>
+                  {`${game?.releaseDate ? game?.releaseDate : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -457,7 +487,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Developed By: </b>{`${game?.developerCompany ? game?.developerCompany : "Unknown"}`}
+                  <b>Developed By: </b>
+                  {`${
+                    game?.developerCompany ? game?.developerCompany : "Unknown"
+                  }`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -466,14 +499,24 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                    <b>Published By: </b>{`${game?.publisher ? game?.publisher : "Unknown"}`}
+                  <b>Published By: </b>
+                  {`${game?.publisher ? game?.publisher : "Unknown"}`}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="text.primary"
+                  sx={{
+                    fontWeight: 500,
+                  }}
+                >
+                  {getStoreIcons(game.gamePage)}
                 </Typography>
               </Box>
 
-              <Box 
-                sx={{ 
-                  position: 'relative', 
-                  display: 'inline-flex'
+              <Box
+                sx={{
+                  position: "relative",
+                  display: "inline-flex",
                 }}
               >
                 <CircularProgress
@@ -494,10 +537,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   disableShrink
                   color={getScoreColor(game?.percentile)}
                   sx={{
-                    position: 'absolute',
+                    position: "absolute",
                     left: 0,
                     [`& .${circularProgressClasses.circle}`]: {
-                      strokeLinecap: 'round',
+                      strokeLinecap: "round",
                     },
                   }}
                 />
@@ -507,10 +550,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     left: 0,
                     bottom: 0,
                     right: 0,
-                    position: 'absolute',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    position: "absolute",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
                   <Typography
@@ -533,13 +576,27 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
         <Box>
           <Divider sx={{ margin: "24px 0px" }} textAlign="left">
             <Tooltip
-              title={"The Aggregated Review is a review generated by our AI based on the user reviews."}
+              title={
+                "The Aggregated Review is a review generated by our AI based on the user reviews."
+              }
             >
-              <Box sx={{display: "flex", flexDirection: "row", gap: "12px", justifyContent: "center", alignItems: "center"}}>
-                <Typography variant="h4" color="info.main" sx={{ fontWeight: 700}}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "12px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  color="info.main"
+                  sx={{ fontWeight: 700 }}
+                >
                   Aggregated Review
                 </Typography>
-                <HelpOutlineIcon 
+                <HelpOutlineIcon
                   sx={{
                     fontSize: "24px",
                     color: "info.main",
@@ -548,18 +605,34 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               </Box>
             </Tooltip>
           </Divider>
-          <Typography variant="subtitle1" color="info.main" sx={{ fontWeight: 500}}>
+          <Typography
+            variant="subtitle1"
+            color="info.main"
+            sx={{ fontWeight: 500 }}
+          >
             COMING SOON....
           </Typography>
         </Box>
 
         <Box>
           <Divider sx={{ margin: "12px 0px" }} textAlign="left">
-            <Box sx={{display: "flex", flexDirection: "row", gap: "12px", justifyContent: "center", alignItems: "center"}}>
-              <Typography variant="h4" color="secondary.main" sx={{ fontWeight: 700}}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "12px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant="h4"
+                color="secondary.main"
+                sx={{ fontWeight: 700 }}
+              >
                 User Reviews
               </Typography>
-              <Button variant="contained" color="secondary" >
+              <Button variant="contained" color="secondary">
                 Add Review
               </Button>
             </Box>
@@ -575,8 +648,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               marginBottom: 4,
             }}
           >
-            <Tabs 
-              value={reviewTypeValue} 
+            <Tabs
+              value={reviewTypeValue}
               onChange={handleReviewTypeChange}
               indicatorColor="secondary"
               textColor="secondary"
@@ -585,15 +658,17 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 width: "100%",
               }}
             >
-              <Tab label="All Review"/>
-              <Tab label="Positive"/>
+              <Tab label="All Review" />
+              <Tab label="Positive" />
               <Tab label="Negative" />
             </Tabs>
             <FormControl sx={{ minWidth: 124 }}>
               <Select
                 color="secondary"
                 value={sortBy}
-                onChange={(event) => setSortBy(event.target.value as "recency" | "score")}
+                onChange={(event) =>
+                  setSortBy(event.target.value as "recency" | "score")
+                }
                 autoWidth={false}
               >
                 <MenuItem value="recency">Recency</MenuItem>
@@ -602,28 +677,36 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </FormControl>
           </Box>
 
-          {isReviewLoading ?
-          (<Box sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "164px"}}>
-              <CircularProgress
-                size={56}
-                thickness={4}
-                color="secondary"
-              />
-            </Box>) : 
-            (reviews && reviews.length > 0  ? 
-              (<Grid container rowSpacing={{xs: 2, lg: 4}} columnSpacing={2}>
-                {reviews.map((review) => (
-                    <Grid item xs={12} lg={6} key={review.id}>
-                      <GameReviewCard review={review}/>
-                    </Grid>
-                  )
-                )}
-              </Grid>) : 
-              (<Box>
-                <Typography variant="subtitle1" color="secondary.main" sx={{ fontWeight: 500}}>
-                  No Reviews
-                </Typography>
-              </Box>))}
+          {isReviewLoading ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "164px",
+              }}
+            >
+              <CircularProgress size={56} thickness={4} color="secondary" />
+            </Box>
+          ) : reviews && reviews.length > 0 ? (
+            <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
+              {reviews.map((review) => (
+                <Grid item xs={12} lg={6} key={review.id}>
+                  <GameReviewCard review={review} />
+                </Grid>
+              ))}
+            </Grid>
+          ) : (
+            <Box>
+              <Typography
+                variant="subtitle1"
+                color="secondary.main"
+                sx={{ fontWeight: 500 }}
+              >
+                No Reviews
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </div>
