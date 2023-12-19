@@ -167,6 +167,10 @@ public class GameController {
             }
             for (Review review : g.getGameReviews()) {
                 review.getReviewer().setReviews(null);
+                review.setReviewedGame(null);
+                review.getReviewer().setDevelopedGames(null);
+                review.getReviewer().setLikedReviews(null);
+                review.getReviewer().setDislikedReviews(null);
             }
 //            find DLC games that have base game id of this game
             if (!g.isDLC()) {
@@ -204,8 +208,6 @@ public class GameController {
                 }
                 g.setPlatformReviews(platformReviews);
             }
-
-
 
             return new ResponseEntity<>(g, HttpStatus.OK);
         } catch (Exception e) {
