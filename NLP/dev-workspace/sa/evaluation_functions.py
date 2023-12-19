@@ -72,12 +72,12 @@ def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=
     tpr = dict()
     roc_auc = dict()
     for i in range(2):
-        fpr[i], tpr[i], _ = roc_curve(y_test, y_pred)
+        fpr[i], tpr[i], _ = roc_curve(y_test, y_pred, pos_label=1)
         roc_auc[i] = auc(fpr[i], tpr[i])
 
     print(roc_auc_score(y_test, y_pred))
     plt.figure(dpi=600)
-    plt.plot(fpr[1], tpr[1], label="ROC curve (area = {:0.4f})".format(roc_auc_score(y_test, y_pred)))
+    plt.plot(fpr[0], tpr[0], label="ROC curve (area = {:0.4f})".format(roc_auc_score(y_test, y_pred)))
 
     # random-guess line
     plt.plot([0, 1], [0, 1], "k--")
