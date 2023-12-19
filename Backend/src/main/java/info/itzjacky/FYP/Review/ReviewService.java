@@ -282,7 +282,7 @@ public class ReviewService {
                 r =  reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
             }
             else {
-                r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByScore(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
             }
 
             for (Review review : r.getContent()){
