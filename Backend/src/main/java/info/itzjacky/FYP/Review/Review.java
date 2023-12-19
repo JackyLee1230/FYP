@@ -41,6 +41,11 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Transient
+    private List<Integer> dislikedUsers;
+    @Transient
+    private List<Integer> likedUsers;
+
     @ManyToOne
     @JoinColumn(name = "reviewer_id", referencedColumnName = "id")
     private User reviewer;

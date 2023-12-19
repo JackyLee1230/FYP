@@ -103,6 +103,7 @@ public class User implements UserDetails {
     private List<Token> tokens;
 
     @ManyToMany(mappedBy = "developers")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ToString.Exclude
     private List<Game> developedGames;
 
@@ -121,6 +122,7 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "review_id")
     )
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> likedReviews;
 
     @ManyToMany
@@ -131,6 +133,7 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "review_id")
     )
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> dislikedReviews;
 
     @Formula("(SELECT COUNT(*) FROM review_likes rl WHERE rl.user_id = id)")
@@ -144,6 +147,7 @@ public class User implements UserDetails {
 
     @ManyToMany(mappedBy = "Tester")
     @ToString.Exclude
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Game> testedGames;
 
     @Override

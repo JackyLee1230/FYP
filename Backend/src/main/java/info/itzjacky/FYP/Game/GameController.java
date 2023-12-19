@@ -2,6 +2,7 @@ package info.itzjacky.FYP.Game;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import info.itzjacky.FYP.Review.Review;
+import info.itzjacky.FYP.User.User;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -165,12 +166,27 @@ public class GameController {
             if (gameRequest.getIncludeReviews() != null && !gameRequest.getIncludeReviews()) {
                 g.setGameReviews(null);
             }
+
             for (Review review : g.getGameReviews()) {
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
                 review.getReviewer().setDevelopedGames(null);
+                review.getReviewer().setTestedGames(null);
                 review.getReviewer().setLikedReviews(null);
                 review.getReviewer().setDislikedReviews(null);
+//                for each review's likes, add it to an arraylist of integer
+                List<Integer> likes = new ArrayList<>();
+                List<Integer> dislikes = new ArrayList<>();
+                for (User u : review.getLikes()) {
+                    likes.add(u.getId());
+                }
+                for (User u : review.getDislikes()) {
+                    dislikes.add(u.getId());
+                }
+                review.setLikedUsers(likes);
+                review.setDislikedUsers(dislikes);
+                review.setLikes(null);
+                review.setDislikes(null);
             }
 //            find DLC games that have base game id of this game
             if (!g.isDLC()) {
