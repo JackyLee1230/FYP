@@ -57,6 +57,23 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/findReviewsByGameIdAndRecommendedPaged")
+    public ResponseEntity<Page<Review>> getReviewByGameIdAndRecommendedPaged(@RequestBody ReviewRequest reviewReq){
+        try{
+            Page<Review> reviews = reviewService.findReviewsByGameIdAndRecommendedPaged(reviewReq);
+//            for each review get content, get the reviewer and set the reviewer's reviews to null
+            for(Review review : reviews.getContent()){
+                review.getReviewer().setReviews(null);
+                review.setReviewedGame(null);
+            }
+
+            return new ResponseEntity<>(reviews, HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+
     /*
      * args reviewId: Integer (review.id)
      */

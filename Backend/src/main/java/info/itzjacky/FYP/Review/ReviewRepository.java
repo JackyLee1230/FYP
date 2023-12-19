@@ -45,6 +45,10 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1")
     Page<Review> findReviewsByGameIdPaged(Integer gameId, Pageable pageable);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2")
+    Page<Review> findReviewsByGameIdAndRecommendedPaged(Integer gameId, Boolean Recommended, Pageable pageable);
+
+
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2")
     List<Review> findReviewsByGameIdAndSentiment(Integer gameId, Integer sentiment);
 

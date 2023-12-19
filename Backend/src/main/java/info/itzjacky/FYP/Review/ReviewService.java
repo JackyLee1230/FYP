@@ -265,6 +265,19 @@ public class ReviewService {
         return reviewRepository.findReviewsByGameIdPaged(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
     }
 
+    public Page<Review> findReviewsByGameIdAndRecommendedPaged(ReviewRequest reviewRequest){
+        if(reviewRequest == null || reviewRequest.getGameId() == null || reviewRequest.getRecommended() == null){
+            throw new IllegalStateException("Game ID Cannot Be Empty/Null");
+        }
+        if(reviewRequest.getReviewsPerPage() == null || reviewRequest.getReviewsPerPage() < 0 ){
+            reviewRequest.setReviewsPerPage(5);
+        }
+        if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
+            reviewRequest.setPageNum(0);
+        }
+        return reviewRepository.findReviewsByGameIdAndRecommendedPaged(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+    }
+
     public List<Review> getReviewsByReviewerId(ReviewRequest reviewRequest){
         if(reviewRequest == null || reviewRequest.getReviewerId() == null){
             throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
