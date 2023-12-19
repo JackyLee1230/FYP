@@ -93,8 +93,6 @@ const WebToolbar = () => {
 
   let { user, token, setUser, setToken } = useAuthContext();
 
-  console.log(user);
-
   useEffect(() => {
     if (token || user) {
       setIsLogin(true);

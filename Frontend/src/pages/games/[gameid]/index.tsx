@@ -11,7 +11,7 @@ import { formatTime } from "@/utils/StringUtils";
 import Link from "next/link";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import _ from "lodash";
-import { Box, Button, Typography, styled, Tooltip, CircularProgress, circularProgressClasses, ButtonBase, Divider, Grid, Tabs, Tab } from "@mui/material";
+import { Box, Button, Typography, styled, Tooltip, CircularProgress, circularProgressClasses, ButtonBase, Divider, Grid, Tabs, Tab, Select, MenuItem, FormControl } from "@mui/material";
 import Image from "next/image";
 import { alpha } from "@mui/material";
 import BrokenImageIcon from '@mui/icons-material/BrokenImage';
@@ -25,7 +25,6 @@ const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log(context);
   const { gameid } = context.query;
 
   let game = null;
@@ -76,10 +75,10 @@ const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
-const fetchReview = async (gameId: string, recommended: boolean | null) => {
+const fetchReview = async (gameId: string, recommended: boolean | null, sortBy: "recency" | "score") => {
   let review = null;
   const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByGameIdPaged`;
-  const body = { gameId: gameId, reviewsPerPage: 12, pageNum: 0, recommended: recommended};
+  const body = { gameId: gameId, reviewsPerPage: 12, pageNum: 0, recommended: recommended, sortBy: sortBy};
   try {
     const response = await axios.post(
       apiAddress,
@@ -105,10 +104,10 @@ const fetchReview = async (gameId: string, recommended: boolean | null) => {
 }
 
 function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
-  const router = useRouter();
   const [reviewTypeValue, setReviewTypeValue] = useState(0);
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
+  const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
 
   const handleReviewTypeChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setReviewTypeValue(newValue);
@@ -117,18 +116,15 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const handleReviewFetch = useCallback(async (recommended: boolean | null) => {
     if (game) {
       setIsReviewLoading(true);
-      const reviews = await fetchReview(game.id, recommended);
-      console.log(reviews);
+      const reviews = await fetchReview(game.id, recommended, sortBy);
       setReviews(reviews);
       setIsReviewLoading(false);
     }
-  }, [game]);
+  }, [game, sortBy]);
 
   useEffect(() => {
-    console.log("here")
-
     handleReviewFetch(reviewTypeValue === 0 ? null : reviewTypeValue === 1 ? true : false);
-  }, [handleReviewFetch, reviewTypeValue]);
+  }, [handleReviewFetch, reviewTypeValue, sortBy]);
 
   if (errorMessage) {
     return <div className="text-center text-xl font-bold">{errorMessage}</div>;
@@ -569,20 +565,42 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </Box>
           </Divider>
 
-          <Tabs 
-            value={reviewTypeValue} 
-            onChange={handleReviewTypeChange}
-            indicatorColor="secondary"
-            textColor="secondary"
-            variant="fullWidth"
+          <Box
             sx={{
-              marginBottom: "12px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: "12px",
+              marginBottom: 4,
             }}
           >
-            <Tab label="All Review"/>
-            <Tab label="Positive"/>
-            <Tab label="Negative" />
-          </Tabs>
+            <Tabs 
+              value={reviewTypeValue} 
+              onChange={handleReviewTypeChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              variant="fullWidth"
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Tab label="All Review"/>
+              <Tab label="Positive"/>
+              <Tab label="Negative" />
+            </Tabs>
+            <FormControl sx={{ minWidth: 124 }}>
+              <Select
+                color="secondary"
+                value={sortBy}
+                onChange={(event) => setSortBy(event.target.value as "recency" | "score")}
+                autoWidth={false}
+              >
+                <MenuItem value="recency">Recency</MenuItem>
+                <MenuItem value="score">Score</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
 
           {isReviewLoading ?
           (<Box sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "164px"}}>

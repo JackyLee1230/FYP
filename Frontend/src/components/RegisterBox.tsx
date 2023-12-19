@@ -34,7 +34,6 @@ const RegisterBox = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [birthDate, setBirthDate] = useState("");
-  console.log(birthDate);
   const [birthDateError, setBirthDateError] = useState("");
   const [gender, setGender] = useState(genderList[0]);
   const todayDate = new Date();

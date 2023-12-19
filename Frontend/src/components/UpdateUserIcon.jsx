@@ -116,7 +116,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const handleImgChange = (e) => {
     setSrc(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
-    console.log(URL.createObjectURL(e.target.files[0]));
+    console.debug(URL.createObjectURL(e.target.files[0]));
     setModalOpen(true);
   };
 
@@ -133,7 +133,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
           setUpdateIconOpen(false);
         })
         .catch((err) => {
-          console.log("failed to update user icon");
+          console.error("failed to update user icon");
         });
     }
   };
