@@ -1,4 +1,4 @@
-import { Tooltip } from "@mui/material";
+import { ButtonBase, Tooltip } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,11 +11,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="Steam Store">
               <Image
@@ -23,9 +25,9 @@ export const getStoreIcons = (url: string) => {
                 src="/steam.png"
                 height={32}
                 width={32}
-              ></Image>
+              />
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
@@ -33,11 +35,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="Playstation Store">
               <Image
@@ -47,7 +51,7 @@ export const getStoreIcons = (url: string) => {
                 width={32}
               ></Image>
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
@@ -56,11 +60,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="Epic Games Store">
               <Image
@@ -70,7 +76,7 @@ export const getStoreIcons = (url: string) => {
                 width={32}
               ></Image>
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
@@ -79,11 +85,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="GOG Store">
               <Image
@@ -93,7 +101,7 @@ export const getStoreIcons = (url: string) => {
                 width={32}
               ></Image>
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
@@ -102,11 +110,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="XBOX Store">
               <Image
@@ -116,7 +126,7 @@ export const getStoreIcons = (url: string) => {
                 width={32}
               ></Image>
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
@@ -125,11 +135,13 @@ export const getStoreIcons = (url: string) => {
       returnedComponent = (
         <>
           {returnedComponent}
-          <Link
+          <ButtonBase
             href={url}
             style={{ marginRight: "18px" }}
             rel="noopener noreferrer"
             target="_blank"
+            LinkComponent={Link}
+            sx={{ borderRadius: 2 }}
           >
             <Tooltip title="Nintendo eShop">
               <Image
@@ -139,7 +151,7 @@ export const getStoreIcons = (url: string) => {
                 width={32}
               ></Image>
             </Tooltip>
-          </Link>
+          </ButtonBase>
         </>
       );
     }
