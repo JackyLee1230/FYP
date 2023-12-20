@@ -73,6 +73,10 @@ y_test = y_test.to_numpy()
 print('CLEANING COMPLETED')
 print('\n\n')
 
+# shuffle dataset (?)
+# no need to define a random state, as we want to randomize the training process
+X_train, y_train = dataset_loader.shuffle_dataset(X_train, y_train)
+
 
 # Build sklearn tfidf and random forest model
 
