@@ -1,18 +1,23 @@
 package info.itzjacky.FYP.Review;
 
 import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
-import info.itzjacky.FYP.User.User;
-import org.apache.coyote.Response;
+import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
+import jakarta.persistence.Transient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @RequestMapping("/api/review")
@@ -24,6 +29,10 @@ public class ReviewController {
     private ReviewRepository reviewRepository;
     @Autowired
     private RabbitMQProducer rabbitMQProducer;
+    @Autowired
+    DigitalOceanStorageService storageService;
+
+    Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @PostMapping("/getAllReviews")
     public ResponseEntity<List<Review>> getAllReviews(){
@@ -153,6 +162,37 @@ public class ReviewController {
             return new ResponseEntity<>(reviewService.addReview(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+//
+
+    @Transient
+    @PostMapping("/uploadReviewImages/{reviewId}")
+    public ResponseEntity<Integer> uploadFiles(@PathVariable String reviewId, @RequestParam("files") MultipartFile[] files) {
+        String message = "";
+        try {
+            List<String> fileNames = new ArrayList<>();
+            AtomicReference<Integer> imageId = new AtomicReference<>(0);
+
+            Arrays.asList(files).stream().forEach(file -> {
+                storageService.uploadFile("review/" + reviewId + "/" + imageId + ".jpg", file);
+                fileNames.add("review/" + reviewId + "/" + imageId + ".jpg");
+                imageId.getAndSet(imageId.get() + 1);
+
+            });
+
+            Review r = reviewRepository.findReviewById(Integer.parseInt(reviewId));
+            r.setReviewImages(fileNames);
+            reviewRepository.save(r);
+
+            message = "Uploaded the files for review " + reviewId + " successfully: " + fileNames;
+            logger.info(message);
+            return ResponseEntity.status(HttpStatus.OK).body(imageId.get());
+        } catch (Exception e) {
+            message = "Fail to upload files for reviewId " + reviewId + "!";
+            logger.warn(message);
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(-1);
         }
     }
 
