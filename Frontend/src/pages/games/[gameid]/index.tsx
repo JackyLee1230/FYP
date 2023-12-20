@@ -17,6 +17,7 @@ import {
   FormControl,
   Grid,
   MenuItem,
+  Modal,
   Select,
   Tab,
   Tabs,
@@ -39,6 +40,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ReviewInputBox from "@/components/ReviewInputBox";
 import { useAuthContext } from "@/context/AuthContext";
+import GameDetailBox from "@/components/GameDetailBox";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -131,6 +133,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
   const { user } = useAuthContext()
+  const [open, setOpen] = useState(false);
 
   const handleReviewTypeChange = (
     event: React.ChangeEvent<{}>,
@@ -256,9 +259,23 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   right: "42px",
                 }}
               >
-                <Button variant="contained" color="primary">
+                <Button 
+                  variant="contained" 
+                  color="primary"
+                  onClick={() => setOpen(true)}
+                >
                   more
                 </Button>
+                <Modal 
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  open={open}
+                >
+                  <GameDetailBox game={game} setOpen={setOpen}/>
+                </Modal>
               </Box>
               <Box
                 sx={{

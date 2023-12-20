@@ -216,7 +216,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
             </Grid>
           </Box>
 
-          <Tooltip title={"Please use this field to state whether you recommend this product to other player."}>
+          <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
             <FormControlLabel 
               control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
               label="Recommended" 
@@ -301,7 +301,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
               type="number"
             />
 
-            <Tooltip title={"Please use this field to state whether you received this product for free."}>
+            <Tooltip title={"Please use this field to state whether you received this game for free."}>
               <FormControlLabel 
                 control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
                 label="Sponsored" 
