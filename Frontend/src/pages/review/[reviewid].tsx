@@ -7,9 +7,13 @@ import { format } from "date-fns";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
+import Image from "next/image";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
+
+const NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { reviewid } = context.query;
@@ -103,6 +107,20 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
           <span key={genre}>{getGenre(genre)} </span>
         ))}
       </p>
+      {review.reviewImages && review.reviewImages.length > 0 && (
+        <>
+          Review contains the following images:
+          {review.reviewImages.map((image) => (
+            <Image
+              width={100}
+              height={100}
+              alt="Review Image"
+              key={image}
+              src={`${NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }

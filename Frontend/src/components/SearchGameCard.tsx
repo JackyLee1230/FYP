@@ -4,8 +4,8 @@ import { Box, Typography, ButtonBase } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import Link from 'next/link'
-import { getScoreColor } from "@/utils/DynamicScore"
+import Link from "next/link";
+import { getScoreColor } from "@/utils/DynamicScore";
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -60,7 +60,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             <Image
               width={144}
               height={144}
-              src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}`}
+              src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}/${gameData.iconUrl}`}
               alt={`${gameData.name} Icon`}
               style={{ objectFit: "cover" }}
             ></Image>
@@ -187,18 +187,22 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               gutterBottom={false}
               color="text.secondary"
               noWrap
-            >{`${
+            >
+              {`${
                 gameData?.platforms.length > 1
                   ? `${gameData?.platforms[0]} ...more`
                   : gameData?.platforms[0]
               } | ${gameData.releaseDate}
-                ${gameData?.dlc === true && gameData?.baseGame !== null ?
-                   `| ${gameData?.baseGame.name} DLC` : ""}`}
+                ${
+                  gameData?.dlc === true && gameData?.baseGame !== null
+                    ? `| ${gameData?.baseGame.name} DLC`
+                    : ""
+                }`}
             </Typography>
           </Box>
         </Box>
 
-        <Box sx={{display: "block"}}>
+        <Box sx={{ display: "block" }}>
           <Box
             sx={(theme) => ({
               display: "flex",

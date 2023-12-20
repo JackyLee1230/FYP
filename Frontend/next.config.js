@@ -4,13 +4,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'fyp.sgp1.digitaloceanspaces.com',
-        port: '',
-        pathname: '/games/**',
+        protocol: "https",
+        hostname: "fyp.sgp1.digitaloceanspaces.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
+

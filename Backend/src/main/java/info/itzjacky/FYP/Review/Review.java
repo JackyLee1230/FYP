@@ -92,6 +92,9 @@ public class Review {
     @ToString.Exclude
     private List<User> likes;
 
+    @ElementCollection
+    private List<String> reviewImages;
+
     @Transient
     @Formula("(SELECT COUNT(*) FROM review_likes rl WHERE rl.review_id = id)")
     private Integer numberOfLikes;
