@@ -4,6 +4,7 @@ import { User } from "./user";
 
 export type GameInfo = {
   gamePage: string;
+  dlcs: GameInfo[];
   iconUrl: any;
   id: string;
   name: string;
