@@ -39,9 +39,9 @@ print('Training storing folder:')
 print(training_storing_folder)
 print('\n\n')
 
-dataset_traintest, X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_presampled_dataset(DATASET_SIZE, DATASET_IS_BALANCED)
+X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_validation_dataset()
 
-X_train, X_test, y_train, y_test = dataset_loader.create_traintest_dataset(dataset_traintest)
+X_train, X_test, y_train, y_test = dataset_loader.load_presampled_traintest_dataset(DATASET_SIZE, DATASET_IS_BALANCED)
 
 # data cleaning
 
@@ -73,11 +73,6 @@ y_test = y_test.to_numpy()
 print('CLEANING COMPLETED')
 print('\n\n')
 
-# shuffle dataset (?)
-# no need to define a random state, as we want to randomize the training process
-X_train, y_train = dataset_loader.shuffle_dataset(X_train, y_train)
-
-
 # Build sklearn tfidf and random forest model
 
 vectorizer = CountVectorizer(stop_words="english", max_features=MAX_FEATURES)
@@ -96,6 +91,10 @@ pipeline = Pipeline([
 
 print('TRAINING TFIDF-RF MODEL with {}k dataset, is_balanced: {}'.format(DATASET_SIZE, DATASET_IS_BALANCED))
 print('\n\n')
+
+# shuffle the training dataset
+# no need to define a random state, as we want to randomize the training process
+X_train_vectorized, y_train = dataset_loader.shuffle_dataset(X_train_vectorized, y_train)
 
 sa_classifier = pipeline.fit(X_train_vectorized, y_train)
 

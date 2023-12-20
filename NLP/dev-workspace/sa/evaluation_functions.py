@@ -1,14 +1,23 @@
 from sklearn.metrics import confusion_matrix,classification_report
 from sklearn.metrics import f1_score, accuracy_score, roc_auc_score
 
+import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 def print_classification_report(y_true,y_pred):
-    '''Create classification report including confusion matrix, accuracy, misclassification, F1-score and ROC-AUC score'''
+    '''Create classification report including confusion matrix, accuracy, misclassification, F1-score and ROC-AUC score
+    
+    Args:
+        y_true: true labels
+        y_pred: predicted labels
+    '''
 
     cfmat = confusion_matrix(y_true,y_pred)
+
+    classification_report_dict = classification_report(y_true,y_pred, output_dict=True)
+
     print('Classification report: \n',classification_report(y_true,y_pred))
     print("\n")
     print('TN - True Negative {}'.format(cfmat[0,0]))
@@ -19,6 +28,37 @@ def print_classification_report(y_true,y_pred):
     print('Misclassification Rate: {}'.format(np.divide(np.sum([cfmat[0,1],cfmat[1,0]]),np.sum(cfmat))))
     print('F1-Score: {}'.format(f1_score(y_true, y_pred,average='macro')))
     print('ROC-AUC {}'.format(roc_auc_score(y_true,y_pred)))
+
+    return classification_report_dict
+
+def create_classification_report_df(classification_report_dict, training_name):
+    '''Create classification report dataframe
+    
+    Args:
+        classification_report_dict: classification report dictionary
+    '''
+
+    # create a 1D dictionary from classification_report_dict
+    classification_report_dict_1d = {}
+    for key, value in classification_report_dict.items():
+        if key == 'accuracy':
+            classification_report_dict_1d[key] = [value]
+        else:
+            for key2, value2 in value.items():
+                classification_report_dict_1d[key + '-' + key2] = [value2]
+
+    # create dataframe from classification_report_dict_1d
+    classification_report_df = pd.DataFrame.from_dict(classification_report_dict_1d)
+
+    # add a column to indicate which model is this classification report for
+    classification_report_df['model'] = training_name
+
+    # rearrange columns such that column 'model' is the first
+    cols = list(classification_report_df)
+    cols.insert(0, cols.pop(cols.index('model')))
+    classification_report_df = classification_report_df.loc[:, cols]
+
+    return classification_report_df
 
 
 def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_filename=None):
@@ -46,7 +86,7 @@ def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_f
     ax.set_yticklabels(['Negative [0]', 'Positive [1]'])
 
     if save:
-        plt.savefig(save_filename, dpi=600, faccecolor='w')
+        plt.savefig(save_filename, dpi=600, facecolor='w')
 
 
 # plot ROC curve for binary class classification

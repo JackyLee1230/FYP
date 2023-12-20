@@ -31,9 +31,9 @@ print('Training storing folder:')
 print(training_storing_folder)
 print('\n\n')
 
-dataset_traintest, X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_presampled_dataset(DATASET_SIZE, DATASET_IS_BALANCED)
+X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_validation_dataset()
 
-X_train, X_test, y_train, y_test = dataset_loader.create_traintest_dataset(dataset_traintest)
+X_train, X_test, y_train, y_test = dataset_loader.load_presampled_traintest_dataset(DATASET_SIZE, DATASET_IS_BALANCED)
 
 # data cleaning
 
