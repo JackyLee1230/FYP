@@ -1,12 +1,11 @@
 "use client";
+import VerifyAccountBox from "@/components/VerifyAccountBox";
+import { useAuthContext } from "@/context/AuthContext";
+import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
 import { Box, styled, Typography } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import SafetyCheckIcon from "@mui/icons-material/SafetyCheck";
 import Head from "next/head";
-import { useAuthContext } from "@/context/AuthContext";
-import Link from "next/link";
-import VerifyAccountBox from "@/components/VerifyAccountBox";
 
 type VerifyPageProps = {
   token: string;
@@ -93,16 +92,20 @@ function VerifyPage({ token, errorMessage }: VerifyPageProps) {
         >
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
               gap: "12px",
               marginBottom: "12px",
             }}
           >
             <StyledSafetyCheckIcon />
-            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+            <Typography
+              variant="h2"
+              color="primary"
+              sx={{ fontWeight: 600, textAlign: "center" }}
+            >
               Verify Account
             </Typography>
           </Box>

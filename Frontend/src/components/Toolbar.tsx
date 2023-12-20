@@ -1,39 +1,37 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useAuthContext } from "@/context/AuthContext";
+import { logout } from "@/services/authService";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Logout from "@mui/icons-material/Logout";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   AppBar,
-  Toolbar,
-  IconButton,
-  InputBase,
   Avatar,
-  styled,
-  alpha,
   Box,
   Button,
-  darken,
   ButtonBase,
-  Modal,
-  Menu,
-  MenuItem,
-  ListItemIcon,
   CircularProgress,
   Divider,
+  IconButton,
+  InputBase,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Modal,
+  Toolbar,
   Typography,
+  alpha,
+  darken,
+  styled,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useDebounce } from "usehooks-ts";
 import Link from "next/link";
-import SignInUpPanel from "./SignInUpPanel";
-import { useAuthContext } from "@/context/AuthContext";
-import Logout from "@mui/icons-material/Logout";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { logout } from "@/services/authService";
-import { User } from "@/type/user";
-import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDebounce } from "usehooks-ts";
 import RoleChip from "./RoleChip";
-import { redirect } from "next/navigation";
+import SignInUpPanel from "./SignInUpPanel";
 
 const Search = styled("div")(({ theme }) => ({
   display: "flex",
@@ -157,7 +155,7 @@ const WebToolbar = () => {
             <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
           </ButtonBase>
 
-         {/*
+          {/*
           <Button
             variant="text"
             size="large"

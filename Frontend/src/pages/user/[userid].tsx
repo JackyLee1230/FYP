@@ -1,14 +1,14 @@
-import React from "react";
-import { User, UserPageProps } from "@/type/user";
-import { GetServerSideProps } from "next";
-import axios from "axios";
-import { useRouter } from "next/router";
 import RoleChip from "@/components/RoleChip";
 import UpdateUserIcon from "@/components/UpdateUserIcon";
-import { Button, Modal, Stack, TextField } from "@mui/material";
-import Head from "next/head";
 import { useAuthContext } from "@/context/AuthContext";
+import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import { Button, Modal, TextField } from "@mui/material";
+import axios from "axios";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React from "react";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;

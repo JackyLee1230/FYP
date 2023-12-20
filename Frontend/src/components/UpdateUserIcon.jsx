@@ -1,8 +1,8 @@
-import { Box, Modal, Slider, Button } from "@mui/material";
+import { useAuthContext } from "@/context/AuthContext";
+import { Box, Button, Modal, Slider } from "@mui/material";
+import axios from "axios";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
-import axios from "axios";
-import { useAuthContext } from "@/context/AuthContext";
 
 const CropperModal = ({
   src,

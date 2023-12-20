@@ -1,42 +1,38 @@
-import React, { use, useCallback, useEffect, useState } from "react";
-import { GetServerSideProps } from "next";
-import "tailwindcss/tailwind.css";
-import axios from "axios";
-import { GameInfo, GamePageProps, GameReview } from "@/type/game";
-import Platform, { getPlatform } from "@/type/gamePlatform";
-import Genre, { getGenre } from "@/type/gameGenre";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { formatTime } from "@/utils/StringUtils";
-import Link from "next/link";
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-import _ from "lodash";
+import GameReviewCard from "@/components/GameReviewCard";
+import { GamePageProps, GameReview } from "@/type/game";
+import { getGenre } from "@/type/gameGenre";
+import { getPlatform } from "@/type/gamePlatform";
+import { DLCDefinition, EarlyAccessDefinition } from "@/utils/Definition";
+import { getScoreColor } from "@/utils/DynamicScore";
+import { getStoreIcons } from "@/utils/GameLinksIcons";
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import {
   Box,
   Button,
-  Typography,
-  styled,
-  Tooltip,
-  CircularProgress,
-  circularProgressClasses,
   ButtonBase,
+  CircularProgress,
   Divider,
-  Grid,
-  Tabs,
-  Tab,
-  Select,
-  MenuItem,
   FormControl,
+  Grid,
+  MenuItem,
+  Select,
+  Tab,
+  Tabs,
+  Tooltip,
+  Typography,
+  alpha,
+  circularProgressClasses,
+  styled,
 } from "@mui/material";
+import axios from "axios";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
-import { alpha } from "@mui/material";
-import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
-import { EarlyAccessDefinition, DLCDefinition } from "@/utils/Definition";
-import { getScoreColor } from "@/utils/DynamicScore";
-import GameReviewCard from "@/components/GameReviewCard";
-import { getStoreIcons } from "@/utils/GameLinksIcons";
+import Link from "next/link";
+import React, { useCallback, useEffect, useState } from "react";
+import "tailwindcss/tailwind.css";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;

@@ -1,13 +1,12 @@
-import React from "react";
-import { GetServerSideProps } from "next";
-import "tailwindcss/tailwind.css";
+import { GameReviewPageProps } from "@/type/game";
+import { getGenre } from "@/type/gameGenre";
+import { getPlatform } from "@/type/gamePlatform";
+import { formatTime } from "@/utils/StringUtils";
 import axios from "axios";
 import { format } from "date-fns";
-import { GameReview, GameReviewPageProps } from "@/type/game";
-import Platform, { getPlatform } from "@/type/gamePlatform";
-import Genre, { getGenre } from "@/type/gameGenre";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { formatTime } from "@/utils/StringUtils";
+import "tailwindcss/tailwind.css";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;

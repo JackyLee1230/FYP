@@ -1,10 +1,7 @@
-import React from "react";
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import "tailwindcss/tailwind.css";
-import { GetServerSideProps } from "next";
-import axios from "axios";
-import Image from "next/image";
-import Head from "next/head";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
