@@ -509,7 +509,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     fontWeight: 500,
                   }}
                 >
-                  {getStoreIcons(game.gamePage)}
+                  {game.gamePage != null && getStoreIcons(game.gamePage)}
                 </Typography>
               </Box>
 
