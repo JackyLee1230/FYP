@@ -37,6 +37,8 @@ import GameDLCCard from "@/components/GameDLCCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import ReviewInputBox from "@/components/ReviewInputBox";
+import { useAuthContext } from "@/context/AuthContext";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -128,8 +130,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
-
-  console.debug(game);
+  const { user } = useAuthContext()
 
   const handleReviewTypeChange = (
     event: React.ChangeEvent<{}>,
@@ -656,7 +657,15 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </>
           }
         </Box>
-        <Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+            flex: 1,
+          }}
+        >
           <Divider textAlign="left">
             <Box
               sx={{
@@ -680,6 +689,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </Box>
           </Divider>
 
+          { user &&
+            <ReviewInputBox user={user} game={game}/>
+          }
+
           <Box
             sx={{
               display: "flex",
@@ -687,7 +700,6 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               justifyContent: "flex-end",
               alignItems: "center",
               gap: "12px",
-              marginBottom: 4,
             }}
           >
             <Tabs

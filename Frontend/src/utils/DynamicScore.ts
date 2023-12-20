@@ -6,7 +6,6 @@ export const getScoreColor = (percentile: number) => {
     75-100: Success 
   */
   }
-
   switch (true) {
     case percentile >= 75:
       return "success";
