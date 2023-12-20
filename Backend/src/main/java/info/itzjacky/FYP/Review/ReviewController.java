@@ -9,12 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -156,25 +153,6 @@ public class ReviewController {
             return new ResponseEntity<>(reviewService.addReview(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
-        }
-    }
-
-    @PostMapping("/uploadReviewImage")
-    public ResponseEntity<Review> uploadFiles(@RequestParam("files") MultipartFile[] files) {
-        String message = "";
-        try {
-            List<String> fileNames = new ArrayList<>();
-
-            Arrays.asList(files).stream().forEach(file -> {
-                storageService.save(file);
-                fileNames.add(file.getOriginalFilename());
-            });
-
-            message = "Uploaded the files successfully: " + fileNames;
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-        } catch (Exception e) {
-            message = "Fail to upload files!";
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
         }
     }
 
