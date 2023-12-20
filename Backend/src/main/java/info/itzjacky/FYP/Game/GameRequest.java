@@ -47,4 +47,5 @@ public class GameRequest {
     private Boolean orderedByReleaseDate;
     private Boolean includeReviews;
     private Boolean includePlatformReviews;
+    private Integer baseGame;
 }
