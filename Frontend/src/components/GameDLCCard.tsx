@@ -54,7 +54,7 @@ function GameDLCCard({ game }: GameDLCCardProps) {
           </Typography>
         </Box>
       )}
-      <Box sx={{ display: 'flex', flexDirection: 'column', padding: "16px", width: "100%" }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', padding: "16px", width: "100%", height: "100%" }}>
         <Typography 
           variant="h6" 
           color="text.primary" 
