@@ -60,7 +60,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             <Image
               width={144}
               height={144}
-              src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}/${gameData.iconUrl}`}
+              src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}`}
               alt={`${gameData.name} Icon`}
               style={{ objectFit: "cover" }}
             ></Image>
