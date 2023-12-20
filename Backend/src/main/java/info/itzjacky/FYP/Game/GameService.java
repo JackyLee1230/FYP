@@ -54,6 +54,7 @@ public class GameService {
                     // only allow 3 max genres
                     .genre(gameRequest.getGenre().size() > 3 ? gameRequest.getGenre().subList(0, 3) : gameRequest.getGenre())
                     .isDLC(gameRequest.getIsDLC())
+                    .BaseGame(gameRequest.getBaseGame() != null ? gameRepository.findGameById(gameRequest.getBaseGame()) : null)
                     .isFree(gameRequest.getIsFree())
                     .legalNotice(gameRequest.getLegalNotice())
                     .gamePage(gameRequest.getGamePage())
