@@ -76,6 +76,11 @@ def tokenize_dataset(data):
 ds_train = ds_train.map(tokenize_dataset, batched=True)
 ds_test = ds_test.map(tokenize_dataset, batched=True)
 
+# shuffle dataset to randomize the order of the data
+# not doing it as not mentioned in papers
+# ds_train = ds_train.shuffle()
+# ds_train = ds_train.flatten_indices()       # rewrite the shuffled dataset on disk as continguous chunks of data
+
 model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2)
 
 training_args_datetime = datetime.today()
@@ -125,9 +130,9 @@ trainer.add_callback(EvaluateTrainDatasetAtEndOfEpochCallback(trainer))
 print('\n\n')
 print('FINETUNING BERT with {}k dataset, is_balanced: {}'.format(DATASET_SIZE, DATASET_IS_BALANCED))
 
-trainer.train()
+# trainer.train()
 
-# trainer.train(resume_from_checkpoint=True)
+trainer.train(resume_from_checkpoint=True)
 
 print('\n')
 print("FINETUNING COMPLETED")
