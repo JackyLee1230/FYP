@@ -18,8 +18,8 @@ sys.path.append('../')
 import str_cleaning_functions
 import dataset_loader
 
-DATASET_SIZE = 480
-DATASET_IS_BALANCED = True
+DATASET_SIZE = 120
+DATASET_IS_BALANCED = False
 
 
 MAX_FEATURES = 20000        # max_features params for CountVectorizer

@@ -11,3 +11,5 @@ dataset/sa/dataset.csv
 *.zip
 openai_key.txt
 fyp-environment.yml
+
+.vscode/
