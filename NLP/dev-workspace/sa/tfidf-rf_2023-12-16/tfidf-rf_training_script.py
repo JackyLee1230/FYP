@@ -8,6 +8,7 @@ import pickle
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.utils import shuffle
 
 import sys
  
@@ -18,7 +19,7 @@ import str_cleaning_functions
 import dataset_loader
 
 DATASET_SIZE = 480
-DATASET_IS_BALANCED = False
+DATASET_IS_BALANCED = True
 
 
 MAX_FEATURES = 20000        # max_features params for CountVectorizer
@@ -39,7 +40,7 @@ print('Training storing folder:')
 print(training_storing_folder)
 print('\n\n')
 
-X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_validation_dataset()
+# X_imbal_valid, y_imbal_valid, X_bal_valid, y_bal_valid = dataset_loader.load_validation_dataset()
 
 X_train, X_test, y_train, y_test = dataset_loader.load_presampled_traintest_dataset(DATASET_SIZE, DATASET_IS_BALANCED)
 
@@ -94,7 +95,8 @@ print('\n\n')
 
 # shuffle the training dataset
 # no need to define a random state, as we want to randomize the training process
-X_train_vectorized, y_train = dataset_loader.shuffle_dataset(X_train_vectorized, y_train)
+X_train_vectorized, y_train = shuffle(X_train_vectorized, y_train)
+
 
 sa_classifier = pipeline.fit(X_train_vectorized, y_train)
 
