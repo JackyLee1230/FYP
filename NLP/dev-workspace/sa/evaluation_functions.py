@@ -41,7 +41,7 @@ def create_classification_report_df(classification_report_dict, training_name):
     # create a 1D dictionary from classification_report_dict
     classification_report_dict_1d = {}
     for key, value in classification_report_dict.items():
-        if key == 'accuracy':
+        if key == 'accuracy' or key == 'roc_auc':
             classification_report_dict_1d[key] = [value]
         else:
             for key2, value2 in value.items():
@@ -86,7 +86,7 @@ def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_f
     ax.set_yticklabels(['Negative [0]', 'Positive [1]'])
 
     if save:
-        plt.savefig(save_filename, dpi=600, facecolor='w')
+        plt.savefig(save_filename, dpi=600, facecolor='w', bbox_inches='tight')
 
 
 # plot ROC curve for binary class classification
@@ -130,7 +130,7 @@ def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=
     plt.legend(loc='lower right')
 
     if save:
-        plt.savefig(save_filename, dpi=600, facecolor='w')
+        plt.savefig(save_filename, dpi=600, facecolor='w', bbox_inches='tight')
 
     # plt.show() should come AFTER than plt.savefig
     # as plt.show() clears the whole thing -> anything after wards will happen on a new blank figure
@@ -227,6 +227,6 @@ def plot_roc_curve(y_test, y_pred, title=None, save=False, save_filename=None):
     plt.legend()
 
     if save:
-      plt.savefig(save_filename, dpi=600, facecolor='w')
+      plt.savefig(save_filename, dpi=600, facecolor='w', bbox_inches='tight')
 
     plt.show()
