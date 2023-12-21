@@ -67,7 +67,7 @@ public class ReviewController {
     }
 
     @PostMapping("/hasUserReviewedGame")
-    public ResponseEntity<Boolean> hasUserReviewedGame(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<Review> hasUserReviewedGame(@RequestBody ReviewRequest reviewReq){
         try{
             return new ResponseEntity<>(reviewService.hasUserReviewedGame(reviewReq), HttpStatus.OK);
         } catch (Exception e){
