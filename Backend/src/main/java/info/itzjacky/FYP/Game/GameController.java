@@ -200,6 +200,12 @@ public class GameController {
                     DLC.setGameReviews(null);
                     DLC.setBaseGame(null);
                 }
+                DLCS.sort((o1, o2) -> {
+                    if (o1.getReleaseDate() == null || o2.getReleaseDate() == null) {
+                        return 0;
+                    }
+                    return o1.getReleaseDate().compareTo(o2.getReleaseDate());
+                });
                 g.setDLCS(DLCS);
             } else {
                 g.setDLCS(null);
