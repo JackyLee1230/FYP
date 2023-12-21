@@ -650,8 +650,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   }}
                 >
                   <Slider
-                    dots={true}
-                    infinite={false}
+                    dots
+                    infinite
                     speed={500}
                     slidesToShow={1}
                     slidesToScroll={1}
@@ -660,7 +660,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     autoplaySpeed={3000}
                     lazyLoad="ondemand"
                     cssEase='linear'
-                    centerMode={true}
+                    centerMode
                     centerPadding="12px"
                   >
                     {game?.dlcs.map((dlc) => (

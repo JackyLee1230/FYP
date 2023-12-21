@@ -8,6 +8,8 @@ import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import axios from "axios";
 import { GameInfo } from "@/type/game";
 import { useRouter } from "next/router";
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -52,8 +54,42 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
     setIsSponsored(event.target.checked);
   };
 
-  const handleImageChange = (newFile: any) => {
-    setImages(Array.from(newFile));
+  const handleImageChange = (newFiles: File[] | File | undefined) => {
+    let allow = true;
+
+    // Limit the total number of files to 3
+    if (newFiles instanceof File) {
+      newFiles = [newFiles];
+    }
+    if (newFiles && newFiles.length > 3) {
+      displaySnackbarVariant(
+        `Uploading more than 3 images is not allowed.`,
+        "error"
+      );
+      allow = false;
+    }
+    // Calculate the total size of the files
+    let totalSize = 0;
+    if (newFiles) {
+      newFiles.forEach((file) => {
+        totalSize += file.size;
+      });
+    }
+    // Limit the size of each file to 3MB (3 * 1024 * 1024 bytes)
+    const maxFileSize = 3 * 1024 * 1024;
+    if (newFiles) {
+      newFiles.forEach((file) => {
+        if (file.size > maxFileSize) {
+          displaySnackbarVariant(
+            `File size exceeds the limit of 3MB: ${file.name}`,
+            "error"
+          );
+          allow = false;
+        }
+      });
+    }
+    if(allow)
+      setImages(newFiles);
   };
 
   async function addReview() {
@@ -84,7 +120,29 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
     );
     return response.data;
   }
-  
+
+  async function uploadReviewImages(reviewId: number) {
+    const apiURL = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/uploadReviewImages/${reviewId}`;
+    const formData = new FormData();
+    if(images){
+      images.forEach((image) => {
+        formData.append("files", image);
+      });
+    }
+    const response = await axios.post(
+      apiURL,
+      formData,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+    return response.data;
+  }
 
   const handleReviewSubmit = () => {
     if(comment.trim() === "" || score < 0 || platform === null || playTime < 0){
@@ -97,6 +155,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
     setLoading(true);
     addReview().then((data) => {
       if(data.id){
+        const reviewId = data.id;
         displaySnackbarVariant(
           `Review added successfully.`,
           "success"
@@ -108,7 +167,17 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
         setRecommended(false);
         setIsSponsored(false);
         setImages(undefined);
-        router.push(`/review/${data.id}`);
+        uploadReviewImages(reviewId).then((data) => {
+          router.push(`/review/${reviewId}`);
+        }).catch((error) => {
+          displaySnackbarVariant(
+            error?.response?.data?.message ?? `Failed to upload review images.`,
+            "error"
+          );
+          setLoading(false);
+          router.push(`/review/${reviewId}`);
+        }
+        );
       }
       else{
         displaySnackbarVariant(
@@ -229,12 +298,13 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
           placeholder="Write a review..."
           onChange={(e) => setComment(e.target.value)}
           multiline 
-          rows={6}
           fullWidth
           sx={{
             '& .MuiInputBase-input': {
               width: "100%",
               bgcolor: "white",
+              resize: "vertical",
+              minHeight: "160px",
             },
           }}
         />
@@ -300,6 +370,31 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
               }}
               type="number"
             />
+
+            <Tooltip title="Upload images">        
+              <MuiFileInput 
+                multiple 
+                size="small"
+                value={images} 
+                onChange={handleImageChange} 
+                InputProps={{
+                  inputProps: {
+                    accept: '.png, .jpeg, .jpg'
+                  },
+                  startAdornment: <InsertPhotoIcon />
+                }}
+                sx={{
+                  '& .MuiInputBase-root': {
+                    bgcolor: "white",
+                    width: "220px",
+                  },
+                }}
+                clearIconButtonProps={{
+                  title: "Remove all images",
+                  children: <CancelIcon color="primary" fontSize="small" />
+                }}
+              />
+            </Tooltip>
 
             <Tooltip title={"Please use this field to state whether you received this game for free."}>
               <FormControlLabel 

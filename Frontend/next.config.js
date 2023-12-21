@@ -11,6 +11,7 @@ const nextConfig = {
       },
     ],
   },
+  transpilePackages: ["mui-file-input"],
 };
 
 module.exports = nextConfig;
