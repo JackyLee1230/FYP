@@ -570,4 +570,12 @@ public class ReviewService {
                 .averageScore(averageScore)
                 .build();
     }
+
+    public Boolean hasUserReviewedGame(ReviewRequest reviewReq) {
+        if (reviewReq.getGameId() == null || reviewReq.getReviewerId() == null) {
+            throw new IllegalStateException("Game ID/Reviewer ID Cannot Be Empty/Null");
+        }
+        Review review = reviewRepository.findReviewByReviewerAndReviewedGame(reviewReq.getReviewerId(), reviewReq.getGameId());
+        return review != null;
+    }
 }

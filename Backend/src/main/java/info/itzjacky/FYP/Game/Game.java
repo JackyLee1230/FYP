@@ -60,6 +60,8 @@ public class Game {
     private List<Game> DLCS;
     @Transient
     private List<PlatformReview> platformReviews;
+    @Transient
+    private Boolean hasUserReviewed;
 
     private boolean isFree;
     private boolean isFullGame;

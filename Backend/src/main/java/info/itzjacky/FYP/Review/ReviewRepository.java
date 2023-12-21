@@ -18,6 +18,9 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     Review findReviewById(Integer id);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.game_id = ?2")
+    Review findReviewByReviewerAndReviewedGame(Integer reviewer, Integer reviewedGame);
+
     List<Review> findReviewsByReviewer(User user);
 
     List<Review> findReviewsByReviewerId(Integer id);

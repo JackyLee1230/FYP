@@ -2,6 +2,7 @@ package info.itzjacky.FYP.Game;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import info.itzjacky.FYP.Review.Review;
+import info.itzjacky.FYP.Review.ReviewRepository;
 import info.itzjacky.FYP.User.User;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ public class GameController {
     Logger logger = LoggerFactory.getLogger(GameController.class);
     @Autowired
     private GameRepository gameRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/addDeveloperToGame")

@@ -66,6 +66,15 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/hasUserReviewedGame")
+    public ResponseEntity<Boolean> hasUserReviewedGame(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.hasUserReviewedGame(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/findReviewsByGameIdAndRecommendedPaged")
     public ResponseEntity<Page<Review>> getReviewByGameIdAndRecommendedPaged(@RequestBody ReviewRequest reviewReq){
         try{
