@@ -24,7 +24,7 @@ DATASET_IS_BALANCED = False
 
 MAX_FEATURES = 20000        # max_features params for CountVectorizer
 
-training_name = 'tfidf-fa-{}_{}k_{}'.format(
+training_name = 'tfidf-rf-{}_{}k_{}'.format(
     MAX_FEATURES,
     DATASET_SIZE,
     'bal' if DATASET_IS_BALANCED else 'imbal'
