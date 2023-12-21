@@ -755,7 +755,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 color="secondary.main"
                 sx={{ fontWeight: 500 }}
               >
-                Your Reviews
+                Your Review
               </Typography>
               <Typography
                 variant="caption"
