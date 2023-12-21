@@ -17,7 +17,7 @@ import str_cleaning_functions
 import dataset_loader
 
 DATASET_SIZE = 480
-DATASET_IS_BALANCED = False
+DATASET_IS_BALANCED = True
 
 training_name = 'bert-finetune_{}k_{}'.format(
     DATASET_SIZE,
@@ -83,7 +83,7 @@ ds_test = ds_test.map(tokenize_dataset, batched=True)
 
 model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2)
 
-training_args_datetime = datetime.today()
+training_args_datetime = datetime(year=2023, month=12, day=20)
 
 training_name = training_name + '_' + training_args_datetime.strftime("%Y-%m-%d")
 

@@ -24,7 +24,7 @@ SAVE_EVAL_RESULTS = True
 LOAD_NUMPY_ARRAYS = False
 
 
-DATASET_SIZE = 120
+DATASET_SIZE = 240
 DATASET_IS_BALANCED = True
 
 training_name = 'bert-finetune_{}k_{}'.format(
@@ -32,7 +32,7 @@ training_name = 'bert-finetune_{}k_{}'.format(
     'bal' if DATASET_IS_BALANCED else 'imbal'
 )
 
-training_args_datetime = datetime(year=2023, month=12, day=17)
+training_args_datetime = datetime(year=2023, month=12, day=18)
 training_storing_folder = Path(training_name).resolve()
 
 print('Validating model: {}'.format(training_name))
@@ -213,7 +213,7 @@ if LOAD_NUMPY_ARRAYS:
     y_test_pred_prob_raw = np.load(Path.joinpath(eval_test_folder, 'y_test_pred_prob_raw.npy'))
     y_test_pred = np.load(Path.joinpath(eval_test_folder, 'y_test_pred.npy'))
     y_test_pred_prob = np.load(Path.joinpath(eval_test_folder, 'y_test_pred_prob.npy'))
-    y_test = np.load(Path.joinpath(eval_test_folder, 'y_test_true.npy'))
+    y_test = np.load(Path.joinpath(eval_test_folder, 'y_test.npy'))
 else:
     ds_test_result = trainer.predict(ds_test)
 
@@ -229,7 +229,7 @@ else:
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred_prob_raw.npy'), y_test_pred_prob_raw)
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred.npy'), y_test_pred)
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred_prob.npy'), y_test_pred_prob)
-    np.save(Path.joinpath(eval_test_folder, 'y_test_true.npy'), y_test)
+    np.save(Path.joinpath(eval_test_folder, 'y_test.npy'), y_test)
 
 
 
