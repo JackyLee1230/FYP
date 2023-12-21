@@ -13,6 +13,7 @@ import Link from "next/link";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentIcon from "@mui/icons-material/Comment";
+import ImageIcon from '@mui/icons-material/Image';
 import { getReviewColor } from "@/utils/DynamicScore";
 import { format } from "date-fns";
 import { playTimeString } from "@/utils/Other";
@@ -33,6 +34,11 @@ const StyledThumbDownIcon = styled(ThumbDownIcon)(({ theme }) => ({
 }));
 
 const StyledCommentIcon = styled(CommentIcon)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  fontSize: 24,
+}));
+
+const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
   color: theme.palette.text.secondary,
   fontSize: 24,
 }));
@@ -245,13 +251,34 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            gap: "12px",
           }}
         >
-          <StyledCommentIcon />
-          <Typography variant="subtitle1" color="text.secondary">
-            {review?.reviewComments?.length ?? 0}
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
+            <StyledImageIcon />
+            <Typography variant="subtitle1" color="text.secondary">
+              {review?.reviewImages?.length ?? 0}
+            </Typography>
+          </Box>
+          <Box
+
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
+            <StyledCommentIcon />
+            <Typography variant="subtitle1" color="text.secondary">
+              {review?.reviewComments?.length ?? 0}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>
