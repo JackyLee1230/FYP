@@ -213,7 +213,7 @@ if LOAD_NUMPY_ARRAYS:
     y_test_pred_prob_raw = np.load(Path.joinpath(eval_test_folder, 'y_test_pred_prob_raw.npy'))
     y_test_pred = np.load(Path.joinpath(eval_test_folder, 'y_test_pred.npy'))
     y_test_pred_prob = np.load(Path.joinpath(eval_test_folder, 'y_test_pred_prob.npy'))
-    y_test = np.load(Path.joinpath(eval_test_folder, 'y_test_true.npy'))
+    y_test = np.load(Path.joinpath(eval_test_folder, 'y_test.npy'))
 else:
     ds_test_result = trainer.predict(ds_test)
 
@@ -229,7 +229,7 @@ else:
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred_prob_raw.npy'), y_test_pred_prob_raw)
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred.npy'), y_test_pred)
     np.save(Path.joinpath(eval_test_folder, 'y_test_pred_prob.npy'), y_test_pred_prob)
-    np.save(Path.joinpath(eval_test_folder, 'y_test_true.npy'), y_test)
+    np.save(Path.joinpath(eval_test_folder, 'y_test.npy'), y_test)
 
 
 
