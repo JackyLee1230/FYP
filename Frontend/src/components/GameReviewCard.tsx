@@ -19,6 +19,7 @@ import { playTimeString } from "@/utils/Other";
 
 type GameReviewCardProps = {
   review: GameReview;
+  fullWidth?: boolean;
 };
 
 const StyledThumbUpIcon = styled(ThumbUpIcon)(({ theme }) => ({
@@ -36,7 +37,7 @@ const StyledCommentIcon = styled(CommentIcon)(({ theme }) => ({
   fontSize: 24,
 }));
 
-function GameReviewCard({ review }: GameReviewCardProps) {
+function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
   const router = useRouter();
 
   return (
@@ -48,7 +49,8 @@ function GameReviewCard({ review }: GameReviewCardProps) {
         flexDirection: "column",
         alignItems: "flex-start",
         flex: "1 0 0",
-        height: 300,
+        minHeight: 300,
+        width: fullWidth ? "100%" : "auto",
       }}
     >
       <Box

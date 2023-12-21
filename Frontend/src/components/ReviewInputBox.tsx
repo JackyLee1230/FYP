@@ -63,7 +63,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
     }
     if (newFiles && newFiles.length > 3) {
       displaySnackbarVariant(
-        `Uploading more than 3 images is not allowed.`,
+        `You can only upload 3 images for your reivew.`,
         "error"
       );
       allow = false;

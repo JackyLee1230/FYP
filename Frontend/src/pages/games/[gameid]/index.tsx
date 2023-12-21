@@ -19,6 +19,7 @@ import {
   MenuItem,
   Modal,
   Select,
+  Skeleton,
   Tab,
   Tabs,
   Tooltip,
@@ -41,6 +42,9 @@ import Slider from "react-slick";
 import ReviewInputBox from "@/components/ReviewInputBox";
 import { useAuthContext } from "@/context/AuthContext";
 import GameDetailBox from "@/components/GameDetailBox";
+import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
+import { is } from "date-fns/locale";
+import { set } from "lodash";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -134,6 +138,36 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
   const { user } = useAuthContext()
   const [open, setOpen] = useState(false);
+  const [userReview, setUserReview] = useState<GameReview | null>(null);
+
+  const fetchUserReview = useCallback(async () => {
+    if (game && user) {
+      const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/hasUserReviewedGame`;
+      const body = {
+        gameId: game.id,
+        reviewerId: user.id,
+      };
+      try {
+        const response = await axios.post(apiAddress, body, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Credentials": "true",
+          },
+        });
+        if (response.status === 200) {
+          setUserReview(await response.data);
+        }
+      } catch (error: any) {
+        console.error(error);
+      }
+    }
+  }, [game, user]);
+
+  useEffect(() => {
+    fetchUserReview();
+  }, [fetchUserReview, user, game]);
 
   const handleReviewTypeChange = (
     event: React.ChangeEvent<{}>,
@@ -700,15 +734,43 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               >
                 User Reviews
               </Typography>
-              <Button variant="contained" color="secondary">
-                Add Review
-              </Button>
             </Box>
           </Divider>
 
-          { user &&
-            <ReviewInputBox user={user} game={game}/>
-          }
+
+          {user && (
+            userReview ?
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+                gap: "12px",
+                width: "100%"
+              }}
+            >
+              <Typography
+                variant="h6"
+                color="secondary.main"
+                sx={{ fontWeight: 500 }}
+              >
+                Your Reviews
+              </Typography>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ fontWeight: 500 }}
+              >
+                Edit review feature is not available yet.
+              </Typography>
+              <GameReviewCard 
+                review={userReview} 
+                fullWidth={true}
+              />
+            </Box>:
+              <ReviewInputBox user={user} game={game}/>
+          )}
 
           <Box
             sx={{
@@ -749,16 +811,14 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
           </Box>
 
           {isReviewLoading ? (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "164px",
-              }}
-            >
-              <CircularProgress size={56} thickness={4} color="secondary" />
-            </Box>
+            <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
+              <Grid item xs={12} lg={6}>
+                <GameReviewCardSkeleton/>
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <GameReviewCardSkeleton/>
+              </Grid>
+            </Grid>
           ) : reviews && reviews.length > 0 ? (
             <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
               {reviews.map((review) => (
