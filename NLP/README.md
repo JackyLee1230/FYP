@@ -12,14 +12,26 @@ We only highlight the most critical packages that affect the code.
 |---|---|---|
 |python|3.9.18|pickling 3.9 for max compatability across different packages|
 |pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
+|numpy|1.26.0|
 |scikit-learn|1.3.0|
 |imbalanced-learn|0.11.0|
-|seaborn|0.13.0|
-|matplotlib|3.7.3|
 |tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux.|
 |pytorch (GPU)|2.1.0|Main stable version at setup|
-|transformers|4.35.0|Main stable version at setup|
 
+Huggingface related
+
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|transformers|4.35.0|Main stable version at setup|
+|datasets|2.14.6|The package for creating Dataset object for training|
+|evaluate|0.4.1|The package for create metrics objects for training|
+|accelerate|0.24.1|The package for using Trainer object in training and model evaluation (PyTorch inference)|
+
+Non-critical packages
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|seaborn|0.13.0|
+|matplotlib|3.7.3|
 
 ## WSL2
 
@@ -27,8 +39,9 @@ According to offical documentation of tensorflow, WSL is required to use latest 
 
 Hence, here is the guideline of setting up WSL environment for gpu-enabled ML training.
 
-1. Install NVIDIA Driver for GPU Support
-Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver on your system with a compatible GeForce or NVIDIA RTX/Quadro card from https://www.nvidia.com/Download/index.aspx. Refer to the system requirements in the Appendix.  
+1. Install NVIDIA Driver for GPU Support
+
+    Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver on your system with a compatible GeForce or NVIDIA RTX/Quadro card from https://www.nvidia.com/Download/index.aspx. Refer to the system requirements in the Appendix.  
 
     **This is the only driver you need to install. Do not install any Linux display driver in WSL.**
 
@@ -132,7 +145,6 @@ Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver
 
     I prepared the wsl environment with python=3.9.18, and the latest tf and pytorch (with gpu support) at our development. (pytorch=2.1, tensorflow=2.14.0). Can directly import the .yml file and an environment is created. (name of the file: _fyp-test-wsl_pytorch_tf.yml_) (Note that seaborn and other web-scraping tools are not installed.)
 
-    
     Or you can create a new one as below. (just for documentation purpose)
     
     Create a new virtual environment in miniforge (e.g. fyp-test-wsl)
