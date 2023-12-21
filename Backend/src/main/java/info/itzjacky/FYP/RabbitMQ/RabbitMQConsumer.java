@@ -44,7 +44,7 @@ public class RabbitMQConsumer {
         Review review = reviewRepository.findReviewById(Integer.valueOf(reviewId));
         if (review == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + reviewId);
-            channel.basicAck(tag, false);
+            channel.basicNack(tag, false, true);
             return;
         } else {
             review.setSentiment(Integer.valueOf(sentiment));
