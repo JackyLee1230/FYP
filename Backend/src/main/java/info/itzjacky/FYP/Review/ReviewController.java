@@ -66,6 +66,16 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/findReviewsByReviewerIdPaged")
+    public ResponseEntity<Page<Review>> findReviewsByReviewerIdPaged(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.findReviewsByReviewerIdPaged(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+
     @PostMapping("/hasUserReviewedGame")
     public ResponseEntity<Review> hasUserReviewedGame(@RequestBody ReviewRequest reviewReq){
         try{

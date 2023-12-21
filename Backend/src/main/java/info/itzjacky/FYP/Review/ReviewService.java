@@ -311,12 +311,54 @@ public class ReviewService {
         return r;
     }
 
-    public List<Review> getReviewsByReviewerId(ReviewRequest reviewRequest){
+    public Page<Review> findReviewsByReviewerIdPaged(ReviewRequest reviewRequest){
         if(reviewRequest == null || reviewRequest.getReviewerId() == null){
             throw new IllegalStateException("Reviewer ID Cannot Be Empty/Null");
         }
-        return reviewRepository.findReviewsByReviewerId(reviewRequest.getReviewId());
+        if(reviewRequest.getReviewsPerPage() == null || reviewRequest.getReviewsPerPage() < 0 ){
+            reviewRequest.setReviewsPerPage(5);
+        }
+        if(reviewRequest.getPageNum() == null || reviewRequest.getPageNum() < 0 ){
+            reviewRequest.setPageNum(0);
+        }
+        // check sort by must be either "score" or "recency"
+        if (reviewRequest.getSortBy() == null || (!reviewRequest.getSortBy().equals("score") && !reviewRequest.getSortBy().equals("recency"))) {
+            reviewRequest.setSortBy("recency");
+        }
+        if (reviewRequest.getRecommended() == null) {
+            Page<Review> r = null;
+            if (Objects.equals(reviewRequest.getSortBy(), "recency")){
+                r = reviewRepository.findReviewsByReviewerIdPagedSortByCreatedAt(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            } else {
+                r = reviewRepository.findReviewsByReviewerIdPagedSortByScore(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+
+            for (Review review : r.getContent()){
+                review.setReviewer(null);
+                review.getReviewedGame().setGameReviews(null);
+                review.getReviewedGame().setBaseGame(null);
+                review.getReviewedGame().setDLCS(null);
+            }
+            return r;
+        } else {
+            Page<Review> r = null;
+            if (Objects.equals(reviewRequest.getSortBy(), "recency")) {
+                r =  reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getReviewerId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+            else {
+                r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByScore(reviewRequest.getReviewerId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+            }
+
+            for (Review review : r.getContent()){
+                review.setReviewer(null);
+                review.getReviewedGame().setGameReviews(null);
+                review.getReviewedGame().setBaseGame(null);
+                review.getReviewedGame().setDLCS(null);
+            }
+            return r;
+        }
     }
+
 
     @Transactional
     public Review addReview(Review review){
