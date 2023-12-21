@@ -61,7 +61,7 @@ def create_classification_report_df(classification_report_dict, training_name):
     return classification_report_df
 
 
-def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_filename=None):
+def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_filename=None, show=False):
     '''Create confusion matrix graph
     
     Args:
@@ -92,7 +92,7 @@ def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_f
 # plot ROC curve for binary class classification
 from sklearn.metrics import roc_curve, auc
 
-def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=None):
+def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=None, show=False):
     '''Plot ROC curve for binary class classification
     
     Args:
@@ -134,7 +134,8 @@ def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=
 
     # plt.show() should come AFTER than plt.savefig
     # as plt.show() clears the whole thing -> anything after wards will happen on a new blank figure
-    plt.show()
+    if show:
+        plt.show()
 
 
 
@@ -143,7 +144,7 @@ def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=
 from sklearn.preprocessing import label_binarize
 from itertools import cycle
 
-def plot_roc_curve(y_test, y_pred, title=None, save=False, save_filename=None):
+def plot_roc_curve(y_test, y_pred, title=None, save=False, save_filename=None, show=False):
     '''Plot ROC curve for non-binary class classification
     From: https://stackoverflow.com/questions/70278059/plotting-the-roc-curve-for-a-multiclass-problem
 
@@ -229,4 +230,5 @@ def plot_roc_curve(y_test, y_pred, title=None, save=False, save_filename=None):
     if save:
       plt.savefig(save_filename, dpi=600, facecolor='w', bbox_inches='tight')
 
-    plt.show()
+    if show:
+        plt.show()
