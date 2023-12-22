@@ -23,16 +23,30 @@ import evaluation_functions
 SAVE_EVAL_RESULTS = True
 LOAD_NUMPY_ARRAYS = False
 
+# accept DATASET_SIZE and DATASET_IS_BALANCED as sys args
+# if args not present, then set a default value
+try:
+    DATASET_SIZE = int(sys.argv[1])
+    DATASET_IS_BALANCED = True if str(sys.argv[2]).strip().lower() == 'true' else False
 
-DATASET_SIZE = 240
-DATASET_IS_BALANCED = True
+    training_args_year = int(sys.argv[3])
+    training_args_month = int(sys.argv[4])
+    training_args_day = int(sys.argv[5])
+
+except:
+    DATASET_SIZE = 240
+    DATASET_IS_BALANCED = True
+
+    training_args_year = 2023
+    training_args_month = 12
+    training_args_day = 18
 
 training_name = 'bert-finetune_{}k_{}'.format(
     DATASET_SIZE,
     'bal' if DATASET_IS_BALANCED else 'imbal'
 )
 
-training_args_datetime = datetime(year=2023, month=12, day=18)
+training_args_datetime = datetime(year=training_args_year, month=training_args_month, day=training_args_day)
 training_storing_folder = Path(training_name).resolve()
 
 print('Validating model: {}'.format(training_name))
