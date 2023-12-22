@@ -27,6 +27,18 @@ Huggingface related
 |evaluate|0.4.1|The package for create metrics objects for training|
 |accelerate|0.24.1|The package for using Trainer object in training and model evaluation (PyTorch inference)|
 
+ONNX related
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|onnx|1.14.1|tf2onnx suggests not above 1.14.1 as tf2onnx 1.15.1 is not fully supporting onnx 1.15.0 <=
+|onnxruntime|1.16.3|The latest version at writing.|
+|skl2onnx|1.16.0|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
+|tf2onnx|1.15.1|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
+|onnxruntime-extensions|0.9.0|for tf2onnx|
+|optimum|1.17.0|for converting huggingface model to ONNX|
+
+
+
 Non-critical packages
 |Dependency|version|Reason (if any)|
 |---|---|---|
@@ -189,6 +201,8 @@ Hence, here is the guideline of setting up WSL environment for gpu-enabled ML tr
     # Verify the installation:
     python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
     ```
+
+    Then you can continue installing other packages for huggingface, and ONNX convertion.
 
 8. Setup VSCode to have access to WSL environment. [Setup](https://code.visualstudio.com/docs/remote/wsl). Follow the process in "Installation". Quote as below
 
