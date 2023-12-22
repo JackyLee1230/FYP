@@ -3,3 +3,6 @@
 *.sav
 
 *.pyc
+
+# models
+tfidf-fa
