@@ -10,13 +10,14 @@ We only highlight the most critical packages that affect the code.
 
 |Dependency|version|Reason (if any)|
 |---|---|---|
-|python|3.9.18|pickling 3.9 for max compatability across different packages|
+|python|3.9.18|picking 3.9 for max compatability across different packages|
 |pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
-|numpy|1.26.0|
+|numpy|1.26.0|Suggested version. The exact version can be higher than that.
 |scikit-learn|1.3.0|
 |imbalanced-learn|0.11.0|
-|tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux.|
-|pytorch (GPU)|2.1.0|Main stable version at setup|
+|nltk|3.8.3|
+|tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux, or vice versa.|
+|pytorch (w/ GPU)|2.1.0|Main stable version at setup|
 
 Huggingface related
 
@@ -25,12 +26,12 @@ Huggingface related
 |transformers|4.35.0|Main stable version at setup|
 |datasets|2.14.6|The package for creating Dataset object for training|
 |evaluate|0.4.1|The package for create metrics objects for training|
-|accelerate|0.24.1|The package for using Trainer object in training and model evaluation (PyTorch inference)|
+|accelerate|0.24.1|The package for using Trainer object in training and model evaluation with PyTorch as backend|
 
 ONNX related
 |Dependency|version|Reason (if any)|
 |---|---|---|
-|onnx|1.14.1|tf2onnx suggests not above 1.14.1 as tf2onnx 1.15.1 is not fully supporting onnx 1.15.0 <=
+|onnx|1.14.1|tf2onnx suggests not above 1.14.1 as tf2onnx 1.15.1 is not that fully supporting onnx 1.15.0 <= (even though it shd be fine)
 |onnxruntime|1.16.3|The latest version at writing.|
 |skl2onnx|1.16.0|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
 |tf2onnx|1.15.1|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
@@ -162,7 +163,7 @@ Hence, here is the guideline of setting up WSL environment for gpu-enabled ML tr
     Create a new virtual environment in miniforge (e.g. fyp-test-wsl)
 
     ```
-    conda create --name fyp-test-wsl python=3.9.18 pandas=2.1.0 numpy scikit-learn=1.3.0 seaborn matplotlib 
+    conda create --name fyp-test-wsl python=3.9.18 pandas=2.1.0 numpy scikit-learn=1.3.0 nltk=3.8.3 seaborn matplotlib 
 
     conda activate fyp-test-wsl
     ```
@@ -225,11 +226,12 @@ Hence, here is the guideline of setting up WSL environment for gpu-enabled ML tr
 ### WSL commands
 
 Shutdown all wsl
+
 ```terminal
 wsl --shutdown
 ```
 
-Show running 
+Show running wsl
 
 ```terminal
 wsl --list --running
