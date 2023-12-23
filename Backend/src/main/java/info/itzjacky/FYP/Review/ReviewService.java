@@ -105,9 +105,11 @@ public class ReviewService {
             throw new IllegalStateException("Cannot like/dislike review");
         }
 //        make a map with like=false and dislike= false
-        HashMap<String, Boolean> reactionMap = new HashMap<String, Boolean>();
-        reactionMap.put("like", false);
-        reactionMap.put("dislike", false);
+        HashMap<String, Integer> reactionMap = new HashMap<String, Integer>();
+        reactionMap.put("like", 0);
+        reactionMap.put("dislike", 0);
+        reactionMap.put("likeCount", 0);
+        reactionMap.put("dislikeCount", 0);
 
         try {
             Review review = reviewRepository.findReviewById(reviewRequest.getReviewId());
@@ -118,103 +120,81 @@ public class ReviewService {
             if(Reaction.LIKE.equals(reviewRequest.getReaction())){
                 if (review.getLikes().contains(liker)) { // already liked
                     logger.info("already liked");
-                    List<User> newLikes = review.getLikes();
-                    newLikes.remove(liker);
-                    review.setLikes(newLikes);
-//                    remove this review from the user's liked reviews
-                    List<Review> newLikedReviews = liker.getLikedReviews();
-                    newLikedReviews.remove(review);
-                    liker.setLikedReviews(newLikedReviews);
+                    review.setLikes(new ArrayList<User>(review.getLikes()){{remove(liker);}});
+//                  remove this review from the user's liked reviews
+                    liker.setLikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{remove(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
                 else if (review.getDislikes().contains(liker)) {
                     logger.info("user change from dislike to like");
-                    //                    user change from dislike to like
-                    List<User> newLikes = review.getLikes();
-                    newLikes.add(liker);
-                    review.setLikes(newLikes);
-
-                    List<User> newDislikes = review.getDislikes();
-                    newDislikes.remove(liker);
-                    review.setDislikes(newDislikes);
+                    //  user change from dislike to like
+                    review.setLikes(new ArrayList<User>(review.getLikes()){{add(liker);}});
+                    review.setDislikes(new ArrayList<User>(review.getDislikes()){{remove(liker);}});
 //                    remove this review from the user's liked reviews
-                    List<Review> newLikedReviews = liker.getLikedReviews();
-                    newLikedReviews.remove(review);
-                    liker.setLikedReviews(newLikedReviews);
-                    List<Review> newDislikedReviews = liker.getDislikedReviews();
-                    newDislikedReviews.add(review);
-                    liker.setDislikedReviews(newDislikedReviews);
+                    liker.setLikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{add(review);}});
+                    liker.setDislikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{remove(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
-                    reactionMap.put("like", true);
+                    reactionMap.put("like", 1);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
                 else { // new like
                     logger.info("new like");
-                    review.getLikes().add(liker);
-                    List<User> newLikes = review.getLikes();
-                    newLikes.add(liker);
-                    review.setLikes(newLikes);
+                    review.setLikes(new ArrayList<User>(review.getLikes()){{add(liker);}});
 //                    add this review to the user's liked reviews
-                    List<Review> newLikedReviews = liker.getLikedReviews();
-                    newLikedReviews.add(review);
-                    liker.setLikedReviews(newLikedReviews);
+                    liker.setLikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{add(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
-                    reactionMap.put("like", true);
+                    reactionMap.put("like", 1);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
             } else if(Reaction.DISLIKE.equals(reviewRequest.getReaction())) {
                 if (review.getDislikes().contains(liker)) { // already disliked
                     logger.info("already disliked");
-                    List<User> newDislikes = review.getDislikes();
-                    newDislikes.remove(liker);
-                    review.setDislikes(newDislikes);
-//                    remove this review from the user's disliked reviews
-                    List<Review> newDislikedReviews = liker.getDislikedReviews();
-                    newDislikedReviews.remove(review);
-                    liker.setDislikedReviews(newDislikedReviews);
+                    review.setDislikes(new ArrayList<User>(review.getDislikes()){{remove(liker);}});
+//                  remove this review from the user's disliked reviews
+                    liker.setDislikedReviews(new ArrayList<Review>(liker.getDislikedReviews()){{remove(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
-                    reactionMap.put("dislike", false);
+                    reactionMap.put("dislike", 0);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
                 else if (review.getLikes().contains(liker)) {
                     logger.info("user change from like to dislike");
 //                    user change from like to dislike
-                    List<User> newLikes = review.getLikes();
-                    newLikes.remove(liker);
-                    review.setLikes(newLikes);
+                    review.setLikes(new ArrayList<User>(review.getLikes()){{remove(liker);}});
+                    review.setDislikes(new ArrayList<User>(review.getDislikes()){{add(liker);}});
 
-                    List<User> newDislikes = review.getDislikes();
-                    newDislikes.add(liker);
-                    review.setDislikes(newDislikes);
 //                    remove this review from the user's liked reviews
-                    List<Review> newLikedReviews = liker.getLikedReviews();
-                    newLikedReviews.remove(review);
-                    liker.setLikedReviews(newLikedReviews);
-                    List<Review> newDislikedReviews = liker.getDislikedReviews();
-                    newDislikedReviews.add(review);
-                    liker.setDislikedReviews(newDislikedReviews);
+                    liker.setLikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{remove(review);}});
+                    liker.setDislikedReviews(new ArrayList<Review>(liker.getLikedReviews()){{add(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
-                    reactionMap.put("dislike", true);
+                    reactionMap.put("dislike", 1);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
                 else { // new dislike
                     logger.info("new dislike");
-                    List<User> newDislikes = review.getDislikes();
-                    newDislikes.add(liker);
-                    review.setDislikes(newDislikes);
+                    review.setDislikes(new ArrayList<User>(review.getDislikes()){{add(liker);}});
 //                    add this review to the user's disliked reviews
-                    List<Review> newDislikedReviews = liker.getDislikedReviews();
-                    newDislikedReviews.add(review);
-                    liker.setDislikedReviews(newDislikedReviews);
+                    liker.setDislikedReviews(new ArrayList<Review>(liker.getDislikedReviews()){{add(review);}});
                     userRepository.save(liker);
                     reviewRepository.save(review);
-                    reactionMap.put("dislike", true);
+                    reactionMap.put("dislike", 1);
+                    reactionMap.put("likeCount", review.getLikes().size());
+                    reactionMap.put("dislikeCount", review.getDislikes().size());
                     return reactionMap;
                 }
             }
