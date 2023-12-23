@@ -153,6 +153,9 @@ def consumer(ch, method, properties, body, inference_obj):
     print(
         f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
+    thread_channel.basic_publish(
+        exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+
     # notify the RabbitQueue
     # acknowledge finish processing the msg to the channel in the main thread
     cb = functools.partial(ack_message, ch, method.delivery_tag)
