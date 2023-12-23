@@ -175,7 +175,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
       <Box
         sx={{
           display: "flex",
-          padding: "48px 128px",
+          padding: "48px 32px",
           maxWidth: 1440,
           flexDirection: "column",
           flex: "1 0 0",

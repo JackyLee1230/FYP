@@ -224,7 +224,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
       <Box
         sx={{
           display: "flex",
-          padding: "24px 86px",
+          padding: "24px 32px",
           maxWidth: 1440,
           flexDirection: "column",
           flex: "1 0 0",
@@ -751,14 +751,14 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               }}
             >
               <Typography
-                variant="h6"
+                variant="h5"
                 color="secondary.main"
                 sx={{ fontWeight: 500 }}
               >
                 Your Review
               </Typography>
               <Typography
-                variant="caption"
+                variant="body2"
                 color="text.secondary"
                 sx={{ fontWeight: 500 }}
               >

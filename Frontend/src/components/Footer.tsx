@@ -62,22 +62,22 @@ export default function StickyFooter() {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Typography variant="h6" color="text.primary" gutterBottom>
-                {"Setting"}
+                {"Placeholder"}
               </Typography>
               <ul>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Setting 1"}
+                    {"Placeholder 1"}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Setting 2"}
+                    {"Placeholder 2"}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Setting 3"}
+                    {"Placeholder 3"}
                   </Link>
                 </li>
               </ul>
