@@ -162,8 +162,8 @@ def consumer(ch, method, properties, body, inference_obj):
     ch.connection.add_callback_threadsafe(cb)
 
     # use the local thread channel to send back the result (to maintain thread-safe queue)
-    thread_channel.basic_publish(
-        exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
+    # thread_channel.basic_publish(
+    #     exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
 
 
 def callback(ch, method, properties, body):
