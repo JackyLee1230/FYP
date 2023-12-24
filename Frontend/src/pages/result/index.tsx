@@ -240,7 +240,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             <Popper
               open={open}
               anchorEl={anchorEl}
-              placement="bottom-start"
+              placement="bottom-end"
               transition
               keepMounted
             >
