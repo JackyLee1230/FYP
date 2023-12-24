@@ -94,8 +94,6 @@ def cleaning(s_list: list[str]):
 
 
 def inference(s_list: list[str]):
-    # wait 5 seconds
-    time.sleep(5)
     s_list = cleaning(s_list)
     result = pipeline_target.predict(s_list)
     return result
@@ -151,7 +149,8 @@ def consumer(ch, method, properties, body, inference_obj):
     # forming the result
     resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
 
-    print(f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+    print(
+        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
     # test queue to not destroying the main queue
     # local.channel.basic_publish(
