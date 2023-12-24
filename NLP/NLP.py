@@ -150,10 +150,10 @@ def consumer(ch, method, properties, body, inference_obj):
 
     # forming the result
     resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
-    print(
-        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
-    thread_channel.basic_publish(
+    print(f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+
+    local.channel.basic_publish(
         exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
     # notify the RabbitQueue
