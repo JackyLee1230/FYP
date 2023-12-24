@@ -30,12 +30,15 @@ public enum Platform {
     PS3(20),
     PS4(21),
     PS5(22),
-    XBOX(23),
-    XBOX_360(24),
-    XBOX_ONE(25),
-    XBOX_SERIES(26),
-    MOBILE(27),
-    APPLE_ARCADE(28),
+    PSP(23),
+    PS_VITA(24),
+    XBOX(25),
+    XBOX_360(26),
+    XBOX_ONE(27),
+    XBOX_SERIES(28),
+    MOBILE(29),
+    APPLE_ARCADE(30),
+    ITCH_IO(31),
     ;
 
     private int id;

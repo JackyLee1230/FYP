@@ -4,6 +4,8 @@ enum Platform {
   PS3 = "PlayStation 3",
   PS4 = "PlayStation 4",
   PS5 = "PlayStation 5",
+  PSP = "PlayStation Portable",
+  PS_VITA = "PlayStation Vita",
   XBOX = "Xbox",
   XBOX_360 = "Xbox 360",
   XBOX_ONE = "Xbox One",
@@ -28,6 +30,7 @@ enum Platform {
   NINTENDO_3DS = "Nintendo 3DS",
   MOBILE = "Mobile",
   APPLE_ARCADE = "Apple Arcade",
+  ITCH_IO = "Itch.io",
 }
 
 export function getPlatform(key: string): string {
@@ -66,12 +69,15 @@ export const PlatformList = [
   "PS3",
   "PS4",
   "PS5",
+  "PSP",
+  "PS_VITA",
   "XBOX",
   "XBOX_360",
   "XBOX_ONE",
   "XBOX_SERIES",
   "MOBILE",
   "APPLE_ARCADE",
+  "ITCH_IO",
 ];
 
 export enum PlatformById {
@@ -98,12 +104,15 @@ export enum PlatformById {
   PS3 = 20,
   PS4 = 21,
   PS5 = 22,
-  XBOX = 23,
-  XBOX_360 = 24,
-  XBOX_ONE = 25,
-  XBOX_SERIES = 26,
-  MOBILE = 27,
-  APPLE_ARCADE = 28,
+  PSP = 23,
+  PS_VITA = 24,
+  XBOX = 25,
+  XBOX_360 = 26,
+  XBOX_ONE = 27,
+  XBOX_SERIES = 28,
+  MOBILE = 29,
+  APPLE_ARCADE = 30,
+  ITCH_IO = 31,
 }
 
 export function getIdByPlatform(key: string): number {
