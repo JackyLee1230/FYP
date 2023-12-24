@@ -205,7 +205,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   return (
     <div>
       <Head>
-        <title>{game.name}</title>
+        <title>{`${game.name} | CritiQ`}</title>
       </Head>
       <Box
         sx={(theme) => ({

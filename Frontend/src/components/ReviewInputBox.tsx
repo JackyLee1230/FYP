@@ -122,13 +122,17 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
   }
 
   async function uploadReviewImages(reviewId: number) {
+    if(!images){
+      return;
+    }
+
     const apiURL = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/uploadReviewImages/${reviewId}`;
     const formData = new FormData();
-    if(images){
-      images.forEach((image) => {
-        formData.append("files", image);
-      });
-    }
+
+    images.forEach((image) => {
+      formData.append("files", image);
+    });
+
     const response = await axios.post(
       apiURL,
       formData,
@@ -166,18 +170,23 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
         setplayTime(-1);
         setRecommended(false);
         setIsSponsored(false);
-        setImages(undefined);
-        uploadReviewImages(reviewId).then((data) => {
-          router.push(`/review/${reviewId}`);
-        }).catch((error) => {
-          displaySnackbarVariant(
-            error?.response?.data?.message ?? `Failed to upload review images.`,
-            "error"
+        if(images){
+          uploadReviewImages(reviewId).then((data) => {
+            setImages(undefined);
+            router.push(`/review/${reviewId}`);
+          }).catch((error) => {
+            displaySnackbarVariant(
+              error?.response?.data?.message ?? `Failed to upload review images.`,
+              "error"
+            );
+            setLoading(false);
+            router.push(`/review/${reviewId}`);
+          }
           );
-          setLoading(false);
+        }
+        else{
           router.push(`/review/${reviewId}`);
         }
-        );
       }
       else{
         displaySnackbarVariant(

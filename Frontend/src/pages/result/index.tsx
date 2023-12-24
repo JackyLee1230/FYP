@@ -170,7 +170,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   return (
     <>
       <Head>
-        <title>Search: {searchString} | CritiQ</title>
+        <title>{searchString ? `Search: ${searchString} | CritiQ` : `All games | CritiQ`}</title>
       </Head>
       <Box
         sx={{
