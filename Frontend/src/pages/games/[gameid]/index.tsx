@@ -45,6 +45,7 @@ import GameDetailBox from "@/components/GameDetailBox";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { is } from "date-fns/locale";
 import { set } from "lodash";
+import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -194,12 +195,31 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
     );
   }, [handleReviewFetch, reviewTypeValue, sortBy]);
 
-  if (errorMessage) {
-    return <div className="text-center text-xl font-bold">{errorMessage}</div>;
-  }
-
-  if (!game) {
-    return <div className="text-center text-xl font-bold">Game not found</div>;
+  if (!game || errorMessage) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          padding: "24px 32px",
+          maxWidth: 1440,
+          flex: "1 0 0",
+          margin: "0 auto",
+          justifyContent: "center",
+          alignContent: "center",
+          flexDirection: "column",
+          gap: 4,
+        }}
+      >
+        <Typography variant="h4" sx={{textAlign: "center"}}>
+          Game Not Found
+        </Typography>
+        {errorMessage &&
+          <Typography variant="body1" sx={{textAlign: "center"}}>
+            {errorMessage}
+          </Typography>
+        }
+      </Box>
+    )
   }
 
   return (
@@ -696,6 +716,8 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                     cssEase='linear'
                     centerMode
                     centerPadding="12px"
+                    nextArrow={<CustomArrowRight size="small" />}
+                    prevArrow={<CustomArrowLeft size="small" />}
                   >
                     {game?.dlcs.map((dlc) => (
                       <Box key={dlc.id}>

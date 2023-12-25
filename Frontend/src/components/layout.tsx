@@ -9,7 +9,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <WebToolbar />
-      <main>{children}</main>
+      <main style={{marginTop: "64px"}}>{children}</main>
       <Footer />
     </>
   );

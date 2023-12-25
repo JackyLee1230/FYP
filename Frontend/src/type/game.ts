@@ -48,6 +48,8 @@ export type GameSearchPageProps = {
 };
 
 export type GameReview = {
+  numberOfDislikes: number;
+  numberOfLikes: number;
   id: string;
   gameId: string;
   createdAt: string;

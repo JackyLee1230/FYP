@@ -19,11 +19,13 @@ import {
   Menu,
   MenuItem,
   Modal,
+  Slide,
   Toolbar,
   Typography,
   alpha,
   darken,
   styled,
+  useScrollTrigger,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -132,205 +134,209 @@ const WebToolbar = () => {
     }
   };
 
+  const trigger = useScrollTrigger({
+    threshold: 200,
+  })
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        sx={(theme) => ({
-          [theme.breakpoints.up("lg")]: {
-            padding: "0px 128px",
-          },
-        })}
-      >
-        <Toolbar
-          disableGutters
-          sx={{
-            maxWidth: 1440,
-            alignSelf: "center",
-            gap: "12px",
-            width: "100%",
-          }}
+      <Slide appear={false} direction="down" in={!trigger}>
+        <AppBar
+          sx={(theme) => ({
+            [theme.breakpoints.up("lg")]: {
+              padding: "0px 128px",
+            },
+          })}
         >
-          <ButtonBase LinkComponent={Link} href="/" sx={{ borderRadius: 2 }}>
-            <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
-          </ButtonBase>
-
-          {/*
-          <Button
-            variant="text"
-            size="large"
+          <Toolbar
             sx={{
-              color: "background.default",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-              fontWeight: 500,
+              maxWidth: 1440,
+              alignSelf: "center",
+              gap: "12px",
+              width: "100%",
             }}
-            LinkComponent={Link}
-            href="/new-game"
           >
-            Add Game
-          </Button>
+            <ButtonBase LinkComponent={Link} href="/" sx={{ borderRadius: 2 }}>
+              <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
+            </ButtonBase>
 
-          <Button
-            variant="text"
-            size="large"
-            sx={{
-              color: "background.default",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-              fontWeight: 500,
-            }}
-            LinkComponent={Link}
-            href="/new-review"
-          >
-            Add Review
-          </Button>
-         */}
-          <Search
-            onKeyPress={(ev) => {
-              if (ev.key === "Enter") {
-                handleGameSearch();
-                ev.preventDefault();
-              }
-            }}
-          >
-            <StyledInputBase
-              placeholder="Search Game…"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(event) => {
-                setSearchString(event.target.value);
+            {/*
+            <Button
+              variant="text"
+              size="large"
+              sx={{
+                color: "background.default",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                fontWeight: 500,
               }}
-              id="search-input"
-              name="search-input"
-              autoComplete="on"
-            />
-            <SearchIconWrapper onClick={handleGameSearch}>
-              <SearchIcon />
-            </SearchIconWrapper>
-          </Search>
+              LinkComponent={Link}
+              href="/new-game"
+            >
+              Add Game
+            </Button>
 
-          {isLogin ? (
-            <>
-              <IconButton
-                edge="end"
-                color="inherit"
-                aria-label="profile"
-                onClick={handleUserMenuOpen}
-              >
-                <Avatar
-                  alt="User Avatar"
-                  src={
-                    user?.iconUrl != null
-                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`
-                      : "/static/images/avatar/1.jpg"
-                  }
-                />
-              </IconButton>
+            <Button
+              variant="text"
+              size="large"
+              sx={{
+                color: "background.default",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                fontWeight: 500,
+              }}
+              LinkComponent={Link}
+              href="/new-review"
+            >
+              Add Review
+            </Button>
+          */}
+            <Search
+              onKeyPress={(ev) => {
+                if (ev.key === "Enter") {
+                  handleGameSearch();
+                  ev.preventDefault();
+                }
+              }}
+            >
+              <StyledInputBase
+                placeholder="Search Game…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(event) => {
+                  setSearchString(event.target.value);
+                }}
+                id="search-input"
+                name="search-input"
+                autoComplete="on"
+              />
+              <SearchIconWrapper onClick={handleGameSearch}>
+                <SearchIcon />
+              </SearchIconWrapper>
+            </Search>
 
-              <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleUserMenuClose}
-                PaperProps={{
-                  elevation: 0,
-                  sx: {
-                    bgcolor: "white",
-                    overflow: "visible",
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                    marginTop: "4px",
-                    "&:before": {
-                      content: '""',
-                      display: "block",
-                      position: "absolute",
-                      top: 0,
-                      right: 14,
-                      width: 10,
-                      height: 10,
+            {isLogin ? (
+              <>
+                <IconButton
+                  edge="end"
+                  color="inherit"
+                  aria-label="profile"
+                  onClick={handleUserMenuOpen}
+                >
+                  <Avatar
+                    alt="User Avatar"
+                    src={
+                      user?.iconUrl != null
+                        ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`
+                        : "/static/images/avatar/1.jpg"
+                    }
+                  />
+                </IconButton>
+
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleUserMenuClose}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
                       bgcolor: "white",
-                      transform: "translateY(-50%) rotate(45deg)",
-                      zIndex: 0,
+                      overflow: "visible",
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      marginTop: "4px",
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "white",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0,
+                      },
                     },
-                  },
-                }}
-                transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-              >
-                <Box
-                  sx={{
-                    display: "block",
-                    padding: "0px 16px 8px 16px",
-                    zIndex: 0,
                   }}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
-                  <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
-                    {user?.name}
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                    {user?.role && (
-                      <RoleChip
-                        role={user!.role}
-                        direction="column"
-                        includeUser={false}
-                      />
-                    )}
-                  </Typography>
-                </Box>
-                <Divider />
-                <MenuItem
-                  onClick={() => {
-                    handleProfileRedirect(user!.id);
-                  }}
+                  <Box
+                    sx={{
+                      display: "block",
+                      padding: "0px 16px 8px 16px",
+                      zIndex: 0,
+                    }}
+                  >
+                    <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
+                      {user?.name}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "text.secondary" }}>
+                      {user?.role && (
+                        <RoleChip
+                          role={user!.role}
+                          direction="column"
+                          includeUser={false}
+                        />
+                      )}
+                    </Typography>
+                  </Box>
+                  <Divider />
+                  <MenuItem
+                    onClick={() => {
+                      handleProfileRedirect(user!.id);
+                    }}
+                  >
+                    <ListItemIcon>
+                      <AccountCircleIcon fontSize="small" />
+                    </ListItemIcon>
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    Logout
+                  </MenuItem>
+                </Menu>
+              </>
+            ) : token !== undefined ? (
+              <>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="large"
+                  sx={{ whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500 }}
+                  onClick={() => setOpenPanel(true)}
                 >
-                  <ListItemIcon>
-                    <AccountCircleIcon fontSize="small" />
-                  </ListItemIcon>
-                  Profile
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
-                </MenuItem>
-              </Menu>
-            </>
-          ) : token !== undefined ? (
-            <>
-              <Button
-                variant="outlined"
-                color="secondary"
-                size="large"
-                sx={{ whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500 }}
-                onClick={() => setOpenPanel(true)}
-              >
-                Register
-              </Button>
+                  Register
+                </Button>
 
-              <Modal
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                open={openPanel}
-              >
-                <Box
+                <Modal
                   sx={{
-                    maxHeight: "100vh",
-                    overflowY: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
+                  open={openPanel}
                 >
-                  <SignInUpPanel setOpen={setOpenPanel} />
-                </Box>
-              </Modal>
-            </>
-          ) : (
-            <Box sx={{ display: "flex" }}>
-              <CircularProgress color="secondary" />
-            </Box>
-          )}
-        </Toolbar>
-      </AppBar>
+                  <Box
+                    sx={{
+                      maxHeight: "100vh",
+                      overflowY: "auto",
+                    }}
+                  >
+                    <SignInUpPanel setOpen={setOpenPanel} />
+                  </Box>
+                </Modal>
+              </>
+            ) : (
+              <Box sx={{ display: "flex" }}>
+                <CircularProgress color="secondary" />
+              </Box>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Slide>
     </Box>
   );
 };

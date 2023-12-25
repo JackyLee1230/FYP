@@ -7,6 +7,7 @@ import {
   Avatar,
   styled,
   Button,
+  ButtonBase,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -86,18 +87,33 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
               alignSelf: "stretch",
             }}
           >
-            <Avatar
-              alt="Reviewer Avatar Icon"
-              src={
-                review?.reviewer?.iconUrl != null
-                  ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                  : "/static/images/avatar/1.jpg"
-              }
-              sx={{ width: 54, height: 54 }}
-            />
-            <Typography variant="h5" sx={{ fontWeight: 700 }}>
-              {review?.reviewer?.name ?? "Unknown User"}
-            </Typography>
+            <ButtonBase
+              LinkComponent={Link}
+              href={`/user/${review.reviewer.id}`}
+              sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+              disabled={!review?.reviewer?.id}
+            >
+              <Avatar
+                alt="Reviewer Avatar Icon"
+                src={
+                  review?.reviewer?.iconUrl != null
+                    ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
+                    : "/static/images/avatar/1.jpg"
+                }
+                sx={{ width: 54, height: 54 }}
+              />
+            </ButtonBase>
+            <Button
+              sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+              LinkComponent={Link}
+              variant="text"
+              href={`/user/${review.reviewer.id}`}
+              disabled={!review?.reviewer?.id}
+            >
+              <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
+                {review?.reviewer?.name ?? "Unknown User"}
+              </Typography>
+            </Button>
           </Box>
 
           <Box
@@ -198,8 +214,8 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
               }}
             >
               <Typography variant="subtitle2" color="text.secondary">
-                {review?.playTime != null
-                  ? playTimeString(review.playTime)
+                {review?.playTime != null && review?.playTime > 1
+                  ? `${playTimeString(review.playTime)} Played,`
                   : "Unknown Playtime,"}
               </Typography>
               <Typography variant="subtitle2" color="text.secondary">
