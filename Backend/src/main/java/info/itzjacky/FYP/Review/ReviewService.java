@@ -89,8 +89,16 @@ public class ReviewService {
             throw new IllegalStateException("Cannot create Incomplete Review Comment");
         }
         try{
-            ReviewComment reviewComment = ReviewComment.builder().commenter(userRepository.findUserById(reviewCommentRequest.getCommenterId()))
-                    .review(reviewRepository.findReviewById(reviewCommentRequest.getReviewId()))
+            Review r = reviewRepository.findReviewById(reviewCommentRequest.getReviewId());
+            User u = userRepository.findUserById(reviewCommentRequest.getCommenterId());
+            if(r == null){
+                throw new IllegalStateException("Review Does Not Exist");
+            }
+            if(u == null){
+                throw new IllegalStateException("User Does Not Exist");
+            }
+            ReviewComment reviewComment = ReviewComment.builder().commenter(u)
+                    .review(r)
                     .comment(reviewCommentRequest.getComment())
                     .build();
             reviewCommentRepository.save(reviewComment);
@@ -216,7 +224,12 @@ public class ReviewService {
 
     public Review findReviewById(ReviewRequest reviewRequest){
         try {
-            return reviewRepository.findReviewById(reviewRequest.getReviewId());
+            Review r = reviewRepository.findReviewById(reviewRequest.getReviewId());
+            r.getReviewer().setReviews(null);
+            r.getReviewer().setDevelopedGames(null);
+            r.getReviewedGame().setGameReviews(null);
+            r.getReviewedGame().setBaseGame(null);
+            return r;
         } catch (Exception e){
             throw new IllegalStateException("Cannot get Review");
         }
