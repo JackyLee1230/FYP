@@ -25,6 +25,12 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
 
     List<Review> findReviewsByReviewerId(Integer id);
 
+    @Query(nativeQuery = true, value = "SELECT count(*) FROM review_likes r WHERE r.review_id = ?1")
+    Integer countLikesByReviewerId(Integer id);
+
+    @Query(nativeQuery = true, value = "SELECT count(*) FROM review_dislikes r WHERE r.review_id = ?1")
+    Integer countDislikesByReviewerId(Integer id);
+
     @Query(nativeQuery = true, value = "SELECT r.user_id FROM review_likes r WHERE r.review_id = ?1")
     List<Integer> findLikedUsersByReviewId(Integer id);
 

@@ -233,6 +233,10 @@ public class ReviewService {
             r.setLikedUsers(likedUsers);
             List<Integer> dislikedUsers = reviewRepository.findDislikedUsersByReviewId(reviewRequest.getReviewId());
             r.setDislikedUsers(dislikedUsers);
+            Integer numberOfLikes = reviewRepository.countLikesByReviewerId(reviewRequest.getReviewId());
+            Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(reviewRequest.getReviewId());
+            r.setNumberOfLikes(numberOfLikes);
+            r.setNumberOfDislikes(numberOfDislikes);
             return r;
         } catch (Exception e){
             e.printStackTrace();
@@ -467,8 +471,6 @@ public class ReviewService {
                 .score(reviewRequest.getScore())
                 .comment(reviewRequest.getComment())
                 .recommended(reviewRequest.getRecommended())
-                .numberOfDislikes(0)
-                .numberOfDislikes(0)
                 .likes(new ArrayList<User>())
                 .dislikes(new ArrayList<User>())
                 .playTime(reviewRequest.getPlayTime() == null ? null : reviewRequest.getPlayTime())

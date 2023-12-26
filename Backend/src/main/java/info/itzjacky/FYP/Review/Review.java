@@ -95,7 +95,7 @@ public class Review {
     @ElementCollection
     private List<String> reviewImages;
 
-//    @Transient
+    @Transient
     @Formula("(SELECT COUNT(*) FROM review_likes rl WHERE rl.review_id = id)")
     private Integer numberOfLikes;
 
@@ -103,7 +103,7 @@ public class Review {
     @ToString.Exclude
     private List<User> dislikes;
 
-//    @Transient
+    @Transient
     @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.review_id = id)")
     private Integer numberOfDislikes;
 
