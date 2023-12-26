@@ -67,8 +67,8 @@ public class ReviewService {
 //                review.setLikedUsers(likedUsers);
 //                List<Integer> dislikedUsers = reviewRepository.findDislikedUsersByReviewId(review.getId());
 //                review.setDislikedUsers(dislikedUsers);
-                Integer numberOfLikes = reviewRepository.countLikesByReviewerId(review.getId());
-                Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(review.getId());
+                Integer numberOfLikes = reviewRepository.countLikesByReviewId(review.getId());
+                Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(review.getId());
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
             }
@@ -259,8 +259,8 @@ public class ReviewService {
             r.setLikedUsers(likedUsers);
             List<Integer> dislikedUsers = reviewRepository.findDislikedUsersByReviewId(reviewRequest.getReviewId());
             r.setDislikedUsers(dislikedUsers);
-            Integer numberOfLikes = reviewRepository.countLikesByReviewerId(reviewRequest.getReviewId());
-            Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(reviewRequest.getReviewId());
+            Integer numberOfLikes = reviewRepository.countLikesByReviewId(reviewRequest.getReviewId());
+            Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(reviewRequest.getReviewId());
             r.setNumberOfLikes(numberOfLikes);
             r.setNumberOfDislikes(numberOfDislikes);
             return r;
@@ -302,8 +302,8 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
-                Integer numberOfLikes = reviewRepository.countLikesByReviewerId(reviewRequest.getReviewId());
-                Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(reviewRequest.getReviewId());
+                Integer numberOfLikes = reviewRepository.countLikesByReviewId(review.getId());
+                Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(review.getId());
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
             }
@@ -320,8 +320,8 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
-                Integer numberOfLikes = reviewRepository.countLikesByReviewerId(reviewRequest.getReviewId());
-                Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(reviewRequest.getReviewId());
+                Integer numberOfLikes = reviewRepository.countLikesByReviewId(review.getId());
+                Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(review.getId());
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
             }
