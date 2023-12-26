@@ -22,9 +22,9 @@ import java.util.List;
         @Index(name = "idx_user_id_name", columnList = "id, name"),
         @Index(name = "idx_user_email" , columnList = "email")
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 @Builder
 @Getter
 @Setter
