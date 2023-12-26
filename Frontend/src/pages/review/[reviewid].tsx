@@ -127,6 +127,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
   const [newDislikes, setNewDislikes] = useState<number>(
     review?.numberOfDislikes ?? 0
   );
+  const [reactionLoading, setReactionLoading] = useState<boolean>(false);
 
   const { user, token } = useAuthContext();
 
@@ -138,6 +139,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
   }, [user]);
 
   const handleReaction = async (newReaction: boolean | null) => {
+    if (user === null){
+      displaySnackbarVariant("You must be logged in to react to a review.", "info")
+      return;
+    }
+
     if (newReaction === null) {
       return;
     }
@@ -145,6 +151,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
     if (user == null || token == null) {
       return;
     }
+    setReactionLoading(true);
 
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/reaction`,
@@ -174,6 +181,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
       displaySnackbarVariant(response.statusText, "error");
       errorMessage = response.statusText;
     }
+    setReactionLoading(false);
   };
 
   if (!review || errorMessage) {
@@ -230,7 +238,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
     <div>
       <Head>
         <title>
-          {review.reviewedGame.name} Review: {review.reviewer.name} | CritiQ
+          {`${review.reviewedGame.name} Review: ${review.reviewer.name} | CritiQ`}
         </title>
       </Head>
 
@@ -784,6 +792,8 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                   liked != null && liked == true ? "contained" : "outlined"
                 }
                 color="primary"
+                onClick={() => handleReaction(true)}
+                disabled={reactionLoading || token === undefined}
               >
                 <Box
                   sx={{
@@ -791,7 +801,6 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                     alignItems: "center",
                     gap: "12px",
                   }}
-                  onClick={() => handleReaction(true)}
                 >
                   <Box
                     sx={{
@@ -819,6 +828,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 }
                 color="primary"
                 onClick={() => handleReaction(false)}
+                disabled={reactionLoading || token === undefined}
               >
                 <Box
                   sx={{
