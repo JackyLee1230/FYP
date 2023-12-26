@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Link, Typography } from "@mui/material";
 import { GameReviewComment } from "../type/game";
 import { format } from "date-fns";
 
@@ -22,15 +22,22 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
         alignSelf: "stretch",
       }}
     >
-      <Avatar
-        alt="Reviewer Avatar Icon"
-        src={
-          ReviewComment?.commenter?.iconUrl != null
-            ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${ReviewComment?.commenter?.iconUrl}`
-            : "/static/images/avatar/1.jpg"
-        }
-        sx={{ width: 72, height: 72, alignSelf: "flex-start"}}
-      />
+      <ButtonBase
+        LinkComponent={Link}
+        href={`/user/${ReviewComment?.commenter?.id}`}
+        sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+        disabled={!ReviewComment?.commenter?.id}
+      >
+        <Avatar
+          alt="Reviewer Avatar Icon"
+          src={
+            ReviewComment?.commenter?.iconUrl != null
+              ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${ReviewComment?.commenter?.iconUrl}`
+              : "/static/images/avatar/1.jpg"
+          }
+          sx={{ width: 72, height: 72, alignSelf: "flex-start"}}
+        />
+      </ButtonBase>
       <Box
         sx={{
           display: "flex",
@@ -47,9 +54,17 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
             gap: "12px",
           }}
         >
-          <Typography variant="h6" color="text.primary" sx={{fontWeight: 700}}>
-            {ReviewComment?.commenter?.name ?? "Unknown User"}
-          </Typography>
+          <Button
+            sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start', padding: 0 }}
+            LinkComponent={Link}
+            variant="text"
+            href={`/user/${ReviewComment?.commenter?.id}`}
+            disabled={!ReviewComment?.commenter?.id}
+          >
+            <Typography variant="h6" color="text.primary" sx={{fontWeight: 700}}>
+              {ReviewComment?.commenter?.name ?? "Unknown User"}
+            </Typography>
+          </Button>
           <Typography variant="subtitle2" color="text.secondary" sx={{textTransform: "uppercase",}}>
               {ReviewComment?.createdAt != null
                 ? format(new Date(ReviewComment?.createdAt), "yyyy-MM-dd HH:mm aaaaa'm'")

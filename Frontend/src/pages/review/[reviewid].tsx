@@ -329,7 +329,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
     <div>
       <Head>
         <title>
-          {`${review.reviewedGame.name} Review: ${review.reviewer.name} | CritiQ`}
+          {`${review?.reviewedGame?.name} Review: ${review?.reviewer?.name} | CritiQ`}
         </title>
       </Head>
 
@@ -439,7 +439,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
             >
               <ButtonBase
                 LinkComponent={Link}
-                href={`/user/${review.reviewer.id}`}
+                href={`/user/${review?.reviewer?.id}`}
                 sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                 disabled={!review?.reviewer?.id}
               >
@@ -482,7 +482,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                   }}
                   LinkComponent={Link}
                   variant="text"
-                  href={`/user/${review.reviewer.id}`}
+                  href={`/user/${review?.reviewer?.id}`}
                   disabled={!review?.reviewer?.id}
                 >
                   <Typography
@@ -507,6 +507,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                     gap: "8px",
                     overflow: "hidden",
                     whiteSpace: "nowrap",
+                    wordBreak: "break-all",
                   }}
                 >
                   <Typography variant="subtitle1" color="text.secondary">
@@ -996,31 +997,33 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                 }
                 sx={{ width: 104, height: 104 }}
               />
-              <CustomInput 
-                value={comment}
-                placeholder="Add a comment..."
-                onChange={(e) => setComment(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    if(addCommentLoading){
-                      return;
-                    }
+              <Tooltip title="Press enter to submit your comment" arrow placement="bottom-end">
+                <CustomInput 
+                  value={comment}
+                  placeholder="Add a comment..."
+                  onChange={(e) => setComment(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      if(addCommentLoading){
+                        return;
+                      }
 
-                    e.preventDefault();
-                    handleAddComment();
-                  }
-                }}
-                multiline 
-                fullWidth
-                rows={4}
-                sx={{
-                  '& .MuiInputBase-input': {
-                    width: "100%",
-                    bgcolor: "white",
-                  },
-                }}
-                disabled={addCommentLoading}
-              />
+                      e.preventDefault();
+                      handleAddComment();
+                    }
+                  }}
+                  multiline 
+                  fullWidth
+                  rows={4}
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      width: "100%",
+                      bgcolor: "white",
+                    },
+                  }}
+                  disabled={addCommentLoading}
+                />
+              </Tooltip>
             </Box>
           )}
 
