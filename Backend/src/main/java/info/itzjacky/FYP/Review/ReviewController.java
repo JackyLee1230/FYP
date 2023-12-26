@@ -128,6 +128,15 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/findReviewCommentsByReviewId")
+    public ResponseEntity<List<ReviewComment>> findReviewCommentsByReviewId(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.findReviewCommentsByReviewId(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("findReviewsByGameIdAndVersion")
     public ResponseEntity<List<Review>> getReviewsByGameIdAndVersion(@RequestBody ReviewRequest reviewReq){
         try{
@@ -243,14 +252,14 @@ public class ReviewController {
     /*
     * args reviewId: Integer
     */
-    @PostMapping("/getAllReviewCommentsById")
-    public ResponseEntity<List<ReviewComment>> getAllReviewCommentsById(@RequestBody ReviewCommentRequest reviewCommentRequest){
-        try{
-            return new ResponseEntity<>(reviewService.getAllReviewCommentsById(reviewCommentRequest), HttpStatus.OK);
-        } catch (Exception e){
-            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
-        }
-    }
+//    @PostMapping("/getAllReviewCommentsById")
+//    public ResponseEntity<List<ReviewComment>> getAllReviewCommentsById(@RequestBody ReviewCommentRequest reviewCommentRequest){
+//        try{
+//            return new ResponseEntity<>(reviewService.getAllReviewCommentsById(reviewCommentRequest), HttpStatus.OK);
+//        } catch (Exception e){
+//            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+//        }
+//    }
 
     /*
      * args reviewId: Integer

@@ -1,9 +1,6 @@
 package info.itzjacky.FYP.Review;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import info.itzjacky.FYP.Game.Platform;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Game.Game;
@@ -101,10 +98,12 @@ public class Review {
 
     @ManyToMany(mappedBy = "dislikedReviews", fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<User> dislikes;
 
     @Transient
     @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.review_id = id)")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer numberOfDislikes;
 
     @Transient

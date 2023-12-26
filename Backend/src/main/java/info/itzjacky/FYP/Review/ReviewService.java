@@ -242,13 +242,13 @@ public class ReviewService {
     }
 
 
-    public List<ReviewComment> getAllReviewCommentsById(ReviewCommentRequest reviewCommentRequest){
-        try {
-            return reviewCommentRepository.findReviewCommentsByReview(reviewRepository.findReviewById(reviewCommentRequest.getReviewId()));
-        } catch (Exception e){
-            throw new IllegalStateException("Cannot get Review Comments");
-        }
-    }
+//    public List<ReviewComment> getAllReviewCommentsById(ReviewCommentRequest reviewCommentRequest){
+//        try {
+//            return reviewCommentRepository.findReviewCommentsByReview(reviewRepository.findReviewById(reviewCommentRequest.getReviewId()));
+//        } catch (Exception e){
+//            throw new IllegalStateException("Cannot get Review Comments");
+//        }
+//    }
 
     public Review findReviewById(ReviewRequest reviewRequest){
         try {
@@ -269,6 +269,21 @@ public class ReviewService {
         } catch (Exception e){
             e.printStackTrace();
             throw new IllegalStateException("Cannot get Review");
+        }
+    }
+
+    public List<ReviewComment> findReviewCommentsByReviewId(ReviewRequest reviewRequest){
+        try {
+            List<ReviewComment> rc = reviewCommentRepository.findReviewCommentsByReviewId(reviewRequest.getReviewId());
+            for (ReviewComment reviewComment : rc){
+                reviewComment.getCommenter().setReviews(null);
+                reviewComment.getCommenter().setDevelopedGames(null);
+                reviewComment.getCommenter().setLikedReviews(null);
+                reviewComment.getCommenter().setDislikedReviews(null);
+            }
+            return rc;
+        } catch (Exception e){
+            throw new IllegalStateException("Cannot get Review Comments");
         }
     }
 

@@ -16,5 +16,8 @@ public interface ReviewCommentRepository extends JpaRepository<ReviewComment,Int
 
     List<ReviewComment> findReviewCommentsByCommenter(User commenter);
 
-    List<ReviewComment> findReviewCommentsByReview(Review review);
+    @Query(nativeQuery = true, value = "SELECT * FROM review_comment r WHERE r.review_id = ?1 order by r.created_at desc")
+    List<ReviewComment> findReviewCommentsByReviewId(Integer id);
+
+
 }
