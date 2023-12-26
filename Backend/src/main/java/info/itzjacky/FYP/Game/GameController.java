@@ -93,7 +93,7 @@ public class GameController {
     @PostMapping("/addGameWithIcon")
     public ResponseEntity<Game> addGame(@RequestPart("data") GameRequest gameRequest, @RequestPart("icon") MultipartFile icon) {
         try {
-            logger.info("Creating game with icon");
+//            logger.info("Creating game with icon");
             return new ResponseEntity<>(gameService.addGame(gameRequest, icon), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
@@ -161,7 +161,7 @@ public class GameController {
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {
-            logger.info(String.valueOf(gameRequest));
+//            logger.info(String.valueOf(gameRequest));
             Game g = gameService.findGameById(gameRequest);
             if (g.getBaseGame() != null) {
                 g.getBaseGame().setGameReviews(null);
@@ -264,7 +264,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
     @PostMapping("/findGamesWithSearch")
     public ResponseEntity<List<Game>> findGamesWithSearch(@RequestBody GameRequest gameRequest) {
         try {
-            logger.info(gameRequest.toString());
+//            logger.info(gameRequest.toString());
             return new ResponseEntity<>(gameRepository.customFindGames(gameRequest.getName(),gameRequest.getPlatforms(), gameRequest.getGenre(), gameRequest.getIsInDevelopment(), gameRequest.getOrderedByScore(), gameRequest.getOrderedByReleaseDate()), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
