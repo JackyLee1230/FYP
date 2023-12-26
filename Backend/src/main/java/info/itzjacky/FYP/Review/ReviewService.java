@@ -302,6 +302,10 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
+                Integer numberOfLikes = reviewRepository.countLikesByReviewerId(reviewRequest.getReviewId());
+                Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(reviewRequest.getReviewId());
+                review.setNumberOfLikes(numberOfLikes);
+                review.setNumberOfDislikes(numberOfDislikes);
             }
             return r;
         } else {
