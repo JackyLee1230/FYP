@@ -1,9 +1,6 @@
 package info.itzjacky.FYP.Review;
 
-import info.itzjacky.FYP.Game.Game;
-import info.itzjacky.FYP.Game.GameRepository;
-import info.itzjacky.FYP.Game.GameVersion;
-import info.itzjacky.FYP.Game.Platform;
+import info.itzjacky.FYP.Game.*;
 import info.itzjacky.FYP.RabbitMQ.RabbitMQProducer;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
@@ -16,6 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -50,6 +48,34 @@ public class ReviewService {
     @Transactional
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
+    }
+
+    public List<Review> getTopLikedReviews(ReviewRequest reviewRequest){
+        try{
+            if(reviewRequest.getNumberOfReviews() == null || reviewRequest.getNumberOfReviews() < 1){
+                reviewRequest.setNumberOfReviews(10);
+            }
+            List<Review> r = reviewRepository.findMostLikedReviews(reviewRequest.getNumberOfReviews());
+            for (Review review : r){
+                review.getReviewer().setReviews(null);
+                review.getReviewer().setDevelopedGames(null);
+                review.getReviewedGame().setGameReviews(null);
+                review.getReviewedGame().setBaseGame(null);
+                review.setLikes(null);
+                review.setDislikes(null);
+//                List<Integer> likedUsers = reviewRepository.findLikedUsersByReviewId(review.getId());
+//                review.setLikedUsers(likedUsers);
+//                List<Integer> dislikedUsers = reviewRepository.findDislikedUsersByReviewId(review.getId());
+//                review.setDislikedUsers(dislikedUsers);
+                Integer numberOfLikes = reviewRepository.countLikesByReviewerId(review.getId());
+                Integer numberOfDislikes = reviewRepository.countDislikesByReviewerId(review.getId());
+                review.setNumberOfLikes(numberOfLikes);
+                review.setNumberOfDislikes(numberOfDislikes);
+            }
+            return r;
+        } catch (Exception e){
+            throw new IllegalStateException("Review Does Not Exist");
+        }
     }
 
     @Transactional

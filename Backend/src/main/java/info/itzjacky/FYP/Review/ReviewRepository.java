@@ -21,6 +21,10 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.game_id = ?2")
     Review findReviewByReviewerAndReviewedGame(Integer reviewer, Integer reviewedGame);
 
+//    find top N (parameter) most liked review (review_likes) where review_likes.review_id = review.id order by the number of likes
+    @Query(nativeQuery = true, value = "SELECT * FROM review r order by (SELECT count(*) FROM review_likes l WHERE l.review_id = r.id) desc limit ?1")
+    List<Review> findMostLikedReviews(Integer limit);
+
     List<Review> findReviewsByReviewer(User user);
 
     List<Review> findReviewsByReviewerId(Integer id);

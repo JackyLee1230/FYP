@@ -159,7 +159,14 @@ public class ReviewController {
         }
     }
 
-//    @PostMapping
+    @PostMapping("/getTopLikedReviews")
+    public ResponseEntity<List<Review>> getTopLikedReviews(@RequestBody ReviewRequest reviewReq){
+        try{
+            return new ResponseEntity<>(reviewService.getTopLikedReviews(reviewReq), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 
     /*
     * args reviewId: Integer (Review.id)
