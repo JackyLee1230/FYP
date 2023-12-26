@@ -326,6 +326,7 @@ public class ReviewService {
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
                 review.setNumberOfComments(numberOfComments);
+                review.setReviewComment(null);
             }
             return r;
         } else {
