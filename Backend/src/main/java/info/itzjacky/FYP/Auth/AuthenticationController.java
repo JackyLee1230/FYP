@@ -45,6 +45,10 @@ public class AuthenticationController {
     public ResponseEntity<User> userAuth(Principal principal){
         System.out.println(principal.toString());
         User u = userService.getUserFromPrincipal(principal);
+        u.setReviews(null);
+        u.setDevelopedGames(null);
+        u.setDislikedReviews(null);
+        u.setLikedReviews(null);
         if (u == null) {
             throw new IllegalStateException("User does not exist");
         } else {
