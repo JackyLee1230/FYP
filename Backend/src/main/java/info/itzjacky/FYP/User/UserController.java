@@ -198,6 +198,9 @@ public class UserController {
 //            List<Review> reviews = reviewRepository.findReviewsByReviewer(user);
 //            user.setReviews(reviews);
             if(user != null){
+                for (Review r: user.getReviews()){
+                    r.setReviewer(null);
+                }
                 return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
