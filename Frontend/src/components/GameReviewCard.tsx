@@ -315,7 +315,7 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
           >
             <StyledCommentIcon />
             <Typography variant="subtitle1" color="text.secondary">
-              {review?.reviewComments?.length ?? 0}
+              {review?.numberOfComments ?? 0}
             </Typography>
           </Box>
         </Box>
