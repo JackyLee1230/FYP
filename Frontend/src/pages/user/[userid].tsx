@@ -258,7 +258,7 @@ export default function User({ user }: UserPageProps) {
       {user.lastActive}
       <br />
       User has {user.reviews.length} review
-      {user.reviews && user.reviews.length > 0 && (
+      {/* {user.reviews && user.reviews.length > 0 && (
         <div className="gap-4">
           {user.reviews.map((review) => (
             <div
@@ -279,7 +279,7 @@ export default function User({ user }: UserPageProps) {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </>
   );
 }
