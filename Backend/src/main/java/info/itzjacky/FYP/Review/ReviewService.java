@@ -265,6 +265,7 @@ public class ReviewService {
             Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(reviewRequest.getReviewId());
             r.setNumberOfLikes(numberOfLikes);
             r.setNumberOfDislikes(numberOfDislikes);
+            r.setReviewComment(null);
             return r;
         } catch (Exception e){
             e.printStackTrace();

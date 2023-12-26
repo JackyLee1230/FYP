@@ -87,6 +87,7 @@ public class Review {
 
     @ManyToMany(mappedBy = "likedReviews", fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonIgnore
     private List<User> likes;
 
     @ElementCollection
@@ -99,11 +100,11 @@ public class Review {
     @ManyToMany(mappedBy = "dislikedReviews", fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
     private List<User> dislikes;
 
     @Transient
     @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.review_id = id)")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer numberOfDislikes;
 
     @Transient
