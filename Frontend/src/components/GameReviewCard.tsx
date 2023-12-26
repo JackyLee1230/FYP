@@ -46,7 +46,7 @@ const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
 
 function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
   const router = useRouter();
-
+  
   return (
     <Box
       sx={{
@@ -277,13 +277,36 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
               gap: "4px",
             }}
           >
+            <StyledThumbUpIcon sx={{fontSize: 24}} />
+            <Typography variant="subtitle1" color="text.secondary">
+              {review?.numberOfLikes ?? 0}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
+            <StyledThumbDownIcon sx={{fontSize: 24}} />
+            <Typography variant="subtitle1" color="text.secondary">
+              {review?.numberOfDislikes ?? 0}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
             <StyledImageIcon />
             <Typography variant="subtitle1" color="text.secondary">
               {review?.reviewImages?.length ?? 0}
             </Typography>
           </Box>
           <Box
-
             sx={{
               display: "flex",
               alignItems: "center",
