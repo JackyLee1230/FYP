@@ -65,10 +65,10 @@ export type GameReview = {
   reviewedGame: GameInfo;
   playTime: number;
   platform: string;
-  reviewComments: GameReviewComment[];
   likedUsers?: number[];
   dislikedUsers?: number[];
   reviewImages: string[];
+  numberOfComments?: number;
 };
 
 export type GameReviewComment = {
@@ -83,8 +83,10 @@ export type GameReviewComment = {
 export type GameReviewPageProps = {
   game: GameInfo | null;
   review: GameReview | null;
+  reviewComment: GameReviewComment[] | null;
   errorMessage: string;
   iconUrl: string;
+  commentErrorMessage: string;
 };
 
 export const allGameSearchTypes = ["NAME", "DEVELOPER"] as const;
