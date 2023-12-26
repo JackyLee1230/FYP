@@ -128,6 +128,8 @@ public class ReviewService {
                     .comment(reviewCommentRequest.getComment())
                     .build();
             reviewCommentRepository.save(reviewComment);
+            reviewComment.getCommenter().setReviews(null);
+            reviewComment.getCommenter().setDevelopedGames(null);
             return reviewComment;
         } catch (Exception e){
             throw new IllegalStateException("Cannot create Review Comment");
@@ -302,10 +304,12 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
+                Integer numberOfComments = reviewRepository.countCommentsByReviewId(review.getId());
                 Integer numberOfLikes = reviewRepository.countLikesByReviewId(review.getId());
                 Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(review.getId());
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
+                review.setNumberOfComments(numberOfComments);
             }
             return r;
         } else {
@@ -320,10 +324,12 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.getReviewer().setReviews(null);
                 review.setReviewedGame(null);
+                Integer numberOfComments = reviewRepository.countCommentsByReviewId(review.getId());
                 Integer numberOfLikes = reviewRepository.countLikesByReviewId(review.getId());
                 Integer numberOfDislikes = reviewRepository.countDislikesByReviewId(review.getId());
                 review.setNumberOfLikes(numberOfLikes);
                 review.setNumberOfDislikes(numberOfDislikes);
+                review.setNumberOfComments(numberOfComments);
             }
             return r;
         }

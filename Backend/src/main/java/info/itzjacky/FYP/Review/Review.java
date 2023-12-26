@@ -107,6 +107,10 @@ public class Review {
     @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.review_id = id)")
     private Integer numberOfDislikes;
 
+    @Transient
+    @Formula("(SELECT COUNT(*) FROM review_comment rc WHERE rc.review_id = id)")
+    private Integer numberOfComments;
+
     @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<ReviewComment> reviewComment;
