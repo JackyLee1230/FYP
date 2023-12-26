@@ -66,8 +66,8 @@ export type GameReview = {
   playTime: number;
   platform: string;
   reviewComments: GameReviewComment[];
-  likedUser?: number[];
-  dislikedUser?: number[];
+  likedUsers?: number[];
+  dislikedUsers?: number[];
   reviewImages: string[];
 };
 

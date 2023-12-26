@@ -229,8 +229,13 @@ public class ReviewService {
             r.getReviewer().setDevelopedGames(null);
             r.getReviewedGame().setGameReviews(null);
             r.getReviewedGame().setBaseGame(null);
+            List<Integer> likedUsers = reviewRepository.findLikedUsersByReviewId(reviewRequest.getReviewId());
+            r.setLikedUsers(likedUsers);
+            List<Integer> dislikedUsers = reviewRepository.findDislikedUsersByReviewId(reviewRequest.getReviewId());
+            r.setDislikedUsers(dislikedUsers);
             return r;
         } catch (Exception e){
+            e.printStackTrace();
             throw new IllegalStateException("Cannot get Review");
         }
     }

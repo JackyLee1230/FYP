@@ -8,24 +8,39 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import Image from "next/image";
-import { Avatar, Box, Breadcrumbs, Button, ButtonBase, Divider, Tooltip, Typography, styled } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Breadcrumbs,
+  Button,
+  ButtonBase,
+  Divider,
+  Tooltip,
+  Typography,
+  styled,
+} from "@mui/material";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import HelpIcon from '@mui/icons-material/Help';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import HelpIcon from "@mui/icons-material/Help";
 import Link from "next/link";
 import { playTimeString } from "@/utils/Other";
 import { getReviewColor } from "@/utils/DynamicScore";
-import Collapse from '@mui/material/Collapse';
-import { useState } from "react";
+import Collapse from "@mui/material/Collapse";
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
 import ScrollToTopFab from "@/components/ScrollToTopFAB";
+import { useAuthContext } from "@/context/AuthContext";
+import {
+  displaySnackbar,
+  displaySnackbarVariant,
+} from "@/utils/DisplaySnackbar";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -106,21 +121,60 @@ const StyledArrowDropUpIcon = styled(ArrowDropUpIcon)(({ theme }) => ({
 
 function GamePage({ review, errorMessage }: GameReviewPageProps) {
   const [showMLSummaries, setShowMLSummaries] = useState(false);
-  const [reaction, setReaction] = useState<boolean | null>(null);
+  const [liked, setLiked] = useState<boolean | null>(null);
+  const [disliked, setDisliked] = useState<boolean | null>(null);
+  const [newLikes, setNewLikes] = useState<number>(review?.numberOfLikes ?? 0);
+  const [newDislikes, setNewDislikes] = useState<number>(
+    review?.numberOfDislikes ?? 0
+  );
+
+  const { user, token } = useAuthContext();
+
+  useEffect(() => {
+    if (user != null) {
+      setLiked(review?.likedUsers?.includes(user?.id) ?? null);
+      setDisliked(review?.dislikedUsers?.includes(user?.id) ?? null);
+    }
+  }, [user]);
 
   const handleReaction = async (newReaction: boolean | null) => {
-    if(reaction === null){
-      if(newReaction === null){
-        return;
+    if (newReaction === null) {
+      return;
+    }
+
+    if (user == null || token == null) {
+      return;
+    }
+
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/reaction`,
+      {
+        reviewId: review!.id,
+        likerId: user!.id,
+        reaction: newReaction == true ? "LIKE" : "DISLIKE",
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          Authorization: `Bearer ${token}`,
+        },
       }
+    );
+
+    if (response.status === 200) {
+      const updatedReactionData = await response.data;
+      setLiked(updatedReactionData.like);
+      setDisliked(updatedReactionData.dislike);
+      setNewLikes(updatedReactionData.likeCount);
+      setNewDislikes(updatedReactionData.dislikeCount);
+    } else {
+      displaySnackbarVariant(response.statusText, "error");
+      errorMessage = response.statusText;
     }
-    if(reaction === newReaction){
-      setReaction(null);
-    }
-    else{
-      setReaction(newReaction);
-    }
-  }
+  };
 
   if (!review || errorMessage) {
     return (
@@ -137,38 +191,39 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
           gap: 4,
         }}
       >
-        <Typography variant="h4" sx={{textAlign: "center"}}>
+        <Typography variant="h4" sx={{ textAlign: "center" }}>
           Review Not Found
         </Typography>
-        {errorMessage &&
-          <Typography variant="body1" sx={{textAlign: "center"}}>
+        {errorMessage && (
+          <Typography variant="body1" sx={{ textAlign: "center" }}>
             {errorMessage}
           </Typography>
-        }
+        )}
       </Box>
-    )
+    );
   }
 
   const breadcrumbs = [
-    <Button 
-      key="1" 
-      color="inherit" 
+    <Button
+      key="1"
+      color="inherit"
       href={`/games/${review?.reviewedGame?.id}`}
-      sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+      sx={{
+        textDecoration: "none",
+        textTransform: "none",
+        "&:hover": { textDecoration: "underline" },
+        justifyContent: "flex-start",
+      }}
       LinkComponent={Link}
       variant="text"
     >
-      <Typography variant="h4" color="text.primary" sx={{fontWeight: 700}}>
+      <Typography variant="h4" color="text.primary" sx={{ fontWeight: 700 }}>
         {review?.reviewedGame?.name}
       </Typography>
     </Button>,
-    <Typography
-      key="2"
-      variant="h6"
-      color="text.secondary"
-    >
+    <Typography key="2" variant="h6" color="text.secondary">
       {`Review by ${review?.reviewer?.name}`}
-    </Typography>
+    </Typography>,
   ];
 
   return (
@@ -216,7 +271,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
               overflow: "hidden",
               flexShrink: 0,
-              bgcolor: "grey.100"
+              bgcolor: "grey.100",
             }}
           >
             {review?.reviewedGame?.iconUrl ? (
@@ -246,9 +301,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
             )}
           </ButtonBase>
 
-          <Breadcrumbs
-            separator={<NavigateNextIcon fontSize="small" />}
-          >
+          <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
             {breadcrumbs}
           </Breadcrumbs>
         </Box>
@@ -264,7 +317,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
             borderRadius: "8px",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             overflow: "hidden",
-            bgcolor: "background.paper"
+            bgcolor: "background.paper",
           }}
         >
           <Box
@@ -288,7 +341,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
               <ButtonBase
                 LinkComponent={Link}
                 href={`/user/${review.reviewer.id}`}
-                sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+                sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                 disabled={!review?.reviewer?.id}
               >
                 <Avatar
@@ -308,7 +361,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%"
+                width: "100%",
               }}
             >
               <Box
@@ -321,20 +374,32 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 }}
               >
                 <Button
-                  sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start', padding: 0 }}
+                  sx={{
+                    textDecoration: "none",
+                    textTransform: "none",
+                    "&:hover": { textDecoration: "underline" },
+                    justifyContent: "flex-start",
+                    padding: 0,
+                  }}
                   LinkComponent={Link}
                   variant="text"
                   href={`/user/${review.reviewer.id}`}
                   disabled={!review?.reviewer?.id}
                 >
-                  <Typography variant="h4" color="text.primary" sx={{ fontWeight: 700 }}>
+                  <Typography
+                    variant="h4"
+                    color="text.primary"
+                    sx={{ fontWeight: 700 }}
+                  >
                     {review?.reviewer?.name ?? "Unknown User"}
                   </Typography>
                 </Button>
                 <Typography variant="subtitle1" color="text.secondary">
-                    {`Posted on: ${review?.createdAt != null
-                    ? format(new Date(review?.createdAt), "yyyy-MM-dd")
-                    : "Unknown Date"}`}
+                  {`Posted on: ${
+                    review?.createdAt != null
+                      ? format(new Date(review?.createdAt), "yyyy-MM-dd")
+                      : "Unknown Date"
+                  }`}
                 </Typography>
                 <Box
                   sx={{
@@ -382,14 +447,21 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                   {review?.recommended ? (
                     <>
                       <StyledThumbUpIcon />
-                      <Typography variant="h6" sx={{fontWeight: 700, color:"#4FA639"}}>
+                      <Typography
+                        variant="h6"
+                        sx={{ fontWeight: 700, color: "#4FA639" }}
+                      >
                         Recommended
                       </Typography>
                     </>
                   ) : (
                     <>
                       <StyledThumbDownIcon />
-                      <Typography variant="h6" color="error.main" sx={{fontWeight: 700}}>
+                      <Typography
+                        variant="h6"
+                        color="error.main"
+                        sx={{ fontWeight: 700 }}
+                      >
                         Not Recommended
                       </Typography>
                     </>
@@ -443,10 +515,13 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 This section is generated by CritiQ automatically
               </Typography>
               <Tooltip title="This section is not part of the review. It is here to help you understand the review better.">
-                <StyledHelpIcon/>
+                <StyledHelpIcon />
               </Tooltip>
             </Box>
-            <Collapse in={showMLSummaries} sx={{margin: "12px 0px", width: "100%"}}>
+            <Collapse
+              in={showMLSummaries}
+              sx={{ margin: "12px 0px", width: "100%" }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -473,7 +548,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                       gap: "12px",
                     }}
                   >
-                    <Typography variant="h6" color="text.primary" sx={{fontWeight: 700, width: "132px"}}>
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      sx={{ fontWeight: 700, width: "132px" }}
+                    >
                       AI Sentiment:
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
@@ -487,7 +566,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                       gap: "12px",
                     }}
                   >
-                    <Typography variant="h6" color="text.primary" sx={{fontWeight: 700, width: "132px"}}>
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      sx={{ fontWeight: 700, width: "132px" }}
+                    >
                       Main Topics:
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
@@ -501,7 +584,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                       gap: "12px",
                     }}
                   >
-                    <Typography variant="h6" color="text.primary" sx={{fontWeight: 700, width: "132px"}}>
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      sx={{ fontWeight: 700, width: "132px" }}
+                    >
                       Key Words:
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
@@ -515,7 +602,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                       gap: "12px",
                     }}
                   >
-                    <Typography variant="h6" color="text.primary" sx={{fontWeight: 700, width: "132px"}}>
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      sx={{ fontWeight: 700, width: "132px" }}
+                    >
                       Summary:
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
@@ -581,7 +672,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 alignSelf: "center",
               }}
             >
-              {showMLSummaries ? <StyledArrowDropUpIcon/> : <StyledArrowDropDownIcon/>}
+              {showMLSummaries ? (
+                <StyledArrowDropUpIcon />
+              ) : (
+                <StyledArrowDropDownIcon />
+              )}
             </Button>
           </Box>
           <Divider flexItem />
@@ -591,7 +686,11 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
               alignSelf: "stretch",
             }}
           >
-            <Typography variant="h6" color="text.primary" sx={{whiteSpace: "pre-wrap"}}>
+            <Typography
+              variant="h6"
+              color="text.primary"
+              sx={{ whiteSpace: "pre-wrap" }}
+            >
               {review?.comment ?? "This review has no comment."}
             </Typography>
           </Box>
@@ -615,7 +714,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                   autoplay
                   autoplaySpeed={3000}
                   lazyLoad="ondemand"
-                  cssEase='linear'
+                  cssEase="linear"
                   centerMode
                   centerPadding="32px"
                   adaptiveHeight
@@ -639,7 +738,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                   */
                 >
                   {review?.reviewImages?.map((image) => (
-                    <div key={image} style={{position: "relative"}}>
+                    <div key={image} style={{ position: "relative" }}>
                       <Image
                         loading={"lazy"}
                         src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
@@ -648,7 +747,7 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                         height={568}
                         style={{
                           objectFit: "none",
-                          margin: "0px 32px"
+                          margin: "0px 32px",
                         }}
                       />
                     </div>
@@ -673,11 +772,20 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                 gap: "12px",
               }}
             >
-              <Typography variant="subtitle1" color="primary.main" sx={{fontWeight: 700}}>
+              <Typography
+                variant="subtitle1"
+                color="primary.main"
+                sx={{ fontWeight: 700 }}
+              >
                 Did you find this review helpful?
               </Typography>
-              <Button variant={reaction !== null ? reaction ? "contained" : "outlined" : "outlined"} color="primary">
-                <Box 
+              <Button
+                variant={
+                  liked != null && liked == true ? "contained" : "outlined"
+                }
+                color="primary"
+              >
+                <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -685,57 +793,64 @@ function GamePage({ review, errorMessage }: GameReviewPageProps) {
                   }}
                   onClick={() => handleReaction(true)}
                 >
-                  <Box 
+                  <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
                       gap: "4px",
                     }}
                   >
-                    <StyledThumbUpIcon sx={{fontSize: 24}}/>
-                    <Typography variant="subtitle1" sx={{fontWeight: 700, color: "#4FA639"}}>
-                      {review?.numberOfLikes ?? 0}
+                    <StyledThumbUpIcon sx={{ fontSize: 24 }} />
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontWeight: 700, color: "#4FA639" }}
+                    >
+                      {newLikes ?? 0}
                     </Typography>
                   </Box>
-                  <Typography variant="body2">
-                    YES
-                  </Typography>
+                  <Typography variant="body2">YES</Typography>
                 </Box>
               </Button>
-              <Button 
-                variant={reaction !== null ? !reaction  ? "contained" : "outlined" : "outlined"} 
+              <Button
+                variant={
+                  disliked != null && disliked == true
+                    ? "contained"
+                    : "outlined"
+                }
                 color="primary"
                 onClick={() => handleReaction(false)}
               >
-                <Box 
+                <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     gap: "12px",
                   }}
                 >
-                  <Box 
+                  <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
                       gap: "4px",
                     }}
                   >
-                    <StyledThumbDownIcon sx={{fontSize: 24}}/>
-                    <Typography variant="subtitle1" color="error.main" sx={{fontWeight: 700}}>
-                      {review?.numberOfDislikes ?? 0}
+                    <StyledThumbDownIcon sx={{ fontSize: 24 }} />
+                    <Typography
+                      variant="subtitle1"
+                      color="error.main"
+                      sx={{ fontWeight: 700 }}
+                    >
+                      {newDislikes ?? 0}
                     </Typography>
                   </Box>
-                  <Typography variant="body2">
-                    NO
-                  </Typography>
+                  <Typography variant="body2">NO</Typography>
                 </Box>
               </Button>
             </Box>
           </Box>
         </Box>
       </Box>
-      <ScrollToTopFab/>
+      <ScrollToTopFab />
 
       {/* 
       <h1 className="text-4xl font-bold mb-4">
