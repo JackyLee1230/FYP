@@ -200,6 +200,12 @@ public class UserController {
             if(user != null){
                 for (Review r: user.getReviews()){
                     r.setReviewer(null);
+                    r.getReviewedGame().setBaseGame(null);
+                    r.setReviewComment(null);
+                    r.setLikes(null);
+                    r.setDislikes(null);
+                    r.setLikedUsers(null);
+                    r.setDislikedUsers(null);
                 }
                 return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
