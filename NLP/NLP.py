@@ -153,8 +153,8 @@ def consumer(ch, method, properties, body, inference_obj):
         f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
     # test queue to not destroying the main queue
-    # local.channel.basic_publish(
-    #     exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+    local.channel.basic_publish(
+        exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
     # notify the RabbitQueue
     # acknowledge finish processing the msg to the channel in the main thread
