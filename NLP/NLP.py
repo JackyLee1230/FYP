@@ -147,6 +147,7 @@ def consumer(ch, method, properties, body, inference_obj):
         thread_id = threading.currentThread().ident
         print(f'Thread {thread_id} created channel.')
         local.channel = thread_channel
+        local.channel.confirm_delivery()
 
     # forming the result
     resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
@@ -156,15 +157,18 @@ def consumer(ch, method, properties, body, inference_obj):
 
     print(
         f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
+    try:
+        local.channel.basic_publish(
+            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
 
+        # the production queue
+        # use the local thread channel to send back the result (to maintain thread-safe queue)
+        local.channel.basic_publish(
+            exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
+
+    except pika.exceptions.UnroutableError as e:
+        print("UnroutableError" + str(reviewId) + ";" + e)
     # test queue to not destroying the main queue
-    local.channel.basic_publish(
-        exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
-
-    # the production queue
-    # use the local thread channel to send back the result (to maintain thread-safe queue)
-    local.channel.basic_publish(
-        exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
 
     # notify the RabbitQueue
     # acknowledge finish processing the msg to the channel in the main thread
