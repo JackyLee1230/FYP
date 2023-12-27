@@ -159,12 +159,12 @@ def consumer(ch, method, properties, body, inference_obj):
         f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
     try:
         local.channel.basic_publish(
-            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}', mandatory=True)
 
         # the production queue
         # use the local thread channel to send back the result (to maintain thread-safe queue)
         local.channel.basic_publish(
-            exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack)
+            exchange='FYP_exchange', routing_key='FYP_SentimentAnalysisResult', body=resultToBeSentBack, mandatory=True)
 
     except pika.exceptions.UnroutableError as e:
         print("UnroutableError" + str(reviewId) + ";" + e)
