@@ -22,14 +22,6 @@ export default function RoleChip({
   direction: "row" | "column";
   includeUser: boolean;
 }) {
-  // switch (role) {
-  //   case "ADMIN":
-  //     return <AdminChip />;
-  //   case "DEVELOPER":
-  //     return <DeveloperChip />;
-  //   default:
-  //     return <UserChip />;
-  // }
   const newRole = includeUser ? role : role.filter((r) => r !== "USER");
   return (
     <>

@@ -27,43 +27,6 @@ type LandingPageProps = {
   errorMessage: string;
 };
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   let games = null;
-//   let errorMessage = null;
-
-//   try {
-//     const response = await axios.get(
-//       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getAllGames`,
-//       {
-//         headers: {
-//           "Access-Control-Allow-Origin": "*",
-//           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-//           "Access-Control-Allow-Headers": "Content-Type, Authorization",
-//           "Access-Control-Allow-Credentials": "true",
-//         },
-//       }
-//     );
-//     games = response.data;
-
-//     if (response.status === 200) {
-//       games = await response.data;
-//     } else {
-//       errorMessage = response.statusText;
-//     }
-//   } catch (error: any) {
-//     // Handle the error
-//     console.error(error);
-//     errorMessage = error.toString();
-//   }
-
-//   return {
-//     props: {
-//       games,
-//       errorMessage,
-//     },
-//   };
-// };
-
 const Dashboard = () => {
   return (
     <>

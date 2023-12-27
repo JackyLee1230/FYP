@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let iconUrl = null;
 
   try {
-    // Fetch the game data from an API using Axios
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/findUserById`,
       { id: userid },

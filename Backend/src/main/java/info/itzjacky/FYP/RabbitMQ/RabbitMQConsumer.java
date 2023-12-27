@@ -32,6 +32,11 @@ public class RabbitMQConsumer {
     @RabbitListener(queues = "${spring.rabbitmq.SentimentAnalysisResultQueueName}")
     public void receive(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
             throws IOException {
+        if(payload.contains("TESTMESSAGE")){
+            logger.info("TEST MESSAGE RECEIVED" + payload);
+            channel.basicAck(tag, false);
+            return;
+        }
         String result = payload.replace("b'", "");
         String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
         String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
