@@ -195,8 +195,10 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             display: "flex",
             justifyContent: "space-between",
             marginBottom: "12px",
+            gap: "0px",
             [theme.breakpoints.down("sm")]: {
               flexDirection: "column",
+              gap: "12px",
             },
           }}
         >
@@ -245,6 +247,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
                 value={order}
                 onChange={handleOrderSorting}
                 autoWidth={false}
+                size={isMobile ? "small" : "medium"}
               >
                 <MenuItem value="relevance">Relevance</MenuItem>
                 <MenuItem value="score">Score</MenuItem>
@@ -254,7 +257,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
 
             <Button
               variant="contained"
-              size= {isMobile ? "small" : "large"}
+              size= {isMobile ? "small" : "medium"}
               color="secondary"
               onClick={handlePopperClick}
               sx={{

@@ -143,7 +143,6 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
 
         [theme.breakpoints.down("sm")]: {
           padding: "12px 18px",
-          marginTop: "8px",
         },
       }}
     >
