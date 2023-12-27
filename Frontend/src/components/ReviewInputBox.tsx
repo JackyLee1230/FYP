@@ -57,13 +57,13 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
   const handleImageChange = (newFiles: File[] | File | undefined) => {
     let allow = true;
 
-    // Limit the total number of files to 3
+    // Limit the total number of files to 10
     if (newFiles instanceof File) {
       newFiles = [newFiles];
     }
-    if (newFiles && newFiles.length > 3) {
+    if (newFiles && newFiles.length > 10) {
       displaySnackbarVariant(
-        `You can only upload 3 images for your reivew.`,
+        `You can only upload 10 images for your reivew.`,
         "error"
       );
       allow = false;

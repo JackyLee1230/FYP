@@ -1,5 +1,6 @@
-import { Modal } from "@mui/material";
+import { IconButton, Modal } from "@mui/material";
 import Image from "next/image";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 type ImageBackdropProp = {
@@ -17,24 +18,40 @@ function ImageBackdrop({open, handleClose, imageUrl}: ImageBackdropProp) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "grey",
       }}
       open={open}
       onClick={handleClose}
     >
-      <Image
-        src={imageUrl}
-        width={0}
-        height={0}
-        sizes="100vw"
-        style={{
-          height: "auto",
-          width: "100%",
-          maxHeight: "94vh",
-          maxWidth: "86vw",
-          objectFit: "scale-down",
-        }}
-        alt={"review image"}
-      />
+      <>
+        <IconButton
+          size="large"
+          color="secondary"
+          sx={{
+            position: "absolute",
+            top: "12px",
+            right: "12px",
+            margin: "8px",
+            zIndex: 10,
+          }}
+        >
+          <CloseIcon/>
+        </IconButton>
+        <Image
+          src={imageUrl}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            height: "auto",
+            width: "100%",
+            maxHeight: "94vh",
+            maxWidth: "86vw",
+            objectFit: "scale-down",
+          }}
+          alt={"review image"}
+        />
+      </>
     </Modal>
   );
 }
