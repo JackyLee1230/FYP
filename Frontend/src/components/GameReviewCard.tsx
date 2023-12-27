@@ -89,7 +89,7 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
           >
             <ButtonBase
               LinkComponent={Link}
-              href={`/user/${review.reviewer.id}`}
+              href={`/user/${review?.reviewer?.id}`}
               sx={{borderRadius: "50%", bgcolor: "grey.100"}}
               disabled={!review?.reviewer?.id}
             >
@@ -107,7 +107,7 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
               sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
               LinkComponent={Link}
               variant="text"
-              href={`/user/${review.reviewer.id}`}
+              href={`/user/${review?.reviewer?.id}`}
               disabled={!review?.reviewer?.id}
             >
               <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
@@ -211,6 +211,7 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
                 flex: "1 0 0",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
+                wordBreak: "break-all",
               }}
             >
               <Typography variant="subtitle2" color="text.secondary">
