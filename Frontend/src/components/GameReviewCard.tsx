@@ -261,7 +261,11 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
           }}
         >
           <Typography variant="subtitle1" color="text.secondary">
-            AI Sentiment: coming soon.
+            {`AI Sentiment: ${review.sentiment != null
+                            ? review.sentiment == 1
+                              ? "Positive"
+                              : "Negative"
+                            : "Coming soon..."}`}
           </Typography>
         </Box>
         <Box

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import Link from "next/link";
 import { getScoreColor } from "@/utils/DynamicScore";
+import { getPlatform } from "@/type/gamePlatform";
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -189,16 +190,19 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               color="text.secondary"
               noWrap
             >
-              {`${
-                gameData?.platforms.length > 1
-                  ? `${gameData?.platforms[0]} ...more`
-                  : gameData?.platforms[0]
-              } | ${gameData.releaseDate}
-                ${
-                  gameData?.dlc === true && gameData?.baseGame !== null
-                    ? `| ${gameData?.baseGame.name} DLC`
-                    : ""
-                }`}
+              {`
+              ${gameData?.platforms && gameData?.platforms.length > 0 ? 
+                  gameData?.platforms.length > 1
+                    ? `${getPlatform(gameData?.platforms[0])} ...more | `
+                    : `${getPlatform(gameData?.platforms[0])} | `
+                : "Unknown Platform |"}
+              ${gameData.releaseDate}
+              ${
+                gameData?.dlc === true && gameData?.baseGame !== null
+                  ? `| ${gameData?.baseGame.name} DLC`
+                  : ""
+              }
+              `}
             </Typography>
           </Box>
         </Box>
