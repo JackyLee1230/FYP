@@ -3,6 +3,8 @@ import pika
 from pika import PlainCredentials
 from sklearn.pipeline import Pipeline
 
+from datetime import datetime
+
 import pickle
 from pathlib import Path
 import time
@@ -149,8 +151,11 @@ def consumer(ch, method, properties, body, inference_obj):
     # forming the result
     resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
 
+    now = datetime.now()
+    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+
     print(
-        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}')
+        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
 
     # test queue to not destroying the main queue
     local.channel.basic_publish(
