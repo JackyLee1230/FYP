@@ -27,7 +27,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import HelpIcon from "@mui/icons-material/Help";
-import ForumIcon from '@mui/icons-material/Forum';
+import ForumIcon from "@mui/icons-material/Forum";
 import Link from "next/link";
 import { playTimeString } from "@/utils/Other";
 import { getReviewColor } from "@/utils/DynamicScore";
@@ -44,7 +44,7 @@ import {
   displaySnackbarVariant,
 } from "@/utils/DisplaySnackbar";
 import { CustomInput } from "@/components/CustomInput";
-import ReviewCommentCard from "@/components/ReviewCommentCard"
+import ReviewCommentCard from "@/components/ReviewCommentCard";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -86,7 +86,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     errorMessage = error.toString();
   }
 
-  try{
+  try {
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewCommentsByReviewId`,
       { reviewId: reviewid },
@@ -115,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       errorMessage,
       iconUrl,
       reviewComment,
-      commentErrorMessage
+      commentErrorMessage,
     },
   };
 };
@@ -155,7 +155,12 @@ const StyledForumIcon = styled(ForumIcon)(({ theme }) => ({
   fontSize: 36,
 }));
 
-function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: GameReviewPageProps) {
+function GamePage({
+  review,
+  errorMessage,
+  commentErrorMessage,
+  reviewComment,
+}: GameReviewPageProps) {
   const [showMLSummaries, setShowMLSummaries] = useState(false);
   const [liked, setLiked] = useState<boolean | null>(null);
   const [page, setPage] = useState<number>(1);
@@ -167,7 +172,9 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
   );
   const [reactionLoading, setReactionLoading] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
-  const [reviewCommentState, setReviewCommentState] = useState<GameReviewComment[]>(reviewComment ?? []);
+  const [reviewCommentState, setReviewCommentState] = useState<
+    GameReviewComment[]
+  >(reviewComment ?? []);
   const [addCommentLoading, setAddCommentLoading] = useState<boolean>(false);
 
   const { user, token } = useAuthContext();
@@ -180,8 +187,11 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
   }, [user]);
 
   const handleReaction = async (newReaction: boolean | null) => {
-    if (user === null){
-      displaySnackbarVariant("You must be logged in to react to a review.", "info")
+    if (user === null) {
+      displaySnackbarVariant(
+        "You must be logged in to react to a review.",
+        "info"
+      );
       return;
     }
 
@@ -226,8 +236,8 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
   };
 
   const handleAddComment = async () => {
-    if(comment.trim().length == 0){
-      displaySnackbarVariant("Comment cannot be empty.", "error")
+    if (comment.trim().length == 0) {
+      displaySnackbarVariant("Comment cannot be empty.", "error");
       return;
     }
 
@@ -254,7 +264,6 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
         },
       }
     );
-    
 
     if (response.status === 200) {
       const updatedReviewData = await response.data;
@@ -266,7 +275,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
     }
 
     setAddCommentLoading(false);
-  }
+  };
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -656,7 +665,11 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                       AI Sentiment:
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
-                      Coming soon...
+                      {review.sentiment != null
+                        ? review.sentiment == 1
+                          ? "Positive"
+                          : "Negative"
+                        : "Coming soon..."}
                     </Typography>
                   </Box>
                   <Box
@@ -973,9 +986,19 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
               gap: "12px",
             }}
           >
-            <StyledForumIcon/>
-            <Typography variant="h4" color="text.primary" sx={{fontWeight: 700}}>
-              {`${reviewCommentState?.length > 0 ? `${reviewCommentState?.length} Comment${reviewCommentState?.length > 1 ? "s" : ""}` : "No Comments"}`}
+            <StyledForumIcon />
+            <Typography
+              variant="h4"
+              color="text.primary"
+              sx={{ fontWeight: 700 }}
+            >
+              {`${
+                reviewCommentState?.length > 0
+                  ? `${reviewCommentState?.length} Comment${
+                      reviewCommentState?.length > 1 ? "s" : ""
+                    }`
+                  : "No Comments"
+              }`}
             </Typography>
           </Box>
 
@@ -997,14 +1020,18 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                 }
                 sx={{ width: 104, height: 104 }}
               />
-              <Tooltip title="Press enter to submit your comment" arrow placement="bottom-end">
-                <CustomInput 
+              <Tooltip
+                title="Press enter to submit your comment"
+                arrow
+                placement="bottom-end"
+              >
+                <CustomInput
                   value={comment}
                   placeholder="Add a comment..."
                   onChange={(e) => setComment(e.target.value)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
-                      if(addCommentLoading){
+                      if (addCommentLoading) {
                         return;
                       }
 
@@ -1012,11 +1039,11 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                       handleAddComment();
                     }
                   }}
-                  multiline 
+                  multiline
                   fullWidth
                   rows={4}
                   sx={{
-                    '& .MuiInputBase-input': {
+                    "& .MuiInputBase-input": {
                       width: "100%",
                       bgcolor: "white",
                     },
@@ -1037,9 +1064,11 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
               alignSelf: "stretch",
             }}
           >
-            {reviewCommentState?.slice((page - 1) * rowsPerPage, page * rowsPerPage).map((comment) => (
-              <ReviewCommentCard key={comment.id} ReviewComment={comment} />
-            ))}
+            {reviewCommentState
+              ?.slice((page - 1) * rowsPerPage, page * rowsPerPage)
+              .map((comment) => (
+                <ReviewCommentCard key={comment.id} ReviewComment={comment} />
+              ))}
           </Box>
           {reviewCommentState?.length > rowsPerPage && (
             <Pagination
@@ -1054,7 +1083,7 @@ function GamePage({ review, errorMessage, commentErrorMessage, reviewComment }: 
                   alignItems: "center",
                   justifyContent: "center",
                 },
-                alignSelf: "center"
+                alignSelf: "center",
               }}
             />
           )}
