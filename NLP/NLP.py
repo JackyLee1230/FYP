@@ -111,7 +111,8 @@ def init_connection():
     # Establish connection
     credentials = PlainCredentials('FYP', 'FYP')
     connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='137.184.216.126', port=5672, credentials=credentials))
+        host='137.184.216.126', port=5672, credentials=credentials, heartbeat=0))
+
     channel = connection.channel()
 
     return channel, connection
