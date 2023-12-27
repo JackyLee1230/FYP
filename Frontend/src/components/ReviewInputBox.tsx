@@ -149,7 +149,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
   }
 
   const handleReviewSubmit = () => {
-    if(comment.trim() === "" || score < 0 || platform === null || playTime < 0){
+    if(comment.trim() === "" || score < 0 || (platform === null && game?.platforms && game?.platforms.length > 0) || playTime < 0){
       displaySnackbarVariant(
         `Please fill in all the  fields.`,
         "error"
@@ -334,34 +334,36 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
               width: "100%",
             }}
           >
-            <FormControl sx={{ minWidth: 200 }}>
-              <Autocomplete
-                size="small"
-                options={game?.platforms}
-                sx={{
-                  bgcolor: "white",
-                }}
-                renderInput={(params) => <TextField {...params} placeholder="Select a platform" />}
-                ListboxProps={
-                  {
-                    style:{
-                        maxHeight: '250px',
-                        backgroundColor: 'white',
+            {game?.platforms && game?.platforms?.length > 0 && (
+              <FormControl sx={{ minWidth: 200 }}>
+                <Autocomplete
+                  size="small"
+                  options={game?.platforms}
+                  sx={{
+                    bgcolor: "white",
+                  }}
+                  renderInput={(params) => <TextField {...params} placeholder="Select a platform" />}
+                  ListboxProps={
+                    {
+                      style:{
+                          maxHeight: '250px',
+                          backgroundColor: 'white',
+                      }
                     }
                   }
-                }
-                renderOption={(props, option) => (
-                  <li {...props}>
-                    {getPlatform(option)}
-                  </li>
-                )}
-                getOptionLabel={(option) => getPlatform(option)}
-                value={platform}
-                onChange={(_: any, newValue: string | null) => {
-                  setPlatform(newValue);
-                }}
-              />
-            </FormControl>
+                  renderOption={(props, option) => (
+                    <li {...props}>
+                      {getPlatform(option)}
+                    </li>
+                  )}
+                  getOptionLabel={(option) => getPlatform(option)}
+                  value={platform}
+                  onChange={(_: any, newValue: string | null) => {
+                    setPlatform(newValue);
+                  }}
+                />
+              </FormControl>
+            )}
 
             <CustomInput 
               value={playTime === -1 ? "" : playTime}

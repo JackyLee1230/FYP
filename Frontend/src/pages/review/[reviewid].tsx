@@ -33,9 +33,6 @@ import { playTimeString } from "@/utils/Other";
 import { getReviewColor } from "@/utils/DynamicScore";
 import Collapse from "@mui/material/Collapse";
 import { useEffect, useState } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
 import ScrollToTopFab from "@/components/ScrollToTopFAB";
 import { useAuthContext } from "@/context/AuthContext";
@@ -44,7 +41,8 @@ import {
   displaySnackbarVariant,
 } from "@/utils/DisplaySnackbar";
 import { CustomInput } from "@/components/CustomInput";
-import ReviewCommentCard from "@/components/ReviewCommentCard";
+import ReviewCommentCard from "@/components/ReviewCommentCard"
+import EmblaCarousel from "@/components/EmblaCarousel/EmblaCarousel";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -302,11 +300,13 @@ function GamePage({
         <Typography variant="h4" sx={{ textAlign: "center" }}>
           Review Not Found
         </Typography>
+        {/*
         {errorMessage && (
           <Typography variant="body1" sx={{ textAlign: "center" }}>
             {errorMessage}
           </Typography>
         )}
+         */}
       </Box>
     );
   }
@@ -809,66 +809,10 @@ function GamePage({
           </Box>
           {review?.reviewImages?.length > 0 && (
             <>
-              <Box
-                sx={{
-                  maxWidth: "1168px",
-                  margin: "0 auto",
-                  marginBottom: "24px",
-                }}
-              >
-                <Slider
-                  dots
-                  dotsClass="slick-dots slick-thumb"
-                  infinite
-                  speed={500}
-                  slidesToShow={1}
-                  slidesToScroll={1}
-                  variableWidth
-                  autoplay
-                  autoplaySpeed={3000}
-                  lazyLoad="ondemand"
-                  cssEase="linear"
-                  centerMode
-                  centerPadding="32px"
-                  adaptiveHeight
-                  nextArrow={<CustomArrowRight size="medium" />}
-                  prevArrow={<CustomArrowLeft size="medium" />}
-                  /* 
-                    customPaging={(i) => (
-                      <div key={i} style={{position: "relative"}}>
-                        <Image
-                          loading={"lazy"}
-                          src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewImages[i]}`}
-                          alt="Review Image"
-                          width={178}
-                          height={100}
-                          style={{
-                            objectFit: "none",
-                          }}
-                        />
-                      </div>
-                    )}
-                  */
-                >
-                  {review?.reviewImages?.map((image) => (
-                    <div key={image} style={{ position: "relative" }}>
-                      <Image
-                        loading={"lazy"}
-                        src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
-                        alt="Review Image"
-                        width={1000}
-                        height={568}
-                        style={{
-                          objectFit: "none",
-                          margin: "0px 32px",
-                        }}
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </Box>
+              <EmblaCarousel images={review.reviewImages}/>
             </>
           )}
+          
           <Divider flexItem />
           <Box
             sx={{
@@ -1090,56 +1034,6 @@ function GamePage({
         </Box>
       </Box>
       <ScrollToTopFab />
-
-      {/* 
-      <h1 className="text-4xl font-bold mb-4">
-        Review for {review.reviewedGame.name} by {review.reviewer.name}
-      </h1>
-      <p className="text-lg mb-4">Created At: {formatTime(review.createdAt)}</p>
-      <p className="text-lg mb-4">Score: {review.score}</p>
-      <p className="text-lg mb-4">
-        Recommended: {review.recommended ? "Yes" : "No"}
-      </p>
-      <p className="text-lg mb-4">Comment: {review.comment}</p>
-      <p className="text-lg mb-4">
-        Recommendation Score: {review.recommendationScore}
-      </p>
-      <p className="text-lg mb-4">Game Version: {review.gameVersion}</p>
-      <p className="text-lg mb-4">AI Sentiment: {review.sentiment}</p>
-      <p className="text-lg mb-4">
-        Sentiment Updated At:{" "}
-        {format(new Date(review.sentimentUpdatedAt), "yyyy-MM-dd HH:mm:ss")}
-      </p>
-      <p className="text-lg mb-4">
-        Platforms:{" "}
-        {review.reviewedGame.platforms.map((platform) => (
-          <span key={platform}>{getPlatform(platform)} </span>
-        ))}
-      </p>
-      <p className="text-lg mb-4">
-        In Development: {review.inDevelopment ? "Yes" : "No"}
-      </p>
-      <p className="text-lg mb-4">
-        Genres:{" "}
-        {review.reviewedGame.genre.map((genre) => (
-          <span key={genre}>{getGenre(genre)} </span>
-        ))}
-      </p>
-      {review.reviewImages && review.reviewImages.length > 0 && (
-        <>
-          Review contains the following images:
-          {review.reviewImages.map((image) => (
-            <Image
-              width={100}
-              height={100}
-              alt="Review Image"
-              key={image}
-              src={`${NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
-            />
-          ))}
-        </>
-      )}
-      */}
     </div>
   );
 }

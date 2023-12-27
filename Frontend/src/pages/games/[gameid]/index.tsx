@@ -212,11 +212,13 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
         <Typography variant="h4" sx={{ textAlign: "center" }}>
           Game Not Found
         </Typography>
+{/*
         {errorMessage && (
           <Typography variant="body1" sx={{ textAlign: "center" }}>
             {errorMessage}
           </Typography>
         )}
+*/}
       </Box>
     );
   }
