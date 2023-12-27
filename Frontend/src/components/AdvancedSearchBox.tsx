@@ -16,6 +16,7 @@ import {
   Collapse,
   RadioGroup,
   Radio,
+  useTheme,
 } from "@mui/material";
 import { GenreList, getGenre, getIdByGenre } from "@/type/gameGenre";
 import {
@@ -41,6 +42,7 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
   const [isInDevelopment, setIsInDevelopment] = useState<boolean | null>(null);
   const [openGenre, setOpenGenre] = useState(false);
   const [openPlatform, setOpenPlatform] = useState(false);
+  const theme = useTheme();
 
   const handleToggleGenre = () => {
     setOpenGenre(!openGenre);
@@ -138,6 +140,11 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
         borderColor: "divider",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         gap: 2,
+
+        [theme.breakpoints.down("sm")]: {
+          padding: "12px 18px",
+          marginTop: "8px",
+        },
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -158,6 +165,12 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
               container
               spacing={{ xs: 1, md: 2 }}
               columns={{ xs: 4, sm: 8, md: 12, lg: 16 }}
+              sx={{
+                [theme.breakpoints.down("sm")]: {
+                  overflow: "scroll",
+                  maxHeight: "25vh",
+                },
+              }}
             >
               {GenreList.map((genre, index) => (
                 <Grid item xs={4} key={index}>
@@ -195,6 +208,12 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
               container
               spacing={{ xs: 1, md: 2 }}
               columns={{ xs: 4, sm: 8, md: 12, lg: 16 }}
+              sx={{
+                [theme.breakpoints.down("sm")]: {
+                  overflow: "scroll",
+                  maxHeight: "25vh",
+                },
+              }}
             >
               {PlatformList.map((platform, index) => (
                 <Grid item xs={4} key={index}>
@@ -215,7 +234,16 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
             </Grid>
           </Collapse>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "row", gap: "24px" }}>
+        <Box sx={{ 
+          display: "flex", 
+          flexDirection: "row", 
+          gap: "24px" ,
+
+          [theme.breakpoints.down("sm")]: {
+            flexDirection: "column", 
+            gap: "12px" ,
+          },
+        }}>
           <Typography
             color={"primary.main"}
             variant="h6"

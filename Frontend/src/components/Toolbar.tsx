@@ -25,7 +25,9 @@ import {
   alpha,
   darken,
   styled,
+  useMediaQuery,
   useScrollTrigger,
+  useTheme,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,8 +92,9 @@ const WebToolbar = () => {
   const handleUserMenuClose = () => {
     setAnchorEl(null);
   };
-
   let { user, token, setUser, setToken } = useAuthContext();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     if (token || user) {
@@ -157,7 +160,11 @@ const WebToolbar = () => {
             }}
           >
             <ButtonBase LinkComponent={Link} href="/" sx={{ borderRadius: 2 }}>
-              <Image src="/logo.png" width={210} height={64} alt="CritiQ Icon" />
+              <Image 
+                src="/logo.png" 
+                width={isMobile ? 105 : 210} height={isMobile ? 32 : 64} 
+                alt="CritiQ Icon"
+              />
             </ButtonBase>
 
             {/*
@@ -192,7 +199,7 @@ const WebToolbar = () => {
             </Button>
           */}
             <Search
-              onKeyPress={(ev) => {
+              onKeyDown={(ev) => {
                 if (ev.key === "Enter") {
                   handleGameSearch();
                   ev.preventDefault();

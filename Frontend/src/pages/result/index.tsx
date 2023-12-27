@@ -15,11 +15,13 @@ import {
   MenuItem,
   FormControl,
   SelectChangeEvent,
+  useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
 import AdvancedSearchBox from "../../components/AdvancedSearchBox";
 import Head from "next/head";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -115,6 +117,8 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
     searchType === "Game" ? searchGamename : searchDevelopername;
   const platform = router.query.platform;
   const genre = router.query.genre;
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -173,25 +177,32 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
         <title>{searchString ? `Search: ${searchString} | CritiQ` : `All games | CritiQ`}</title>
       </Head>
       <Box
-        sx={{
+        sx={(theme) => ({
           display: "flex",
           padding: "48px 32px",
           maxWidth: 1440,
           flexDirection: "column",
           flex: "1 0 0",
           margin: "0 auto",
-        }}
+
+          [theme.breakpoints.down("sm")]: {
+            padding: "24px 12px",
+          },
+        })}
       >
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             marginBottom: "12px",
+            [theme.breakpoints.down("sm")]: {
+              flexDirection: "column",
+            },
           }}
         >
           {searchGamename || searchDevelopername ? (
             <Typography
-              variant="h6"
+              variant={isMobile ? "subtitle1" : "h6"}
               component="div"
               sx={{ color: "text.secondary" }}
             >
@@ -206,7 +217,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             </Typography>
           ) : (
             <Typography
-              variant="h6"
+              variant={isMobile ? "subtitle1" : "h6"}
               component="div"
               sx={{ color: "text.secondary" }}
             >
@@ -214,8 +225,21 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             </Typography>
           )}
 
-          <Box sx={{ display: "flex", flexDirection: "row", gap: "12px" }}>
-            <FormControl sx={{ minWidth: 146 }}>
+          <Box 
+            sx={{ 
+              display: "flex", 
+              flexDirection: "row", 
+              gap: "12px",
+              [theme.breakpoints.down("sm")]: {
+                alignSelf: "flex-end",
+              },
+            }}
+          >
+            <FormControl 
+              sx={{ 
+                minWidth: 146,
+              }}
+            >
               <Select
                 color="secondary"
                 value={order}
@@ -230,9 +254,12 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
 
             <Button
               variant="contained"
-              size="large"
+              size= {isMobile ? "small" : "large"}
               color="secondary"
               onClick={handlePopperClick}
+              sx={{
+                whiteSpace: "nowrap",
+              }}
             >
               Advanced Search
             </Button>
@@ -262,6 +289,11 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             flexDirection: "column",
             padding: "32px 0px",
             gap: "32px",
+
+            [theme.breakpoints.down("sm")]: {
+              padding: "24px 0px",
+              gap: "24px",
+            },
           }}
         >
           {gameInfoData && gameInfoData.length > 0 ? (
@@ -308,7 +340,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           )}
         </Box>
 
-        {gameInfoData && gameInfoData.length > 0 && (
+        {gameInfoData && gameInfoData.length > rowsPerPage && (
           <Pagination
             color="primary"
             variant="outlined"

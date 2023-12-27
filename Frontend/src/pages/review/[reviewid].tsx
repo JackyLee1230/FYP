@@ -941,7 +941,7 @@ function GamePage({
                   ? `${reviewCommentState?.length} Comment${
                       reviewCommentState?.length > 1 ? "s" : ""
                     }`
-                  : "No Comments"
+                  : "0 Comments"
               }`}
             </Typography>
           </Box>
