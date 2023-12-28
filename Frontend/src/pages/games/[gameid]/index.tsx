@@ -786,7 +786,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </Box>
           </Divider>
 
-          {token != undefined && user && !isUserReviewLoading && 
+          {(token != undefined && user && isUserReviewLoading) ?
+            (
+              <Skeleton variant="rectangular" height={348}/>
+            ) :
             (userReview ? (
               <Box
                 sx={{
@@ -815,8 +818,9 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                 <GameReviewCard review={userReview} fullWidth={true} />
               </Box>
             ) : (
-              <ReviewInputBox user={user} game={game} />
-            ))}
+              user && <ReviewInputBox user={user} game={game} />
+            ))
+          }
 
           <Box
             sx={{

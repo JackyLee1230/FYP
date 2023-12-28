@@ -322,7 +322,7 @@ const WebToolbar = () => {
                   </MenuItem>
                 </Menu>
               </>
-            ) : token !== undefined ? (
+            ) : token !== undefined && !user ? (
               <>
                 <Button
                   variant="outlined"
