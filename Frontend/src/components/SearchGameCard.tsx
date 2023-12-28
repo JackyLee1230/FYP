@@ -67,14 +67,14 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             ></Image>
           ) : (
             <>
+              <BrokenImageIcon color="error" sx={{fontSize: 48}} />
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ color: "text.secondary" }}
+                sx={{ color: "error.main" }}
               >
                 No Image
               </Typography>
-              <BrokenImageIcon sx={{ color: "text.secondary" }} />
             </>
           )}
         </Box>

@@ -664,7 +664,12 @@ function GamePage({
                     >
                       AI Sentiment:
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography 
+                      variant="h6" 
+                      sx={{
+                        color: review.sentiment != null ? (review.sentiment == 1 ? "#4FA639" : "error.main") : "text.secondary",
+                      }}
+                    >
                       {review.sentiment != null
                         ? review.sentiment == 1
                           ? "Positive"

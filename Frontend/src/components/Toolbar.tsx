@@ -66,6 +66,9 @@ const SearchIconWrapper = styled(ButtonBase)(({ theme }) => ({
   justifyContent: "left",
   padding: "0px 8px",
   color: "#FFFFFF",
+  [theme.breakpoints.down("sm")]: {
+    width: "48px",
+  },
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -75,6 +78,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: "38px",
     transition: theme.transitions.create("width"),
     fontSize: "15px",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "24px",
+    },
   },
 }));
 
@@ -160,11 +166,21 @@ const WebToolbar = () => {
             }}
           >
             <ButtonBase LinkComponent={Link} href="/" sx={{ borderRadius: 2 }}>
+              {isMobile ? (
+                <Image
+                  src="/favicon.ico"
+                  width={48}
+                  height={48}
+                  alt="CritiQ Icon"
+                />
+              ) : 
+              (
               <Image 
                 src="/logo.png" 
-                width={isMobile ? 105 : 210} height={isMobile ? 32 : 64} 
+                width={210} height={64} 
                 alt="CritiQ Icon"
               />
+              )}
             </ButtonBase>
 
             {/*
@@ -311,8 +327,8 @@ const WebToolbar = () => {
                 <Button
                   variant="outlined"
                   color="secondary"
-                  size="large"
-                  sx={{ whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500 }}
+                  size={isMobile ? "small" : "large"}
+                  sx={{ whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500, minHeight: "38px" }}
                   onClick={() => setOpenPanel(true)}
                 >
                   Register
