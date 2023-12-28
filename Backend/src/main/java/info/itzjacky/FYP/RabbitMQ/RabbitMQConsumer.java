@@ -37,7 +37,7 @@ public class RabbitMQConsumer {
             channel.basicAck(tag, false);
             return;
         }
-        String result = payload.replace("b'", "").replace("b", "");
+        String result = payload.replace("b", "");
         String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
         String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
         if (reviewId == null || sentiment == null) {
