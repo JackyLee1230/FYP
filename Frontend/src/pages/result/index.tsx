@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import "tailwindcss/tailwind.css";
 import axios from "axios";
@@ -138,11 +138,15 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   }
   , [gameInfoData.length, isMobile, page]);
 
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "auto" })
+  }, [])
+
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    window.scrollTo(0, 0);
+    scrollToTop();
     setPage(value);
   };
 
@@ -237,9 +241,9 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             </Typography>
           ) : (
             <Typography
-              variant={isMobile ? "subtitle1" : "h6"}
+              variant={isMobile ? "h6" : "h5"}
               component="div"
-              sx={{ color: "text.secondary" }}
+              sx={{ color: "text.primary", fontWeight: 700}}
             >
               All Games
             </Typography>

@@ -140,6 +140,7 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
         borderColor: "divider",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         gap: 2,
+        zIndex: 10,
 
         [theme.breakpoints.down("sm")]: {
           padding: "12px 18px",

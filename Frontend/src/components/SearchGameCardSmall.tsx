@@ -25,11 +25,10 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
         alignItems: "flex-start",
         borderRadius: "12px",
         border: `0.5px solid ${primayColor}`,
-        bgcolor: "background.paper",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
-        background: `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat`,
-        backgroundSize: "cover",
+        background: gameData.iconUrl ? `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat` : undefined,
+        backgroundSize: gameData.iconUrl ? "cover" : undefined,
         minHeight: "266px",
         justifyContent: "space-between",
       }}
@@ -40,7 +39,6 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
           flexDirection: "column",
           alignItems: "center",
           alignSelf: "stretch",
-          zIndex: 1,
         }}
       >
         <Box
@@ -127,7 +125,6 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
             width: "100%",
             gap: "4px",
             justifyContent: "flex-end",
-            zIndex: 1,
           }}
         >
           {gameData.genre.slice(0, 3).map((genre, index) => (
@@ -150,7 +147,6 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
           gap: "8px",
           alignSelf: "stretch",
           background: `linear-gradient(0deg, ${primayColor} 0%, rgba(28, 40, 38, 0.74) 50.11%, rgba(28, 40, 38, 0.53) 73.17%, rgba(28, 40, 38, 0.29) 90.88%, rgba(28, 40, 38, 0.00) 100%)`,
-          zIndex: 1,
         }}
       >
         <Typography variant="h6" color="white" sx={{fontWeight: 700}}>
@@ -182,15 +178,17 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
         <Box
           sx={{
             position: "absolute",
-            top: 12,
+            top: 0,
             left: 0,
             right: 0,
             bottom: 0,
+            padding: "12px",
             flexDirection: "column",
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center",
-            zIndex: 0,
+            zIndex: -1,
+            bgcolor: "background.paper",
           }}
         >
           <BrokenImageIcon color="error" sx={{ fontSize: 64 }} />
