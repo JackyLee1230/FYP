@@ -136,9 +136,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
-  const { user } = useAuthContext();
+  const { user, token } = useAuthContext();
   const [open, setOpen] = useState(false);
   const [userReview, setUserReview] = useState<GameReview | null>(null);
+  const [isUserReviewLoading, setIsUserReviewLoading] = useState<boolean>(true);
 
   const fetchUserReview = useCallback(async () => {
     if (game && user) {
@@ -163,11 +164,14 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
         console.error(error);
       }
     }
+    setIsUserReviewLoading(false);
   }, [game, user]);
 
   useEffect(() => {
-    fetchUserReview();
-  }, [fetchUserReview, user, game]);
+    if(token != undefined){
+      fetchUserReview();
+    }
+  }, [fetchUserReview, user, game, token]);
 
   const handleReviewTypeChange = (
     event: React.ChangeEvent<{}>,
@@ -782,7 +786,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </Box>
           </Divider>
 
-          {user &&
+          {token != undefined && user && !isUserReviewLoading && 
             (userReview ? (
               <Box
                 sx={{

@@ -49,9 +49,9 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       refreshAccessToken().then(async (newToken) => {
         if(newToken !== null) {
           let user: User | null = null;
-          setToken(newToken);
           user = await getUserInfo(newToken);
           setUser(user);
+          setToken(newToken);
         }
         else{
           setToken(null);
