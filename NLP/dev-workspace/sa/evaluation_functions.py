@@ -92,7 +92,7 @@ def create_confusion_matrix_graph(y_true, y_pred, title=None, save=False, save_f
 # plot ROC curve for binary class classification
 from sklearn.metrics import roc_curve, auc
 
-def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=None, show=False):
+def plot_roc_curve_binary(y_test, y_pred, pos_label=1, title=None, save=False, save_filename=None, show=False):
     '''Plot ROC curve for binary class classification
     
     Args:
@@ -112,7 +112,7 @@ def plot_roc_curve_binary(y_test, y_pred, title=None, save=False, save_filename=
     tpr = dict()
     roc_auc = dict()
     for i in range(2):
-        fpr[i], tpr[i], _ = roc_curve(y_test, y_pred, pos_label=1)
+        fpr[i], tpr[i], _ = roc_curve(y_test, y_pred, pos_label=pos_label)
         roc_auc[i] = auc(fpr[i], tpr[i])
 
     print(roc_auc_score(y_test, y_pred))
