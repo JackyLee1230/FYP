@@ -13,12 +13,6 @@ type SearchGameCardProps = {
 };
 
 function SearchGameCard({ gameData }: SearchGameCardProps) {
-  const router = useRouter();
-
-  const handleNewGamePageRedirect = () => {
-    router.push(`/games/${gameData.id}`);
-  };
-
   return (
     <ButtonBase
       sx={{ borderRadius: "12px 4px" }}

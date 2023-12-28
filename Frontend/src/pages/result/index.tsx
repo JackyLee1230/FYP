@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 import SearchGameCard from "../../components/SearchGameCard";
+import SearchGameCardSmall from "../../components/SearchGameCardSmall";
 import AdvancedSearchBox from "../../components/AdvancedSearchBox";
 import Head from "next/head";
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -120,6 +121,23 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  useEffect(() => {
+    let RPP;
+
+    if(isMobile) {
+      setRowsPerPage(5);
+      RPP=5;
+    }
+    else{
+      setRowsPerPage(10);
+      RPP=10;
+      if(page > Math.ceil(gameInfoData.length / RPP)) {
+        setPage(Math.ceil(gameInfoData.length / RPP));
+      }
+    }
+  }
+  , [gameInfoData.length, isMobile, page]);
+
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -186,7 +204,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           margin: "0 auto",
 
           [theme.breakpoints.down("sm")]: {
-            padding: "24px 12px",
+            padding: "12px 12px",
           },
         })}
       >
@@ -302,7 +320,7 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           {gameInfoData && gameInfoData.length > 0 ? (
             gameInfoData
               .slice((page - 1) * rowsPerPage, page * rowsPerPage)
-              .map((game) => <SearchGameCard key={game.id} gameData={game} />)
+              .map((game) => isMobile ? <SearchGameCardSmall key={game.id} gameData={game}/> : <SearchGameCard key={game.id} gameData={game} />)
           ) : (
             <>
               <Typography variant="h6">No Games Found</Typography>
