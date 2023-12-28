@@ -12,7 +12,8 @@ We only highlight the most critical packages that affect the code.
 |---|---|---|
 |python|3.9.18|picking 3.9 for max compatability across different packages|
 |pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
-|numpy|1.26.0|Suggested version. The exact version can be higher than that.
+|numpy|1.26.0|Suggested version. The exact version can be higher than that.|
+|scipy|1.11.4|for softmax|
 |scikit-learn|1.3.0|
 |imbalanced-learn|0.11.0|
 |nltk|3.8.3|
@@ -28,6 +29,12 @@ Huggingface related
 |evaluate|0.4.1|The package for create metrics objects for training|
 |accelerate|0.24.1|The package for using Trainer object in training and model evaluation with PyTorch as backend|
 
+RabbitMQ related
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|pika|1.3.1|
+
+
 ONNX related
 |Dependency|version|Reason (if any)|
 |---|---|---|
@@ -36,9 +43,7 @@ ONNX related
 |skl2onnx|1.16.0|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
 |tf2onnx|1.15.1|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
 |onnxruntime-extensions|0.9.0|for tf2onnx|
-|optimum|1.17.0|for converting huggingface model to ONNX|
-
-
+|optimum|1.16.1|for converting huggingface model to ONNX|
 
 Non-critical packages
 |Dependency|version|Reason (if any)|
