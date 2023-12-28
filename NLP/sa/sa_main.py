@@ -36,7 +36,6 @@ def inference(s_list: list[str]):
 
     onnx_inputs = tokenizer(s_list, return_tensors="np", max_length=tokenizer.model_max_length, truncation=True)
     onnx_outputs = session.run(output_names=output_names, input_feed=dict(onnx_inputs))                             # only get the unsoftmaxed logits
-
     # onnx_outputs is wrapped with a list with 1 element
     # example: [array([[-1.9537997,  1.9723034],
     #    [ 1.4555761, -1.4444611],
@@ -46,8 +45,6 @@ def inference(s_list: list[str]):
     sentiment = np.argmax(proba, axis=1)
 
     sentiment[sentiment == 0] = -1      # -1 as negative sentiment
-
-    print(sentiment)
 
     return sentiment
 
@@ -92,7 +89,7 @@ def consumer(ch, method, properties, body, inference_obj):
     reviewId, comment = inference_obj
 
     start_time = time.time()
-    result = inference(comment)
+    result = inference([comment])       # wrap the comment as a list
     end_time = time.time()
     print('Time taken:', end_time-start_time)
 
