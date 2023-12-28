@@ -1,12 +1,12 @@
 # FROM condaforge/miniforge3
 
-# if there's a image with the same name, it will be used instead of pulling from docker hub
+# if there's a local image with the same name, it will be used instead of pulling from docker hub
 FROM condaforge/mambaforge
 
 # Change default shell to bash. This is effective only in the Dockerfile.
 SHELL ["/bin/bash", "-i", "-c"]
 
-# Copy necessary files for inference
+# Copy all files under this directory to the container with the path as in github
 # contining the models, conda env information, python script to run inference
 COPY . /NLP/sa/
 
