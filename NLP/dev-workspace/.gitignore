@@ -13,3 +13,22 @@ dataset/sa/dataset.csv
 *.zip
 openai_key.txt
 fyp-environment.yml
+
+# --------------------
+# from nlp-dev branch
+# --------------------
+*.pyc
+
+glove.6B
+
+prompt_engineering_test/
+
+# dataset folder
+dataset/sa/dataset.csv
+
+# base folder
+*.zip
+openai_key.txt
+fyp-environment.yml
+
+.vscode/

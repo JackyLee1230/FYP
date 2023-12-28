@@ -1,0 +1,8 @@
+# sa folder
+*.pkl
+*.sav
+
+*.pyc
+
+# models
+tfidf-fa
