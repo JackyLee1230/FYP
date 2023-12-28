@@ -175,7 +175,7 @@ function GamePage({
   >(reviewComment ?? []);
   const [addCommentLoading, setAddCommentLoading] = useState<boolean>(false);
 
-  const { user, token } = useAuthContext();
+  const { user, token, isUserLoading } = useAuthContext();
 
   useEffect(() => {
     if (user != null) {
@@ -847,7 +847,7 @@ function GamePage({
                 }
                 color="primary"
                 onClick={() => handleReaction(true)}
-                disabled={reactionLoading || token === undefined}
+                disabled={reactionLoading || isUserLoading}
               >
                 <Box
                   sx={{
@@ -882,7 +882,7 @@ function GamePage({
                 }
                 color="primary"
                 onClick={() => handleReaction(false)}
-                disabled={reactionLoading || token === undefined}
+                disabled={reactionLoading || isUserLoading}
               >
                 <Box
                   sx={{
