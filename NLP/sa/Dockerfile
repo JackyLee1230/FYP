@@ -8,7 +8,7 @@ SHELL ["/bin/bash", "-i", "-c"]
 
 # Copy necessary files for inference
 # contining the models, conda env information, python script to run inference
-COPY ./NLP/sa /NLP/sa/
+COPY . /NLP/sa/
 
 # packages related files (pre-downloaded large files)
 # COPY /docker_setup_files/ /NLP/docker_setup_files/
