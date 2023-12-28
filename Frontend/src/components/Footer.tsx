@@ -29,6 +29,8 @@ function Copyright() {
 const defaultTheme = createTheme();
 
 export default function StickyFooter() {
+
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box
@@ -49,7 +51,7 @@ export default function StickyFooter() {
           }}
         >
           <Grid container spacing={4} justifyContent="space-evenly">
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={8} sm={4}>
               <Link href="/">
                 <Image
                   src="/logo.png"
@@ -60,7 +62,7 @@ export default function StickyFooter() {
                 CritiQ Platform
               </Link>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={8} sm={4}>
               <Typography variant="h6" color="text.primary" gutterBottom>
                 {"Placeholder"}
               </Typography>
@@ -83,7 +85,7 @@ export default function StickyFooter() {
               </ul>
             </Grid>
 
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={8} sm={4}>
               <Typography variant="h6" color="text.primary" gutterBottom>
                 {"TOS"}
               </Typography>

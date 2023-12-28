@@ -143,6 +143,7 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
 
         [theme.breakpoints.down("sm")]: {
           padding: "12px 18px",
+          margin: "12px 6px"
         },
       }}
     >
@@ -166,7 +167,7 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
               columns={{ xs: 4, sm: 8, md: 12, lg: 16 }}
               sx={{
                 [theme.breakpoints.down("sm")]: {
-                  overflow: "scroll",
+                  overflowY: "scroll",
                   maxHeight: "25vh",
                 },
               }}
@@ -209,7 +210,7 @@ const AdvancedSearchBox = ({ setOpen }: AdvancedSearchBoxProps) => {
               columns={{ xs: 4, sm: 8, md: 12, lg: 16 }}
               sx={{
                 [theme.breakpoints.down("sm")]: {
-                  overflow: "scroll",
+                  overflowY: "scroll",
                   maxHeight: "25vh",
                 },
               }}
