@@ -13,7 +13,7 @@ const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
 
 
 function RegisterPage() {
-  const { user, token } = useAuthContext()
+  const { user, token, isUserLoading } = useAuthContext()
 
   return (
     <>
@@ -68,7 +68,7 @@ function RegisterPage() {
               </Typography>
             </>
           ) : (
-            token === undefined ? (
+            isUserLoading ? (
               <CircularProgress />
             ) : (
               <RegisterBox />

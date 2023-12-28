@@ -98,7 +98,7 @@ const WebToolbar = () => {
   const handleUserMenuClose = () => {
     setAnchorEl(null);
   };
-  let { user, token, setUser, setToken } = useAuthContext();
+  let { user, token, setUser, setToken, isUserLoading } = useAuthContext();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -322,7 +322,7 @@ const WebToolbar = () => {
                   </MenuItem>
                 </Menu>
               </>
-            ) : token !== undefined && !user ? (
+            ) : !isUserLoading && !user ? (
               <>
                 <Button
                   variant="outlined"

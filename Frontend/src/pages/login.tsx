@@ -14,7 +14,7 @@ const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
 
 function LoginPage() {
   const router = useRouter();
-  const { user, token } = useAuthContext()
+  const { user, token, isUserLoading } = useAuthContext()
 
   useEffect(() => {
     if(user && token) {
@@ -76,7 +76,7 @@ function LoginPage() {
               </Typography>
             </>
           ) : (
-            token === undefined ? (
+            isUserLoading ? (
               <CircularProgress/>
             ) : (
               <LoginBox />

@@ -8,6 +8,7 @@ interface AuthContextProps {
   setUser: React.Dispatch<React.SetStateAction<User | null>>
   token: string | null | undefined;
   setToken: React.Dispatch<React.SetStateAction<string | null | undefined>>
+  isUserLoading: boolean;
 }
 
 interface AuthContextProviderProps {
@@ -19,6 +20,7 @@ export const AuthContext = createContext<AuthContextProps | null>(null)
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [user, setUser] = useState<User | null>(null)
   const [token, setToken] = useState<string | null | undefined>(undefined)
+  const [isUserLoading, setIsUserLoading] = useState<boolean>(token === undefined)
   const router = useRouter()
 
   // Redirect to login page if token is expired
@@ -52,9 +54,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           user = await getUserInfo(newToken);
           setUser(user);
           setToken(newToken);
+          setIsUserLoading(false);
         }
         else{
           setToken(null);
+          setIsUserLoading(false);
           console.debug('No token found')
         }
       })
@@ -68,7 +72,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         user,
         setUser,
         token,
-        setToken
+        setToken,
+        isUserLoading
       }}
     >
       {children}

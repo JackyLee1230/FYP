@@ -136,7 +136,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"recency" | "score">("recency");
-  const { user, token } = useAuthContext();
+  const { user, token, isUserLoading } = useAuthContext();
   const [open, setOpen] = useState(false);
   const [userReview, setUserReview] = useState<GameReview | null>(null);
   const [isUserReviewLoading, setIsUserReviewLoading] = useState<boolean>(true);
@@ -168,7 +168,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
   }, [game, user]);
 
   useEffect(() => {
-    if(token != undefined){
+    if(!isUserLoading){
       fetchUserReview();
     }
   }, [fetchUserReview, user, game, token]);
@@ -786,7 +786,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
             </Box>
           </Divider>
 
-          {(token != undefined && user && isUserReviewLoading) ?
+          {(!isUserLoading && user && isUserReviewLoading) ?
             (
               <Skeleton variant="rectangular" height={348}/>
             ) :
