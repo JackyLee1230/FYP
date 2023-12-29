@@ -16,7 +16,7 @@ We only highlight the most critical packages that affect the code.
 |scipy|1.11.4|for softmax|
 |scikit-learn|1.3.0|
 |imbalanced-learn|0.11.0|
-|nltk|3.8.3|
+|nltk|3.8.1|
 |tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux, or vice versa.|
 |pytorch (w/ GPU)|2.1.0|Main stable version at setup|
 
@@ -27,13 +27,12 @@ Huggingface related
 |transformers|4.35.0|Main stable version at setup|
 |datasets|2.14.6|The package for creating Dataset object for training|
 |evaluate|0.4.1|The package for create metrics objects for training|
-|accelerate|0.24.1|The package for using Trainer object in training and model evaluation with PyTorch as backend|
+|accelerate|0.24.1|The package for using Trainer object in training and model evaluation with PyTorch as backend, and restrict to inference on CPU only (for measuring inference time)|
 
 RabbitMQ related
 |Dependency|version|Reason (if any)|
 |---|---|---|
 |pika|1.3.1|
-
 
 ONNX related
 |Dependency|version|Reason (if any)|
@@ -80,6 +79,12 @@ Hence, here is the guideline of setting up WSL environment for gpu-enabled ML tr
     Optional: you may move the wsl whole system to a separate drive after setup (the whole subsystem is just like a file in windows file explorer. [Video](https://youtu.be/Fim4rwyjYrs) or [Text](https://github.com/LpCodes/Moving-WSL-Distribution-to-Another-Drive))
 
 3. Install git lfs for fetching large files (like model weights or other)
+
+    ```terminal
+    sudo apt install git-lfs
+    ```
+
+    or follow official instructions in the website [Git-Lfs](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md)
 
 4. Install CUDA by following the instructions in Step 3 of Nvidia CUDA installation instruction [Link](https://docs.nvidia.com/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment). Downloading the wsl distribution of CUDA toolkit, and follow the instruction to install. (Ref: https://hackmd.io/@Kailyn/HkSTXL9xK
 
