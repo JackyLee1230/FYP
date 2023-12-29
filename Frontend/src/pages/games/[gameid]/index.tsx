@@ -56,7 +56,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let game = null;
   let errorMessage = null;
-  let iconUrl = null;
 
   try {
     const response = await axios.post(
@@ -74,9 +73,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     if (response.status === 200) {
       game = await response.data;
-      if (game.iconUrl) {
-        iconUrl = `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`;
-      }
     } else {
       errorMessage = response.statusText;
     }
@@ -88,7 +84,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       game,
       errorMessage,
-      iconUrl,
     },
   };
 };
@@ -132,7 +127,7 @@ const fetchReview = async (
   return review;
 };
 
-function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
+function GamePage({ game, errorMessage }: GamePageProps) {
   const [reviewTypeValue, setReviewTypeValue] = useState(0);
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
@@ -279,10 +274,10 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
               position: "relative",
             }}
           >
-            {iconUrl ? (
+            {game?.iconUrl ? (
               <Image
                 loading={"lazy"}
-                src={iconUrl}
+                src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`}
                 alt="Game Icon"
                 fill
                 style={{ objectFit: "cover" }}

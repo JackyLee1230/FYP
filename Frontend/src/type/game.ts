@@ -38,7 +38,6 @@ export type GamePageProps = {
   game: GameInfo | null;
   reviews: GameReview[];
   errorMessage: string;
-  iconUrl: string;
 };
 
 export type GameSearchPageProps = {
