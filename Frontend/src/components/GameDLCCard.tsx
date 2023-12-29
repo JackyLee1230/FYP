@@ -140,9 +140,9 @@ function GameDLCCard({ game }: GameDLCCardProps) {
                 sx={{
                   fontWeight: 700,
                 }}
-                color={`${getScoreColor(game?.percentile)}.main`}
+                color={game.score ? `${getScoreColor(game.percentile)}.main` : "divider"}
               >
-                {`${Math.round(game?.score)}`}
+                {game.score ? Math.round(game.score).toString() : "N/A"}
               </Typography>
             </Box>
           </Box>

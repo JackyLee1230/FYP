@@ -487,7 +487,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   textAlign: "center",
                 }}
               >
-                {game.name}
+                {`${game.name} ${game.dlc && game.baseGame ? "(DLC)" : ""}`}
               </Typography>
             </Box>
 
@@ -648,9 +648,9 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                       fontWeight: 700,
                       textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                     }}
-                    color={`${getScoreColor(game?.percentile)}.main`}
+                    color={game.score ? `${getScoreColor(game.percentile)}.main` : "divider"}
                   >
-                    {`${Math.round(game?.score)}`}
+                    {game.score ? Math.round(game.score).toString() : "N/A"}
                   </Typography>
                 </Box>
               </Box>

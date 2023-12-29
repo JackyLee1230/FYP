@@ -218,7 +218,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               borderRadius: "32px",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             })}
-            bgcolor={`${getScoreColor(gameData.percentile)}.main`}
+            bgcolor={gameData.score ? `${getScoreColor(gameData.percentile)}.main` : "divider"}
           >
             <Typography
               variant="h2"
@@ -230,7 +230,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               }}
             >
-              {Math.round(gameData.score).toString()}
+              {gameData.score ? Math.round(gameData.score).toString() : "N/A"}
             </Typography>
           </Box>
         </Box>

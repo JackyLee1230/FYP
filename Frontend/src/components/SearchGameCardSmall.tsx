@@ -106,9 +106,9 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
                   fontWeight: 700,
                   textShadow: "2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;"
                 }}
-                color={`${getScoreColor(gameData?.percentile)}.main`}
+                color={gameData.score ? `${getScoreColor(gameData.percentile)}.main` : "divider"}
               >
-                {`${Math.round(gameData?.score)}`}
+                {gameData.score ? Math.round(gameData.score).toString() : "N/A"}
               </Typography>
             </Box>
           </Box>
