@@ -7,6 +7,7 @@ import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import Link from "next/link";
 import { getScoreColor } from "@/utils/DynamicScore";
 import { getPlatform } from "@/type/gamePlatform";
+import { format } from "date-fns";
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -190,7 +191,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
                     ? `${getPlatform(gameData?.platforms[0])} ...more | `
                     : `${getPlatform(gameData?.platforms[0])} | `
                 : "Unknown Platform |"}
-              ${gameData.releaseDate}
+              ${format(new Date(gameData?.releaseDate), "yyyy-MM-dd")}
               ${
                 gameData?.dlc === true && gameData?.baseGame !== null
                   ? `| ${gameData?.baseGame.name} DLC`

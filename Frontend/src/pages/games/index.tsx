@@ -6,7 +6,7 @@ import {
 } from "@/type/game";
 import { getEnumValues } from "@/utils/Other";
 import axios from "axios";
-import { set } from "date-fns";
+import { format, set } from "date-fns";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -194,7 +194,7 @@ export default function Search() {
                 }}
               >
                 {game.name} by {game.developerCompany} [Released on{" "}
-                {game.releaseDate}]
+                {format(new Date(game?.releaseDate), "yyyy-MM-dd")}]
                 <br />
                 [Genre: {game.genre.toString()}]
                 <br />

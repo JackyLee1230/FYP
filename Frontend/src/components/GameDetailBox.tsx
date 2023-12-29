@@ -6,6 +6,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import _ from "lodash";
 import { getGenre } from "@/type/gameGenre";
 import { getPlatform } from "@/type/gamePlatform";
+import { format } from "date-fns";
 
 type GameDetailBoxProps = {
   game: GameInfo;
@@ -59,12 +60,16 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
          {`The game is still in the development process and is available for early access. However, the game is not final and could change a lot before it is released. The quality and content of the game might not satisfy you at this point. The game might receive more or less updates or revisions from the developers later on.`}
       </Typography>
       }
+      {game?.genre?.length > 0 &&
       <Typography variant="subtitle1" color="text.secondary" sx={{alignSelf: "flex-start"}}>
         {`The genre${game?.genre.length > 1 ? 's' : ''} of this game ${game?.genre.length > 1 ? 'are' : 'is'} ${game?.genre.map((genre, index) => (index === game?.genre.length - 1) && (game?.genre.length > 1) ? `and ${getGenre(genre)}` : getGenre(genre)).join(", ")}.`}
       </Typography>
+      }
+      {game?.platforms?.length > 0 &&
       <Typography variant="subtitle1" color="text.secondary" sx={{alignSelf: "flex-start"}}>
         {`The platform${game?.platforms.length > 1 ? 's' : ''} of this game ${game?.platforms.length > 1 ? 'are' : 'is'} ${game?.platforms.map((platform, index) => (index === game?.platforms.length - 1) && (game?.platforms.length > 1) ? `and ${getPlatform(platform)}` : getPlatform(platform)).join(", ")}.`}
       </Typography>
+      }
       {game?.version &&
         <Typography variant="subtitle1" color="text.secondary" sx={{alignSelf: "flex-start"}}>
           {`The version of this game is ${game?.version}.`}
@@ -72,7 +77,7 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
       }
       {game?.releaseDate &&
         <Typography variant="subtitle1" color="text.secondary" sx={{alignSelf: "flex-start"}}>
-          {`This game is released on ${game?.releaseDate}.`}
+          {`This game is released on ${format(new Date(game?.releaseDate), "yyyy-MM-dd")}.`}
         </Typography>
       }
       {game?.developerCompany &&

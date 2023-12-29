@@ -46,6 +46,7 @@ import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { is } from "date-fns/locale";
 import { set } from "lodash";
 import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
+import { format } from "date-fns";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -559,7 +560,7 @@ function GamePage({ game, errorMessage, iconUrl }: GamePageProps) {
                   }}
                 >
                   <b>Released On: </b>
-                  {`${game?.releaseDate ? game?.releaseDate : "Unknown"}`}
+                  {`${game?.releaseDate ? format(new Date(game?.releaseDate), "yyyy-MM-dd") : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant="subtitle1"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getScoreColor } from "@/utils/DynamicScore";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import Link from "next/link";
+import { format } from "date-fns";
 
 type GameDLCCardProps = {
   game: GameInfo;
@@ -87,7 +88,7 @@ function GameDLCCard({ game }: GameDLCCardProps) {
               {game.developerCompany}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              {game.releaseDate}
+              {format(new Date(game?.releaseDate), "yyyy-MM-dd")}
             </Typography>
           </Box>
           <Box
