@@ -230,6 +230,11 @@ public class AuthenticationService {
 //        remove old tokens that are more than 2 weeks old
         tokenRepository.deleteAllByCreatedAtBefore(new Date(System.currentTimeMillis() - 1209600000));
         logger.info(jwtToken);
+        user.setReviews(null);
+        user.setDevelopedGames(null);
+        user.setLikedReviews(null);
+        user.setDislikedReviews(null);
+        user.setTestedGames(null);
         return AuthenticationResponse.builder().user(user).accessToken(jwtToken).refreshToken(refreshToken).build();
     }
 

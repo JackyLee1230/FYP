@@ -1,5 +1,7 @@
 package info.itzjacky.FYP.Game;
 
+import info.itzjacky.FYP.Review.Review;
+import info.itzjacky.FYP.Review.ReviewRepository;
 import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
@@ -40,6 +42,8 @@ public class GameService {
 
     @Autowired
     DigitalOceanStorageService storageService;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();
@@ -264,6 +268,28 @@ public class GameService {
      */
     public void removeGame(GameRequest game){
         try{
+            Game g = gameRepository.findGameById(game.getId());
+
+            if (g == null) {
+                throw new IllegalStateException("Game Does Not Exist");
+            }
+
+            if (g.getIconUrl() != null) {
+                storageService.deleteFile("games/" + g.getId() + "/icon.jpg");
+            }
+            if (g.getGameReviews() != null) {
+                for (Review r : g.getGameReviews()) {
+                    if (r.getReviewImages() != null) {
+                       for (String image : r.getReviewImages()) {
+                           storageService.deleteFile(image);
+                       }
+                    }
+                }
+                reviewRepository.deleteAll(g.getGameReviews());
+            }
+
+
+
             gameRepository.delete(gameRepository.findGameById(game.getId()));
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");

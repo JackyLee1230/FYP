@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -129,8 +130,15 @@ public class GameController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/removeGame")
-    public ResponseEntity<Void> removeGame(@RequestBody GameRequest gameRequest) {
+    public ResponseEntity<Void> removeGame(@RequestBody GameRequest gameRequest, @AuthenticationPrincipal User u) {
+//        check if user has role ADMIN
+//        log the user roles
+        logger.info(u.getRole().toString());
+//        if (u.getRole().contains("ADMIN") == false) {
+//            throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User does not have permission to remove game");
+//        }
         try {
             gameService.removeGame(gameRequest);
             return ResponseEntity.noContent().build();
