@@ -39,7 +39,7 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
 
   const [comment, setComment] = useState("");
   const [score, setScore] = useState<number>(-1);
-  const [platform, setPlatform] = useState<string | null>(null);
+  const [platform, setPlatform] = useState<string | null>(game?.platforms?.length === 1 ? game?.platforms[0] : null);
   const [playTime, setplayTime] = useState<number>(-1);
   const [recommended, setRecommended] = useState(false);
   const [isSponsored, setIsSponsored] = useState(false);
