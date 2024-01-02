@@ -155,7 +155,7 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
         </Typography> 
         {gameData?.developerCompany && (
         <Typography variant="subtitle1" color="lightgrey">
-          {`Developed by: ${gameData?.developerCompany}`}
+          {gameData?.developerCompany}
         </Typography>
         )}
         <Typography variant="subtitle1" color="lightgrey">
