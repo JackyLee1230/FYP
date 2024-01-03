@@ -93,6 +93,9 @@ training_args = TrainingArguments(output_dir=Path.joinpath(training_storing_fold
                                   per_device_eval_batch_size=32,
                                   learning_rate=2e-5,
                                   weight_decay=0.01,
+                                  optim='adamw_torch',  # state explicity
+                                  adam_beta1=0.9,       # state explicitly
+                                  adam_beta2=0.999,     # state explicitly
                                 #   warmup_steps=10000,   # seems not required in fine-tuning, as we have less than 10k steps
                                   num_train_epochs=3,
                                   evaluation_strategy="steps",
