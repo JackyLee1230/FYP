@@ -230,7 +230,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
       </Head>
       <Box
         sx={(theme) => ({
-          position: "absolute",
+          position: "fixed",
           left: "-18.105px",
           top: "-48.711px",
           width: "110%",
