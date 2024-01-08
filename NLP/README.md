@@ -50,6 +50,16 @@ Non-critical packages
 |seaborn|0.13.0|
 |matplotlib|3.7.3|
 
+Tentative packages for topic modelling
+|Dependency|version|Reason (if any)|
+|---|---|---|
+|spacy|3.7.2|Installation instructions: https://spacy.io/usage|
+|gensim|4.3.2|The latest at setup. Add memory-independent w.r.t. corpus size algorithms. And multicore LDA for faster building time. [Release Notes](https://pypi.org/project/gensim/4.3.0/)|
+|pyLDAvis|3.4.1||
+|octis|1.13.1|IMPORTANT: it will overwrite exitsing packages to the version of stated in the requirements.txt. It's safe to install newer versions of the packages above, as right now only the implementation of evaluation functions will be used (maybe use the optimization function as well, but definietly not the implementation of the models).|
+|sentence-transformers|2.2.2|the latest right now|
+|bertopic|0.16.0|the latest right now|
+
 ## WSL2
 
 According to offical documentation of tensorflow, WSL is required to use latest version of tensorflow with or without GPU.
