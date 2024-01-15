@@ -3,6 +3,11 @@ package info.itzjacky.FYP.Game;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class CustomGameRepositoryImpl implements CustomGameRepository {
@@ -153,8 +158,38 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
         StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE SIZE(g.gameReviews) != 0 ORDER BY SIZE(g.gameReviews) DESC LIMIT " + numOfGames);
          List<Game> g = entityManager.createQuery(query.toString())
                 .getResultList();
-//        System.out.println("ASDBC");
-//         System.out.println(g.toString());
+        for (Game game : g) {
+            game.setGameReviews(null);
+            game.setVersions(null);
+            game.setDevelopers(null);
+            game.setTester(null);
+            game.setBaseGame(null);
+            game.setDLCS(null);
+        }
+        return g;
+    }
+
+    @Override
+    public List<Game> topRecentlyReleasedGames(Integer numOfGames) {
+        // create a date string in the format of yyyy-mm-dd hh:mm:ss
+        // write a sql query to get the top 10 games by release date
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+
+            DateFormat df = new SimpleDateFormat(pattern);
+            Date today = Calendar.getInstance().getTime();
+            String todayAsString = df.format(today);
+            System.out.println(todayAsString);
+        StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE g.releaseDate < '" + todayAsString + "' ORDER BY g.releaseDate DESC LIMIT " + numOfGames);
+        List<Game> g = entityManager.createQuery(query.toString())
+                .getResultList();
+        for (Game game : g) {
+            game.setGameReviews(null);
+            game.setVersions(null);
+            game.setDevelopers(null);
+            game.setTester(null);
+            game.setBaseGame(null);
+            game.setDLCS(null);
+        }
         return g;
     }
 

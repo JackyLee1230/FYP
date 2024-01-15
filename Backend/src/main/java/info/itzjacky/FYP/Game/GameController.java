@@ -306,4 +306,14 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
         }
     }
 
+    @PostMapping("/getTopRecentlyReleasedGames")
+    public ResponseEntity<List<Game>> findTop10RecentlyReleasedGames(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getTopRecentlyReleasedGames(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
 }

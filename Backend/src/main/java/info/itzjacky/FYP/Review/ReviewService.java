@@ -15,6 +15,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -51,6 +52,13 @@ public class ReviewService {
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
     }
+
+
+//    @Scheduled(cron = "0 * * * * *")
+    public void testCronJob(){
+        logger.info("Cron Job Running at " + new Date().toString());
+    }
+
 
     public Boolean resendForSentimentAnalysis (@RequestBody ReviewRequest req) {
         if (req.getResentSentimentId() == null || req.getResentSentimentId().isEmpty()) {

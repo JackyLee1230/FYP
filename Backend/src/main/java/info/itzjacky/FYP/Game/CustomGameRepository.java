@@ -8,4 +8,6 @@ public interface CustomGameRepository {
     List<Game> customFindGamesDeveloper(String developer, List<Platform> platform, List<GameGenre> genre, Boolean isInDevelopment, Boolean orderedByScore, Boolean orderedByReleaseDate);
 
     List<Game> topMostReviewedGames(Integer numOfGames);
+
+    List<Game> topRecentlyReleasedGames(Integer numOfGames);
 }
