@@ -71,6 +71,17 @@ public class ReviewController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/resendForSentimentAnalysis")
+    public ResponseEntity<Void> resendForSentimentAnalysis(@RequestBody ReviewRequest reviewReq){
+        try{
+            reviewService.resendForSentimentAnalysis(reviewReq);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(500), e.getMessage());
+        }
+    }
+
     @PostMapping("/findReviewsByReviewerIdPaged")
     public ResponseEntity<Page<Review>> findReviewsByReviewerIdPaged(@RequestBody ReviewRequest reviewReq){
         try{

@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -54,6 +55,8 @@ public class ReviewRequest {
     private Boolean isSponsored;
 
     private String sortBy;
+
+    private List<Integer> resentSentimentId;
 
 
 

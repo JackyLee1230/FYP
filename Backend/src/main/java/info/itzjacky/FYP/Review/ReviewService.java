@@ -6,6 +6,7 @@ import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.Utils.Others;
 import jakarta.transaction.Transactional;
+import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,6 +50,20 @@ public class ReviewService {
     @Transactional
     public List<Review> getAllReviews(){
         return reviewRepository.findAll();
+    }
+
+    public Boolean resendForSentimentAnalysis (@RequestBody ReviewRequest req) {
+        if (req.getResentSentimentId() == null || req.getResentSentimentId().isEmpty()) {
+            throw new IllegalStateException("No review id provided");
+        }
+        for (Integer reviewId : req.getResentSentimentId()) {
+            Review review = reviewRepository.findReviewById(reviewId);
+            if (review == null) {
+                throw new IllegalStateException("Review does not exist");
+            }
+            rabbitMQProducer.sendMessagetoRabbitMQ(String.format("%s;%s", review.getId(), review.getComment()));
+        }
+        return true;
     }
 
     public List<Review> getTopLikedReviews(ReviewRequest reviewRequest){
