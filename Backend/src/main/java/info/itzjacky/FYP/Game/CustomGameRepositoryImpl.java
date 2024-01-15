@@ -193,5 +193,21 @@ public class CustomGameRepositoryImpl implements CustomGameRepository {
         return g;
     }
 
+    @Override
+    public List<Game> topMostReviewedInDevelopmentGame(Integer numOfGames) {
+        StringBuilder query = new StringBuilder("SELECT g FROM Game g WHERE SIZE(g.gameReviews) != 0 AND g.isInDevelopment = true ORDER BY SIZE(g.gameReviews) DESC LIMIT " + numOfGames);
+        List<Game> g = entityManager.createQuery(query.toString())
+                .getResultList();
+        for (Game game : g) {
+//            game.setGameReviews(null);
+            game.setVersions(null);
+            game.setDevelopers(null);
+            game.setTester(null);
+            game.setBaseGame(null);
+            game.setDLCS(null);
+        }
+        return g;
+    }
+
 
 }

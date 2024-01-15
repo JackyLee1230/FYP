@@ -10,4 +10,6 @@ public interface CustomGameRepository {
     List<Game> topMostReviewedGames(Integer numOfGames);
 
     List<Game> topRecentlyReleasedGames(Integer numOfGames);
+
+    List<Game> topMostReviewedInDevelopmentGame(Integer numOfGames);
 }

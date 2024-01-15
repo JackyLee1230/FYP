@@ -385,6 +385,17 @@ public class GameService {
         }
     }
 
+    public List<Game> getTopMostReviewedInDevelopmentGame(GameRequest gameRequest){
+        try{
+            if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
+                gameRequest.setNumOfGames(10);
+            }
+            return gameRepository.topMostReviewedInDevelopmentGame(gameRequest.getNumOfGames());
+        } catch (Exception e){
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
     public Long countByName(GameRequest gameRequest) {
         try{
             return gameRepository.countByName(gameRequest.getName());
