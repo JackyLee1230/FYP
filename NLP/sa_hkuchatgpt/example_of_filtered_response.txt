@@ -1,0 +1,126 @@
+Game
+SC2VN - The eSports Visual Novel
+
+Review
+My dream of the Jaedong and Flash threesome route is coming true 10/10
+
+Sentiment: Positive (Recommended)
+
+Response from ChatGPT
+{
+   "error":{
+      "message":"The response was filtered due to the prompt triggering Azure OpenAI’s content management policy. Please modify your prompt and retry. 
+      To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766",
+      "type":"None",
+      "param":"prompt",
+      "code":"content_filter",
+      "status":400,
+      "innererror":{
+         "code":"ResponsibleAIPolicyViolation",
+         "content_filter_result":{
+            "hate":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "self_harm":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "sexual":{
+               "filtered":true,
+               "severity":"medium"
+            },
+            "violence":{
+               "filtered":false,
+               "severity":"safe"
+            }
+         }
+      }
+   }
+}
+
+
+
+Game
+Dota 2
+
+Review
+dota 2, the best way to offend/mock other people for whatever reasons without having a gun pointed at your head. 10/10 would do #safeinternet
+
+Sentiment: Positive (Recommended)
+
+Response from ChatGPT
+{
+   "error":{
+      "message":"The response was filtered due to the prompt triggering Azure OpenAI’s content management policy. Please modify your prompt and retry. 
+      To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766",
+      "type":"None",
+      "param":"prompt",
+      "code":"content_filter",
+      "status":400,
+      "innererror":{
+         "code":"ResponsibleAIPolicyViolation",
+         "content_filter_result":{
+            "hate":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "self_harm":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "sexual":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "violence":{
+               "filtered":true,
+               "severity":"medium"
+            }
+         }
+      }
+   }
+}
+
+
+
+Game
+Prison Architect
+
+Review
+Treat all of my prisoners like gods, riot breaks out. Cry because I feel betrayed. MURDER ALL OF THEM. Wonder why my prison gets shut down. 10/10
+
+Sentiment: Positive (Recommended)
+
+Response from ChatGPT
+{
+   "error":{
+      "message":"The response was filtered due to the prompt triggering Azure OpenAI’s content management policy. Please modify your prompt and retry. 
+      To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766",
+      "type":"None",
+      "param":"prompt",
+      "code":"content_filter",
+      "status":400,
+      "innererror":{
+         "code":"ResponsibleAIPolicyViolation",
+         "content_filter_result":{
+            "hate":{
+               "filtered":true,
+               "severity":"high"
+            },
+            "self_harm":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "sexual":{
+               "filtered":false,
+               "severity":"safe"
+            },
+            "violence":{
+               "filtered":true,
+               "severity":"medium"
+            }
+         }
+      }
+   }
+}
