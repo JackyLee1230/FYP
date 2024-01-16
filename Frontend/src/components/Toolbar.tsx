@@ -145,11 +145,11 @@ const WebToolbar = () => {
 
   const trigger = useScrollTrigger({
     threshold: 200,
-  })
+  });
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Slide appear={false} direction="down" in={!trigger}>
+      <Slide appear={false} direction="down" in={!trigger} timeout={300}>
         <AppBar
           sx={(theme) => ({
             [theme.breakpoints.up("lg")]: {
@@ -173,13 +173,13 @@ const WebToolbar = () => {
                   height={48}
                   alt="CritiQ Icon"
                 />
-              ) : 
-              (
-              <Image 
-                src="/logo.png" 
-                width={210} height={64} 
-                alt="CritiQ Icon"
-              />
+              ) : (
+                <Image
+                  src="/logo.png"
+                  width={210}
+                  height={64}
+                  alt="CritiQ Icon"
+                />
               )}
             </ButtonBase>
 
@@ -293,7 +293,10 @@ const WebToolbar = () => {
                     <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
                       {user?.name}
                     </Typography>
-                    <Typography variant="body1" sx={{ color: "text.secondary" }}>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "text.secondary" }}
+                    >
                       {user?.role && (
                         <RoleChip
                           role={user!.role}
@@ -328,7 +331,12 @@ const WebToolbar = () => {
                   variant="outlined"
                   color="secondary"
                   size={isMobile ? "small" : "large"}
-                  sx={{ whiteSpace: "nowrap", flexShrink: 0, fontWeight: 500, minHeight: "38px" }}
+                  sx={{
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    fontWeight: 500,
+                    minHeight: "38px",
+                  }}
                   onClick={() => setOpenPanel(true)}
                 >
                   Register
