@@ -21,10 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static info.itzjacky.FYP.Utils.Others.sentimentMapper;
 
@@ -338,6 +336,15 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             }
             JSONObject jsonObject = new JSONObject();
             Game game = gameRepository.findGameById(gameRequest.getId());
+
+            if (game == null) {
+                throw new ResponseStatusException(HttpStatusCode.valueOf(400), "Game not found");
+            }
+
+            if (game.getAnalyticUpdatedAt() != null && game.getAnalyticUpdatedAt().after(new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000))) {
+                return new ResponseEntity<String>(game.getAnalytic(), HttpStatus.OK);
+            }
+
             game.setGameReviews(null);
             game.setDLCS(null);
             game.setBaseGame(null);
@@ -429,12 +436,29 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     }
                 }
             }
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date generatedAt = new Date();
+            String strDate = formatter.format(generatedAt);
+            jsonObject.put("name", game.getName());
+            jsonObject.put("id", game.getId());
+            jsonObject.put("score", game.getScore());
+            jsonObject.put("releaseDate", game.getReleaseDate());
+            jsonObject.put("description", game.getDescription());
+            jsonObject.put("iconUrl", game.getIconUrl());
+            jsonObject.put("developerCompany", game.getDeveloperCompany());
+            jsonObject.put("publisher", game.getPublisher());
+            jsonObject.put("isInDevelopment", game.isInDevelopment());
+            jsonObject.put("isDLC", game.isDLC());
+            jsonObject.put("generatedAt", strDate);
             jsonObject.put("percentile", game.getPercentile());
             jsonObject.put("genderReviews", genderCount);
             jsonObject.put("ageReviews", ageCount);
             jsonObject.put("sentimentReviews", sentimentCount);
             jsonObject.put("sentimentReviewsByGender", sentimentCountByGender);
 
+            game.setAnalytic(jsonObject.toString());
+            game.setAnalyticUpdatedAt(generatedAt);
+            gameRepository.save(game);
             return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
