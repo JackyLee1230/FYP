@@ -34,7 +34,7 @@ export function removeAuthCookies(): void {
   deleteCookie('_u-token')
 }
 
- async function getUserInfoByAccessToken(access_token:string) {
+async function getUserInfoByAccessToken(access_token:string) {
   let user: User | null = null;
 
   await axios({
@@ -66,7 +66,7 @@ export async function refreshAccessToken() {
   if(!refresh_token){
     return null;
   }
-
+  
   await axios({
     method: 'POST',
     url: `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/auth/refreshToken`,

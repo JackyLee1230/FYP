@@ -229,18 +229,25 @@ function GamePage({ game, errorMessage }: GamePageProps) {
         <title>{`${game.name} | CritiQ`}</title>
       </Head>
       <Box
-        sx={(theme) => ({
-          position: "fixed",
-          left: "-18.105px",
-          top: "-48.711px",
-          width: "110%",
-          height: "250px",
-          transform: "rotate(-2deg)",
-          background: theme.palette.secondary.main,
-          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-          zIndex: -1,
-        })}
-      />
+        sx={{
+          width: "100vw",
+          overflow: "hidden",
+        }}
+      >
+        <Box
+          sx={(theme) => ({
+            position: "absolute",
+            left: "-18.105px",
+            top: "-48.711px",
+            width: "110%",
+            height: "250px",
+            transform: "rotate(-2deg)",
+            background: theme.palette.secondary.main,
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            zIndex: -1,
+          })}
+        />
+      </Box>
 
       <Box
         sx={{
