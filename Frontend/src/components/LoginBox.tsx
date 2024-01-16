@@ -150,20 +150,21 @@ const LoginBox = ({ setOpen }: LoginBoxProps) => {
                 id="password"
                 name="password"
                 autoComplete="current-password"
+                endAdornment={
+                  <IconButton
+                    size="small"
+                    sx={{
+                      position: "absolute",
+                      right: "2%",
+                    }}
+                    onClick={() => setIsShowPassword((prev) => !prev)}
+                  >
+                    {isShowPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                  </IconButton>
+                }
               />
               <FormHelperText>{passwordError}</FormHelperText>
             </FormControl>
-            <IconButton
-              size="small"
-              sx={{
-                position: "absolute",
-                top: "42%",
-                right: "2%",
-              }}
-              onClick={() => setIsShowPassword((prev) => !prev)}
-            >
-              {isShowPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
-            </IconButton>
           </Box>
 
           <FormControlLabel
