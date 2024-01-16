@@ -56,6 +56,11 @@ public class Game {
     private String name;
     private boolean isDLC;
 
+    @Column(insertable = true, updatable = true, length = 20000)
+    private String analytic;
+    @Column(insertable = true, updatable = true)
+    private Date analyticUpdatedAt;
+
     @Transient
     private List<Game> DLCS;
     @Transient
@@ -74,7 +79,7 @@ public class Game {
     private Game BaseGame;
     @Column(insertable = true, updatable = true)
     private String iconUrl;
-    @Column(insertable = true, updatable = true, length = 5000)
+    @Column(insertable = true, updatable = true, length = 2000)
     private String description;
     private String releaseDate;
     @ManyToMany
