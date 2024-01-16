@@ -34,4 +34,16 @@ public class Others {
         }
         return "NA";
     }
+
+    public static String sentimentMapper(Integer sentiment) {
+            if (sentiment == -1) {
+            return "NEGATIVE";
+        } else if (sentiment == 0) {
+            return "NEUTRAL";
+        } else if (sentiment == 1) {
+            return "POSITIVE";
+        } else {
+            return "NA";
+        }
+    }
 }

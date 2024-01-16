@@ -5,6 +5,7 @@ import info.itzjacky.FYP.Review.ReviewRepository;
 import info.itzjacky.FYP.Storage.DigitalOceanStorageService;
 import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.User.UserRepository;
+import org.json.JSONObject;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
@@ -427,5 +428,13 @@ public class GameService {
         game.getDevelopers().add(developer);
         gameRepository.save(game);
         return true;
+    }
+
+
+    @Transactional
+    public JSONObject testReturnJSON() {
+        JSONObject jObj = new JSONObject();
+        jObj.put("test", "123");
+        return jObj;
     }
 }

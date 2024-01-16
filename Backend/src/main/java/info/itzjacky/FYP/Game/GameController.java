@@ -3,6 +3,7 @@ package info.itzjacky.FYP.Game;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
+import info.itzjacky.FYP.User.Gender;
 import info.itzjacky.FYP.User.User;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static info.itzjacky.FYP.Utils.Others.sentimentMapper;
 
 @RestController
 @RequestMapping("/api/game")
@@ -326,4 +329,116 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
         }
     }
 
+
+    @PostMapping(path="/gameAnalytic", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> gameAnalytic(@RequestBody GameRequest gameRequest) {
+        try {
+            if (gameRequest == null || gameRequest.getId() == null) {
+                throw new ResponseStatusException(HttpStatusCode.valueOf(400), "Game id is required");
+            }
+            JSONObject jsonObject = new JSONObject();
+            Game game = gameRepository.findGameById(gameRequest.getId());
+            game.setGameReviews(null);
+            game.setDLCS(null);
+            game.setBaseGame(null);
+            game.setDevelopers(null);
+            game.setPlatformReviews(null);
+
+            List<Review> reviews = reviewRepository.findReviewsByGameId(gameRequest.getId());
+            HashMap<String, Integer> genderCount = new HashMap<>();
+            genderCount.put("MALE", 0);
+            genderCount.put("FEMALE", 0);
+            genderCount.put("OTHER", 0);
+            genderCount.put("UNDISCLOSED", 0);
+            genderCount.put("N/A", 0);
+
+            HashMap<String, Integer> ageCount = new HashMap<>();
+            ageCount.put("13-19", 0);
+            ageCount.put("20-29", 0);
+            ageCount.put("30-39", 0);
+            ageCount.put("40-49", 0);
+            ageCount.put("50-59", 0);
+            ageCount.put("60-69", 0);
+            ageCount.put("70-79", 0);
+            ageCount.put("80-89", 0);
+            ageCount.put("90-99", 0);
+            ageCount.put("N/A", 0);
+
+            HashMap<String, Integer> sentimentCount = new HashMap<>();
+            sentimentCount.put("POSITIVE", 0);
+            sentimentCount.put("NEGATIVE", 0);
+            sentimentCount.put("NEUTRAL", 0);
+            sentimentCount.put("N/A", 0);
+
+
+            HashMap<String, Integer> positiveMap = new HashMap<>();
+            positiveMap.put("MALE", 0);
+            positiveMap.put("FEMALE", 0);
+            positiveMap.put("OTHER", 0);
+            positiveMap.put("UNDISCLOSED", 0);
+            positiveMap.put("N/A", 0);
+            HashMap<String, Integer> negativeMap = new HashMap<>();
+            negativeMap.put("MALE", 0);
+            negativeMap.put("FEMALE", 0);
+            negativeMap.put("OTHER", 0);
+            negativeMap.put("UNDISCLOSED", 0);
+            negativeMap.put("N/A", 0);
+            HashMap<String, Integer> neutralMap = new HashMap<>();
+            neutralMap.put("MALE", 0);
+            neutralMap.put("FEMALE", 0);
+            neutralMap.put("OTHER", 0);
+            neutralMap.put("UNDISCLOSED", 0);
+            neutralMap.put("N/A", 0);
+
+            HashMap<String, HashMap> sentimentCountByGender = new HashMap<>();
+            sentimentCountByGender.put("POSITIVE", positiveMap);
+            sentimentCountByGender.put("NEGATIVE", negativeMap);
+            sentimentCountByGender.put("NEUTRAL", neutralMap);
+
+            for (Review r: reviews) {
+//                GENDER
+                Gender g = r.getReviewer().getGender();
+                if (g == null) {
+                    genderCount.put("N/A", genderCount.get("N/A") + 1);
+                } else {
+                    genderCount.put(r.getReviewer().getGender().toString(), genderCount.get(r.getReviewer().getGender().toString()) + 1);
+                }
+//                AGE
+                String ageGroup = r.getReviewer().getAgeGroup();
+                if (ageGroup == null || ageGroup.isEmpty() || ageGroup.equals("NA")) {
+                    ageCount.put("N/A", ageCount.get("N/A") + 1);
+                } else {
+                    ageCount.put(r.getReviewer().getAgeGroup(), ageCount.get(r.getReviewer().getAgeGroup()) + 1);
+                }
+//                SENTIMENT
+                Integer sentiment = r.getSentiment();
+                if (sentiment == null) {
+                    sentimentCount.put("N/A", sentimentCount.get("N/A") + 1);
+                } else {
+                    String s = sentimentMapper(r.getSentiment());
+                    sentimentCount.put(s, sentimentCount.get(s) + 1);
+                }
+//                SENTIMENT BY GENDER
+                if (sentiment != null) {
+                    String s = sentimentMapper(r.getSentiment());
+                    HashMap<String, Integer> innerMap = sentimentCountByGender.get(s);
+                    if (r.getReviewer().getGender() == null) {
+                        innerMap.put("N/A", innerMap.get("N/A") + 1);
+                    } else {
+                        innerMap.put(r.getReviewer().getGender().toString(), innerMap.get(r.getReviewer().getGender().toString()) + 1);
+                    }
+                }
+            }
+            jsonObject.put("percentile", game.getPercentile());
+            jsonObject.put("genderReviews", genderCount);
+            jsonObject.put("ageReviews", ageCount);
+            jsonObject.put("sentimentReviews", sentimentCount);
+            jsonObject.put("sentimentReviewsByGender", sentimentCountByGender);
+
+            return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 }
