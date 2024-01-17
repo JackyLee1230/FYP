@@ -24,7 +24,8 @@ def load_validation_dataset():
         X_bal_valid (pd.Series): validation dataset (balanced)
         y_bal_valid (pd.Series): validation dataset (balanced)'''
 
-    dataset_valid_folder_path = Path('../../dataset/sa/sampled_valid_2023-12-16/').resolve()
+    # dataset_valid_folder_path = Path('../../dataset/sa/sampled_valid_2023-12-16/').resolve()
+    dataset_valid_folder_path = Path('../../dataset/sa/sampled_valid_2024-01-16/').resolve()
 
     dataset_val_bal = pd.read_pickle(dataset_valid_folder_path / 'validation_balanced.pkl')
     dataset_val_imbal = pd.read_pickle(dataset_valid_folder_path / 'validation_imbalanced.pkl')
@@ -61,7 +62,8 @@ def load_presampled_traintest_dataset(dataset_size:int, is_balanced:bool):
     if dataset_size not in DATASET_LIST:
         raise ValueError(f'Dataset size must be one of {DATASET_LIST}')
 
-    dataset_folder_path = Path(f'../../dataset/sa/sampled_{dataset_size}k_2023-12-16/').resolve()
+    # dataset_folder_path = Path(f'../../dataset/sa/sampled_{dataset_size}k_2023-12-16/').resolve()
+    dataset_folder_path = Path(f'../../dataset/sa/sampled_{dataset_size}k_2024-01-16/').resolve()
 
     if is_balanced:
         dataset_traintest = pd.read_pickle(dataset_folder_path / f'dataset_bal_sampled_{dataset_size}k.pkl')

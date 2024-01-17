@@ -1,23 +1,34 @@
 import re
 import nltk
 
+def remove_links(x):
+    '''Ref: https://stackoverflow.com/questions/11331982/how-to-remove-any-url-within-a-string-in-python'''
+    cleaned_string = re.sub(r'(https?:\/\/)(\s)*(www\.)?(\s)*((\w|\s)+\.)*([\w\-\s]+\/)*([\w\-]+)((\?)?[\w\s]*=\s*[\w\%&]*)*', ' ', x)
+    return cleaned_string
+
+def remove_links2(x):
+    '''Ref: https://stackoverflow.com/questions/11331982/how-to-remove-any-url-within-a-string-in-python'''
+    cleaned_string = re.sub('[^ ]+\.[^ ]+',' ',x)
+    return cleaned_string
+
 def clean(raw):
     """ Remove hyperlinks and markup """
     result = re.sub("<[a][^>]*>(.+?)</[a]>", 'Link.', raw)
-    result = re.sub('&gt;', "", result)
+    result = re.sub('&gt;', ">", result)
+    result = re.sub('&lt;', "<", result)
     result = re.sub('&#x27;', "'", result)
     result = re.sub('&quot;', '"', result)
     result = re.sub('&#x2F;', ' ', result)
     result = re.sub('<p>', ' ', result)
-    result = re.sub('</i>', '', result)
-    result = re.sub('&#62;', '', result)
+    result = re.sub('</i>', ' ', result)
+    result = re.sub('&#62;', ' ', result)
     result = re.sub('<i>', ' ', result)
-    result = re.sub("\n", '', result)
+    result = re.sub("\n", ' ', result)
     return result
 
-def remove_num(texts):
-   output = re.sub(r'\d+', '', texts)
-   return output
+# def remove_num(texts):
+#    output = re.sub(r'\d+', '', texts)
+#    return output
 
 def deEmojify(x):
     regrex_pattern = re.compile(pattern = "["
@@ -32,13 +43,23 @@ def unify_whitespaces(x):
     cleaned_string = re.sub(' +', ' ', x)
     return cleaned_string 
 
-def remove_symbols(x):
-    cleaned_string = re.sub(r"[^a-zA-Z0-9?!.,]+", ' ', x)
-    return cleaned_string
+# def remove_symbols(x):
+#     cleaned_string = re.sub(r"[^a-zA-Z0-9?!.,]+", ' ', x)
+#     return cleaned_string
 
-def remove_punctuation(text):
-    final = "".join(u for u in text if u not in ("?", ".", ";", ":",  "!",'"',','))
+# the remove_non_letters removed all numbers and punctuations
+# then keep the ascii letters only
+def remove_non_letters(text):
+    '''Keep only ascii A-Z, a-z and whitespaces.
+
+    Thus remove all numbers, punctuations and symbols
+    '''
+    final = re.sub(r'[^a-zA-Z ]+', ' ', text)
     return final
+
+# def remove_punctuation(text):
+#     final = "".join(u for u in text if u not in ("?", ".", ";", ":",  "!",'"',','))
+#     return final
 
 from nltk.corpus import stopwords
 from nltk import WordNetLemmatizer
@@ -70,25 +91,31 @@ def cleaning_df(df,review):
     '''
     df[review] = df[review].apply(clean)
     df[review] = df[review].apply(deEmojify)
+    df[review] = df[review].apply(remove_non_letters)
     df[review] = df[review].str.lower()
-    df[review] = df[review].apply(remove_num)
-    df[review] = df[review].apply(remove_symbols)
-    df[review] = df[review].apply(remove_punctuation)
+    # df[review] = df[review].apply(remove_num)
+    # df[review] = df[review].apply(remove_symbols)
+    # df[review] = df[review].apply(remove_punctuation)
+    df[review] = df[review].apply(unify_whitespaces)
     df[review] = df[review].apply(remove_stopword)
     df[review] = df[review].apply(unify_whitespaces)
     df[review] = df[review].apply(stemming)
+    df[review] = df[review].apply(unify_whitespaces)
 
 def cleaning_arr(str_arr):
     '''apply all cleaning functions to a numpy array, or a pandas series object'''
     str_arr = str_arr.apply(lambda x: clean(x))
     str_arr = str_arr.apply(lambda x: deEmojify(x))
+    str_arr = str_arr.apply(lambda x: remove_non_letters(x))
     str_arr = str_arr.apply(lambda x: x.lower())
-    str_arr = str_arr.apply(lambda x: remove_num(x))
-    str_arr = str_arr.apply(lambda x: remove_symbols(x))
-    str_arr = str_arr.apply(lambda x: remove_punctuation(x))
+    # str_arr = str_arr.apply(lambda x: remove_num(x))
+    # str_arr = str_arr.apply(lambda x: remove_symbols(x))
+    # str_arr = str_arr.apply(lambda x: remove_punctuation(x))
+    str_arr = str_arr.apply(lambda x: unify_whitespaces(x))
     str_arr = str_arr.apply(lambda x: remove_stopword(x))
     str_arr = str_arr.apply(lambda x: unify_whitespaces(x))
     str_arr = str_arr.apply(lambda x: stemming(x))
+    str_arr = str_arr.apply(lambda x: unify_whitespaces(x))
 
     return str_arr
 
@@ -96,12 +123,15 @@ def cleaning_pyarr(str_arr):
     '''apply all cleaning functions to a python array'''
     str_arr = list(map(clean, str_arr))
     str_arr = list(map(deEmojify, str_arr))
+    str_arr = str_arr.apply(lambda x: remove_non_letters(x))
     str_arr = list(map(str.lower, str_arr))
-    str_arr = list(map(remove_num, str_arr))
-    str_arr = list(map(remove_symbols, str_arr))
-    str_arr = list(map(remove_punctuation, str_arr))
+    # str_arr = list(map(remove_num, str_arr))
+    # str_arr = list(map(remove_symbols, str_arr))
+    # str_arr = list(map(remove_punctuation, str_arr))
+    str_arr = list(map(unify_whitespaces, str_arr))
     str_arr = list(map(remove_stopword, str_arr))
     str_arr = list(map(unify_whitespaces, str_arr))
     str_arr = list(map(stemming, str_arr))
+    str_arr = list(map(unify_whitespaces, str_arr))
 
     return str_arr

@@ -16,12 +16,30 @@ sys.path.append('../')
 import str_cleaning_functions
 import dataset_loader
 
-DATASET_SIZE = 480
-DATASET_IS_BALANCED = True
+# accept DATASET_SIZE and DATASET_IS_BALANCED as sys args
+# if args not present, then set a default value
+
+try:
+    if int(sys.argv[1]) not in dataset_loader.DATASET_LIST:
+        raise Exception(f'Invalid dataset size. You entered {int(sys.argv[1])}. Valid dataset size: {dataset_loader.DATASET_LIST}')
+
+    if str(sys.argv[2]).strip().lower() not in ['true', 'false']:
+        raise Exception(f'Invalid dataset balance. You entered {str(sys.argv[2]).strip().lower()}. Valid dataset balance: \"true\", \"False\"')
+
+    DATASET_SIZE = int(sys.argv[1])
+    DATASET_IS_BALANCED = True if str(sys.argv[2]).strip().lower() == 'true' else False
+
+except:
+    DATASET_SIZE = 240
+    DATASET_IS_BALANCED = True
 
 training_name = 'bert-finetune_{}k_{}'.format(
     DATASET_SIZE,
     'bal' if DATASET_IS_BALANCED else 'imbal')
+
+training_datetime = datetime.now()
+
+training_name  = training_name + '_' + training_datetime.strftime("%Y-%m-%d")
 
 training_storing_folder = Path(f'{training_name}/').resolve()
 if not training_storing_folder.exists():
@@ -38,8 +56,11 @@ X_train, X_test, y_train, y_test = dataset_loader.load_presampled_traintest_data
 # data cleaning
 
 def cleaning_arr(str_arr):
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links(x))       # remove links (http, https)
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links2(x))      # remove other links (ftp, ...)
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.clean(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.deEmojify(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))      # to reduce the number of whitespaces -> reduce number of tokens
 
     return str_arr
 
@@ -78,17 +99,14 @@ ds_test = ds_test.map(tokenize_dataset, batched=True)
 
 # shuffle dataset to randomize the order of the data
 # not doing it as not mentioned in papers
+# also during our dataset creation process, we have already shuffled the data
 # ds_train = ds_train.shuffle()
 # ds_train = ds_train.flatten_indices()       # rewrite the shuffled dataset on disk as continguous chunks of data
 
 model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2)
 
-training_args_datetime = datetime(year=2023, month=12, day=20)
-
-training_name = training_name + '_' + training_args_datetime.strftime("%Y-%m-%d")
-
 # Specify where to save the checkpoints from your training:
-training_args = TrainingArguments(output_dir=Path.joinpath(training_storing_folder, training_name),
+training_args = TrainingArguments(output_dir=Path.joinpath(training_storing_folder, training_name+'_log'),
                                   per_device_train_batch_size=32,
                                   per_device_eval_batch_size=32,
                                   learning_rate=2e-5,
@@ -121,21 +139,19 @@ training_args = TrainingArguments(output_dir=Path.joinpath(training_storing_fold
 trainer = Trainer(
     model=model,
     args=training_args,
-    # train_dataset=ds_train_small,
-    # eval_dataset=ds_test_small,
     train_dataset=ds_train,
     eval_dataset=ds_test,
     compute_metrics=compute_metrics,
     callbacks=[CombinedTensorBoardCallback]
 )
-trainer.add_callback(EvaluateTrainDatasetAtEndOfEpochCallback(trainer))
+# trainer.add_callback(EvaluateTrainDatasetAtEndOfEpochCallback(trainer))
 
 print('\n\n')
 print('FINETUNING BERT with {}k dataset, is_balanced: {}'.format(DATASET_SIZE, DATASET_IS_BALANCED))
 
-# trainer.train()
+trainer.train()
 
-trainer.train(resume_from_checkpoint=True)
+# trainer.train(resume_from_checkpoint=True)
 
 print('\n')
 print("FINETUNING COMPLETED")

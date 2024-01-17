@@ -47,6 +47,8 @@ training_name = 'bert-finetune_{}k_{}'.format(
 )
 
 training_args_datetime = datetime(year=training_args_year, month=training_args_month, day=training_args_day)
+
+training_name  = training_name + '_' + training_args_datetime.strftime("%Y-%m-%d")
 training_storing_folder = Path(training_name).resolve()
 
 print('Validating model: {}'.format(training_name))
@@ -154,7 +156,7 @@ BATCH_SIZE = 32
 
 model_path = Path.joinpath(
         training_storing_folder, 
-        '{}_{}_model'.format(training_name, training_args_datetime.strftime('%Y-%m-%d')))
+        '{}_model'.format(training_name))
 
 
 import evaluate
@@ -266,7 +268,7 @@ evaluation_functions.create_confusion_matrix_graph(
 evaluation_functions.plot_roc_curve_binary(
     y_test,
     y_test_pred_prob,
-    f'ROC curve {DATASET_SIZE}K-{"bal" if DATASET_IS_BALANCED else "imbal"}-training-data test-set',
+    title=f'ROC curve {DATASET_SIZE}K-{"bal" if DATASET_IS_BALANCED else "imbal"}-training-data test-set',
     save=SAVE_EVAL_RESULTS,
     save_filename=Path.joinpath(eval_test_folder, f'roc_curve_test.png')
 )
