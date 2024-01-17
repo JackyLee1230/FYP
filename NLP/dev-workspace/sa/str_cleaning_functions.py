@@ -1,4 +1,5 @@
 import re
+import html
 import nltk
 
 def remove_links(x):
@@ -12,18 +13,22 @@ def remove_links2(x):
     return cleaned_string
 
 def clean(raw):
-    """ Remove hyperlinks and markup """
-    result = re.sub("<[a][^>]*>(.+?)</[a]>", 'Link.', raw)
-    result = re.sub('&gt;', ">", result)
-    result = re.sub('&lt;', "<", result)
-    result = re.sub('&#x27;', "'", result)
-    result = re.sub('&quot;', '"', result)
-    result = re.sub('&#x2F;', ' ', result)
-    result = re.sub('<p>', ' ', result)
-    result = re.sub('</i>', ' ', result)
-    result = re.sub('&#62;', ' ', result)
-    result = re.sub('<i>', ' ', result)
-    result = re.sub("\n", ' ', result)
+    """ Remove html tags and convert html entity reference to its corresponding character"""
+    # instead of removing the html entity reference through regex
+    # we can use the html.unescape() function to convert the html entity reference to its corresponding character
+    # then it's upto future text cleaning to remove the character or not
+    result = html.unescape(result)
+    result = re.sub("<?[\w\s]*>|<.+[\W]>", '', raw)     # remove html tags
+
+    # result = re.sub('&gt;', ">", result)
+    # result = re.sub('&lt;', "<", result)
+    # result = re.sub('&#x27;', "'", result)
+    # result = re.sub('&quot;', '"', result)
+    # result = re.sub('&#x2F;', ' ', result)
+    # result = re.sub('<p>', ' ', result)
+    # result = re.sub('</i>', ' ', result)
+    # result = re.sub('&#62;', ' ', result)
+    # result = re.sub('<i>', ' ', result)
     return result
 
 # def remove_num(texts):
