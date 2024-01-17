@@ -9,7 +9,7 @@ def remove_links(x):
 
 def remove_links2(x):
     '''Ref: https://stackoverflow.com/questions/11331982/how-to-remove-any-url-within-a-string-in-python'''
-    cleaned_string = re.sub('[^ ]+\.[^ ]+',' ',x)
+    cleaned_string = re.sub(r'[^ ]+\.[^ ]+',' ',x)
     return cleaned_string
 
 def clean(raw):
@@ -17,8 +17,8 @@ def clean(raw):
     # instead of removing the html entity reference through regex
     # we can use the html.unescape() function to convert the html entity reference to its corresponding character
     # then it's upto future text cleaning to remove the character or not
-    result = html.unescape(result)
-    result = re.sub("<?[\w\s]*>|<.+[\W]>", '', raw)     # remove html tags
+    result = html.unescape(raw)
+    result = re.sub(r"<?[\w\s]*>|<.+[\W]>", '', result)     # remove html tags
 
     # result = re.sub('&gt;', ">", result)
     # result = re.sub('&lt;', "<", result)
