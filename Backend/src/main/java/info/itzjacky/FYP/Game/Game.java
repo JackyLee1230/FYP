@@ -57,6 +57,7 @@ public class Game {
     private boolean isDLC;
 
     @Column(insertable = true, updatable = true, length = 10000)
+    @JsonIgnore
     private String analytic;
     @Column(insertable = true, updatable = true)
     private Date analyticUpdatedAt;
