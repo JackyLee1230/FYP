@@ -58,9 +58,9 @@ X_train, X_test, y_train, y_test = dataset_loader.load_presampled_traintest_data
 def cleaning_arr(str_arr):
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links(x))       # remove links (http, https)
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links2(x))      # remove other links (ftp, ...)
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.clean(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.deEmojify(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))      # to reduce the number of whitespaces -> reduce number of tokens
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.clean(x))              # remove html markups and html tags
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.deEmojify(x))          # remove emojis
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))      # to reduce the number of whitespaces -> reduce number of tokens (hopefully)
 
     return str_arr
 
