@@ -56,7 +56,7 @@ public class Game {
     private String name;
     private boolean isDLC;
 
-    @Column(insertable = true, updatable = true, length = 20000)
+    @Column(insertable = true, updatable = true, length = 10000)
     private String analytic;
     @Column(insertable = true, updatable = true)
     private Date analyticUpdatedAt;

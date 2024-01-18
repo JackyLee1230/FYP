@@ -79,6 +79,7 @@ public class GameController {
         try {
             return new ResponseEntity<>(gameService.updateGame(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -223,15 +224,19 @@ public class ReviewController {
 //
 
     @Transient
+    @Transactional
     @PostMapping("/uploadReviewImages/{reviewId}")
-    public ResponseEntity<Integer> uploadFiles(@PathVariable String reviewId, @RequestParam("files") MultipartFile[] files) {
+    public ResponseEntity<Integer> uploadFiles(@PathVariable String reviewId, @RequestParam("files") MultipartFile[] files, @AuthenticationPrincipal User u) {
         String message = "";
+        if(u == null) {
+            throw new AccessDeniedException("Access Denied");
+        }
         try {
             List<String> fileNames = new ArrayList<>();
             AtomicReference<Integer> imageId = new AtomicReference<>(0);
 
             Arrays.asList(files).stream().forEach(file -> {
-                storageService.uploadFile("review/" + reviewId + "/" + imageId + ".jpg", file);
+                storageService.uploadFile("review/" + reviewId + "/" + imageId + ".jpg", file, u.getName());
                 fileNames.add("review/" + reviewId + "/" + imageId + ".jpg");
                 imageId.getAndSet(imageId.get() + 1);
 
