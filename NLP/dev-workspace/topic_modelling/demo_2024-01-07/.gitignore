@@ -1,1 +1,5 @@
 lda_multicore_*/
+lda_model_*/
+
+00_Terraria_lemmatized.pkl
+02_Adventure_X_lemmatized.pkl

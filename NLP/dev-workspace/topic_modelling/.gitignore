@@ -1,1 +1,5 @@
 *.pyc
+
+dataset_cleaned_heartless_sampled_for_demo_large*.pkl
+dataset_cleaned_heartless_sampled_for_demo_tiny*.pkl
+dataset_cleaned_heartless_sampled_for_demo*.pkl
