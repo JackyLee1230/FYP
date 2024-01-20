@@ -174,7 +174,7 @@ const ResetPasswordBox = ({ token, errorMessage }: ResetPasswordProps) => {
               {resetError !== "" && (
                 <Typography
                   variant="body1"
-                  color="secondary"
+                  color="error"
                   sx={{ fontWeight: 500, textAlign: "center" }}
                 >
                   {resetError}
