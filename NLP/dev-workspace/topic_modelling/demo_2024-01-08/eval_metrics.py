@@ -18,6 +18,8 @@ class METRICS(Enum):
     # similarity metrics
     PAIRWISE_JACCARD_SIMILARITY = 'pairwise_jaccard_similarity'
 
+COHERENCE_MODEL_METRICS = set([METRICS.UMASS, METRICS.C_V, METRICS.C_UCI, METRICS.C_NPMI])
+
 class SEARCH_BEHAVIOUR(Enum):
     GRID_SEARCH = 'grid_search'
     RANDOM_SEARCH = 'random_search'
