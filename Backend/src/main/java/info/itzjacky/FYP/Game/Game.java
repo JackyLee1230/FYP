@@ -100,6 +100,14 @@ public class Game {
     @Basic(fetch = FetchType.LAZY)
     private Double percentile;
 
+    @Formula("(SELECT COUNT(*) FROM user_wishlist_games uwg WHERE uwg.wishlist_games = id)")
+    @Basic(fetch = FetchType.LAZY)
+    private Integer numberOfWishlists;
+
+    @Formula("(SELECT COUNT(*) FROM user_favourite_games ufg WHERE ufg.favourite_games = id)")
+    @Basic(fetch = FetchType.LAZY)
+    private Integer numberOfFavourites;
+
     private Float recommendationScore;
     @ManyToMany
     @JoinTable(

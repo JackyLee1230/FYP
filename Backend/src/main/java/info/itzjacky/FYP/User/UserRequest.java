@@ -31,5 +31,8 @@ public class UserRequest {
     private Date resetPasswordExpires;
     private String verificationToken;
 
+    private Integer favourite;
+    private Integer wishlist;
+
 
 }

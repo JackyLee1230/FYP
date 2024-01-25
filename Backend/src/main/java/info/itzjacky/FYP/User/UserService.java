@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -122,6 +123,58 @@ public class UserService {
 //            throw new IllegalStateException("Error Registering User");
 //        }
 //    }
+
+    @Transactional
+    public Boolean favourite(UserRequest userRequest) {
+        if(userRequest.getId() == null || userRequest.getFavourite() == null){
+            throw new IllegalStateException("User ID And Favourite ID Cannot Be Empty");
+        }
+        Boolean returnedBoolean = false;
+        User u = userRepository.findUserById(userRequest.getId());
+        if (u == null) {
+            throw new IllegalStateException("User Does Not Exist");
+        }
+        if (u.getFavouriteGames() == null) {
+            u.setFavouriteGames(List.of(userRequest.getFavourite()));
+            returnedBoolean = true;
+        } else {
+            if (u.getFavouriteGames().contains(userRequest.getFavourite())) {
+                u.getFavouriteGames().remove(userRequest.getFavourite());
+                returnedBoolean = false;
+            } else {
+                u.getFavouriteGames().add(userRequest.getFavourite());
+                returnedBoolean = true;
+            }
+        }
+        userRepository.save(u);
+        return returnedBoolean;
+    }
+
+    @Transactional
+    public Boolean wishlist(UserRequest userRequest) {
+        if(userRequest.getId() == null || userRequest.getWishlist() == null){
+            throw new IllegalStateException("User ID And Wishlist ID Cannot Be Empty");
+        }
+        Boolean returnedBoolean = false;
+        User u = userRepository.findUserById(userRequest.getId());
+        if (u == null) {
+            throw new IllegalStateException("User Does Not Exist");
+        }
+        if (u.getWishlistGames() == null) {
+            u.setWishlistGames(List.of(userRequest.getWishlist()));
+            returnedBoolean = true;
+        } else {
+            if (u.getWishlistGames().contains(userRequest.getWishlist())) {
+                u.getWishlistGames().remove(userRequest.getWishlist());
+                returnedBoolean = false;
+            } else {
+                u.getWishlistGames().add(userRequest.getWishlist());
+                returnedBoolean = true;
+            }
+        }
+        userRepository.save(u);
+        return returnedBoolean;
+    }
 
     @Transactional
     public void updateResetPasswordToken(String token, String email){

@@ -157,6 +157,7 @@ public class GameService {
         try{
             return gameRepository.findGameById(gameRequest.getId());
         } catch (Exception e){
+            e.printStackTrace();
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
