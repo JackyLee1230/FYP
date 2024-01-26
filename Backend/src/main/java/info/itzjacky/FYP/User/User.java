@@ -88,11 +88,10 @@ public class User implements UserDetails {
     @Column(updatable = true)
     private Date lastActive;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     List<Integer> favouriteGames;
-    
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     List<Integer> wishlistGames;
 
 //    @Column(columnDefinition = "integer default 0")
