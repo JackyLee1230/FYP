@@ -411,6 +411,79 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             >
               <Box
                 sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "16px",
+                  position: "absolute",
+                  left: "42px",
+                  top: "24px",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color={favourited ? "error" : "success"}
+                  size="large"
+                  sx={{
+                    borderRadius: "32px",
+                    overflow: "hidden",
+                    width: "fit-content",
+                  }}
+                  disabled={favouriteButtonDisabled}
+                  onClick={async () => {
+                    setFavouriteButtonDisabled(true);
+                    const r = await favouriteGame(Number(game.id), token!)
+                      .then((result) => {
+                        setFavourited(result);
+                        setFavouriteButtonDisabled(false);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                        setFavouriteButtonDisabled(true);
+                      });
+                  }}
+                >
+                  <Typography variant="h6" color="white">
+                    {favourited && favourited === true
+                      ? "UnFavourite"
+                      : "Favourite"}
+                  </Typography>
+                </Button>
+                {/* Wishlist Btn */}
+                <Button
+                  variant="contained"
+                  color={wishlisted ? "error" : "success"}
+                  sx={{
+                    borderRadius: "32px",
+                    overflow: "hidden",
+                    width: "fit-content",
+                  }}
+                  size="large"
+                  disabled={wishlistButtonDisabled}
+                  onClick={async () => {
+                    setWishlistButtonDisabled(true);
+                    const r = await wishlistGame(Number(game.id), token!)
+                      .then((result) => {
+                        setWishlisted(result);
+
+                        setWishlistButtonDisabled(false);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                        setWishlistButtonDisabled(true);
+                      });
+                  }}
+                >
+                  <Typography variant="h6" color="white">
+                    {user && wishlisted && wishlisted === true
+                      ? "UnWishlist"
+                      : "Wishlist"}
+                  </Typography>
+                </Button>
+              </Box>
+
+              <Box
+                sx={{
                   position: "absolute",
                   right: "42px",
                 }}
@@ -586,89 +659,6 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               >
                 {`${game.name} ${game.dlc && game.baseGame ? "(DLC)" : ""}`}
               </Typography>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
-                gap: "16px",
-                flexShrink: 0,
-                alignSelf: "center",
-                flex: 1,
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "16px",
-                  flexShrink: 0,
-                  alignSelf: "stretch",
-                  flex: 1,
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="success"
-                  sx={{
-                    borderRadius: "32px",
-                    overflow: "hidden",
-                    width: "fit-content",
-                  }}
-                  disabled={favouriteButtonDisabled}
-                  onClick={async () => {
-                    setFavouriteButtonDisabled(true);
-                    const r = await favouriteGame(Number(game.id), token!)
-                      .then((result) => {
-                        setFavourited(result);
-                        setFavouriteButtonDisabled(false);
-                      })
-                      .catch((error) => {
-                        console.error(error);
-                        setFavouriteButtonDisabled(true);
-                      });
-                  }}
-                >
-                  <Typography variant="h6" color="white">
-                    {favourited && favourited === true
-                      ? "UnFavourite"
-                      : "Favourite"}
-                  </Typography>
-                </Button>
-                {/* Wishlist Btn */}
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    borderRadius: "32px",
-                    overflow: "hidden",
-                    width: "fit-content",
-                  }}
-                  disabled={wishlistButtonDisabled}
-                  onClick={async () => {
-                    setWishlistButtonDisabled(true);
-                    const r = await wishlistGame(Number(game.id), token!)
-                      .then((result) => {
-                        setWishlisted(result);
-
-                        setWishlistButtonDisabled(false);
-                      })
-                      .catch((error) => {
-                        console.error(error);
-                        setWishlistButtonDisabled(true);
-                      });
-                  }}
-                >
-                  <Typography variant="h6" color="white">
-                    {user && wishlisted && wishlisted === true
-                      ? "UnWishlist"
-                      : "Wishlist"}
-                  </Typography>
-                </Button>
-              </Box>
             </Box>
 
             <Box
@@ -973,6 +963,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               </Typography>
             </Box>
           </Divider>
+          
 
           {!isUserLoading && user && isUserReviewLoading ? (
             <Skeleton variant="rectangular" height={348} />
@@ -1003,8 +994,35 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               </Typography>
               <GameReviewCard review={userReview} fullWidth={true} />
             </Box>
+          ) : user ? (
+            <ReviewInputBox user={user} game={game} />
           ) : (
-            user && <ReviewInputBox user={user} game={game} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                gap: "12px",
+                width: "100%",
+              }}
+            >
+              <Typography
+                variant="body1"
+                color="secondary"
+                sx={{ fontWeight: 500 }}
+              >
+                Sign in to write a new review
+              </Typography>
+              <Button
+                variant="outlined"
+                LinkComponent={Link}
+                href="/login"
+                color="secondary"
+              >
+                Log in
+              </Button>
+            </Box>
           )}
 
           <Box

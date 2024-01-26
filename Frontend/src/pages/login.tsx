@@ -18,7 +18,11 @@ function LoginPage() {
 
   useEffect(() => {
     if(user && token) {
+      if (window.history?.length) {
+        router.back();
+      } else {
       router.push('/')
+      }
     }
   }, [user, token, router])
 

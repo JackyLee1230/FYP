@@ -329,9 +329,28 @@ function GamePage({
         {review?.reviewedGame?.name}
       </Typography>
     </Button>,
-    <Typography key="2" variant="h6" color="text.secondary">
-      {`Review by ${review?.reviewer?.name}`}
-    </Typography>,
+    <Box 
+      key="2"
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "4px",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        wordBreak: "break-all",
+      }}
+    >
+      <Typography variant="h6" color="text.secondary">
+        Review by
+      </Typography>
+      <Button
+        variant="text"
+      >
+        <Typography variant="h5" color="text.secondary" sx={{fontWeight: 500}}>
+          {review?.reviewer?.name}
+        </Typography>
+      </Button>
+    </Box>
   ];
 
   return (
@@ -674,7 +693,7 @@ function GamePage({
                         ? review.sentiment == 1
                           ? "Positive"
                           : "Negative"
-                        : "Coming soon..."}
+                        : "Generating..."}
                     </Typography>
                   </Box>
                   <Box
@@ -951,7 +970,7 @@ function GamePage({
             </Typography>
           </Box>
 
-          {user && (
+          {user ? (
             <Box
               sx={{
                 display: "flex",
@@ -1000,6 +1019,33 @@ function GamePage({
                   disabled={addCommentLoading}
                 />
               </Tooltip>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                gap: "12px",
+                width: "100%",
+              }}
+            >
+              <Typography
+                variant="body1"
+                color="primary"
+                sx={{ fontWeight: 500 }}
+              >
+                Sign in to add comment to this review
+              </Typography>
+              <Button
+                variant="outlined"
+                LinkComponent={Link}
+                href="/login"
+                color="primary"
+              >
+                Log in
+              </Button>
             </Box>
           )}
 
