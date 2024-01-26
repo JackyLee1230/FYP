@@ -5,6 +5,8 @@ import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
 import info.itzjacky.FYP.User.Gender;
 import info.itzjacky.FYP.User.User;
+import jakarta.transaction.Transactional;
+import jdk.jfr.TransitionTo;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,6 +81,7 @@ public class GameController {
         try {
             return new ResponseEntity<>(gameService.updateGame(gameRequest), HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
@@ -298,6 +301,26 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
         }
     }
 
+    @PostMapping("/getTopFavouritedGames")
+    public ResponseEntity<List<Game>> getTopFavouritedGames(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getTopFavouritedGames(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/getTopWishlistedGames")
+    public ResponseEntity<List<Game>> getTopWishlistedGames(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getTopWishlistedGames(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/getTopMostReviewedGames")
     public ResponseEntity<List<Game>> findTop10MostReviewedGames(@RequestBody GameRequest gameRequest) {
         try {
@@ -328,6 +351,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
     }
 
 
+    @Transactional
     @PostMapping(path="/gameAnalytic", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> gameAnalytic(@RequestBody GameRequest gameRequest) {
         try {
@@ -360,16 +384,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             genderCount.put("N/A", 0);
 
             HashMap<String, Integer> ageCount = new HashMap<>();
-            ageCount.put("13-19", 0);
-            ageCount.put("20-29", 0);
-            ageCount.put("30-39", 0);
-            ageCount.put("40-49", 0);
-            ageCount.put("50-59", 0);
-            ageCount.put("60-69", 0);
-            ageCount.put("70-79", 0);
-            ageCount.put("80-89", 0);
-            ageCount.put("90-99", 0);
-            ageCount.put("N/A", 0);
+            ageCount.put("13-19", 0);ageCount.put("20-29", 0);ageCount.put("30-39", 0);ageCount.put("40-49", 0);ageCount.put("50-59", 0);
+            ageCount.put("60-69", 0);ageCount.put("70-79", 0);ageCount.put("80-89", 0);ageCount.put("90-99", 0);ageCount.put("N/A", 0);
 
             HashMap<String, Integer> sentimentCount = new HashMap<>();
             sentimentCount.put("POSITIVE", 0);
@@ -379,28 +395,86 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 
 
             HashMap<String, Integer> positiveMap = new HashMap<>();
-            positiveMap.put("MALE", 0);
-            positiveMap.put("FEMALE", 0);
-            positiveMap.put("OTHER", 0);
-            positiveMap.put("UNDISCLOSED", 0);
-            positiveMap.put("N/A", 0);
+            positiveMap.put("MALE", 0);positiveMap.put("FEMALE", 0);
+            positiveMap.put("OTHER", 0);positiveMap.put("UNDISCLOSED", 0);positiveMap.put("N/A", 0);
             HashMap<String, Integer> negativeMap = new HashMap<>();
-            negativeMap.put("MALE", 0);
-            negativeMap.put("FEMALE", 0);
-            negativeMap.put("OTHER", 0);
-            negativeMap.put("UNDISCLOSED", 0);
-            negativeMap.put("N/A", 0);
+            negativeMap.put("MALE", 0);negativeMap.put("FEMALE", 0);
+            negativeMap.put("OTHER", 0);negativeMap.put("UNDISCLOSED", 0);negativeMap.put("N/A", 0);
             HashMap<String, Integer> neutralMap = new HashMap<>();
-            neutralMap.put("MALE", 0);
-            neutralMap.put("FEMALE", 0);
-            neutralMap.put("OTHER", 0);
-            neutralMap.put("UNDISCLOSED", 0);
-            neutralMap.put("N/A", 0);
+            neutralMap.put("MALE", 0);neutralMap.put("FEMALE", 0);
+            neutralMap.put("OTHER", 0);neutralMap.put("UNDISCLOSED", 0);neutralMap.put("N/A", 0);
 
             HashMap<String, HashMap> sentimentCountByGender = new HashMap<>();
             sentimentCountByGender.put("POSITIVE", positiveMap);
             sentimentCountByGender.put("NEGATIVE", negativeMap);
             sentimentCountByGender.put("NEUTRAL", neutralMap);
+
+
+            // array of [name, age, gender]
+            List<List<String>> fav = gameRepository.findUsersThatFavouritedGame(gameRequest.getId());
+            List<List<String>> wish = gameRepository.findUsersThatWishlistedGame(gameRequest.getId());
+
+            HashMap<String, Integer> favouriteByAge = new HashMap<>();
+            favouriteByAge.put("13-19", 0);favouriteByAge.put("20-29", 0);favouriteByAge.put("30-39", 0);favouriteByAge.put("40-49", 0);favouriteByAge.put("50-59", 0);
+            favouriteByAge.put("60-69", 0);favouriteByAge.put("70-79", 0);favouriteByAge.put("80-89", 0);favouriteByAge.put("90-99", 0);favouriteByAge.put("N/A", 0);
+            HashMap<String, Integer> favouriteByGender = new HashMap<>();
+            favouriteByGender.put("MALE", 0);favouriteByGender.put("FEMALE", 0);
+            favouriteByGender.put("OTHER", 0);favouriteByGender.put("UNDISCLOSED", 0);favouriteByGender.put("N/A", 0);
+
+            HashMap<String, Integer> wishlistByAge = new HashMap<>();
+            wishlistByAge.put("13-19", 0);wishlistByAge.put("20-29", 0);wishlistByAge.put("30-39", 0);wishlistByAge.put("40-49", 0);wishlistByAge.put("50-59", 0);
+            wishlistByAge.put("60-69", 0);wishlistByAge.put("70-79", 0);wishlistByAge.put("80-89", 0);wishlistByAge.put("90-99", 0);wishlistByAge.put("N/A", 0);
+            HashMap<String, Integer> wishlistByGender = new HashMap<>();
+            wishlistByGender.put("MALE", 0);wishlistByGender.put("FEMALE", 0);
+            wishlistByGender.put("OTHER", 0);wishlistByGender.put("UNDISCLOSED", 0);wishlistByGender.put("N/A", 0);
+
+            logger.info("fav" + fav.toString());
+            logger.info("wish" + wish.toString());
+
+            for (List<String> userArr: fav) {
+                String ageGroup = userArr.get(1);
+                String favGender = userArr.get(2);
+                String genderGroup = null;
+                if (favGender != null) {
+                    genderGroup = Gender.getById(Integer.valueOf(favGender));
+                } else {
+                    genderGroup = "N/A";
+                }
+                if (ageGroup == null || ageGroup.isEmpty() || ageGroup.equals("NA") || ageGroup.equals("N/A")) {
+                    favouriteByAge.put("N/A", favouriteByAge.get("N/A") + 1);
+                } else {
+                    favouriteByAge.put(ageGroup, favouriteByAge.get(ageGroup) + 1);
+                }
+                if (favGender == null || favGender.isEmpty() || favGender.equals("NA") || favGender.equals("N/A")) {
+                    favouriteByGender.put("N/A", favouriteByGender.get("N/A") + 1);
+                } else {
+                    favouriteByGender.put(genderGroup, favouriteByGender.get(genderGroup) + 1);
+                }
+            }
+
+            for (List<String> userArr: wish) {
+                String ageGroup = userArr.get(1);
+                String wishGender = userArr.get(2);
+                String genderGroup = null;
+                if (wishGender != null) {
+                    genderGroup = Gender.getById(Integer.valueOf(wishGender));
+                } else {
+                    genderGroup = "N/A";
+                }
+
+                if (ageGroup == null || ageGroup.isEmpty() || ageGroup.equals("NA") || ageGroup.equals("N/A")) {
+                    wishlistByAge.put("N/A", wishlistByAge.get("N/A") + 1);
+                } else {
+                    wishlistByAge.put(ageGroup, wishlistByAge.get(ageGroup) + 1);
+                }
+                if (wishGender == null || wishGender.isEmpty() || wishGender.equals("NA") || wishGender.equals("N/A")) {
+                    wishlistByGender.put("N/A", wishlistByGender.get("N/A") + 1);
+                } else {
+                    wishlistByGender.put(genderGroup, wishlistByGender.get(genderGroup) + 1);
+                }
+            }
+
+
 
             for (Review r: reviews) {
 //                GENDER
@@ -455,6 +529,12 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             jsonObject.put("ageReviews", ageCount);
             jsonObject.put("sentimentReviews", sentimentCount);
             jsonObject.put("sentimentReviewsByGender", sentimentCountByGender);
+            jsonObject.put("numberOfFavourites", game.getNumberOfFavourites());
+            jsonObject.put("numberOfWishlists", game.getNumberOfWishlists());
+            jsonObject.put("favouriteByAge", favouriteByAge);
+            jsonObject.put("favouriteByGender", favouriteByGender);
+            jsonObject.put("wishlistByAge", wishlistByAge);
+            jsonObject.put("wishlistByGender", wishlistByGender);
 
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
@@ -464,5 +544,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
+
+
     }
 }
+

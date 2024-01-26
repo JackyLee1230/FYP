@@ -1,5 +1,6 @@
 package info.itzjacky.FYP.User;
 
+import info.itzjacky.FYP.Game.CustomGameRepository;
 import info.itzjacky.FYP.Game.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Integer>{
+public interface UserRepository extends JpaRepository<User,Integer>, CustomUserRepository {
 
     User findUserById(Integer id);
 

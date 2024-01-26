@@ -63,6 +63,14 @@ public interface GameRepository extends JpaRepository<Game,Integer>, CustomGameR
 //    @Query("SELECT g FROM Game g ORDER BY SIZE(g.gameReviews) DESC")
 //    List<Game> findTop10ByCreatedAt(Pageable pageable);
 
+
+//    write a query to find the username and gender of user that liked the game id
+    @Query(nativeQuery = true, value = "SELECT u.name, u.age_group , u.gender FROM user u, user_favourite_games ufg WHERE ufg.favourite_games = :id and u.id = ufg.user_id")
+    List<List<String>> findUsersThatFavouritedGame(@Param("id") Integer id);
+
+    @Query(nativeQuery = true, value = "SELECT u.name, u.age_group, u.gender FROM user u, user_wishlist_games uwg WHERE uwg.wishlist_games = :id and u.id = uwg.user_id")
+    List<List<String>> findUsersThatWishlistedGame(@Param("id") Integer id);
+
 }
 
 

@@ -130,6 +130,30 @@ public class UserController {
         }
     }
 
+    @PostMapping("/favourite")
+    public ResponseEntity<Object> favorite(@RequestBody UserRequest userRequest, @AuthenticationPrincipal User u) {
+        if (u == null || !Objects.equals(u.getId(), userRequest.getId())) {
+            throw new AccessDeniedException("Access Denied");
+        }
+        try {
+            return new ResponseEntity<>(userService.favourite(userRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/wishlist")
+    public ResponseEntity<Object> wishlist(@RequestBody UserRequest userRequest, @AuthenticationPrincipal User u) {
+        if (u == null || !Objects.equals(u.getId(), userRequest.getId())) {
+            throw new AccessDeniedException("Access Denied");
+        }
+        try {
+            return new ResponseEntity<>(userService.wishlist(userRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/addUser")
     public ResponseEntity<User> addUser(@RequestBody User user){
         try{

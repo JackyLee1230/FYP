@@ -23,6 +23,8 @@ export type User = {
   gender: string;
   isVerified: boolean;
   isPrivate: boolean;
+  favouriteGames: number[];
+  wishlistGames: number[];
 };
 
 export const genderList = ["MALE", "FEMALE", "OTHER", "UNDISCLOSED"];

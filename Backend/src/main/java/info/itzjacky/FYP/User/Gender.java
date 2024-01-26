@@ -35,6 +35,14 @@ public enum Gender {
         return returnedList;
     }
 
+//    get the gender string from the id
+public static String getById(Integer id) {
+    for(Gender g : values()) {
+        if(g.getID() == id) return g.toString();
+    }
+    return "N/A";
+}
+
 
     //    write a function that takes a string to find any genre that contains the string, and remove any underscore in the enum and ignore case
     public static List<Gender> getGenreFromString(String gender) {

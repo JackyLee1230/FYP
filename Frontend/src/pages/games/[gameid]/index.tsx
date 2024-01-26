@@ -47,6 +47,7 @@ import { is } from "date-fns/locale";
 import { set } from "lodash";
 import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
 import { format } from "date-fns";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -137,6 +138,13 @@ function GamePage({ game, errorMessage }: GamePageProps) {
   const [userReview, setUserReview] = useState<GameReview | null>(null);
   const [isUserReviewLoading, setIsUserReviewLoading] = useState<boolean>(true);
 
+  const [favourited, setFavourited] = useState<boolean | null>(null);
+  const [favouriteButtonDisabled, setFavouriteButtonDisabled] =
+    useState<boolean>(false);
+  const [wishlisted, setWishlisted] = useState<boolean | null>(null);
+  const [wishlistButtonDisabled, setWishlistButtonDisabled] =
+    useState<boolean>(false);
+
   const fetchUserReview = useCallback(async () => {
     if (game && user) {
       const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/hasUserReviewedGame`;
@@ -164,7 +172,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
   }, [game, user]);
 
   useEffect(() => {
-    if(!isUserLoading){
+    if (!isUserLoading) {
       fetchUserReview();
     }
   }, [fetchUserReview, user, game, token]);
@@ -187,6 +195,89 @@ function GamePage({ game, errorMessage }: GamePageProps) {
     },
     [game, sortBy]
   );
+
+  const favouriteGame = async (favourite: number, access_token: string) => {
+    if (user === null) {
+      displaySnackbarVariant(
+        "You must be logged in to favourite a game.",
+        "info"
+      );
+      return;
+    }
+    let result = null;
+    const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/favourite`;
+    const body = {
+      id: user.id,
+      favourite: favourite,
+    };
+    try {
+      const response = await axios.post(apiAddress, body, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        result = await response.data;
+      }
+    } catch (error: any) {
+      console.error(error);
+    }
+
+    return result;
+  };
+
+  const wishlistGame = async (wishlist: number, access_token: string) => {
+    if (user === null) {
+      displaySnackbarVariant(
+        "You must be logged in to wishlist a game.",
+        "info"
+      );
+      return;
+    }
+    let result = null;
+    const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/wishlist`;
+    const body = {
+      id: user.id,
+      wishlist: wishlist,
+    };
+    try {
+      const response = await axios.post(apiAddress, body, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        result = await response.data;
+      }
+    } catch (error: any) {
+      console.error(error);
+    }
+
+    return result;
+  };
+
+  useEffect(() => {
+    if (game && user && user.favouriteGames) {
+      setFavourited(
+        user.favouriteGames.some((favGameId) => favGameId === Number(game.id))
+      );
+    }
+    if (game && user && user.wishlistGames) {
+      setWishlisted(
+        user.wishlistGames.some((wishGameId) => wishGameId === Number(game.id))
+      );
+    }
+  }, [game, user]);
 
   useEffect(() => {
     handleReviewFetch(
@@ -212,7 +303,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
         <Typography variant="h4" sx={{ textAlign: "center" }}>
           Game Not Found
         </Typography>
-{/*
+        {/*
         {errorMessage && (
           <Typography variant="body1" sx={{ textAlign: "center" }}>
             {errorMessage}
@@ -234,7 +325,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           overflow: "hidden",
           height: "310px",
           position: "absolute",
-          top: "0px"
+          top: "0px",
         }}
       >
         <Box
@@ -500,6 +591,89 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             <Box
               sx={{
                 display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                gap: "16px",
+                flexShrink: 0,
+                alignSelf: "center",
+                flex: 1,
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "16px",
+                  flexShrink: 0,
+                  alignSelf: "stretch",
+                  flex: 1,
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="success"
+                  sx={{
+                    borderRadius: "32px",
+                    overflow: "hidden",
+                    width: "fit-content",
+                  }}
+                  disabled={favouriteButtonDisabled}
+                  onClick={async () => {
+                    setFavouriteButtonDisabled(true);
+                    const r = await favouriteGame(Number(game.id), token!)
+                      .then((result) => {
+                        setFavourited(result);
+                        setFavouriteButtonDisabled(false);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                        setFavouriteButtonDisabled(true);
+                      });
+                  }}
+                >
+                  <Typography variant="h6" color="white">
+                    {favourited && favourited === true
+                      ? "UnFavourite"
+                      : "Favourite"}
+                  </Typography>
+                </Button>
+                {/* Wishlist Btn */}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    borderRadius: "32px",
+                    overflow: "hidden",
+                    width: "fit-content",
+                  }}
+                  disabled={wishlistButtonDisabled}
+                  onClick={async () => {
+                    setWishlistButtonDisabled(true);
+                    const r = await wishlistGame(Number(game.id), token!)
+                      .then((result) => {
+                        setWishlisted(result);
+
+                        setWishlistButtonDisabled(false);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                        setWishlistButtonDisabled(true);
+                      });
+                  }}
+                >
+                  <Typography variant="h6" color="white">
+                    {user && wishlisted && wishlisted === true
+                      ? "UnWishlist"
+                      : "Wishlist"}
+                  </Typography>
+                </Button>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
                 width: "100%",
                 alignItems: "flex-start",
                 gap: "16px",
@@ -565,7 +739,11 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   }}
                 >
                   <b>Released On: </b>
-                  {`${game?.releaseDate ? format(new Date(game?.releaseDate), "yyyy-MM-dd") : "Unknown"}`}
+                  {`${
+                    game?.releaseDate
+                      ? format(new Date(game?.releaseDate), "yyyy-MM-dd")
+                      : "Unknown"
+                  }`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -654,7 +832,11 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                       fontWeight: 700,
                       textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                     }}
-                    color={game.score ? `${getScoreColor(game.percentile)}.main` : "divider"}
+                    color={
+                      game.score
+                        ? `${getScoreColor(game.percentile)}.main`
+                        : "divider"
+                    }
                   >
                     {game.score ? Math.round(game.score).toString() : "N/A"}
                   </Typography>
@@ -792,41 +974,38 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             </Box>
           </Divider>
 
-          {(!isUserLoading && user && isUserReviewLoading) ?
-            (
-              <Skeleton variant="rectangular" height={348}/>
-            ) :
-            (userReview ? (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                  width: "100%",
-                }}
+          {!isUserLoading && user && isUserReviewLoading ? (
+            <Skeleton variant="rectangular" height={348} />
+          ) : userReview ? (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+                gap: "12px",
+                width: "100%",
+              }}
+            >
+              <Typography
+                variant="h5"
+                color="secondary.main"
+                sx={{ fontWeight: 500 }}
               >
-                <Typography
-                  variant="h5"
-                  color="secondary.main"
-                  sx={{ fontWeight: 500 }}
-                >
-                  Your Review
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ fontWeight: 500 }}
-                >
-                  Edit review feature is not available yet.
-                </Typography>
-                <GameReviewCard review={userReview} fullWidth={true} />
-              </Box>
-            ) : (
-              user && <ReviewInputBox user={user} game={game} />
-            ))
-          }
+                Your Review
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ fontWeight: 500 }}
+              >
+                Edit review feature is not available yet.
+              </Typography>
+              <GameReviewCard review={userReview} fullWidth={true} />
+            </Box>
+          ) : (
+            user && <ReviewInputBox user={user} game={game} />
+          )}
 
           <Box
             sx={{

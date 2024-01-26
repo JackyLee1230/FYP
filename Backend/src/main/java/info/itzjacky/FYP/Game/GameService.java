@@ -157,6 +157,7 @@ public class GameService {
         try{
             return gameRepository.findGameById(gameRequest.getId());
         } catch (Exception e){
+            e.printStackTrace();
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
@@ -362,6 +363,55 @@ public class GameService {
             throw new IllegalStateException("Game Does Not Exist");
         }
     }
+
+    public List<Game> getTopFavouritedGames(GameRequest gameRequest){
+        try{
+            if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
+                gameRequest.setNumOfGames(10);
+            }
+            List<List<Integer>> r =  userRepository.findMostFavouritedGames(gameRequest.getNumOfGames());
+            List<Game> result = new ArrayList<>();
+            for (List<Integer> game: r) {
+                Game g = gameRepository.findGameById(game.get(0));
+                g.setGameReviews(null);
+                g.setVersions(null);
+                g.setDevelopers(null);
+                g.setTester(null);
+                g.setBaseGame(null);
+                g.setDLCS(null);
+                result.add(g);
+            }
+            return result;
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
+    public List<Game> getTopWishlistedGames(GameRequest gameRequest){
+        try{
+            if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
+                gameRequest.setNumOfGames(10);
+            }
+            List<List<Integer>> r = userRepository.findMostWishlistedGames(gameRequest.getNumOfGames());
+            List<Game> result = new ArrayList<>();
+            for (List<Integer> game: r) {
+                Game g = gameRepository.findGameById(game.get(0));
+                g.setGameReviews(null);
+                g.setVersions(null);
+                g.setDevelopers(null);
+                g.setTester(null);
+                g.setBaseGame(null);
+                g.setDLCS(null);
+                result.add(g);
+            }
+            return result;
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new IllegalStateException("Game Does Not Exist");
+        }
+    }
+
 
     public List<Game> getTopMostReviewedGames(GameRequest gameRequest){
         try{

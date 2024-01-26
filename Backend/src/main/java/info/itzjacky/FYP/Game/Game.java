@@ -56,7 +56,8 @@ public class Game {
     private String name;
     private boolean isDLC;
 
-    @Column(insertable = true, updatable = true, length = 20000)
+    @Column(insertable = true, updatable = true, length = 10000)
+    @JsonIgnore
     private String analytic;
     @Column(insertable = true, updatable = true)
     private Date analyticUpdatedAt;
@@ -98,6 +99,14 @@ public class Game {
     @Formula("100 - (SELECT COUNT(*) FROM game g WHERE g.score > score and g.score is not null) / (SELECT COUNT(*) FROM game g where g.score is not null) * 100")
     @Basic(fetch = FetchType.LAZY)
     private Double percentile;
+
+    @Formula("(SELECT COUNT(*) FROM user_wishlist_games uwg WHERE uwg.wishlist_games = id)")
+    @Basic(fetch = FetchType.LAZY)
+    private Integer numberOfWishlists;
+
+    @Formula("(SELECT COUNT(*) FROM user_favourite_games ufg WHERE ufg.favourite_games = id)")
+    @Basic(fetch = FetchType.LAZY)
+    private Integer numberOfFavourites;
 
     private Float recommendationScore;
     @ManyToMany

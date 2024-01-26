@@ -47,6 +47,32 @@ public class DigitalOceanStorageService {
             metadata.setContentLength(file.getSize());
             metadata.setContentType(contentType(file));
             metadata.setHeader("x-amz-acl", "public-read"); // publicly accessible, comment this to not publicly accessible
+            metadata.setHeader("uploader", "System");
+            PutObjectResult result = amazonS3Client.putObject(bucketName, fileName, file.getInputStream(), metadata);
+
+            System.out.println("Content - Length in KB : " + result.getMetadata().getContentLength());
+
+            return result.getETag();
+        } catch (IOException ioe) {
+            logger.error("IOException: " + ioe.getMessage());
+        } catch (AmazonServiceException serviceException) {
+            logger.info("AmazonServiceException: " + serviceException.getMessage());
+            throw serviceException;
+        } catch (AmazonClientException clientException) {
+            logger.info("AmazonClientException Message: " + clientException.getMessage());
+            throw clientException;
+        }
+        return null;
+    }
+
+
+    public String uploadFile(final String fileName, final MultipartFile file, final String uploader) {
+        try {
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(file.getSize());
+            metadata.setContentType(contentType(file));
+            metadata.setHeader("x-amz-acl", "public-read"); // publicly accessible, comment this to not publicly accessible
+            metadata.setHeader("uploader", uploader);
             PutObjectResult result = amazonS3Client.putObject(bucketName, fileName, file.getInputStream(), metadata);
 
             System.out.println("Content - Length in KB : " + result.getMetadata().getContentLength());

@@ -88,6 +88,12 @@ public class User implements UserDetails {
     @Column(updatable = true)
     private Date lastActive;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Integer> favouriteGames;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Integer> wishlistGames;
+
 //    @Column(columnDefinition = "integer default 0")
     @Formula("(SELECT COUNT(*) FROM review r WHERE r.reviewer_id = id)")
     private Integer numOfReviews;
