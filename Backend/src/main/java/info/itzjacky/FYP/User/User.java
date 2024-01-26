@@ -90,6 +90,7 @@ public class User implements UserDetails {
 
     @ElementCollection
     List<Integer> favouriteGames;
+    
 
     @ElementCollection
     List<Integer> wishlistGames;
