@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import LoginBox from "@/components/LoginBox";
-import { Box, CircularProgress, styled, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, styled, Typography } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import { useAuthContext } from '@/context/AuthContext'
 import { useRouter } from "next/router";
@@ -77,8 +77,11 @@ function LoginPage() {
                 Logged in successfully
               </Typography>
               <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
-                You will be redirected to the home page in a few seconds.
+                You will be redirected in a few seconds.
               </Typography>
+              <Button variant="contained" color="primary" onClick={() => router.push('/')}>
+                Go to home page
+              </Button>
             </>
           ) : (
             isUserLoading ? (
