@@ -301,6 +301,26 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
         }
     }
 
+    @PostMapping("/getTopFavouritedGames")
+    public ResponseEntity<List<Game>> getTopFavouritedGames(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getTopFavouritedGames(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
+    @PostMapping("/getTopWishlistedGames")
+    public ResponseEntity<List<Game>> getTopWishlistedGames(@RequestBody GameRequest gameRequest) {
+        try {
+            return new ResponseEntity<>(gameService.getTopWishlistedGames(gameRequest), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
     @PostMapping("/getTopMostReviewedGames")
     public ResponseEntity<List<Game>> findTop10MostReviewedGames(@RequestBody GameRequest gameRequest) {
         try {
