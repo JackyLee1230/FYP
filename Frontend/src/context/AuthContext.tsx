@@ -23,8 +23,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [isUserLoading, setIsUserLoading] = useState<boolean>(token === undefined)
   const router = useRouter()
 
-  // Redirect to login page if token is expired
-  useEffect(() => {
+  const refreshSession = () => {
     if(!token) return;
     const isAuthorised = isUserAuthorised(token);
     if(!isAuthorised){
@@ -42,7 +41,15 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         }
       })
     }
-  }, [router, token])
+  }
+
+  //Refresh session every 30 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshSession();
+    }, 1800000);
+    return () => clearInterval(interval);
+  })
 
   // Try to refresh token on first load
   useEffect(() => {
@@ -72,7 +79,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         setUser,
         token,
         setToken,
-        isUserLoading
+        isUserLoading,
       }}
     >
       {children}
