@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "@/type/user";
 import { isUserAuthorised, refreshAccessToken, getUserInfo } from "@/libs/authHelper";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 
 interface AuthContextProps {
   user: User | null;
@@ -23,8 +24,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [isUserLoading, setIsUserLoading] = useState<boolean>(token === undefined)
   const router = useRouter()
 
-  // Redirect to login page if token is expired
-  useEffect(() => {
+  const refreshSession = () => {
     if(!token) return;
     const isAuthorised = isUserAuthorised(token);
     if(!isAuthorised){
@@ -36,13 +36,25 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           setUser(user);
         }
         else {
+          displaySnackbarVariant(
+            `Your session has expired. Please login again`,
+            "error"
+          );
           setToken(null);
           setUser(null);
           router.push('/login');
         }
       })
     }
-  }, [router, token])
+  }
+
+  //Refresh session every 30 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshSession();
+    }, 1800000);
+    return () => clearInterval(interval);
+  })
 
   // Try to refresh token on first load
   useEffect(() => {
@@ -72,7 +84,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         setUser,
         token,
         setToken,
-        isUserLoading
+        isUserLoading,
       }}
     >
       {children}
