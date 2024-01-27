@@ -26,7 +26,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   // Redirect to login page if token is expired
   useEffect(() => {
     if(!token) return;
-
     const isAuthorised = isUserAuthorised(token);
     if(!isAuthorised){
       refreshAccessToken().then(async (newToken) => {
