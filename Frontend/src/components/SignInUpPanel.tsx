@@ -67,7 +67,7 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
       <Box
         sx={{display: mode === 'register' ? "none" : "block"}}
       >
-        <LoginBox setOpen={setOpen} />
+        <LoginBox setOpen={setOpen} reloadOverride={false} />
       </Box>
     </Box>
   );

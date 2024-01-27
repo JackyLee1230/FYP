@@ -23,9 +23,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 type LoginBoxProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  reloadOverride?: boolean;
 };
 
-const LoginBox = ({ setOpen }: LoginBoxProps) => {
+const LoginBox = ({ setOpen, reloadOverride }: LoginBoxProps) => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -83,7 +84,10 @@ const LoginBox = ({ setOpen }: LoginBoxProps) => {
           `Login successful. Welcome back ${response?.user?.name}!`,
           "success"
         );
+
+      if(!reloadOverride){
         router.reload();
+      }
       }
       setIsLoading(false);
     } catch (error: any) {

@@ -87,7 +87,7 @@ function LoginPage() {
             isUserLoading ? (
               <CircularProgress/>
             ) : (
-              <LoginBox />
+              <LoginBox reloadOverride={true} />
             )
           )}
         </Box>
