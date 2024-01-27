@@ -1073,13 +1073,37 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               </Grid>
             </Grid>
           ) : reviews && reviews.length > 0 ? (
-            <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
-              {reviews.map((review) => (
-                <Grid item xs={12} lg={6} key={review.id}>
-                  <GameReviewCard review={review} />
-                </Grid>
-              ))}
-            </Grid>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+                width: "100%",
+              }}
+            >
+              <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
+                {reviews.map((review) => (
+                  <Grid item xs={12} lg={6} key={review.id}>
+                    <GameReviewCard review={review} />
+                  </Grid>
+                ))}
+              </Grid>
+              {reviews.length > 12 && (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  LinkComponent={Link}
+                  href={`/games/${game.id}/reviews`}
+                  size="large"
+                  sx={{
+                    width: "fit-content",
+                    alignSelf: "center",
+                  }}
+                >
+                  View More Reviews
+                </Button>
+              )}
+            </Box>
           ) : (
             <Box>
               <Typography
