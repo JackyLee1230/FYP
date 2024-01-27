@@ -33,3 +33,13 @@ For using Chroma with Docker, and hook it to Langchain, check the introduction i
 ## Setup
 
 Follow the official documentations to install Ollama, Langchain and Chroma. Just install the latest right now. The impact of version difference shd be little to none.
+
+### Ref
+
+The links of the 5 cyberpunk2077 phantom liberty reviews:
+
+- https://www.pcgamer.com/cyberpunk-2077-phantom-liberty-review/
+- https://www.softpedia.com/reviews/games/pc/cyberpunk-2077-phantom-liberty-review-537402.shtml
+- https://www.pcworld.com/article/2096945/cyberpunk-2077-phantom-liberty-in-test-do-you-want-to-be-john-wick-james-bond-or-the-kill-bill-lady.html
+- https://www.rpgsite.net/review/14858-cyberpunk-2077-phantom-liberty-review
+- https://www.gamespot.com/reviews/cyberpunk-2077-phantom-liberty-review-the-songbird-sings/1900-6418116/
