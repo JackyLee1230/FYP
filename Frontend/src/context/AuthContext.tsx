@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "@/type/user";
 import { isUserAuthorised, refreshAccessToken, getUserInfo } from "@/libs/authHelper";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 
 interface AuthContextProps {
   user: User | null;
@@ -35,6 +36,10 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           setUser(user);
         }
         else {
+          displaySnackbarVariant(
+            `Your session has expired. Please login again`,
+            "error"
+          );
           setToken(null);
           setUser(null);
           router.push('/login');
