@@ -24,3 +24,12 @@ Install langchain by following the instruction in [Github](https://github.com/la
 Tutorial from Ollama about how to interact with langchain with python  
 https://github.com/jmorganca/ollama/blob/main/docs/tutorials/langchainpy.md
 
+## Chroma
+
+A light-weight vector DB for quick deployment and ease to use. With integration with Ollama.
+
+For using Chroma with Docker, and hook it to Langchain, check the introduction in Langchain: [LangChain](https://python.langchain.com/docs/integrations/vectorstores/chroma)
+
+## Setup
+
+Follow the official documentations to install Ollama, Langchain and Chroma. Just install the latest right now. The impact of version difference shd be little to none.
