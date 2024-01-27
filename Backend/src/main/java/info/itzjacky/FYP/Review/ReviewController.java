@@ -132,9 +132,9 @@ public class ReviewController {
     }
 
     @PostMapping("/findReviewByReviewerIdPaged")
-    public ResponseEntity<Review> findReviewByReviewerIdPaged(@RequestBody ReviewRequest reviewReq){
+    public ResponseEntity<Page<Review>> findReviewByReviewerIdPaged(@RequestBody ReviewRequest reviewReq){
         try{
-            return new ResponseEntity<>(reviewService.findReviewById(reviewReq), HttpStatus.OK);
+            return new ResponseEntity<>(reviewService.findReviewsByReviewerIdPaged(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
