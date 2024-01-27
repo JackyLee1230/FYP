@@ -243,11 +243,12 @@ public class AuthenticationService {
         if(tokens.isEmpty()){
             return;
         }
-        tokens.forEach(token -> {
-            token.setRevoked(true);
-            token.setExpired(true);
-        });
-        tokenRepository.saveAll(tokens);
+//        tokens.forEach(token -> {
+//            token.setRevoked(true);
+//            token.setExpired(true);
+//        });
+//       for each token, delete it
+        tokenRepository.deleteAll(tokens);
     }
 
 
