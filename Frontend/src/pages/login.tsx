@@ -18,12 +18,12 @@ function LoginPage() {
 
   useEffect(() => {
     if(user && token) {
-//      if(window.history.length > 1 && 
-//        document.referrer.indexOf(window.location.host) !== -1) {  
-//        router.back();
-//      } else {
+      if(window.history.length > 1 && 
+        document.referrer.indexOf(window.location.host) !== -1) {  
+        router.back();
+      } else {
       router.push('/')
-//      }
+      }
     }
   }, [user, token, router])
 
