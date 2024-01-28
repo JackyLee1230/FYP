@@ -963,7 +963,6 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               </Typography>
             </Box>
           </Divider>
-          
 
           {!isUserLoading && user && isUserReviewLoading ? (
             <Skeleton variant="rectangular" height={348} />
@@ -1088,7 +1087,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   </Grid>
                 ))}
               </Grid>
-              {reviews.length > 12 && (
+              {game.numberOfReviews != null && game.numberOfReviews > 12 && (
                 <Button
                   variant="contained"
                   color="secondary"
