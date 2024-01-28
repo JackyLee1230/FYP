@@ -108,6 +108,10 @@ public class Game {
     @Basic(fetch = FetchType.LAZY)
     private Integer numberOfFavourites;
 
+    @Formula("(SELECT COUNT(*) FROM review r WHERE r.game_id = id)")
+    @Basic(fetch = FetchType.LAZY)
+    private Integer numberOfReviews;
+
     private Float recommendationScore;
     @ManyToMany
     @JoinTable(
