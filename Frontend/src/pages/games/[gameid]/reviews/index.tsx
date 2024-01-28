@@ -18,7 +18,6 @@ import {
   useTheme,
 } from "@mui/material";
 import axios from "axios";
-import { is } from "date-fns/locale";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -27,42 +26,42 @@ import React, { useCallback, useEffect, useState } from "react";
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
 
-  export const getServerSideProps: GetServerSideProps = async (context) => {
-    const { gameid } = context.query;
-  
-    let game = null;
-    let errorMessage = null;
-  
-    try {
-      const response = await axios.post(
-        `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
-        { id: gameid, includeReviews: false, inclinudePlatformReviews: false },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Credentials": "true",
-          },
-        }
-      );
-  
-      if (response.status === 200) {
-        game = await response.data;
-      } else {
-        errorMessage = response.statusText;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { gameid } = context.query;
+
+  let game = null;
+  let errorMessage = null;
+
+  try {
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/findGameById`,
+      { id: gameid, includeReviews: false, inclinudePlatformReviews: false },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
       }
-    } catch (error: any) {
-      errorMessage = error.toString();
+    );
+
+    if (response.status === 200) {
+      game = await response.data;
+    } else {
+      errorMessage = response.statusText;
     }
-  
-    return {
-      props: {
-        game,
-        errorMessage,
-      },
-    };
+  } catch (error: any) {
+    errorMessage = error.toString();
+  }
+
+  return {
+    props: {
+      game,
+      errorMessage,
+    },
   };
+};
 
 const fetchReview = async (
   gameId: string,
@@ -115,8 +114,8 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "auto" })
-  }, [])
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -138,7 +137,13 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
     async (recommended: boolean | null) => {
       if (game?.id) {
         setIsReviewLoading(true);
-        const reviews = await fetchReview(game?.id, recommended, sortBy, reviewsPerPage, pageNum);
+        const reviews = await fetchReview(
+          game?.id,
+          recommended,
+          sortBy,
+          reviewsPerPage,
+          pageNum
+        );
         setReviews(reviews[0]);
         setNumberOfReviews(reviews[1]);
         setIsReviewLoading(false);
@@ -223,8 +228,18 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                 },
               }}
             >
-              <Skeleton variant="rectangular" width={300} height={60} sx={{alignSelf: "flex-start",}}/>
-              <Skeleton variant="rectangular" width={125} height={60} sx={{alignSelf: "flex-end"}}/>
+              <Skeleton
+                variant="rectangular"
+                width={300}
+                height={60}
+                sx={{ alignSelf: "flex-start" }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width={125}
+                height={60}
+                sx={{ alignSelf: "flex-end" }}
+              />
             </Box>
           ) : (
             <Box
@@ -258,7 +273,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                 <Typography
                   variant={isMobile ? "subtitle1" : "h6"}
                   component="div"
-                  sx={{ 
+                  sx={{
                     color: "text.secondary",
                     [theme.breakpoints.down("sm")]: {
                       textAlign: "left",
@@ -267,7 +282,9 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                     },
                   }}
                 >
-                  {`${numberOfReviews} Review`}{numberOfReviews > 1 ? "s" : ""}{` for`}
+                  {`${numberOfReviews} Review`}
+                  {numberOfReviews > 1 ? "s" : ""}
+                  {` for`}
                 </Typography>
                 <Button
                   variant="text"
@@ -277,13 +294,17 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                   <Typography
                     variant={isMobile ? "h6" : "h5"}
                     component="div"
-                    sx={{ color: "text.primary", fontWeight: 600, textDecoration: "underline"}}
+                    sx={{
+                      color: "text.primary",
+                      fontWeight: 600,
+                      textDecoration: "underline",
+                    }}
                   >
                     {game.name}
                   </Typography>
                 </Button>
               </Box>
-              <FormControl sx={{ minWidth: 124, alignSelf: "flex-end", }}>
+              <FormControl sx={{ minWidth: 124, alignSelf: "flex-end" }}>
                 <Select
                   color="secondary"
                   value={sortBy}
@@ -298,28 +319,31 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
               </FormControl>
             </Box>
           )}
-          <Divider flexItem={true}/>
+          <Divider flexItem={true} />
 
           {numberOfReviews == null ? (
-            <Box sx={{width: "100%"}}>
-              <Skeleton variant="rectangular" height={48} sx={{alignSelf: "flex-start", width: "100%"}}/>
+            <Box sx={{ width: "100%" }}>
+              <Skeleton
+                variant="rectangular"
+                height={48}
+                sx={{ alignSelf: "flex-start", width: "100%" }}
+              />
             </Box>
-          )
-          : (
-          <Tabs
-            value={reviewTypeValue}
-            onChange={handleReviewTypeChange}
-            indicatorColor="secondary"
-            textColor="secondary"
-            variant="fullWidth"
-            sx={{
-              width: "100%",
-            }}
-          >
-            <Tab label="All Reviews" />
-            <Tab label="Positive" />
-            <Tab label="Negative" />
-          </Tabs>
+          ) : (
+            <Tabs
+              value={reviewTypeValue}
+              onChange={handleReviewTypeChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              variant="fullWidth"
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Tab label="All Reviews" />
+              <Tab label="Positive" />
+              <Tab label="Negative" />
+            </Tabs>
           )}
           {isReviewLoading || numberOfReviews == null ? (
             <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
@@ -350,11 +374,11 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                 ))}
               </Grid>
 
-              <Box sx={{width: "100%"}}>
+              <Box sx={{ width: "100%" }}>
                 <Pagination
                   color="primary"
                   variant="outlined"
-                  size= {isMobile ? "medium" : "large"}
+                  size={isMobile ? "medium" : "large"}
                   count={Math.ceil(numberOfReviews / reviewsPerPage)}
                   page={pageNum + 1}
                   onChange={handlePageChange}
@@ -368,11 +392,11 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
               </Box>
             </Box>
           ) : (
-            <Box sx={{width: "100%"}}>
+            <Box sx={{ width: "100%" }}>
               <Typography
                 variant="h6"
                 color="secondary.main"
-                sx={{ fontWeight: 500, textAlign: "center"}}
+                sx={{ fontWeight: 500, textAlign: "center" }}
               >
                 No Reviews
               </Typography>

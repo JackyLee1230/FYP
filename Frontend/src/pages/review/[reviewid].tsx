@@ -1,13 +1,21 @@
+import { CustomInput } from "@/components/CustomInput";
+import EmblaCarousel from "@/components/EmblaCarousel/EmblaCarousel";
+import ReviewCommentCard from "@/components/ReviewCommentCard";
+import ScrollToTopFab from "@/components/ScrollToTopFAB";
+import { useAuthContext } from "@/context/AuthContext";
 import { GameReviewComment, GameReviewPageProps } from "@/type/game";
-import { getGenre } from "@/type/gameGenre";
 import { getPlatform } from "@/type/gamePlatform";
-import { formatTime } from "@/utils/StringUtils";
-import axios from "axios";
-import { format } from "date-fns";
-import { GetServerSideProps } from "next";
-import Head from "next/head";
-import "tailwindcss/tailwind.css";
-import Image from "next/image";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import { getReviewColor } from "@/utils/DynamicScore";
+import { playTimeString } from "@/utils/Other";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import ForumIcon from "@mui/icons-material/Forum";
+import HelpIcon from "@mui/icons-material/Help";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import {
   Avatar,
   Box,
@@ -20,29 +28,15 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import HelpIcon from "@mui/icons-material/Help";
-import ForumIcon from "@mui/icons-material/Forum";
-import Link from "next/link";
-import { playTimeString } from "@/utils/Other";
-import { getReviewColor } from "@/utils/DynamicScore";
 import Collapse from "@mui/material/Collapse";
+import axios from "axios";
+import { format } from "date-fns";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
-import ScrollToTopFab from "@/components/ScrollToTopFAB";
-import { useAuthContext } from "@/context/AuthContext";
-import {
-  displaySnackbar,
-  displaySnackbarVariant,
-} from "@/utils/DisplaySnackbar";
-import { CustomInput } from "@/components/CustomInput";
-import ReviewCommentCard from "@/components/ReviewCommentCard"
-import EmblaCarousel from "@/components/EmblaCarousel/EmblaCarousel";
+import "tailwindcss/tailwind.css";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -329,7 +323,7 @@ function GamePage({
         {review?.reviewedGame?.name}
       </Typography>
     </Button>,
-    <Box 
+    <Box
       key="2"
       sx={{
         display: "flex",
@@ -343,14 +337,16 @@ function GamePage({
       <Typography variant="h6" color="text.secondary">
         Review by
       </Typography>
-      <Button
-        variant="text"
-      >
-        <Typography variant="h5" color="text.secondary" sx={{fontWeight: 500}}>
+      <Button variant="text">
+        <Typography
+          variant="h5"
+          color="text.secondary"
+          sx={{ fontWeight: 500 }}
+        >
           {review?.reviewer?.name}
         </Typography>
       </Button>
-    </Box>
+    </Box>,
   ];
 
   return (
@@ -683,10 +679,15 @@ function GamePage({
                     >
                       AI Sentiment:
                     </Typography>
-                    <Typography 
-                      variant="h6" 
+                    <Typography
+                      variant="h6"
                       sx={{
-                        color: review.sentiment != null ? (review.sentiment == 1 ? "#4FA639" : "error.main") : "text.secondary",
+                        color:
+                          review.sentiment != null
+                            ? review.sentiment == 1
+                              ? "#4FA639"
+                              : "error.main"
+                            : "text.secondary",
                       }}
                     >
                       {review.sentiment != null
@@ -833,10 +834,10 @@ function GamePage({
           </Box>
           {review?.reviewImages?.length > 0 && (
             <>
-              <EmblaCarousel images={review.reviewImages}/>
+              <EmblaCarousel images={review.reviewImages} />
             </>
           )}
-          
+
           <Divider flexItem />
           <Box
             sx={{

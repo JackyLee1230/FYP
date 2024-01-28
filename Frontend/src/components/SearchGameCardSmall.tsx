@@ -1,12 +1,19 @@
-import { getGenre } from "../type/gameGenre";
-import { GameInfo } from "../type/game";
-import { Box, Typography, ButtonBase, useTheme, Chip, CircularProgress, circularProgressClasses } from "@mui/material";
-import Image from "next/image";
-import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import Link from "next/link";
-import { getScoreColor } from "@/utils/DynamicScore";
 import { getPlatform } from "@/type/gamePlatform";
+import { getScoreColor } from "@/utils/DynamicScore";
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import {
+  Box,
+  ButtonBase,
+  Chip,
+  CircularProgress,
+  Typography,
+  circularProgressClasses,
+  useTheme,
+} from "@mui/material";
 import { format } from "date-fns";
+import Link from "next/link";
+import { GameInfo } from "../type/game";
+import { getGenre } from "../type/gameGenre";
 
 type SearchGameCardSmallProps = {
   gameData: GameInfo;
@@ -20,7 +27,7 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
     <ButtonBase
       LinkComponent={Link}
       href={`/games/${gameData.id}`}
-      sx={{ 
+      sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
@@ -28,7 +35,9 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
         border: `0.5px solid ${primayColor}`,
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
-        background: gameData.iconUrl ? `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat` : undefined,
+        background: gameData.iconUrl
+          ? `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat`
+          : undefined,
         backgroundSize: gameData.iconUrl ? "cover" : undefined,
         minHeight: "266px",
         justifyContent: "space-between",
@@ -52,9 +61,14 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
           }}
         >
           {gameData?.inDevelopment && (
-            <Chip size="medium" color="secondary" variant="filled" label="In Development"/>
+            <Chip
+              size="medium"
+              color="secondary"
+              variant="filled"
+              label="In Development"
+            />
           )}
-          <Box id="gapHolderz"/>
+          <Box id="gapHolderz" />
           <Box
             sx={{
               position: "relative",
@@ -105,9 +119,14 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
                 component="div"
                 sx={{
                   fontWeight: 700,
-                  textShadow: "2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;"
+                  textShadow:
+                    "2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;",
                 }}
-                color={gameData.score ? `${getScoreColor(gameData.percentile)}.main` : "divider"}
+                color={
+                  gameData.score
+                    ? `${getScoreColor(gameData.percentile)}.main`
+                    : "divider"
+                }
               >
                 {gameData.score ? Math.round(gameData.score).toString() : "N/A"}
               </Typography>
@@ -150,21 +169,23 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
           background: `linear-gradient(0deg, ${primayColor} 0%, rgba(28, 40, 38, 0.74) 50.11%, rgba(28, 40, 38, 0.53) 73.17%, rgba(28, 40, 38, 0.29) 90.88%, rgba(28, 40, 38, 0.00) 100%)`,
         }}
       >
-        <Typography variant="h6" color="white" sx={{fontWeight: 700}}>
+        <Typography variant="h6" color="white" sx={{ fontWeight: 700 }}>
           {gameData?.name}
-        </Typography> 
-        {gameData?.developerCompany && (
-        <Typography variant="subtitle1" color="lightgrey">
-          {gameData?.developerCompany}
         </Typography>
+        {gameData?.developerCompany && (
+          <Typography variant="subtitle1" color="lightgrey">
+            {gameData?.developerCompany}
+          </Typography>
         )}
         <Typography variant="subtitle1" color="lightgrey">
           {`
-          ${gameData?.platforms && gameData?.platforms.length > 0 ? 
-              gameData?.platforms.length > 1
+          ${
+            gameData?.platforms && gameData?.platforms.length > 0
+              ? gameData?.platforms.length > 1
                 ? `${getPlatform(gameData?.platforms[0])} ...more | `
                 : `${getPlatform(gameData?.platforms[0])} | `
-            : "Unknown Platform |"}
+              : "Unknown Platform |"
+          }
           ${format(new Date(gameData?.releaseDate), "yyyy-MM-dd")}
           ${
             gameData?.dlc === true && gameData?.baseGame !== null
@@ -193,12 +214,11 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
           }}
         >
           <BrokenImageIcon color="error" sx={{ fontSize: 64 }} />
-          <Typography variant="h4" color="error.main" sx={{fontWeight: 700}}>
+          <Typography variant="h4" color="error.main" sx={{ fontWeight: 700 }}>
             No Game Icon
           </Typography>
         </Box>
-        )
-      }
+      )}
     </ButtonBase>
   );
 }

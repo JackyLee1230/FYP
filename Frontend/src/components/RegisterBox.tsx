@@ -1,28 +1,27 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Typography,
-  Box,
-  FormControl,
-  InputLabel,
-  FormHelperText,
-  CircularProgress,
-  Autocomplete,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
+import { useAuthContext } from "@/context/AuthContext";
+import { setAuthCookies } from "@/libs/authHelper";
 import { register } from "@/services/authService";
+import { genderList, getGender } from "@/type/user";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import {
-  validateUsername,
   validateEmail,
   validatePassword,
+  validateUsername,
 } from "@/utils/Regex";
-import { setAuthCookies } from "@/libs/authHelper";
-import { useAuthContext } from "@/context/AuthContext";
-import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { genderList, getGender } from "@/type/user";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 
 const RegisterBox = () => {
   const router = useRouter();

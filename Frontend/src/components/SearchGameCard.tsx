@@ -1,13 +1,12 @@
-import { getGenre } from "../type/gameGenre";
-import { GameInfo } from "../type/game";
-import { Box, Typography, ButtonBase } from "@mui/material";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import Link from "next/link";
-import { getScoreColor } from "@/utils/DynamicScore";
 import { getPlatform } from "@/type/gamePlatform";
+import { getScoreColor } from "@/utils/DynamicScore";
+import BrokenImageIcon from "@mui/icons-material/BrokenImage";
+import { Box, ButtonBase, Typography } from "@mui/material";
 import { format } from "date-fns";
+import Image from "next/image";
+import Link from "next/link";
+import { GameInfo } from "../type/game";
+import { getGenre } from "../type/gameGenre";
 
 type SearchGameCardProps = {
   gameData: GameInfo;
@@ -62,7 +61,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             ></Image>
           ) : (
             <>
-              <BrokenImageIcon color="error" sx={{fontSize: 48}} />
+              <BrokenImageIcon color="error" sx={{ fontSize: 48 }} />
               <Typography
                 variant="h6"
                 component="div"
@@ -188,11 +187,13 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               noWrap
             >
               {`
-              ${gameData?.platforms && gameData?.platforms.length > 0 ? 
-                  gameData?.platforms.length > 1
+              ${
+                gameData?.platforms && gameData?.platforms.length > 0
+                  ? gameData?.platforms.length > 1
                     ? `${getPlatform(gameData?.platforms[0])} ...more | `
                     : `${getPlatform(gameData?.platforms[0])} | `
-                : "Unknown Platform |"}
+                  : "Unknown Platform |"
+              }
               ${format(new Date(gameData?.releaseDate), "yyyy-MM-dd")}
               ${
                 gameData?.dlc === true && gameData?.baseGame !== null
@@ -221,7 +222,11 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               borderRadius: "32px",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             })}
-            bgcolor={gameData.score ? `${getScoreColor(gameData.percentile)}.main` : "divider"}
+            bgcolor={
+              gameData.score
+                ? `${getScoreColor(gameData.percentile)}.main`
+                : "divider"
+            }
           >
             <Typography
               variant="h2"

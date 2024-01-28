@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import "tailwindcss/tailwind.css";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =

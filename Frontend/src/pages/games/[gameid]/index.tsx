@@ -1,8 +1,15 @@
+import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
+import GameDLCCard from "@/components/GameDLCCard";
+import GameDetailBox from "@/components/GameDetailBox";
 import GameReviewCard from "@/components/GameReviewCard";
+import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
+import ReviewInputBox from "@/components/ReviewInputBox";
+import { useAuthContext } from "@/context/AuthContext";
 import { GamePageProps, GameReview } from "@/type/game";
 import { getGenre } from "@/type/gameGenre";
 import { getPlatform } from "@/type/gamePlatform";
 import { DLCDefinition, EarlyAccessDefinition } from "@/utils/Definition";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import { getScoreColor } from "@/utils/DynamicScore";
 import { getStoreIcons } from "@/utils/GameLinksIcons";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
@@ -29,25 +36,16 @@ import {
   styled,
 } from "@mui/material";
 import axios from "axios";
+import { format } from "date-fns";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
-import "tailwindcss/tailwind.css";
-import GameDLCCard from "@/components/GameDLCCard";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import ReviewInputBox from "@/components/ReviewInputBox";
-import { useAuthContext } from "@/context/AuthContext";
-import GameDetailBox from "@/components/GameDetailBox";
-import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
-import { is } from "date-fns/locale";
-import { set } from "lodash";
-import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
-import { format } from "date-fns";
-import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "tailwindcss/tailwind.css";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
