@@ -234,12 +234,32 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                 height={60}
                 sx={{ alignSelf: "flex-start" }}
               />
-              <Skeleton
-                variant="rectangular"
-                width={125}
-                height={60}
-                sx={{ alignSelf: "flex-end" }}
-              />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  alignSelf: "flex-end",
+                  justifyContent: "center",
+                  [theme.breakpoints.down("sm")]: {
+                    gap: "8px",
+                    flexDirection: "column",
+                  },
+                }}
+              >
+                <Skeleton
+                  variant="rectangular"
+                  width={125}
+                  height={50}
+                  sx={{ alignSelf: "flex-end" }}
+                />
+                <Skeleton
+                  variant="rectangular"
+                  width={110}
+                  height={60}
+                  sx={{ alignSelf: "flex-end" }}
+                />
+              </Box>
             </Box>
           ) : (
             <Box
@@ -282,8 +302,8 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                     },
                   }}
                 >
-                  {`${numberOfReviews} Review`}
-                  {numberOfReviews > 1 ? "s" : ""}
+                  {`${game.numberOfReviews} Review`}
+                  {game.numberOfReviews > 1 ? "s" : ""}
                   {` for`}
                 </Typography>
                 <Button
@@ -304,19 +324,44 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                   </Typography>
                 </Button>
               </Box>
-              <FormControl sx={{ minWidth: 124, alignSelf: "flex-end" }}>
-                <Select
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  alignSelf: "flex-end",
+                  justifyContent: "center",
+                  [theme.breakpoints.down("sm")]: {
+                    gap: "8px",
+                    flexDirection: "column",
+                  },
+                }}
+              >
+                <Button
                   color="secondary"
-                  value={sortBy}
-                  onChange={(event) =>
-                    setSortBy(event.target.value as "recency" | "score")
-                  }
-                  autoWidth={false}
+                  size={isMobile ? "medium" : "large"}
+                  LinkComponent={Link}
+                  href={`/games/${game.id}#add-review`}
+                  variant="contained"
                 >
-                  <MenuItem value="recency">Recency</MenuItem>
-                  <MenuItem value="score">Score</MenuItem>
-                </Select>
-              </FormControl>
+                  Add review
+                </Button>
+                <FormControl sx={{ minWidth: 110 }}>
+                  <Select
+                    color="secondary"
+                    value={sortBy}
+                    onChange={(event) =>
+                      setSortBy(event.target.value as "recency" | "score")
+                    }
+                    autoWidth={false}
+                    size={isMobile ? "small" : "medium"}
+                  >
+                    <MenuItem value="recency">Recency</MenuItem>
+                    <MenuItem value="score">Score</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </Box>
           )}
           <Divider flexItem={true} />

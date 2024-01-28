@@ -942,26 +942,28 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             flex: 1,
           }}
         >
-          <Divider textAlign="left">
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                gap: "12px",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                variant="h4"
-                color="secondary.main"
-                sx={{ fontWeight: 700 }}
-              >
-                User Reviews
-              </Typography>
-            </Box>
-          </Divider>
-
+          <a id="add-review">
+            <Divider textAlign="left">
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "12px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              > 
+                <Typography
+                  variant="h4"
+                  color="secondary.main"
+                  sx={{ fontWeight: 700 }}
+                >
+                  {`User Reviews (${game.numberOfReviews ?? 0})`}
+                </Typography>
+              </Box>
+            </Divider>
+          </a>
+          
           {!isUserLoading && user && isUserReviewLoading ? (
             <Skeleton variant="rectangular" height={348} />
           ) : userReview ? (
