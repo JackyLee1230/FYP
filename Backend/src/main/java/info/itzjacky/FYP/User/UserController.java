@@ -231,6 +231,16 @@ public class UserController {
                     r.setLikedUsers(null);
                     r.setDislikedUsers(null);
                 }
+                user.setReviews(null);
+                user.setLikedReviews(null);
+                user.setDislikedReviews(null);
+                if (user.getIsPrivate()) {
+                    user.setEmail(null);
+                    user.setGender(null);
+                    user.setAge( null);
+                    user.setAgeGroup(null);
+                    user.setLastActive(null);
+                }
                 return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
                 throw new ResponseStatusException(HttpStatusCode.valueOf(400), "User Not Found");
