@@ -25,6 +25,9 @@ export type User = {
   isPrivate: boolean;
   favouriteGames: number[];
   wishlistGames: number[];
+  numberOfLikes: number;
+  numberOfDislikes: number;
+  numberOfReviews: number;
 };
 
 export const genderList = ["MALE", "FEMALE", "OTHER", "UNDISCLOSED"];

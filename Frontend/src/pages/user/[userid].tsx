@@ -256,7 +256,7 @@ export default function User({ user }: UserPageProps) {
       <br />
       {user.lastActive}
       <br />
-      User has {user.reviews.length} review
+      User has {user.numberOfReviews} review
       {/* {user.reviews && user.reviews.length > 0 && (
         <div className="gap-4">
           {user.reviews.map((review) => (

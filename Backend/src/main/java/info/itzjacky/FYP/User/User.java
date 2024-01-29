@@ -148,6 +148,9 @@ public class User implements UserDetails {
     @Formula("(SELECT COUNT(*) FROM review_dislikes rl WHERE rl.user_id = id)")
     private Integer numberOfDislikes;
 
+    @Formula("(SELECT COUNT(*) FROM review r WHERE r.reviewer_id = id)")
+    private Integer numberOfReviews;
+
     @Column(insertable = true, updatable = true)
     private String iconUrl;
 
