@@ -294,6 +294,19 @@ public class UserService {
     }
 
     @Transactional
+    public void updateUserBanner(String userId, MultipartFile file) {
+        User user = userRepository.findUserById(Integer.parseInt(userId));
+
+        if(user.getIconUrl() != null){
+            storageService.deleteFile("users/" + user.getId() + "/banner.jpg");
+        }
+        storageService.uploadFile("users/" + user.getId() + "/banner.jpg", file);
+        user.setBannerUrl("users/" + user.getId() + "/banner.jpg");
+        userRepository.save(user);
+    }
+
+
+    @Transactional
     public User togglePrivate(UserRequest userRequest) {
         if(userRequest.getId() == null){
             throw new IllegalStateException("User ID Cannot Be Empty");

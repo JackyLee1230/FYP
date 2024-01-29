@@ -154,6 +154,9 @@ public class User implements UserDetails {
     @Column(insertable = true, updatable = true)
     private String iconUrl;
 
+    @Column(insertable = true, updatable = true)
+    private String bannerUrl;
+
     @ManyToMany(mappedBy = "Tester")
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

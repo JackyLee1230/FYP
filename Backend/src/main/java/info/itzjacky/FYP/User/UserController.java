@@ -259,4 +259,14 @@ public class UserController {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
         }
     }
+
+    @PostMapping(value = "/updateUserBanner/{userId}", consumes = MediaType.ALL_VALUE, produces = MediaType.ALL_VALUE)
+    public ResponseEntity<String> updateUserBanner(@PathVariable String userId, @RequestBody MultipartFile file) {
+        try {
+            userService.updateUserIcon(userId, file);
+            return new ResponseEntity<>("Successfully uploaded", HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
 }

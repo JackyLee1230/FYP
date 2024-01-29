@@ -5,11 +5,13 @@ export type UserPageProps = {
   reviews: GameReview[];
   errorMessage: string;
   iconUrl: string;
+  bannerUrl: string;
 };
 
 export type User = {
   id: number;
   iconUrl: string;
+  bannerUrl: string;
   name: string;
   email: string;
   password?: string;
