@@ -143,6 +143,14 @@ const WebToolbar = () => {
     }
   };
 
+  const getGameSearchLink = () => {
+    if (debouncedSearchString.trim().length > 0) {
+      return `/result?gamename=${encodeURIComponent(debouncedSearchString)}`;
+    } else {
+      return "/result";
+    }
+  };
+
   const trigger = useScrollTrigger({
     threshold: 200,
   });
@@ -232,9 +240,25 @@ const WebToolbar = () => {
                 name="search-input"
                 autoComplete="on"
               />
-              <SearchIconWrapper onClick={handleGameSearch}>
+              <ButtonBase 
+                LinkComponent={Link} 
+                href={getGameSearchLink()}
+                sx={{
+                  borderRadius: "4px 24px 24px 4px",
+                  backgroundColor: theme.palette.secondary.main,
+                  width: "72px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "left",
+                  padding: "0px 8px",
+                  color: "#FFFFFF",
+                  [theme.breakpoints.down("sm")]: {
+                    width: "48px",
+                  },
+                }}  
+              >
                 <SearchIcon />
-              </SearchIconWrapper>
+              </ButtonBase>
             </Search>
 
             {isLogin ? (
@@ -308,9 +332,9 @@ const WebToolbar = () => {
                   </Box>
                   <Divider />
                   <MenuItem
-                    onClick={() => {
-                      handleProfileRedirect(user!.id);
-                    }}
+                    component={Link}
+                    href={`/user/${user!.id}`}
+                    onClick={handleUserMenuClose}
                   >
                     <ListItemIcon>
                       <AccountCircleIcon fontSize="small" />
