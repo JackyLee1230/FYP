@@ -3,12 +3,19 @@ import UpdateUserIcon from "@/components/UpdateUserIcon";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Button, Modal, TextField } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Modal, TextField, Typography, styled } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import EditIcon from '@mui/icons-material/Edit';
+import PersonIcon from '@mui/icons-material/Person';
+import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { alpha } from "@mui/material";
+import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
+import { set } from "lodash";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -116,23 +123,473 @@ const submitChangeUsername = async (
   }
 };
 
+const StyledEditIcon = styled(EditIcon)(({ theme }) => ({
+  color: "#FFFFFF",
+  fontSize: 24,
+}));
+
+const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontSize: 32,
+}));
+
+const StyledMailIcon = styled(MailIcon)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontSize: 24,
+}));
+
+const StyledSettingsIcon = styled(SettingsIcon)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontSize: 24,
+}));
+
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
+  const isCurrentUser = auth.user && user?.id === auth.user.id
 
-  const [updateIconOpen, setUpdateIconOpen] = React.useState<boolean>(false);
+  console.log(auth.user);
 
-  const [newUsername, setNewUsername] = React.useState<string>("");
+  const [updateIconOpen, setUpdateIconOpen] = useState<boolean>(false);
+  const [newUsername, setNewUsername] = useState<string>("");
+  const [emailWaitingTime, setEmailWaitingTime] = useState<number>(60);
+  const [isWaitingEmail, setIsWaitingEmail] = useState<boolean>(false);
+
+  const [isPrivate, setIsPrivate] = useState<boolean>(user?.isPrivate ?? false);
+  const [isPrivateLoading, setIsPrivateLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    if (isWaitingEmail) {
+      interval = setInterval(() => {
+        setEmailWaitingTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval as unknown as NodeJS.Timeout);
+    }
+    if (emailWaitingTime < 0) {
+      setIsWaitingEmail(false);
+    }
+    return () => clearInterval(interval as NodeJS.Timeout);
+  }, [emailWaitingTime, isWaitingEmail]);
+
+  function startTimer() {
+    setIsWaitingEmail(!isWaitingEmail);
+    setEmailWaitingTime(60);
+  }
 
   if (user == null) {
-    return <div>User not found</div>;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          padding: "24px 32px",
+          maxWidth: 1440,
+          flex: "1 0 0",
+          margin: "0 auto",
+          justifyContent: "center",
+          alignContent: "center",
+          flexDirection: "column",
+          gap: 4,
+        }}
+      >
+        <Typography variant="h4" sx={{ textAlign: "center" }}>
+          User Not Found
+        </Typography>
+      </Box>
+    );
   }
 
   return (
     <>
       <Head>
-        <title>{user.name ?? "Invalid User"} | CritiQ</title>
+        <title>{user.name ? `${user.name}'s Profile Page` : "Invalid User"} | CritiQ</title>
       </Head>
+
+      <Box
+        sx={{
+          width: "1440px",
+          maxWidth: "100vw",
+          overflow: "hidden",
+          height: "310px",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          margin: "0 auto",
+        }}
+      >
+        <Box
+          sx={(theme) => ({
+            position: "absolute",
+            left: "-5px",
+            top: "-25.001px",
+            width: "110%",
+            maxWidth: "1450px",
+            height: "290px",
+            transform: "rotate(-1deg)",
+            background: theme.palette.secondary.main,
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            zIndex: -1,
+            overflow: "hidden",
+            backgroundImage: `url(${user?.bannerUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.bannerUrl}` : "/banner.png"})`,
+            backgroundSize: "cover",
+          })}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          maxWidth: 1440,
+          flex: "1 0 0",
+          margin: "0 auto",
+          display: "flex",
+          padding: "86px 86px 48px 86px",
+          alignItems: "flex-start",
+          gap: "32px",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "32px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignitems: "flex-end",
+              gap: "24px",
+              position: "relative",
+            }}
+          >
+            {isCurrentUser && (
+              <Fade in={isCurrentUser}>
+                <ButtonBase
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    position: "absolute",
+                    bottom: "8px",
+                    right: "8px",
+                    borderRadius: "50%",
+                    border: "2px solid",
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                    borderColor: "background.paper",
+                    bgcolor: "secondary.main",
+                    padding: "16px",
+                    zIndex: 2,
+                  }}
+                  onClick={() => {
+                    setUpdateIconOpen(true);
+                  }}
+                >
+                  <StyledEditIcon />
+                </ButtonBase>
+              </Fade>
+            )}
+            <Avatar
+              alt="Reviewer Avatar Icon"
+              src={
+                user?.iconUrl != null
+                  ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
+                  : "/static/images/avatar/1.jpg"
+              }
+              sx={{ 
+                width: 264, 
+                height: 264,
+                border: "6px solid",
+                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                borderColor: "background.paper",
+              }}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              width: "368px",
+              padding: "24px",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "flex-start",
+              gap: "24px",
+              borderRadius: "8px 32px 8px 8px",
+              border: "1px solid",
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.50)",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                paddingBottom: "12px",
+                justifyContent: "center",
+                alignItems: "center",
+                gap:  "4px",
+                alignSelf: "stretch",
+                borderBottom: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              <StyledPersonIcon />
+              <Typography variant="h5" color="text.primary" sx={{fontWeight: 700}}>
+                Personal Information
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end" ,
+                alignItems: "flex-start",
+                gap: "4px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: '8px',
+                }}
+              >
+                <StyledMailIcon/>
+                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                  Email Address:
+                </Typography>
+              </Box>
+              <Typography variant="subtitle1" color="text.secondary">
+                {user?.email ?? "Undisclosed"}
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end" ,
+                alignItems: "flex-start",
+                gap: "4px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: '8px',
+                }}
+              >
+                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                  Gender:
+                </Typography>
+              </Box>
+              <Typography variant="subtitle1" color="text.secondary">
+                {user?.gender ?? "Undisclosed"}
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end" ,
+                alignItems: "flex-start",
+                gap: "4px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: '8px',
+                }}
+              >
+                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                  Age:
+                </Typography>
+              </Box>
+              <Typography variant="subtitle1" color="text.secondary">
+                {user?.age ?? "Undisclosed"}
+              </Typography>
+            </Box>
+          </Box>
+
+          {isCurrentUser && (
+            <Fade in={isCurrentUser}>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "368px",
+                  padding: "24px",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-start",
+                  gap: "24px",
+                  borderRadius: "8px 32px 8px 8px",
+                  border: "1px solid",
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.50)",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    paddingBottom: "12px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap:  "4px",
+                    alignSelf: "stretch",
+                    borderBottom: "1px solid",
+                    borderColor: "divider",
+                  }}
+                >
+                  <StyledSettingsIcon />
+                  <Typography variant="h5" color="text.primary" sx={{fontWeight: 700}}>
+                    Settings
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end" ,
+                    alignItems: "flex-start",
+                    gap: "10px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                    }}
+                  >
+                    <Typography variant="h6" color="text.primary">
+                      {`Account Status:`}
+                    </Typography>
+                    <Typography variant="h6" color={user.isVerified ? "text.secondary" : "error"}>
+                      {user.isVerified ? "Verified" : "Unverified"} 
+                    </Typography>
+                  </Box>
+
+                  {user.isVerified === null || user.isVerified === false && (
+                    <Button 
+                      variant="contained" 
+                      color="info" 
+                      onClick={() => {
+                        sendVerifyEmail(user.email, auth.token!)
+                          .then(() => {
+                            startTimer();
+                            displaySnackbarVariant(
+                              "Verification Email Sent",
+                              "success"
+                            );
+                          })
+                          .catch((error) => {
+                            displaySnackbarVariant(
+                              "Failed to Send Verification Email",
+                              "error"
+                            );
+                          });
+                      }}
+                      disabled={isWaitingEmail}
+                    >
+                      {`Request Verification Email${isWaitingEmail ? ` (${emailWaitingTime})` : ""}`}
+                    </Button>
+                  )}
+                </Box>
+              </Box>
+            </Fade>
+          )}
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            gap: "32px",
+            width: "100%"
+          }}
+        >
+          {isCurrentUser && (
+            <Fade in={isCurrentUser}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  gap: "48px",
+                }}
+              >
+                <Box
+                  sx={(theme) => ({
+                    display: "flex",
+                    padding: "12px",
+                    alignItems: "center",
+                    gap: "24px",
+                    borderRadius: "24px 48px 12px 48px",
+                    bgcolor: alpha(theme.palette.background.paper, 0.58),
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  })}
+                >
+                  <FormControlLabel
+                    control={
+                      <CustomPrivateSwitch 
+                        checked={isPrivate}
+                        disabled={isPrivateLoading}
+                        sx={{ m: 1 }}  
+                        onClick={() => {
+                          setIsPrivateLoading(true);
+                          togglePrivate(user.id, auth.token!)
+                            .then(() => {
+                              setIsPrivate(!isPrivate);
+                              if(isPrivate) {
+                                displaySnackbarVariant("Your profile is now public", "success");
+                              }
+                              else {
+                                displaySnackbarVariant("Your profile is now private", "success");
+                              }
+                            })
+                            .catch((error) => {
+                              displaySnackbarVariant("Failed to Toggle Private", "error");
+                            })
+                            .finally(() => {
+                              setIsPrivateLoading(false);
+                            });
+                        }}
+                      />
+                    }
+                    label={isPrivate ? "Profile Hidden" : "Profile Shown"}
+                  />
+                </Box>
+              </Box>
+            </Fade>
+          )}
+        </Box>
+      </Box>
+
+      <Modal
+        open={updateIconOpen}
+        onClose={() => {
+          setUpdateIconOpen(false);
+        }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 12,
+        }}
+      >
+        <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
+      </Modal>
+      {/*
       {user.iconUrl ? (
         <img
           className="w-24 h-24 rounded-full mx-auto"
@@ -257,6 +714,8 @@ export default function User({ user }: UserPageProps) {
       {user.lastActive}
       <br />
       User has {user.numberOfReviews} review
+            */}
+
       {/* {user.reviews && user.reviews.length > 0 && (
         <div className="gap-4">
           {user.reviews.map((review) => (
