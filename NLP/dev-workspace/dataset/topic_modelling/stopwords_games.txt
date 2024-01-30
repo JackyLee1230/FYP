@@ -31,3 +31,5 @@ terraria
 sf5
 sf6
 sf
+
+# TODO: add developer name
