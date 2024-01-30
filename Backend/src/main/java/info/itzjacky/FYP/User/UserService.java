@@ -284,7 +284,7 @@ public class UserService {
     @Transactional
     public void updateUserIcon(String userId, MultipartFile file) {
         User user = userRepository.findUserById(Integer.parseInt(userId));
-
+        if (file == null) throw new IllegalStateException("File Cannot Be Empty");
         if(user.getIconUrl() != null){
             storageService.deleteFile("users/" + user.getId() + "/icon.jpg");
         }
@@ -296,7 +296,7 @@ public class UserService {
     @Transactional
     public void updateUserBanner(String userId, MultipartFile file) {
         User user = userRepository.findUserById(Integer.parseInt(userId));
-
+        if (file == null) throw new IllegalStateException("File Cannot Be Empty");
         if(user.getIconUrl() != null){
             storageService.deleteFile("users/" + user.getId() + "/banner.jpg");
         }
