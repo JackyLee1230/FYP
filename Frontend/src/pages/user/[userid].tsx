@@ -363,7 +363,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {user?.email ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.email ?? "Not provided" : user?.email ?? "Undisclosed"}
               </Typography>
             </Box>
 
@@ -388,7 +388,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {user?.gender ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.gender ?? "Not provided" : user?.gender ?? "Undisclosed"}
               </Typography>
             </Box>
 
@@ -413,7 +413,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {user?.age ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.age ?? "Not provided" : user?.age ?? "Undisclosed"}
               </Typography>
             </Box>
           </Box>
