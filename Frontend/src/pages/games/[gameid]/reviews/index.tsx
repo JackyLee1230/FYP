@@ -328,7 +328,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: "center",
+                  flexDirection: "row", 
                   gap: "12px",
                   alignSelf: "flex-end",
                   justifyContent: "center",
@@ -338,15 +338,6 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                   },
                 }}
               >
-                <Button
-                  color="secondary"
-                  size={isMobile ? "medium" : "large"}
-                  LinkComponent={Link}
-                  href={`/games/${game.id}#add-review`}
-                  variant="contained"
-                >
-                  Add review
-                </Button>
                 <FormControl sx={{ minWidth: 110 }}>
                   <Select
                     color="secondary"
@@ -361,6 +352,18 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                     <MenuItem value="score">Score</MenuItem>
                   </Select>
                 </FormControl>
+                <Button
+                  color="secondary"
+                  size={isMobile ? "small" : "medium"}
+                  LinkComponent={Link}
+                  href={`/games/${game.id}#add-review`}
+                  variant="contained"
+                  sx={{
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Add review
+                </Button>
               </Box>
             </Box>
           )}
