@@ -15,6 +15,11 @@ public class RabbitMQProducer {
     @Value("${spring.rabbitmq.SentimentAnalysisRoutingKey}")
     private String SentimentAnalysisroutingKey;
 
+    @Value("${spring.rabbitmq.TopicModelingRoutingKey}")
+    private String TopicModelingroutingKey;
+
+
+
     Logger logger = LoggerFactory.getLogger(RabbitMQProducer.class);
 
     private final RabbitTemplate rabbitTemplate;
@@ -24,7 +29,12 @@ public class RabbitMQProducer {
     }
 
     public void sendMessagetoRabbitMQ(String message) {
-        logger.info("Sending message to RabbitMQ: " + message);
+        logger.info("Sending Sentiment Analysis message to RabbitMQ: " + message);
         rabbitTemplate.convertAndSend(exchangeName, SentimentAnalysisroutingKey, message);
+    }
+
+    public void sendTopicModelingMessagetoRabbitMQ(String message) {
+        logger.info("Sending Topic Modeling message to RabbitMQ: " + message);
+        rabbitTemplate.convertAndSend(exchangeName, TopicModelingroutingKey, message);
     }
 }

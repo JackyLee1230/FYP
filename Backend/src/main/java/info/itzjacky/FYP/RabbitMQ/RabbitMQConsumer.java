@@ -59,5 +59,14 @@ public class RabbitMQConsumer {
         channel.basicAck(tag, false);
     }
 
+    @Transactional
+    @RabbitListener(queues = "${spring.rabbitmq.TopicModelingResultQueueName}")
+    public void receiveTopicModelling(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
+            throws IOException {
+        String result = payload.replace("b'", "");
+        logger.info("Topic Modelling RESULT: " + result);
+        channel.basicAck(tag, false);
+    }
+
 }
 
