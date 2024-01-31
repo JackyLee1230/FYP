@@ -3,7 +3,7 @@ import UpdateUserIcon from "@/components/UpdateUserIcon";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Modal, TextField, Typography, styled } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Modal, TextField, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -13,9 +13,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import { alpha } from "@mui/material";
 import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
-import { set } from "lodash";
+import { format } from "date-fns";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -123,6 +124,30 @@ const submitChangeUsername = async (
   }
 };
 
+const getUserReviews = async(
+  reviewerId: number,
+  reviewsPerPage: number,
+  pageNum: number,
+) => {
+  try {
+    const response = await axios.post(
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findAllReviewsByUserPaged`,
+      { reviewerId: reviewerId, reviewsPerPage: reviewsPerPage, pageNum: pageNum },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+  } catch (error: any){
+    console.error(error);
+    return null;
+  }
+}
+
 const StyledEditIcon = styled(EditIcon)(({ theme }) => ({
   color: "#FFFFFF",
   fontSize: 24,
@@ -143,12 +168,18 @@ const StyledSettingsIcon = styled(SettingsIcon)(({ theme }) => ({
   fontSize: 24,
 }));
 
+const StyledMoreIcon = styled(MoreHorizOutlinedIcon)(({ theme }) => ({
+  color: "#FFFFFF",
+  fontSize: 36,
+}));
+
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
   const isCurrentUser = auth.user && user?.id === auth.user.id
 
   console.log(auth.user);
+  console.log(user);
 
   const [updateIconOpen, setUpdateIconOpen] = useState<boolean>(false);
   const [newUsername, setNewUsername] = useState<string>("");
@@ -157,6 +188,8 @@ export default function User({ user }: UserPageProps) {
 
   const [isPrivate, setIsPrivate] = useState<boolean>(user?.isPrivate ?? false);
   const [isPrivateLoading, setIsPrivateLoading] = useState<boolean>(false);
+
+  const theme = useTheme();
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -211,7 +244,7 @@ export default function User({ user }: UserPageProps) {
           width: "1440px",
           maxWidth: "100vw",
           overflow: "hidden",
-          height: "310px",
+          height: "325px",
           position: "absolute",
           top: 0,
           left: 0,
@@ -226,13 +259,13 @@ export default function User({ user }: UserPageProps) {
             top: "-25.001px",
             width: "110%",
             maxWidth: "1450px",
-            height: "290px",
+            height: "315px",
             transform: "rotate(-1deg)",
             background: theme.palette.secondary.main,
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             zIndex: -1,
             overflow: "hidden",
-            backgroundImage: `url(${user?.bannerUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.bannerUrl}` : "/banner.png"})`,
+            backgroundImage: `url(${user?.bannerUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.bannerUrl}` : user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}` : "/banner.png"})`,
             backgroundSize: "cover",
           })}
         />
@@ -247,6 +280,11 @@ export default function User({ user }: UserPageProps) {
           padding: "86px 86px 48px 86px",
           alignItems: "flex-start",
           gap: "32px",
+          overflow: "hidden",
+
+          [theme.breakpoints.down("lg")]: {
+            padding: "86px 32px 48px 32px",
+          },
         }}
       >
         <Box
@@ -363,7 +401,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {isCurrentUser ? auth?.user?.email ?? "Not provided" : user?.email ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.email ?? "Not provided" : isPrivate ? "Undisclosed" : user?.email ?? "Not provided"}
               </Typography>
             </Box>
 
@@ -388,7 +426,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {isCurrentUser ? auth?.user?.gender ?? "Not provided" : user?.gender ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.gender ?? "Not provided" : isPrivate ? "Undisclosed" : user?.gender ?? "Not provided"}
               </Typography>
             </Box>
 
@@ -413,7 +451,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant="subtitle1" color="text.secondary">
-                {isCurrentUser ? auth?.user?.age ?? "Not provided" : user?.age ?? "Undisclosed"}
+                {isCurrentUser ? auth?.user?.age ?? "Not provided" : isPrivate ? "Undisclosed" : user?.age ?? "Not provided"}
               </Typography>
             </Box>
           </Box>
@@ -515,63 +553,178 @@ export default function User({ user }: UserPageProps) {
             flexDirection: "column",
             alignItems: "flex-end",
             gap: "32px",
-            width: "100%"
+            width: "100%",
+
+            [theme.breakpoints.down("md")]:{
+              gap: "4px",
+            },
           }}
         >
-          {isCurrentUser && (
-            <Fade in={isCurrentUser}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              gap: "48px",
+              width: "100%",
+            }}
+          >
+            <Fade in={isCurrentUser ?? false}>
+              <Box
+                sx={(theme) => ({
+                  display: "flex",
+                  padding: "12px",
+                  alignItems: "center",
+                  gap: "24px",
+                  borderRadius: "24px 48px 12px 48px",
+                  bgcolor: alpha(theme.palette.background.paper, 0.58),
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  height: "96px",
+                })}
+              >
+                <FormControlLabel
+                  control={
+                    <CustomPrivateSwitch 
+                      checked={isPrivate}
+                      disabled={isPrivateLoading}
+                      sx={{ m: 1 }}  
+                      onClick={() => {
+                        setIsPrivateLoading(true);
+                        togglePrivate(user.id, auth.token!)
+                          .then(() => {
+                            setIsPrivate(!isPrivate);
+                            if(isPrivate) {
+                              displaySnackbarVariant("Your profile is now public", "success");
+                            }
+                            else {
+                              displaySnackbarVariant("Your profile is now private", "success");
+                            }
+                          })
+                          .catch((error) => {
+                            displaySnackbarVariant("Failed to Toggle Private", "error");
+                          })
+                          .finally(() => {
+                            setIsPrivateLoading(false);
+                          });
+                      }}
+                    />
+                  }
+                  label={isPrivate ? "Profile Hidden" : "Profile Shown"}
+                />
+
+                <ButtonBase
+                  sx={{
+                    display: "flex",
+                    padding: "4px",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-start",
+                    borderRadius: "50%",
+                    border: "2px solid",
+                    borderColor: "background.paper",
+                    bgcolor: "info.main",
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  <StyledMoreIcon />
+                </ButtonBase>
+              </Box>
+            </Fade>
+
+            <Box
+              sx={{
+                display: "flex",
+                padding: "12px 0px",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                alignItems: "flex-start",
+                alignSelf: "flex-start",
+                gap: "8px",
+              }}
+            >
+              <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
+                {user.name ?? "Unknown User"}
+              </Typography>
+
               <Box
                 sx={{
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                  gap: "48px",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+
+                  [theme.breakpoints.down("md")]:{
+                    flexDirection: "column",
+                  },
                 }}
               >
-                <Box
-                  sx={(theme) => ({
-                    display: "flex",
-                    padding: "12px",
-                    alignItems: "center",
-                    gap: "24px",
-                    borderRadius: "24px 48px 12px 48px",
-                    bgcolor: alpha(theme.palette.background.paper, 0.58),
-                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                  })}
-                >
-                  <FormControlLabel
-                    control={
-                      <CustomPrivateSwitch 
-                        checked={isPrivate}
-                        disabled={isPrivateLoading}
-                        sx={{ m: 1 }}  
-                        onClick={() => {
-                          setIsPrivateLoading(true);
-                          togglePrivate(user.id, auth.token!)
-                            .then(() => {
-                              setIsPrivate(!isPrivate);
-                              if(isPrivate) {
-                                displaySnackbarVariant("Your profile is now public", "success");
-                              }
-                              else {
-                                displaySnackbarVariant("Your profile is now private", "success");
-                              }
-                            })
-                            .catch((error) => {
-                              displaySnackbarVariant("Failed to Toggle Private", "error");
-                            })
-                            .finally(() => {
-                              setIsPrivateLoading(false);
-                            });
-                        }}
-                      />
-                    }
-                    label={isPrivate ? "Profile Hidden" : "Profile Shown"}
-                  />
-                </Box>
+                {!user.isVerified && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      padding: "3px 12px",
+                      flexDirection: "column",
+                      alignSelf: "flex-start",
+                      borderRadius: "68px",
+                      border: "2px solid",
+                      borderColor: "error.main",
+                      boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                    }}
+                  >
+                    <Typography 
+                      variant="h6" 
+                      color="error.main" 
+                      sx={{            
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      Unverified account
+                    </Typography>
+                  </Box>
+                )}
+                <Typography variant="h6" color="text.secondary">
+                  {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
+                    format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
+                    isPrivate ? 
+                    "Undisclosed" : 
+                    user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
+                </Typography>
               </Box>
-            </Fade>
-          )}
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              padding: "12px",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "flex-start",
+              gap: "24px",
+              borderRadius: "8px 8px 32px 8px",
+              border: "1px solid",
+              borderColor: "divider",
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                borderBottom: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              <Typography variant="h5" color="text.primary" fontWeight={600}>
+                {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </Box>
 

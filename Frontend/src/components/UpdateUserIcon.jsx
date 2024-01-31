@@ -7,6 +7,7 @@ import AvatarEditor from "react-avatar-editor";
 const CropperModal = ({
   src,
   setFile,
+  setSrc,
   modalOpen,
   setModalOpen,
   setPreview,
@@ -80,7 +81,9 @@ const CropperModal = ({
             size="small"
             sx={{ marginRight: "10px", color: "white", borderColor: "white" }}
             variant="outlined"
-            onClick={(e) => setModalOpen(false)}
+            onClick={() => {
+              setModalOpen(false);
+            }}
           >
             cancel
           </Button>
@@ -157,6 +160,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
           src={src}
           setPreview={setPreview}
           setModalOpen={setModalOpen}
+          setSrc={setSrc}
         />
         <small>Click to select image</small>
         <br />
