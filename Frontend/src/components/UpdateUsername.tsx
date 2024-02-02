@@ -4,8 +4,6 @@ import axios from "axios";
 import { useState } from "react";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 import { CustomInput } from "./CustomInput";
 import { validateUsername } from "@/utils/Regex";
@@ -103,9 +101,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
         <CloseRoundedIcon/>
       </IconButton>
 
-      <DialogTitle>
-        <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
-      </DialogTitle>
+      <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
       <DialogContent 
         sx={{
           display: "flex",
@@ -115,9 +111,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
           gap: "4px",
         }}
       >
-        <DialogContentText>
-          <Typography variant="subtitle1" color="text.secondary">Input a new username</Typography>
-        </DialogContentText>
+        <Typography variant="subtitle1" color="text.secondary">Input a new username</Typography>
         <Box
           sx={{
             display: "flex",

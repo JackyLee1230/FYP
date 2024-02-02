@@ -1,13 +1,11 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress } from "@mui/material";
+import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress, Avatar } from "@mui/material";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Image from "next/image";
 import { MuiFileInput } from 'mui-file-input';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
@@ -128,16 +126,19 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const auth = useAuthContext();
 
   const handleImgChange = (e) => {
-    if (!e || (e.type && e.type.startsWith("image/"))) {
+    if(!e){
+      setFile(e);
+      return;
+    }
+
+    if (e.type && e.type.startsWith("image/")) {
       const allowedExtensions = ["png", "jpeg", "jpg"];
       const fileExtension = e.name.split(".").pop().toLowerCase();
       if (allowedExtensions.includes(fileExtension)) {
         setFile(e);
-        if (e) {
-          setSrc(URL.createObjectURL(e));
-          console.debug(URL.createObjectURL(e));
-          setModalOpen(true);
-        }
+        setSrc(URL.createObjectURL(e));
+        console.debug(URL.createObjectURL(e));
+        setModalOpen(true);
       } else {
         displaySnackbarVariant("Please select a .png, .jpeg, or .jpg file.", "error");
       }
@@ -194,9 +195,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
         <CloseRoundedIcon/>
       </IconButton>
 
-      <DialogTitle>
-        <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Icon</Typography>
-      </DialogTitle>
+      <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Icon</Typography>
       <DialogContent 
         sx={{
           display: "flex",
@@ -206,9 +205,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
           gap: "4px",
         }}
       >
-        <DialogContentText>
-          <Typography variant="subtitle1" color="text.secondary">Click to select image</Typography>
-        </DialogContentText>
+        <Typography variant="subtitle1" color="text.secondary">Click to select image</Typography>
         <Box
           sx={{
             display: "flex",
@@ -240,16 +237,16 @@ const Cropper = ({ setUpdateIconOpen }) => {
               children: <CancelIcon color="primary" fontSize="small" />
             }}
           />
-          <Box>
-            <Image
-              src={
-                preview || `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` || "https://via.placeholder.com/200"
-              }
-              alt=""
-              width="200"
-              height="200"
-            />
-          </Box>
+          <Avatar
+            alt="Avatar Icon Preview"
+            src={
+              preview || `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` || "https://via.placeholder.com/200"
+            }
+            sx={{ 
+              width: 200, 
+              height: 200,
+            }}
+          />
         </Box>
       </DialogContent>
       <DialogActions>

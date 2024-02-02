@@ -764,7 +764,7 @@ export default function User({ user }: UserPageProps) {
           justifyContent: "center",
         }}
       >
-        <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
+        <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen}/>
       </Modal>
 
       <Modal
