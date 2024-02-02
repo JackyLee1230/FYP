@@ -61,10 +61,16 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     if(!token && !user){
       refreshAccessToken().then(async (newToken) => {
         if(newToken !== null) {
-          let user: User | null = null;
-          user = await getUserInfo(newToken);
-          setUser(user);
+          let userInfo: User | null = null;
+          userInfo = await getUserInfo(newToken);
+          setUser(userInfo);
           setToken(newToken);
+          if(userInfo && userInfo['isVerified'] === false){
+            displaySnackbarVariant(
+              `Your account is not verified. Please verify your email to access all features`,
+              "warning"
+            );
+          }
           setIsUserLoading(false);
         }
         else{
