@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider, Typography, IconButton, alpha } from "@mui/material";
+import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress } from "@mui/material";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
 import { useRef, useState } from "react";
@@ -13,6 +13,7 @@ import { MuiFileInput } from 'mui-file-input';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
+import router from "next/router";
 
 const CropperModal = ({
   src,
@@ -122,6 +123,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const auth = useAuthContext();
 
@@ -146,6 +148,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
 
   const handleSave = async () => {
     if (src) {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("file", file);
       axios
@@ -156,9 +159,13 @@ const Cropper = ({ setUpdateIconOpen }) => {
         .then((res) => {
           setUpdateIconOpen(false);
           displaySnackbarVariant("Icon updated successfully", "success");
+          router.reload();
         })
         .catch((err) => {
           displaySnackbarVariant("Failed to update user icon, please try again", "error");
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   };
@@ -255,16 +262,30 @@ const Cropper = ({ setUpdateIconOpen }) => {
         >
           Cancel
         </Button>
-        <Button
-          variant="contained"
-          size="large"
-          onClick={() => {
-            handleSave();
-          }}
-          disabled={!file}
-        >
-          Save
-        </Button>
+        <Box sx={{ m: 1, position: 'relative' }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              handleSave();
+            }}
+            disabled={!file || isLoading}
+          >
+            Save
+          </Button>
+          {isLoading && (
+            <CircularProgress
+              size={24}
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                marginTop: '-12px',
+                marginLeft: '-12px',
+              }}
+            />
+          )}
+        </Box>
       </DialogActions>
 
       <CropperModal
