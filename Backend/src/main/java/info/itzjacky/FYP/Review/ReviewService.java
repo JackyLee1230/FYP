@@ -103,6 +103,13 @@ public class ReviewService {
     }
 
     @Transactional
+    public void topicModelingForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+        logger.info("Topic Modeling SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
+        String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
+        rabbitMQProducer.sendTopicModelingMessagetoRabbitMQ(toBeSentToPython);
+    }
+
+    @Transactional
     public void sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
         logger.info("Sentiment Analysis SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
@@ -565,7 +572,9 @@ public class ReviewService {
             reviewer.setReviews(reviewRepository.findReviewsByReviewerName(reviewer.getName()));
             userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
+//            Send Mes`sage to RabbitMQ (SA + TM)
             sentimentAnalysisForReview(reviewRequest);
+            topicModelingForReview(reviewRequest);
 
             updateScoreOfGameByReview(reviewRequest.getGameId());
             Review rFinal = reviewRepository.findReviewById(review.getId());
