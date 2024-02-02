@@ -554,10 +554,6 @@ export default function User({ user }: UserPageProps) {
             alignItems: "flex-end",
             gap: "32px",
             width: "100%",
-
-            [theme.breakpoints.down("md")]:{
-              gap: "4px",
-            },
           }}
         >
           <Box
@@ -565,7 +561,7 @@ export default function User({ user }: UserPageProps) {
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-end",
-              gap: "48px",
+              gap: "8px",
               width: "100%",
             }}
           >
@@ -573,13 +569,12 @@ export default function User({ user }: UserPageProps) {
               <Box
                 sx={(theme) => ({
                   display: "flex",
-                  padding: "12px",
+                  padding: "22px 12px",
                   alignItems: "center",
                   gap: "24px",
                   borderRadius: "24px 48px 12px 48px",
                   bgcolor: alpha(theme.palette.background.paper, 0.58),
                   boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                  height: "96px",
                 })}
               >
                 <FormControlLabel
@@ -634,7 +629,7 @@ export default function User({ user }: UserPageProps) {
             <Box
               sx={{
                 display: "flex",
-                padding: "12px 0px",
+                padding: "12px 0px 6px 0px",
                 flexDirection: "column",
                 justifyContent: "flex-end",
                 alignItems: "flex-start",
@@ -642,56 +637,44 @@ export default function User({ user }: UserPageProps) {
                 gap: "8px",
               }}
             >
+              <Box
+                sx={{
+                  display: "flex",
+                  visibility: user.isVerified ? "hidden" : "visible",
+                  padding: "3px 12px",
+                  flexDirection: "column",
+                  alignSelf: "flex-start",
+                  borderRadius: "68px",
+                  border: "2px solid",
+                  borderColor: "error.main",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  bgcolor: "background.default"
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  color="error.main" 
+                  sx={{            
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    wordBreak: "break-all",
+                  }}
+                >
+                  Unverified account
+                </Typography>
+              </Box>
+
               <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
                 {user.name ?? "Unknown User"}
               </Typography>
 
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: "8px",
-
-                  [theme.breakpoints.down("md")]:{
-                    flexDirection: "column",
-                  },
-                }}
-              >
-                {!user.isVerified && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      padding: "3px 12px",
-                      flexDirection: "column",
-                      alignSelf: "flex-start",
-                      borderRadius: "68px",
-                      border: "2px solid",
-                      borderColor: "error.main",
-                      boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                    }}
-                  >
-                    <Typography 
-                      variant="h6" 
-                      color="error.main" 
-                      sx={{            
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                        wordBreak: "break-all",
-                      }}
-                    >
-                      Unverified account
-                    </Typography>
-                  </Box>
-                )}
-                <Typography variant="h6" color="text.secondary">
-                  {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
-                    format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
-                    isPrivate ? 
-                    "Undisclosed" : 
-                    user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
-                </Typography>
-              </Box>
+              <Typography variant="h6" color="text.secondary" sx={{visibility: isCurrentUser ? "visible" : isPrivate ? "hidden" : "visible" }}>
+                {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
+                  format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
+                  isPrivate ? 
+                  "Undisclosed" : 
+                  user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
+              </Typography>
             </Box>
           </Box>
 
@@ -733,11 +716,10 @@ export default function User({ user }: UserPageProps) {
         onClose={() => {
           setUpdateIconOpen(false);
         }}
-        style={{
+        sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 12,
         }}
       >
         <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />

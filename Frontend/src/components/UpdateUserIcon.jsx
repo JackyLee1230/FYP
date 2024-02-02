@@ -1,11 +1,22 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider } from "@mui/material";
+import { Box, Button, Modal, Slider, Typography, IconButton, Tooltip } from "@mui/material";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Image from "next/image";
+import { MuiFileInput } from 'mui-file-input';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
 
 const CropperModal = ({
   src,
+  file,
   setFile,
   setSrc,
   modalOpen,
@@ -20,8 +31,9 @@ const CropperModal = ({
       const dataUrl = cropRef.current.getImage().toDataURL();
       const result = await fetch(dataUrl);
       const blob = await result.blob();
+      const fileName = file.name;
       setPreview(URL.createObjectURL(blob));
-      setFile(blob);
+      setFile(new File([blob], fileName, { type: "image/*" }));
       setModalOpen(false);
     }
   };
@@ -82,6 +94,7 @@ const CropperModal = ({
             sx={{ marginRight: "10px", color: "white", borderColor: "white" }}
             variant="outlined"
             onClick={() => {
+              setFile(null);
               setModalOpen(false);
             }}
           >
@@ -106,21 +119,16 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const inputRef = useRef(null);
 
   const auth = useAuthContext();
 
-  // handle Click
-  const handleInputClick = (e) => {
-    e.preventDefault();
-    inputRef.current.click();
-  };
-  // handle Change
   const handleImgChange = (e) => {
-    setSrc(URL.createObjectURL(e.target.files[0]));
-    setFile(e.target.files[0]);
-    console.debug(URL.createObjectURL(e.target.files[0]));
-    setModalOpen(true);
+    setFile(e);
+    if(!!e){
+      setSrc(URL.createObjectURL(e));
+      console.debug(URL.createObjectURL(e));
+      setModalOpen(true);
+    }
   };
 
   const handleSave = async () => {
@@ -134,55 +142,100 @@ const Cropper = ({ setUpdateIconOpen }) => {
         )
         .then((res) => {
           setUpdateIconOpen(false);
+          displaySnackbarVariant("Icon updated successfully", "success");
         })
         .catch((err) => {
-          console.error("failed to update user icon");
+          displaySnackbarVariant("Failed to update user icon, please try again", "error");
         });
     }
   };
 
   return (
-    <div
+    <Box
       style={{
-        backgroundColor: "white",
         width: "fit-content",
-        padding: "5%",
+        background: "white", 
+        borderRadius: "16px", 
+        padding: "24px 36px", 
+        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+        overflow: "hidden",
+        position: "relative",
       }}
     >
-      <header>
-        <h1>Change Your Profile Icon!</h1>
-        <hr />
-      </header>
-      <main className="container">
-        <CropperModal
-          modalOpen={modalOpen}
-          setFile={setFile}
-          src={src}
-          setPreview={setPreview}
-          setModalOpen={setModalOpen}
-          setSrc={setSrc}
-        />
-        <small>Click to select image</small>
-        <br />
-        <input
-          type="file"
-          accept="image/*"
-          ref={inputRef}
-          onChange={handleImgChange}
-        />
-        <div className="img-container">
-          <img
-            src={
-              preview ||
-              " https://www.signivis.com/img/custom/avatars/member-avatar-01.png"
-            }
-            alt=""
-            width="200"
-            height="200"
+      <IconButton 
+        size="large" 
+        onClick={() => setUpdateIconOpen(false)} 
+        sx={{
+          position: "absolute",
+          top: 24,
+          right: 36,
+        }}
+      >
+        <CloseRoundedIcon/>
+      </IconButton>
+
+      <DialogTitle>
+        <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Icon</Typography>
+      </DialogTitle>
+      <DialogContent 
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          gap: "4px",
+        }}
+      >
+        <DialogContentText>
+          <Typography variant="subtitle1" color="text.secondary">Click to select image</Typography>
+        </DialogContentText>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          }}
+        >
+          <MuiFileInput 
+            placeholder="Upload icon"
+            size="medium"
+            value={file} 
+            onChange={handleImgChange} 
+            InputProps={{
+              inputProps: {
+                accept: 'image/*'
+              },
+              startAdornment: <InsertPhotoIcon />
+            }}
+            sx={{
+              '& .MuiInputBase-root': {
+                bgcolor: "white",
+                width: "250px",
+              },
+            }}
+            clearIconButtonProps={{
+              title: "Remove all images",
+              children: <CancelIcon color="primary" fontSize="small" />
+            }}
           />
-        </div>
+          <Box>
+            <Image
+              src={
+                preview || `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` || "https://via.placeholder.com/200"
+              }
+              alt=""
+              width="200"
+              height="200"
+            />
+          </Box>
+        </Box>
+      </DialogContent>
+      <DialogActions>
         <Button
           variant="contained"
+          size="large"
           onClick={() => {
             setUpdateIconOpen(false);
           }}
@@ -191,14 +244,26 @@ const Cropper = ({ setUpdateIconOpen }) => {
         </Button>
         <Button
           variant="contained"
+          size="large"
           onClick={() => {
             handleSave();
           }}
+          disabled={!file}
         >
           Save
         </Button>
-      </main>
-    </div>
+      </DialogActions>
+
+      <CropperModal
+          modalOpen={modalOpen}
+          file={file}
+          setFile={setFile}
+          src={src}
+          setPreview={setPreview}
+          setModalOpen={setModalOpen}
+          setSrc={setSrc}
+        />
+    </Box>
   );
 };
 
