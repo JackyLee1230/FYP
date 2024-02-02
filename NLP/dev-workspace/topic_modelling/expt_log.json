@@ -1,0 +1,6 @@
+[{
+    "expt_dataset":"top_11_genres_unique_[review_text]/01_indie.pkl",
+    "lda_training_folder":"lda_multicore_genre_indie_grid_search_20240131_131310",
+    "bertopic_training_folder":"bertopic_genre_indie_grid_search_20240131_204746",
+    "ctm_training_folder":"ctm_genre_indie_grid_search_20240131_230804"
+}]
