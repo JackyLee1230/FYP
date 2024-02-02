@@ -123,11 +123,21 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const auth = useAuthContext();
 
   const handleImgChange = (e) => {
-    setFile(e);
-    if(!!e){
-      setSrc(URL.createObjectURL(e));
-      console.debug(URL.createObjectURL(e));
-      setModalOpen(true);
+    if (!e || (e.type && e.type.startsWith("image/"))) {
+      const allowedExtensions = ["png", "jpeg", "jpg"];
+      const fileExtension = e.name.split(".").pop().toLowerCase();
+      if (allowedExtensions.includes(fileExtension)) {
+        setFile(e);
+        if (e) {
+          setSrc(URL.createObjectURL(e));
+          console.debug(URL.createObjectURL(e));
+          setModalOpen(true);
+        }
+      } else {
+        displaySnackbarVariant("Please select a .png, .jpeg, or .jpg file.", "error");
+      }
+    } else {
+      displaySnackbarVariant("Please select an image file.", "error");
     }
   };
 
@@ -205,7 +215,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
             onChange={handleImgChange} 
             InputProps={{
               inputProps: {
-                accept: 'image/*'
+                accept: '.png, .jpeg, .jpg'
               },
               startAdornment: <InsertPhotoIcon />
             }}
