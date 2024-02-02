@@ -1,9 +1,10 @@
 import RoleChip from "@/components/RoleChip";
 import UpdateUserIcon from "@/components/UpdateUserIcon";
+import UpdateUsernameBox from "@/components/UpdateUsername";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Modal, TextField, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, ListItemIcon, Menu, MenuItem, Modal, TextField, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -17,6 +18,7 @@ import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import { alpha } from "@mui/material";
 import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
 import { format } from "date-fns";
+import Edit from "@mui/icons-material/Edit";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -100,30 +102,6 @@ const togglePrivate = async (id: number, token: string) => {
   }
 };
 
-const submitChangeUsername = async (
-  id: number,
-  username: string,
-  token: string
-) => {
-  try {
-    const response = await axios.post(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/updateUsername`,
-      { id: id, name: username },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
-  } catch (error: any) {
-    console.error(error);
-  }
-};
-
 const getUserReviews = async(
   reviewerId: number,
   reviewsPerPage: number,
@@ -177,18 +155,22 @@ export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
   const isCurrentUser = auth.user && user?.id === auth.user.id
-
-  console.log(auth.user);
-  console.log(user);
-
   const [updateIconOpen, setUpdateIconOpen] = useState<boolean>(false);
+  const [updateUsernameOpen, setUpdateUsernameOpen] = useState<boolean>(false);
+  const [updateBannerOpen, setUpdateBannerOpen] = useState<boolean>(false);
   const [newUsername, setNewUsername] = useState<string>("");
   const [emailWaitingTime, setEmailWaitingTime] = useState<number>(60);
   const [isWaitingEmail, setIsWaitingEmail] = useState<boolean>(false);
-
   const [isPrivate, setIsPrivate] = useState<boolean>(user?.isPrivate ?? false);
   const [isPrivateLoading, setIsPrivateLoading] = useState<boolean>(false);
-
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const menuOpen = Boolean(menuAnchorEl);
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMenuAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null);
+  };
   const theme = useTheme();
 
   useEffect(() => {
@@ -538,7 +520,7 @@ export default function User({ user }: UserPageProps) {
                       }}
                       disabled={isWaitingEmail}
                     >
-                      {`Request Verification Email${isWaitingEmail ? ` (${emailWaitingTime})` : ""}`}
+                      {`${isWaitingEmail ? `Verification Email Sent (${emailWaitingTime})` : "Request Verification Email"}`}
                     </Button>
                   )}
                 </Box>
@@ -620,9 +602,69 @@ export default function User({ user }: UserPageProps) {
                     bgcolor: "info.main",
                     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                   }}
+                  onClick={handleMenuOpen}
                 >
                   <StyledMoreIcon />
                 </ButtonBase>
+                <Menu
+                  anchorEl={menuAnchorEl}
+                  open={menuOpen}
+                  onClose={handleMenuClose}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      bgcolor: "white",
+                      overflow: "visible",
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      marginTop: "8px",
+                      minWidth: 225,
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "white",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0,
+                      },
+                      "& .MuiMenuItem-root": {
+                        minHeight: "42px"
+                      }
+                    },
+                  }}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                >
+                  <MenuItem 
+                    onClick={() => {
+                      setUpdateUsernameOpen(true);
+                      handleMenuClose();
+                    }}
+                  >
+                    <ListItemIcon>
+                      <Edit fontSize="medium" />
+                    </ListItemIcon>
+                    <Typography variant="body1" color="text.primary">
+                      Update username
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setUpdateBannerOpen(true);
+                      handleMenuClose();
+                    }}
+                  >
+                    <ListItemIcon>
+                      <Edit fontSize="medium" />
+                    </ListItemIcon>
+                    <Typography variant="body1" color="text.primary">
+                      Update profile banner
+                    </Typography>
+                  </MenuItem>
+                </Menu>
               </Box>
             </Fade>
 
@@ -723,6 +765,36 @@ export default function User({ user }: UserPageProps) {
         }}
       >
         <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
+      </Modal>
+
+      <Modal
+        open={updateUsernameOpen}
+        onClose={() => {
+          setUpdateUsernameOpen(false);
+        }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <UpdateUsernameBox setUpdateUsernameOpen={setUpdateUsernameOpen} oldName={user?.name} userId={auth?.user?.id} token={auth?.token} />
+      </Modal>
+
+      <Modal
+        open={updateBannerOpen}
+        onClose={() => {
+          setUpdateBannerOpen(false);
+        }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box>
+
+        </Box>
       </Modal>
       {/*
       {user.iconUrl ? (
