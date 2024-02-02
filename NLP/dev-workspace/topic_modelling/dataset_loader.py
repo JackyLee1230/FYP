@@ -22,17 +22,27 @@ class GENRES(Enum):
         return self.name.lower()
 
 
-def load_dataset(genre:GENRES):
-    dataset_folder = Path('../../dataset/topic_modelling/top_11_genres').resolve()
+def load_dataset(genre:GENRES, dataset_folder:Path = None):
+    # dataset_folder = Path('../../dataset/topic_modelling/top_11_genres').resolve()
+    if dataset_folder is None:
+        raise ValueError('Please provide the dataset folder')
+
+    _dataset_folder = dataset_folder.resolve()
+    if not _dataset_folder.exists():
+        raise FileNotFoundError(f'{_dataset_folder} does not exist')
+    
 
     # load the dataset
-    dataset_path = dataset_folder.joinpath(
+    _dataset_path = _dataset_folder.joinpath(
         f'{genre.value:02}_{str(genre)}.pkl'
     )
 
-    dataset = pd.read_pickle(dataset_path)
+    print('Load dataset from:', _dataset_path)
+    print('\n\n')
 
-    return dataset
+    dataset = pd.read_pickle(_dataset_path)
+
+    return dataset, _dataset_path
 
 
 if __name__ == '__main__':
