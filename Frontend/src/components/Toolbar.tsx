@@ -290,6 +290,7 @@ const WebToolbar = () => {
                       overflow: "visible",
                       filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                       marginTop: "4px",
+                      minWidth: 225,
                       "&:before": {
                         content: '""',
                         display: "block",
@@ -302,6 +303,9 @@ const WebToolbar = () => {
                         transform: "translateY(-50%) rotate(45deg)",
                         zIndex: 0,
                       },
+                      "& .MuiMenuItem-root": {
+                        minHeight: "48px"
+                      }
                     },
                   }}
                   transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -310,7 +314,7 @@ const WebToolbar = () => {
                   <Box
                     sx={{
                       display: "block",
-                      padding: "0px 16px 8px 16px",
+                      padding: "8px 24px 16px 24px",
                       zIndex: 0,
                     }}
                   >
@@ -330,22 +334,26 @@ const WebToolbar = () => {
                       )}
                     </Typography>
                   </Box>
-                  <Divider />
+                  <Divider sx={{marginBottom: "8px"}}/>
                   <MenuItem
                     component={Link}
                     href={`/user/${user!.id}`}
                     onClick={handleUserMenuClose}
                   >
                     <ListItemIcon>
-                      <AccountCircleIcon fontSize="small" />
+                      <AccountCircleIcon fontSize="medium" />
                     </ListItemIcon>
-                    Profile
+                    <Typography variant="body1" color="text.primary">
+                      Profile
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
-                      <Logout fontSize="small" />
+                      <Logout fontSize="medium" />
                     </ListItemIcon>
-                    Logout
+                    <Typography variant="body1" color="text.primary">
+                      Logout
+                    </Typography>
                   </MenuItem>
                 </Menu>
               </>
