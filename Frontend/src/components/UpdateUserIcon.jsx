@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider, Typography, IconButton, Tooltip } from "@mui/material";
+import { Box, Button, Modal, Slider, Typography, IconButton, alpha } from "@mui/material";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
 import { useRef, useState } from "react";
@@ -49,12 +49,14 @@ const CropperModal = ({
     >
       <Box
         sx={{
-          width: "300px",
-          height: "300px",
+          width: "50vw",
+          maxWidth: "550px",
+          minWidth: "325px",
           display: "flex",
           flexFlow: "column",
           justifyContent: "center",
           alignItems: "center",
+          gap: "12px",
         }}
       >
         <AvatarEditor
@@ -74,8 +76,8 @@ const CropperModal = ({
           sx={{
             margin: "0 auto",
             width: "80%",
-            color: "cyan",
           }}
+          color="secondary"
           size="medium"
           defaultValue={slideValue}
           value={slideValue}
@@ -84,15 +86,16 @@ const CropperModal = ({
         <Box
           sx={{
             display: "flex",
-            padding: "10px",
-            border: "3px solid white",
-            background: "black",
+            padding: "8px 12px",
+            gap: "12px",
+            borderRadius: "8px",
+            background: alpha("#000000", "0.4"),
           }}
         >
           <Button
             size="small"
-            sx={{ marginRight: "10px", color: "white", borderColor: "white" }}
             variant="outlined"
+            color="error"
             onClick={() => {
               setFile(null);
               setModalOpen(false);
@@ -101,9 +104,9 @@ const CropperModal = ({
             cancel
           </Button>
           <Button
-            sx={{ background: "#5596e6" }}
             size="small"
             variant="contained"
+            color="info"
             onClick={handleSave}
           >
             Save
