@@ -22,6 +22,7 @@ import { playTimeString } from "@/utils/Other";
 type GameReviewCardProps = {
   review: GameReview;
   fullWidth?: boolean;
+  mode?: "user" | "game";
 };
 
 const StyledThumbUpIcon = styled(ThumbUpIcon)(({ theme }) => ({
@@ -44,7 +45,7 @@ const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
   fontSize: 24,
 }));
 
-function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
+function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps) {
   const router = useRouter();
   
   return (
@@ -87,33 +88,66 @@ function GameReviewCard({ review, fullWidth}: GameReviewCardProps) {
               alignSelf: "stretch",
             }}
           >
-            <ButtonBase
-              LinkComponent={Link}
-              href={`/user/${review?.reviewer?.id}`}
-              sx={{borderRadius: "50%", bgcolor: "grey.100"}}
-              disabled={!review?.reviewer?.id}
-            >
-              <Avatar
-                alt="Reviewer Avatar Icon"
-                src={
-                  review?.reviewer?.iconUrl != null
-                    ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                    : "/static/images/avatar/1.jpg"
-                }
-                sx={{ width: 54, height: 54 }}
-              />
-            </ButtonBase>
-            <Button
-              sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
-              LinkComponent={Link}
-              variant="text"
-              href={`/user/${review?.reviewer?.id}`}
-              disabled={!review?.reviewer?.id}
-            >
-              <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
-                {review?.reviewer?.name ?? "Unknown User"}
-              </Typography>
-            </Button>
+            {mode === "game" ? (
+              <>
+                <ButtonBase
+                  LinkComponent={Link}
+                  href={`/games/${review?.gameId}`}
+                  sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+                  disabled={!review?.gameId}
+                >
+                  <Avatar
+                    alt="Game Icon"
+                    src={review?.reviewer?.iconUrl != null
+                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
+                      : "/static/images/avatar/1.jpg"}
+                    sx={{ width: 54, height: 54 }}
+                    variant="rounded"
+                  />
+                </ButtonBase>
+                <Button
+                  sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+                  LinkComponent={Link}
+                  variant="text"
+                  href={`/games/${review?.gameId}`}
+                  disabled={!review?.gameId}
+                >
+                  <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
+                    {"Game name"}
+                  </Typography>
+                </Button>
+              </>
+            ) : (
+              <>
+                <ButtonBase
+                  LinkComponent={Link}
+                  href={`/user/${review?.reviewer?.id}`}
+                  sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+                  disabled={!review?.reviewer?.id}
+                >
+                  <Avatar
+                    alt="Reviewer Avatar Icon"
+                    src={
+                      review?.reviewer?.iconUrl != null
+                        ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
+                        : "/static/images/avatar/1.jpg"
+                    }
+                    sx={{ width: 54, height: 54 }}
+                  />
+                </ButtonBase>
+                <Button
+                  sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+                  LinkComponent={Link}
+                  variant="text"
+                  href={`/user/${review?.reviewer?.id}`}
+                  disabled={!review?.reviewer?.id}
+                >
+                  <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
+                    {review?.reviewer?.name ?? "Unknown User"}
+                  </Typography>
+                </Button>
+              </>
+            )}
           </Box>
 
           <Box

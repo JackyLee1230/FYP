@@ -5,12 +5,12 @@ import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, ListItemIcon, Menu, MenuItem, Modal, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Grid, ListItemIcon, Menu, MenuItem, Modal, Pagination, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
@@ -22,6 +22,10 @@ import { alpha } from "@mui/material";
 import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
 import { format } from "date-fns";
 import Edit from "@mui/icons-material/Edit";
+import GameReviewCard from "@/components/GameReviewCard";
+import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
+import { GameReview } from "@/type/game";
+import { fi, is } from "date-fns/locale";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -30,9 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { userid } = context.query;
 
   let user = null;
-  let reviews = null;
   let errorMessage = null;
-  let iconUrl = null;
 
   try {
     const response = await axios.post(
@@ -112,7 +114,7 @@ const getUserReviews = async(
 ) => {
   try {
     const response = await axios.post(
-      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findAllReviewsByUserPaged`,
+      `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByReviewerIdPaged`,
       { reviewerId: reviewerId, reviewsPerPage: reviewsPerPage, pageNum: pageNum },
       {
         headers: {
@@ -123,6 +125,13 @@ const getUserReviews = async(
         },
       }
     );
+    if (response.status === 200) {
+      const result = await response.data;
+      return result;
+    }
+    else{
+      return null;
+    }
   } catch (error: any){
     console.error(error);
     return null;
@@ -184,6 +193,22 @@ export default function User({ user }: UserPageProps) {
     setMenuAnchorEl(null);
   };
   const theme = useTheme();
+  const [reviewsPerPage, setReviewsPerPage] = useState<number>(5);
+  const [pageNum, setPageNum] = useState<number>(1);
+  const [reviews, setReviews] = useState<null | GameReview[]>(null);
+  const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    scrollToTop();
+    setPageNum(value);
+  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -204,6 +229,25 @@ export default function User({ user }: UserPageProps) {
     setIsWaitingEmail(!isWaitingEmail);
     setEmailWaitingTime(60);
   }
+
+  const handleReviewFetch = useCallback(
+    async () => {
+      if (user?.id) {
+        setIsReviewLoading(true);
+        const reviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1);
+        console.log(reviews["content"]);
+        setReviews(reviews["content"]);
+        setIsReviewLoading(false);
+      }
+    },
+    [pageNum, reviewsPerPage, user?.id]
+  );
+
+  console.log(reviews);
+
+  useEffect(() => {
+    handleReviewFetch();
+  }, [handleReviewFetch]);
 
   if (user == null) {
     return (
@@ -271,13 +315,17 @@ export default function User({ user }: UserPageProps) {
           flex: "1 0 0",
           margin: "0 auto",
           display: "flex",
+          flexDirection: "row",
           padding: "86px 86px 48px 86px",
           alignItems: "flex-start",
           gap: "32px",
-          overflow: "hidden",
 
           [theme.breakpoints.down("lg")]: {
-            padding: "86px 32px 48px 32px",
+            padding: "86px 18px 48px 18px",
+            gap: "12px",
+          },
+          [theme.breakpoints.down("md")]: {
+            flexDirection: "column",
           },
         }}
       >
@@ -287,6 +335,16 @@ export default function User({ user }: UserPageProps) {
             flexDirection: "column",
             alignItems: "center",
             gap: "32px",
+            position: "sticky",
+            top: "24px",
+            zIndex: 1101,
+
+            [theme.breakpoints.down("md")]: {
+              position: "relative",
+              top: "0",
+              zIndex: 1,
+              alignSelf: "center",
+            },
           }}
         >
           <Box
@@ -323,7 +381,7 @@ export default function User({ user }: UserPageProps) {
               </Fade>
             )}
             <Avatar
-              alt="Reviewer Avatar Icon"
+              alt="User Avatar Icon"
               src={
                 user?.iconUrl != null
                   ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
@@ -746,20 +804,97 @@ export default function User({ user }: UserPageProps) {
               width: "100%",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                borderBottom: "1px solid",
-                borderColor: "divider",
-              }}
-            >
-              <Typography variant="h5" color="text.primary" fontWeight={600}>
-                {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
-              </Typography>
-            </Box>
+            {isPrivate && !isCurrentUser ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  gap: "12px",
+                }}
+              >
+                <Typography variant="h5" color="text.primary" fontWeight={600}>
+                  {`This user's profile is private`}
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                  {`You don't have the permission to view this user's review history.`}
+                </Typography>
+              </Box>
+            ) : (
+              user?.numOfReviews > 0 ? (
+                <>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "100%",
+                      borderBottom: "1px solid",
+                      borderColor: "divider",
+                    }}
+                  >
+                    <Typography variant="h5" color="text.primary" fontWeight={600}>
+                      {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
+                    </Typography>
+                  </Box>
+
+                  <Grid 
+                    container 
+                    spacing={{xs: 1, md: 2, lg: 3}} 
+                  >
+                    {isReviewLoading ? (
+                      [...Array(Math.min(reviewsPerPage, user?.numOfReviews - (pageNum-1)*5))].map((_, index) => (
+                        <Grid item key={index} xs={12}>
+                          <GameReviewCardSkeleton />
+                        </Grid>
+                      ))
+                    ) : (
+                      <>
+                        {reviews?.map((review) => (
+                          <Grid item key={review.id} xs={12}>
+                            <GameReviewCard review={review} mode="game"/>
+                          </Grid>
+                        ))}
+                        <Box sx={{ width: "100%" }}>
+                          <Pagination
+                            color="primary"
+                            variant="outlined"
+                            size={"large"}
+                            count={Math.ceil(user?.numOfReviews / reviewsPerPage)}
+                            page={pageNum}
+                            onChange={handlePageChange}
+                            sx={{
+                              "& .MuiPagination-ul": {
+                                alignItems: "center",
+                                justifyContent: "center",
+                              },
+                              marginTop: "24px",
+                            }}
+                          />
+                        </Box>
+                      </>
+                    )}
+                  </Grid>
+                </>
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    gap: "12px",
+                  }}
+                >
+                  <Typography variant="h5" color="text.primary" fontWeight={600}>
+                    {`This user has not written any reviews`}
+                  </Typography>
+                </Box>
+              )
+            )}
           </Box>
         </Box>
       </Box>
@@ -805,155 +940,6 @@ export default function User({ user }: UserPageProps) {
       >
         <UpdateUserBannerBox setUpdateBannerOpen={setUpdateBannerOpen}/>
       </Modal>
-      {/*
-      {user.iconUrl ? (
-        <img
-          className="w-24 h-24 rounded-full mx-auto"
-          src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`}
-          alt="User icon"
-        />
-      ) : (
-        <div className="w-24 h-24 rounded-full mx-auto bg-gray-200" />
-      )}
-      {auth.user && user.id === auth.user.id && (
-        <>
-          {" "}
-          <Button
-            variant="contained"
-            onClick={() => {
-              setUpdateIconOpen(true);
-            }}
-          >
-            UPDATE USER ICON
-          </Button>
-          <Modal
-            open={updateIconOpen}
-            onClose={() => {
-              setUpdateIconOpen(false);
-            }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 12,
-            }}
-          >
-            <UpdateUserIcon setUpdateIconOpen={setUpdateIconOpen} />
-          </Modal>
-        </>
-      )}
-      <br />
-      <br />
-      <br />
-      <RoleChip role={user.role} direction="row" includeUser={true} />
-      <br />
-      {auth.user && user.id === auth.user.id && (
-        <>
-          Change Your Username:
-          <TextField
-            variant="outlined"
-            onChange={(e) => {
-              setNewUsername(e.target.value);
-            }}
-          ></TextField>
-          <Button
-            variant="contained"
-            onClick={() => {
-              submitChangeUsername(user.id, newUsername, auth.token!)
-                .then(() => {
-                  displaySnackbarVariant(
-                    "Username changing... Please wait...",
-                    "success"
-                  );
-                })
-                .catch((e) => {
-                  displaySnackbarVariant("Failed to change username", "error");
-                });
-            }}
-          >
-            Submit
-          </Button>
-        </>
-      )}
-      <br />
-      {}
-      <Button
-        variant="contained"
-        onClick={() => {
-          togglePrivate(user.id, auth.token!)
-            .then(() => {
-              displaySnackbarVariant("Toggled Private", "success");
-            })
-            .catch((error) => {
-              displaySnackbarVariant("Failed to Toggle Private", "error");
-            });
-        }}
-      >
-        Private:
-        {user.isPrivate !== null ? user.isPrivate.toString() : "False"} Click to
-        Toggle
-      </Button>
-      {(user.isVerified === null || user.isVerified === false) &&
-        auth.user &&
-        user.id === auth.user.id && (
-          <>
-            <Button
-              variant="contained"
-              onClick={() => {
-                sendVerifyEmail(user.email, auth.token!)
-                  .then(() => {
-                    displaySnackbarVariant(
-                      "Verification Email Sent",
-                      "success"
-                    );
-                  })
-                  .catch((error) => {
-                    displaySnackbarVariant(
-                      "Failed to Send Verification Email",
-                      "error"
-                    );
-                  });
-              }}
-            >
-              Not verified, Click to resend Verify Email
-            </Button>
-            <br />
-          </>
-        )}
-      {user.isVerified && <div>Verified</div>}
-      {user.name}
-      <br />
-      {user.email}
-      <br />
-      {user.joinDate}
-      <br />
-      {user.lastActive}
-      <br />
-      User has {user.numberOfReviews} review
-            */}
-
-      {/* {user.reviews && user.reviews.length > 0 && (
-        <div className="gap-4">
-          {user.reviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-green-200 cursor-pointer"
-              onClick={() => {
-                router.push(`/review/${review.id}`);
-              }}
-            >
-              <br />
-              {review.reviewedGame.name}
-              <br />
-              {review.score}
-              <br />
-              {review.createdAt}
-              <br />
-              {review.comment}
-            </div>
-          ))}
-        </div>
-      )} */}
     </>
   );
 }
