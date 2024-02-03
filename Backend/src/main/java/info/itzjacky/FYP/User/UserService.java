@@ -285,11 +285,25 @@ public class UserService {
     public void updateUserIcon(String userId, MultipartFile file) {
         User user = userRepository.findUserById(Integer.parseInt(userId));
         if (file == null) throw new IllegalStateException("File Cannot Be Empty");
-        if(user.getIconUrl() != null){
-            storageService.deleteFile("users/" + user.getId() + "/icon.jpg");
+        String newFileName = null;
+        if (user.getIconUrl() != null && user.getIconUrl().endsWith("icon.jpg")) {
+            storageService.uploadFile("users/" + user.getId() + "/icon-2.jpg", file);
+            storageService.deleteFile(user.getIconUrl());
+            user.setIconUrl("users/" + user.getId() + "/icon-2.jpg");
+        } else if (user.getIconUrl() != null) {
+            String[] split = user.getIconUrl().split("-");
+            int num = Integer.parseInt(split[split.length - 1].replace(".jpg", "")) + 1;
+            newFileName = "users/" + user.getId() + "/icon-" + num + ".jpg";
+            storageService.uploadFile(newFileName, file);
+            storageService.deleteFile(user.getIconUrl());
+            user.setIconUrl(newFileName);
         }
-        storageService.uploadFile("users/" + user.getId() + "/icon.jpg", file);
-        user.setIconUrl("users/" + user.getId() + "/icon.jpg");
+
+        if (user.getIconUrl() == null) {
+            storageService.uploadFile("users/" + user.getId() + "/icon.jpg", file);
+            user.setIconUrl("users/" + user.getId() + "/icon.jpg");
+        }
+
         userRepository.save(user);
     }
 
@@ -297,12 +311,24 @@ public class UserService {
     public void updateUserBanner(String userId, MultipartFile file) {
         User user = userRepository.findUserById(Integer.parseInt(userId));
         if (file == null) throw new IllegalStateException("File Cannot Be Empty");
-        if(user.getIconUrl() != null){
-            storageService.deleteFile("users/" + user.getId() + "/banner.jpg");
+        String newFileName = null;
+        if (user.getBannerUrl() != null && user.getBannerUrl().endsWith("banner.jpg")) {
+            storageService.uploadFile("users/" + user.getId() + "/banner-2.jpg", file);
+            storageService.deleteFile(user.getBannerUrl());
+            user.setBannerUrl("users/" + user.getId() + "/banner-2.jpg");
+        } else if (user.getBannerUrl() != null) {
+            String[] split = user.getBannerUrl().split("-");
+            int num = Integer.parseInt(split[split.length - 1].replace(".jpg", "")) + 1;
+            newFileName = "users/" + user.getId() + "/banner-" + num + ".jpg";
+            storageService.uploadFile(newFileName, file);
+            storageService.deleteFile(user.getBannerUrl());
+            user.setBannerUrl(newFileName);
         }
-        storageService.uploadFile("users/" + user.getId() + "/banner.jpg", file);
-        user.setBannerUrl("users/" + user.getId() + "/banner.jpg");
-        userRepository.save(user);
+
+        if (user.getBannerUrl() == null) {
+            storageService.uploadFile("users/" + user.getId() + "/banner.jpg", file);
+            user.setBannerUrl("users/" + user.getId() + "/banner.jpg");
+        }
     }
 
 
