@@ -1,10 +1,11 @@
 import RoleChip from "@/components/RoleChip";
 import UpdateUserIcon from "@/components/UpdateUserIcon";
 import UpdateUsernameBox from "@/components/UpdateUsername";
+import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, ListItemIcon, Menu, MenuItem, Modal, TextField, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, ListItemIcon, Menu, MenuItem, Modal, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -14,6 +15,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 import SettingsIcon from '@mui/icons-material/Settings';
+import CheckIcon from '@mui/icons-material/Check';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import { alpha } from "@mui/material";
 import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
@@ -151,6 +154,16 @@ const StyledMoreIcon = styled(MoreHorizOutlinedIcon)(({ theme }) => ({
   fontSize: 36,
 }));
 
+const StyledCheckIcon = styled(CheckIcon)(({ theme }) => ({
+  color: theme.palette.success.main,
+  fontSize: 18,
+}));
+
+const StyledPriorityHighIcon = styled(PriorityHighIcon)(({ theme }) => ({
+  color: theme.palette.error.main,
+  fontSize: 18,
+}));
+
 export default function User({ user }: UserPageProps) {
   const router = useRouter();
   const auth = useAuthContext();
@@ -158,7 +171,6 @@ export default function User({ user }: UserPageProps) {
   const [updateIconOpen, setUpdateIconOpen] = useState<boolean>(false);
   const [updateUsernameOpen, setUpdateUsernameOpen] = useState<boolean>(false);
   const [updateBannerOpen, setUpdateBannerOpen] = useState<boolean>(false);
-  const [newUsername, setNewUsername] = useState<string>("");
   const [emailWaitingTime, setEmailWaitingTime] = useState<number>(60);
   const [isWaitingEmail, setIsWaitingEmail] = useState<boolean>(false);
   const [isPrivate, setIsPrivate] = useState<boolean>(user?.isPrivate ?? false);
@@ -543,7 +555,7 @@ export default function User({ user }: UserPageProps) {
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-end",
-              gap: "8px",
+              gap: "56px",
               width: "100%",
             }}
           >
@@ -682,33 +694,32 @@ export default function User({ user }: UserPageProps) {
               <Box
                 sx={{
                   display: "flex",
-                  visibility: user.isVerified ? "hidden" : "visible",
-                  padding: "3px 12px",
-                  flexDirection: "column",
-                  alignSelf: "flex-start",
-                  borderRadius: "68px",
-                  border: "2px solid",
-                  borderColor: "error.main",
-                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                  bgcolor: "background.default"
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
-                <Typography 
-                  variant="h6" 
-                  color="error.main" 
-                  sx={{            
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                    wordBreak: "break-all",
-                  }}
-                >
-                  Unverified account
+                <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
+                  {user.name ?? "Unknown User"}
                 </Typography>
-              </Box>
 
-              <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
-                {user.name ?? "Unknown User"}
-              </Typography>
+                <Tooltip title={user.isVerified ? "Verified User" : "Unverified User"}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignSelf: "flex-end",
+                      marginBottom: "8px",
+                      padding: "2px",
+                      borderRadius: "50%",
+                      border: "2px solid",
+                      borderColor: `${user.isVerified ? "success.main" : "error.main"}`,
+                    }}
+                  >
+                    {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}
+                  </Box>
+                </Tooltip>
+              </Box>
 
               <Typography variant="h6" color="text.secondary" sx={{visibility: isCurrentUser ? "visible" : isPrivate ? "hidden" : "visible" }}>
                 {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
@@ -792,9 +803,7 @@ export default function User({ user }: UserPageProps) {
           justifyContent: "center",
         }}
       >
-        <Box>
-
-        </Box>
+        <UpdateUserBannerBox setUpdateBannerOpen={setUpdateBannerOpen}/>
       </Modal>
       {/*
       {user.iconUrl ? (
