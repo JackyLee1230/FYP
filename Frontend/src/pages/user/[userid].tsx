@@ -252,7 +252,9 @@ export default function User({ user }: UserPageProps) {
   const handleReviewFetch = useCallback(
     async () => {
       if (user?.id) {
-        setIsReviewLoading(true);
+        if(user.numOfReviews > reviewsPerPage) {
+          setIsReviewLoading(true);
+        }
         const newReviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1, reviewSortType);
         if(newReviews["content"].length + reviews?.length >= user?.numOfReviews) {
           setReachEnd(true);
