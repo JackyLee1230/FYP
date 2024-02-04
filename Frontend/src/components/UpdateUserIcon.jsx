@@ -125,9 +125,13 @@ const Cropper = ({ setUpdateIconOpen }) => {
 
   const auth = useAuthContext();
 
+  console.log(preview ? preview : auth.user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` : "https://via.placeholder.com/200")
+
   const handleImgChange = (e) => {
     if(!e){
       setFile(e);
+      setPreview(null);
+      setSrc(null);
       return;
     }
 
@@ -238,9 +242,9 @@ const Cropper = ({ setUpdateIconOpen }) => {
             }}
           />
           <Avatar
-            alt="Avatar Icon Preview"
+            alt="Avatar icon preview"
             src={
-              preview || `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` || "https://via.placeholder.com/200"
+              preview ? preview : auth.user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` : "https://via.placeholder.com/200"
             }
             sx={{ 
               width: 200, 
