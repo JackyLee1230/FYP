@@ -904,6 +904,7 @@ export default function User({ user }: UserPageProps) {
                           setReviewSortType(event.target.value as "latest" | "oldest" | "highestScore");
                         }}
                         autoWidth={false}
+                        disabled={isInitialLoading || isReviewLoading}
                       >
                         <MenuItem value="latest">Latest</MenuItem>
                         <MenuItem value="oldest">Oldest</MenuItem>
