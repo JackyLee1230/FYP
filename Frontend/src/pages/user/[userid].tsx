@@ -265,19 +265,12 @@ export default function User({ user }: UserPageProps) {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pageNum, reviewsPerPage, user?.id]
+    [pageNum, reviewsPerPage, user?.id, reviewSortType]
   );
 
   useEffect(() => {
     handleReviewFetch();
   }, [handleReviewFetch]);
-
-  useEffect(() => {
-    setIsInitialLoading(true);
-    setPageNum(1);
-    setReviews(null);
-    setReachEnd(false);
-  }, [reviewSortType]);
 
   useEffect(() => {
     if(!reachEnd && !isInitialLoading && !isReviewLoading) {
@@ -902,6 +895,10 @@ export default function User({ user }: UserPageProps) {
                         value={reviewSortType}
                         onChange={(event) => {
                           setReviewSortType(event.target.value as "latest" | "oldest" | "highestScore");
+                          setIsInitialLoading(true);
+                          setPageNum(1);
+                          setReviews(null);
+                          setReachEnd(false);
                         }}
                         autoWidth={false}
                         disabled={isInitialLoading || isReviewLoading}
