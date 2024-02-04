@@ -96,9 +96,9 @@ function GameReviewCard({
               <>
                 <ButtonBase
                   LinkComponent={Link}
-                  href={`/games/${review?.gameId}`}
+                  href={`/games/${review?.reviewedGame.id}`}
                   sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
-                  disabled={!review?.gameId}
+                  disabled={!review?.reviewedGame.id}
                 >
                   <Avatar
                     alt="Game Icon"
@@ -120,8 +120,8 @@ function GameReviewCard({
                   }}
                   LinkComponent={Link}
                   variant="text"
-                  href={`/games/${review?.gameId}`}
-                  disabled={!review?.gameId}
+                  href={`/games/${review?.reviewedGame.id}`}
+                  disabled={!review?.reviewedGame.id}
                 >
                   <Typography
                     variant="h5"
