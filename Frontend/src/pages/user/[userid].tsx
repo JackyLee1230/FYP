@@ -5,7 +5,7 @@ import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControlLabel, Grid, ListItemIcon, Menu, MenuItem, Modal, Pagination, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -26,6 +26,7 @@ import GameReviewCard from "@/components/GameReviewCard";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { GameReview } from "@/type/game";
 import { fi, is } from "date-fns/locale";
+import { set } from "lodash";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -111,11 +112,25 @@ const getUserReviews = async(
   reviewerId: number,
   reviewsPerPage: number,
   pageNum: number,
+  reviewSortType: "latest" | "oldest" | "highestScore"
 ) => {
+  let sortBy;
+  let order
+  if(reviewSortType === "latest") {
+    sortBy = "recency";
+    order = "desc";
+  } else if(reviewSortType === "oldest") {
+    sortBy = "recency";
+    order = "asc";
+  } else {
+    sortBy = "score";
+    order = "desc";
+  }
+
   try {
     const response = await axios.post(
       `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/findReviewsByReviewerIdPaged`,
-      { reviewerId: reviewerId, reviewsPerPage: reviewsPerPage, pageNum: pageNum },
+      { reviewerId: reviewerId, reviewsPerPage: reviewsPerPage, pageNum: pageNum, sortBy: sortBy, order: order },
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -197,6 +212,7 @@ export default function User({ user }: UserPageProps) {
   const [pageNum, setPageNum] = useState<number>(1);
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
+  const [reviewSortType, setReviewSortType] = useState<"latest" | "oldest" | "highestScore">("latest");
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -234,20 +250,22 @@ export default function User({ user }: UserPageProps) {
     async () => {
       if (user?.id) {
         setIsReviewLoading(true);
-        const reviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1);
-        console.log(reviews["content"]);
+        const reviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1, reviewSortType);
         setReviews(reviews["content"]);
         setIsReviewLoading(false);
       }
     },
-    [pageNum, reviewsPerPage, user?.id]
+    [pageNum, reviewsPerPage, user?.id, reviewSortType]
   );
-
-  console.log(reviews);
 
   useEffect(() => {
     handleReviewFetch();
   }, [handleReviewFetch]);
+
+  useEffect(() => {
+    setPageNum(1);
+    setReviews(null);
+  }, [reviewSortType]);
 
   if (user == null) {
     return (
@@ -828,16 +846,32 @@ export default function User({ user }: UserPageProps) {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "center",
+                      justifyContent: "space-between",
                       alignItems: "center",
                       width: "100%",
                       borderBottom: "1px solid",
                       borderColor: "divider",
+                      padding: "4px 12px",
                     }}
                   >
                     <Typography variant="h5" color="text.primary" fontWeight={600}>
                       {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
                     </Typography>
+
+                    <FormControl sx={{ minWidth: 150 }}>
+                      <Select
+                        color="primary"
+                        value={reviewSortType}
+                        onChange={(event) => {
+                          setReviewSortType(event.target.value as "latest" | "oldest" | "highestScore");
+                        }}
+                        autoWidth={false}
+                      >
+                        <MenuItem value="latest">Latest</MenuItem>
+                        <MenuItem value="oldest">Oldest</MenuItem>
+                        <MenuItem value="highestScore">Highest Score</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Box>
 
                   <Grid 

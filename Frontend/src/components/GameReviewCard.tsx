@@ -97,7 +97,7 @@ function GameReviewCard({
                 <ButtonBase
                   LinkComponent={Link}
                   href={`/games/${review?.reviewedGame.id}`}
-                  sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
+                  sx={{ borderRadius: "6%", bgcolor: "grey.100" }}
                   disabled={!review?.reviewedGame.id}
                 >
                   <Avatar
