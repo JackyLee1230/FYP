@@ -23,6 +23,9 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import router from "next/router";
 
+const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
+  process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
+
 const CropperModal = ({
   src,
   file,
