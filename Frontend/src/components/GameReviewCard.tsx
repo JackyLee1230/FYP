@@ -14,7 +14,7 @@ import Link from "next/link";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentIcon from "@mui/icons-material/Comment";
-import ImageIcon from '@mui/icons-material/Image';
+import ImageIcon from "@mui/icons-material/Image";
 import { getReviewColor } from "@/utils/DynamicScore";
 import { format } from "date-fns";
 import { playTimeString } from "@/utils/Other";
@@ -45,9 +45,13 @@ const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
   fontSize: 24,
 }));
 
-function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps) {
+function GameReviewCard({
+  review,
+  fullWidth,
+  mode = "user",
+}: GameReviewCardProps) {
   const router = useRouter();
-  
+
   return (
     <Box
       sx={{
@@ -93,27 +97,38 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
                 <ButtonBase
                   LinkComponent={Link}
                   href={`/games/${review?.gameId}`}
-                  sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+                  sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                   disabled={!review?.gameId}
                 >
                   <Avatar
                     alt="Game Icon"
-                    src={review?.reviewer?.iconUrl != null
-                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                      : "/static/images/avatar/1.jpg"}
+                    src={
+                      review?.reviewedGame?.iconUrl != null
+                        ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewedGame?.iconUrl}`
+                        : "/static/images/avatar/1.jpg"
+                    }
                     sx={{ width: 54, height: 54 }}
                     variant="rounded"
                   />
                 </ButtonBase>
                 <Button
-                  sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+                  sx={{
+                    textDecoration: "none",
+                    textTransform: "none",
+                    "&:hover": { textDecoration: "underline" },
+                    justifyContent: "flex-start",
+                  }}
                   LinkComponent={Link}
                   variant="text"
                   href={`/games/${review?.gameId}`}
                   disabled={!review?.gameId}
                 >
-                  <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
-                    {"Game name"}
+                  <Typography
+                    variant="h5"
+                    color="text.primary"
+                    sx={{ fontWeight: 700 }}
+                  >
+                    {review.reviewedGame?.name ?? "Unknown Game"}
                   </Typography>
                 </Button>
               </>
@@ -122,7 +137,7 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
                 <ButtonBase
                   LinkComponent={Link}
                   href={`/user/${review?.reviewer?.id}`}
-                  sx={{borderRadius: "50%", bgcolor: "grey.100"}}
+                  sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                   disabled={!review?.reviewer?.id}
                 >
                   <Avatar
@@ -136,13 +151,22 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
                   />
                 </ButtonBase>
                 <Button
-                  sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start' }}
+                  sx={{
+                    textDecoration: "none",
+                    textTransform: "none",
+                    "&:hover": { textDecoration: "underline" },
+                    justifyContent: "flex-start",
+                  }}
                   LinkComponent={Link}
                   variant="text"
                   href={`/user/${review?.reviewer?.id}`}
                   disabled={!review?.reviewer?.id}
                 >
-                  <Typography variant="h5" color="text.primary" sx={{ fontWeight: 700 }}>
+                  <Typography
+                    variant="h5"
+                    color="text.primary"
+                    sx={{ fontWeight: 700 }}
+                  >
                     {review?.reviewer?.name ?? "Unknown User"}
                   </Typography>
                 </Button>
@@ -295,11 +319,13 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
           }}
         >
           <Typography variant="subtitle1" color="text.secondary">
-            {`AI Sentiment: ${review.sentiment != null
-                            ? review.sentiment == 1
-                              ? "Positive"
-                              : "Negative"
-                            : "Coming soon..."}`}
+            {`AI Sentiment: ${
+              review.sentiment != null
+                ? review.sentiment == 1
+                  ? "Positive"
+                  : "Negative"
+                : "Coming soon..."
+            }`}
           </Typography>
         </Box>
         <Box
@@ -316,7 +342,7 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
               gap: "4px",
             }}
           >
-            <StyledThumbUpIcon sx={{fontSize: 24}} />
+            <StyledThumbUpIcon sx={{ fontSize: 24 }} />
             <Typography variant="subtitle1" color="text.secondary">
               {review?.numberOfLikes ?? 0}
             </Typography>
@@ -328,7 +354,7 @@ function GameReviewCard({ review, fullWidth, mode = "user"}: GameReviewCardProps
               gap: "4px",
             }}
           >
-            <StyledThumbDownIcon sx={{fontSize: 24}} />
+            <StyledThumbDownIcon sx={{ fontSize: 24 }} />
             <Typography variant="subtitle1" color="text.secondary">
               {review?.numberOfDislikes ?? 0}
             </Typography>
