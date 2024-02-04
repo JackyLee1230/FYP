@@ -426,8 +426,11 @@ public class ReviewService {
             for (Review review : r.getContent()){
                 review.setReviewer(null);
                 review.getReviewedGame().setGameReviews(null);
-                review.getReviewedGame().setBaseGame(null);
+                review.setReviewComment(null);
                 review.getReviewedGame().setDLCS(null);
+                review.getReviewedGame().setBaseGame(null);
+                review.getReviewedGame().setDevelopers(null);
+                review.getReviewedGame().setPublisher(null);
             }
             return r;
         } else {
