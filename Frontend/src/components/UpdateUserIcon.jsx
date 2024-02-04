@@ -1,16 +1,26 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress, Avatar } from "@mui/material";
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import {
+  Box,
+  Button,
+  Modal,
+  Slider,
+  Typography,
+  IconButton,
+  alpha,
+  CircularProgress,
+  Avatar,
+} from "@mui/material";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import axios from "axios";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
 import Image from "next/image";
-import { MuiFileInput } from 'mui-file-input';
-import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import CancelIcon from '@mui/icons-material/Cancel';
-import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
+import { MuiFileInput } from "mui-file-input";
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
+import CancelIcon from "@mui/icons-material/Cancel";
+import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import router from "next/router";
 
 const CropperModal = ({
@@ -125,10 +135,16 @@ const Cropper = ({ setUpdateIconOpen }) => {
 
   const auth = useAuthContext();
 
-  console.log(preview ? preview : auth.user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` : "https://via.placeholder.com/200")
+  console.log(
+    preview
+      ? preview
+      : auth.user?.iconUrl
+      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}`
+      : "https://via.placeholder.com/200"
+  );
 
   const handleImgChange = (e) => {
-    if(!e){
+    if (!e) {
       setFile(e);
       setPreview(null);
       setSrc(null);
@@ -144,7 +160,10 @@ const Cropper = ({ setUpdateIconOpen }) => {
         console.debug(URL.createObjectURL(e));
         setModalOpen(true);
       } else {
-        displaySnackbarVariant("Please select a .png, .jpeg, or .jpg file.", "error");
+        displaySnackbarVariant(
+          "Please select a .png, .jpeg, or .jpg file.",
+          "error"
+        );
       }
     } else {
       displaySnackbarVariant("Please select an image file.", "error");
@@ -158,7 +177,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
       formData.append("file", file);
       axios
         .post(
-          `http://localhost:8080/api/user/updateUserIcon/${auth.user.id}`,
+          `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/user/updateUserIcon/${auth.user.id}`,
           formData
         )
         .then((res) => {
@@ -167,7 +186,10 @@ const Cropper = ({ setUpdateIconOpen }) => {
           router.reload();
         })
         .catch((err) => {
-          displaySnackbarVariant("Failed to update user icon, please try again", "error");
+          displaySnackbarVariant(
+            "Failed to update user icon, please try again",
+            "error"
+          );
         })
         .finally(() => {
           setIsLoading(false);
@@ -179,28 +201,30 @@ const Cropper = ({ setUpdateIconOpen }) => {
     <Box
       style={{
         width: "fit-content",
-        background: "white", 
-        borderRadius: "16px", 
-        padding: "24px 36px", 
+        background: "white",
+        borderRadius: "16px",
+        padding: "24px 36px",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
         position: "relative",
       }}
     >
-      <IconButton 
-        size="large" 
-        onClick={() => setUpdateIconOpen(false)} 
+      <IconButton
+        size="large"
+        onClick={() => setUpdateIconOpen(false)}
         sx={{
           position: "absolute",
           top: 24,
           right: 36,
         }}
       >
-        <CloseRoundedIcon/>
+        <CloseRoundedIcon />
       </IconButton>
 
-      <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Icon</Typography>
-      <DialogContent 
+      <Typography variant="h4" color="primary.main" sx={{ fontWeight: 700 }}>
+        Change Your Profile Icon
+      </Typography>
+      <DialogContent
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -209,7 +233,9 @@ const Cropper = ({ setUpdateIconOpen }) => {
           gap: "4px",
         }}
       >
-        <Typography variant="subtitle1" color="text.secondary">Click to select image</Typography>
+        <Typography variant="subtitle1" color="text.secondary">
+          Click to select image
+        </Typography>
         <Box
           sx={{
             display: "flex",
@@ -219,35 +245,39 @@ const Cropper = ({ setUpdateIconOpen }) => {
             gap: "8px",
           }}
         >
-          <MuiFileInput 
+          <MuiFileInput
             placeholder="Upload icon"
             size="medium"
-            value={file} 
-            onChange={handleImgChange} 
+            value={file}
+            onChange={handleImgChange}
             InputProps={{
               inputProps: {
-                accept: '.png, .jpeg, .jpg'
+                accept: ".png, .jpeg, .jpg",
               },
-              startAdornment: <InsertPhotoIcon />
+              startAdornment: <InsertPhotoIcon />,
             }}
             sx={{
-              '& .MuiInputBase-root': {
+              "& .MuiInputBase-root": {
                 bgcolor: "white",
                 width: "250px",
               },
             }}
             clearIconButtonProps={{
               title: "Remove all images",
-              children: <CancelIcon color="primary" fontSize="small" />
+              children: <CancelIcon color="primary" fontSize="small" />,
             }}
           />
           <Avatar
             alt="Avatar icon preview"
             src={
-              preview ? preview : auth.user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}` : "https://via.placeholder.com/200"
+              preview
+                ? preview
+                : auth.user?.iconUrl
+                ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}`
+                : "https://via.placeholder.com/200"
             }
-            sx={{ 
-              width: 200, 
+            sx={{
+              width: 200,
               height: 200,
             }}
           />
@@ -263,7 +293,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
         >
           Cancel
         </Button>
-        <Box sx={{ m: 1, position: 'relative' }}>
+        <Box sx={{ m: 1, position: "relative" }}>
           <Button
             variant="contained"
             size="large"
@@ -278,11 +308,11 @@ const Cropper = ({ setUpdateIconOpen }) => {
             <CircularProgress
               size={24}
               sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                marginTop: '-12px',
-                marginLeft: '-12px',
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                marginTop: "-12px",
+                marginLeft: "-12px",
               }}
             />
           )}
@@ -290,14 +320,14 @@ const Cropper = ({ setUpdateIconOpen }) => {
       </DialogActions>
 
       <CropperModal
-          modalOpen={modalOpen}
-          file={file}
-          setFile={setFile}
-          src={src}
-          setPreview={setPreview}
-          setModalOpen={setModalOpen}
-          setSrc={setSrc}
-        />
+        modalOpen={modalOpen}
+        file={file}
+        setFile={setFile}
+        src={src}
+        setPreview={setPreview}
+        setModalOpen={setModalOpen}
+        setSrc={setSrc}
+      />
     </Box>
   );
 };
