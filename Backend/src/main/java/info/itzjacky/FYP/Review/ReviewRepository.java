@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -50,14 +51,26 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 order by r.created_at desc")
     Page<Review> findReviewsByReviewerIdPagedSortByCreatedAt(Integer id, Pageable pageable);
 
+    @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 order by r.created_at asc")
+    Page<Review> findReviewsByReviewerIdPagedSortByCreatedAtAsc(Integer id, Pageable pageable);
+
     @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 order by r.score desc")
     Page<Review> findReviewsByReviewerIdPagedSortByScore(Integer id, Pageable pageable);
+
+    @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 order by r.score asc")
+    Page<Review> findReviewsByReviewerIdPagedSortByScoreAsc(Integer id, Pageable pageable);
 
     @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.recommended = ?2 order by r.created_at desc")
     Page<Review> findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAt(Integer id, Boolean Recommended, Pageable pageable);
 
+    @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.recommended = ?2 order by r.created_at asc")
+    Page<Review> findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAtAsc(Integer id, Boolean Recommended, Pageable pageable);
+
     @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.recommended = ?2 order by r.score desc")
     Page<Review> findReviewsByReviewerIdAndRecommendedPagedSortByScore(Integer id, Boolean Recommended, Pageable pageable);
+
+    @Query(nativeQuery = true,  value = "SELECT * FROM review r WHERE r.reviewer_id = ?1 and r.recommended = ?2 order by r.score asc")
+    Page<Review> findReviewsByReviewerIdAndRecommendedPagedSortByScoreAsc(Integer id, Boolean Recommended, Pageable pageable);
 
     List<Review> findReviewsByReviewerName(String name);
 

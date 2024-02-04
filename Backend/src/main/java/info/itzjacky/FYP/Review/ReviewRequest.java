@@ -58,6 +58,8 @@ public class ReviewRequest {
 
     private List<Integer> resentSentimentId;
 
+    private String order;
+
 
 
 }

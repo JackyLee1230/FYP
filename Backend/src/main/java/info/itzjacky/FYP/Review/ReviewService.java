@@ -415,12 +415,24 @@ public class ReviewService {
         if (reviewRequest.getSortBy() == null || (!reviewRequest.getSortBy().equals("score") && !reviewRequest.getSortBy().equals("recency"))) {
             reviewRequest.setSortBy("recency");
         }
+        // check order must be either "asc" or "desc"
+        if (reviewRequest.getOrder() == null || (!reviewRequest.getOrder().equals("asc") && !reviewRequest.getOrder().equals("desc"))) {
+            reviewRequest.setOrder("desc");
+        }
+
         if (reviewRequest.getRecommended() == null) {
             Page<Review> r = null;
             if (Objects.equals(reviewRequest.getSortBy(), "recency")){
-                r = reviewRepository.findReviewsByReviewerIdPagedSortByCreatedAt(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getOrder().equals("asc"))
+                    r = reviewRepository.findReviewsByReviewerIdPagedSortByCreatedAtAsc(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                else
+                    r = reviewRepository.findReviewsByReviewerIdPagedSortByCreatedAt(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
             } else {
-                r = reviewRepository.findReviewsByReviewerIdPagedSortByScore(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getOrder().equals("asc")) {
+                    r = reviewRepository.findReviewsByReviewerIdPagedSortByScoreAsc(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByReviewerIdPagedSortByScore(reviewRequest.getReviewerId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
 
             for (Review review : r.getContent()){
@@ -436,10 +448,18 @@ public class ReviewService {
         } else {
             Page<Review> r = null;
             if (Objects.equals(reviewRequest.getSortBy(), "recency")) {
-                r =  reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getReviewerId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getOrder().equals("asc")) {
+                    r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAtAsc(reviewRequest.getReviewerId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getReviewerId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
             else {
-                r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByScore(reviewRequest.getReviewerId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getOrder().equals("asc")) {
+                    r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByScoreAsc(reviewRequest.getReviewerId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByReviewerIdAndRecommendedPagedSortByScore(reviewRequest.getReviewerId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
 
             for (Review review : r.getContent()){
