@@ -135,16 +135,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const [preview, setPreview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
   const auth = useAuthContext();
-
-  console.log(
-    preview
-      ? preview
-      : auth.user?.iconUrl
-      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${auth.user?.iconUrl}`
-      : "https://via.placeholder.com/200"
-  );
 
   const handleImgChange = (e) => {
     if (!e) {

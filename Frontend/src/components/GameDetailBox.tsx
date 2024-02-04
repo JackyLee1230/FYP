@@ -12,8 +12,6 @@ type GameDetailBoxProps = {
 };
 
 function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
-  console.log(game);
-
   return (
     <Box
       sx={{

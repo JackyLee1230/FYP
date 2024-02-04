@@ -5,12 +5,12 @@ import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, LinearProgress, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
@@ -212,7 +212,10 @@ export default function User({ user }: UserPageProps) {
   const [pageNum, setPageNum] = useState<number>(1);
   const [reviews, setReviews] = useState<null | GameReview[]>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
   const [reviewSortType, setReviewSortType] = useState<"latest" | "oldest" | "highestScore">("latest");
+  const [reachEnd, setReachEnd] = useState<boolean>(false);
+  const observerTarget = useRef(null);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -250,12 +253,17 @@ export default function User({ user }: UserPageProps) {
     async () => {
       if (user?.id) {
         setIsReviewLoading(true);
-        const reviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1, reviewSortType);
-        setReviews(reviews["content"]);
+        const newReviews = await getUserReviews(user?.id, reviewsPerPage, pageNum-1, reviewSortType);
+        if(newReviews["content"].length + reviews?.length >= user?.numOfReviews) {
+          setReachEnd(true);
+        }
+        setReviews(prevReviews => [...(prevReviews ?? []), ...newReviews["content"]]);
         setIsReviewLoading(false);
+        setIsInitialLoading(false);
       }
     },
-    [pageNum, reviewsPerPage, user?.id, reviewSortType]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [pageNum, reviewsPerPage, user?.id]
   );
 
   useEffect(() => {
@@ -263,9 +271,37 @@ export default function User({ user }: UserPageProps) {
   }, [handleReviewFetch]);
 
   useEffect(() => {
+    setIsInitialLoading(true);
     setPageNum(1);
     setReviews(null);
+    setReachEnd(false);
   }, [reviewSortType]);
+
+  useEffect(() => {
+    if(!reachEnd && !isInitialLoading && !isReviewLoading) {
+      let observerRefValue: Element | null = null;
+
+      const observer = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting) {
+            setPageNum(prevPageNum => prevPageNum + 1);
+          }
+        },
+        { threshold: 1 }
+      );
+    
+      if (observerTarget.current) {
+        observer.observe(observerTarget.current);
+        observerRefValue = observerTarget.current;
+      }
+    
+      return () => {
+        if (observerRefValue) {
+          observer.unobserve(observerRefValue);
+        }
+      };
+    }
+  }, [isInitialLoading, isReviewLoading, observerTarget, reachEnd]);
 
   if (user == null) {
     return (
@@ -878,39 +914,44 @@ export default function User({ user }: UserPageProps) {
                     container 
                     spacing={{xs: 1, md: 2, lg: 3}} 
                   >
-                    {isReviewLoading ? (
+                    {isInitialLoading ? (
                       [...Array(Math.min(reviewsPerPage, user?.numOfReviews - (pageNum-1)*5))].map((_, index) => (
                         <Grid item key={index} xs={12}>
                           <GameReviewCardSkeleton />
                         </Grid>
                       ))
                     ) : (
-                      <>
-                        {reviews?.map((review) => (
-                          <Grid item key={review.id} xs={12}>
-                            <GameReviewCard review={review} mode="game"/>
-                          </Grid>
-                        ))}
-                        <Box sx={{ width: "100%" }}>
-                          <Pagination
-                            color="primary"
-                            variant="outlined"
-                            size={"large"}
-                            count={Math.ceil(user?.numOfReviews / reviewsPerPage)}
-                            page={pageNum}
-                            onChange={handlePageChange}
-                            sx={{
-                              "& .MuiPagination-ul": {
-                                alignItems: "center",
-                                justifyContent: "center",
-                              },
-                              marginTop: "24px",
-                            }}
-                          />
-                        </Box>
-                      </>
+                      reviews?.map((review) => (
+                        <Grid item key={review.id} xs={12}>
+                          <GameReviewCard review={review} mode="game"/>
+                        </Grid>
+                      ))
                     )}
                   </Grid>
+                  {/*
+                  <Box sx={{ width: "100%" }}>
+                    <Pagination
+                      color="primary"
+                      variant="outlined"
+                      size={"large"}
+                      count={Math.ceil(user?.numOfReviews / reviewsPerPage)}
+                      page={pageNum}
+                      onChange={handlePageChange}
+                      sx={{
+                        "& .MuiPagination-ul": {
+                          alignItems: "center",
+                          justifyContent: "center",
+                        },  
+                      }}
+                    />
+                  </Box>
+                  */}
+                  <Box ref={observerTarget} sx={{visibility: "hidden"}}></Box>
+                  {isReviewLoading && (
+                    <Box sx={{ width: '95%', alignSelf:"center"}}>
+                      <LinearProgress color="primary" />
+                    </Box>
+                  )}
                 </>
               ) : (
                 <Box

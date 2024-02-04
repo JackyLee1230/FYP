@@ -31,7 +31,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     );
     if (response.status === 200) {
-      console.log(response.data);
       games = await response.data;
     } else {
       errorMessage = response.statusText;

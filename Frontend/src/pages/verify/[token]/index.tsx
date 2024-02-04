@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     );
     if (response.status === 200) {
       user = await response.data;
-      console.log(user);
     } else {
       errorMessage = await response.data.message;
     }

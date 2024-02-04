@@ -107,7 +107,6 @@ export default function Search() {
           type="text"
           value={searchString}
           onChange={(e) => {
-            console.log(e.target.value);
             setSearchString(e.target.value);
           }}
         />
