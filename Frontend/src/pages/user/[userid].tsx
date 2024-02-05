@@ -1,4 +1,3 @@
-import RoleChip from "@/components/RoleChip";
 import UpdateUserIcon from "@/components/UpdateUserIcon";
 import UpdateUsernameBox from "@/components/UpdateUsername";
 import UpdateUserBannerBox from "@/components/UpdateUserBanner";
@@ -25,8 +24,6 @@ import Edit from "@mui/icons-material/Edit";
 import GameReviewCard from "@/components/GameReviewCard";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { GameReview } from "@/type/game";
-import { fi, is } from "date-fns/locale";
-import { set } from "lodash";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -154,7 +151,7 @@ const getUserReviews = async(
 }
 
 const StyledEditIcon = styled(EditIcon)(({ theme }) => ({
-  color: "#FFFFFF",
+  color: "#ffffff",
   fontSize: 24,
 }));
 
@@ -174,17 +171,17 @@ const StyledSettingsIcon = styled(SettingsIcon)(({ theme }) => ({
 }));
 
 const StyledMoreIcon = styled(MoreHorizOutlinedIcon)(({ theme }) => ({
-  color: "#FFFFFF",
+  color: "#ffffff",
   fontSize: 36,
 }));
 
 const StyledCheckIcon = styled(CheckIcon)(({ theme }) => ({
-  color: theme.palette.success.main,
+  color: "#ffffff",
   fontSize: 18,
 }));
 
 const StyledPriorityHighIcon = styled(PriorityHighIcon)(({ theme }) => ({
-  color: theme.palette.error.main,
+  color: "#ffffff",
   fontSize: 18,
 }));
 
@@ -386,12 +383,9 @@ export default function User({ user }: UserPageProps) {
             gap: "32px",
             position: "sticky",
             top: "24px",
-            zIndex: 1101,
 
             [theme.breakpoints.down("md")]: {
               position: "relative",
-              top: "0",
-              zIndex: 1,
               alignSelf: "center",
             },
           }}
@@ -819,8 +813,7 @@ export default function User({ user }: UserPageProps) {
                       marginBottom: "8px",
                       padding: "2px",
                       borderRadius: "50%",
-                      border: "2px solid",
-                      borderColor: `${user.isVerified ? "success.main" : "error.main"}`,
+                      bgcolor: user.isVerified ? "#4FA639" : "error.main",
                     }}
                   >
                     {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}
