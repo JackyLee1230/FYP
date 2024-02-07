@@ -31,5 +31,7 @@ terraria
 sf5
 sf6
 sf
+geometry dash
+geometry dash meltdown
 
 # TODO: add developer name
