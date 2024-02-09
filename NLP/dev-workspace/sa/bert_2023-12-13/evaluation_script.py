@@ -37,9 +37,9 @@ except:
     DATASET_SIZE = 240
     DATASET_IS_BALANCED = True
 
-    training_args_year = 2023
-    training_args_month = 12
-    training_args_day = 18
+    training_args_year = 2024
+    training_args_month = 1
+    training_args_day = 17
 
 training_name = 'bert-finetune_{}k_{}'.format(
     DATASET_SIZE,
