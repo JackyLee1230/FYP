@@ -5,3 +5,5 @@ my_model*/
 *.pth
 
 bertopic_*/
+
+*.pkl
