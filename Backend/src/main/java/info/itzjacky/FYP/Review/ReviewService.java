@@ -7,6 +7,7 @@ import info.itzjacky.FYP.User.UserRepository;
 import info.itzjacky.FYP.Utils.Others;
 import jakarta.transaction.Transactional;
 import org.apache.http.HttpStatus;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,40 +105,22 @@ public class ReviewService {
 
     @Transactional
     public void topicModelingForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+        JSONObject request = new JSONObject();
+        request.put("reviewId", reviewReq.getReviewId());
+        request.put("reviewComment", reviewReq.getComment());
         logger.info("Topic Modeling SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
-        rabbitMQProducer.sendTopicModelingMessagetoRabbitMQ(toBeSentToPython);
+        rabbitMQProducer.sendTopicModelingMessagetoRabbitMQ(request.toString());
     }
 
     @Transactional
     public void sentimentAnalysisForReview(ReviewRequest reviewReq) throws IOException, ExecutionException, InterruptedException {
+        JSONObject request = new JSONObject();
+        request.put("reviewId", reviewReq.getReviewId());
+        request.put("reviewComment", reviewReq.getComment());
         logger.info("Sentiment Analysis SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
-        String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
-        rabbitMQProducer.sendMessagetoRabbitMQ(toBeSentToPython);
-//        Runtime rt = Runtime.getRuntime();
-//        Review review = reviewRepository.findReviewById(reviewReq.getReviewId());
-//        logger.info("Running Sentiment Analysis Script! ReviewId:" + review.getId() + " Comment:" + review.getComment());
-//        try {
-//            ProcessBuilder pb = new ProcessBuilder("python", env.getProperty("SENTIMENT_ANALYSIS_SCRIPT_PATH"), review.getComment());
-//            pb.redirectErrorStream(true);
-//            Process extractProcess = pb.start();
-//            StringBuilder programOutput = new StringBuilder();
-//            try (BufferedReader processOutputReader = new BufferedReader(
-//                    new InputStreamReader(extractProcess.getInputStream()));)
-//            {
-//                String readLine;
-//                while ((readLine = processOutputReader.readLine()) != null)
-//                {
-//                    programOutput.append(readLine).append(System.lineSeparator());
-//                }
-//                extractProcess.waitFor();
-//            }
-//            review.setSentiment(Integer.parseInt(programOutput.toString().trim()));
-//            review.setSentimentUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
-//            return Integer.parseInt(programOutput.toString().trim());
-//        } catch (IOException | InterruptedException e) {
-//            throw new IllegalStateException("Sentiment Analysis Failed! " + e.getMessage());
-//        }
+//        String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
+        rabbitMQProducer.sendMessagetoRabbitMQ(request.toString());
     }
 
 

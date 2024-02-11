@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
 import jakarta.transaction.Transactional;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -37,11 +38,16 @@ public class RabbitMQConsumer {
             channel.basicAck(tag, false);
             return;
         }
-        String result = payload.replace("b\"", "").replace("b'", "");
-        String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
-        String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
+//        given a json string is received, it is converted to a json object
+        JSONObject jsonObject = new JSONObject(payload);
+        String reviewId = jsonObject.getString("reviewId");
+        String sentiment = jsonObject.getString("sentiment");
+
+//        String result = payload.replace("b\"", "").replace("b'", "");
+//        String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
+//        String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
         if (reviewId == null || sentiment == null) {
-            logger.warn("Sentiment got back with Non Existent Review ID: " + result);
+            logger.warn("Sentiment got back with Non Existent Review ID: " + payload);
             channel.basicAck(tag, false);
             return;
         }
