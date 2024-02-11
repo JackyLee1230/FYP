@@ -1,3 +1,4 @@
+import json
 from nltk.corpus import stopwords
 import pika
 from pika import PlainCredentials
@@ -151,7 +152,10 @@ def consumer(ch, method, properties, body, inference_obj):
         local.channel.confirm_delivery()
 
     # forming the result
-    resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
+    resultToBeSentBack = json.dumps({
+        "reviewId": reviewId,
+        "sentiment": result[0]
+    })
 
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
@@ -160,7 +164,7 @@ def consumer(ch, method, properties, body, inference_obj):
         f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
     try:
         local.channel.basic_publish(
-            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}', mandatory=True)
+            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=resultToBeSentBack, mandatory=True)
 
         # the production queue
         # use the local thread channel to send back the result (to maintain thread-safe queue)
@@ -182,8 +186,12 @@ def callback(ch, method, properties, body):
     print("Received message:", body)
     # TODO: propose a JSON-like formating for msg
     # find the first occurance of ; and split it intwo two parts
-    reviewId = str(body)[0: str(body).find(";")]
-    comment = str(body)[str(body).find(";")+1:]
+    # reviewId = str(body)[0: str(body).find(";")]
+    # comment = str(body)[str(body).find(";")+1:]
+
+    JSONBody = json.loads(body)
+    reviewId = JSONBody['reviewId']
+    comment = JSONBody['reviewComment']
 
     # use thread pool executor to limit the number of threads spawned
     threadpoolexecutor.submit(
