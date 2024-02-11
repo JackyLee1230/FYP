@@ -157,6 +157,8 @@ def consumer(ch, method, properties, body, inference_obj):
         "sentiment": result[0]
     })
 
+    print(resultToBeSentBack)
+
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 

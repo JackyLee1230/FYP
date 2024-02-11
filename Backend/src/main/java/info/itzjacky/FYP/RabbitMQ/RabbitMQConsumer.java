@@ -38,8 +38,10 @@ public class RabbitMQConsumer {
             channel.basicAck(tag, false);
             return;
         }
+
+        logger.info("Received Payload: " + payload);
 //        given a json string is received, it is converted to a json object
-        JSONObject jsonObject = new JSONObject(payload);
+        JSONObject jsonObject = new JSONObject(payload.replace("b'", "").replace("b\"", ""));
         String reviewId = jsonObject.getString("reviewId");
         String sentiment = jsonObject.getString("sentiment");
 
