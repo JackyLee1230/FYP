@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 import numpy as np
 from scipy.special import softmax
 
@@ -34,8 +35,10 @@ def inference(s_list: list[str]):
     '''
     s_list = cleaning(s_list)
 
-    onnx_inputs = tokenizer(s_list, return_tensors="np", max_length=tokenizer.model_max_length, truncation=True)
-    onnx_outputs = session.run(output_names=output_names, input_feed=dict(onnx_inputs))                             # only get the unsoftmaxed logits
+    onnx_inputs = tokenizer(s_list, return_tensors="np",
+                            max_length=tokenizer.model_max_length, truncation=True)
+    onnx_outputs = session.run(output_names=output_names, input_feed=dict(
+        onnx_inputs))                             # only get the unsoftmaxed logits
     # onnx_outputs is wrapped with a list with 1 element
     # example: [array([[-1.9537997,  1.9723034],
     #    [ 1.4555761, -1.4444611],
@@ -103,8 +106,12 @@ def consumer(ch, method, properties, body, inference_obj):
         local.channel.confirm_delivery()
 
     # forming the result
-    resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
+    # resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
 
+    resultToBeSentBack = json.dumps({
+        'reviewId': reviewId,
+        'sentiment': result[0]
+    })
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 
@@ -173,9 +180,8 @@ def listen_to_queue():
         connection.close()
 
 
-
 if __name__ == "__main__":
-    
+
     DATASET_SIZE = 240
     DATASET_IS_BALANCED = True
 
@@ -189,7 +195,7 @@ if __name__ == "__main__":
         "../NLP/sa",
         training_name,
         '{}_{}_model_onnx'.format(training_name, training_args_datetime.strftime('%Y-%m-%d'))).resolve()
-    
+
     print(model_folder_path)
 
     # Load the ONNX model
