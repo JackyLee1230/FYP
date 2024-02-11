@@ -11,12 +11,12 @@ We only highlight the most critical packages that affect the code.
 |Dependency|version|Reason (if any)|
 |---|---|---|
 |python|3.9.18|picking 3.9 for max compatability across different packages|
-|pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files|
-|numpy|1.26.0|Suggested version. The exact version can be higher than that.|
+|pandas|2.1.0|to ensure pickle readability, the pandas version has to be this exact version as we create the pickle files. However, older versions of pandas can read pickles created with newer versions (tested in 1.5.x, as cuml latest supported ver of pandas is 1.5.x)|
+|numpy|1.26.0|Suggested version. The exact version can be higher/ (slightly) lower than that.|
 |scipy|1.11.4|for softmax|
-|scikit-learn|1.3.0|
-|imbalanced-learn|0.11.0|
-|nltk|3.8.1|
+|scikit-learn|1.3.0||
+|imbalanced-learn|0.11.0||
+|nltk|3.8.1||
 |tensorflow (or Keras) (with GPU)|2.15.0|It fixed model loading problem across WSL and macOS, allowing us to train on macOS platform and deploy it on WSL/linux, or vice versa.|
 |pytorch (w/ GPU)|2.1.0|Main stable version at setup|
 
@@ -32,12 +32,12 @@ Huggingface related
 RabbitMQ related
 |Dependency|version|Reason (if any)|
 |---|---|---|
-|pika|1.3.1|
+|pika|1.3.1||
 
 ONNX related
 |Dependency|version|Reason (if any)|
 |---|---|---|
-|onnx|1.14.1|tf2onnx suggests not above 1.14.1 as tf2onnx 1.15.1 is not that fully supporting onnx 1.15.0 <= (even though it shd be fine)
+|onnx|1.14.1|tf2onnx suggests not above 1.14.1 as tf2onnx 1.15.1 is not that fully supporting onnx 1.15.0 <= (even though it shd be fine)|
 |onnxruntime|1.16.3|The latest version at writing.|
 |skl2onnx|1.16.0|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
 |tf2onnx|1.15.1|Remarks: the package 'protobuf' has conflict with tensorflow. Reinstall the original version of protobuf after installing it.|
@@ -47,8 +47,8 @@ ONNX related
 Non-critical packages
 |Dependency|version|Reason (if any)|
 |---|---|---|
-|seaborn|0.13.0|
-|matplotlib|3.7.3|
+|seaborn|0.13.0||
+|matplotlib|3.7.3||
 
 Tentative packages for topic modelling
 |Dependency|version|Reason (if any)|
@@ -56,9 +56,9 @@ Tentative packages for topic modelling
 |spacy|3.7.2|Installation instructions: https://spacy.io/usage|
 |gensim|4.3.2|The latest at setup. Add memory-independent w.r.t. corpus size algorithms. And multicore LDA for faster building time. [Release Notes](https://pypi.org/project/gensim/4.3.0/)|
 |pyLDAvis|3.4.1||
-|octis|1.13.1|IMPORTANT: it will overwrite exitsing packages to the version of stated in the requirements.txt. It's safe to install newer versions of the packages above, as right now only the implementation of evaluation functions will be used (maybe use the optimization function as well, but definietly not the implementation of the models).|
+|~~octis~~|~~1.13.1~~|~~IMPORTANT: it will overwrite exitsing packages to the version of stated in the requirements.txt. It's safe to install newer versions of the packages above, as right now only the implementation of evaluation functions will be used (maybe use the optimization function as well, but definietly not the implementation of the models).~~|
 |sentence-transformers|2.2.2|the latest right now|
-|bertopic|0.16.0|the latest right now|
+|bertopic|0.16.0|the latest right now. Notes: for setting-up with Docker env, one shd manually install hdbscan with channel conda-forge to avoid deployment problems.|
 
 ## WSL2
 
