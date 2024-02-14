@@ -1,21 +1,26 @@
 # Script contains the function to create CTM dataset object
 # for training and evaluation
 
+import pickle
+import warnings
 import numpy as np
 import torch
 import platform
 
 from pathlib import Path
 
+from sentence_transformers import SentenceTransformer
+
 from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS
 from contextualized_topic_models.datasets.dataset import CTMDataset
 
 
 def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
-                       sbert_params, embedding_folder:Path,
+                       sbert_params, save_folder:Path,
                        vectorizer=None,      # keep None as for training, to create a new sklearn countvectorizer object
-                       countvect_params=None, additional_stopwords:list[str]=None      # for training
-                       ):
+                       countvect_params=None, 
+                       additional_stopwords:list[str]=None        # for training
+                       ):   
 
     # create bow
     if vectorizer is None:
@@ -69,7 +74,7 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
 
     # check existing embeddings
     # reuse them if found
-    embeddings_path = embedding_folder.joinpath(f'embeddings_{sbert_params["model_name_or_path"]}.pkl')
+    embeddings_path = save_folder.joinpath(f'embeddings_{sbert_params["model_name_or_path"]}.pkl')
     if embeddings_path.exists():
         with open(embeddings_path, 'rb') as f:
             embeddings = np.load(f)
@@ -79,7 +84,8 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
         # _print_message(f'Found existing sbert embeddings at {embeddings_path}. Reusing them.')
         # print(f'Found existing sbert embeddings at {embeddings_path}. Reusing them.')
     else:
-        embeddings = bert_embeddings_from_list(text_for_contextual, **sbert_params, device=device)
+        sbert_model = SentenceTransformer(**sbert_params, device=device)
+        embeddings = bert_embeddings_from_list(text_for_contextual, sbert_model, batch_size=64)
 
         with open(embeddings_path, 'wb') as f:
             np.save(f, embeddings)
@@ -88,9 +94,9 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
     # tp = TopicModelDataPreparation()
     # training_dataset = tp.fit(text_for_contextual=text_for_contextual, text_for_bow=text_for_bow, custom_embeddings=embeddings)
     dataset = CTMDataset(
-        X_contextual=embeddings,
-        X_bow=train_bow_embeddings,
-        idx2token=idx2token,
+        X_contextual=embeddings,        # depends on X_contextual -> preprocessed_docs_tmp, which depends on the vectorizer
+        X_bow=train_bow_embeddings,     # depends on preprocessed_docs_tmp, which depends on the vectorizer
+        idx2token=idx2token,            # depends on vectorizer
         labels=None
     )
 
@@ -105,29 +111,26 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
 # copy from: https://github.com/MilaNLProc/contextualized-topic-models/blob/master/contextualized_topic_models/utils/data_preparation.py#L44
 # call bert_embeddings_from_list() to produce embeddings by ourself
 
-import warnings
-from sentence_transformers import SentenceTransformer
+# import warnings
 
 def bert_embeddings_from_list(
     texts, 
-    model_name_or_path, 
+    sbert_model,
     batch_size=32, 
     max_seq_length=None,            # 128 is the default valule in TopicModelDataPreparation() init. Passing none to use the default value of each model
-    device='cpu'):
+    ):
     """
     Creates SBERT Embeddings from a list
     """
 
-    model = SentenceTransformer(model_name_or_path, device=device)
-
     if max_seq_length is not None:
-        model.max_seq_length = max_seq_length
+        sbert_model.max_seq_length = max_seq_length
     else:
-        max_seq_length = model.max_seq_length
+        max_seq_length = sbert_model.max_seq_length
 
     check_max_local_length(max_seq_length, texts)
 
-    return np.array(model.encode(texts, batch_size=batch_size, show_progress_bar=True))
+    return np.array(sbert_model.encode(texts, batch_size=batch_size, show_progress_bar=True))
 
 
 def check_max_local_length(max_seq_length, texts):
