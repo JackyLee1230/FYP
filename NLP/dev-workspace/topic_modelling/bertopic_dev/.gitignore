@@ -1,3 +1,5 @@
 *.pth
 
 bertopic_*/
+
+bertopic*split*_*/

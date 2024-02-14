@@ -1,3 +1,5 @@
 *.pth
 
 ctm_*search*/
+
+ctm*split*_genre_indie_grid_search_20240214_220432
