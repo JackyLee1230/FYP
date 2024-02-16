@@ -1,0 +1,7 @@
+Transformer (sbert) tokenization fix
+
+https://www.kdnuggets.com/2021/04/apply-transformers-any-length-text.html
+https://medium.com/mim-solutions-blog/fine-tuning-bert-model-for-arbitrarily-long-texts-part-1-299f1533b976
+https://medium.com/mim-solutions-blog/fine-tuning-bert-model-for-arbitrarily-long-texts-part-2-3211d1774dc9
+https://github.com/mim-solutions/bert_for_longer_texts/blob/main/belt_nlp/splitting.py#L14
+https://blog.csdn.net/qysh123/article/details/126438203
