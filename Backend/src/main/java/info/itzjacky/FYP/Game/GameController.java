@@ -369,12 +369,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                 return new ResponseEntity<String>(game.getAnalytic(), HttpStatus.OK);
             }
 
-            game.setGameReviews(null);
-            game.setDLCS(null);
-            game.setBaseGame(null);
-            game.setDevelopers(null);
-            game.setPlatformReviews(null);
-
             List<Review> reviews = reviewRepository.findReviewsByGameId(gameRequest.getId());
             HashMap<String, Integer> genderCount = new HashMap<>();
             genderCount.put("MALE", 0);
@@ -539,6 +533,11 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
             gameRepository.save(game);
+            game.setGameReviews(null);
+            game.setDLCS(null);
+            game.setBaseGame(null);
+            game.setDevelopers(null);
+            game.setPlatformReviews(null);
             return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
