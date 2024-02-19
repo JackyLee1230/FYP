@@ -19,8 +19,8 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
                        sbert_params, save_folder:Path,
                        vectorizer=None,      # keep None as for training, to create a new sklearn countvectorizer object
                        countvect_params=None, 
-                       additional_stopwords:list[str]=None        # for training
-                       ):   
+                       additional_stopwords:list[str]=None,        # for training
+                       X_contextual_embedding_path:Path=None):       # for evaluation)
 
     # create bow
     if vectorizer is None:
@@ -44,8 +44,10 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
     assert len(X_contextual) == len(preprocessed_docs_tmp), f'len(text_for_contextual): {len(X_contextual)}, len(preprocessed_docs_tmp): {len(preprocessed_docs_tmp)}'
 
     # remove empty docs
+    index_to_remove = []
     for i, (tfc, tfb) in enumerate(zip(X_contextual, preprocessed_docs_tmp)):
         if len(tfb) == 0 or len(tfc) == 0:
+            index_to_remove.append(i)
             continue
             
         text_for_contextual.append(tfc)
@@ -74,13 +76,23 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
 
     # check existing embeddings
     # reuse them if found
-    embeddings_path = save_folder.joinpath(f'embeddings_{sbert_params["model_name_or_path"]}.pkl')
+    embeddings_path = X_contextual_embedding_path if X_contextual_embedding_path else save_folder.joinpath(f'embeddings_{sbert_params["model_name_or_path"]}.pkl')
     if embeddings_path.exists():
         with open(embeddings_path, 'rb') as f:
             embeddings = np.load(f)
 
-        assert embeddings.shape[0] == len(text_for_contextual)
+        try:
+            assert embeddings.shape[0] == len(text_for_contextual), f'embeddings.shape[0]: {embeddings.shape[0]}, len(text_for_contextual): {len(text_for_contextual)}'
+            
+            # assert successful
+            print(f'Found existing sbert embeddings at {embeddings_path}. Reusing them.')
+        except AssertionError as e:
+            print('Shape of existing embeddings does not match the length of text_for_contextual. Recreating the embeddings.')
+            print(f'embeddings.shape[0]: {embeddings.shape[0]}, len(text_for_contextual): {len(text_for_contextual)}')
 
+            sbert_model = SentenceTransformer(**sbert_params, device=device)
+            embeddings = bert_embeddings_from_list(text_for_contextual, sbert_model, batch_size=64)
+            
         # _print_message(f'Found existing sbert embeddings at {embeddings_path}. Reusing them.')
         # print(f'Found existing sbert embeddings at {embeddings_path}. Reusing them.')
     else:
@@ -101,8 +113,7 @@ def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
     )
 
     return dataset, \
-        vectorizer, embeddings, X_tmp          # additional return for training
-
+        vectorizer, embeddings, X_tmp, index_to_remove      # additional return for training (first three), and evaluation (last two)
 
 ##########
 # Other utils
