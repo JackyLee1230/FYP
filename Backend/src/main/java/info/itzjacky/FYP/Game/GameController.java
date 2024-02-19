@@ -533,11 +533,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
             gameRepository.save(game);
-            game.setGameReviews(null);
-            game.setDLCS(null);
-            game.setBaseGame(null);
-            game.setDevelopers(null);
-            game.setPlatformReviews(null);
             return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
