@@ -105,13 +105,11 @@ def consumer(ch, method, properties, body, inference_obj):
         local.channel = thread_channel
         local.channel.confirm_delivery()
 
-    # forming the result
-    # resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
-
     resultToBeSentBack = json.dumps({
         'reviewId': reviewId,
         'sentiment': result[0]
     })
+    print(result)
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 
