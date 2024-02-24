@@ -387,6 +387,15 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             sentimentCount.put("NEUTRAL", 0);
             sentimentCount.put("N/A", 0);
 
+            HashMap<String, Integer> recommendedCount = new HashMap<>();
+            recommendedCount.put("RECOMMEND", 0);
+            recommendedCount.put("DO NOT RECOMMEND", 0);
+
+            HashMap<String, Integer> reviewLength = new HashMap<>();
+            reviewLength.put("0-100", 0);reviewLength.put("100-200", 0);reviewLength.put("200-300", 0);reviewLength.put("300-400", 0);reviewLength.put("400-500", 0);
+            reviewLength.put("500-600", 0);reviewLength.put("600-700", 0);reviewLength.put("700-800", 0);reviewLength.put("800-900", 0);reviewLength.put("900-1000", 0);
+            reviewLength.put("1000+", 0);
+
 
             HashMap<String, Integer> positiveMap = new HashMap<>();
             positiveMap.put("MALE", 0);positiveMap.put("FEMALE", 0);
@@ -493,6 +502,40 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     String s = sentimentMapper(r.getSentiment());
                     sentimentCount.put(s, sentimentCount.get(s) + 1);
                 }
+//                RECOMMEND
+                Boolean userSentiment = r.isRecommended();
+                if (userSentiment.equals(true)) {
+                    recommendedCount.put("RECOMMEND", recommendedCount.get("RECOMMEND") + 1);
+                } else {
+                    recommendedCount.put("DO NOT RECOMMEND", recommendedCount.get("DO NOT RECOMMEND") + 1);
+                }
+//                REVIEW LENGTH (WORD COUNT)
+                String comment = r.getComment();
+                int wordCount = comment.split("\\s+").length;
+                if (wordCount <= 100) {
+                    reviewLength.put("0-100", reviewLength.get("0-100") + 1);
+                } else if (wordCount <= 200) {
+                    reviewLength.put("100-200", reviewLength.get("100-200") + 1);
+                } else if (wordCount <= 300) {
+                    reviewLength.put("200-300", reviewLength.get("200-300") + 1);
+                } else if (wordCount <= 400) {
+                    reviewLength.put("300-400", reviewLength.get("300-400") + 1);
+                } else if (wordCount <= 500) {
+                    reviewLength.put("400-500", reviewLength.get("400-500") + 1);
+                } else if (wordCount <= 600) {
+                    reviewLength.put("500-600", reviewLength.get("500-600") + 1);
+                } else if (wordCount <= 700) {
+                    reviewLength.put("600-700", reviewLength.get("600-700") + 1);
+                } else if (wordCount <= 800) {
+                    reviewLength.put("700-800", reviewLength.get("700-800") + 1);
+                } else if (wordCount <= 900) {
+                    reviewLength.put("800-900", reviewLength.get("800-900") + 1);
+                } else if (wordCount <= 1000) {
+                    reviewLength.put("900-1000", reviewLength.get("900-1000") + 1);
+                } else {
+                    reviewLength.put("1000+", reviewLength.get("1000+") + 1);
+                }
+
 //                SENTIMENT BY GENDER
                 if (sentiment != null) {
                     String s = sentimentMapper(r.getSentiment());
@@ -522,6 +565,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             jsonObject.put("genderReviews", genderCount);
             jsonObject.put("ageReviews", ageCount);
             jsonObject.put("sentimentReviews", sentimentCount);
+            jsonObject.put("recommendedReviews", recommendedCount);
+            jsonObject.put("reviewLength", reviewLength);
             jsonObject.put("sentimentReviewsByGender", sentimentCountByGender);
             jsonObject.put("numberOfFavourites", game.getNumberOfFavourites());
             jsonObject.put("numberOfWishlists", game.getNumberOfWishlists());
