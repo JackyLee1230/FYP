@@ -42,7 +42,8 @@ public class RabbitMQConsumer {
         logger.info("Received Payload: " + payload);
 //        given a json string is received, it is converted to a json object
         JSONObject jsonObject = new JSONObject(payload.replace("b'", "").replace("b\"", ""));
-        String reviewId = jsonObject.getString("reviewId");
+        Integer rId = jsonObject.getInt("reviewId");
+        String reviewId = rId.toString();
         String sentiment = jsonObject.getString("sentiment");
 
 //        String result = payload.replace("b\"", "").replace("b'", "");

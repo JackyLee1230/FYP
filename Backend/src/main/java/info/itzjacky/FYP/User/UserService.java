@@ -59,6 +59,8 @@ public class UserService {
         try{
             user.setNumOfReviews(0);
             user.setJoinDate(new Date().toString());
+            user.setIsPrivate(true);
+            user.setIsVerified(false);
             userRepository.save(user);
             return user;
         }catch (Exception e){
