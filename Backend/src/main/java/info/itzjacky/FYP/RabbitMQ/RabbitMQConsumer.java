@@ -44,7 +44,7 @@ public class RabbitMQConsumer {
         JSONObject jsonObject = new JSONObject(payload.replace("b'", "").replace("b\"", ""));
         Integer rId = jsonObject.getInt("reviewId");
         String reviewId = rId.toString();
-        String sentiment = jsonObject.getString("sentiment");
+        Integer sentiment = jsonObject.getInt("sentiment");
 
 //        String result = payload.replace("b\"", "").replace("b'", "");
 //        String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
