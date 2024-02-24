@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -557,7 +558,17 @@ public class ReviewService {
         if(reviewRequest.getScore() < 0 || reviewRequest.getScore() > 100){
             throw new IllegalStateException("Score Must Be Between 0 and 100");
         }
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        take a date with format yyyy-MM-dd hh:mm:ss
+//        and convert it to a java.sql.Date
+        String createdAt = reviewRequest.getCreatedAt();
+//        convert the string to a date
+        java.sql.Date date = null;
+        try {
+            date = new java.sql.Date(formatter.parse(createdAt).getTime());
+        } catch (Exception e){
+            throw new IllegalStateException("Cannot create Review");
+        }
         Review review = Review.builder()
                 .reviewer(userRepository.findUserById(reviewRequest.getReviewerId()))
                 .reviewedGame(gameRepository.findGameById(reviewRequest.getGameId()))
@@ -573,6 +584,11 @@ public class ReviewService {
                 .sponsored(reviewRequest.getIsSponsored() == null ? false : reviewRequest.getIsSponsored())
                 .build();
         try{
+            reviewRepository.save(review);
+
+            if (review.getCreatedAt() != null) {
+                review.setCreatedAt(date);
+            }
             reviewRepository.save(review);
             reviewer.setNumOfReviews((reviewer.getNumOfReviews() == null ? 0 : reviewer.getNumOfReviews()) + 1);
             reviewer.setReviews(reviewRepository.findReviewsByReviewerName(reviewer.getName()));
