@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+import traceback
 import numpy as np
 from scipy.special import softmax
 
@@ -105,16 +106,21 @@ def consumer(ch, method, properties, body, inference_obj):
         local.channel = thread_channel
         local.channel.confirm_delivery()
 
-    resultToBeSentBack = json.dumps({
+    try:
+        resultToBeSentBack = json.dumps({
         'reviewId': reviewId,
-        'sentiment': result[0]
+        'sentiment': result[0].item()       # numpy.int64 cannot be serialized, converting to the native int type
     })
-    print(result)
+    except Exception as e:
+        print("Error encoding the result:", e)
+        print(traceback.format_exc())
+        return      # skip handling the message (?)
+
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 
     print(
-        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
+        f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
     try:
         local.channel.basic_publish(
             exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}', mandatory=True)
@@ -137,10 +143,20 @@ def consumer(ch, method, properties, body, inference_obj):
 def callback(ch, method, properties, body):
     # Process the received message
     print("Received message:", body)
-    # TODO: propose a JSON-like formating for msg
-    # find the first occurance of ; and split it intwo two parts
-    reviewId = str(body)[0: str(body).find(";")]
-    comment = str(body)[str(body).find(";")+1:]
+
+    # body is a json string
+    try:
+        _body = json.loads(body)
+        reviewId = int(_body['reviewId'])
+        comment = _body['reviewComment']
+    except json.JSONDecodeError as e:
+        print("Error decoding the message:", e)
+        print(traceback.format_exc())
+        return
+    except ValueError as e:
+        print("Error parsing the reviewId:", e)
+        print(traceback.format_exc())
+        return
 
     # use thread pool executor to limit the number of threads spawned
     threadpoolexecutor.submit(
