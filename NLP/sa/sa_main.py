@@ -108,9 +108,10 @@ def consumer(ch, method, properties, body, inference_obj):
 
     try:
         resultToBeSentBack = json.dumps({
-        'reviewId': reviewId,
-        'sentiment': result[0].item()       # numpy.int64 cannot be serialized, converting to the native int type
-    })
+            'reviewId': reviewId,
+            # numpy.int64 cannot be serialized, converting to the native int type
+            'sentiment': result[0].item()
+        })
     except Exception as e:
         print("Error encoding the result:", e)
         print(traceback.format_exc())
@@ -147,8 +148,8 @@ def callback(ch, method, properties, body):
     # body is a json string
     try:
         _body = json.loads(body)
-        reviewId = int(_body['reviewId'])
-        comment = _body['reviewComment']
+        reviewId = int(_body["reviewId"])
+        comment = _body["reviewComment"]
     except json.JSONDecodeError as e:
         print("Error decoding the message:", e)
         print(traceback.format_exc())
