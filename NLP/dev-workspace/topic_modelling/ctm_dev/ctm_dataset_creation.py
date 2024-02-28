@@ -14,6 +14,9 @@ from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS
 from contextualized_topic_models.datasets.dataset import CTMDataset
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)     # disable sklearn CountVectorizer warning
+
 
 def create_ctm_dataset(X_contextual:list[str], X_bow:list[str], X:list[str],
                        sbert_params, save_folder:Path,
