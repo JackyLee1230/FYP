@@ -1,7 +1,10 @@
 sampled_*/
 
 dataset_cleaned_heartless.pkl
+dataset_cleaned_heartless_cleaned.pkl
 
 dataset_heartless_*.pkl
 
 *.csv
+
+steam.csv.bz2
