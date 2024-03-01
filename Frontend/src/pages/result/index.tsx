@@ -207,6 +207,10 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
           flex: "1 0 0",
           margin: "0 auto",
 
+          [theme.breakpoints.down("md")]: {
+            padding: "24px 16px",
+          },
+
           [theme.breakpoints.down("sm")]: {
             padding: "12px 12px",
           },
@@ -315,9 +319,14 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
             padding: "32px 0px",
             gap: "32px",
 
-            [theme.breakpoints.down("sm")]: {
+            [theme.breakpoints.down("md")]: {
               padding: "24px 0px",
               gap: "24px",
+            },
+
+            [theme.breakpoints.down("sm")]: {
+              padding: "12px 0px",
+              gap: "12px",
             },
           }}
         >

@@ -1,7 +1,7 @@
 import { getPlatform } from "@/type/gamePlatform";
 import { getScoreColor } from "@/utils/DynamicScore";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
-import { Box, ButtonBase, Typography } from "@mui/material";
+import { Box, ButtonBase, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +13,10 @@ type SearchGameCardProps = {
 };
 
 function SearchGameCard({ gameData }: SearchGameCardProps) {
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
+
   return (
     <ButtonBase
       sx={{ borderRadius: "12px 4px" }}
@@ -32,6 +36,11 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
           boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           overflow: "hidden",
           width: "100%",
+
+          [theme.breakpoints.down("md")]: {
+            padding: "8px 0px 8px 24px",
+            gap: "16px",
+          },
         })}
       >
         <Box
@@ -87,6 +96,10 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             overflow: "hidden",
             justifyContent: "space-between",
             height: "100%",
+
+            [theme.breakpoints.down("md")] :{
+              padding: "8px",
+            }
           }}
         >
           <Box
@@ -97,11 +110,11 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
               alignSelf: "stretch",
             }}
           >
-            <Typography variant="h4" gutterBottom={false} noWrap>
+            <Typography variant={isTablet ? "h5" : "h4"} gutterBottom={false} noWrap fontWeight={500} color="text.primary">
               {gameData?.name}{" "}
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant={isTablet ? "subtitle2" : "subtitle1"}
               gutterBottom={false}
               color="text.secondary"
               noWrap
@@ -221,6 +234,10 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
 
               borderRadius: "32px",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+
+              [theme.breakpoints.down("md")]: {
+                width: "155px",
+              },
             })}
             bgcolor={
               gameData.score
@@ -229,7 +246,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             }
           >
             <Typography
-              variant="h2"
+              variant={isTablet ? "h3" : "h2"}
               gutterBottom={false}
               color="background.default"
               sx={{
