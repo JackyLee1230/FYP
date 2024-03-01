@@ -95,9 +95,9 @@ function GameReviewCardSmall({
           >
             <ButtonBase
               LinkComponent={Link}
-              href={`/games/${review?.reviewedGame.id}`}
+              href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/user/${review?.reviewer?.id}`}
               sx={{ borderRadius: "6%", bgcolor: "grey.100" }}
-              disabled={!review?.reviewedGame.id}
+              disabled={mode === "game" ? !review?.reviewedGame.id : !review?.reviewer?.id}
             >
               <Avatar
                 alt="Game Icon"

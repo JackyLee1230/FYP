@@ -50,7 +50,7 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
         sx={{ fontWeight: "bold", textAlign: "center" }}
         color="info.main"
       >
-        {`${game?.name} Detailed Information`}
+        {`${game?.name}`}
       </Typography>
       <Typography
         variant="subtitle1"

@@ -1,7 +1,9 @@
 import { CustomArrowLeft, CustomArrowRight } from "@/components/CustomArrows";
 import GameDLCCard from "@/components/GameDLCCard";
+import GameDLCCardSmall from "@/components/GameDLCCardSmall";
 import GameDetailBox from "@/components/GameDetailBox";
 import GameReviewCard from "@/components/GameReviewCard";
+import GameReviewCardSmall from "@/components/GameReviewCardSmall";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import ReviewInputBox from "@/components/ReviewInputBox";
 import { useAuthContext } from "@/context/AuthContext";
@@ -34,9 +36,12 @@ import {
   alpha,
   circularProgressClasses,
   styled,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import axios from "axios";
 import { format } from "date-fns";
+import { is } from "date-fns/locale";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -135,6 +140,9 @@ function GamePage({ game, errorMessage }: GamePageProps) {
   const [open, setOpen] = useState(false);
   const [userReview, setUserReview] = useState<GameReview | null>(null);
   const [isUserReviewLoading, setIsUserReviewLoading] = useState<boolean>(true);
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [favourited, setFavourited] = useState<boolean | null>(null);
   const [favouriteButtonDisabled, setFavouriteButtonDisabled] =
@@ -295,7 +303,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           justifyContent: "center",
           alignContent: "center",
           flexDirection: "column",
-          gap: 4,
+          gap: "32px",
         }}
       >
         <Typography variant="h4" sx={{ textAlign: "center" }}>
@@ -350,6 +358,16 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           flex: "1 0 0",
           margin: "0 auto",
           gap: "32px",
+          
+          [theme.breakpoints.down("md")]: {
+            padding: "18px 16px",
+            gap: "16px",
+          },
+
+          [theme.breakpoints.down("sm")]: {
+            padding: "12px 12px",
+            gap: "12px",
+          },
         }}
       >
         <Box
@@ -363,6 +381,10 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             background: alpha("#FFFFFF", 0.5),
             overflow: "hidden",
+
+            [theme.breakpoints.down("sm")]: {
+              borderRadius: "12px 12px 48px 12px",
+            },
           }}
         >
           <Box
@@ -371,6 +393,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               width: "100%",
               display: "flex",
               position: "relative",
+
+              [theme.breakpoints.down("sm")]: {
+                height: "366px",
+                maxHeight: "36vh",
+                minHeight: "266px",
+              }
             }}
           >
             {game?.iconUrl ? (
@@ -393,7 +421,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 }}
               >
                 <StyledBrokenImageIcon />
-                <Typography variant="h3" color="error">
+                <Typography variant={isTablet ? "h5" : "h3"} color="error">
                   This game has no icon
                 </Typography>
               </Box>
@@ -405,6 +433,9 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 padding: "24px 42px",
                 width: "100%",
                 height: "100%",
+                [theme.breakpoints.down("sm")]: {
+                  padding: "12px 24px",
+                }
               }}
             >
               <Box
@@ -416,6 +447,10 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   position: "absolute",
                   left: "42px",
                   top: "24px",
+                  
+                  [theme.breakpoints.down("sm")]: {
+                    display: "none",
+                  }
                 }}
               >
                 <Button
@@ -447,7 +482,6 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                       : "Favourite"}
                   </Typography>
                 </Button>
-                {/* Wishlist Btn */}
                 <Button
                   variant="contained"
                   color={wishlisted ? "error" : "success"}
@@ -484,6 +518,10 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 sx={{
                   position: "absolute",
                   right: "42px",
+                  
+                  [theme.breakpoints.down("sm")]: {
+                    right: "8px",
+                  }
                 }}
               >
                 <Button
@@ -507,8 +545,13 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               <Box
                 sx={{
                   position: "absolute",
-                  right: "42px",
-                  bottom: "24px",
+                  [theme.breakpoints.up("sm")]: {
+                    right: "42px",
+                    bottom: "24px",
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    left: "8px",
+                  },
                 }}
               >
                 {game.genre && game.genre.length > 0 && (
@@ -529,12 +572,15 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                         background: theme.palette.info.main,
                         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                         display: "flex",
-                        padding: "4px 16px",
+                        padding: "8px 16px",
                         justifyContent: "center",
                         alignItems: "center",
+                        [theme.breakpoints.down("sm")]: {
+                          padding: "8px 12px",
+                        }
                       })}
                     >
-                      <Typography variant="h6" color="background.default">
+                      <Typography variant={isTablet ? "body2" : "h6"} color="background.default">
                         {game.genre &&
                           game.genre.length > 0 &&
                           game.genre
@@ -557,6 +603,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   gap: "16px",
                   justifyContent: "flex-end",
                   alignItems: "flex-end",
+
+                  [theme.breakpoints.down("sm")]: {
+                    left: "8px",
+                    bottom: "12px",
+                    gap: "8px",
+                  },
                 }}
               >
                 {game.inDevelopment && (
@@ -572,15 +624,25 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                         alignItems: "center",
                         gap: "12px",
                         flexDirection: "row",
+                        [theme.breakpoints.down("md")]: {
+                          padding: "8px 16px",
+                          gap: "8px",
+                        },
+                        [theme.breakpoints.down("sm")]: {
+                          padding: "4px 12px",
+                        },
                       })}
                     >
-                      <Typography variant="h4" color="background.default">
+                      <Typography variant={isTablet ? "subtitle1" : "h4"} color="background.default">
                         Early Access
                       </Typography>
                       <HelpOutlineIcon
                         sx={{
                           fontSize: "24px",
                           color: "background.default",
+                          [theme.breakpoints.down("md")]: {
+                            fontSize: "20px",
+                          },
                         }}
                       />
                     </Box>
@@ -608,9 +670,13 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                           gap: "8px",
                           flexDirection: "row",
                           height: "fit-content",
+                          [theme.breakpoints.down("md")]: {
+                            padding: "4px 12px",
+                            gap: "4px",
+                          },
                         })}
                       >
-                        <Typography variant="h5" color="background.default">
+                        <Typography variant={isTablet ? "subtitle2" : "h5"} color="background.default">
                           DLC
                         </Typography>
                         <ArrowCircleRightOutlinedIcon
@@ -625,6 +691,69 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 )}
               </Box>
             </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                right: "8px",
+                bottom: "8px",
+                [theme.breakpoints.up("sm")]: {
+                  display: "none"
+                },
+              }}
+            >
+              <CircularProgress
+                variant="determinate"
+                size={102}
+                thickness={4}
+                value={100}
+                sx={(theme) => ({
+                  color: theme.palette.divider,
+                  opacity: 0.4,
+                })}
+              />
+              <CircularProgress
+                variant="determinate"
+                size={102}
+                thickness={4}
+                value={game?.score ?? 0}
+                color={getScoreColor(game?.percentile)}
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  [`& .${circularProgressClasses.circle}`]: {
+                    strokeLinecap: "round",
+                  },
+                }}
+              />
+              <Box
+                sx={{
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  position: "absolute",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  component="div"
+                  sx={{
+                    fontWeight: 700,
+                    textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                  }}
+                  color={
+                    game.score
+                      ? `${getScoreColor(game.percentile)}.main`
+                      : "divider"
+                  }
+                >
+                  {game.score ? Math.round(game.score).toString() : "N/A"}
+                </Typography>
+              </Box>
+            </Box>
           </Box>
 
           <Box
@@ -636,6 +765,14 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               alignItems: "flex-start",
               gap: "16px",
               background: theme.palette.background.paper,
+              [theme.breakpoints.down("md")]: {
+                padding: "16px 24px",
+                gap: "12px",
+              },
+              [theme.breakpoints.down("sm")]: {
+                padding: "12px 16px",
+                gap: "8px",
+              },
             })}
           >
             <Box
@@ -647,7 +784,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               }}
             >
               <Typography
-                variant="h4"
+                variant={isTablet? "h6" : "h4"}
                 color="text.primary"
                 sx={{
                   fontWeight: 700,
@@ -657,6 +794,75 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               >
                 {`${game.name} ${game.dlc && game.baseGame ? "(DLC)" : ""}`}
               </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                alignSelf: "center",
+                gap: "8px",
+                [theme.breakpoints.up("sm")]: {
+                  display: "none",
+                }
+              }}
+            >
+              <Button
+                variant="contained"
+                color={favourited ? "error" : "success"}
+                size="medium"
+                sx={{
+                  width: "fit-content",
+                }}
+                disabled={favouriteButtonDisabled}
+                onClick={async () => {
+                  setFavouriteButtonDisabled(true);
+                  const r = await favouriteGame(Number(game.id), token!)
+                    .then((result) => {
+                      setFavourited(result);
+                      setFavouriteButtonDisabled(false);
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                      setFavouriteButtonDisabled(true);
+                    });
+                }}
+              >
+                <Typography variant="subtitle1" color="white">
+                  {favourited && favourited === true
+                    ? "UnFavourite"
+                    : "Favourite"}
+                </Typography>
+              </Button>
+              <Button
+                variant="contained"
+                color={wishlisted ? "error" : "success"}
+                sx={{
+                  width: "fit-content",
+                }}
+                size="medium"
+                disabled={wishlistButtonDisabled}
+                onClick={async () => {
+                  setWishlistButtonDisabled(true);
+                  const r = await wishlistGame(Number(game.id), token!)
+                    .then((result) => {
+                      setWishlisted(result);
+
+                      setWishlistButtonDisabled(false);
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                      setWishlistButtonDisabled(true);
+                    });
+                }}
+              >
+                <Typography variant="subtitle1" color="white">
+                  {user && wishlisted && wishlisted === true
+                    ? "UnWishlist"
+                    : "Wishlist"}
+                </Typography>
+              </Button>
             </Box>
 
             <Box
@@ -681,7 +887,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 }}
               >
                 <Typography
-                  variant="h6"
+                  variant={isTablet? "body1" : "h6"}
                   color="text.primary"
                   sx={{
                     display: "-webkit-box",
@@ -691,12 +897,19 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                     fontWeight: 500,
                     overflow: "hidden",
                     height: "100%",
+                    wordBreak: "break-all",
+                    [theme.breakpoints.down("md")]: {
+                      WebkitLineClamp: 4,
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      WebkitLineClamp: 6,
+                    },
                   }}
                 >
                   {`${game.description ?? "No Description"}`}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -710,7 +923,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                     : "Unknown"}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -720,7 +933,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   {`${game?.version ? game?.version : "Unknown"}`}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -734,7 +947,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   }`}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -746,7 +959,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   }`}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -756,7 +969,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   {`${game?.publisher ? game?.publisher : "Unknown"}`}
                 </Typography>
                 <Typography
-                  variant="subtitle1"
+                  variant={isTablet? "body2" : "subtitle1"}
                   color="text.primary"
                   sx={{
                     fontWeight: 500,
@@ -775,6 +988,9 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 sx={{
                   position: "relative",
                   display: "inline-flex",
+                  [theme.breakpoints.down("sm")]: {
+                    display: "none",
+                  },
                 }}
               >
                 <CircularProgress
@@ -839,6 +1055,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             display: "flex",
             flexDirection: "row",
             gap: "24px",
+            [theme.breakpoints.down("md")]: {
+              gap: "16px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "12px",
+            },
           }}
         >
           <Box
@@ -847,6 +1069,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               flexDirection: "column",
               gap: "24px",
               flex: 1,
+              [theme.breakpoints.down("md")]: {
+                gap: "16px",
+              },
+              [theme.breakpoints.down("sm")]: {
+                gap: "12px",
+              },
             }}
           >
             <Divider textAlign="left" flexItem={true}>
@@ -865,7 +1093,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   }}
                 >
                   <Typography
-                    variant="h4"
+                    variant={isTablet? "h6" : "h4"}
                     color="info.main"
                     sx={{ fontWeight: 700 }}
                   >
@@ -881,14 +1109,14 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               </Tooltip>
             </Divider>
             <Typography
-              variant="subtitle1"
+              variant={isTablet? "body2" : "subtitle1"}
               color="info.main"
               sx={{ fontWeight: 500 }}
             >
               COMING SOON....
             </Typography>
           </Box>
-          {!game?.dlc && game?.dlcs && game?.dlcs.length > 0 && (
+          {!isTablet && !game?.dlc && game?.dlcs && game?.dlcs.length > 0 && (
             <>
               <Divider orientation="vertical" flexItem />
               <Box>
@@ -934,12 +1162,70 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           )}
         </Box>
 
+        {isTablet && !game?.dlc && game?.dlcs && game?.dlcs.length > 0 && (
+          <Box>
+            <Divider textAlign="left">
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "12px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              > 
+                <Typography
+                  variant="h6"
+                  color="primary.main"
+                  sx={{ fontWeight: 700 }}
+                >
+                  DLC
+                </Typography>
+              </Box>
+            </Divider>
+
+            <Box
+              sx={{
+                width: "90%",
+                padding: "16px 0px",
+                display: "block",
+                margin: "auto",
+              }}
+            >
+              <Slider
+                dots
+                infinite
+                speed={500}
+                slidesToShow={1}
+                slidesToScroll={1}
+                draggable={false}
+                autoplay
+                autoplaySpeed={3000}
+                lazyLoad="ondemand"
+                cssEase="linear"
+                nextArrow={<CustomArrowRight size="small" />}
+                prevArrow={<CustomArrowLeft size="small" />}
+              >
+                {game?.dlcs.map((dlc) => (
+                  isMobile ? <Box sx={{padding: "4px"}}key={dlc.id}><GameDLCCardSmall game={dlc} /></Box> : <Box key={dlc.id}><GameDLCCard key={dlc.id} game={dlc} /></Box>
+                ))}
+              </Slider>
+            </Box>
+          </Box>
+        )}
+
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 4,
+            gap: "24px",
             flex: 1,
+            [theme.breakpoints.down("md")]: {
+              gap: "16px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "12px",
+            },
           }}
         >
           <a id="add-review">
@@ -954,7 +1240,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 }}
               > 
                 <Typography
-                  variant="h4"
+                  variant={isTablet? "h6" : "h4"}
                   color="secondary.main"
                   sx={{ fontWeight: 700 }}
                 >
@@ -978,7 +1264,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               }}
             >
               <Typography
-                variant="h5"
+                variant={isTablet? "subtitle1" : "h5"}
                 color="secondary.main"
                 sx={{ fontWeight: 500 }}
               >
@@ -1007,7 +1293,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               }}
             >
               <Typography
-                variant="body1"
+                variant={isTablet? "body2" : "body1"}
                 color="secondary"
                 sx={{ fontWeight: 500 }}
               >
@@ -1083,7 +1369,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
                 {reviews.map((review) => (
                   <Grid item xs={12} lg={6} key={review.id}>
-                    <GameReviewCard review={review} />
+                    {isTablet ? <GameReviewCardSmall review={review} /> : <GameReviewCard review={review} />}
                   </Grid>
                 ))}
               </Grid>
@@ -1106,7 +1392,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           ) : (
             <Box>
               <Typography
-                variant="subtitle1"
+                variant={isTablet? "body2" : "subtitle1"}
                 color="secondary.main"
                 sx={{ fontWeight: 500 }}
               >

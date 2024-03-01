@@ -212,26 +212,26 @@ const Cropper = ({ setUpdateIconOpen }) => {
         }
       }}
     >
-      <IconButton 
-        size="large" 
-        onClick={() => setUpdateIconOpen(false)} 
+      <Box
         sx={{
-          position: "absolute",
-          top: 24,
-          right: 36,
-
-          [theme.breakpoints.down("sm")]: {
-            top: 12,
-            right: 18,
-          }
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
         }}
       >
-        <CloseRoundedIcon/>
-      </IconButton>
-
-      <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{ fontWeight: 700 }}>
-        Change Your Profile Icon
-      </Typography>
+        <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{ fontWeight: 700 }}>
+          Change Your Profile Icon
+        </Typography>
+        <IconButton 
+          size="large" 
+          onClick={() => setUpdateIconOpen(false)} 
+        >
+          <CloseRoundedIcon/>
+        </IconButton> 
+      </Box>
+      
       <DialogContent
         sx={{
           display: "flex",

@@ -348,27 +348,37 @@ function GameSearchPage({ gameData, errorMessage }: GameSearchPageProps) {
                   contact support for help.
                 </Typography>
               ) : (
-                <Typography
-                  variant="body1"
-                  component="div"
-                  sx={{ color: "text.secondary" }}
-                >
-                  We cannot find a result match with{" "}
-                  <Box
-                    display="inline"
-                    sx={{ color: "text.primary", fontWeight: 700 }}
-                  >{`"${searchString}"`}</Box>
-                  , Please double check the spelling and try again.
-                  {(platform || genre) && (
+                searchString ? (
+                  <Typography
+                    variant="body1"
+                    component="div"
+                    sx={{ color: "text.secondary" }}
+                  >
+                    We cannot find a result match with{" "}
                     <Box
                       display="inline"
-                      sx={{ color: "text.secondary", fontWeight: 400 }}
-                    >
-                      {" "}
-                      Or to remove some of the filter attributes
-                    </Box>
-                  )}
-                </Typography>
+                      sx={{ color: "text.primary", fontWeight: 700 }}
+                    >{`"${searchString}"`}</Box>
+                    , Please double check the spelling and try again.
+                    {(platform || genre) && (
+                      <Box
+                        display="inline"
+                        sx={{ color: "text.secondary", fontWeight: 400 }}
+                      >
+                        {" "}
+                        Or to remove some of the filter attributes.
+                      </Box>
+                    )}
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body1"
+                    component="div"
+                    sx={{ color: "text.secondary" }}
+                  >
+                    We cannot find a result match with your requirement, please remove some of the filter attributes and try again.
+                  </Typography>
+                )
               )}
             </>
           )}

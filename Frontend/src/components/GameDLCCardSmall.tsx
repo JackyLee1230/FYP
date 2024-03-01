@@ -15,17 +15,17 @@ const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
-function GameDLCCard({ game }: GameDLCCardProps) {
+function GameDLCCardSmall({ game }: GameDLCCardProps) {
   return (
     <ButtonBase 
       LinkComponent={Link}
       href={`/games/${game.id}`}
       sx={{ 
         display: 'flex', 
+        flexDirection: "column",
         bgcolor: "background.default", 
         borderRadius: "12px 8px 32px 12px", 
-        height: 164, 
-        width: 496, 
+        width: "100%", 
         overflow: "hidden",
         boxShadow: "0px 2px 4px 0px rgba(0,0,0,0.25)",
         margin: "auto"
@@ -34,7 +34,7 @@ function GameDLCCard({ game }: GameDLCCardProps) {
       {game.iconUrl ? (
         <CardMedia
           component="img"
-          sx={{ width: 164, height: 164 }}
+          sx={{ width: "100%", height: 164 }}
           image={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${game.iconUrl}`}
           alt={`${game.name} icon`}
         />
@@ -56,7 +56,7 @@ function GameDLCCard({ game }: GameDLCCardProps) {
           </Typography>
         </Box>
       )}
-      <Box sx={{ display: 'flex', flexDirection: 'column', padding: "16px", width: "100%", height: "100%" }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', padding: "12px", width: "100%", height: "100%" }}>
         <Typography 
           variant="h6" 
           color="text.primary" 
@@ -154,5 +154,5 @@ function GameDLCCard({ game }: GameDLCCardProps) {
   );
 }
 
-export default GameDLCCard;
+export default GameDLCCardSmall;
 

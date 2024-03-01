@@ -96,24 +96,24 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
         }
       }}
     >
-      <IconButton 
-        size="large" 
-        onClick={() => setUpdateUsernameOpen(false)} 
+      <Box
         sx={{
-          position: "absolute",
-          top: 24,
-          right: 36,
-
-          [theme.breakpoints.down("sm")]: {
-            top: 12,
-            right: 18,
-          }
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
         }}
       >
-        <CloseRoundedIcon/>
-      </IconButton>
+        <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
+        <IconButton 
+          size="large" 
+          onClick={() => setUpdateUsernameOpen(false)} 
+        >
+          <CloseRoundedIcon/>
+        </IconButton> 
+      </Box>
 
-      <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
       <DialogContent 
         sx={{
           display: "flex",
