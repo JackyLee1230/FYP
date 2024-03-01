@@ -15,6 +15,7 @@ export const CustomInput = styled(InputBase)(({ theme }) => ({
     borderColor: theme.palette.divider,
     fontSize: 16,
     width: 325,
+    maxWidth: "100%",
     padding: '10px 12px',
     transition: theme.transitions.create([
       'border-color',

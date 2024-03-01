@@ -9,6 +9,8 @@ import {
   alpha,
   CircularProgress,
   Avatar,
+  useTheme, 
+  useMediaQuery
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import axios from "axios";
@@ -136,6 +138,8 @@ const Cropper = ({ setUpdateIconOpen }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const auth = useAuthContext();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleImgChange = (e) => {
     if (!e) {
@@ -193,29 +197,39 @@ const Cropper = ({ setUpdateIconOpen }) => {
 
   return (
     <Box
-      style={{
+      sx={{
         width: "fit-content",
-        background: "white",
-        borderRadius: "16px",
-        padding: "24px 36px",
+        background: "white", 
+        borderRadius: "16px", 
+        padding: "24px 36px", 
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
         position: "relative",
+        
+        [theme.breakpoints.down("sm")]: {
+          padding: "18px 24px",
+          boxShadow: "none",
+        }
       }}
     >
-      <IconButton
-        size="large"
-        onClick={() => setUpdateIconOpen(false)}
+      <IconButton 
+        size="large" 
+        onClick={() => setUpdateIconOpen(false)} 
         sx={{
           position: "absolute",
           top: 24,
           right: 36,
+
+          [theme.breakpoints.down("sm")]: {
+            top: 12,
+            right: 18,
+          }
         }}
       >
-        <CloseRoundedIcon />
+        <CloseRoundedIcon/>
       </IconButton>
 
-      <Typography variant="h4" color="primary.main" sx={{ fontWeight: 700 }}>
+      <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{ fontWeight: 700 }}>
         Change Your Profile Icon
       </Typography>
       <DialogContent
@@ -227,7 +241,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
           gap: "4px",
         }}
       >
-        <Typography variant="subtitle1" color="text.secondary">
+        <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="text.secondary">
           Click to select image
         </Typography>
         <Box
@@ -280,7 +294,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
       <DialogActions>
         <Button
           variant="contained"
-          size="large"
+          size={isMobile ? "medium" : "large"}
           onClick={() => {
             setUpdateIconOpen(false);
           }}
@@ -290,7 +304,7 @@ const Cropper = ({ setUpdateIconOpen }) => {
         <Box sx={{ m: 1, position: "relative" }}>
           <Button
             variant="contained"
-            size="large"
+            size={isMobile ? "medium" : "large"}
             onClick={() => {
               handleSave();
             }}

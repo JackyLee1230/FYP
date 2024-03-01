@@ -823,7 +823,7 @@ export default function User({ user }: UserPageProps) {
                     <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary">
                       {`Account Status:`}
                     </Typography>
-                    <Typography variant={isTablet ? "subtitle1" : "h6"} color={user.isVerified ? "success" : "error"}>
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color={user.isVerified ? "#4FA639" : "error"}>
                       {user.isVerified ? "Verified" : "Unverified"} 
                     </Typography>
                   </Box>
@@ -1105,7 +1105,14 @@ export default function User({ user }: UserPageProps) {
                       {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
                     </Typography>
 
-                    <FormControl sx={{ minWidth: 150 }}>
+                    <FormControl 
+                      sx={{ 
+                        minWidth: 150,
+                        [theme.breakpoints.down("sm")]: {
+                          minWidth: 100,
+                        },
+                      }}
+                    >
                       <Select
                         color="primary"
                         value={reviewSortType}

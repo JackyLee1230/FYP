@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/context/AuthContext";
-import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress, Avatar } from "@mui/material";
+import { Box, Button, Modal, Slider, Typography, IconButton, alpha, CircularProgress, Avatar, useTheme, useMediaQuery } from "@mui/material";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
 import { useRef, useState } from "react";
@@ -24,6 +24,8 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
   const [banner, setBanner] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const auth = useAuthContext();
 
@@ -85,7 +87,7 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
 
   return (
     <Box
-      style={{
+      sx={{
         width: "fit-content",
         background: "white", 
         borderRadius: "16px", 
@@ -93,23 +95,31 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
         position: "relative",
+        
+        [theme.breakpoints.down("sm")]: {
+          padding: "18px 24px",
+          boxShadow: "none",
+        }
       }}
     >
       <IconButton 
         size="large" 
-        onClick={() => setUpdateBannerOpen(false)} 
+        onClick={() => {setUpdateBannerOpen(false)}} 
         sx={{
           position: "absolute",
           top: 24,
           right: 36,
+
+          [theme.breakpoints.down("sm")]: {
+            top: 12,
+            right: 18,
+          }
         }}
       >
         <CloseRoundedIcon/>
       </IconButton>
 
-      <DialogTitle>
-        <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Banner</Typography>
-      </DialogTitle>
+      <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{fontWeight: 700}}>Change Your Profile Banner</Typography>
       <DialogContent 
         sx={{
           display: "flex",
@@ -120,7 +130,7 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
         }}
       >
         <DialogContentText>
-          <Typography variant="subtitle1" color="text.secondary">Click to select image</Typography>
+          <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="text.secondary">Click to select image</Typography>
         </DialogContentText>
         <Box
           sx={{
@@ -172,7 +182,7 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
       <DialogActions>
         <Button
           variant="contained"
-          size="large"
+          size={isMobile ? "medium" : "large"}
           onClick={() => {
             setUpdateBannerOpen(false);
           }}
@@ -182,7 +192,7 @@ const UpdateUserBannerBox = ({ setUpdateBannerOpen }: UpdateUserBannerBoxProps) 
         <Box sx={{ m: 1, position: 'relative' }}>
           <Button
             variant="contained"
-            size="large"
+            size={isMobile ? "medium" : "large"}
             onClick={() => {
               handleBannerSave();
             }}

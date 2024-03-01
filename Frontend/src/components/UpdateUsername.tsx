@@ -1,7 +1,7 @@
-import { Box, Button, Typography, IconButton, CircularProgress } from "@mui/material";
+import { Box, Button, Typography, IconButton, CircularProgress, useTheme, useMediaQuery } from "@mui/material";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import axios from "axios";
-import { useState } from "react";
+import { use, useState } from "react";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import { displaySnackbarVariant } from '@/utils/DisplaySnackbar';
@@ -54,6 +54,8 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
   const [username, setUsername] = useState<string>("");
   const [usernameError, setUsernameError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
   function verifyUsername(): boolean {
     if (!validateUsername(username)) {
@@ -79,7 +81,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
   
   return (
     <Box
-      style={{
+      sx={{
         width: "fit-content",
         background: "white", 
         borderRadius: "16px", 
@@ -87,6 +89,11 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
         position: "relative",
+        
+        [theme.breakpoints.down("sm")]: {
+          padding: "18px 24px",
+          boxShadow: "none",
+        }
       }}
     >
       <IconButton 
@@ -96,12 +103,17 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
           position: "absolute",
           top: 24,
           right: 36,
+
+          [theme.breakpoints.down("sm")]: {
+            top: 12,
+            right: 18,
+          }
         }}
       >
         <CloseRoundedIcon/>
       </IconButton>
 
-      <Typography variant="h4" color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
+      <Typography variant={isMobile ? "h5" : "h4"} color="primary.main" sx={{fontWeight: 700}}>Change Your Username</Typography>
       <DialogContent 
         sx={{
           display: "flex",
@@ -109,9 +121,13 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
           alignItems: "center",
           justifyContent: "flex-start",
           gap: "4px",
+          
+          [theme.breakpoints.down("sm")]: {
+            padding: "16px 12px",
+          }
         }}
       >
-        <Typography variant="subtitle1" color="text.secondary">Input a new username</Typography>
+        <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="text.secondary">Input a new username</Typography>
         <Box
           sx={{
             display: "flex",
@@ -119,6 +135,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
             alignItems: "center",
             justifyContent: "center",
             gap: "8px",
+            width: "100%",
           }}
         >
           <CustomInput
@@ -129,14 +146,32 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
             id="username"
             name="username"
             autoComplete="new-username"
+            sx={{
+              width: "100%",
+              maxWidth: "350px",
+              [theme.breakpoints.down("sm")]: {
+                maxWidth: "100%",
+              }
+            }}
           />
-          <Typography variant="subtitle2" color="error" sx={{maxWidth: "350px"}}>{usernameError}</Typography>
+          <Typography 
+            variant="subtitle2" 
+            color="error" 
+            sx={{
+              maxWidth: "350px",
+              [theme.breakpoints.down("sm")]: {
+                maxWidth: "100%",
+              }
+            }}
+          >
+            {usernameError}
+          </Typography>
         </Box>
       </DialogContent>
       <DialogActions>
         <Button
           variant="contained"
-          size="large"
+          size={isMobile ? "medium" : "large"}
           onClick={() => {
             setUpdateUsernameOpen(false);
           }}
@@ -146,7 +181,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
         <Box sx={{ m: 1, position: 'relative' }}>
           <Button
             variant="contained"
-            size="large"
+            size={isMobile ? "medium" : "large"}
             onClick={async () => {
               setIsLoading(true);
               await handleUsernameUpdate(userId, username, token, setUpdateUsernameOpen);
