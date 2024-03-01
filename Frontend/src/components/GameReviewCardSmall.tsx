@@ -18,6 +18,7 @@ import ImageIcon from "@mui/icons-material/Image";
 import { getReviewColor } from "@/utils/DynamicScore";
 import { format } from "date-fns";
 import { playTimeString } from "@/utils/Other";
+import { is } from "date-fns/locale";
 
 type GameReviewCardProps = {
   review: GameReview;
@@ -27,25 +28,25 @@ type GameReviewCardProps = {
 
 const StyledThumbUpIcon = styled(ThumbUpIcon)(({ theme }) => ({
   color: theme.palette.success.main,
-  fontSize: 32,
+  fontSize: 24,
 }));
 
 const StyledThumbDownIcon = styled(ThumbDownIcon)(({ theme }) => ({
   color: theme.palette.error.main,
-  fontSize: 32,
+  fontSize: 24,
 }));
 
 const StyledCommentIcon = styled(CommentIcon)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  fontSize: 24,
+  fontSize: 18,
 }));
 
 const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  fontSize: 24,
+  fontSize: 18,
 }));
 
-function GameReviewCard({
+function GameReviewCardSmall({
   review,
   fullWidth,
   mode = "user",
@@ -71,14 +72,14 @@ function GameReviewCard({
           padding: "12px",
           flexDirection: "column",
           alignItems: "flex-start",
-          gap: "12px",
+          gap: "8px",
           alignSelf: "stretch",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            height: "64px",
+            height: "52px",
             justifyContent: "space-between",
             alignItems: "center",
             alignSelf: "stretch",
@@ -88,106 +89,79 @@ function GameReviewCard({
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "8px",
+              gap: "4px",
               alignSelf: "stretch",
             }}
           >
-            {mode === "game" ? (
-              <>
-                <ButtonBase
-                  LinkComponent={Link}
-                  href={`/games/${review?.reviewedGame.id}`}
-                  sx={{ borderRadius: "6%", bgcolor: "grey.100" }}
-                  disabled={!review?.reviewedGame.id}
+            <ButtonBase
+              LinkComponent={Link}
+              href={`/games/${review?.reviewedGame.id}`}
+              sx={{ borderRadius: "6%", bgcolor: "grey.100" }}
+              disabled={!review?.reviewedGame.id}
+            >
+              <Avatar
+                alt="Game Icon"
+                src={
+                  mode === "game" ?
+                    review?.reviewedGame?.iconUrl != null
+                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewedGame?.iconUrl}`
+                      : "/static/images/avatar/1.jpg"
+                    : review?.reviewer?.iconUrl != null
+                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
+                      : "/static/images/avatar/1.jpg"
+                }
+                sx={{ width: 50, height: 50 }}
+                variant="rounded"
+              />
+            </ButtonBase>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+              }}
+            >
+              <Button
+                sx={{
+                  textDecoration: "none",
+                  textTransform: "none",
+                  "&:hover": { textDecoration: "underline" },
+                  justifyContent: "flex-start",
+                  padding: 0,
+                }}
+                LinkComponent={Link}
+                variant="text"
+                href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/user/${review?.reviewer?.id}`}
+                disabled={mode === "game" ? !review?.reviewedGame.id : !review?.reviewer?.id}
+              >
+                <Typography
+                  variant="h6"
+                  color="text.primary"
+                  sx={{ fontWeight: 700 }}
                 >
-                  <Avatar
-                    alt="Game Icon"
-                    src={
-                      review?.reviewedGame?.iconUrl != null
-                        ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewedGame?.iconUrl}`
-                        : "/static/images/avatar/1.jpg"
-                    }
-                    sx={{ width: 54, height: 54 }}
-                    variant="rounded"
-                  />
-                </ButtonBase>
-                <Button
-                  sx={{
-                    textDecoration: "none",
-                    textTransform: "none",
-                    "&:hover": { textDecoration: "underline" },
-                    justifyContent: "flex-start",
-                  }}
-                  LinkComponent={Link}
-                  variant="text"
-                  href={`/games/${review?.reviewedGame.id}`}
-                  disabled={!review?.reviewedGame.id}
-                >
-                  <Typography
-                    variant="h5"
-                    color="text.primary"
-                    sx={{ fontWeight: 700 }}
-                  >
-                    {review.reviewedGame?.name ?? "Unknown Game"}
-                  </Typography>
-                </Button>
-              </>
-            ) : (
-              <>
-                <ButtonBase
-                  LinkComponent={Link}
-                  href={`/user/${review?.reviewer?.id}`}
-                  sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
-                  disabled={!review?.reviewer?.id}
-                >
-                  <Avatar
-                    alt="Reviewer Avatar Icon"
-                    src={
-                      review?.reviewer?.iconUrl != null
-                        ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                        : "/static/images/avatar/1.jpg"
-                    }
-                    sx={{ width: 54, height: 54 }}
-                  />
-                </ButtonBase>
-                <Button
-                  sx={{
-                    textDecoration: "none",
-                    textTransform: "none",
-                    "&:hover": { textDecoration: "underline" },
-                    justifyContent: "flex-start",
-                  }}
-                  LinkComponent={Link}
-                  variant="text"
-                  href={`/user/${review?.reviewer?.id}`}
-                  disabled={!review?.reviewer?.id}
-                >
-                  <Typography
-                    variant="h5"
-                    color="text.primary"
-                    sx={{ fontWeight: 700 }}
-                  >
-                    {review?.reviewer?.name ?? "Unknown User"}
-                  </Typography>
-                </Button>
-              </>
-            )}
+                  {mode === "game" ? review.reviewedGame?.name ?? "Unknown Game" : review?.reviewer?.name ?? "Unknown User"}
+                </Typography>
+              </Button>
+
+              <Typography variant="caption" color="text.secondary">
+                {/* format the date by year-month-day */}
+                {review?.createdAt != null
+                  ? format(new Date(review?.createdAt), "yyyy-MM-dd")
+                  : "Unknown Date"}
+              </Typography>
+            </Box>
           </Box>
 
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "8px",
+              gap: "4px",
               alignSelf: "stretch",
             }}
           >
-            <Typography variant="caption" color="text.secondary">
-              {/* format the date by year-month-day */}
-              {review?.createdAt != null
-                ? format(new Date(review?.createdAt), "yyyy-MM-dd")
-                : "Unknown Date"}
-            </Typography>
             {review?.recommended ? (
               <StyledThumbUpIcon />
             ) : (
@@ -197,14 +171,14 @@ function GameReviewCard({
               sx={{
                 borderRadius: "32px",
                 display: "flex",
-                width: "64px",
-                height: "64px",
+                width: "52px",
+                height: "52px",
                 alignItems: "center",
               }}
               bgcolor={`${getReviewColor(review?.score)}.main`}
             >
               <Typography
-                variant="h5"
+                variant="h6"
                 sx={{
                   fontWeight: 700,
                   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -221,7 +195,7 @@ function GameReviewCard({
         <Box
           sx={{
             display: "flex",
-            height: "142px",
+            height: "162px",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-end",
@@ -244,11 +218,12 @@ function GameReviewCard({
               sx={{
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 4,
+                WebkitLineClamp: 5,
                 textOverflow: "ellipsis",
                 fontWeight: 500,
                 overflow: "hidden",
                 wordBreak: "break-all",
+                maxHeight: "144px",
               }}
             >
               {review?.comment}
@@ -275,18 +250,8 @@ function GameReviewCard({
             >
               <Typography variant="subtitle2" color="text.secondary">
                 {review?.playTime != null && review?.playTime > 1
-                  ? `${playTimeString(review.playTime)} Played,`
-                  : "Unknown Playtime,"}
-              </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
-                {review?.platform != null
-                  ? `Platform: ${getPlatform(review?.platform)},`
-                  : "Platform: Unknown,"}
-              </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
-                {review?.gameVersion != null
-                  ? `Version: ${review?.gameVersion}`
-                  : "Version: Unknown"}
+                  ? `${playTimeString(review.playTime)} Played`
+                  : "Unknown Playtime"}
               </Typography>
             </Box>
             <Button
@@ -319,7 +284,7 @@ function GameReviewCard({
             gap: "8px",
           }}
         >
-          <Typography variant="subtitle1" color="text.secondary">
+          <Typography variant="subtitle2" color="text.secondary">
             {`AI Sentiment: ${
               review.sentiment != null
                 ? review.sentiment == 1
@@ -333,18 +298,18 @@ function GameReviewCard({
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
+            gap: "8px",
           }}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
+              gap: "2px",
             }}
           >
-            <StyledThumbUpIcon sx={{ fontSize: 24 }} />
-            <Typography variant="subtitle1" color="text.secondary">
+            <StyledThumbUpIcon sx={{ fontSize: 18 }} />
+            <Typography variant="subtitle2" color="text.secondary">
               {review?.numberOfLikes ?? 0}
             </Typography>
           </Box>
@@ -352,11 +317,11 @@ function GameReviewCard({
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
+              gap: "2px",
             }}
           >
-            <StyledThumbDownIcon sx={{ fontSize: 24 }} />
-            <Typography variant="subtitle1" color="text.secondary">
+            <StyledThumbDownIcon sx={{ fontSize: 18 }} />
+            <Typography variant="subtitle2" color="text.secondary">
               {review?.numberOfDislikes ?? 0}
             </Typography>
           </Box>
@@ -364,11 +329,11 @@ function GameReviewCard({
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
+              gap: "2px",
             }}
           >
             <StyledImageIcon />
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography variant="subtitle2" color="text.secondary">
               {review?.reviewImages?.length ?? 0}
             </Typography>
           </Box>
@@ -376,11 +341,11 @@ function GameReviewCard({
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
+              gap: "2px",
             }}
           >
             <StyledCommentIcon />
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography variant="subtitle2" color="text.secondary">
               {review?.numberOfComments ?? 0}
             </Typography>
           </Box>
@@ -390,5 +355,5 @@ function GameReviewCard({
   );
 }
 
-export default GameReviewCard;
+export default GameReviewCardSmall;
 

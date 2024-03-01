@@ -4,7 +4,7 @@ import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
 import { UserPageProps } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
-import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, LinearProgress, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useTheme } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, LinearProgress, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -22,6 +22,7 @@ import { CustomPrivateSwitch } from "@/components/CustomPrivateSwitch";
 import { format } from "date-fns";
 import Edit from "@mui/icons-material/Edit";
 import GameReviewCard from "@/components/GameReviewCard";
+import GameReviewCardSmall from "@/components/GameReviewCardSmall";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { GameReview } from "@/type/game";
 
@@ -213,6 +214,8 @@ export default function User({ user }: UserPageProps) {
   const [reviewSortType, setReviewSortType] = useState<"latest" | "oldest" | "highestScore">("latest");
   const [reachEnd, setReachEnd] = useState<boolean>(false);
   const observerTarget = useRef(null);
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -334,6 +337,10 @@ export default function User({ user }: UserPageProps) {
           left: 0,
           right: 0,
           margin: "0 auto",
+
+          [theme.breakpoints.down("md")]: {
+            height: "350px",
+          },
         }}
       >
         <Box
@@ -351,6 +358,10 @@ export default function User({ user }: UserPageProps) {
             overflow: "hidden",
             backgroundImage: `url(${user?.bannerUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.bannerUrl}` : user?.iconUrl ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}` : "/banner.png"})`,
             backgroundSize: "cover",
+
+            [theme.breakpoints.down("md")]: {
+              height: "340px",
+            },
           })}
         />
       </Box>
@@ -371,10 +382,136 @@ export default function User({ user }: UserPageProps) {
             gap: "12px",
           },
           [theme.breakpoints.down("md")]: {
+            padding: "24px 18px 24px 18px",
+            flexDirection: "column",
+          },
+          [theme.breakpoints.down("sm")]: {
+            padding: "24px 12px 24px 12px",
             flexDirection: "column",
           },
         }}
       >
+        {isTablet && (
+          <Fade in={isCurrentUser ?? false}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                position: "absolute",
+                right: 12,
+                top: 68,
+                zIndex: 2,
+
+                [theme.breakpoints.down("sm")]: {
+                  top: 62,
+                },
+              }}
+            >
+              <CustomPrivateSwitch 
+                checked={isPrivate}
+                disabled={isPrivateLoading}
+                sx={{ m: 1 }}  
+                onClick={() => {
+                  setIsPrivateLoading(true);
+                  togglePrivate(user.id, auth.token!)
+                    .then(() => {
+                      setIsPrivate(!isPrivate);
+                      if(isPrivate) {
+                        displaySnackbarVariant("Your profile is now public", "success");
+                      }
+                      else {
+                        displaySnackbarVariant("Your profile is now private", "success");
+                      }
+                    })
+                    .catch((error) => {
+                      displaySnackbarVariant("Failed to Toggle Private", "error");
+                    })
+                    .finally(() => {
+                      setIsPrivateLoading(false);
+                    });
+                }}
+              />
+              <ButtonBase
+                sx={{
+                  display: "flex",
+                  padding: "2px",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-start",
+                  borderRadius: "50%",
+                  border: "2px solid",
+                  borderColor: "background.paper",
+                  bgcolor: "info.main",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+                onClick={handleMenuOpen}
+              >
+                <StyledMoreIcon />
+              </ButtonBase>
+              <Menu
+                anchorEl={menuAnchorEl}
+                open={menuOpen}
+                onClose={handleMenuClose}
+                PaperProps={{
+                  elevation: 0,
+                  sx: {
+                    bgcolor: "white",
+                    overflow: "visible",
+                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    marginTop: "8px",
+                    minWidth: 225,
+                    "&:before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "white",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                    "& .MuiMenuItem-root": {
+                      minHeight: "42px"
+                    }
+                  },
+                }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              >
+                <MenuItem 
+                  onClick={() => {
+                    setUpdateUsernameOpen(true);
+                    handleMenuClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Edit fontSize="medium" />
+                  </ListItemIcon>
+                  <Typography variant="body1" color="text.primary">
+                    Update username
+                  </Typography>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    setUpdateBannerOpen(true);
+                    handleMenuClose();
+                  }}
+                >
+                  <ListItemIcon>
+                    <Edit fontSize="medium" />
+                  </ListItemIcon>
+                  <Typography variant="body1" color="text.primary">
+                    Update profile banner
+                  </Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+          </Fade>
+        )}
+
         <Box
           sx={{
             display: "flex",
@@ -385,8 +522,10 @@ export default function User({ user }: UserPageProps) {
             top: "24px",
 
             [theme.breakpoints.down("md")]: {
-              position: "relative",
+              position: "static",
               alignSelf: "center",
+              gap: "12px",
+              width: "100%"
             },
           }}
         >
@@ -414,6 +553,10 @@ export default function User({ user }: UserPageProps) {
                     bgcolor: "secondary.main",
                     padding: "16px",
                     zIndex: 2,
+
+                    [theme.breakpoints.down("md")]: {
+                      padding: "8px",
+                    },
                   }}
                   onClick={() => {
                     setUpdateIconOpen(true);
@@ -436,9 +579,69 @@ export default function User({ user }: UserPageProps) {
                 border: "6px solid",
                 boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                 borderColor: "background.paper",
+
+                [theme.breakpoints.down("md")]: {
+                  width: 212, 
+                  height: 212,
+                },
               }}
             />
           </Box>
+
+          {isTablet && (
+            <Box
+              sx={{
+                display: "flex",
+                padding: "12px 0px 6px 0px",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                alignSelf: "center",
+                gap: "8px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <Typography variant="h4" color="text.primary" sx={{fontWeight: 700}}>
+                  {user.name ?? "Unknown User"}
+                </Typography>
+
+                <Tooltip title={user.isVerified ? "Verified User" : "Unverified User"}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignSelf: "flex-end",
+                      marginBottom: "8px",
+                      padding: "2px",
+                      borderRadius: "50%",
+                      bgcolor: user.isVerified ? "#4FA639" : "error.main",
+
+                      [theme.breakpoints.down("md")]: {
+                        padding: "0px",
+                      },
+                    }}
+                  >
+                    {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}
+                  </Box>
+                </Tooltip>
+              </Box>
+
+              <Typography variant="subtitle1" color="text.secondary" sx={{visibility: isCurrentUser ? "visible" : isPrivate ? "hidden" : "visible" }}>
+                {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
+                  format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
+                  isPrivate ? 
+                  "Undisclosed" : 
+                  user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
+              </Typography>
+            </Box>
+          )}
 
           <Box
             sx={{
@@ -454,6 +657,15 @@ export default function User({ user }: UserPageProps) {
               borderColor: "divider",
               bgcolor: "background.paper",
               boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.50)",
+              [theme.breakpoints.down("md")]: {
+                padding: "16px",
+                gap: "16px",
+              },
+              [theme.breakpoints.down("sm")]: {
+                width: "100%",
+                padding: "12px",
+                gap: "12px",
+              },
             }}
           >
             <Box
@@ -469,7 +681,7 @@ export default function User({ user }: UserPageProps) {
               }}
             >
               <StyledPersonIcon />
-              <Typography variant="h5" color="text.primary" sx={{fontWeight: 700}}>
+              <Typography variant={isTablet ? "h6" : "h5"} color="text.primary" sx={{fontWeight: 700}}>
                 Personal Information
               </Typography>
             </Box>
@@ -491,11 +703,11 @@ export default function User({ user }: UserPageProps) {
                 }}
               >
                 <StyledMailIcon/>
-                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary" sx={{fontWeight: 500}}>
                   Email Address:
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" color="text.secondary">
+              <Typography variant={isTablet ? "body2" : "subtitle1"} color="text.secondary">
                 {isCurrentUser ? auth?.user?.email ?? "Not provided" : isPrivate ? "Undisclosed" : user?.email ?? "Not provided"}
               </Typography>
             </Box>
@@ -516,11 +728,11 @@ export default function User({ user }: UserPageProps) {
                   gap: '8px',
                 }}
               >
-                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary" sx={{fontWeight: 500}}>
                   Gender:
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" color="text.secondary">
+              <Typography variant={isTablet ? "body2" : "subtitle1"} color="text.secondary">
                 {isCurrentUser ? auth?.user?.gender ?? "Not provided" : isPrivate ? "Undisclosed" : user?.gender ?? "Not provided"}
               </Typography>
             </Box>
@@ -541,11 +753,11 @@ export default function User({ user }: UserPageProps) {
                   gap: '8px',
                 }}
               >
-                <Typography variant="h6" color="text.primary" sx={{fontWeight: 500}}>
+                <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary" sx={{fontWeight: 500}}>
                   Age:
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" color="text.secondary">
+              <Typography variant={isTablet ? "body2" : "subtitle1"} color="text.secondary">
                 {isCurrentUser ? auth?.user?.age ?? "Not provided" : isPrivate ? "Undisclosed" : user?.age ?? "Not provided"}
               </Typography>
             </Box>
@@ -567,6 +779,11 @@ export default function User({ user }: UserPageProps) {
                   borderColor: "divider",
                   bgcolor: "background.paper",
                   boxShadow: "0px 2px 2px 0px rgba(0, 0, 0, 0.50)",
+                  [theme.breakpoints.down("sm")]: {
+                    width: "100%",
+                    padding: "12px",
+                    gap: "12px",
+                  },
                 }}
               >
                 <Box
@@ -582,7 +799,7 @@ export default function User({ user }: UserPageProps) {
                   }}
                 >
                   <StyledSettingsIcon />
-                  <Typography variant="h5" color="text.primary" sx={{fontWeight: 700}}>
+                  <Typography variant={isTablet ? "h6" : "h5"} color="text.primary" sx={{fontWeight: 700}}>
                     Settings
                   </Typography>
                 </Box>
@@ -603,10 +820,10 @@ export default function User({ user }: UserPageProps) {
                       gap: "4px",
                     }}
                   >
-                    <Typography variant="h6" color="text.primary">
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary">
                       {`Account Status:`}
                     </Typography>
-                    <Typography variant="h6" color={user.isVerified ? "text.secondary" : "error"}>
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color={user.isVerified ? "success" : "error"}>
                       {user.isVerified ? "Verified" : "Unverified"} 
                     </Typography>
                   </Box>
@@ -651,185 +868,187 @@ export default function User({ user }: UserPageProps) {
             width: "100%",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              gap: "56px",
-              width: "100%",
-            }}
-          >
-            <Fade in={isCurrentUser ?? false}>
-              <Box
-                sx={(theme) => ({
-                  display: "flex",
-                  padding: "22px 12px",
-                  alignItems: "center",
-                  gap: "24px",
-                  borderRadius: "24px 48px 12px 48px",
-                  bgcolor: alpha(theme.palette.background.paper, 0.58),
-                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                })}
-              >
-                <FormControlLabel
-                  control={
-                    <CustomPrivateSwitch 
-                      checked={isPrivate}
-                      disabled={isPrivateLoading}
-                      sx={{ m: 1 }}  
-                      onClick={() => {
-                        setIsPrivateLoading(true);
-                        togglePrivate(user.id, auth.token!)
-                          .then(() => {
-                            setIsPrivate(!isPrivate);
-                            if(isPrivate) {
-                              displaySnackbarVariant("Your profile is now public", "success");
-                            }
-                            else {
-                              displaySnackbarVariant("Your profile is now private", "success");
-                            }
-                          })
-                          .catch((error) => {
-                            displaySnackbarVariant("Failed to Toggle Private", "error");
-                          })
-                          .finally(() => {
-                            setIsPrivateLoading(false);
-                          });
-                      }}
-                    />
-                  }
-                  label={isPrivate ? "Profile Hidden" : "Profile Shown"}
-                />
-
-                <ButtonBase
-                  sx={{
-                    display: "flex",
-                    padding: "4px",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    alignItems: "flex-start",
-                    borderRadius: "50%",
-                    border: "2px solid",
-                    borderColor: "background.paper",
-                    bgcolor: "info.main",
-                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                  }}
-                  onClick={handleMenuOpen}
-                >
-                  <StyledMoreIcon />
-                </ButtonBase>
-                <Menu
-                  anchorEl={menuAnchorEl}
-                  open={menuOpen}
-                  onClose={handleMenuClose}
-                  PaperProps={{
-                    elevation: 0,
-                    sx: {
-                      bgcolor: "white",
-                      overflow: "visible",
-                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                      marginTop: "8px",
-                      minWidth: 225,
-                      "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: "white",
-                        transform: "translateY(-50%) rotate(45deg)",
-                        zIndex: 0,
-                      },
-                      "& .MuiMenuItem-root": {
-                        minHeight: "42px"
-                      }
-                    },
-                  }}
-                  transformOrigin={{ horizontal: "right", vertical: "top" }}
-                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                >
-                  <MenuItem 
-                    onClick={() => {
-                      setUpdateUsernameOpen(true);
-                      handleMenuClose();
-                    }}
-                  >
-                    <ListItemIcon>
-                      <Edit fontSize="medium" />
-                    </ListItemIcon>
-                    <Typography variant="body1" color="text.primary">
-                      Update username
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      setUpdateBannerOpen(true);
-                      handleMenuClose();
-                    }}
-                  >
-                    <ListItemIcon>
-                      <Edit fontSize="medium" />
-                    </ListItemIcon>
-                    <Typography variant="body1" color="text.primary">
-                      Update profile banner
-                    </Typography>
-                  </MenuItem>
-                </Menu>
-              </Box>
-            </Fade>
-
+          {!isTablet && (
             <Box
               sx={{
                 display: "flex",
-                padding: "12px 0px 6px 0px",
                 flexDirection: "column",
-                justifyContent: "flex-end",
-                alignItems: "flex-start",
-                alignSelf: "flex-start",
-                gap: "8px",
+                alignItems: "flex-end",
+                gap: "56px",
+                width: "100%",
               }}
             >
+              <Fade in={isCurrentUser ?? false}>
+                <Box
+                  sx={(theme) => ({
+                    display: "flex",
+                    padding: "22px 12px",
+                    alignItems: "center",
+                    gap: "24px",
+                    borderRadius: "24px 48px 12px 48px",
+                    bgcolor: alpha(theme.palette.background.paper, 0.58),
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  })}
+                >
+                  <FormControlLabel
+                    control={
+                      <CustomPrivateSwitch 
+                        checked={isPrivate}
+                        disabled={isPrivateLoading}
+                        sx={{ m: 1 }}  
+                        onClick={() => {
+                          setIsPrivateLoading(true);
+                          togglePrivate(user.id, auth.token!)
+                            .then(() => {
+                              setIsPrivate(!isPrivate);
+                              if(isPrivate) {
+                                displaySnackbarVariant("Your profile is now public", "success");
+                              }
+                              else {
+                                displaySnackbarVariant("Your profile is now private", "success");
+                              }
+                            })
+                            .catch((error) => {
+                              displaySnackbarVariant("Failed to Toggle Private", "error");
+                            })
+                            .finally(() => {
+                              setIsPrivateLoading(false);
+                            });
+                        }}
+                      />
+                    }
+                    label={isPrivate ? "Profile Hidden" : "Profile Shown"}
+                  />
+
+                  <ButtonBase
+                    sx={{
+                      display: "flex",
+                      padding: "4px",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                      alignItems: "flex-start",
+                      borderRadius: "50%",
+                      border: "2px solid",
+                      borderColor: "background.paper",
+                      bgcolor: "info.main",
+                      boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                    }}
+                    onClick={handleMenuOpen}
+                  >
+                    <StyledMoreIcon />
+                  </ButtonBase>
+                  <Menu
+                    anchorEl={menuAnchorEl}
+                    open={menuOpen}
+                    onClose={handleMenuClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        bgcolor: "white",
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        marginTop: "8px",
+                        minWidth: 225,
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "white",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                        "& .MuiMenuItem-root": {
+                          minHeight: "42px"
+                        }
+                      },
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                  >
+                    <MenuItem 
+                      onClick={() => {
+                        setUpdateUsernameOpen(true);
+                        handleMenuClose();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Edit fontSize="medium" />
+                      </ListItemIcon>
+                      <Typography variant="body1" color="text.primary">
+                        Update username
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        setUpdateBannerOpen(true);
+                        handleMenuClose();
+                      }}
+                    >
+                      <ListItemIcon>
+                        <Edit fontSize="medium" />
+                      </ListItemIcon>
+                      <Typography variant="body1" color="text.primary">
+                        Update profile banner
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              </Fade>
+
               <Box
                 sx={{
                   display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  padding: "12px 0px 6px 0px",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-start",
+                  alignSelf: "flex-start",
                   gap: "8px",
                 }}
               >
-                <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
-                  {user.name ?? "Unknown User"}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <Typography variant="h3" color="text.primary" sx={{fontWeight: 700}}>
+                    {user.name ?? "Unknown User"}
+                  </Typography>
+
+                  <Tooltip title={user.isVerified ? "Verified User" : "Unverified User"}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignSelf: "flex-end",
+                        marginBottom: "8px",
+                        padding: "2px",
+                        borderRadius: "50%",
+                        bgcolor: user.isVerified ? "#4FA639" : "error.main",
+                      }}
+                    >
+                      {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}
+                    </Box>
+                  </Tooltip>
+                </Box>
+
+                <Typography variant="h6" color="text.secondary" sx={{visibility: isCurrentUser ? "visible" : isPrivate ? "hidden" : "visible" }}>
+                  {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
+                    format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
+                    isPrivate ? 
+                    "Undisclosed" : 
+                    user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
                 </Typography>
-
-                <Tooltip title={user.isVerified ? "Verified User" : "Unverified User"}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignSelf: "flex-end",
-                      marginBottom: "8px",
-                      padding: "2px",
-                      borderRadius: "50%",
-                      bgcolor: user.isVerified ? "#4FA639" : "error.main",
-                    }}
-                  >
-                    {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}
-                  </Box>
-                </Tooltip>
               </Box>
-
-              <Typography variant="h6" color="text.secondary" sx={{visibility: isCurrentUser ? "visible" : isPrivate ? "hidden" : "visible" }}>
-                {`Last active: ${isCurrentUser ? auth?.user?.lastActive ? 
-                  format(new Date(auth?.user?.lastActive), "yyyy-MM-dd") : "Unknown" : 
-                  isPrivate ? 
-                  "Undisclosed" : 
-                  user?.lastActive ? format(new Date(user?.lastActive), "yyyy-MM-dd") : "Unknown"}`}
-              </Typography>
             </Box>
-          </Box>
+          )}
 
           <Box
             sx={{
@@ -844,6 +1063,10 @@ export default function User({ user }: UserPageProps) {
               borderColor: "divider",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
               width: "100%",
+
+              [theme.breakpoints.down("md")]: {
+                gap: "12px",
+              },
             }}
           >
             {isPrivate && !isCurrentUser ? (
@@ -878,7 +1101,7 @@ export default function User({ user }: UserPageProps) {
                       padding: "4px 12px",
                     }}
                   >
-                    <Typography variant="h5" color="text.primary" fontWeight={600}>
+                    <Typography variant={isTablet ? "h6" : "h5"} color="text.primary" fontWeight={600}>
                       {`${user.name}'s Review${user.numOfReviews > 1 ? `s (${user.numOfReviews})` : ` (${user.numOfReviews})`}`}
                     </Typography>
 
@@ -916,7 +1139,7 @@ export default function User({ user }: UserPageProps) {
                     ) : (
                       reviews?.map((review) => (
                         <Grid item key={review.id} xs={12}>
-                          <GameReviewCard review={review} mode="game"/>
+                          {isMobile ? <GameReviewCardSmall review={review} mode="game"/> : <GameReviewCard review={review} mode="game"/>}
                         </Grid>
                       ))
                     )}
@@ -939,10 +1162,18 @@ export default function User({ user }: UserPageProps) {
                     />
                   </Box>
                   */}
-                  <Box ref={observerTarget} sx={{visibility: "hidden"}}></Box>
+                  {!reachEnd &&
+                    <Box ref={observerTarget} sx={{visibility: "hidden"}}></Box>
+                  }
                   {isReviewLoading && (
                     <Box sx={{ width: '95%', alignSelf:"center"}}>
                       <LinearProgress color="primary" />
+                    </Box>
+                  )}
+
+                  {reachEnd && (
+                    <Box sx={{ width: '100%', display: "flex", justifyContent: "center" }}>
+                      <Typography variant="overline" color="divider">No more reviews to show</Typography>
                     </Box>
                   )}
                 </>
