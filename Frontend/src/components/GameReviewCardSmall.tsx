@@ -96,7 +96,10 @@ function GameReviewCardSmall({
             <ButtonBase
               LinkComponent={Link}
               href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/user/${review?.reviewer?.id}`}
-              sx={{ borderRadius: "6%", bgcolor: "grey.100" }}
+              sx={{ 
+                borderRadius: mode === "game" ? "6%" : "50%" ,
+                bgcolor: "grey.100" 
+              }}
               disabled={mode === "game" ? !review?.reviewedGame.id : !review?.reviewer?.id}
             >
               <Avatar
@@ -111,7 +114,7 @@ function GameReviewCardSmall({
                       : "/static/images/avatar/1.jpg"
                 }
                 sx={{ width: 50, height: 50 }}
-                variant="rounded"
+                variant={mode === "game" ? "rounded" : "circular"}
               />
             </ButtonBase>
 

@@ -17,6 +17,7 @@ const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
 type ReviewInputBoxProps = {
   user: User;
   game: GameInfo;
+  size?: "small" | "normal";
 };
 
 const scores = [
@@ -34,7 +35,19 @@ const scores = [
   },
 ];
 
-function ReviewInputBox({user, game}: ReviewInputBoxProps) {
+const scoresNoLabel = [
+  {
+    value: 0,
+  },
+  {
+    value: 50,
+  },
+  {
+    value: 75,
+  },
+];
+
+function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
   const router = useRouter();
 
   const [comment, setComment] = useState("");
@@ -204,245 +217,536 @@ function ReviewInputBox({user, game}: ReviewInputBoxProps) {
     });
   }
 
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        padding: "18px",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: "12px",
-        alignSelf: "stretch",
-        bgcolor: "background.paper",
-        borderRadius: "8px",
-      }}
-    >
+  if(size === "normal"){
+    return (
       <Box
         sx={{
           display: "flex",
+          padding: "18px",
           flexDirection: "column",
           alignItems: "flex-start",
-          gap: "2px",
+          gap: "12px",
           alignSelf: "stretch",
-          width: "100%",
+          bgcolor: "background.paper",
+          borderRadius: "8px",
+          overflow: "hidden",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "12px",
-            width: "100%",
-          }}
-        >
-          <Avatar
-            alt="User Avatar"
-            src={
-              user?.iconUrl != null
-                ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
-                : "/static/images/avatar/1.jpg"
-            }
-            sx={{ width: 76, height: 76 }}
-          />
-          <Typography variant="h5" sx={{ fontWeight: 700 }}>
-            {user?.name ?? "Unknown User"}
-          </Typography>
-
-          <Box sx={{ width: 350, marginLeft: 6 }}>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs>
-                <Slider
-                  value={score < 0 ? 50 : score}
-                  onChange={(event: Event, newValue: number | number[]) => {
-                    if(typeof newValue === 'number') {
-                      setScore(newValue);
-                    }
-                  }}
-                  step={1}
-                  marks={scores}
-                  valueLabelDisplay="auto"
-                  color="secondary"
-                />
-              </Grid>
-              <Grid item>
-                <CustomInput
-                  value={score < 0 ? "" : score}
-                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    if(Number(event.target.value) >= 0 && Number(event.target.value) <= 100) {
-                      setScore(Number(event.target.value));
-                    }
-                    else if(Number(event.target.value) > 100){
-                      setScore(100);
-                    }
-                    else{
-                      setScore(-1);
-                    }
-                  }}
-                  placeholder="Score"
-                  sx={{
-                    '& .MuiInputBase-input': {
-                      width: "62px",
-                      height: "19px",
-                      bgcolor: "white",
-                    },
-                  }}
-                  type="number"
-                  inputProps={{ min: 0, max: 100 }}
-                />
-              </Grid>
-            </Grid>
-          </Box>
-
-          <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
-            <FormControlLabel 
-              control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
-              label="Recommended" 
-              sx={{margin: 0}}
-            />
-          </Tooltip>
-        </Box>
-        <CustomInput 
-          value={comment}
-          placeholder="Write a review..."
-          onChange={(e) => setComment(e.target.value)}
-          multiline 
-          fullWidth
-          sx={{
-            '& .MuiInputBase-input': {
-              width: "100%",
-              bgcolor: "white",
-              resize: "vertical",
-              minHeight: "160px",
-            },
-          }}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "2px",
+            alignSelf: "stretch",
             width: "100%",
           }}
         >
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-start",
+              flexDirection: "row",
               alignItems: "center",
-              gap: "2px",
+              gap: "12px",
               width: "100%",
             }}
           >
-            {game?.platforms && game?.platforms?.length > 0 && (
-              <FormControl sx={{ minWidth: 200 }}>
-                <Autocomplete
-                  size="small"
-                  options={game?.platforms}
-                  sx={{
-                    bgcolor: "white",
-                  }}
-                  renderInput={(params) => <TextField {...params} placeholder="Select a platform" />}
-                  ListboxProps={
-                    {
-                      style:{
-                          maxHeight: '250px',
-                          backgroundColor: 'white',
-                      }
-                    }
-                  }
-                  renderOption={(props, option) => (
-                    <li {...props}>
-                      {getPlatform(option)}
-                    </li>
-                  )}
-                  getOptionLabel={(option) => getPlatform(option)}
-                  value={platform}
-                  onChange={(_: any, newValue: string | null) => {
-                    setPlatform(newValue);
-                  }}
-                />
-              </FormControl>
-            )}
-
-            <CustomInput 
-              value={playTime === -1 ? "" : playTime}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                setplayTime(value > 0 ? value : 0);
-              }}
-              placeholder="Play Time (Minutes)"
-              sx={{
-                '& .MuiInputBase-input': {
-                  width: "166px",
-                  height: "19px",
-                  bgcolor: "white",
-                },
-              }}
-              type="number"
+            <Avatar
+              alt="User Avatar"
+              src={
+                user?.iconUrl != null
+                  ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
+                  : "/static/images/avatar/1.jpg"
+              }
+              sx={{ width: 76, height: 76 }}
             />
-
-            <Tooltip title="Upload images">        
-              <MuiFileInput 
-                multiple 
-                size="small"
-                value={images} 
-                onChange={handleImageChange} 
-                InputProps={{
-                  inputProps: {
-                    accept: '.png, .jpeg, .jpg'
-                  },
-                  startAdornment: <InsertPhotoIcon />
-                }}
-                sx={{
-                  '& .MuiInputBase-root': {
-                    bgcolor: "white",
-                    width: "220px",
-                  },
-                }}
-                clearIconButtonProps={{
-                  title: "Remove all images",
-                  children: <CancelIcon color="primary" fontSize="small" />
-                }}
-              />
-            </Tooltip>
-
-            <Tooltip title={"Please use this field to state whether you received this game for free."}>
+            <Typography variant="h5" sx={{ fontWeight: 700 }}>
+              {user?.name ?? "Unknown User"}
+            </Typography>
+  
+            <Box sx={{ width: 350, marginLeft: 6 }}>
+              <Grid container spacing={2} alignItems="center">
+                <Grid item xs>
+                  <Slider
+                    value={score < 0 ? 50 : score}
+                    onChange={(event: Event, newValue: number | number[]) => {
+                      if(typeof newValue === 'number') {
+                        setScore(newValue);
+                      }
+                    }}
+                    step={1}
+                    marks={scores}
+                    valueLabelDisplay="auto"
+                    color="secondary"
+                  />
+                </Grid>
+                <Grid item>
+                  <CustomInput
+                    value={score < 0 ? "" : score}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                      if(Number(event.target.value) >= 0 && Number(event.target.value) <= 100) {
+                        setScore(Number(event.target.value));
+                      }
+                      else if(Number(event.target.value) > 100){
+                        setScore(100);
+                      }
+                      else{
+                        setScore(-1);
+                      }
+                    }}
+                    placeholder="Score"
+                    sx={{
+                      '& .MuiInputBase-input': {
+                        width: "62px",
+                        height: "19px",
+                        bgcolor: "white",
+                      },
+                    }}
+                    type="number"
+                    inputProps={{ min: 0, max: 100 }}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+  
+            <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
               <FormControlLabel 
-                control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
-                label="Sponsored" 
+                control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
+                label="Recommended" 
                 sx={{margin: 0}}
               />
             </Tooltip>
           </Box>
-
-          {/* <MuiFileInput multiple value={images} onChange={handleImageChange} inputProps={{ accept: '.png, .jpeg' }}  /> */}
-          <Box sx={{ position: "relative" }}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleReviewSubmit}
-              disabled={loading}
+          <CustomInput 
+            value={comment}
+            placeholder="Write a review..."
+            onChange={(e) => setComment(e.target.value)}
+            multiline 
+            fullWidth
+            sx={{
+              '& .MuiInputBase-input': {
+                width: "100%",
+                bgcolor: "white",
+                resize: "vertical",
+                minHeight: "160px",
+              },
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                gap: "2px",
+                width: "100%",
+              }}
             >
-              Confirm
-            </Button>
-            {loading && (
-              <CircularProgress
-                size={24}
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  marginTop: "-12px",
-                  marginLeft: "-12px",
+              {game?.platforms && game?.platforms?.length > 0 && (
+                <FormControl sx={{ minWidth: 200 }}>
+                  <Autocomplete
+                    size="small"
+                    options={game?.platforms}
+                    sx={{
+                      bgcolor: "white",
+                    }}
+                    renderInput={(params) => <TextField {...params} placeholder="Select a platform" />}
+                    ListboxProps={
+                      {
+                        style:{
+                            maxHeight: '250px',
+                            backgroundColor: 'white',
+                        }
+                      }
+                    }
+                    renderOption={(props, option) => (
+                      <li {...props}>
+                        {getPlatform(option)}
+                      </li>
+                    )}
+                    getOptionLabel={(option) => getPlatform(option)}
+                    value={platform}
+                    onChange={(_: any, newValue: string | null) => {
+                      setPlatform(newValue);
+                    }}
+                  />
+                </FormControl>
+              )}
+  
+              <CustomInput 
+                value={playTime === -1 ? "" : playTime}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+                  setplayTime(value > 0 ? value : 0);
                 }}
+                placeholder="Play Time (Minutes)"
+                sx={{
+                  '& .MuiInputBase-input': {
+                    width: "166px",
+                    height: "19px",
+                    bgcolor: "white",
+                  },
+                }}
+                type="number"
               />
-            )}
+  
+              <Tooltip title="Upload images">        
+                <MuiFileInput 
+                  multiple 
+                  size="small"
+                  value={images} 
+                  onChange={handleImageChange} 
+                  InputProps={{
+                    inputProps: {
+                      accept: '.png, .jpeg, .jpg'
+                    },
+                    startAdornment: <InsertPhotoIcon />
+                  }}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      bgcolor: "white",
+                      width: "220px",
+                    },
+                  }}
+                  clearIconButtonProps={{
+                    title: "Remove all images",
+                    children: <CancelIcon color="primary" fontSize="small" />
+                  }}
+                />
+              </Tooltip>
+  
+              <Tooltip title={"Please use this field to state whether you received this game for free."}>
+                <FormControlLabel 
+                  control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
+                  label="Sponsored" 
+                  sx={{margin: 0}}
+                />
+              </Tooltip>
+            </Box>
+  
+            {/* <MuiFileInput multiple value={images} onChange={handleImageChange} inputProps={{ accept: '.png, .jpeg' }}  /> */}
+            <Box sx={{ position: "relative" }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleReviewSubmit}
+                disabled={loading}
+              >
+                Confirm
+              </Button>
+              {loading && (
+                <CircularProgress
+                  size={24}
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    marginTop: "-12px",
+                    marginLeft: "-12px",
+                  }}
+                />
+              )}
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
-  );
+    );
+  }
+  else{
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          padding: "12px",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "8px",
+          alignSelf: "stretch",
+          bgcolor: "background.paper",
+          borderRadius: "4px",
+          overflow: "hidden",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "2px",
+            alignSelf: "stretch",
+            width: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "4px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                wordBreak: "break-all",
+                overflow: "hidden",
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "4px",
+                  minWidth: 52
+                }}
+              >
+                <Avatar
+                  alt="User Avatar"
+                  src={
+                    user?.iconUrl != null
+                      ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
+                      : "/static/images/avatar/1.jpg"
+                  }
+                  sx={{ width: 52, height: 52 }}
+                />
+                <Typography variant="h6" sx={{ fontWeight: 700 }} noWrap>
+                  {user?.name ?? "Unknown User"}
+                </Typography>
+              </Box>
+  
+              <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
+                <FormControlLabel 
+                  control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
+                  label="Recommended" 
+                  sx={{margin: 0}}
+                />
+              </Tooltip>
+            </Box>
+  
+            <Box sx={{ width: "100%", justifyContent: "flex-end", display:"flex" }}>
+              <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                  <CustomInput
+                    value={score < 0 ? "" : score}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                      if(Number(event.target.value) >= 0 && Number(event.target.value) <= 100) {
+                        setScore(Number(event.target.value));
+                      }
+                      else if(Number(event.target.value) > 100){
+                        setScore(100);
+                      }
+                      else{
+                        setScore(-1);
+                      }
+                    }}
+                    placeholder="Score"
+                    sx={{
+                      '& .MuiInputBase-input': {
+                        width: "62px",
+                        height: "19px",
+                        bgcolor: "white",
+                      },
+                    }}
+                    type="number"
+                    inputProps={{ min: 0, max: 100 }}
+                  />
+                </Grid>
+                <Grid item xs>
+                  <Slider
+                    value={score < 0 ? 50 : score}
+                    onChange={(event: Event, newValue: number | number[]) => {
+                      if(typeof newValue === 'number') {
+                        setScore(newValue);
+                      }
+                    }}
+                    step={1}
+                    marks={scoresNoLabel}
+                    valueLabelDisplay="auto"
+                    valueLabelFormat={(value) => 
+                      value >= 75 ? "Flavorable" : value >= 50 ? "Mixed" : "Unflavorable"
+                    }
+                    color="secondary"
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+  
+          </Box>
+          <CustomInput 
+            value={comment}
+            placeholder="Write a review..."
+            onChange={(e) => setComment(e.target.value)}
+            multiline 
+            fullWidth
+            sx={{
+              '& .MuiInputBase-input': {
+                width: "100%",
+                bgcolor: "white",
+                resize: "vertical",
+                minHeight: "220px",
+              },
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                gap: "2px",
+                width: "100%",
+              }}
+            >
+              {game?.platforms && game?.platforms?.length > 0 && (
+                <FormControl sx={{ width: "100%"}}>
+                  <Autocomplete
+                    size="small"
+                    options={game?.platforms}
+                    sx={{
+                      bgcolor: "white",
+                    }}
+                    renderInput={(params) => <TextField {...params} placeholder="Select a platform" />}
+                    ListboxProps={
+                      {
+                        style:{
+                            maxHeight: '250px',
+                            backgroundColor: 'white',
+                        }
+                      }
+                    }
+                    renderOption={(props, option) => (
+                      <li {...props}>
+                        {getPlatform(option)}
+                      </li>
+                    )}
+                    getOptionLabel={(option) => getPlatform(option)}
+                    value={platform}
+                    onChange={(_: any, newValue: string | null) => {
+                      setPlatform(newValue);
+                    }}
+                  />
+                </FormControl>
+              )}
+  
+              <CustomInput 
+                value={playTime === -1 ? "" : playTime}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+                  setplayTime(value > 0 ? value : 0);
+                }}
+                placeholder="Play Time (Minutes)"
+                sx={{
+                  width: "100%",
+                  '& .MuiInputBase-input': {
+                    width: "100%",
+                    height: "19px",
+                    bgcolor: "white",
+                  },
+                }}
+                type="number"
+              />
+            </Box>
+  
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "8px",
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  width: "100%",
+                }}
+              >
+                <Tooltip title="Upload images">        
+                  <MuiFileInput 
+                    multiple 
+                    size="small"
+                    value={images} 
+                    onChange={handleImageChange} 
+                    InputProps={{
+                      inputProps: {
+                        accept: '.png, .jpeg, .jpg'
+                      },
+                      startAdornment: <InsertPhotoIcon />
+                    }}
+                    sx={{
+                      '& .MuiInputBase-root': {
+                        bgcolor: "white",
+                        width: "100%",
+                      },
+                    }}
+                    clearIconButtonProps={{
+                      title: "Remove all images",
+                      children: <CancelIcon color="primary" fontSize="small" />
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title={"Please use this field to state whether you received this game for free."}>
+                  <FormControlLabel 
+                    control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
+                    label="Sponsored" 
+                    sx={{margin: 0}}
+                  />
+                </Tooltip>
+              </Box>
+  
+              <Box sx={{ position: "relative" }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleReviewSubmit}
+                  disabled={loading}
+                >
+                  Confirm
+                </Button>
+                {loading && (
+                  <CircularProgress
+                    size={24}
+                    sx={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      marginTop: "-12px",
+                      marginLeft: "-12px",
+                    }}
+                  />
+                )}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    );
+  }
 }
 
 export default ReviewInputBox;

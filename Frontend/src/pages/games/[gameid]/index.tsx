@@ -6,6 +6,7 @@ import GameReviewCard from "@/components/GameReviewCard";
 import GameReviewCardSmall from "@/components/GameReviewCardSmall";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import ReviewInputBox from "@/components/ReviewInputBox";
+import ReviewInputBoxSmall from "@/components/ReviewInputBoxSmall";
 import { useAuthContext } from "@/context/AuthContext";
 import { GamePageProps, GameReview } from "@/type/game";
 import { getGenre } from "@/type/gameGenre";
@@ -1280,7 +1281,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               <GameReviewCard review={userReview} fullWidth={true} />
             </Box>
           ) : user ? (
-            <ReviewInputBox user={user} game={game} />
+            <ReviewInputBox user={user} game={game} size={isTablet ? "small" : "normal"} />
           ) : (
             <Box
               sx={{
@@ -1317,6 +1318,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               justifyContent: "flex-end",
               alignItems: "center",
               gap: "12px",
+              
+              [theme.breakpoints.down("sm")]: {
+                flexDirection: "column",
+                gap: "4px",
+                alignItems: "flex-end",
+              },
             }}
           >
             <Tabs
