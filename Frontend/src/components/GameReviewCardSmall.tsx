@@ -64,6 +64,7 @@ function GameReviewCardSmall({
         flex: "1 0 0",
         minHeight: 300,
         width: fullWidth ? "100%" : "auto",
+        overflow: "hidden",
       }}
     >
       <Box
@@ -143,6 +144,7 @@ function GameReviewCardSmall({
                   variant="h6"
                   color="text.primary"
                   sx={{ fontWeight: 700 }}
+                  noWrap
                 >
                   {mode === "game" ? review.reviewedGame?.name ?? "Unknown Game" : review?.reviewer?.name ?? "Unknown User"}
                 </Typography>
@@ -251,10 +253,16 @@ function GameReviewCardSmall({
                 wordBreak: "break-all",
               }}
             >
-              <Typography variant="subtitle2" color="text.secondary">
+              <Typography variant="subtitle2" color="text.secondary" noWrap sx={{minWidth: 0}}>
                 {review?.playTime != null && review?.playTime > 1
-                  ? `${playTimeString(review.playTime)} Played`
-                  : "Unknown Playtime"}
+                  ? `${playTimeString(review.playTime)} Played, `
+                  : "Unknown Playtime, "}
+                {review?.platform != null
+                  ? `Platform: ${getPlatform(review?.platform)}, `
+                  : "Platform: Unknown, "}
+                {review?.gameVersion != null
+                  ? `Version: ${review?.gameVersion}`
+                  : "Version: Unknown"}
               </Typography>
             </Box>
             <Button

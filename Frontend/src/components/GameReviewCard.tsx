@@ -63,6 +63,7 @@ function GameReviewCard({
         flex: "1 0 0",
         minHeight: 300,
         width: fullWidth ? "100%" : "auto",
+        overflow: "hidden",
       }}
     >
       <Box

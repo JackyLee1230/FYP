@@ -304,6 +304,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           alignContent: "center",
           flexDirection: "column",
           gap: "32px",
+          overflowX: "hidden",
         }}
       >
         <Typography variant="h4" sx={{ textAlign: "center" }}>
