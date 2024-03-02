@@ -27,6 +27,8 @@ import {
   Tooltip,
   Typography,
   styled,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
 import axios from "axios";
@@ -115,36 +117,57 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
   fontSize: 82,
   color: theme.palette.error.main,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 64,
+  },
 }));
 
 const StyledThumbUpIcon = styled(ThumbUpIcon)(({ theme }) => ({
   color: theme.palette.success.main,
   fontSize: 32,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 24,
+  },
 }));
 
 const StyledThumbDownIcon = styled(ThumbDownIcon)(({ theme }) => ({
   color: theme.palette.error.main,
   fontSize: 32,
+    [theme.breakpoints.down("sm")]: {
+    fontSize: 24,
+  },
 }));
 
 const StyledHelpIcon = styled(HelpIcon)(({ theme }) => ({
   color: theme.palette.info.main,
   fontSize: 24,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
 }));
 
 const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)(({ theme }) => ({
   color: theme.palette.info.main,
   fontSize: 24,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
 }));
 
 const StyledArrowDropUpIcon = styled(ArrowDropUpIcon)(({ theme }) => ({
   color: theme.palette.info.main,
   fontSize: 24,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
 }));
 
 const StyledForumIcon = styled(ForumIcon)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontSize: 36,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 28,
+  },
 }));
 
 function GamePage({
@@ -168,6 +191,8 @@ function GamePage({
     GameReviewComment[]
   >(reviewComment ?? []);
   const [addCommentLoading, setAddCommentLoading] = useState<boolean>(false);
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const { user, token, isUserLoading } = useAuthContext();
 
@@ -319,7 +344,7 @@ function GamePage({
       LinkComponent={Link}
       variant="text"
     >
-      <Typography variant="h4" color="text.primary" sx={{ fontWeight: 700 }}>
+      <Typography variant={isTablet ? "h6" : "h4"} color="text.primary" sx={{ fontWeight: 700 }}>
         {review?.reviewedGame?.name}
       </Typography>
     </Button>,
@@ -332,14 +357,16 @@ function GamePage({
         overflow: "hidden",
         whiteSpace: "nowrap",
         wordBreak: "break-all",
+
+        [theme.breakpoints.down("md")]: { gap: "2px" },
       }}
     >
-      <Typography variant="h6" color="text.secondary">
+      <Typography variant={isTablet ? "subtitle2" : "h6"} color="text.secondary">
         Review by
       </Typography>
-      <Button variant="text">
+      <Button variant="text" size={isTablet ? "medium" : "large"}>
         <Typography
-          variant="h5"
+          variant={isTablet ? "subtitle1" : "h6"}
           color="text.secondary"
           sx={{ fontWeight: 500 }}
         >
@@ -368,6 +395,14 @@ function GamePage({
           alignItems: "flex-start",
           gap: "32px",
           alignSelf: "stretch",
+          [theme.breakpoints.down("md")]: {
+            padding: "16px 24px",
+            gap: "24px",
+          },
+          [theme.breakpoints.down("sm")]: {
+            padding: "12px 12px",
+            gap: "12px",
+          },
         }}
       >
         <Box
@@ -380,6 +415,15 @@ function GamePage({
             borderRadius: "16px",
             bgcolor: "background.paper",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            [theme.breakpoints.down("md")]: {
+              padding: "16px 24px",
+              gap: "16px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              padding: "12px 12px",
+              gap: "8px",
+              flexDirection: "column",
+            },
           }}
         >
           <ButtonBase
@@ -395,6 +439,10 @@ function GamePage({
               overflow: "hidden",
               flexShrink: 0,
               bgcolor: "grey.100",
+              [theme.breakpoints.down("sm")]: {
+                width: "100%",
+                height: "86px"
+              },
             }}
           >
             {review?.reviewedGame?.iconUrl ? (
@@ -424,7 +472,14 @@ function GamePage({
             )}
           </ButtonBase>
 
-          <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
+          <Breadcrumbs 
+            separator={<NavigateNextIcon fontSize="small" />}
+            sx={{
+              "& .MuiBreadcrumbs-ol": {
+                justifyContent: "center",
+              }
+            }}
+          >
             {breadcrumbs}
           </Breadcrumbs>
         </Box>
@@ -441,6 +496,14 @@ function GamePage({
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             overflow: "hidden",
             bgcolor: "background.paper",
+            [theme.breakpoints.down("md")]: {
+              padding: "16px 24px",
+              gap: "16px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              padding: "12px 12px",
+              gap: "8px",
+            },
           }}
         >
           <Box
@@ -450,6 +513,7 @@ function GamePage({
               gap: "12px",
               flex: "1 0 0",
               width: "100%",
+
             }}
           >
             <Box
@@ -458,7 +522,7 @@ function GamePage({
                 alignItems: "center",
                 gap: "12px",
                 flex: "1 0 0",
-                alignSelf: "center",
+                alignSelf: "flex-start",
               }}
             >
               <ButtonBase
@@ -474,7 +538,14 @@ function GamePage({
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
                       : "/static/images/avatar/1.jpg"
                   }
-                  sx={{ width: 96, height: 96 }}
+                  sx={{ 
+                    width: 96, 
+                    height: 96,
+                    [theme.breakpoints.down("sm")]: {
+                      width: 64, 
+                      height: 64,
+                    },
+                  }}
                 />
               </ButtonBase>
             </Box>
@@ -510,14 +581,14 @@ function GamePage({
                   disabled={!review?.reviewer?.id}
                 >
                   <Typography
-                    variant="h4"
+                    variant={isTablet ? "h6" : "h4"}
                     color="text.primary"
                     sx={{ fontWeight: 700 }}
                   >
                     {review?.reviewer?.name ?? "Unknown User"}
                   </Typography>
                 </Button>
-                <Typography variant="subtitle1" color="text.secondary">
+                <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
                   {`Posted on: ${
                     review?.createdAt != null
                       ? format(new Date(review?.createdAt), "yyyy-MM-dd")
@@ -532,19 +603,25 @@ function GamePage({
                     overflow: "hidden",
                     whiteSpace: "nowrap",
                     wordBreak: "break-all",
+                    
+                    [theme.breakpoints.down("md")]: { 
+                      gap: "6px", 
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    },
                   }}
                 >
-                  <Typography variant="subtitle1" color="text.secondary">
+                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
                     {review?.playTime != null && review?.playTime > 1
                       ? `Played for: ${playTimeString(review.playTime)},`
                       : "Played for: Unknown,"}
                   </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
+                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
                     {review?.platform != null
                       ? `Platform: ${getPlatform(review?.platform)},`
                       : "Platform: Unknown,"}
                   </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
+                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
                     {review?.gameVersion != null
                       ? `Version: ${review?.gameVersion}`
                       : "Version: Unknown"}
@@ -558,7 +635,10 @@ function GamePage({
                   justifyContent: "center",
                   alignItems: "flex-end",
                   gap: "8px",
-                  alignSelf: "stretch",
+                  alignSelf: "flex-start",
+                  [theme.breakpoints.down("sm")]: {
+                    alignItems: "center",
+                  },
                 }}
               >
                 <Box
@@ -572,8 +652,14 @@ function GamePage({
                     <>
                       <StyledThumbUpIcon />
                       <Typography
-                        variant="h6"
-                        sx={{ fontWeight: 700, color: "#4FA639" }}
+                        variant={isTablet ? "subtitle1" : "h6"}
+                        sx={{ 
+                          fontWeight: 700, 
+                          color: "#4FA639", 
+                          [theme.breakpoints.down("sm")]: {
+                            display: "none"
+                          }
+                        }}
                       >
                         Recommended
                       </Typography>
@@ -582,9 +668,14 @@ function GamePage({
                     <>
                       <StyledThumbDownIcon />
                       <Typography
-                        variant="h6"
+                        variant={isTablet ? "subtitle1" : "h6"}
                         color="error.main"
-                        sx={{ fontWeight: 700 }}
+                        sx={{ 
+                          fontWeight: 700,
+                          [theme.breakpoints.down("sm")]: {
+                            display: "none"
+                          }
+                        }}
                       >
                         Not Recommended
                       </Typography>
@@ -598,11 +689,15 @@ function GamePage({
                     width: "78px",
                     height: "78px",
                     alignItems: "center",
+                    [theme.breakpoints.down("md")]: {
+                      width: "52px",
+                      height: "52px",
+                    },
                   }}
                   bgcolor={`${getReviewColor(review?.score)}.main`}
                 >
                   <Typography
-                    variant="h4"
+                    variant={isTablet ? "h6" : "h4"}
                     sx={{
                       fontWeight: 700,
                       textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -635,7 +730,7 @@ function GamePage({
                 alignSelf: "center",
               }}
             >
-              <Typography variant="overline" color="info.main">
+              <Typography variant={isTablet ? "caption" : "overline"} color="info.main" fontWeight={500}>
                 This section is generated by CritiQ automatically
               </Typography>
               <Tooltip title="This section is not part of the review. It is here to help you understand the review better.">
@@ -644,7 +739,13 @@ function GamePage({
             </Box>
             <Collapse
               in={showMLSummaries}
-              sx={{ margin: "12px 0px", width: "100%" }}
+              sx={{ 
+                margin: "12px 0px", 
+                width: "100%",
+                [theme.breakpoints.down("md")]: {
+                  margin: "6px 0px", 
+                },
+              }}
             >
               <Box
                 sx={{
@@ -673,14 +774,20 @@ function GamePage({
                     }}
                   >
                     <Typography
-                      variant="h6"
+                      variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ fontWeight: 700, width: "132px" }}
+                      sx={{ 
+                        fontWeight: 700, 
+                        width: "132px",
+                        [theme.breakpoints.down("md")]: { 
+                          width: "100px" 
+                        },
+                      }}
                     >
                       AI Sentiment:
                     </Typography>
                     <Typography
-                      variant="h6"
+                      variant={isTablet ? "subtitle1" : "h6"}
                       sx={{
                         color:
                           review.sentiment != null
@@ -705,13 +812,19 @@ function GamePage({
                     }}
                   >
                     <Typography
-                      variant="h6"
+                      variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ fontWeight: 700, width: "132px" }}
+                      sx={{ 
+                        fontWeight: 700, 
+                        width: "132px",
+                        [theme.breakpoints.down("md")]: { 
+                          width: "100px" 
+                        },
+                      }}
                     >
                       Main Topics:
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
                       Coming soon...
                     </Typography>
                   </Box>
@@ -723,13 +836,19 @@ function GamePage({
                     }}
                   >
                     <Typography
-                      variant="h6"
+                      variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ fontWeight: 700, width: "132px" }}
+                      sx={{ 
+                        fontWeight: 700, 
+                        width: "132px",
+                        [theme.breakpoints.down("md")]: { 
+                          width: "100px" 
+                        },
+                      }}
                     >
                       Key Words:
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
                       Coming soon...
                     </Typography>
                   </Box>
@@ -741,13 +860,19 @@ function GamePage({
                     }}
                   >
                     <Typography
-                      variant="h6"
+                      variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ fontWeight: 700, width: "132px" }}
+                      sx={{ 
+                        fontWeight: 700, 
+                        width: "132px",
+                        [theme.breakpoints.down("md")]: { 
+                          width: "100px" 
+                        },
+                      }}
                     >
                       Summary:
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
                       Coming soon...
                     </Typography>
                   </Box>
@@ -822,10 +947,14 @@ function GamePage({
             sx={{
               display: "flex",
               alignSelf: "stretch",
+              minHeight: "202px",
+              [theme.breakpoints.down("md")]: {
+                minHeight: "152px",
+              },
             }}
           >
             <Typography
-              variant="h6"
+              variant={isTablet ? "subtitle1" : "h6"}
               color="text.primary"
               sx={{ whiteSpace: "pre-wrap" }}
             >
@@ -852,6 +981,11 @@ function GamePage({
                 display: "flex",
                 alignItems: "center",
                 gap: "12px",
+                [theme.breakpoints.down("sm")]: {
+                  flexDirection: "column",
+                  gap: "8px",
+                  width: "100%",
+                },
               }}
             >
               <Typography
@@ -861,75 +995,85 @@ function GamePage({
               >
                 Did you find this review helpful?
               </Typography>
-              <Button
-                variant={
-                  liked != null && liked == true ? "contained" : "outlined"
-                }
-                color="primary"
-                onClick={() => handleReaction(true)}
-                disabled={reactionLoading || isUserLoading}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                  }}
+                <Button
+                  variant={
+                    liked != null && liked == true ? "contained" : "outlined"
+                  }
+                  color="primary"
+                  onClick={() => handleReaction(true)}
+                  disabled={reactionLoading || isUserLoading}
+                  size={isTablet ? "small" : "medium"}
                 >
                   <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "4px",
+                      gap: "12px",
                     }}
                   >
-                    <StyledThumbUpIcon sx={{ fontSize: 24 }} />
-                    <Typography
-                      variant="subtitle1"
-                      sx={{ fontWeight: 700, color: "#4FA639" }}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}
                     >
-                      {newLikes ?? 0}
-                    </Typography>
+                      <StyledThumbUpIcon sx={{ fontSize: 24 }} />
+                      <Typography
+                        variant={isTablet ? "subtitle2" : "subtitle1"}
+                        sx={{ fontWeight: 700, color: "#4FA639" }}
+                      >
+                        {newLikes ?? 0}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2">YES</Typography>
                   </Box>
-                  <Typography variant="body2">YES</Typography>
-                </Box>
-              </Button>
-              <Button
-                variant={
-                  disliked != null && disliked == true
-                    ? "contained"
-                    : "outlined"
-                }
-                color="primary"
-                onClick={() => handleReaction(false)}
-                disabled={reactionLoading || isUserLoading}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                  }}
+                </Button>
+                <Button
+                  variant={
+                    disliked != null && disliked == true
+                      ? "contained"
+                      : "outlined"
+                  }
+                  color="primary"
+                  onClick={() => handleReaction(false)}
+                  disabled={reactionLoading || isUserLoading}
+                  size={isTablet ? "small" : "medium"}
                 >
                   <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "4px",
+                      gap: "12px",
                     }}
                   >
-                    <StyledThumbDownIcon sx={{ fontSize: 24 }} />
-                    <Typography
-                      variant="subtitle1"
-                      color="error.main"
-                      sx={{ fontWeight: 700 }}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}
                     >
-                      {newDislikes ?? 0}
-                    </Typography>
+                      <StyledThumbDownIcon sx={{ fontSize: 24 }} />
+                      <Typography
+                        variant={isTablet ? "subtitle2" : "subtitle1"}
+                        color="error.main"
+                        sx={{ fontWeight: 700 }}
+                      >
+                        {newDislikes ?? 0}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2">NO</Typography>
                   </Box>
-                  <Typography variant="body2">NO</Typography>
-                </Box>
-              </Button>
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -946,6 +1090,14 @@ function GamePage({
             borderRadius: "8px",
             bgcolor: "background.paper",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            [theme.breakpoints.down("md")]: {
+              padding: "16px 24px",
+              gap: "16px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              padding: "12px 12px",
+              gap: "8px",
+            },
           }}
         >
           <Box
@@ -957,7 +1109,7 @@ function GamePage({
           >
             <StyledForumIcon />
             <Typography
-              variant="h4"
+              variant={isTablet ? "h6" : "h4"}
               color="text.primary"
               sx={{ fontWeight: 700 }}
             >
@@ -978,6 +1130,9 @@ function GamePage({
                 alignItems: "center",
                 gap: "24px",
                 alignSelf: "stretch",
+                [theme.breakpoints.down("sm")]: {
+                  gap: "8px",
+                },
               }}
             >
               <Avatar
@@ -987,7 +1142,14 @@ function GamePage({
                     ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
                     : "/static/images/avatar/1.jpg"
                 }
-                sx={{ width: 104, height: 104 }}
+                sx={{ 
+                  width: 104, 
+                  height: 104,
+                  [theme.breakpoints.down("sm")]: {
+                    width: 72,
+                    height: 72,
+                  },
+                }}
               />
               <Tooltip
                 title="Press enter to submit your comment"
@@ -1010,7 +1172,7 @@ function GamePage({
                   }}
                   multiline
                   fullWidth
-                  rows={4}
+                  rows={isTablet ? 3 : 4}
                   sx={{
                     "& .MuiInputBase-input": {
                       width: "100%",
@@ -1030,10 +1192,13 @@ function GamePage({
                 alignItems: "center",
                 gap: "12px",
                 width: "100%",
+                [theme.breakpoints.down("sm")]: {
+                  gap: "6px",
+                },
               }}
             >
               <Typography
-                variant="body1"
+                variant={isTablet ? "body2" : "body1"}
                 color="primary"
                 sx={{ fontWeight: 500 }}
               >
@@ -1044,6 +1209,7 @@ function GamePage({
                 LinkComponent={Link}
                 href="/login"
                 color="primary"
+                size={isTablet ? "small" : "medium"}
               >
                 Log in
               </Button>
@@ -1058,6 +1224,9 @@ function GamePage({
               alignItems: "flex-start",
               gap: "24px",
               alignSelf: "stretch",
+              [theme.breakpoints.down("sm")]: {
+                gap: "8px",
+              },
             }}
           >
             {reviewCommentState
@@ -1070,7 +1239,7 @@ function GamePage({
             <Pagination
               color="primary"
               variant="outlined"
-              size="large"
+              size={isTablet ? "medium" : "large"}
               count={Math.ceil(reviewCommentState.length / rowsPerPage)}
               page={page}
               onChange={handlePageChange}

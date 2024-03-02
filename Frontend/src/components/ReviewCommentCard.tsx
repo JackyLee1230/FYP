@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, ButtonBase, Link, Typography } from "@mui/material";
+import { Avatar, Box, Button, ButtonBase, Link, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { GameReviewComment } from "../type/game";
 import { format } from "date-fns";
 
@@ -13,6 +13,9 @@ type ReviewCommentCardProps = {
 };
 
 function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Box
       sx={{
@@ -20,6 +23,9 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
         alignItems: "flex-start",
         gap: "24px",
         alignSelf: "stretch",
+        [theme.breakpoints.down("sm")]: {
+          gap: "8px",
+        },
       }}
     >
       <ButtonBase
@@ -35,7 +41,15 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
               ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${ReviewComment?.commenter?.iconUrl}`
               : "/static/images/avatar/1.jpg"
           }
-          sx={{ width: 72, height: 72, alignSelf: "flex-start"}}
+          sx={{ 
+            width: 72, 
+            height: 72, 
+            alignSelf: "flex-start",
+            [theme.breakpoints.down("sm")]: {
+              width: 58, 
+              height: 58, 
+            },
+          }}
         />
       </ButtonBase>
       <Box
@@ -52,6 +66,11 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
             display: "flex",
             alignItems: "center",
             gap: "12px",
+            [theme.breakpoints.down("sm")]: {
+              justifyContent: "space-between",
+              gap: "0px",
+              width: "100%"
+            },
           }}
         >
           <Button
@@ -61,11 +80,11 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
             href={`/user/${ReviewComment?.commenter?.id}`}
             disabled={!ReviewComment?.commenter?.id}
           >
-            <Typography variant="h6" color="text.primary" sx={{fontWeight: 700}}>
+            <Typography variant={isMobile ? "subtitle1" : "h6"} color="text.primary" sx={{fontWeight: 700}}>
               {ReviewComment?.commenter?.name ?? "Unknown User"}
             </Typography>
           </Button>
-          <Typography variant="subtitle2" color="text.secondary" sx={{textTransform: "uppercase",}}>
+          <Typography variant={isMobile ? "caption" : "subtitle2"} color="text.secondary" sx={{textTransform: "uppercase",}}>
               {ReviewComment?.createdAt != null
                 ? format(new Date(ReviewComment?.createdAt), "yyyy-MM-dd HH:mm aaaaa'm'")
                 : "Unknown Date"}

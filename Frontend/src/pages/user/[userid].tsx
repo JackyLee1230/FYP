@@ -329,7 +329,7 @@ export default function User({ user }: UserPageProps) {
       <Box
         sx={{
           width: "1440px",
-          maxWidth: "100vw",
+          maxWidth: "100%",
           overflow: "hidden",
           height: "325px",
           position: "absolute",

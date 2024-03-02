@@ -327,7 +327,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
       </Head>
       <Box
         sx={{
-          width: "100vw",
+          width: "100%",
           overflow: "hidden",
           height: "310px",
           position: "absolute",

@@ -1,4 +1,5 @@
 import GameReviewCard from "@/components/GameReviewCard";
+import GameReviewCardSmall from "@/components/GameReviewCardSmall";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import { GamePageProps, GameReview } from "@/type/game";
 import {
@@ -417,7 +418,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
               <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
                 {reviews.map((review) => (
                   <Grid item xs={12} lg={6} key={review.id}>
-                    <GameReviewCard review={review} />
+                    {isMobile ? <GameReviewCardSmall review={review} />  : <GameReviewCard review={review} />}
                   </Grid>
                 ))}
               </Grid>
