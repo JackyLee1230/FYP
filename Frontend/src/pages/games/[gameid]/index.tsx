@@ -1278,7 +1278,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               >
                 Edit review feature is not available yet.
               </Typography>
-              <GameReviewCard review={userReview} fullWidth={true} />
+              {isTablet ? <GameReviewCardSmall review={userReview} fullWidth={true} />: <GameReviewCard review={userReview} fullWidth={true} />}
             </Box>
           ) : user ? (
             <ReviewInputBox user={user} game={game} size={isTablet ? "small" : "normal"} />
