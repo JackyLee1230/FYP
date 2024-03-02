@@ -764,6 +764,11 @@ function GamePage({
                     alignItems: "flex-start",
                     gap: "18px",
                     marginBottom: "12px",
+
+                    [theme.breakpoints.down("md")]: {
+                      gap: "12px",
+                      marginBottom: "8px",
+                    },
                   }}
                 >
                   <Box
