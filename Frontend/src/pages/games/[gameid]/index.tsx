@@ -6,7 +6,6 @@ import GameReviewCard from "@/components/GameReviewCard";
 import GameReviewCardSmall from "@/components/GameReviewCardSmall";
 import GameReviewCardSkeleton from "@/components/GameReviewCardSkeleton";
 import ReviewInputBox from "@/components/ReviewInputBox";
-import ReviewInputBoxSmall from "@/components/ReviewInputBoxSmall";
 import { useAuthContext } from "@/context/AuthContext";
 import { GamePageProps, GameReview } from "@/type/game";
 import { getGenre } from "@/type/gameGenre";
