@@ -1,7 +1,7 @@
 import React from "react";
 import ForgetPasswordBox from "@/components/ForgetPasswordBox";
 import LockResetIcon from '@mui/icons-material/LockReset';
-import { Box, styled, Typography } from "@mui/material";
+import { Box, styled, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Head from "next/head";
 
 
@@ -13,6 +13,9 @@ const StyledLockResetIcon = styled(LockResetIcon)(({ theme }) => ({
 
 
 function ForgotPasswordPage() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <Head>
@@ -23,7 +26,10 @@ function ForgotPasswordPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "48px 128px"
+          padding: "48px 128px",
+          [theme.breakpoints.down('md')]: { 
+            padding: 0,
+          }
         }}
       >
         <Box
@@ -38,6 +44,11 @@ function ForgotPasswordPage() {
             border: "0.8px solid",
             borderColor: "divider",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            [theme.breakpoints.down('md')]: { 
+              width: "100%",
+              padding: "48px 12px",
+              borderRadius: 0,
+            }
           }}
         >
           <Box
@@ -51,7 +62,7 @@ function ForgotPasswordPage() {
             }}
           >
             <StyledLockResetIcon />
-            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+            <Typography variant={isMobile? "h4" : "h2"} color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
               Forget Password
             </Typography>
           </Box>

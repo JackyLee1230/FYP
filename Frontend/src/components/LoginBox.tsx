@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   Radio,
   IconButton,
+  useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
@@ -37,6 +38,7 @@ const LoginBox = ({ setOpen, reloadOverride }: LoginBoxProps) => {
   const [isTemporary, setIsTemporary] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setToken } = useAuthContext();
+  const theme = useTheme();
 
   function verifyUsername(): boolean {
     if (username === "") {
@@ -105,6 +107,9 @@ const LoginBox = ({ setOpen, reloadOverride }: LoginBoxProps) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        [theme.breakpoints.down("sm")]: {
+          width: "100%",
+        }
       }}
     >
       <Typography

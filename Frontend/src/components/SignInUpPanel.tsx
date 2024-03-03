@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ResiterBox from "@/components/RegisterBox";
 import LoginBox from "@/components/LoginBox";
 import Image from "next/image";
-import { Box, Tab, Tabs, IconButton } from '@mui/material';
+import { Box, Tab, Tabs, IconButton, useTheme } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 type SignInUpPanelProps = {
@@ -11,6 +11,7 @@ type SignInUpPanelProps = {
 
 const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
   const [mode, setMode] = useState<'register' | 'login'>('register');
+  const theme = useTheme();
 
   return (
     <Box
@@ -27,7 +28,15 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
         borderColor: "divider",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         gap: 2,
-        width: 500
+        width: 500,
+        [theme.breakpoints.down("sm")]: {
+          padding: "12px 24px",
+          borderRadius: 0,
+          boxShadow: "none",
+          minHeight: "100vh",
+          width: "100%",
+          justifyContent: "flex-start",
+        }
       }}
     >
       <IconButton 
@@ -37,6 +46,11 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
           position: "absolute",
           top: 24,
           right: 36,
+
+          [theme.breakpoints.down("sm")]: {
+            top: 12,
+            right: 12,
+          }
         }}
       >
         <CloseRoundedIcon/>

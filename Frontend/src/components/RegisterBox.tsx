@@ -19,6 +19,7 @@ import {
   MenuItem,
   Select,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -46,6 +47,7 @@ const RegisterBox = () => {
   const [registerError, setRegisterError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setToken } = useAuthContext();
+  const theme = useTheme();
 
   function verifyUsername(): boolean {
     if (username === "") {
@@ -158,6 +160,9 @@ const RegisterBox = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        [theme.breakpoints.down("sm")]: {
+          width: "100%",
+        }
       }}
     >
       <Typography

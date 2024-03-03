@@ -1,5 +1,5 @@
 "use client";
-import { Box, styled, Typography } from "@mui/material";
+import { Box, styled, Typography, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import LockResetIcon from "@mui/icons-material/LockReset";
@@ -58,6 +58,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 function ResetPasswordPage({ token, errorMessage }: ResetPasswordPageProps) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <Head>
@@ -69,6 +72,9 @@ function ResetPasswordPage({ token, errorMessage }: ResetPasswordPageProps) {
           alignItems: "center",
           justifyContent: "center",
           padding: "48px 128px",
+          [theme.breakpoints.down('md')]: { 
+            padding: 0,
+          }
         }}
       >
         <Box
@@ -83,6 +89,11 @@ function ResetPasswordPage({ token, errorMessage }: ResetPasswordPageProps) {
             border: "0.8px solid",
             borderColor: "divider",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            [theme.breakpoints.down('md')]: { 
+              width: "100%",
+              padding: "48px 12px",
+              borderRadius: 0,
+            }
           }}
         >
           <Box
@@ -97,7 +108,7 @@ function ResetPasswordPage({ token, errorMessage }: ResetPasswordPageProps) {
           >
             <StyledLockResetIcon />
             <Typography
-              variant="h2"
+              variant={isMobile? "h4" : "h2"} 
               color="primary"
               sx={{ fontWeight: 600, textAlign: "center" }}
             >
