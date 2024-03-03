@@ -104,15 +104,15 @@ function GameReviewCardSmall({
               disabled={mode === "game" ? !review?.reviewedGame.id : !review?.reviewer?.id}
             >
               <Avatar
-                alt="Game Icon"
+                alt={mode === "game" ? review?.reviewedGame?.name : review?.reviewer?.name}
                 src={
                   mode === "game" ?
                     review?.reviewedGame?.iconUrl != null
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewedGame?.iconUrl}`
-                      : "/static/images/avatar/1.jpg"
+                      : undefined
                     : review?.reviewer?.iconUrl != null
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                      : "/static/images/avatar/1.jpg"
+                      : undefined
                 }
                 sx={{ width: 50, height: 50 }}
                 variant={mode === "game" ? "rounded" : "circular"}

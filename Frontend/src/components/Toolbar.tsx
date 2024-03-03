@@ -270,11 +270,11 @@ const WebToolbar = () => {
                   onClick={handleUserMenuOpen}
                 >
                   <Avatar
-                    alt="User Avatar"
+                    alt={user?.name ?? "Unknown User"}
                     src={
                       user?.iconUrl != null
                         ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user.iconUrl}`
-                        : "/static/images/avatar/1.jpg"
+                        : undefined
                     }
                   />
                 </IconButton>
