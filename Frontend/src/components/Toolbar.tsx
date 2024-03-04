@@ -386,7 +386,9 @@ const WebToolbar = () => {
                     sx={{
                       maxHeight: "100vh",
                       overflowY: "auto",
-                      width: "100%",
+                      [theme.breakpoints.down("sm")]: {
+                        width: "100%",
+                      },
                     }}
                   >
                     <SignInUpPanel setOpen={setOpenPanel} />
