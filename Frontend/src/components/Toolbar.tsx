@@ -386,6 +386,7 @@ const WebToolbar = () => {
                     sx={{
                       maxHeight: "100vh",
                       overflowY: "auto",
+                      width: "100%",
                     }}
                   >
                     <SignInUpPanel setOpen={setOpenPanel} />
