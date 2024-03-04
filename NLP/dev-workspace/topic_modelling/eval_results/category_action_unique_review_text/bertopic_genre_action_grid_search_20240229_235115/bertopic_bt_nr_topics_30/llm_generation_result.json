@@ -1,0 +1,1835 @@
+{
+  "new_topic_labels": {
+    "-1": {
+      "call_0": "\nLabel: Boring game with repetitive design and lackluster audio.",
+      "call_1": "\n\"Underwhelming experience with too much repetition.\"",
+      "call_2": "Quick Fun",
+      "call_3": "Fun Quick Game",
+      "call_4": "Fun quick game"
+    },
+    "0": {
+      "call_0": "\nThe topic of this review is \"Victor Vran\".",
+      "call_1": "\nThe topic of this review is Call of Duty: World at War. The label in less than 5 words is \"CoD World at War Review\".",
+      "call_2": "\"Victor Vran: Amazing Action RPG with Unique Gameplay\"",
+      "call_3": "\"Underwhelming experience with too much repetition.\"",
+      "call_4": "Label: Underwhelming Experience with Too Much Repetition"
+    },
+    "1": {
+      "call_0": "\"Better than vanilla Minecraft\"",
+      "call_1": "\nMinecraft Fun Multiplayer",
+      "call_2": "\nTopic: Fun 2D Minecraft-like Game\nLabel: Good but not great",
+      "call_3": "\"Minecraft Fun with Friends\"",
+      "call_4": "\"Better Than Minecraft\""
+    },
+    "2": {
+      "call_0": "\"Free but not worth it\"",
+      "call_1": "Free Game",
+      "call_2": "\"Free to Play Gem\"",
+      "call_3": "\"Free to Play Gem\"",
+      "call_4": "\"Free DLC Worth Buying\""
+    },
+    "3": {
+      "call_0": "\nAction-Packed",
+      "call_1": "Topic Label: Fun Shooter",
+      "call_2": "Topic Label: \"Gun-Based Carnage\"",
+      "call_3": "\nKilled in 10",
+      "call_4": "Killed"
+    },
+    "4": {
+      "call_0": "\nPortal Masterpiece",
+      "call_1": "\nThe topic label is \"underwhelming experience with too much repetition\".",
+      "call_2": "\"Puzzling Adventure\"",
+      "call_3": "Portal sequel with more story than puzzles",
+      "call_4": "Glados Puzzle Adventure"
+    },
+    "5": {
+      "call_0": "\"Arma 3\"",
+      "call_1": "\nTopic Label: Arma",
+      "call_2": "Arma",
+      "call_3": "\n\"Arma Fanatics Unite\"",
+      "call_4": "Arma Moba Masterpiece"
+    },
+    "6": {
+      "call_0": "Addicted Fun",
+      "call_1": "Crack Game",
+      "call_2": "Addicted Fun",
+      "call_3": "Addictive Fun",
+      "call_4": "\nCrack Game"
+    },
+    "7": {
+      "call_0": "Gaming Glitch",
+      "call_1": "\nCrashing Issue",
+      "call_2": "Topic Label: Crashing Issues",
+      "call_3": "Crashing issue",
+      "call_4": "Crashy"
+    },
+    "8": {
+      "call_0": "\nTopic Label: \"Port Issues\"",
+      "call_1": "\"Mediocre PC Port\"",
+      "call_2": "\"DBZ Fan's PC Port Delight\"",
+      "call_3": "\nTopic Label: Poor PC Port",
+      "call_4": "\nTopic Label: \"Solid PC Port\""
+    },
+    "9": {
+      "call_0": "\nCool Game",
+      "call_1": "Awesome game",
+      "call_2": "Good",
+      "call_3": "Good",
+      "call_4": "\nTopic Label: \"Good Soundtrack\""
+    },
+    "10": {
+      "call_0": "Dinosaur Shooter",
+      "call_1": "Primal Eden: Dinosaur Hunting Adventure",
+      "call_2": "Dinos",
+      "call_3": "Dinos",
+      "call_4": "Dino Hunt"
+    },
+    "11": {
+      "call_0": "\nMechs: Good Arena Shooter",
+      "call_1": "\nTopic Label: Payday 2",
+      "call_2": "Topic Label: Fun Criminal Activity",
+      "call_3": "Payday Heist Fun",
+      "call_4": "\nTopic Label: Good Mech Game"
+    },
+    "12": {
+      "call_0": "\n\"Hacking Issue\"",
+      "call_1": "\n\"Fun with friends, despite hackers.\"",
+      "call_2": "\"Hacker Heaven\"",
+      "call_3": "\nTopic: Servers and Hackers",
+      "call_4": "\"Underpopulated fun\""
+    },
+    "13": {
+      "call_0": "Bugs Galore",
+      "call_1": "Buggy Fun",
+      "call_2": "\nBuggy Fun",
+      "call_3": "Bug Hunt",
+      "call_4": "Glitchy Fun"
+    },
+    "14": {
+      "call_0": "Valve",
+      "call_1": "Valve Fan",
+      "call_2": "Valve Game",
+      "call_3": "\"Portal 3 Please\"",
+      "call_4": "\nValve"
+    },
+    "15": {
+      "call_0": "\"Childhood Classics\"",
+      "call_1": "Classic Childhood Fun",
+      "call_2": "Classic Childhood",
+      "call_3": "Nostalgic Fun",
+      "call_4": "Old Memories"
+    },
+    "16": {
+      "call_0": "Dirty Bomb - A Fresh Take on Team-Based Combat",
+      "call_1": "Dirty Bomb",
+      "call_2": "Dirty Bomb - Fast-paced shooter with high mobility and skill ceiling.",
+      "call_3": "Dirty Bomb - Fast-paced objective FPS with balanced characters and loadout cards.",
+      "call_4": "Fun bomb-planting game"
+    },
+    "17": {
+      "call_0": "Magic RPG",
+      "call_1": "The topic label in less than 5 words is: \"Classic RPG with charm.\"",
+      "call_2": "The topic is \"Witcher 1\" and the label is \"Excellent RPG with engaging story\".",
+      "call_3": "\"Witcher RPG\"",
+      "call_4": "\nCharming but dated"
+    },
+    "18": {
+      "call_0": "\nTopic Label: Learn Russian",
+      "call_1": "\nLearn Russian",
+      "call_2": "\n\"Russian Language Learning\"",
+      "call_3": "Russian language course",
+      "call_4": "Learn Russian"
+    },
+    "19": {
+      "call_0": "\n\"Shark Fun\"",
+      "call_1": "\nTreasure Hunt",
+      "call_2": "\n\"Shark vs. Diver Fun\"",
+      "call_3": "\nTreasure Hunt",
+      "call_4": "\"Shark Game\""
+    },
+    "20": {
+      "call_0": "\nTopic: Short but Fun Game",
+      "call_1": "\"Short and sweet game\"",
+      "call_2": "\"Too Short\"",
+      "call_3": "\"Short but sweet\"",
+      "call_4": "Short Fun Game"
+    },
+    "21": {
+      "call_0": "\n\"Beautiful Game with Great Narration\"",
+      "call_1": "\nBastion: Beautiful, Action-Packed Adventure with Unique Storytelling",
+      "call_2": "Narrative Masterpiece",
+      "call_3": "\nTopic Label: Bastion",
+      "call_4": "\nBastion: A Beautiful, Action-Packed Adventure"
+    },
+    "22": {
+      "call_0": "\nSaints Row Game",
+      "call_1": "\"Saints Row Fun\"",
+      "call_2": "\"Saints Row Fun\"",
+      "call_3": "Saints Row Fun",
+      "call_4": "Saints Row rip-off"
+    },
+    "23": {
+      "call_0": "\nTopic: Good game with some issues\nLabel: Gud Game",
+      "call_1": "\nGud Game",
+      "call_2": "\"Gam's great!\"",
+      "call_3": "\nTopic Label: \"Gud Game\"",
+      "call_4": "Gam"
+    },
+    "24": {
+      "call_0": "Sonic fan favorite",
+      "call_1": "Sonic Fans Unite",
+      "call_2": "\"Sonic Mania\"",
+      "call_3": "Best Sonic Game Ever",
+      "call_4": "Sonic"
+    },
+    "25": {
+      "call_0": "\nGreat Mac Game",
+      "call_1": "\nTopic Label: \"Mac Users Unite\"",
+      "call_2": "\nGreat for Mac Users.",
+      "call_3": "\"Mac Fanbase\"",
+      "call_4": "\"Mac Gaming\""
+    },
+    "26": {
+      "call_0": "Far Cry 4",
+      "call_1": "Far Cry",
+      "call_2": "Open World Adventure",
+      "call_3": "Far Cry 4",
+      "call_4": "Far Cry"
+    },
+    "27": {
+      "call_0": "\nLabel: Cake Lie",
+      "call_1": "\n\"Cake is a Lie\"",
+      "call_2": "Cake is a Lie",
+      "call_3": "Cake lies",
+      "call_4": "\n\"Cake lies\""
+    },
+    "28": {
+      "call_0": "Refund Dispute",
+      "call_1": "\"Refund Requested\"",
+      "call_2": "Refund issues",
+      "call_3": "\nTopic Label: \"Refund Nightmare\"",
+      "call_4": "Refund Request"
+    },
+    "29": {
+      "call_0": "\"HAT SIMULATOR\"",
+      "call_1": "\"Hat Simulator\"",
+      "call_2": "\"Hat Simulator\"",
+      "call_3": "\"Hat Simulator\"",
+      "call_4": "\nTopic Label: Hats Simulator"
+    }
+  },
+  "randomed_topic_reviews": {
+    "-1": {
+      "call_0": {
+        "reviews": [
+          "Presentation It's pretty obvious at first glance that Larva Mortus isn't going to be a life-changing experience, and for most of us playing it won't even be a day-changing experience as what seems to be an addictive and fun game at first, will turn into a boring and repetitive experience in a matter of minutes. The story takes place in the 19th Century, following a young recruit of an agency responsible with concealing and exterminating all evil creatures and their sources of power, so it won't be long before you start travelling around the globe to find all the evil lords that hold the main pieces of an artefact that allows evil to exist and expand throughout the lands, but as cool as that sounds, the way in which the game tells that story makes it boring and pointless as there is nothing else to fill in the blanks between missions and expand on the universe, instead the story turns into running from point A to point B only to then find out that you've been mislead and the thing you're looking for is at point C, kinda like a Mario game if he was looking for evil artefacts. There are also no cutscenes or voice-overs to add to the presentation of the story, so you'll be stuck with some lines of text that for most times are pointless since you can pretty much figure it out by yourself that after killing an entire castle of vampires, werewolves and bats, and still not finding the missing piece, the thing you're looking for is definitely not there. Rating: Gameplay Larva Mortus had something good going on for a while and that was due to its focus on gameplay, which looks and plays great for a few minutes, as you use different weapons ranging from swords to machine guns and explosives to eliminate all sorts of enemies while you take on different objectives such as freeing lost souls, eliminating sources of power, clearing the entire area of evil presence or defeating a boss; and to make it even more appealing the game promises randomized map so no matter how many times you replay a stage, it will be different each time. The problem with all that is that once you get past the first 10 minutes, you start to realize that no matter which enemies you'll face and where you will still do the same thing over and over again; the best strategy to defeat almost any type of enemy is to run around in circles shooting forward or waving your sword around if you're out of bullets, because as long as you do that properly you'll be just fine and no matter the objective you're following, you will still have to do this over and over again just so you can eventually reach an area where you have to shoot or walk through an additional thing. As for the bosses, all of them are just versions of normal creatures with more HP, and the random maps don't really change the game at all since they just move the rooms around, so instead of taking a left, you'll take a right the next time, but end up in a similar area with similar enemies. [/u]Rating: Graphics You can't expect quite a lot from an indie game with a limited budget, but the biggest visual problem with Larva Mortus isn't even the engine it was built on, which is obviously old, but instead the repetitive design which makes the already boring game even more monotone, always using the same colours and textures, putting you in similar looking rooms with the same objects sitting around the same monsters coming at you every single time you play. Rating: Audio The audio quality overall is just horrid, with missing tonality, sound effects that have no place there and even worse sounds that should've been there and they are not, and just that one song that keeps repeating again and again, and again with different effects added on the background when you enter a boss room or get overwhelmed by enemies, but even with that added, you still have to listen to the same tune that was bad to begin with. Rating: 2 Extras Finishing the main campaign takes less than two hours, and even though you can play the game for as long as you want to since it will constantly provide you with missions with various objectives, taking in consideration that no matter how many of those you'll complete, nothing will change probably no one will bother to play for longer than 8 hours, which is the time it takes to obtain all items that award you with achievements if you're into those. Rating: 5 Verdict Larva Mortus is an indie title that had something going on in there for a while, starting with cool ideas that failed to entertain for more than a few minutes due to its poor execution that ultimately provide more boredom and dullness than entertainment, making this title become nothing more than another leftover in your collection. It does come with its fun, and for a few cents that fun is probably worth it, but then again, don't expect it to last. Rating Overall: Check out the full review and a lot more about Larva Mortus at .php?f=7&t=282 [/h1]",
+          "is good. is very good. you must play, you must play NOOOOOOOOOOOOOOOW"
+        ],
+        "col_index": [
+          259897,
+          121636
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Play it and have fun :D",
+          "Presentation It's pretty obvious at first glance that Larva Mortus isn't going to be a life-changing experience, and for most of us playing it won't even be a day-changing experience as what seems to be an addictive and fun game at first, will turn into a boring and repetitive experience in a matter of minutes. The story takes place in the 19th Century, following a young recruit of an agency responsible with concealing and exterminating all evil creatures and their sources of power, so it won't be long before you start travelling around the globe to find all the evil lords that hold the main pieces of an artefact that allows evil to exist and expand throughout the lands, but as cool as that sounds, the way in which the game tells that story makes it boring and pointless as there is nothing else to fill in the blanks between missions and expand on the universe, instead the story turns into running from point A to point B only to then find out that you've been mislead and the thing you're looking for is at point C, kinda like a Mario game if he was looking for evil artefacts. There are also no cutscenes or voice-overs to add to the presentation of the story, so you'll be stuck with some lines of text that for most times are pointless since you can pretty much figure it out by yourself that after killing an entire castle of vampires, werewolves and bats, and still not finding the missing piece, the thing you're looking for is definitely not there. Rating: Gameplay Larva Mortus had something good going on for a while and that was due to its focus on gameplay, which looks and plays great for a few minutes, as you use different weapons ranging from swords to machine guns and explosives to eliminate all sorts of enemies while you take on different objectives such as freeing lost souls, eliminating sources of power, clearing the entire area of evil presence or defeating a boss; and to make it even more appealing the game promises randomized map so no matter how many times you replay a stage, it will be different each time. The problem with all that is that once you get past the first 10 minutes, you start to realize that no matter which enemies you'll face and where you will still do the same thing over and over again; the best strategy to defeat almost any type of enemy is to run around in circles shooting forward or waving your sword around if you're out of bullets, because as long as you do that properly you'll be just fine and no matter the objective you're following, you will still have to do this over and over again just so you can eventually reach an area where you have to shoot or walk through an additional thing. As for the bosses, all of them are just versions of normal creatures with more HP, and the random maps don't really change the game at all since they just move the rooms around, so instead of taking a left, you'll take a right the next time, but end up in a similar area with similar enemies. [/u]Rating: Graphics You can't expect quite a lot from an indie game with a limited budget, but the biggest visual problem with Larva Mortus isn't even the engine it was built on, which is obviously old, but instead the repetitive design which makes the already boring game even more monotone, always using the same colours and textures, putting you in similar looking rooms with the same objects sitting around the same monsters coming at you every single time you play. Rating: Audio The audio quality overall is just horrid, with missing tonality, sound effects that have no place there and even worse sounds that should've been there and they are not, and just that one song that keeps repeating again and again, and again with different effects added on the background when you enter a boss room or get overwhelmed by enemies, but even with that added, you still have to listen to the same tune that was bad to begin with. Rating: 2 Extras Finishing the main campaign takes less than two hours, and even though you can play the game for as long as you want to since it will constantly provide you with missions with various objectives, taking in consideration that no matter how many of those you'll complete, nothing will change probably no one will bother to play for longer than 8 hours, which is the time it takes to obtain all items that award you with achievements if you're into those. Rating: 5 Verdict Larva Mortus is an indie title that had something going on in there for a while, starting with cool ideas that failed to entertain for more than a few minutes due to its poor execution that ultimately provide more boredom and dullness than entertainment, making this title become nothing more than another leftover in your collection. It does come with its fun, and for a few cents that fun is probably worth it, but then again, don't expect it to last. Rating Overall: Check out the full review and a lot more about Larva Mortus at .php?f=7&t=282 [/h1]"
+        ],
+        "col_index": [
+          6045444,
+          259897
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game is great to play when you want to have a quick fun. Each party does not last more than 20 minutes, so you can play it every now and then. The gameplay is easy to grasp and the challenge is well balanced so you get the incentive to start over some levels to get all the points. I'm going for 100% achievements for this game, because it makes me feel like I can do it. I will do it at my pace, one play at a time, every now and then. And when I'm done with it, I'll download the sequel to keep the fun going. That makes for a fun game, that I recommend.",
+          " more like I this game isn't good to play."
+        ],
+        "col_index": [
+          38671,
+          841655
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This game is great to play when you want to have a quick fun. Each party does not last more than 20 minutes, so you can play it every now and then. The gameplay is easy to grasp and the challenge is well balanced so you get the incentive to start over some levels to get all the points. I'm going for 100% achievements for this game, because it makes me feel like I can do it. I will do it at my pace, one play at a time, every now and then. And when I'm done with it, I'll download the sequel to keep the fun going. That makes for a fun game, that I recommend.",
+          "Great Game to Play!!"
+        ],
+        "col_index": [
+          38671,
+          6071886
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Play it and have fun :D",
+          "This game is great to play when you want to have a quick fun. Each party does not last more than 20 minutes, so you can play it every now and then. The gameplay is easy to grasp and the challenge is well balanced so you get the incentive to start over some levels to get all the points. I'm going for 100% achievements for this game, because it makes me feel like I can do it. I will do it at my pace, one play at a time, every now and then. And when I'm done with it, I'll download the sequel to keep the fun going. That makes for a fun game, that I recommend."
+        ],
+        "col_index": [
+          6045444,
+          38671
+        ]
+      }
+    },
+    "0": {
+      "call_0": {
+        "reviews": [
+          "To sum it up, its a generic FPS thats based off the original but in no way recreates it or really continues the lineage of FEAR but rather takes inspiration from that game in the form of bullets on a powerpoint. Its not bad, I have played far worse but its definetly not good either. It felt like they looked at and just made a casualised/consolised version of the game instead of taking the first game and building onto that. Unfortunately it dousn't take anything that was good from the first game and build onto that and feels more like a generic FPS of these days rather than anything like the, now classic, original. The great AI is gone and feels much more basic now while they still attempt to recreate the original they feel much more stupid. The maps have alot more detail but sit at either at being simplistic places to run through or overly complicated areas where you get turned around and confused where to go. The areas though do look nice and the graphics in general are a huge jump forward in fidelity but something is lost in the transfer. The 1st game had a very flat and empty graphical design (either due to intended design or hardware limits of the time) that added towards the atmosphere which is lost with 2. There is also alot more involvement with NPCs but unfortunately the story isn't exactly the easiest to understand or make sense at all. Honestly with this type of story there isn't much sense to be made and its more of a thriller than a story book. The scaryness isn't really there aside from a handfull of jump and other scares but its not a scary game anymore than the first and probably less so. Its mainly a shooter like the original game, but you end up fighting the same enemies over and over and scenarios reminiscent of the original game. Unfortunately the AI of the old game and feeling of a dynamic shootout escapes this one as the experience feels more canned than homemade. I would only recommend playing this if you just played FEAR and want more of that type of game or if you just want to play a generic style FPS and know what your getting into. The cinematics and writing is pretty good, but if you wanting something super serious all the way through than the writing will fail you from the very start of the game. But it tries to be serious at certain points but its hard to care about the characters in a game where the gameplay feels generic and bland. Its also very easy, for the most part you can either just blaze through areas or take advantage of faults in the AI to get past enemies more easily. Meh",
+          "Victor Vran is a really beautiful, massive Action RPG, which has a pretty unique gemplay style and method of building your character's skills & attributes. There are many weapons to collect, ranging from swords and hammers to magical tomes and lightning guns. Your character (Victor Vran) can run and even jump, which makes this game so brilliant. Many areas in the game will require Victor Vran to jump (sometimes against cliff walls and other objects) to gain access to. There are many seceret areas also. After 125 hours play there are still a few that elude me. Victor Vran can carry two two-handed weapons, one of which can be used at any one time - and each weapon has three attack methods (standrad attack + 2 special). The controls works so well with an xbox 360 controller. Character animation is excellent. Victor Vran also has two demon powers (powerful weapons or auras) which are powered by the use of overdrive. Overdrive is accumulated by method defined by your outfit, which may include, among other factors, attacks on enemy and kills. Victor Vran can change outfits, which vary attributes, such as the number of Destiny Cards you can carry/armor/overdrive gain, while the amount of Destiny Points you can use is related to character level. Destiny Cards can affect attributes such as critcical chance, or health regeneration and so are lots of nice loot drops to find - legendary items and special power stones that can upgrade demon powers, destiny cards, your outfit and weapons, in the transmute section back in the hub (Castle Zagore). Overall, Victor Vran is easily one of the best games I have ever played. Very possibly the actual very best. The combat gameplay is so satisfying and character's power building is so absorbing. The size of each in-game area is simply astounding, the detail incredible, and the sheer number of them immense. The game is set in a really beautiful world, which is so huge. The single player story line (I say single player, although the main story is also playable in co-op mode) is really excellent and maintains interest in the game, while the challenges set for each area, while not necessary to complete, provide an extra level of challenge and an extra incentive to replay each area time and time again, (especially in multiplayer). Multiplayer is excellent, with players being helpful, and you can filter whether games are visible to just your firends or everyone. Online multiplayer players will often share treasure codes, which can be redeemed, by clicking on them in chat, or entering them in the options screen. The treasure codes provide details of Treasure Hunts and Bounties, with bounties spawning Epic monsters in the relevant game areas, providing nice loot and xp gaining opportunities. This also provides an excellent post-campaign end-game for teaming up in mulitplayer (or singleplayer). Players can play local Co-op also. There is also a Bottomless Pit, PvP brawling arena, and Cauldron of Chaos with new challenges daily providing even more replayability, online or offline. Even at full price, this game is a bargain. It really is so massive with so many cool items to collect and different character 'builds' to explore. And the combat is truly unique - players get a real sense of controlling Victor Vran's movements and attacks, with sword attacks slashing and jolting, lightning bolts and massive explosions on crit (if applicable) easy and fluid to play with controller (while at the same time providing adequate challenge). Full controller support/Steam Trading Cards/Steam Achievements/Online the sound track is really truly beautiful music also. Highly recommended. 10/10."
+        ],
+        "col_index": [
+          371191,
+          4483647
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Call Of Duty: World at War is the prime example of how good Call Of Duty used to be. Say what you will about the newer instalments of this franchise, but understand that Call Of Duty used to be something magical. From its excellent single-player to its limitlessly fun and addicting zombie mode, word at war holds up perfectly, with the exception of an all-around 'ok' multiplayer component, which has not aged well in my opinion. Not to mention the mod support, which is extremely easy to operate, and gives you access to an insane amount of custom maps for the zombie mode, which equals an insane amount of content. -The single-player mode will see you playing from two different perspectives during the second world war, one from the eyes of an American soldier, taking part in the war against Japan, and the other from the eyes of a Red Army soldier, taking part in the eastern front against the nazi-occupied Germany. Both sides of the story are equally thrilling (the latter being the best in my opinion), with excellent performances from both Kiefer Sutherland (as Roebuck) and Gary Oldman (as Reznov). The graphics are great for the time and still hold up, the music is kickass, the gore is gruesome, the guns are really fun to use. and the main characters portrayed by Sutherland and Oldman are fantastic, -The zombies mode will see you surviving an endless onslaught of undead nazis, as you gain points for killing and use them for weapons or perks to help you survive. There are four maps to chose from (or over 1000 if you chose to use mods) that vary in size and difficulty. You unlock more areas of the maps with the aforementioned points and are encouraged to use your points for powerful and unique weapons that can be found. The characters that you play as (more specifically in the latter of the maps) are charismatic, funny, and drop-dead hilarious some times. And on a more personal note, the zombies mode is the highlight of the game for me, with the majority of my play time spent on it. -The multiplayer mode is, basic to say the least. Back in 2008 it might have been something special, but now it is as basic as it gets. Two teams of six gun eachother down in a variety of modes, which will see them ranking up, unlocking new weapons, attachments, perks and modifiers. The playerbase is baron and near empty, with only a handfull of servers still up and running, and a handfull of those being dedicated and hacker-free. It is still fun, dont get me wrong, but it's nothing special. If I were to rate Call of Duty: World at War (this version in particular the steam version), I'd give it a solid 9/10. It is my favourite game of all time, and when I die, I wish to be buried with it (oh, and every day at 6 o' clock I bow to the west and worship treyarch, but thats not important I guess ;P)",
+          "Firstly, I am not one of those people who has been with the series from the start. The first I played was Ground Zeros and for whatever reason it didn\u2019t hook me in. Sure it looked great and played well but something didn't click. I wasn\u2019t going to buy MGS: TPP, I have a friend however that bought it on release day and he could not put it down. He seemed to be lost in it for hours, no longer wanting to play any other games. So I caved in and bought it. I am so pleased that I did, it\u2019s an amazing game. So much to do, to see. It\u2019s wonderful to look at, it plays beautifully. The stories are a bit mad but I can see past them and enjoy this open worlder for what it is. I understand there is more to come also, DLC and multiplayer aspects. Aside from the main missions there is plenty of side ops and base management things to do. Always seems to be something or someone that needs your attention. Personally I have found my game balance to be a mixture of sneaky peaky and going loud. That\u2019s the way I enjoy to play it and that\u2019s how I will play it because honestly, there are no rules - do as you please. I can't recommend this enough, new to the franchise or not. All I would say is give it 5 hours before you make any determination. The prologue is about hours and its going to take a few hours to get used to the controls and get through all the little cut scenes, not to mention familiarising yourself with the options and settings. Oh, did I mention that you also get a horse, a dog, an ED-209 and a freakishly good looking semi-naked female sniper buddy. Money well spent"
+        ],
+        "col_index": [
+          18341,
+          3531240
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "amazing , just no more to say . by far he best game i have ever played",
+          "Victor Vran is a really beautiful, massive Action RPG, which has a pretty unique gemplay style and method of building your character's skills & attributes. There are many weapons to collect, ranging from swords and hammers to magical tomes and lightning guns. Your character (Victor Vran) can run and even jump, which makes this game so brilliant. Many areas in the game will require Victor Vran to jump (sometimes against cliff walls and other objects) to gain access to. There are many seceret areas also. After 125 hours play there are still a few that elude me. Victor Vran can carry two two-handed weapons, one of which can be used at any one time - and each weapon has three attack methods (standrad attack + 2 special). The controls works so well with an xbox 360 controller. Character animation is excellent. Victor Vran also has two demon powers (powerful weapons or auras) which are powered by the use of overdrive. Overdrive is accumulated by method defined by your outfit, which may include, among other factors, attacks on enemy and kills. Victor Vran can change outfits, which vary attributes, such as the number of Destiny Cards you can carry/armor/overdrive gain, while the amount of Destiny Points you can use is related to character level. Destiny Cards can affect attributes such as critcical chance, or health regeneration and so are lots of nice loot drops to find - legendary items and special power stones that can upgrade demon powers, destiny cards, your outfit and weapons, in the transmute section back in the hub (Castle Zagore). Overall, Victor Vran is easily one of the best games I have ever played. Very possibly the actual very best. The combat gameplay is so satisfying and character's power building is so absorbing. The size of each in-game area is simply astounding, the detail incredible, and the sheer number of them immense. The game is set in a really beautiful world, which is so huge. The single player story line (I say single player, although the main story is also playable in co-op mode) is really excellent and maintains interest in the game, while the challenges set for each area, while not necessary to complete, provide an extra level of challenge and an extra incentive to replay each area time and time again, (especially in multiplayer). Multiplayer is excellent, with players being helpful, and you can filter whether games are visible to just your firends or everyone. Online multiplayer players will often share treasure codes, which can be redeemed, by clicking on them in chat, or entering them in the options screen. The treasure codes provide details of Treasure Hunts and Bounties, with bounties spawning Epic monsters in the relevant game areas, providing nice loot and xp gaining opportunities. This also provides an excellent post-campaign end-game for teaming up in mulitplayer (or singleplayer). Players can play local Co-op also. There is also a Bottomless Pit, PvP brawling arena, and Cauldron of Chaos with new challenges daily providing even more replayability, online or offline. Even at full price, this game is a bargain. It really is so massive with so many cool items to collect and different character 'builds' to explore. And the combat is truly unique - players get a real sense of controlling Victor Vran's movements and attacks, with sword attacks slashing and jolting, lightning bolts and massive explosions on crit (if applicable) easy and fluid to play with controller (while at the same time providing adequate challenge). Full controller support/Steam Trading Cards/Steam Achievements/Online the sound track is really truly beautiful music also. Highly recommended. 10/10."
+        ],
+        "col_index": [
+          6318711,
+          4483647
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Hopefully I won't get too much hate for saying my opinion about the game. First I just want to say that Bioshock has one of the biggest impacts on my gaming career. I didn't like bioshock infinite, a good story does not make a good game. When you play a game like bioshock you go 'Oh boy' I got this new ability that gives me an advantage over my opponent. In Infinite, I rarely had the need to use any of the useless vigors you find throughout the game, all that was needed to succeed in this game was using the very boring guns that were available. Oh boy a machine gun, oh cool a sniper. That hasn't been done a million times. There's a tacked on run n gun system and you take cover. Sound similar? I wanted more of the original game, I wanted to combine the experice from the other games to make my experience unique, and what do I get? A dumbed down shooter that feels boring. You are limited to TWO that fun? It's terrible, It leaves no room for creativity, you just mow down stuff with boring weapons and then move on to the next area. Rapture felt alive, this one was just really frusterating. I felt rushed, Good story =/= a good game. The story could have been told in a book, and it would have been better than this. It just feels bland and something I have done a million times. There was no real exploration, there was no real point. In Bioshock 1 you can find interesting side stories, that you had to find and use your limited resources to find. There was very little reward for exploring in Infinite. The fact that there's a shield recovery system in this game, just makes it that much worse. What happened to shock shield, where whenever you took damage you would electrocute the no uniqueness in this game. Just a boring upgrade system and boring weapon upgrades. If you want a casual, stupidly cinematic call of duty experince with bioshock get this. This doesn't live up to the series, and you can argue against me if you want but I just wanted to get another opinion out on this game.",
+          "To sum it up, its a generic FPS thats based off the original but in no way recreates it or really continues the lineage of FEAR but rather takes inspiration from that game in the form of bullets on a powerpoint. Its not bad, I have played far worse but its definetly not good either. It felt like they looked at and just made a casualised/consolised version of the game instead of taking the first game and building onto that. Unfortunately it dousn't take anything that was good from the first game and build onto that and feels more like a generic FPS of these days rather than anything like the, now classic, original. The great AI is gone and feels much more basic now while they still attempt to recreate the original they feel much more stupid. The maps have alot more detail but sit at either at being simplistic places to run through or overly complicated areas where you get turned around and confused where to go. The areas though do look nice and the graphics in general are a huge jump forward in fidelity but something is lost in the transfer. The 1st game had a very flat and empty graphical design (either due to intended design or hardware limits of the time) that added towards the atmosphere which is lost with 2. There is also alot more involvement with NPCs but unfortunately the story isn't exactly the easiest to understand or make sense at all. Honestly with this type of story there isn't much sense to be made and its more of a thriller than a story book. The scaryness isn't really there aside from a handfull of jump and other scares but its not a scary game anymore than the first and probably less so. Its mainly a shooter like the original game, but you end up fighting the same enemies over and over and scenarios reminiscent of the original game. Unfortunately the AI of the old game and feeling of a dynamic shootout escapes this one as the experience feels more canned than homemade. I would only recommend playing this if you just played FEAR and want more of that type of game or if you just want to play a generic style FPS and know what your getting into. The cinematics and writing is pretty good, but if you wanting something super serious all the way through than the writing will fail you from the very start of the game. But it tries to be serious at certain points but its hard to care about the characters in a game where the gameplay feels generic and bland. Its also very easy, for the most part you can either just blaze through areas or take advantage of faults in the AI to get past enemies more easily. Meh"
+        ],
+        "col_index": [
+          6318029,
+          371191
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Call Of Duty: World at War is the prime example of how good Call Of Duty used to be. Say what you will about the newer instalments of this franchise, but understand that Call Of Duty used to be something magical. From its excellent single-player to its limitlessly fun and addicting zombie mode, word at war holds up perfectly, with the exception of an all-around 'ok' multiplayer component, which has not aged well in my opinion. Not to mention the mod support, which is extremely easy to operate, and gives you access to an insane amount of custom maps for the zombie mode, which equals an insane amount of content. -The single-player mode will see you playing from two different perspectives during the second world war, one from the eyes of an American soldier, taking part in the war against Japan, and the other from the eyes of a Red Army soldier, taking part in the eastern front against the nazi-occupied Germany. Both sides of the story are equally thrilling (the latter being the best in my opinion), with excellent performances from both Kiefer Sutherland (as Roebuck) and Gary Oldman (as Reznov). The graphics are great for the time and still hold up, the music is kickass, the gore is gruesome, the guns are really fun to use. and the main characters portrayed by Sutherland and Oldman are fantastic, -The zombies mode will see you surviving an endless onslaught of undead nazis, as you gain points for killing and use them for weapons or perks to help you survive. There are four maps to chose from (or over 1000 if you chose to use mods) that vary in size and difficulty. You unlock more areas of the maps with the aforementioned points and are encouraged to use your points for powerful and unique weapons that can be found. The characters that you play as (more specifically in the latter of the maps) are charismatic, funny, and drop-dead hilarious some times. And on a more personal note, the zombies mode is the highlight of the game for me, with the majority of my play time spent on it. -The multiplayer mode is, basic to say the least. Back in 2008 it might have been something special, but now it is as basic as it gets. Two teams of six gun eachother down in a variety of modes, which will see them ranking up, unlocking new weapons, attachments, perks and modifiers. The playerbase is baron and near empty, with only a handfull of servers still up and running, and a handfull of those being dedicated and hacker-free. It is still fun, dont get me wrong, but it's nothing special. If I were to rate Call of Duty: World at War (this version in particular the steam version), I'd give it a solid 9/10. It is my favourite game of all time, and when I die, I wish to be buried with it (oh, and every day at 6 o' clock I bow to the west and worship treyarch, but thats not important I guess ;P)",
+          "subpar to my expectations, I think I bought this game(apart from the super awesome cover art) to get to know the world of warhammer 40k more, I visited Gameworkshop and played a WH40k game on my n-gage, and so I was kinda hoping this game would make me familiar with the universe. an example of a game which did just that splendidly was the Game of Thrones game, I've never watched the series, the game had both great gameplay and twist but also delved into the GOT world details so heavily I didn't follow much, but enough to get a feel for it, to become familiar with it. there was a lot of story there. in Space Marine the gameplay design is mediocre, it's fun and great, but you've had the same experience in a gaziliion games before, and there isn't any new experience. very liniear, too simplistic level designs, and I might say the graphics are also a disappointment but that wouldn't be fair of me, since I'm playing this game in 2015. the story isn't that complicated either. I came here wanting to get to know the world and the races and the politics and the history, was I got are enemies of different colors and weapons to kill in many many ways. fun, repetetive, not what I was looking for. oh, and the button mapping is the worst I can think of in recent memory. and one last thing, i realized later on that the game has huge structures and beatuiful environements. however they're all up such that they don't appear in your normal view while going around, you have to stop and look up at them, if the camera was zoomed out while not in combat or centered up that might've made you enjoy the scenery more."
+        ],
+        "col_index": [
+          18341,
+          6005769
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "In my better than the new Minecraft",
+          "This game is great. It's like minecraft, but with more stuff thats 999x Better!"
+        ],
+        "col_index": [
+          101661,
+          94533
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Minecraft in 2D, fun to play with friends",
+          "this is a very awesone game and if you dont have it get it now (for people that like sandbox games like MINECRAFT)"
+        ],
+        "col_index": [
+          72559,
+          110859
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I love this game it is one of the best games out there i would recommend that anyone who like minecraft like games should give this a try",
+          "A lot of people like it. I'm not one of those. I enjoy Minecraft more. To me, it's like a 2D minecraft, and I just can't get into it. You may like it, and there is nothing wrong with that. I just couldn't get into it."
+        ],
+        "col_index": [
+          110661,
+          97174
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Minecraft in 2D, fun to play with friends",
+          "In my better than the new Minecraft"
+        ],
+        "col_index": [
+          72559,
+          101661
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Three words. Better Than MINECRAFT",
+          "This game is great. It's like minecraft, but with more stuff thats 999x Better!"
+        ],
+        "col_index": [
+          104058,
+          94533
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "free is always fun",
+          "Even free it's not worth it."
+        ],
+        "col_index": [
+          6175451,
+          55103
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "it' s but for free :)",
+          "at least it's free"
+        ],
+        "col_index": [
+          263152,
+          5442248
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "gREAT GAME SINCE IT BECAME FREE TO PLAY",
+          "it' s but for free :)"
+        ],
+        "col_index": [
+          3917927,
+          263152
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "gREAT GAME SINCE IT BECAME FREE TO PLAY",
+          "free is always fun"
+        ],
+        "col_index": [
+          3917927,
+          6175451
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "buy the dlc",
+          "it' s but for free :)"
+        ],
+        "col_index": [
+          6326702,
+          263152
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "10/10 will always play again and and again",
+          "10/10 would rage again."
+        ],
+        "col_index": [
+          6225768,
+          4153040
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "10/10 go for it :)",
+          "10/10 bretty good"
+        ],
+        "col_index": [
+          4074792,
+          5813692
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "10/10 love this game",
+          "10/10 bretty good"
+        ],
+        "col_index": [
+          5777183,
+          5813692
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10/10 - Its Fun",
+          "10/10 love this game"
+        ],
+        "col_index": [
+          1572100,
+          5777183
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "10/10 would rage again.",
+          "I love this game! 10/10 would Hadouken again!"
+        ],
+        "col_index": [
+          4153040,
+          5683256
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "awesome game, very intricated puzzles",
+          "Portal 2 is an amazing game that never gets old, it has coopertive(multiplayer) singleplayer, custom puzzles, it has more puzzle items, more characters, longer, better puzzles, amazing storyline. Is expensive but worth it!"
+        ],
+        "col_index": [
+          6156604,
+          6156509
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This I don't know where to begin. It can be a fun timekiller for a little while, but it's never worth the full asking price of 9,99\u20ac. It's on sale right now for 0,99\u20ac, and I think that should be the normal price, because clearly there didn't go a lot of work into making the game. I guess the devs went for a clean and minimalist look, like Portal or and I guess it's ok, but it looks rather dull and like something that everyone could piece together in some game construction kit within a couple of minutes. All the puzzles are very easy, and not very well designed. If you have ever played user made puzzles for Portal 2, you probably know what I mean. They work, and you had to think a bit about how to solve it, but all in all they seem designed quite badly, compared to the dev-made puzzles. Alle the levels in this game feel the same. Most of them don't even use that Polarity concept all that much. It's more about taking a blue or red cube to a receptacle of the same colour and activate something that helps you through the level (platform, acceleration ramp, opening a gate Sometimes you have to throw the cubes at the receptacles, which works reasonably well. The controls are fine, though the air controls seem a bit off. The main reason why I think this is worth more like 1\u20ac than 10\u20ac is that the main game consists of 11 (extremely short and easy) levels. There are also 10 bonus levels and a coop campaign, come on, really? At about level 8 there suddenly is this new mechanic where you can change the colour of your cube by throwing it through a green force field. This mechanic isn't introduced in any way, and the only reason it's still quite easy to figure out by yourself is because the level design is so bleak that there aren't to much possibilities. It's like 'ok, here's this red cube, there's a blue receptacle, and there is nothing else in this room except that green force field over there', so your options are so limited that you soon arrive at the correct solution. Oh, what I didn't mention so far: you also have to collect 3 green glowing things (aka 'Datasets') in every room for no apparent reason. Yes, the story tells you why, but they just feel like this arbitrary thing you also have to do that has nothing to do with solving the room's puzzles. Sometimes they're hidden, but that doesn't really work either, because of the empty level design. If you are at the end of the level and you're missing one of them, it's just like 'well, then I'll have to go over there where it's probably hidden and where I didn't go before because I had absolutely no reason to'. TL;DR: Puzzles too easy, just 11 levels in the main campaign, bad level design. It's like the easy first few puzzles of other puzzle games, in length as well as in difficulty. I wouldn't recommend buying this even at 0,99\u20ac unless you also have someone to play the coop campaign with. I got mine for free, if you can get it free, go for it. It can be entertaining for a short while.",
+          "Best puzzle shooter made by Valve. Make your own puzzles play with friends. Test your mind with the long 10 hour single player campaign. Be warned this game will get harder as you progress. Overall: 10/10"
+        ],
+        "col_index": [
+          4074905,
+          6155768
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "If you want to play a puzzle game you must play has a very good story and funny will love this game and love GLaDOS too like me.",
+          "if you like puzzle games with a story, get this game"
+        ],
+        "col_index": [
+          6147352,
+          5243188
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Portal 2 is a great game and is good sequeal to portal. But instead of staying on just the puzzle and test chamber path. The game is based around advancing the story more then puzzles. Mind you that there are puzzles to be solved and harder ones to come later in the game. The coop is fun and cool, but focuses on puzzles more then story so if you are in the portal game for puzzles and have a buddy that wants the same thing out of the game then you are good to go. But if thats not your thing then the workshop maps and the map designer extend your game time for this game by many hours. I have spent so many hours playing and designing levels that you can let your mind run free with ideas. If you liked the first portal game then you will like this.",
+          "If you want to play a puzzle game you must play has a very good story and funny will love this game and love GLaDOS too like me."
+        ],
+        "col_index": [
+          6146116,
+          6147352
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "if you like puzzle games with a story, get this game",
+          "best puzzle game, hl"
+        ],
+        "col_index": [
+          5243188,
+          6130981
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "Arma is Love. Arma is Life.",
+          "Arma 3 is on of my all-time favorites. I started with the Arma series with wanting to play DayZ, and had no intention of playing Arma2. I ended up playing Arma 2 and really getting into the series. I eventually purchased Arma 3 when i got a new PC, and I just blown away by how good it is. Its got everything, fantastic and immersive infantry combat , great vehicle gameplay, and superb aerial combat. It does all three of those things, and it does them in an awesome way. Also, Arma 3 multiplayer is truly unique, with a serious community. You can join a random objective server and roll with a squad coordinating for real, no other game comes close to having that experience of realism. Arma 3 players are professional and serious, much like [most] EVE online players. Arma 3 is a simulation game though, so it is real and combat its realistic, as well as flying. Its not an pick up and play workshop also adds a huge amount to the game, pretty much providing endless entertainment with new scenerios consistantly added by players. I as expecting a decent experience coming from Arma 2, but they not only made Arma 3 on par with Arma 2, they improved everything I loved and added so much more, a rare occurance with todays sequels. UPDATE: 100 hours later and still no regrets. One of my favorite games of all time on PC. UPDATE 2: 380 hours, still a fantastic game with great improvements still coming in. It is the PC game to have."
+        ],
+        "col_index": [
+          206875,
+          204972
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Arma 2: OA is my favorite arma game. i think anyone that is into military shooting games should get this game.",
+          "ArmA. It's a game. Cool."
+        ],
+        "col_index": [
+          4414841,
+          183417
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The second entry in the Arma series is by far the best, though the first entry is still right up there with it, long live arma!",
+          "Great expansion to ARMA 2. Need it for DayZ."
+        ],
+        "col_index": [
+          4406324,
+          4415708
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "arma 3 is life thats all i have to say",
+          "Arma 2: OA is my favorite arma game. i think anyone that is into military shooting games should get this game."
+        ],
+        "col_index": [
+          196064,
+          4414841
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Apex make Arma great again!",
+          "Great expansion to ARMA 2. Need it for DayZ."
+        ],
+        "col_index": [
+          183968,
+          4415708
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "This game is the most addictive game ive ever played, so fun and addictive, 9/10",
+          "very addictive game i love it"
+        ],
+        "col_index": [
+          3870680,
+          255088
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I really love the game so much! Very addictive.",
+          "Addictive, free & fun."
+        ],
+        "col_index": [
+          4159831,
+          4353805
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game is the most addictive game ive ever played, so fun and addictive, 9/10",
+          "such an addictive game"
+        ],
+        "col_index": [
+          3870680,
+          3867874
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Many fun hours of play :)",
+          "Horrifyingly addictive."
+        ],
+        "col_index": [
+          301577,
+          252587
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Horrifyingly addictive.",
+          "AMAZING, FUN, ADDICTIVE are three words I would use to describe this game."
+        ],
+        "col_index": [
+          252587,
+          3743333
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "Good Game but need fix for Windows 10",
+          "Does not work on PC, crashes incomming!"
+        ],
+        "col_index": [
+          1572663,
+          304407
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Please FIX IT :( I can't login to Games For Windows Live!",
+          "Couldn't play at all, crashes so much."
+        ],
+        "col_index": [
+          315038,
+          6119388
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Please FIX IT :( I can't login to Games For Windows Live!",
+          "Couldn't play at all, crashes so much."
+        ],
+        "col_index": [
+          315038,
+          6119388
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Couldn't play at all, crashes so much.",
+          "Good Game but need fix for Windows 10"
+        ],
+        "col_index": [
+          6119388,
+          1572663
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "DO NOT BUY THIS, ROCKSTAR WONT LET YOU USE YOUR CD KEY NOR WILL WINDOWS LIVE. ASK FOR REFUND OR DO NOT BUY AT ALL, DOESNT WORK!!!!!!!!!!!!!!!!!!!!",
+          "I played the game on the iPad and enjoyed it. Friends told me the PC version was even better, so I purchased it from steam. This game has good promise but crashes upon startup and is not playable. Example: Upon install the game would crash every time I tried to create my first character - I looked up the problem on the web and discovered I had to do a regedit just to get it to create a character without crashing. After the regedit, I managed to play for an hour or two. Several days later I tryied to play it again - now it doesnt appear to run at all - If I choose single player it immediately crashes to desktop with unhandled exceptions. I've spent some time trying to look up the solution, but none of the recommendations work. Apparently the programmers need to go back to school and learn how to write code that doesnt crash. save your money - dont buy this game."
+        ],
+        "col_index": [
+          301723,
+          98495
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "Fun as hell! Don't know why everyone says it's a broken piece of crap, just a couple of commands and you're done. Sure, if you have Windows as far as I know you cannot turn on night shadows, but it runs 30-40 FPS on high and normal graphics with my laptop. Intel i7, NVIDIA Geforce GTX 850m, 12 GB of RAM. And I got it for $5 AUD on the humble bundle, so pretty good price. But the mods. OH THE MODS. Totally worth it.",
+          "Pretty fun even though it's a mediocre PC port!"
+        ],
+        "col_index": [
+          309433,
+          300285
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "The game can be fun, but the port and controls are terrible.",
+          "Pretty fun even though it's a mediocre PC port!"
+        ],
+        "col_index": [
+          4221802,
+          300285
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The game can be fun, but the port and controls are terrible.",
+          "I am huge DBZ Fan and when I heard this game was coming to PC I was so damn happy . I have played the game a couple of hours and so far the game is good! . Nice graphics , fluid gameplay and even the story makes sense. No bugs and runs very well on my PC and Laptop , a solid PC Port. I recommend this to anyone!"
+        ],
+        "col_index": [
+          4221802,
+          4203906
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Not gonna lie this game is really fun. The pc port is one of the worst I've ever seen, runs at 30 fps on even the best machines. People have said it didn't even run on windows 7. If you try to use a controller, the button prompts come up as keyboard buttons, all in all bad port.",
+          "Pretty fun even though it's a mediocre PC port!"
+        ],
+        "col_index": [
+          6391234,
+          300285
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It runs at like 2 fps DONT GET THIS GAME it looks good but the port is crap the only good thing is the graphics",
+          "I am huge DBZ Fan and when I heard this game was coming to PC I was so damn happy . I have played the game a couple of hours and so far the game is good! . Nice graphics , fluid gameplay and even the story makes sense. No bugs and runs very well on my PC and Laptop , a solid PC Port. I recommend this to anyone!"
+        ],
+        "col_index": [
+          3935685,
+          4203906
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "NICE cool GREAT AWESOME",
+          "yh its good"
+        ],
+        "col_index": [
+          5966927,
+          119970
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Very good lol",
+          "many enjoy very good"
+        ],
+        "col_index": [
+          6269176,
+          5959497
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "many enjoy very good",
+          "Is good, the dead "
+        ],
+        "col_index": [
+          5959497,
+          6168381
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "yh its good",
+          "Very good lol"
+        ],
+        "col_index": [
+          119970,
+          6269176
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "+1 good soundtrack :)",
+          "Very good lol"
+        ],
+        "col_index": [
+          85402,
+          6269176
+        ]
+      }
+    },
+    "10": {
+      "call_0": {
+        "reviews": [
+          "Dinosaurs. A World War II multiplayer first-person shooter that is not quite simply your typical World War II multiplayer first-person shooter, as it features dinosaurs. So that indeed makes its theme rather original and creative. If you have played Day of Defeat: Source before, then this is actually very similar, except for the fact that it comes with dinosaurs. If dinosaurs are something that appeals to you, then you may as well be able to enjoy this game.",
+          "Super fun to play with whoever is in the servers. Classes are all fun and unique. Simply, dinosaurs man, dinosaurs!!!"
+        ],
+        "col_index": [
+          6233641,
+          6236737
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "this is so cool because that you can discover dinosaurs and have a GPS and also you can find so many dinosaurs and also watch out because that the dinosaurs can kill you too!!!.",
+          "After playing 11 Hours of this game, my thoughts are still the same! The game is fun and interesting something not seen in gaming before i think. Its hella fun hunting dinosaurs, but it would be more fun if you were getting hunted too like a pack of Utahraptors stalking your scent and waiting for the right time to attack. The flaws of the game are, Poor AI, and a lack of dinosaurs. you got Utahraptors, Velociraptors, Quetzalcoatlus, Triceratops, and the well known Tyrannosaurus. but i think there needs to be more than just 5 Dinosaurs. you have a massive island with these 5 dinosaurs and it still feels empty. I think the developers should add Parasaurolophus, Stegosaurus, Brachiosaurus, all with unique AI you know to make the game feel more alive. but would i still reccomend this game? Yes its like Jurassic Park but on its own planet called Primal Eden"
+        ],
+        "col_index": [
+          4192602,
+          4192956
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "10/10 best game ever because DINOSAURs",
+          "Super fun to play with whoever is in the servers. Classes are all fun and unique. Simply, dinosaurs man, dinosaurs!!!"
+        ],
+        "col_index": [
+          54543,
+          6236737
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It has dinosaurs, and you shoot 10/10",
+          "Super fun to play with whoever is in the servers. Classes are all fun and unique. Simply, dinosaurs man, dinosaurs!!!"
+        ],
+        "col_index": [
+          49914,
+          6236737
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this is so cool because that you can discover dinosaurs and have a GPS and also you can find so many dinosaurs and also watch out because that the dinosaurs can kill you too!!!.",
+          "You can kill as dinosaurs."
+        ],
+        "col_index": [
+          4192602,
+          6235306
+        ]
+      }
+    },
+    "11": {
+      "call_0": {
+        "reviews": [
+          "Striaght to the point Version: Payday 2 is a much better game Long Version: Ever wanted a game that you rob banks and other stuff criminal masterminds do? then get Payday: The Heist, it's a fun game that challenges you to either pull of the perfect heist, or go balls to the wall run n gun with 3 other friends or people, Though some lack of Content is missing like more guns, even with the Wolfpack DLC, it's a little boring, Though Payday 2 is a much better game so i would recommend that game over Payday: The Heist Positives: Different ways to play depending on the team Unlock Tree is simple Negatives: Too Easy, even on Normal Little Replay Value Little amount of Guns Little to No customization options for your guns Overall Review: 8/10, but in honesty, Payday 2 is much better in the gameplay Department",
+          "A good F2P mech-based arena shooter. Try it. Get yourself through the Academy and then play 50 matches or so. You'll know if it's right for you. And if it's not, no money wasted. PROS: Mech Models - If there's one legacy that might endure from PGI's version of MechWarrior, it's the mechs themselves. Combat - The game's primary function, mechs shooting mechs, looks and sounds amazing. Training - Mechwarrior Academy is a great way for the completely new to get good enough to deal with a real battle. Price - It's as free as you want it to be. Endless Configuration Possibilities - Build and skin the mechs however you want. Community - There are loads of people that want to be helpful, that want you to do well, and discuss a love of mechs. CONS: Price - It's as expensive as you want it to be. Endless Configuration Possibilities - This can be overwhelming at first. Just because you CAN build it, doesn't mean it's a good build. And it starts to get expensive to build, tear down, and rebuild mechs. Ask around! There is a lot of help out there. Community - There are people that are overly invested in the success or failure of this game for some reason. They have very petty wars in various venues. Beware of both sides. Power Hungry - You will need a VERY good CPU to get this running smoothly. Any half decent GPU will be fine. Game Modes - Needs a bit of refreshment here. Quick Play Assault mode is the worst. Faction Play is not well populated so it can be difficult to find matches in off-peak hours. Quick Play is always available and well populated."
+        ],
+        "col_index": [
+          2331214,
+          4450444
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Striaght to the point Version: Payday 2 is a much better game Long Version: Ever wanted a game that you rob banks and other stuff criminal masterminds do? then get Payday: The Heist, it's a fun game that challenges you to either pull of the perfect heist, or go balls to the wall run n gun with 3 other friends or people, Though some lack of Content is missing like more guns, even with the Wolfpack DLC, it's a little boring, Though Payday 2 is a much better game so i would recommend that game over Payday: The Heist Positives: Different ways to play depending on the team Unlock Tree is simple Negatives: Too Easy, even on Normal Little Replay Value Little amount of Guns Little to No customization options for your guns Overall Review: 8/10, but in honesty, Payday 2 is much better in the gameplay Department",
+          "Pros: + Everything Cons: - Maybe the graphics, but that's all Conclusion: If you like fun, you should buy it!"
+        ],
+        "col_index": [
+          2331214,
+          94153
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Striaght to the point Version: Payday 2 is a much better game Long Version: Ever wanted a game that you rob banks and other stuff criminal masterminds do? then get Payday: The Heist, it's a fun game that challenges you to either pull of the perfect heist, or go balls to the wall run n gun with 3 other friends or people, Though some lack of Content is missing like more guns, even with the Wolfpack DLC, it's a little boring, Though Payday 2 is a much better game so i would recommend that game over Payday: The Heist Positives: Different ways to play depending on the team Unlock Tree is simple Negatives: Too Easy, even on Normal Little Replay Value Little amount of Guns Little to No customization options for your guns Overall Review: 8/10, but in honesty, Payday 2 is much better in the gameplay Department",
+          "Pros: + Everything Cons: - Maybe the graphics, but that's all Conclusion: If you like fun, you should buy it!"
+        ],
+        "col_index": [
+          2331214,
+          94153
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Striaght to the point Version: Payday 2 is a much better game Long Version: Ever wanted a game that you rob banks and other stuff criminal masterminds do? then get Payday: The Heist, it's a fun game that challenges you to either pull of the perfect heist, or go balls to the wall run n gun with 3 other friends or people, Though some lack of Content is missing like more guns, even with the Wolfpack DLC, it's a little boring, Though Payday 2 is a much better game so i would recommend that game over Payday: The Heist Positives: Different ways to play depending on the team Unlock Tree is simple Negatives: Too Easy, even on Normal Little Replay Value Little amount of Guns Little to No customization options for your guns Overall Review: 8/10, but in honesty, Payday 2 is much better in the gameplay Department",
+          "Good game, Payday 2 is way too "
+        ],
+        "col_index": [
+          2331214,
+          2329160
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Pros: Amazing Graphics Amazing feel to controls Easy to learn game play Story mode is unique Cons: In my opinion slow getting into the game",
+          "It's a nice game to buy on sale. Pros: - Combat and level design. - Looks really good for a 5 year old game. Cons: - Too short. - The ending."
+        ],
+        "col_index": [
+          4200170,
+          6369575
+        ]
+      }
+    },
+    "12": {
+      "call_0": {
+        "reviews": [
+          "This is a very good game! But there is just one problem there is a lot of hackers",
+          "Go to hacked servers, get everything in the game, still fun! Please help :c"
+        ],
+        "col_index": [
+          5456056,
+          103834
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Servers in Hawaii aren't that great but it's still fun to play with friends",
+          "the game is okay i wish there was no hackers p2w players are not the problem now its hackers i still play it. fun with friends, nice cars, cool events, hackers thumbs down, if you can handle hackers i recommend."
+        ],
+        "col_index": [
+          5960720,
+          267008
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "'Hackers Woody, hackers everywhere' -Buzz Lightyear",
+          "to many hackers"
+        ],
+        "col_index": [
+          4340049,
+          3296792
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "0/10 not enough servers",
+          "Servers in Hawaii aren't that great but it's still fun to play with friends"
+        ],
+        "col_index": [
+          4341353,
+          5960720
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Empty servers.",
+          "Fun game, just not enough people on the servers."
+        ],
+        "col_index": [
+          403155,
+          5375507
+        ]
+      }
+    },
+    "13": {
+      "call_0": {
+        "reviews": [
+          "Bugs bugs bugs you want to change the sound, you can't save your Click in the wrong place? Oh, that is a restart. You can't do anything else. Bugs, bugs, You know what fix the bugs. Bugs, bugs, I want to change the sound without having to close it w/o closing it manually. Ha-ha bugs. Bugs? want to be able to miss-click. No, bugs. You know what? bugs!~Fix it so I can actually play it while multi-tasking.",
+          "Very good wrtiting, atmosphere, characters. Lots of bugs. LOTS of bugs. Lots of game breaking bugs. This game will probably not even launch the first time you try. You'll have to check the forum for a guide on how to fix that."
+        ],
+        "col_index": [
+          3437606,
+          2991871
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          " This would be an amazing multiplayer game if there weren't so many bugs!!!!",
+          "this is a really fun game with rare bugs for me"
+        ],
+        "col_index": [
+          5494968,
+          6377328
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Good game, few bugs.",
+          "Very good wrtiting, atmosphere, characters. Lots of bugs. LOTS of bugs. Lots of game breaking bugs. This game will probably not even launch the first time you try. You'll have to check the forum for a guide on how to fix that."
+        ],
+        "col_index": [
+          6057720,
+          2991871
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Good game, few bugs.",
+          "Great Game always fun to shoot up bugs."
+        ],
+        "col_index": [
+          6057720,
+          155289
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game, have some Bugs",
+          "Great Game always fun to shoot up bugs."
+        ],
+        "col_index": [
+          6294189,
+          155289
+        ]
+      }
+    },
+    "14": {
+      "call_0": {
+        "reviews": [
+          "\u2588\u2580\u2580\u2591\u2588\u2591\u2588\u2591\u2588\u2580\u2588\u2591\u2588\u2580\u2580\u2591\u2588\u2580\u2588 \u2580\u2580\u2588\u2591\u2588\u2591\u2588\u2591\u2588\u2580\u2580\u2591\u2588\u2580\u2591\u2591\u2588\u2580\u2584 \u2580\u2580\u2580\u2591\u2580\u2580\u2580\u2591\u2580\u2591\u2591\u2591\u2580\u2580\u2580\u2591\u2580\u2591\u2580 \u2588\u2584\u2591\u2584\u2588\u2591\u2588\u2580\u2580\u2591\u2588\u2580\u2580\u2580\u2591 \u2588\u2580\u2588 \u2588\u2591\u2588\u2591\u2588\u2591\u2588\u2580\u2591\u2591\u2588\u2591\u2580\u2588\u2591\u2588\u2580\u2580\u2588 \u2580\u2591\u2580\u2591\u2580\u2591\u2580\u2580\u2580\u2591\u2580\u2580\u2580\u2580\u2591\u2580\u2591\u2591\u2580 \u2588\u2591\u2591\u2588\u2591\u2588\u2591\u2580\u2580\u2588\u2580\u2580\u2591\u2588\u2580\u2588\u2591 \u2588\u2580\u2588 \u2588\u2591\u2591\u2588\u2591\u2588\u2591\u2591\u2591\u2588\u2591\u2591\u2591\u2588\u2580\u2584\u2591\u2588\u2580\u2580\u2588 \u2580\u2580\u2580\u2580\u2591\u2580\u2580\u2580\u2591\u2580\u2591\u2591\u2591\u2580\u2591\u2580\u2591\u2580\u2591\u2591\u2580 \u2588\u2580\u2580\u2591\u2588\u2580\u2588\u2591\u2588\u2591\u2588\u2580\u2580 \u2588\u2580\u2591\u2591\u2588\u2580\u2580\u2591\u2588\u2591\u2588 \u2580\u2580\u2580\u2591\u2580\u2591\u2591\u2591\u2580\u2591\u2580\u2580\u2580 \u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2584 \u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2591\u2588 \u2591\u2591\u2591\u2591\u2591\u2588\u2591\u2591\u2588 \u2588\u2584\u2584\u2584\u2588\u2591\u2591\u2591\u2588\u2588 \u2588\u2591\u2591 Valve \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588 \u2588\u2591 Add This \u2591\u2591\u2588 \u2588\u2591 Please! \u2591\u2591\u2591\u2588 \u2588\u2591 And Give \u2591\u2591\u2588 \u2588\u2591 Me One! \u2591\u2591\u2588 \u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588",
+          "Great game. Must have for Valve, or zombie fans."
+        ],
+        "col_index": [
+          6059346,
+          5953998
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Please Valve, Portal 3",
+          "This was my Christmas present from Valve. Valve is awesome."
+        ],
+        "col_index": [
+          6145022,
+          5972805
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "once again another great game by valve 4 stars from me",
+          "it's just awesome because it's valve"
+        ],
+        "col_index": [
+          5242558,
+          5977694
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Please Valve, Portal 3",
+          "Valve, keep your $5, I'm never playing this for fun ever again."
+        ],
+        "col_index": [
+          6145022,
+          425705
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game. Must have for Valve, or zombie fans.",
+          "once again another great game by valve 4 stars from me"
+        ],
+        "col_index": [
+          5953998,
+          5242558
+        ]
+      }
+    },
+    "15": {
+      "call_0": {
+        "reviews": [
+          "Great fun with friends. An old classic.",
+          "old memories"
+        ],
+        "col_index": [
+          6354014,
+          1216
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This is THE classic game, it's a must-have.",
+          "A all time classic i still have nightmares!"
+        ],
+        "col_index": [
+          6225911,
+          6094335
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "classic!",
+          "old memories"
+        ],
+        "col_index": [
+          5622,
+          1216
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "classic game !",
+          "Classic Quake, Shamblers for all!"
+        ],
+        "col_index": [
+          6115239,
+          1843391
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "old memories",
+          "A all time classic i still have nightmares!"
+        ],
+        "col_index": [
+          1216,
+          6094335
+        ]
+      }
+    },
+    "16": {
+      "call_0": {
+        "reviews": [
+          "Dirty Bomb is a unique team oriented FPS developed by Splash Damage, the same studio behind a similar game called Brink. Perhaps the best way to describe Dirty Bomb is a mix of Team Fortress 2 and Call of Duty. Players can choose up to 3 mercenaries to have in their squad at any given time and players can switch between these mercenaries upon death while in a match. Each mercenary has its own set of weapons and unique activateable abilities and can be customized with loadout cards. Matches are typically objective oriented and just getting kills won't win the game, at least in Objective and Stopwatch mode.",
+          "Summary of Dirty Bomb as a whole: It suprised me to see that developer Splash Damage was still around after their beloved game Brink flopped back in 2011. I remember it well, at the time I had naively pre-ordered the game and had been expecting a masterpiece of gunplay, parkour, and limitless customization on board a dystopian Atlantis. Yet when the game was released, it was no more than a glitchy mess of multiplayer missions wrapped around a weak storyline. It suprised me even more to see that Dirty Bomb was a permissible copy of Brink despite being several years apart. In fact, the gamemodes are essentially the same, character design is similiar, and the game mechanics are still intact. Yet, Dirty Bomb distinguishes itself from being more than just a re-packaging of Brink. Every aspect of customization was cut, parkour is (for the best) toned down, and individual characters replaced the character creation system. Furthermore, team based combat was reinforced by giving each mercenary unique abilities and specific roles in the team. In many ways this game resembles the team based combat of Team Fortress 2 with the competitive matches and loot based system of Counter-Strike: Global Offensive. Overall, the game is fresh, cohesive, and inviting to players new and old. Now for what I hate about it: Now keep in mind from what I said previously, and remember that this game is still in 'open beta'. You have probably seen it before in other players' reviews; this game's anti-cheat and reporting systems are ineffective and as a result you will find matches filled with hackers. While the anti-cheat system is a major concern, I still have other issues with this game, primarily the experience and credit system. If you ever want to go far in this game, you need to grind or pay. Essentially, the pay model for this game is the pay-to-progress-faster system, yet progression in this game is absolutely ridiculous. So far I've played twenty-four hours of this game and within that time I have only advanced seven levels and purchased one mercenary out of the fifteen or more characters that are available. The credits received from playing each match are neglible, with base pay averaging around 200 credits a game (excluding challenges) while purchasable loadouts or mercs range in prices in the tens of thousands. However, challenges seem to be the only practical way of accumulating credits quickly, and those have a cooldown timer usually of a couple hours. The same can be said for level advancement. In my experience I have seen players that have poured hundreds of hours into the game, and have only achieved the rank of level nineteen. However, I will admit that a player's level seems to be no more than an arbitrary number. In addition, the number of maps is extremely underwhelming. There are currently only five maps, while the developers continue to pump out new characters to buy, and from what I've seen there will be at least three more mercenaries coming out. Sadly, this makes me question how many resources Splash Damage is allocating to map development. In conclusion: While the game is enjoyable too say the least, it is very unlikely you will be able to earn every character the hard way. Taking the time to accumulate enough credits to buy every mercenary would demonstrate patience and fortitude beyond anything I have seen for any non-paying free-to-play gamer. In essence, the main reason why I dislike this game is because it takes far too much effort for far too little reward. Unless you are willing to pay an upwards of $80 to buy all the characters, I seriously doubt you will ever be able to play all of them. And even if you do pay that astronomical price, you will soon realize that you spent all that money on game that is filled with hackers, incompetent medic, and only has five maps, but then again its your money or time."
+        ],
+        "col_index": [
+          4348530,
+          4350808
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A few things first, since a lot of people don't seem to get this. -No this is not an Overwatch rip-off. They do have similar gameplay and class system. Dirty bomb is older anyway. -There is absolutely NO P2W, it's to the points where you would feel bad for the developers not making any money. All loadout cards and characters are unlockable with ingame currency. Dirty Bomb is a fast paced FPS where players are encouraged to run and jump through the map and its obstacles. It features multi stage objective gameplay where the attackers have to push back the defending team. This game is player skill based. Learn to aim for the head and never stop moving will be your first lesson after joining the first game. All characters are well balanced including the two you start with. Loadout cards will have up to 3 slots, which will consist of really small perks, for example: Reloading whilst sprinting, and carrying 1 extra magazine. Although I myself are quite picky about my loadout cards you can't call higher tier cards an advantage over new players. The grind is not that bad compared to other f2p fps's. You will recieve 3 small missions every 3 hours. This will be your main income ingame. These missions can be completed by decent players within 30 minutes. Its a free game, there is no reason not to try it.",
+          "It's pretty dirty for some bombs"
+        ],
+        "col_index": [
+          4352506,
+          4336105
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Dirty Bomb is a great game. The direction Dirty Bomb is heading (Bomb planting and defusal like CS:GO) won't make it a worse game, but its not going to improve much because of that new gamemode. The way the shooting is done, the speed at which combat plays out, the various class interactions, they're all great and there's a huge skill ceiling (far higher than CS:GO mechanically, far less so on strategy) that really separates the good and bad players. Its a very fun game if you're good at shooters and are looking for that adrenaline fix that slower games like Battlefield or Counter Strike wont give you. A lot of the newer players come from those types of games and dont grasp the shoot while moving hyper mobility that you're supposed to utilize. It's sort of like Quake. Unfortunately, it suffers from one of your typical free to play shooter gripes. Hacking is fairly prevalent. Expect to see 1 hacker for every 50-100 players you encounter. In the competitive matchmaking, it gets closer to 1 in 10 and is borderline unplayable. Still, I've found a lot of hackers are really bad at it. The nature of the game, the fast paced combat and high mobility, often means you can beat the hackers. Its also got a pretty good monetary system. Earning money in game is somewhat slow, but you can buy one character per week with fairly minimal play. You also can't really pay to win. Having access to the good mercs is nice, but really you only need to find one you're very good at, and getting the specific gun you want is fairly easy and inexpensive. The only thing 'purchasable' are perks for mercs, which typically have no impact on the game with few exceptions that impact your survival by quite a bit but this is a very rare occurrence. Perks are widely available to the rest of the players as well, so the advantage is extremely slight, and usually nonexistant. Perks universally do not improve your performance in a gun fight, where a large majority of the action occurs. As for class balance. All can at least participate in a critical role. Some are generally more useful than others, but every class will have its moments than few others could pull off. Balance is in a decent place right now. Gun balance is also decent. Very few of the weapons suck and all of them can be used to devastating effect in some situation, but a few stand out more than others. Some guns are only okay on one merc, but ridiculous on another. Shooting is only a part of the combat. Movement is key in this game, and is the determining factor on how good a gun is. If you're looking for a fast paced shooter, your only options are maybe Dirty Bomb and Quake Live and they're both free so I encourage you to try both. If you're just a regular Battlefield or Call of Duty player, I highly suggest something else as this is not very similar.",
+          "Dirty Bomb is the best FPS on steam that no one is playing! Dirty Bomb has a FREE TO PLAY, yet VERY FAIR business model. Characters are $10 each, however can be purchased through in game credits just with a few days of play. Characters are constantly on free rotation, and there's a considerable variance in the way each hero plays and feels. Dirty Bomb offers a simple yet difficult to master parkour system which allows for some inventive and challenging ways to flank the enemy. The game is very hospitable towards new players, and is easy understand and play, yet it offers enough depth, and a steep learning curve which will challenge even the most seasoned of FPS players. I've played for over 100 hours, and I haven't felt the need to spend a single dollar on this game. Dirty Bomb has plenty of dedicated servers, some of which are level capped to cater towards less or more experienced players. There's no excuse not to give this game a chance. Although it may appear generic, the gameplay and presentation are very polished, and offers the best FPS experience I've had in years. It's entirely free, so why not give it a chance? "
+        ],
+        "col_index": [
+          4336956,
+          4335657
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I'm really enjoying Dirty Bomb! Too me It feels like BRINK done Would recommend to everyone to give it a go! It's really good fun, and there is no need to worry if you dont enjoy it, becuase it's Free to Play. Dirty Bomb is some great squad based objective action!",
+          "A few things first, since a lot of people don't seem to get this. -No this is not an Overwatch rip-off. They do have similar gameplay and class system. Dirty bomb is older anyway. -There is absolutely NO P2W, it's to the points where you would feel bad for the developers not making any money. All loadout cards and characters are unlockable with ingame currency. Dirty Bomb is a fast paced FPS where players are encouraged to run and jump through the map and its obstacles. It features multi stage objective gameplay where the attackers have to push back the defending team. This game is player skill based. Learn to aim for the head and never stop moving will be your first lesson after joining the first game. All characters are well balanced including the two you start with. Loadout cards will have up to 3 slots, which will consist of really small perks, for example: Reloading whilst sprinting, and carrying 1 extra magazine. Although I myself are quite picky about my loadout cards you can't call higher tier cards an advantage over new players. The grind is not that bad compared to other f2p fps's. You will recieve 3 small missions every 3 hours. This will be your main income ingame. These missions can be completed by decent players within 30 minutes. Its a free game, there is no reason not to try it."
+        ],
+        "col_index": [
+          4342421,
+          4352506
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          " Dirty Bomb",
+          "As someone who has come from playing Call of Duty on PS3 to Team Fortress 2 and Counter strike on PC, I love a lot of shooters. Many are just a big deathmatch and which ever team kills the other team first wins. But with Dirty Bomb, it seems to add an interesting element of fun and quirkyness along with strategy and tactfulness. Dirty Bomb is a fun game similar to that of Team Fortress 2 that pits 2 random teams of players against each other, with one trying to usually plant a bomb and the other trying to defuse said bomb. It keeps it's lighthearted attitude to heart tries to make the game fun and friendly while still having those intense firefights with the enemy players. Overall Dirty Bomb has kept me very interested and I intend to keep playing for a very long time."
+        ],
+        "col_index": [
+          4344605,
+          4350797
+        ]
+      }
+    },
+    "17": {
+      "call_0": {
+        "reviews": [
+          "Get The Witcher 2 instead",
+          "Im new to The Witcher series and I find even the first Witcher is quite enjoyable. It has a nice story line and plenty to do. The only thing I would change about The Witcher 1 is the interface. Its not that good honestly. None the less a great game!"
+        ],
+        "col_index": [
+          784164,
+          786569
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Great game! I believe this the best Witcher game still.",
+          "This game is definitely dated, especially compared to The Witcher 2 and 3, but I still find it charming. Combat system isn't too interesting and the inventory never seems large enough, but I enjoyed the time I spent playing this game and feel that it was worth playing through to get to The Witcher 3."
+        ],
+        "col_index": [
+          781758,
+          786670
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "With the release of the Witcher 3 and the mass appeal its been having, I decided to finally take on this series and see whats its all about. Thing is i wanted to start off at the beginning, where it first began (i know the books came out before). So i picked up this game, the first Witcher game in the Geralt trilogy. Now after having finished i can wholeheartly say that this is one of the best rpg games i have ever played and it is definitely on my top games of all time. If you enjoy a good story game, then this is for you. Like most other reviews will tell you, the combat is either hit or miss. Your either going to get used to it and master it or its going to turn you off the game in the prologue. If you do choose to stay, i guarantee you will not stop until you beat the game, because it is that good. The developers and writers set up the game so perfectly. You are Geralt and you are the witcher who fights monsters in defense of humans and non-humans. Your choices do matter and they do effect the later outcomes and relationships. I had a blast playing this and i can't wait to start the Witcher 2. If i had to give this game a rating, i give it a supberb 9/10. Play it now!",
+          "Play Witcher 3, not this"
+        ],
+        "col_index": [
+          784287,
+          787127
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The Witcher is an entertaining and unique, albeit dated RPG experience featuring monsters, folklore and characters from the Polish fiction series also known as the Witcher. Picking up after the end of the book series, the game plays in the vein of earlier Bioware RPG titles ala KOTOR and Jade Empire, with equally clunky combat: The player is required to time their click of the mouse to Geralt of Rivia's (the titular Witcher) attacks in one of three fighting styles, 'Strong', 'Fast' or 'Group' - The names are fairly self-explanatory. Again, in the vein of Bioware RPG's, the player is given several choices with varying degrees of significance through dialogue options which ultimately determine the player's allegiance and determine the consequences of certain NPC's you meet during your travels. But interestingly, the player can and is often encouraged to skirt neutrality throughout the game, keeping with the oft-mentioned 'Witcher's code' of avoiding meddling in politics. While what has been described seems like standard Bioware-RPG-esque fair, what truly sets the Witcher apart is the how the unique world of the Witcher provides a real effect on gameplay: As Witchers use hexes, spells, alchemical potions, weapon oils, poisons and bombs to combat the monsters (both human and otherwise) of their world; you physically cannot progress very far or survive enemy encounters without utilising these tools. And this is where the Witcher truly stands out. You may face a fearsome Graveir, a hulking undead monstrosity which is best defeated with silver, fire and strong swordsmanship; or a pack of Wraiths, fast-moving and deadly, requiring a potion to heighten your reflexes and use of an effective bomb - But these truly require strategy, or at least a basic level of preparation. Potions also bear toxicity levels, so proper use and management of these potions is important to not kill Geralt before the fighting even starts, and obtaining and mixing ingredients is an interesting game of its own. In addition, texts and lorebooks obtained throughout the game not only provide information about the world, but can unlock Bestiary entries which aid the player in exploiting weaknesses in enemies common throughout the game. Overall, the Witcher does feel like an [older] Bioware RPG, complete with clunky combat mechanics, but is set apart by how complete an experience it is within that 'category': The game always challenges the consequences of your choices, neutral or otherwise throughout the story. The mechanics built around strategic combat are actual necessities - Not crutches or wasted mechanics - and the world, created by author Andrzej Sapkowski and derived from Polish folklore, is unique and interesting to explore, as is Geralt's story.",
+          "Having played this game multiple times through, I can 100% recommend this game to anyone interested in the Witcher story. It should be noted that anyone looking to purchase and play this game must understand that it differs immensely from its successors in many ways. The voice acting, character animations, and combat can be a little rough for some, but ultimately the game itself presents an excellent story and really pulls you in to assume the role of a witcher. You'll memorize what combat styles and Signs are useful for each monsters, learn the appearance and usage of herbs throughout the world, and you'll read and learn the lore of the Witcher. The game presents choices throughout the game, some of which affect the story later. It is up to you decide whether Geralt will take sides or maintain his neutrality as a witcher. Ultimately, if you intend to play the Witcher 2 or Witcher 3, I recommend you play the full trilogy for the full experience."
+        ],
+        "col_index": [
+          785844,
+          782021
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Get The Witcher 2 instead",
+          "This game is definitely dated, especially compared to The Witcher 2 and 3, but I still find it charming. Combat system isn't too interesting and the inventory never seems large enough, but I enjoyed the time I spent playing this game and feel that it was worth playing through to get to The Witcher 3."
+        ],
+        "col_index": [
+          784164,
+          786670
+        ]
+      }
+    },
+    "18": {
+      "call_0": {
+        "reviews": [
+          "Russian people",
+          "Good game good story and RUSSIAN + SPARTA"
+        ],
+        "col_index": [
+          6062529,
+          3522474
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This is the best way to learn Russian 10/10",
+          "Best way to learn russian!"
+        ],
+        "col_index": [
+          6037963,
+          6080255
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I'd rather play Russian Roulete than this.",
+          "Good game with russian bratans"
+        ],
+        "col_index": [
+          4345253,
+          6036060
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "russians, russian everywhere.",
+          "I'd rather play Russian Roulete than this."
+        ],
+        "col_index": [
+          6069122,
+          4345253
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "10/10 would learn Russian again.",
+          "Good game with russian bratans"
+        ],
+        "col_index": [
+          6039239,
+          6036060
+        ]
+      }
+    },
+    "19": {
+      "call_0": {
+        "reviews": [
+          "it would be awsome if Caribbean Reef Shark was added (or any reef shark)",
+          "'I hate the diver'shark say 'i hate shark'diver say"
+        ],
+        "col_index": [
+          3352308,
+          3351315
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is first good shark game i have ever played.",
+          "This is an awesome game. Fun as shark or diver. Very well done."
+        ],
+        "col_index": [
+          3351325,
+          3347244
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is an awesome game. Fun as shark or diver. Very well done.",
+          "'I hate the diver'shark say 'i hate shark'diver say"
+        ],
+        "col_index": [
+          3347244,
+          3351315
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "it would be awsome if Caribbean Reef Shark was added (or any reef shark)",
+          "'I hate the diver'shark say 'i hate shark'diver say"
+        ],
+        "col_index": [
+          3352308,
+          3351315
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This game is first good shark game i have ever played.",
+          "its all about the shark no divers"
+        ],
+        "col_index": [
+          3351325,
+          3348624
+        ]
+      }
+    },
+    "20": {
+      "call_0": {
+        "reviews": [
+          "WAYYY to short for me but ",
+          "Short and fun"
+        ],
+        "col_index": [
+          4934677,
+          224208
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "game was fun and short",
+          "Short and fun"
+        ],
+        "col_index": [
+          5245781,
+          224208
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "WAYYY to short for me but ",
+          "Very short game :)"
+        ],
+        "col_index": [
+          4934677,
+          6371988
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The Short:",
+          "WAYYY to short for me but "
+        ],
+        "col_index": [
+          3064094,
+          4934677
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "game was fun and short",
+          "this one is short."
+        ],
+        "col_index": [
+          5245781,
+          4428407
+        ]
+      }
+    },
+    "21": {
+      "call_0": {
+        "reviews": [
+          "Even if you don't enjoy hack-n-slash games give Bastion a try. Its great soundtrack, amazing narrator, and hand painted art style make this game as beautiful as it is fun.",
+          "A must play, because of the story and the narrator"
+        ],
+        "col_index": [
+          163063,
+          164316
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is great! It took a little time to get into, but afterwards I really started to enjoy it. It isn't a long game, but it has a very nicely done story, challenging gameplay, fun battle system, and amazing artwork. The narrator does a great job throughout the game, and I can appreciate the hidden 'extras' that are integrated into the game. (Going on a spree of destroying the environment cues the narrator to say 'Kid just rages for a Below is my review for Bastion which I have given a 9/10. Story - The story is basically about an event that happened called 'The Calamity', and pits you in the role of a survivor trying to learn more about what happened, all the while restoring a grand ship called 'The Bastion' whose significance you don't learn about until later. The story is told through the narrator's narration of your actions as you work your way through the game. It is mainly a giant fetch quest, ('We need X of these to restore the Bastion'). But the allure of this game is that you have no idea what the story is at the beginning, and your only way of learning more is by completing levels to learn more from the narrator as you work through the level and eventually return from the mission. Gameplay - The overall gameplay is fun, fast paced, and challenging. The game was very well balanced and I really enjoyed it. The developers put a lot of work into this game to ensure an awesome experience and they did a wonderful job. Graphics - The graphics are amazing, hand-drawn and well-animated. There aren't too many spots in this action RPG where you can stop and enjoy the scenery but you have to stop occasionally and admire the gorgeous hand drawn graphics, and slick animations. You will also find that many portions of the environment are destructible, meaning you can attack walls and eventually fall off the level, or hide behind hedges which enemies will have to destroy to get to you. You are also occasionally treated with gorgeous still shots or character portraits. Battle System - The battle system in Bastion is very unique. This is an Action RPG with a unique variety of weapons that let you choose how you want to play. You can choose ranged weapons or melee weapons or many of the hybrid weapons in between. Some battles require strategy and some just ask you to destroy everything that moves. Additional Systems - There are also many additional systems in this game, you can craft upgrades for your weapons which add various bonuses or change the way the weapon works altogether. If you find the game to easy, you can also craft items that will make the enemies more powerful or handicap your character. Similarly, if you find the game too difficult, you can craft items that will provide passive bonuses to your character. You can also craft quest items that you can provide to the NPCs to hear tiny snippets that provide insight into the characters' past, or to flesh out parts of the overarching narrative. Audio - The music in this game is excellent, and some of the most memorable 'tunes' I've heard in a game in a long time. Shortly through the game you will unlock a jukebox of sorts that lets you replay various music which is the point when you realize how good the music really is. Replayability - The game is pretty linear throughout, but in the end, you are faced with two great choices which affect your final ending. I wouldn't say there is a lot of replayability once the story is over, unless you are a collectionist who wants every item, every upgrade, every skill, complete every level, etc. However, if you enjoyed the gameplay like me, that's your main attraction, and you don't care if you are trudging through the same story again. There is a New Game + function that lets you retain various perks and start a new game. Value - I definitely got my money's worth with this game. Although the story was pretty short, I had a lot of fun and I passed by a few collectables that would have stretched out the story a bit more. I also go Bastion on sale from the Steam Summer Sale which was nice, but after having played it I would have paid full price for this game, it is definitely worth it. Overall, I give Bastion a 9/10. It's an action packed adventure through a mysterious fantasy world that keeps you begging for more. Telling the story through the perspective of the narrator is a unique spin on the traditional outspoken action hero that makes the game feel fresh and different. The gorgeous artwork will leave you drooling and collectionists will enjoy the many extras this game has to offer. Get this one, you won't regret it. And let's all hope for a Bastion 2.",
+          "Even if you don't enjoy hack-n-slash games give Bastion a try. Its great soundtrack, amazing narrator, and hand painted art style make this game as beautiful as it is fun."
+        ],
+        "col_index": [
+          167117,
+          163063
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "A must play, because of the story and the narrator",
+          "Even if you don't enjoy hack-n-slash games give Bastion a try. Its great soundtrack, amazing narrator, and hand painted art style make this game as beautiful as it is fun."
+        ],
+        "col_index": [
+          164316,
+          163063
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Pros +Absolutely amazing soundtrack. +Good story with great narration. +Great character design, enemy design, and level design. +Art is beautiful. +Very fluid and responsive controls. +Good variety of weapons, secret skills, upgrades, and spirits that can lead to some unique playstyles. +Good variety of enemies that require different tactics to effectively overcome. +Good amount of levels with varying layouts so you never feel like you're going through the exact same area twice. +Voice acting for the narrator is amazing and never grows too repetitive to listen to. +Customizable difficulty with choosing what idols you want to take that adds a layer of risk vs reward gameplay. +Decent amount of replaybility with the New Game+ and Score Attack modes that you unlock after beating the main game once. +Trying to 100% the game and complete all of the dreams with every Idol equipped is very challenging but also very rewarding. Cons -None I honestly can't think of a bad thing to say about Bastion. One of my favorite games in the past couple years I highly recommend everybody to buy and play this game.",
+          "'Tis a thing of beauty. Bastion is an RPG that harkens back to the days of games like Secret of Mana, choosing an action combat system rather than a turn-based one. The mechanics of it are quite simple, but satisfying to utilize. You have two weapon slots and an ability slot, and you can upgrade your weapons as time goes on and you find the materials for it. The story is an interesting one. Bastion, unlike most modern RPG games, decides to go for minimalism in its storytelling. Rather than have you sit through a forty minute cutscene that explains things, it tells it to you on the fly through a narrator (who is superbly voiced by the way). It's an interesting touch that allows you to stay engaged, and the narrator will even make little comments based on your actions. The game starts after a world ending event known as The Calamity. You play as The KId, a lone adventurer who seeks to restore the world through The Bastion, a place of immense power. I won't say any more for the sake of spoilers, but I will say that there are a few twists and turns later on. There are only two major choices you'll have to make in the story, but rest assured you will feel the weight of them. The game also has a fantastic art style, with bright vibrant colors that are pleasing to the eyes. So if you want a fun, RPG romp with a unique story and fantastic aesthetics, I highly recommend Bastion. It's a very atmospheric and memorable game."
+        ],
+        "col_index": [
+          162796,
+          156622
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This game is great! It took a little time to get into, but afterwards I really started to enjoy it. It isn't a long game, but it has a very nicely done story, challenging gameplay, fun battle system, and amazing artwork. The narrator does a great job throughout the game, and I can appreciate the hidden 'extras' that are integrated into the game. (Going on a spree of destroying the environment cues the narrator to say 'Kid just rages for a Below is my review for Bastion which I have given a 9/10. Story - The story is basically about an event that happened called 'The Calamity', and pits you in the role of a survivor trying to learn more about what happened, all the while restoring a grand ship called 'The Bastion' whose significance you don't learn about until later. The story is told through the narrator's narration of your actions as you work your way through the game. It is mainly a giant fetch quest, ('We need X of these to restore the Bastion'). But the allure of this game is that you have no idea what the story is at the beginning, and your only way of learning more is by completing levels to learn more from the narrator as you work through the level and eventually return from the mission. Gameplay - The overall gameplay is fun, fast paced, and challenging. The game was very well balanced and I really enjoyed it. The developers put a lot of work into this game to ensure an awesome experience and they did a wonderful job. Graphics - The graphics are amazing, hand-drawn and well-animated. There aren't too many spots in this action RPG where you can stop and enjoy the scenery but you have to stop occasionally and admire the gorgeous hand drawn graphics, and slick animations. You will also find that many portions of the environment are destructible, meaning you can attack walls and eventually fall off the level, or hide behind hedges which enemies will have to destroy to get to you. You are also occasionally treated with gorgeous still shots or character portraits. Battle System - The battle system in Bastion is very unique. This is an Action RPG with a unique variety of weapons that let you choose how you want to play. You can choose ranged weapons or melee weapons or many of the hybrid weapons in between. Some battles require strategy and some just ask you to destroy everything that moves. Additional Systems - There are also many additional systems in this game, you can craft upgrades for your weapons which add various bonuses or change the way the weapon works altogether. If you find the game to easy, you can also craft items that will make the enemies more powerful or handicap your character. Similarly, if you find the game too difficult, you can craft items that will provide passive bonuses to your character. You can also craft quest items that you can provide to the NPCs to hear tiny snippets that provide insight into the characters' past, or to flesh out parts of the overarching narrative. Audio - The music in this game is excellent, and some of the most memorable 'tunes' I've heard in a game in a long time. Shortly through the game you will unlock a jukebox of sorts that lets you replay various music which is the point when you realize how good the music really is. Replayability - The game is pretty linear throughout, but in the end, you are faced with two great choices which affect your final ending. I wouldn't say there is a lot of replayability once the story is over, unless you are a collectionist who wants every item, every upgrade, every skill, complete every level, etc. However, if you enjoyed the gameplay like me, that's your main attraction, and you don't care if you are trudging through the same story again. There is a New Game + function that lets you retain various perks and start a new game. Value - I definitely got my money's worth with this game. Although the story was pretty short, I had a lot of fun and I passed by a few collectables that would have stretched out the story a bit more. I also go Bastion on sale from the Steam Summer Sale which was nice, but after having played it I would have paid full price for this game, it is definitely worth it. Overall, I give Bastion a 9/10. It's an action packed adventure through a mysterious fantasy world that keeps you begging for more. Telling the story through the perspective of the narrator is a unique spin on the traditional outspoken action hero that makes the game feel fresh and different. The gorgeous artwork will leave you drooling and collectionists will enjoy the many extras this game has to offer. Get this one, you won't regret it. And let's all hope for a Bastion 2.",
+          "Pros +Absolutely amazing soundtrack. +Good story with great narration. +Great character design, enemy design, and level design. +Art is beautiful. +Very fluid and responsive controls. +Good variety of weapons, secret skills, upgrades, and spirits that can lead to some unique playstyles. +Good variety of enemies that require different tactics to effectively overcome. +Good amount of levels with varying layouts so you never feel like you're going through the exact same area twice. +Voice acting for the narrator is amazing and never grows too repetitive to listen to. +Customizable difficulty with choosing what idols you want to take that adds a layer of risk vs reward gameplay. +Decent amount of replaybility with the New Game+ and Score Attack modes that you unlock after beating the main game once. +Trying to 100% the game and complete all of the dreams with every Idol equipped is very challenging but also very rewarding. Cons -None I honestly can't think of a bad thing to say about Bastion. One of my favorite games in the past couple years I highly recommend everybody to buy and play this game."
+        ],
+        "col_index": [
+          167117,
+          162796
+        ]
+      }
+    },
+    "22": {
+      "call_0": {
+        "reviews": [
+          "its a great game alotlike gta with saints row",
+          "I've played Saints row 2 and Saints row 4 and for terms of gameplay Saints Row 2 is so much more fun."
+        ],
+        "col_index": [
+          266853,
+          6390809
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I've played Saints row 2 and Saints row 4 and for terms of gameplay Saints Row 2 is so much more fun.",
+          "its a great game alotlike gta with saints row"
+        ],
+        "col_index": [
+          6390809,
+          266853
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The best one of the Saints Row games!!",
+          "its a great game alotlike gta with saints row"
+        ],
+        "col_index": [
+          6009994,
+          266853
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The best one of the Saints Row games!!",
+          "It's like Saints Row IV but with Saints Row."
+        ],
+        "col_index": [
+          6009994,
+          6388421
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Rip off of Saints Row. Enough ",
+          "its a great game alotlike gta with saints row"
+        ],
+        "col_index": [
+          271708,
+          266853
+        ]
+      }
+    },
+    "23": {
+      "call_0": {
+        "reviews": [
+          "Dis gaem eez gud, a lil bit tuu shourt rili. Bai it if in seils.",
+          "iss gud"
+        ],
+        "col_index": [
+          6330588,
+          4612401
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This is gud game!",
+          "i am hagrid, dis game is gud. but harry bad at it"
+        ],
+        "col_index": [
+          6041656,
+          371682
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "It's bretty gud.",
+          "dis is rly gud 11/10"
+        ],
+        "col_index": [
+          6318467,
+          5954441
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Dis gaem eez gud, a lil bit tuu shourt rili. Bai it if in seils.",
+          "i am hagrid, dis game is gud. but harry bad at it"
+        ],
+        "col_index": [
+          6330588,
+          371682
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This is gud game!",
+          "It's gud Get gud."
+        ],
+        "col_index": [
+          6041656,
+          6062224
+        ]
+      }
+    },
+    "24": {
+      "call_0": {
+        "reviews": [
+          "if you love sonic you will love this",
+          "Best Sonic game ever."
+        ],
+        "col_index": [
+          6250117,
+          6249586
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "if you love sonic you will love this",
+          "sonic boom"
+        ],
+        "col_index": [
+          6250117,
+          5851626
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "sonic speed!",
+          "Best Sonic game ever made."
+        ],
+        "col_index": [
+          6252059,
+          6249284
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Great game it's just the best sonic game i've played since sonic unleashed but i think the game was a little too short for a sonic game again best sonic game love it",
+          "if you love sonic you will love this"
+        ],
+        "col_index": [
+          6251846,
+          6250117
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Sonic is back in Sonicspeed",
+          "Best Sonic game ever."
+        ],
+        "col_index": [
+          6250234,
+          6249586
+        ]
+      }
+    },
+    "25": {
+      "call_0": {
+        "reviews": [
+          "Add this to MAC!",
+          "Though i only use mac, i use VMware fusion to play, and i love this game! GJ re-logic"
+        ],
+        "col_index": [
+          49326,
+          102696
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "ples mack it of mac",
+          "I </3 Having to Use The Wineskin to play this on my Mac."
+        ],
+        "col_index": [
+          126581,
+          784883
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "put gta 4 to mac to !!!!!",
+          "ples mack it of mac"
+        ],
+        "col_index": [
+          314129,
+          126581
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "MAC PLEASE!!!!",
+          "Add MAC please"
+        ],
+        "col_index": [
+          4347818,
+          98173
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Though i only use mac, i use VMware fusion to play, and i love this game! GJ re-logic",
+          "MAC PLEASE!!!!"
+        ],
+        "col_index": [
+          102696,
+          4347818
+        ]
+      }
+    },
+    "26": {
+      "call_0": {
+        "reviews": [
+          "Did you like Far Cry 3? Buy Far Cry 4. Do you like open world games? Buy Far Cry 4. Are you worried about optimizations? Buy Far Cry 4 and turn down the graphics.",
+          "Its like far cry 3 with guns."
+        ],
+        "col_index": [
+          3729404,
+          422650
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Even though far cry primal has just come out, and far cry 4 is also out this is still an amazing first person shooter and is probably better than far cry 2, 3 and 4",
+          "This is basically far cry if you liked far cry 3 you will like this, if you have never played far cry 3 buy it when its on sale and decide if you like the game."
+        ],
+        "col_index": [
+          351563,
+          3729289
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Far Cry 4 as it's own game",
+          "Best far cry !"
+        ],
+        "col_index": [
+          3728205,
+          421877
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Best far cry !",
+          "Did you like Far Cry 3? Buy Far Cry 4. Do you like open world games? Buy Far Cry 4. Are you worried about optimizations? Buy Far Cry 4 and turn down the graphics."
+        ],
+        "col_index": [
+          421877,
+          3729404
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Even though far cry primal has just come out, and far cry 4 is also out this is still an amazing first person shooter and is probably better than far cry 2, 3 and 4",
+          "Best far cry !"
+        ],
+        "col_index": [
+          351563,
+          421877
+        ]
+      }
+    },
+    "27": {
+      "call_0": {
+        "reviews": [
+          "The cake wasn't a lie",
+          "The cake is a lie The cake is cake lie lie is cake cake lied"
+        ],
+        "col_index": [
+          6138587,
+          5244828
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "the cake is a lie the cake is a lie the cake is a lie the cake is a lie",
+          "The cake is a lie The cake is cake lie lie is cake cake lied"
+        ],
+        "col_index": [
+          5230149,
+          5244828
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "the cake is a lie the cake is a lie the cake is a lie the cake is a lie",
+          "THE CAKE IS NOT A LIE"
+        ],
+        "col_index": [
+          5230149,
+          5241074
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "the cake is a lie the cake is a lie the cake is a lie the cake is a lie",
+          "The cake is a LIE!"
+        ],
+        "col_index": [
+          5230149,
+          5230001
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The cake was a lie and here we go again.",
+          "the cake is a lie the cake is a lie the cake is a lie the cake is a lie"
+        ],
+        "col_index": [
+          6161179,
+          5230149
+        ]
+      }
+    },
+    "28": {
+      "call_0": {
+        "reviews": [
+          "couldnt refund this game in time",
+          "this game dont work i want a refund"
+        ],
+        "col_index": [
+          3921652,
+          304812
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Can i get a refund on this game its just i dont like it",
+          "I CANT REFUND IT"
+        ],
+        "col_index": [
+          3741842,
+          4153946
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I CANT REFUND IT",
+          "couldnt refund this game in time"
+        ],
+        "col_index": [
+          4153946,
+          3921652
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "No, don't buy it. Don't, just don't. If you have less than 2 hours of game time, refund it.",
+          "I CANT REFUND IT"
+        ],
+        "col_index": [
+          3376117,
+          4153946
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I want a refund.",
+          "can i have a refund for this game?"
+        ],
+        "col_index": [
+          300975,
+          4008481
+        ]
+      }
+    },
+    "29": {
+      "call_0": {
+        "reviews": [
+          "To sum this game HATS",
+          "where are the hats??"
+        ],
+        "col_index": [
+          5572865,
+          425741
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game got hats ITS PERFECT!",
+          "Not enough hats."
+        ],
+        "col_index": [
+          5573863,
+          5567963
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Its all about the hats!",
+          "This game got hats ITS PERFECT!"
+        ],
+        "col_index": [
+          5574963,
+          5573863
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          " Too many hats",
+          "Its all about the hats!"
+        ],
+        "col_index": [
+          5572693,
+          5574963
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This game is about hats.",
+          "Not enough hats."
+        ],
+        "col_index": [
+          5572086,
+          5567963
+        ]
+      }
+    }
+  }
+}

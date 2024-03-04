@@ -1,0 +1,1776 @@
+{
+  "new_topic_labels": {
+    "0": {
+      "call_0": "\n\"Challenging Platformer\"",
+      "call_1": "Game Worthy",
+      "call_2": "Puzzle",
+      "call_3": "\"Zombies and Octopi: A Platformer's Nightmare\"",
+      "call_4": "Game Worthy"
+    },
+    "1": {
+      "call_0": "\nTopic Label: \"Old-School Dungeon Crawler\"",
+      "call_1": "\nOld School Fun",
+      "call_2": "\nRelaxing Money Game",
+      "call_3": "\n\"Efficient Assembly Line Simulator with Business Management Elements\"",
+      "call_4": "\"Game of Money\""
+    },
+    "2": {
+      "call_0": "\"Difficult but rewarding puzzle game\"",
+      "call_1": "\nThe topic is \"underwhelming experience with too much repetition\".",
+      "call_2": "\nFun",
+      "call_3": "\nLevel Puzzle Challenge",
+      "call_4": "\nLevel Puzzle Challenge"
+    },
+    "3": {
+      "call_0": "\nTopic Label: Scary Game",
+      "call_1": "Addicting",
+      "call_2": "Nostalgic Horror",
+      "call_3": "\n\"Five Nights at Freddy's Adventure\"",
+      "call_4": "Scary Fun"
+    },
+    "4": {
+      "call_0": "\nTopic Label: Building Adventure",
+      "call_1": "\nTopic Label: Challenging but Free Adventure Game",
+      "call_2": "\nTopic: Building Adventure Game",
+      "call_3": "Western Shooter",
+      "call_4": "\nTopic Label: Decent Graphic Adventure"
+    },
+    "5": {
+      "call_0": "\nTopic Label: Personal and Emotional Horror Game",
+      "call_1": "\n\"Fun Puzzle Adventure\"",
+      "call_2": "\nMonsti: Horrible Experience",
+      "call_3": "\nTopic Label: Personal Horror Adventure",
+      "call_4": "Atmosphere"
+    },
+    "6": {
+      "call_0": "Indie VR Thrash",
+      "call_1": "\"Fun Indie Game\"",
+      "call_2": "\"VR Farm Game\"",
+      "call_3": "VR Farm Game",
+      "call_4": "Farm Game"
+    },
+    "7": {
+      "call_0": "Goat Simulator: Beautiful World of Art and Imagination",
+      "call_1": "\nArtful Adventure",
+      "call_2": "\nBeautiful Art Game",
+      "call_3": "\nGreat Story",
+      "call_4": "\n\"Beautiful Game\""
+    },
+    "8": {
+      "call_0": "\nTopic Label: \"Underwhelming Choice-Based Adventure with Too Much Filler\"",
+      "call_1": "Olli Olli: Frustrating Trial and Error",
+      "call_2": "\nGreat Game",
+      "call_3": "\nTopic Label: Frustrating Multiplayer Experience with Too Much RNG",
+      "call_4": "\nUnderwater Chaos"
+    },
+    "9": {
+      "call_0": "\nTopic Label: Fun Time Killer",
+      "call_1": "Goat Simulator Fun",
+      "call_2": "Goat Life Simulator",
+      "call_3": "Addictive Simulator",
+      "call_4": "\nGoat Simulator"
+    },
+    "10": {
+      "call_0": "\nDeck Building Party",
+      "call_1": "\nSailing Adventure",
+      "call_2": "Sailing Good",
+      "call_3": "Sunaless Sea",
+      "call_4": "\n\"Dice-Based Fun\""
+    },
+    "11": {
+      "call_0": "\nTopic Label: Terrarium Adventure",
+      "call_1": "Topic Label: Terrarium Delight",
+      "call_2": "\nTopic Label: Minecraft Masterpiece",
+      "call_3": "\nTopic Label: \"Minecraft-like\"",
+      "call_4": "\nTopic Label: Creative Building"
+    },
+    "12": {
+      "call_0": "Garry's Mod",
+      "call_1": "\nGarry's Mod",
+      "call_2": "\nTopic Label: Card Game Fun",
+      "call_3": "\nMod Adventure",
+      "call_4": "\nTopic Label: Disappointing VR Experience with Poor Programming"
+    },
+    "13": {
+      "call_0": "\nTopic Label: \"Depression-Themed Nightmare\"",
+      "call_1": "\nTopic Label: Shadowrun Depression Puzzle Game",
+      "call_2": "\nShadowrun Mind Game",
+      "call_3": "\nTopic Label: Depression in Shadowrun",
+      "call_4": "\nTopic Label: Shadowrun Depression"
+    },
+    "14": {
+      "call_0": "\nKill Food War",
+      "call_1": "Topic: \"Meh\" Fighting Feels Fun Despite Bugs and Grind.",
+      "call_2": "\"Survival Horror\"",
+      "call_3": "\nTopic Label: Survival Game",
+      "call_4": "Kinda Grim"
+    },
+    "15": {
+      "call_0": "\nCo-op Fun",
+      "call_1": "Great co-op game",
+      "call_2": "\nCo-op Fort Building",
+      "call_3": "\nFrustration",
+      "call_4": "Grind Game"
+    },
+    "16": {
+      "call_0": "Highly Recommended Defense Game",
+      "call_1": "School Defense - Highly Addictive Tower Defense Game",
+      "call_2": "\"Tower Defense Frenzy\"",
+      "call_3": "School Defense Game",
+      "call_4": "FUN GAME"
+    },
+    "17": {
+      "call_0": "\nTopic Label: Fun, Replayable Game",
+      "call_1": "Nostalgic Tragedy",
+      "call_2": "\nTopic: \"Underwhelming experience with too much repetition.\"",
+      "call_3": "\nTopic Label: Narcissu - Emotional Story",
+      "call_4": "\nDrama"
+    },
+    "18": {
+      "call_0": "\nTopic Label: Addictive",
+      "call_1": "\nTopic Label: \"Underwhelming experience with too much repetition.\"",
+      "call_2": "\nTopic Label: \"Visual Novel Gem\"",
+      "call_3": "Game - Cool and Engaging",
+      "call_4": "\nTopic Label: \"Underwhelming experience with too much repetition.\""
+    },
+    "19": {
+      "call_0": "Fun game with afk issues",
+      "call_1": "\n\"Boring Shooter with AFK Issues\"",
+      "call_2": "Soundtrack",
+      "call_3": "Lemons for Sale",
+      "call_4": "\n\"Gaming Goldmine\""
+    },
+    "20": {
+      "call_0": "\"Depression-themed game worth playing\"",
+      "call_1": "\nTopic Label: Underwhelming Experience with Unclear Controls",
+      "call_2": "Fun challenge with bright colors",
+      "call_3": "\nParable Game",
+      "call_4": "\"Underwhelming experience with too much repetition.\""
+    },
+    "21": {
+      "call_0": "\nTopic Label: \"Underwhelming but Free\"",
+      "call_1": "Topic: Fun and Creative Freedom in a Vast Game World.\nLabel: \"Wow, So Much Fun!\"",
+      "call_2": "\nTopic Label: Humans Behavior",
+      "call_3": "Cute and Scary",
+      "call_4": "\"Brief, Funny Games\""
+    },
+    "22": {
+      "call_0": "Topic Label: Terraria Review",
+      "call_1": "Cubesis - Unique but Complicated",
+      "call_2": "Sure! Here is a label for the topic in less than 5 words: \"Beautiful, relaxing point-and-click game\"",
+      "call_3": "\nTopic Label: \"Broken Moon\"",
+      "call_4": "\nTopic Label: Cubesis"
+    },
+    "23": {
+      "call_0": "\nTopic Label: Build and Survive",
+      "call_1": "Topic: Underwhelming experience with too much repetition.",
+      "call_2": "\nTopic Label: Puzzle Platformer",
+      "call_3": "\nTopic Label: \"Mixed RPG Experience\"",
+      "call_4": "\nTopic Label: Annoying RPG with Lag Issues"
+    },
+    "24": {
+      "call_0": "\nTopic Label: Fun Adventure Sandbox Game",
+      "call_1": "\nExpertise in Tears",
+      "call_2": "Adventure",
+      "call_3": "Terrarium Adventure",
+      "call_4": "\nTopic Label: Terraria"
+    },
+    "25": {
+      "call_0": "Awesome Game",
+      "call_1": "\"Indie gem\"",
+      "call_2": "\"Amazing Addictive Game\"",
+      "call_3": "\nTopic Label: \"Addictive Fun\"",
+      "call_4": "Addictive"
+    },
+    "26": {
+      "call_0": "\nMinesweeper Challenge",
+      "call_1": "\n\"D&D Mini Game\"",
+      "call_2": "\nSweet Simple Challenge",
+      "call_3": "Minesweeper Grind",
+      "call_4": "Minesweeper"
+    },
+    "27": {
+      "call_0": "\nTopic: Buggy and Limited Gameplay\nLabel: Frustrating",
+      "call_1": "\"Fun and free\"",
+      "call_2": "Survival Horror",
+      "call_3": "Topic: Repetitive Gameplay with Limited Character Progression",
+      "call_4": "Game Broken"
+    },
+    "28": {
+      "call_0": "\nSpinning Limousine",
+      "call_1": "Sounds fun",
+      "call_2": "Limousine Spin",
+      "call_3": "\nTopic: Bad Game",
+      "call_4": "\"Music Creation Tool\""
+    },
+    "29": {
+      "call_0": "Party Fun",
+      "call_1": "Party Fun",
+      "call_2": "\"Party Perfection\"",
+      "call_3": "\nParty Mode",
+      "call_4": "\nJump Off Roof Party"
+    }
+  },
+  "randomed_topic_reviews": {
+    "0": {
+      "call_0": {
+        "reviews": [
+          "this game is hard helish and cruel. I F@#$^&* LOVE IT",
+          "The contrast in color definitely symbolizes the ancient feud between good and evil ( xd ). This game is a good platformer that has you playing a young boy being chased by big hairy octupi"
+        ],
+        "col_index": [
+          3746808,
+          5752540
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "i dont really like this game becuase i dont know whats going on when i play it but i like the idea and i would recomend it",
+          "Well how do i start. i have been with scs software since 18 wheels of steel and bus simulator. They have always impressede me with there games being as simulation as they possibly can when they can. this game took me by storm i know i have a low playtime right now but i plan to make it grow significantley. This game is definatley worth picking up and i reccomend to anyone who is a fan of simulatio games and even people thatt have been with scs for a long time. if you find kentworths and peterbuilt trucks to be some of the best then you will fall in love with this game for sure. the physics are great the customazation of trucks is suprisingly large with at least a hundred diffrfent options love the game and i hope they keep it up"
+        ],
+        "col_index": [
+          236411,
+          3245736
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Lots of Plebs on here. 9/10",
+          "Very special Indie game, really good and recommended for people who likes puzzle games."
+        ],
+        "col_index": [
+          104542,
+          5752525
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The Guide thought it would be funny to open the door and let zombies in. I thought it would be funny to sacrifice him to the god of eternal nightmares.",
+          "The contrast in color definitely symbolizes the ancient feud between good and evil ( xd ). This game is a good platformer that has you playing a young boy being chased by big hairy octupi"
+        ],
+        "col_index": [
+          69629,
+          5752540
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The Guide thought it would be funny to open the door and let zombies in. I thought it would be funny to sacrifice him to the god of eternal nightmares.",
+          "Well how do i start. i have been with scs software since 18 wheels of steel and bus simulator. They have always impressede me with there games being as simulation as they possibly can when they can. this game took me by storm i know i have a low playtime right now but i plan to make it grow significantley. This game is definatley worth picking up and i reccomend to anyone who is a fan of simulatio games and even people thatt have been with scs for a long time. if you find kentworths and peterbuilt trucks to be some of the best then you will fall in love with this game for sure. the physics are great the customazation of trucks is suprisingly large with at least a hundred diffrfent options love the game and i hope they keep it up"
+        ],
+        "col_index": [
+          69629,
+          3245736
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "I played this with the Vive: Great old school dungeon crawler for when you just want to sit down and have a little fun. If you liked Legend of Grimrock or the original Bard's Tale this is the game for you, with a little more content, some outside areas, maybe a shop and inventory, this game could be amazing. Definitely worth the 10 bucks I spent.",
+          "Deus Ex meets Half Life 2 in one of the most confusing, bizarre, and surprisingly fun games I've played in a while. I bought this for $1 on sale, why don't you own this yet?"
+        ],
+        "col_index": [
+          4482481,
+          6365198
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "it is really fun!",
+          "I played this with the Vive: Great old school dungeon crawler for when you just want to sit down and have a little fun. If you liked Legend of Grimrock or the original Bard's Tale this is the game for you, with a little more content, some outside areas, maybe a shop and inventory, this game could be amazing. Definitely worth the 10 bucks I spent."
+        ],
+        "col_index": [
+          4158636,
+          4482481
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I had played this game for a long time outside of Steam. It's more fun than mainstream games, got nice physics, it's relaxing and worth the price. Levels are short rounds of seconds to minutes depending on the player and ending them any time hasn't got a bad effect. Optionally offers to let the player appear on a website ranking for every level.",
+          "Like Halo + Call Of Duty Zombies + Dinosaurs. Would recommend. For the price, you cant go wrong really."
+        ],
+        "col_index": [
+          1271191,
+          57644
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Here it is! My follow-up review is finally ready: YouTube\u2122 Video: The Rookery: A Bird's Eye View - Kings of Kung Fu (Part 2)\u00a0",
+          "I don't like puzzle games. That's my story and I'm sticking to it. I bought this game because it's a business management simulator. Thing is, the business management part is only half of it, if that. The restf is very much a puzzle game, but not one that requires you to go so in depth with your puzzle solving thinking that you end up with a migraine. When playing Big Pharma, you'll notice that most of your time is spent, with the game paused, trying to fit equipment into spaces that make it work well with other equipment, within the constraints of the sometimes awkwardly shaped space provided. Sometimes you'll find yourself thinking 'Geez, they must have made this chain of machines incompatible with this dumb building on purpose', while at other times you'll think 'Wow, this fits so perfectly here, without wasting any space at all, that I must be doing something right!' Odds are pretty good that the reality is somewhere in the middle, where there wasn't much thought put into it at all aside from using the shapes of the buildings to throttle the difficulty. You will be annoyed at the lack of space, irritated with the AI for seeming to be able to patent something just as you're ramping up to produce it, but overall, you will get a sense of strange euphoria, seeing your machinations chug along, making you lots of money -- and it is pretty darn easy to make lots of money in this game. That part isn't hard. The difficulty definitely comes from making the pieces fit in a way that accomplishes your goals, effeciently and on timie, without blocking you from making the next line. This is a great game to play with the background music turned off and your favorite tunes playing instead. That's not to say that the background music is bad. It's just mediocre, and mostly pointless. The graphics look exactly like they should for a game such as this -- good enough. They're not realistic but they're not so cartoony as to be a distraction from the puzzle aspects. There is no story or campaign or anything. The closest you get is the 'challenges' screen, which is the first thing you see when you click 'New Game', and offers various scenarios with challenges attached. There is a tutorial which is both easy to use and fairly comprehensive, though you'll probably have to Google some of the higher tier equipment to see how they work. The information is not hard to find, though, so that's not really a downside. Overall, Big Pharma is a pretty good game. The simplicity will draw you in and keep you hooked even well past the point where you're tired of doing the same things over and over again and, really, that's its biggest rub -- redundancy. From the moment you play the first game in the 'Beginner' column to the moment you put it away, you're doing pretty much the same thing over and over again. Think about it as an assembly line simulation tied in with some simplified business management concepts and you've got a good idea of what Big Pharma is all about. You're simply placing machines in a way that will be as efficient as you can make them. Everything else is just details. Is that a bad thing? In this case, I don't think it is. To me, the repitition gave me a sense of comfort, knowing that, at the beginning of every scenario, I had at least some *idea* of what I was doing. The first level drugs are extremely easy to make, and they get you off the ground pretty quickly, though you are forced to get more complicated since you'll oversaturate the market with them if you just make those. It was when the idea of starting fresh became significantly more appealing than continuing to try and get Master Level of accomplishment at a scenario that I realized it was probably time to play something else. However, that was 80 hours in, which is not a bad return for a game that costs $25 when it's not on sale! I'll probably go back to it at some point, too."
+        ],
+        "col_index": [
+          4094762,
+          4481056
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The Super Velocigon RUNNER ---- represented by Super Hexagon, Velocibox and ",
+          "I had played this game for a long time outside of Steam. It's more fun than mainstream games, got nice physics, it's relaxing and worth the price. Levels are short rounds of seconds to minutes depending on the player and ending them any time hasn't got a bad effect. Optionally offers to let the player appear on a website ranking for every level."
+        ],
+        "col_index": [
+          3837480,
+          1271191
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "I do not Enjoy this Game",
+          "Really fun game you can do lots of stuff and add lots of stuff to it."
+        ],
+        "col_index": [
+          6195193,
+          5258689
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I will be mostly polite about this first; the art was very impressive and the story was good enough to hold my attention however long I played that. I wasn't really keeping track. However after that this is pathetic soft-core wank material. Nothing more. Am I guilty of finding cartoon women attractive? Yes. Do I get off on hentai? Yes. Am I ashamed of this? A good ammount of the time. However this game was missing one of two things to be a ringer; my preferred desire would be a deep and desirable world with an ending that pays off. Yeah the premise kept my attention and the art was superb (I can't stress that enough, it is this games strong suit) nothing really happened at all with that entire experience. I can sum up the game for you very simply, right here, right now.pin up Sure the characters were nice to look at, and they started with interesting stories and had interesting personalities; but the ending screwed it all up. There was no pay off for being teased by these characters for hours, you don't really get to 'choose' anyone to be with at the end. The only choice in the entire experience isn't even worth replaying for as it only changes the festival scene for sure and MAYBE the end (I'm not replaying this so I can not gurantee even that's true). And to top it all off it kept hinting at a sequel 'Takahiro's adventure isn't over I really don't want to play through another afternoon waster just to get the pay off that should have been in this game. If you had taken the time just do four fair endings this would have bumped up from a disappointing experience to at least an acceptable one. Because like I said if this is to build up to with the same just to get the pay off there, you are not getting my money for that. Heck to the naw. I know you probably will get some money off them so long as you feed upon the simplistic weeaboos who don't just find much less tame stuff FOR FREE. But if you respect yourself as artists; give the reader a little prize for making it through your story. Give them choices, give them pay off, give them freaking depth over 'hey look at this cute girl talking to you and her BEWBS' give them something to go off of. Otherwise you're just wasting everyones time. And you know if you're going to feed to the lowest common denominator anyway, to people who really don't give two turds and a corncob about plot and development and depth. At least give them full on porn. Like I said, you can find way better than mostly naked boob for totally free. So yeah; more depth and intrigue or a lot more nudity one way or the or both, can't complain to both I suppose. I will give you the benefit of the doubt, maybe it's an early attempt (which kudos if-so) or if there's a time limit I dunno. To prospective buyers; if you want an easy time waster and nothing too complex for your young minds. This is an okay buy. If you're looking for something mind blowing that you can read and wank to whenever you want; you can find better stuff for free. And frankly what feels like a dating-sim that doesn't let you, you know, get with a girl at the end; romantically or sexually. That is a huge glaring error that should not have been a thing. I pray this was helpful to someone or at least gave anyone who's like me a chance to nod and say 'finally someone makes ",
+          "How dare she say that Pok\u00e9mon Mystery Dungeon is terrible? Oh, she's so wrong! Well, apart from Clara is a really well-written protagonist. This game is an interactive story, wich is partly funny and mostly sad. There's not much to do than to follow the story and walk around. But that's not a bad thing, as the story is interesting and immersive. The music is unique and standard music from the RPG Maker VX Ace is only used barely, but in fitting scenes. Now the graphics are kind of mediocre. The mapping is okay, but some paths could have been shorter- or at least there could be a running function. In the end it was a short, but worthwhile and kind of depressing experience. I think I wouldn't have bought it for the full price, but in Sale it was definitely worth it."
+        ],
+        "col_index": [
+          4060621,
+          4622672
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "In the name of all that is good and just, buy this game. So much freaking fun.",
+          "I do not Enjoy this Game"
+        ],
+        "col_index": [
+          3077696,
+          6195193
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Im normally not a fan of the sortof point-and-click, but this was very fun. Brilliant story, cant wait for the sequel.",
+          "Waste of your time. Endless mode is boring as hell and there is no real end-game goal besides making your char even more ridiculous. You will have unlocked every skill after 5 minutes and from then on there is no change in playstyle. You can't change skills, you will need to level another char. This is not replayvalue, it is a time-sink. There is no synergy between the towers and abilities and the amount of towers and traps which can be placed is laughably low. If you enjoy passive gameplay and have a lot of time to spare (and got 2-3 friends who've got the same problem) then I would recommend you this. However, if you cherish satisfying slaughter of hordes of enemies, interesting levels and fewer limitations on how to equip your character and do the levels, I strongly recommend Orcs Must Die 2. Even without a loot-system, it offers more flexibility, more char customisation and more ways to beat the various levels (which are ten times more varied than these). 3/10 would not buy again."
+        ],
+        "col_index": [
+          3586998,
+          6195167
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "In the name of all that is good and just, buy this game. So much freaking fun.",
+          "Perfect for a nice and friendly time with your friends "
+        ],
+        "col_index": [
+          3077696,
+          3454818
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "I bought it for the Starch Wars thing, which only lets me play for 1 life, then freezes up when I die and wont reload, forcing me to force quit the application. Getting a refund until this is fixed :/",
+          "A bit short-lived once you get good at it, but I definitely enjoyed it. The soundtrack is really good, and they need to release it as a seperate piece of merchandise outside of a bundle on their website/on GoG, for people like me who bought the game BEFORE the soundtrack was available with it. If this game expands in the future and has modding support and custom assets, I will be all over it."
+        ],
+        "col_index": [
+          4266545,
+          4109084
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "this gamse so addicting and i meen SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO adicting i suggest getting it",
+          "I bought it for the Starch Wars thing, which only lets me play for 1 life, then freezes up when I die and wont reload, forcing me to force quit the application. Getting a refund until this is fixed :/"
+        ],
+        "col_index": [
+          4102217,
+          4266545
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is a nostalgia post. I remember 12+ years ago when this game was still being updated. If this game had a counter for how many hours I spent playing the game and tinkering with the various mods of the days it would be at least 40+. I remember after playing it I searched for other games with the same kind of setup and did not really find any as these types were not that common back then. Survival (eating, fighting, exploring) Crafting Multiple endings It is highly moddable (Just go to the games Data folder, copy the Default to a new folder name, open any file with a text editor, everything is commented, however the syntax is different from most other games, and slightly confusing to relate 2 entries ) A built in level editor There was not that many mods for this game as it was definitely an overlooked game of its time 4 different classes to play as (more with mods) that each have their distinct requirements to live and flourish Human - The generic class Android - Lives on batteries Alien - Who wants an army of swarming mindless peons Psion - Way different route then the rest 3 Difficulty levels Wimp - Walk in the park status (no temp, no weather effects, needs drop slower) Normal - Temperature and weather effect you Hard - I've never really played on this so no opinion This game was built on the same renderer (and maybe game engine) as the pre-steam Crimson Land Low system requirements I know it can run on XP, but it also runs on windows 7 / 8 with no modifications (in my experience) I bought this out of pure nostalgia",
+          "This game rules, true story."
+        ],
+        "col_index": [
+          4558209,
+          161827
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I didn't get the ending but the puzzles were good",
+          "Best. Sidescroller. Ever. Best soundtrack ever. If you haven't played this, you're wrong."
+        ],
+        "col_index": [
+          3174875,
+          3041055
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A bit short-lived once you get good at it, but I definitely enjoyed it. The soundtrack is really good, and they need to release it as a seperate piece of merchandise outside of a bundle on their website/on GoG, for people like me who bought the game BEFORE the soundtrack was available with it. If this game expands in the future and has modding support and custom assets, I will be all over it.",
+          "this game is soo fun explore and build but it has problems : ater players steal from each other soo fun and teleportation is really helping with all of it but it's really fun if u don't core iff anyone steal from u soo try it or wait until they fix those problems XD (i don't know if this game is good or bed it's just really fun to play thats why I chosen to recomend this game)"
+        ],
+        "col_index": [
+          4109084,
+          4103020
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "It is like a 2-D minecraft wher you can build a lot of stuff and go on adventures! It is also online!",
+          "Awesome game whit a very high dificulty. I love these enemys and the pixel art is very worked."
+        ],
+        "col_index": [
+          84628,
+          4013362
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "You Have to Win the Game is a 2D sidescolling adventure where as the name states, beat the game. You control this little guy who looks like Milon from Milon's Secret Castle and travel through the maze like world in order to escape and win the game. The controls are the basic, run and jump style, with some powers ups thrown in from activating platforms, extra height and wall climbing. It may look simple but it's really challening, espicially when you're trying to get 100%. The graphics are like something out of the olden days of PC gaming, with no music and only the sounds of bleeps and bloops. Think of this as more like the game Adventure on Atari 2600, mixed in with the map layout of Metroidvania, and you've got yourself a fun and challenging game that is surprisingly free to play.",
+          "I cannot open it, I know what you're thinking 'how did you write the review then?' because I installed it and it kept saying I was in game but I wasn't It will not work I think you should patch this game developer's because this is pretty frickin' annoying. Edit: Ok now it works on my computer so glad good job game developer's :)"
+        ],
+        "col_index": [
+          3495552,
+          3710794
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Great voices. Good music, although repetitive. Funny interactions. 11/10 -IGN",
+          "It is like a 2-D minecraft wher you can build a lot of stuff and go on adventures! It is also online!"
+        ],
+        "col_index": [
+          4424930,
+          84628
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Arena shooter in a wild west style. No typical perk and exp collecting fluff you see in most of these kind of games, just pick class and enjoy gameplay. Its easy to get going , but has plenty of deph in gun handling mechanics as well. Probably most fun online FPS game i've played in a while. Must try!",
+          "Awesome game whit a very high dificulty. I love these enemys and the pixel art is very worked."
+        ],
+        "col_index": [
+          3114068,
+          4013362
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I cannot open it, I know what you're thinking 'how did you write the review then?' because I installed it and it kept saying I was in game but I wasn't It will not work I think you should patch this game developer's because this is pretty frickin' annoying. Edit: Ok now it works on my computer so glad good job game developer's :)",
+          "It is like a 2-D minecraft wher you can build a lot of stuff and go on adventures! It is also online!"
+        ],
+        "col_index": [
+          3710794,
+          84628
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "I feel conflicted, like my brain has been send in three directions at once. This game is a very personal one, feels almost like reading a diary at times, it's hard to describe. Even if that does nothing for you - just to see what Wreden does with the medium of video games again is worth your time.",
+          "Monsti is a game that I can't recommend because: - the price is too much for it's quality - it is boring - it has a lot of issues - it has components missing - it is not original - the content is horrible - the soundtrack is absolutely awfully - it is pretty pointless - the only good reason to install this game is for the trading cards"
+        ],
+        "col_index": [
+          3848504,
+          5934144
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "i've injoy this game very much and i would love to see more",
+          "It's like new-age asteroids but with added seizures, eye pain, headaches, and fun!"
+        ],
+        "col_index": [
+          3430608,
+          5848603
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Monsti is a game that I can't recommend because: - the price is too much for it's quality - it is boring - it has a lot of issues - it has components missing - it is not original - the content is horrible - the soundtrack is absolutely awfully - it is pretty pointless - the only good reason to install this game is for the trading cards",
+          "It's like new-age asteroids but with added seizures, eye pain, headaches, and fun!"
+        ],
+        "col_index": [
+          5934144,
+          5848603
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I feel conflicted, like my brain has been send in three directions at once. This game is a very personal one, feels almost like reading a diary at times, it's hard to describe. Even if that does nothing for you - just to see what Wreden does with the medium of video games again is worth your time.",
+          "My trousers were not ready for freddy 2/10 would not sh*t trousers again fun game though"
+        ],
+        "col_index": [
+          3848504,
+          4121462
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I feel conflicted, like my brain has been send in three directions at once. This game is a very personal one, feels almost like reading a diary at times, it's hard to describe. Even if that does nothing for you - just to see what Wreden does with the medium of video games again is worth your time.",
+          "My trousers were not ready for freddy 2/10 would not sh*t trousers again fun game though"
+        ],
+        "col_index": [
+          3848504,
+          4121462
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "I N D I E T R A S H N D I E T R A S H",
+          "A unique and very different VR game that uses a gamepad. Just tough enough but not so tough that you're dissuaded from coming back for more. Drops you right back into the action without any delay too."
+        ],
+        "col_index": [
+          4635570,
+          4632799
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A very fun and addicting game. I recomend it for people who want addicting and simple games",
+          "A catchy, exellent game with some of the best replayabilty I have ever seen. Highly recommended!"
+        ],
+        "col_index": [
+          4159059,
+          4158618
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "A unique and very different VR game that uses a gamepad. Just tough enough but not so tough that you're dissuaded from coming back for more. Drops you right back into the action without any delay too.",
+          "A catchy, exellent game with some of the best replayabilty I have ever seen. Highly recommended!"
+        ],
+        "col_index": [
+          4632799,
+          4158618
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "A unique and very different VR game that uses a gamepad. Just tough enough but not so tough that you're dissuaded from coming back for more. Drops you right back into the action without any delay too.",
+          "It is very bad but I liked the mobile version"
+        ],
+        "col_index": [
+          4632799,
+          3125189
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "a fun game where you can never make a mestake",
+          "A catchy, exellent game with some of the best replayabilty I have ever seen. Highly recommended!"
+        ],
+        "col_index": [
+          4160285,
+          4158618
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "Addicting game play limited only by your imagination on what to build or explore next. The continuous updates and holiday events help keep the adventure fresh. A must have for any sandbox lovers.",
+          "A beautiful artistic game. Not only does this game prepare you for the struggles that a goat has to go through every day, but it also displays it in the most aesthetically pleasing way possible. Every corner you turn you open your eyes to a brand new masterpiece of landscaping. Simple 'AI' doesn't account for this game, oh no, It's like someone has literally breathed life into this game. Like beautiful paintings brought to life and put into this setting. I have to tell you, this isn't a 'video game', it's a living, breathing world that you can have the honor of being apart of if only briefly. Count yourself lucky that you've been given the chance to even view upon this, let alone be able to purchase it to own. It's been hard to write this review with the tears streaming down my face but it's just far too "
+        ],
+        "col_index": [
+          149558,
+          3129323
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is truly a work of art, from the beautiful hand-drawn backgrounds to the incredible real-time game narration.",
+          "Addicting game play limited only by your imagination on what to build or explore next. The continuous updates and holiday events help keep the adventure fresh. A must have for any sandbox lovers."
+        ],
+        "col_index": [
+          160570,
+          149558
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "A beautiful artistic game. Not only does this game prepare you for the struggles that a goat has to go through every day, but it also displays it in the most aesthetically pleasing way possible. Every corner you turn you open your eyes to a brand new masterpiece of landscaping. Simple 'AI' doesn't account for this game, oh no, It's like someone has literally breathed life into this game. Like beautiful paintings brought to life and put into this setting. I have to tell you, this isn't a 'video game', it's a living, breathing world that you can have the honor of being apart of if only briefly. Count yourself lucky that you've been given the chance to even view upon this, let alone be able to purchase it to own. It's been hard to write this review with the tears streaming down my face but it's just far too ",
+          "This game is truly a work of art, from the beautiful hand-drawn backgrounds to the incredible real-time game narration."
+        ],
+        "col_index": [
+          3129323,
+          160570
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "A kickass soundtrack Powerful story, and a Damn good narrator",
+          "I kinda adicted to this game!!!!"
+        ],
+        "col_index": [
+          166027,
+          4528119
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I kinda adicted to this game!!!!",
+          "This game is truly a work of art, from the beautiful hand-drawn backgrounds to the incredible real-time game narration."
+        ],
+        "col_index": [
+          4528119,
+          160570
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "A love story that shows your actions have consequences.",
+          "Its a choose your own adventure game threaded together using ALOT of boring minigames. being able to choose how you want to deal with situations presented in the game is the best part, but sometimes I saw my choices didn't save (ie. Someone died, they're alive later). The story was an interesting idea, most of the conversations with characters were pretty great and well written, however some conversations and story points made me go wtf, didn't make sense, or was just badly thought out and written. I like the changing settings and how there were at least 3 full towns to explore, however lacking towards the end in SV. Now as a choose your adventure/choice game I would recommend it hesitantly. BUT absolute worst thing this game does is create a very long amount of trash filler minigames to tie the story together. From my playthrough I played 3 arcade minigames (one pacman ripoff), 2 job minigames (Tofu/Weed jobs), coat check minigame, box minigame, hacking minigame (frogger ripoff), vent maze, deliver drugs minigame, boxing minigame, 4 casino minigames. I hated them. Almost all the minigames I listed are required for progress or jobs done to progress the day. By the end of the game, I've had enough and didn't even play any of the casino minigames cause that's a stupid idea. I hated those boring minigame segments that are half the game. Also, the developer cameo was great at first in the coffee shop, but wtf was with the two of them, and that ending at the book store was so stupidly bad I laughed. Do not recommend."
+        ],
+        "col_index": [
+          3340094,
+          3340784
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Beatiful looking and with a great soundtrack, the game itself is an abysmal mess of trial and error and RNG that can make you repeat entire chapters- which are long by the way. The logic behind the game micromanaging is bafflingly obtuse and designed to make you waste your time. It's a shame such great art is wasted on a game like this.",
+          "A good concept that falls short due to moderately broken, unreliable controls that take the fun away from the later levels of the game. There is a good amount of content in Olli Olli, but not enough variety to make it worth its current price point of "
+        ],
+        "col_index": [
+          3339041,
+          3337318
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is the best thing I played all year HIGHLY RECCOMENDED",
+          "Beatiful looking and with a great soundtrack, the game itself is an abysmal mess of trial and error and RNG that can make you repeat entire chapters- which are long by the way. The logic behind the game micromanaging is bafflingly obtuse and designed to make you waste your time. It's a shame such great art is wasted on a game like this."
+        ],
+        "col_index": [
+          3337500,
+          3339041
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "way too hard first mission. lost interest completely in the game after i kept dying for an hour without making any real progress",
+          "Beatiful looking and with a great soundtrack, the game itself is an abysmal mess of trial and error and RNG that can make you repeat entire chapters- which are long by the way. The logic behind the game micromanaging is bafflingly obtuse and designed to make you waste your time. It's a shame such great art is wasted on a game like this."
+        ],
+        "col_index": [
+          3339316,
+          3339041
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Beatiful looking and with a great soundtrack, the game itself is an abysmal mess of trial and error and RNG that can make you repeat entire chapters- which are long by the way. The logic behind the game micromanaging is bafflingly obtuse and designed to make you waste your time. It's a shame such great art is wasted on a game like this.",
+          "Steve, that was totes amazeballs."
+        ],
+        "col_index": [
+          3339041,
+          3337507
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "Game is really fun and a great time killer!",
+          "This game is a very improved version of the impossible game and I would recommend to anybody who loves fast-paced games."
+        ],
+        "col_index": [
+          4160360,
+          4157737
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I first bought the game on my android device. It was very fun and challenging. Afterwards I went to the store page on Steam, and inserted the name into the search bar. I then bought the game and played it for a while. I noticed right away that it was easier played with a controller, but was still easy with keyboard controls. The game is about controlling a small cube around a auto-scrolling level while music plays in the background to aid you in jumping. The game becomes progresively harder after each lever, and with the online levels, created by other users, there is endless gameplay. Overall I rate this game a 8/10",
+          "great fun addicting amazing music but no multiplayer need to add multiplayer"
+        ],
+        "col_index": [
+          4160664,
+          4160492
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Frustatingly entertaining,",
+          "great fun addicting amazing music but no multiplayer need to add multiplayer"
+        ],
+        "col_index": [
+          4161781,
+          4160492
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "this game will be the only thing u do in ur freetime",
+          "great fun addicting amazing music but no multiplayer need to add multiplayer"
+        ],
+        "col_index": [
+          4158564,
+          4160492
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Game is really fun and a great time killer!",
+          "This is one of the best $5 games out there"
+        ],
+        "col_index": [
+          4160360,
+          4160662
+        ]
+      }
+    },
+    "10": {
+      "call_0": {
+        "reviews": [
+          "Beautiful little game. Nice story and very pretty art, just look at screenshots - its gorgeous. Oh, it has some puzzles too, but nothing too difficult. Looking forward for next game from developers.",
+          "great game just needs some updates and i would like to be able to print the cards like in a free starter pack"
+        ],
+        "col_index": [
+          3546738,
+          3154824
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Beautiful little game. Nice story and very pretty art, just look at screenshots - its gorgeous. Oh, it has some puzzles too, but nothing too difficult. Looking forward for next game from developers.",
+          "Hours and hours of sailing about and reading texts shouldn't be this good"
+        ],
+        "col_index": [
+          3546738,
+          3886909
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Hours and hours of sailing about and reading texts shouldn't be this good",
+          "I do hope they make the game bit more challenging (harder turns, smaller roads, high hills) and they put Alaska in with some nice iceroads and steep hills. Overall "
+        ],
+        "col_index": [
+          3886909,
+          3241701
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "If you are looking for a dark, story-focused game about terror and loneliness, then I highly recommend Sunless Sea. If you are looking for a game about sailing around and fighting pirates, then it is probably not the game for you. My first game I sailed north off of the edge of the world, but time started to freeze so I turned around. I arrived at a chapel covered in candles and filled with cannibals, so I left before they decided to eat me. I ended up overthrowing a few empires, stole a zeppelin, and flew away to join the once-god of sacrifice and endings. My younger brother joined a cult worshiping a machine-god before going insane and sinking his ship by flooding it with blood.",
+          "Beautiful little game. Nice story and very pretty art, just look at screenshots - its gorgeous. Oh, it has some puzzles too, but nothing too difficult. Looking forward for next game from developers."
+        ],
+        "col_index": [
+          3886801,
+          3546738
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game. A lot of fun.",
+          "bought the game for turned it on waited for three cards to drop traded the cards for each made return on investment 120% return on investment 12/10"
+        ],
+        "col_index": [
+          1333548,
+          4073474
+        ]
+      }
+    },
+    "11": {
+      "call_0": {
+        "reviews": [
+          "2D Minecraft?? Pffft. No! this game is MUCH different from minecraft in so many ways. Why would you say that?? The world is very diverse and so full of life. You've got bosses, mobs, exotic biomes, hardmode, NPCs that aren't generic, crafting that goes beyond diamonds and metals, weapons that make others kinda dull in power, and last but not least, good people to play with if you know where your going. It's a great game and that's all i wanna point out. Thanks for reading I hope i didn't make you fall asleep. and have fun. BUY THE GAME!!!!",
+          "Just check my hours on the game, that's enough of a review right And it'll only get worse."
+        ],
+        "col_index": [
+          134931,
+          148083
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "2D Minecraft?? Pffft. No! this game is MUCH different from minecraft in so many ways. Why would you say that?? The world is very diverse and so full of life. You've got bosses, mobs, exotic biomes, hardmode, NPCs that aren't generic, crafting that goes beyond diamonds and metals, weapons that make others kinda dull in power, and last but not least, good people to play with if you know where your going. It's a great game and that's all i wanna point out. Thanks for reading I hope i didn't make you fall asleep. and have fun. BUY THE GAME!!!!",
+          "What a great way to waste my time. 10/10 would waste time again."
+        ],
+        "col_index": [
+          134931,
+          83948
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The game that changed my view on 2D games, very good game very recommended!",
+          "Really good for a 10 dollar game, well worth it. Very nice sountracks. TONNES of stuff to do and a good singleplayer as well as multiplayer experiences. I found myself 24 houring this game, never really is 'nothing else' to do. Big promising updates for the game, not very often though from what I remember. I have no major negatives of this game that I can pick out, only that there is alot of items and I find myself on the wiki a bit. 8/10 still play."
+        ],
+        "col_index": [
+          76906,
+          73002
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Minecraft and Terraria are two awesome creative games. Although there is no creative mode like Minecraft I don't like a creative Terraria mode would feel as great as the normal game. Terraria does have a lot of enemies, which is what it's focus on. Combat. The 2D platform is a bit hard to get used to though. (I mostly play 3D, but love 2D) The thing is the world has to be limited since it isn't 3D. It's worth the money though, just like Minecraft.",
+          "Really good for a 10 dollar game, well worth it. Very nice sountracks. TONNES of stuff to do and a good singleplayer as well as multiplayer experiences. I found myself 24 houring this game, never really is 'nothing else' to do. Big promising updates for the game, not very often though from what I remember. I have no major negatives of this game that I can pick out, only that there is alot of items and I find myself on the wiki a bit. 8/10 still play."
+        ],
+        "col_index": [
+          87814,
+          73002
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Really good for a 10 dollar game, well worth it. Very nice sountracks. TONNES of stuff to do and a good singleplayer as well as multiplayer experiences. I found myself 24 houring this game, never really is 'nothing else' to do. Big promising updates for the game, not very often though from what I remember. I have no major negatives of this game that I can pick out, only that there is alot of items and I find myself on the wiki a bit. 8/10 still play.",
+          "Minecraft and Terraria are two awesome creative games. Although there is no creative mode like Minecraft I don't like a creative Terraria mode would feel as great as the normal game. Terraria does have a lot of enemies, which is what it's focus on. Combat. The 2D platform is a bit hard to get used to though. (I mostly play 3D, but love 2D) The thing is the world has to be limited since it isn't 3D. It's worth the money though, just like Minecraft."
+        ],
+        "col_index": [
+          73002,
+          87814
+        ]
+      }
+    },
+    "12": {
+      "call_0": {
+        "reviews": [
+          "Simple but very addictive",
+          "Pretty sweet puzzle game. Kind of like Chu Chu Rocket but with no cats."
+        ],
+        "col_index": [
+          4629838,
+          5037119
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Pretty sweet puzzle game. Kind of like Chu Chu Rocket but with no cats.",
+          "This game is the reason that PC is better than console."
+        ],
+        "col_index": [
+          5037119,
+          5247489
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Very solid card game! It's fun, easy, and addictive. Somehow it keeps you on your toes but doesn't overwhelm the mind. There are a few achievements that are hard to get based off the RNG and your decision making so those who like decision-based games with luck involved will like this game. Worth a buy!",
+          "this game is an amazing game u can do aneything u want trust me its worth the just get it XD"
+        ],
+        "col_index": [
+          5029064,
+          5249147
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "this game is an amazing game u can do aneything u want trust me its worth the just get it XD",
+          "It is a great game, and it is short. You should try it. If you do YouTube, post a video of you playing it on YouTube. I have. Or will. Depends on when you see this"
+        ],
+        "col_index": [
+          5249147,
+          4634317
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It is a great game, and it is short. You should try it. If you do YouTube, post a video of you playing it on YouTube. I have. Or will. Depends on when you see this",
+          "Would you like to marvel at the massive marine beasts of the past? I know I would. Ok I know VR visuals look more like an N64 than we would want but come on and suspend your disbelief and have some fun. I jumped at the chance at trying this interactive learning experience. Instead After a few hours exploring Im dissapointed at how terriblely badly the scanning system, which is the core 'game play' mechanic in Time Machine VR has been implimented. Points deducted for a very hit and miss programming which ends up turning an experience that should be magical into a frustrating one. After the 10th time trying to capture the feeding behaviour of a massive beast that I was clearly seeing but for some (unexplained) reason Time Machine VR was telling me I wasnt capturing had me exiting in frustration. Couple this with every gamers dread, the unskippable exposition scene! and I was wondering if A, had these guys played a game before never mind developing one and B why these eye rollingly rudimentary problems are following us into the brave new world of VR and stinking it up like 200 tons for rotting dino-fish. Not polished enough to recommend but nice models and animations are worth seeing, just not at this price so just try the demo instead. *Update* Now tested on Vive and has horrible graphical latency, conclusion: AVOID"
+        ],
+        "col_index": [
+          4634317,
+          4631289
+        ]
+      }
+    },
+    "13": {
+      "call_0": {
+        "reviews": [
+          "it just doesn't work, first i try it and it says steam something failure and then now i can't even start it. i don't recommend it now but it does look like a really fun game",
+          "If H. R. Giger made a video TORMENTUM is a dark but fun point & click adventure game. The dreamlike, nightmarish atmosphere of the game was inspired by works of painters Giger and Zdzislaw Beksinski. The game's final look and feel was also strongly influenced by the universes of games such as Demon's Souls or Dark Seed. - Recommended!"
+        ],
+        "col_index": [
+          3741799,
+          4367710
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Typical puzzle game. Recommend it for the achievement alphabets.",
+          "a naked child with satan my favorite"
+        ],
+        "col_index": [
+          3152405,
+          242262
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Awesome game to kill some time. Nice design and very easy to learn.",
+          "This game is really fun, very challenging, and over all a huge mindf*ck."
+        ],
+        "col_index": [
+          4520172,
+          3737443
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "a naked child with satan my favorite",
+          "I couldn't escape from the first prison because I felt bad for "
+        ],
+        "col_index": [
+          242262,
+          3741995
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "a naked child with satan my favorite",
+          "it just doesn't work, first i try it and it says steam something failure and then now i can't even start it. i don't recommend it now but it does look like a really fun game"
+        ],
+        "col_index": [
+          242262,
+          3741799
+        ]
+      }
+    },
+    "14": {
+      "call_0": {
+        "reviews": [
+          "No. YouTube\u2122 Video: Why we can't have nice things\u00a0",
+          "Pretty good game. I got a little "
+        ],
+        "col_index": [
+          4068182,
+          4302279
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "OK, KM2KDB long name, is really an odd one. It has all these great elements, but still needs to be polished a bit more. They claimed to have controller support where it did, It took me nearly 30mins getting it to work, and for somereason the controls can go unresponsive right before a match, but kick in a sec in. But by far the worst thing is my AnitVirus freaks out on the file. I'm pretty sure its a false positive but still, having a game you purchase on steam that does that is a bit unsettling. It just feels slitly sluggish during menus and small moments. Now the Fighting amazing, I have a great time ever fight sometimes I get a but confused on i get 1 shot but still the fighting can and is very enjoyable. Besides the bugs etc, the only thing i feel is a bit meh. Is how the level and training system is. You get 3 training options at the start of the game, and that is great. Once you use those 3 you wont get to see another til after you beat a event ( which sounds alright but) This is where it gets to the grind, they are op for a good 2 3 trys, and you do gain some ablity after but doesn't feel fun in that way. And until you get money and fame your kinda stuck doing the same and omg please get rid of the work mini game worst mini game ever. I hate SOOO BORING Can't reccomend it @ its current price, find it for a $1 sure, but still. Wish it wasn't so MEH fighting feels so fun!!",
+          "Very very nice game , my friend."
+        ],
+        "col_index": [
+          4536901,
+          94612
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Boring and repetitive. Avoid at all costs",
+          "No. YouTube\u2122 Video: Why we can't have nice things\u00a0"
+        ],
+        "col_index": [
+          3403258,
+          4068182
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It kinda looks promising but it feels less polished than half the early access games we have on Steam. All is done with one click. You have to discover the crafting recipes by yourself. You can trade with random people walking by or hire them so you'll have less clicking to do. Tiles look 'ok', animations are basic but that's fine by me. Crashes a lot so far. Don't recommend now but probably will when they smooth things up.",
+          "This game was the best invention since sliced bread. Like how did someone create this diamond game? I cry everytime I play it because I am just so amazed by it beauty. If you as me, I'd buy it again and again but I only need one copy to enjoy its endless fun. 10/10 anyday."
+        ],
+        "col_index": [
+          3709403,
+          4548712
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It kinda looks promising but it feels less polished than half the early access games we have on Steam. All is done with one click. You have to discover the crafting recipes by yourself. You can trade with random people walking by or hire them so you'll have less clicking to do. Tiles look 'ok', animations are basic but that's fine by me. Crashes a lot so far. Don't recommend now but probably will when they smooth things up.",
+          "Pretty good game. I got a little "
+        ],
+        "col_index": [
+          3709403,
+          4302279
+        ]
+      }
+    },
+    "15": {
+      "call_0": {
+        "reviews": [
+          "Its FAP time",
+          "Amazing single player game and even better as a co-op over LAN/Internet with friends! I love playing with my brother and other's, making a cool fort/house and prepping for boss fights, all in all a solid game for this price. Highly Recommend."
+        ],
+        "col_index": [
+          4061773,
+          152205
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Amazing single player game and even better as a co-op over LAN/Internet with friends! I love playing with my brother and other's, making a cool fort/house and prepping for boss fights, all in all a solid game for this price. Highly Recommend.",
+          "It's alright, but all you really do is grind, slay people, grind some more, die because 'you thought you could', get ticked off quit, and then leave the game, goto comments, and do exactly what I'm doing now. Don't get this game. Waste of time. Graphics suck. Go play DarkSoulsII."
+        ],
+        "col_index": [
+          152205,
+          4602355
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Amazing single player game and even better as a co-op over LAN/Internet with friends! I love playing with my brother and other's, making a cool fort/house and prepping for boss fights, all in all a solid game for this price. Highly Recommend.",
+          "Its FAP time"
+        ],
+        "col_index": [
+          152205,
+          4061773
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Love the game and the music but it can get extremely frustrating!",
+          "Pointless and not a game"
+        ],
+        "col_index": [
+          6183771,
+          4055258
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It's alright, but all you really do is grind, slay people, grind some more, die because 'you thought you could', get ticked off quit, and then leave the game, goto comments, and do exactly what I'm doing now. Don't get this game. Waste of time. Graphics suck. Go play DarkSoulsII.",
+          "Its FAP time"
+        ],
+        "col_index": [
+          4602355,
+          4061773
+        ]
+      }
+    },
+    "16": {
+      "call_0": {
+        "reviews": [
+          "fun alone, better with friends",
+          "Completely addicting. If tower defence games are your thing your going to love this game"
+        ],
+        "col_index": [
+          6198463,
+          6199213
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Completely addicting. If tower defence games are your thing your going to love this game",
+          "A game that explains very well without any words what RPG means. 8/10"
+        ],
+        "col_index": [
+          6199213,
+          1333642
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Completely addicting. If tower defence games are your thing your going to love this game",
+          "Great with friends!"
+        ],
+        "col_index": [
+          6199213,
+          6364060
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Great with friends!",
+          "A game that explains very well without any words what RPG means. 8/10"
+        ],
+        "col_index": [
+          6364060,
+          1333642
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "So much fun and frustration while playing with friends, would def recommend to anyone 10/10 A+ would shrek again",
+          "Great with friends!"
+        ],
+        "col_index": [
+          236984,
+          6364060
+        ]
+      }
+    },
+    "17": {
+      "call_0": {
+        "reviews": [
+          "i can't play coop it bad",
+          "One of the first games in a long time that gave me the classic 'one more run' syndrome. This game is a near perfect mix of Nuclear Throne and the Binding of Isaac, giving you that item hungry feel while not relying on items to the point of frustration. Though the default guns are rather lacking and you can get some what screwed over on the first floor thanks to the RNG it's still a fantastic game and more than worth the price. The number of different items in this game is unimagenable, ranging from pillows to coffee. Odds are you will find something to suit your playstyle. Some of the down sides being the lack of online co-op and the staleness of the default guns are easily overcome by the sheer replayability and well polished gameplay mechanics. So over all this game is getting a solid from me. The only required improvements in my opinion is the addition of online co-op and a way to guarantee a different gun on the first a a wheel-of-fortune style gun selection screen at the start or something?) So what are you doing reading this? Buy it already and have some fun!"
+        ],
+        "col_index": [
+          3080788,
+          4013829
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Narcissu merges an absolutely stunning soundtrack to a heartfelt story. The way they weave together music and artwork makes this graphic novel something extra. Narcissu will make you feel. It will tug at your heartstrings. This is one of the most touching stories I have ever read.",
+          "When I downloaded it, I obviusly expected a sad story obviously and was looking forward to it since it talked about disease and life in a hospital and it hits a little to close to home but I never expected such a great story and development within such a short If I had to explain the game in few words I would 'If you don\u00b4t want to cry your eyes out a little this certainly is not your story but if instead you are looking for a true good story that makes you put a little perspective into here it "
+        ],
+        "col_index": [
+          3082812,
+          3082833
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Great game! its perfect for people who want to follow a story line and feel touched with in the first few minutes of it! to be honest i almost cried in the first minute of it! =:::::(",
+          "First I tought this game will be interesting, but it became boring really fast. Basically you pick up things and put it in the fire. Then clean the bloodstains with a weird mop. That's all, the only challenge is to fight with the annyoing phisycs and bugs. I played it when my brain had no capacity to play anything else. Luckily I won this in a giveaway, I wouldn't spend a dime on it. There are so many good and cheap indie games out there, this is not one of them. Spend your money on something else."
+        ],
+        "col_index": [
+          3082823,
+          3103136
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Narcissu merges an absolutely stunning soundtrack to a heartfelt story. The way they weave together music and artwork makes this graphic novel something extra. Narcissu will make you feel. It will tug at your heartstrings. This is one of the most touching stories I have ever read.",
+          "First I tought this game will be interesting, but it became boring really fast. Basically you pick up things and put it in the fire. Then clean the bloodstains with a weird mop. That's all, the only challenge is to fight with the annyoing phisycs and bugs. I played it when my brain had no capacity to play anything else. Luckily I won this in a giveaway, I wouldn't spend a dime on it. There are so many good and cheap indie games out there, this is not one of them. Spend your money on something else."
+        ],
+        "col_index": [
+          3082812,
+          3103136
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game! its perfect for people who want to follow a story line and feel touched with in the first few minutes of it! to be honest i almost cried in the first minute of it! =:::::(",
+          "i can't play coop it bad"
+        ],
+        "col_index": [
+          3082823,
+          3080788
+        ]
+      }
+    },
+    "18": {
+      "call_0": {
+        "reviews": [
+          "I'm 34 and I lost interest in playing games for a while until I saw the Rise of the Tomb Rider and In came out. I bought Rise of Tomb Rider first, but still have not finished 1/3 of the game due to no time to play. But the Inside really grabs me into it and make me play more and more to the end. I wish that it was longer so I can play more. I love this game and worth I spent. Hope they will make the next sequence soon.",
+          "Great game to chill and play. Make simple med as efficently as possible or get ambitious and try to make some super drugs. One of those games where your lust for profits makes things harder for you, but figuring it out is where the fun is."
+        ],
+        "col_index": [
+          3884148,
+          4480950
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "check the devs other game, unless you got no job or responsibilities, this game is not for you. Also the devs just blew off their other game so what is going to change for this game?",
+          "I think this is a cool game and its never getting bored! Its designed perfectly and the updates are great also! The only thing is, its not hacker-proof. For example does anyone thinks he could beat silent clubstep? Im sure there are more hackers instead of the example! But if we would watch everything, id say this is a great game."
+        ],
+        "col_index": [
+          4477325,
+          4150700
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I think this is a cool game and its never getting bored! Its designed perfectly and the updates are great also! The only thing is, its not hacker-proof. For example does anyone thinks he could beat silent clubstep? Im sure there are more hackers instead of the example! But if we would watch everything, id say this is a great game.",
+          "Graphics are quite bad at high resolutions and the multiplayer just does NOT work at all."
+        ],
+        "col_index": [
+          4150700,
+          4514497
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I think this is a cool game and its never getting bored! Its designed perfectly and the updates are great also! The only thing is, its not hacker-proof. For example does anyone thinks he could beat silent clubstep? Im sure there are more hackers instead of the example! But if we would watch everything, id say this is a great game.",
+          "'You feel an evil prescense watching this happened on my first Rip "
+        ],
+        "col_index": [
+          4150700,
+          95389
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Graphics are quite bad at high resolutions and the multiplayer just does NOT work at all.",
+          "I think this is a cool game and its never getting bored! Its designed perfectly and the updates are great also! The only thing is, its not hacker-proof. For example does anyone thinks he could beat silent clubstep? Im sure there are more hackers instead of the example! But if we would watch everything, id say this is a great game."
+        ],
+        "col_index": [
+          4514497,
+          4150700
+        ]
+      }
+    },
+    "19": {
+      "call_0": {
+        "reviews": [
+          "it is fun when you play it, but after a while people go afk and it get boring",
+          "Excellent gameplay and storytelling. I'm not usually one for isometric games, but with the beautiful artwork and fun weapons to mess around with, this game made it well worth it. The music is great, too, and really adds to the atmosphere of the game. Beatable in a reasonable amount of time and still very rewarding. Decent replay value with repeatable challenge levels that unlock weapon powers. I bought it on sale, but I'd say it's even worth the full price."
+        ],
+        "col_index": [
+          3928993,
+          169633
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "it is fun when you play it, but after a while people go afk and it get boring",
+          "Another generic, boring shoot'em up. 2/10"
+        ],
+        "col_index": [
+          3928993,
+          4558397
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "First time I bought a game's soundtrack before the game itself!",
+          "Excellent gameplay and storytelling. I'm not usually one for isometric games, but with the beautiful artwork and fun weapons to mess around with, this game made it well worth it. The music is great, too, and really adds to the atmosphere of the game. Beatable in a reasonable amount of time and still very rewarding. Decent replay value with repeatable challenge levels that unlock weapon powers. I bought it on sale, but I'd say it's even worth the full price."
+        ],
+        "col_index": [
+          749704,
+          169633
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "First I squeeze my own lemons that i find in the street! Then i hire a man to do it for me for $1000 and not one more cent 10 minutes later he is magicaly selling lemons in a cup at 200 stalls at the same time. Love it 11/10",
+          "Excellent gameplay and storytelling. I'm not usually one for isometric games, but with the beautiful artwork and fun weapons to mess around with, this game made it well worth it. The music is great, too, and really adds to the atmosphere of the game. Beatable in a reasonable amount of time and still very rewarding. Decent replay value with repeatable challenge levels that unlock weapon powers. I bought it on sale, but I'd say it's even worth the full price."
+        ],
+        "col_index": [
+          4528476,
+          169633
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game, the time that i played this is well spend",
+          "First time I bought a game's soundtrack before the game itself!"
+        ],
+        "col_index": [
+          5250595,
+          749704
+        ]
+      }
+    },
+    "20": {
+      "call_0": {
+        "reviews": [
+          "It's highly addictive",
+          "It is a kind of 'update' of this game. I love this game so much, so it is worth for me to buy it and play it again! If you don't really want to play this gain, I recommend you think before buy it. Because it just a update of Dungeon Defenders (New Features, Secure Online Play, Android, But still I think it is worth for you to play it again for supporting this game!"
+        ],
+        "col_index": [
+          3831187,
+          3830389
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I kinda like the hipstery steampunky claymationy style of the game. That being said it's like a more expensive, worse controlling, less fun version of and seeming as Raptor is on sale for at the moment I suggest you go play that instead. 2/10 would uninstall and go buy Raptor: Call of the Shadows again",
+          "It's highly addictive"
+        ],
+        "col_index": [
+          3828643,
+          3831187
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I bought the game when it first came out and was still in early access. The gameplay hasn't changed too much since then, and it's unique way of playing makes it a fun challenge. Mixed with this, the soundtrack is top-notch and the bright popping colors gives it a nice aesthetic. Overall, I definitely recommend this game to the friendly kind of person, and would say that buying a 4-pack is the best plan, as the game is much more fun with people you know.",
+          "It is a kind of 'update' of this game. I love this game so much, so it is worth for me to buy it and play it again! If you don't really want to play this gain, I recommend you think before buy it. Because it just a update of Dungeon Defenders (New Features, Secure Online Play, Android, But still I think it is worth for you to play it again for supporting this game!"
+        ],
+        "col_index": [
+          3828026,
+          3830389
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Nice and relaxing game you can mess with and break all to Hilarious results, love to play when angered to calm down some.",
+          "Yay for the new release. Boo for the little kids smearing the reviews for no reason."
+        ],
+        "col_index": [
+          3832190,
+          3830326
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I kinda like the hipstery steampunky claymationy style of the game. That being said it's like a more expensive, worse controlling, less fun version of and seeming as Raptor is on sale for at the moment I suggest you go play that instead. 2/10 would uninstall and go buy Raptor: Call of the Shadows again",
+          "It is a kind of 'update' of this game. I love this game so much, so it is worth for me to buy it and play it again! If you don't really want to play this gain, I recommend you think before buy it. Because it just a update of Dungeon Defenders (New Features, Secure Online Play, Android, But still I think it is worth for you to play it again for supporting this game!"
+        ],
+        "col_index": [
+          3828643,
+          3830389
+        ]
+      }
+    },
+    "21": {
+      "call_0": {
+        "reviews": [
+          "Well 10\u20ac would be too much but for 2\u20ac this game is okay. At least there is some replay value. I played it two times. Only problem is that it feels like you can't really fail in this game.",
+          "5 minutes waiting to join a game. I quit. Besides it shocks me how bad humans are. I mean, it's the pure proof that people will get everything that is free no matter what it is. When I joined lobby the most seen questions on chat were 'What is this?' 'How do I play?' 1st: How can someone waste their time downloading a game and registering for it and not question itself, what kind of game did he just put his hands on? 2nd: There's literaly, in bold letters right next to the chat the word 'Tutorial'. Yet people question the mechanics of the game in the chat. Stunning humanity!"
+        ],
+        "col_index": [
+          4590667,
+          3929054
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "if you don't buy this game then i'm going to come find you and club you to death",
+          "So you're interested in building blocky structures with interesting mechanics? You want to kill random monsters, and have the occasional boss fight? You like levelling a character, but sometimes just long for the freedom of the old days - when levelling meant going up in health and maybe getting new gear? Perfect. I have the best game for you. There's always something new to explore and see. Randomly generated worlds offer variation while allowing for familiarity with the mechanics as you progress. Your characters can easily move from world to world, without having to even open their last one. You can even have one world that you slowly tear apart to acquire the materials to build your dream home on the second one. You can create machines, host a capture the gem competition between yourself and a dozen close friends, or battle giant flying skulls with arms, aliens, a wall made of flesh, or spiders bigger than your head. You can make armor out of gold, bone, or mythical metals. You can fly a giant drill that uses lasers to tear up the ground in wide swathes. You can build a city full of merchant's shops and homes for those aforementioned capture the gem friends. You can make giant billboards, a computer, or death traps for when the Blood Moon rises and the zombies come to eat your You can dye your hair a literally sparkling purple. You can build a tree for the holidays. You can wear an umbrella on your head or dress like a wood nymph. And so many housing styles - dungeon, wood, ice, marble, the list goes on. Seriously, I could keep going on about this game for What? Stop? Never. Well, fine. But, only because I'm going to go play the game now. 10/10"
+        ],
+        "col_index": [
+          5851718,
+          86823
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "5 minutes waiting to join a game. I quit. Besides it shocks me how bad humans are. I mean, it's the pure proof that people will get everything that is free no matter what it is. When I joined lobby the most seen questions on chat were 'What is this?' 'How do I play?' 1st: How can someone waste their time downloading a game and registering for it and not question itself, what kind of game did he just put his hands on? 2nd: There's literaly, in bold letters right next to the chat the word 'Tutorial'. Yet people question the mechanics of the game in the chat. Stunning humanity!",
+          "Definitely a work-out for the brain. Simple, but enjoyable."
+        ],
+        "col_index": [
+          3929054,
+          3925240
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Definitely a work-out for the brain. Simple, but enjoyable.",
+          "I bought Storm In A Teacup by game tho. No ragrets"
+        ],
+        "col_index": [
+          3925240,
+          45243
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Definitely a work-out for the brain. Simple, but enjoyable.",
+          "Well 10\u20ac would be too much but for 2\u20ac this game is okay. At least there is some replay value. I played it two times. Only problem is that it feels like you can't really fail in this game."
+        ],
+        "col_index": [
+          3925240,
+          4590667
+        ]
+      }
+    },
+    "22": {
+      "call_0": {
+        "reviews": [
+          "This game is pure gold. When I first bought it, I didn't know many things about this game, I just wanted to buy some game that's long. I was not dissapointed, I couldn't stop playing it. There are so many things to do in Terraria, anything you can imagine - you can do it. Which makes this game very interesting and unique. Amazing gameplay, nice graphics, great soundtrack. Multiplayer is awesome, because there is also PVP option. And also, very good price! Buy it, you won't regret it.",
+          "Liked it a lot but I felt the map was too big and the controls a bit cluttered. Double-tapping to dash sucked. Found myself running slowly through long corridors a lot. A more compact map or faster movement options would have been nice. I feel like most of the combat was centered around finding a cheap strategy or safe spot, especially on a lot of the bosses. I didn't really have to learn how to dodge most attacks. Often it came down to just spamming attacks with the most effective weapon and hoping the enemies died before you did. Good game overall though. The music was catchy and creepy, and the graphics very alien-looking, just what I'd want from a game like this."
+        ],
+        "col_index": [
+          68777,
+          4307740
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I think that it can be complicated at times, and the rules of the game are sort of odd in-of-itself. Though as odd as they may be, the game is very unique. It depends what kind of games you like that would determine whether or not you enjoy Cubesis. It may not be for everyone. You either like it or you hate it. But I definitely like it (though it may get sort of boring at times). I'd suggest you just pick it up when it's on a sale, just to see if Cubesis is for you!",
+          "THE MEDIUM CURSE IS REAL"
+        ],
+        "col_index": [
+          4111628,
+          4363920
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game is pure gold. When I first bought it, I didn't know many things about this game, I just wanted to buy some game that's long. I was not dissapointed, I couldn't stop playing it. There are so many things to do in Terraria, anything you can imagine - you can do it. Which makes this game very interesting and unique. Amazing gameplay, nice graphics, great soundtrack. Multiplayer is awesome, because there is also PVP option. And also, very good price! Buy it, you won't regret it.",
+          "It is a simple point & click game, but in a slightly different way. You are actually reading a pop-up book and you can drag and slide parts of it. There are also a few puzzles in the game, so you can continue your journey. The puzzles are not very hard. But if you need help you can ask for hints, who are still slightly cryptic. There is not a lot of text, only a few haiku's at the end of every level. But it has definitely a good storyline, which doesn't even need words to explain it. The gameplay is not long, there are 3 levels to complete. It took me 1,5 hours to complete the game. The watercolour graphics caught my eye. And gosh, the game is so pretty! The music is completing this atmosphere. The only negative thing is that the music suddenly cuts off at some points. Or that it suddenly switches to a different song or sound. I would recommend this game if you are into slow paced, but beautiful games. Of course it is not long, but it is worth the time. My rating for this game: 7/10"
+        ],
+        "col_index": [
+          68777,
+          3757754
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It resested my earth profits. I left my computer at home for 2 days, when i came back everything was gone. The moon and mars levels were untouched. Also if i go to moon/ mars it resets again. Please fix",
+          "Liked it a lot but I felt the map was too big and the controls a bit cluttered. Double-tapping to dash sucked. Found myself running slowly through long corridors a lot. A more compact map or faster movement options would have been nice. I feel like most of the combat was centered around finding a cheap strategy or safe spot, especially on a lot of the bosses. I didn't really have to learn how to dodge most attacks. Often it came down to just spamming attacks with the most effective weapon and hoping the enemies died before you did. Good game overall though. The music was catchy and creepy, and the graphics very alien-looking, just what I'd want from a game like this."
+        ],
+        "col_index": [
+          4521182,
+          4307740
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It resested my earth profits. I left my computer at home for 2 days, when i came back everything was gone. The moon and mars levels were untouched. Also if i go to moon/ mars it resets again. Please fix",
+          "I think that it can be complicated at times, and the rules of the game are sort of odd in-of-itself. Though as odd as they may be, the game is very unique. It depends what kind of games you like that would determine whether or not you enjoy Cubesis. It may not be for everyone. You either like it or you hate it. But I definitely like it (though it may get sort of boring at times). I'd suggest you just pick it up when it's on a sale, just to see if Cubesis is for you!"
+        ],
+        "col_index": [
+          4521182,
+          4111628
+        ]
+      }
+    },
+    "23": {
+      "call_0": {
+        "reviews": [
+          "Honestly this game is amazing and I am going to recommend it, However, the random crashes really need to be fixed. There is no save feature, so a crash 2 hours in basically means you wasted 2 hours. If/When the crashes are fixed I would rate this 10/10 for a casual building/crafting simulation game. Edit: There does seem to be a save feature and my data was saved when I logged in today. This made me extremely happy. If it auto saves then I guess the crashes are not that bad.",
+          "Gorgeous game. Great story, very engaging. There were plenty of times it made me literally jump - it startles you after lulling you into a sense of calm. A word of warning to those who get motion sickness: This game may give you motion sickness if you play it for a long enough stretch. I found if I took it in short sessions, I was okay, but if I played for hours I'd get nauseous. Seems to happen to me with atmospheric games like this and Kairo. My theory is the lack of HUD and/or hands/guns in front of me makes it harder for my brain to find a good reference point, so it gets confused by the visual motion cues when there's a lack of corresponding physical motion cues."
+        ],
+        "col_index": [
+          3709370,
+          3708908
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is right on the brink of not recommending. In the end, it comes down to one thing: This game is really just about going from A to B and shooting badguys along the way. There is not enough depth, not enough the gameplay simply doesn't have enough oomph to keep the game interesting. It's fixable though. Give us more meaningful story, more character, more depth. The core gameplay is fun.",
+          "Gorgeous game. Great story, very engaging. There were plenty of times it made me literally jump - it startles you after lulling you into a sense of calm. A word of warning to those who get motion sickness: This game may give you motion sickness if you play it for a long enough stretch. I found if I took it in short sessions, I was okay, but if I played for hours I'd get nauseous. Seems to happen to me with atmospheric games like this and Kairo. My theory is the lack of HUD and/or hands/guns in front of me makes it harder for my brain to find a good reference point, so it gets confused by the visual motion cues when there's a lack of corresponding physical motion cues."
+        ],
+        "col_index": [
+          3580267,
+          3708908
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game is right on the brink of not recommending. In the end, it comes down to one thing: This game is really just about going from A to B and shooting badguys along the way. There is not enough depth, not enough the gameplay simply doesn't have enough oomph to keep the game interesting. It's fixable though. Give us more meaningful story, more character, more depth. The core gameplay is fun.",
+          "This is a sleek and fun first person puzzle platformer that executes a couple good orignial ideas well without bloating itself by getting overly long and tedious. Basically, you use 'rifts' to travel between parallel rooms, which can be differentiated by the monochromatic background (white or black). The rifts will be in the same place in both rooms, but nothing else necessarily will be. The puzzles are primarily based on orienting the rifts properly to over obstacles and reach switches to eventually make it to the exit. It starts off very simple and the difficulty builds in a very natural way. At the end I definitely felt challeneged, but never so much so that I wanted to stop playing. Eventually you are required to use platforms that manipulate gravity, which where the game really shines and will put your spatial reasoning to the test. The aesthetic may not be for everyone (I personally loved it) and there's no plot to speak of, so if you're for anything besides puzzles you might want to keep looking. Otherwise this game provides a fascinating and unique take on the genre of first person puzzlers. The 'perfect' number of moves also provides an extra challenge that I found engaging in most instances."
+        ],
+        "col_index": [
+          3580267,
+          4235707
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It's not a bad game overall, but for an RPG, there are many annoying points where your choices doesn't matter. For this kind of game, it's a real bummer.",
+          "My daily stress removal kit, with deadly carrots in it! 10/10"
+        ],
+        "col_index": [
+          4039783,
+          3947201
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It's not a bad game overall, but for an RPG, there are many annoying points where your choices doesn't matter. For this kind of game, it's a real bummer.",
+          "very gud game but needs asia servers or it will to lagging for asia players"
+        ],
+        "col_index": [
+          4039783,
+          6236219
+        ]
+      }
+    },
+    "24": {
+      "call_0": {
+        "reviews": [
+          "I walked up to an old guy wearing a red hat and he turns in to a spooky skeleton head and kills me Lesson learned: Don't talk to old people wearing red hats Anyone looking for a great crafting, adventure, survival, and sandbox game, Terraria is for you Now, I know that there are many Minecraft Fanboys that say Terraria sucks, and they hadn't even played the game. Minecraft is fun. Terraria is fun. So, for you Minecraft Fanboys who say it just try it. ",
+          "terraria is a fun sidescrolling minecraft for those who dont hav minecraft (such as myself)makes you come a lil closer to buying it"
+        ],
+        "col_index": [
+          108267,
+          127813
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Being a southern man I can relate to this game.",
+          "P-i-s-s-ing myself and fighting people with my tears has been a favorite strategy of mine for only, with this game it actually works, and no one laughs at me. But in all seriousness: If you love watching a bright-eyed adorable puppie contract a fatal disease and die a slow, horrible death, over and over then, this game is for you!!!"
+        ],
+        "col_index": [
+          245767,
+          249793
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is great game very nice and exiting full of suprise I recomend to buy this game its full of adventures :D",
+          "Being a southern man I can relate to this game."
+        ],
+        "col_index": [
+          72004,
+          245767
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Please don't think of this game as '2D Minecraft'. Minecraft focuses on tedious tasks in Survival mode, and building in Creative mode, while Terraria seems to be more about adventuring and combat. Terraria is an incredibly fun game, and I give it a ",
+          "Why don't you already have this?"
+        ],
+        "col_index": [
+          70710,
+          136016
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "awsome sandbox game i had a dicusion vith my frind that was playing minecraft 24/7 about hwat was best and after trying terraria he admitted that terraria was best. so try terraria it is AWSOME",
+          "Please don't think of this game as '2D Minecraft'. Minecraft focuses on tedious tasks in Survival mode, and building in Creative mode, while Terraria seems to be more about adventuring and combat. Terraria is an incredibly fun game, and I give it a "
+        ],
+        "col_index": [
+          91443,
+          70710
+        ]
+      }
+    },
+    "25": {
+      "call_0": {
+        "reviews": [
+          "Very polished game with loads of touches where I found myself grinning like a child. This will be an automatic buy once a full game is released.",
+          "This game is terrible. Watch my video review. "
+        ],
+        "col_index": [
+          3223346,
+          3069034
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Very fun and hard. I would say a very good indie game",
+          "Very polished game with loads of touches where I found myself grinning like a child. This will be an automatic buy once a full game is released."
+        ],
+        "col_index": [
+          254887,
+          3223346
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "10/10 would break keyboard again",
+          "Very polished game with loads of touches where I found myself grinning like a child. This will be an automatic buy once a full game is released."
+        ],
+        "col_index": [
+          4160231,
+          3223346
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This game is terrible. Watch my video review. ",
+          "Very polished game with loads of touches where I found myself grinning like a child. This will be an automatic buy once a full game is released."
+        ],
+        "col_index": [
+          3069034,
+          3223346
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The game seems simple with just right or left clicks of the mouse to attack enemies. However, its extremely addicting. I downloaded thinking I would just put an hour into this game as it was from the Groupees BMX that I got the game from and found myself playing longer than that. The numerous levels, the changes in difficulty and the different options in terms of ability gives a wide range of changes per level and battle. I have enjoyed the game. It's simple idea and addicting nature has allowed me to want to keep playing. In addition, levels are short and you can play a few while waiting for something to load, download, with no issues. I recommend this game. (I hope your mouse can handle all the clicking) *This game also features controller use - simple X or B on the xbox controller and you are good to go - if you don't want to overuse your poor mouse.",
+          "10/10 would break keyboard again"
+        ],
+        "col_index": [
+          3071722,
+          4160231
+        ]
+      }
+    },
+    "26": {
+      "call_0": {
+        "reviews": [
+          "Why dosen't this game have overwhemingly positive :/",
+          "It gives you a different point of view, of how one can express themselves. An Iteractive movie, showing the result of the person's life, which afterwards, makes one think about life - as it Recommended only for under $5/5\u20ac."
+        ],
+        "col_index": [
+          3156308,
+          3851194
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This is such a great concept. At full price, this game is worth the money. You are essentially buying every popular board game for $20. My friends and I have been having a blast playing D&D with it, I highly recommend it to any one who loves board games.",
+          "*CHRISTIAN REVIEW* It teaches you that abortion is wrong, and if you want to kill a child just kick it down into the basement. No harm, no foul."
+        ],
+        "col_index": [
+          3500603,
+          257029
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Why dosen't this game have overwhemingly positive :/",
+          "Amazing platformer, you die and you learn, all the time, instantly."
+        ],
+        "col_index": [
+          3156308,
+          5332802
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Very fun, definitly a grind-heavy game though. What i would like to see is more allys. In ~30 playthroughs, i have only run into one.",
+          "Amazing platformer, you die and you learn, all the time, instantly."
+        ],
+        "col_index": [
+          3158832,
+          5332802
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Amazing platformer, you die and you learn, all the time, instantly.",
+          "More licking than people eating ice blocks."
+        ],
+        "col_index": [
+          5332802,
+          3147229
+        ]
+      }
+    },
+    "27": {
+      "call_0": {
+        "reviews": [
+          "Very fun game. Try it, it's free!",
+          "First off, I'll recommend the game. I'm enjoying it and got a good deal through kickstarter. WHat i don't like though is scenario only game modes. You never really build characters too much as each scenario resets anything you had. So there's no sense of progressing your character. I really think they need an open game mode that is large as at this rate I play a scenario, stop for a week, play another and I can't see me ever touching the game once it's completed. I really enjoy the combat, the sense of one mistake is very costly is good. The way the cover system works I think is better than xcom, it forces trying to flank more rather than relying on RNG as much."
+        ],
+        "col_index": [
+          4531310,
+          3931701
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This is one of the funnest overhead shooters I have played in a long time.",
+          "Very fun game. Try it, it's free!"
+        ],
+        "col_index": [
+          259908,
+          4531310
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Overall, I enjoyed Larva Mortus. I got the game very cheaply using a 90% off coupon and had low expectations. I was pleasantly surprised! It is a solid top down shooter game. The graphics are decent and it is the kind of game you can just play 10 or 20 minutes before bed to relax. The music is solid for the setting. It's easy to learn and get into. There's 9 different weapons, 6 stats you can raise, and the plot isn't bad. Without grinding, you could probably beat the game in a few hours. I leveled up more than necessary to get more of the achievements, ended up beating the game at level 26 but you can beat it much earlier than that. There's 24 achievements that are pretty easy to get and random drops. I was able to 100% the game in hours. The last few drops can be tedious but otherwise it's pretty fun overall. Grab this game on sale if you enjoy top down shooters!",
+          "Imagine, if you would, sitting in a forest clearing by a stream. The forest is silent, save for the gentle sound of the water, and a soft breeze moving through the leaves. Imagine that breeze lightly touching your cheek as you enjoy the gentle warmth of the sun as it shines from a cloudless sky. Okay, now imagine that stream just swells and crashes onto you like a violent tsunami, sucking you in and spitting you out like you're nothing but a plastic bag caught in a tornado. Imagine the leaves turn into knives, forcing you to move faster than you're actually capable of moving, but, driven by the desperate need to survive, you manage, barely, to survive with only a few severed arteries. Then, it all stops. The river returns to its gentle flow, the leaves blow gently in the breeze, and you're left there, bloody, exhausted, and eerily relaxed after the worst is over. This is not a game. This is a life choice. This is Chains."
+        ],
+        "col_index": [
+          259845,
+          276066
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "First off, I'll recommend the game. I'm enjoying it and got a good deal through kickstarter. WHat i don't like though is scenario only game modes. You never really build characters too much as each scenario resets anything you had. So there's no sense of progressing your character. I really think they need an open game mode that is large as at this rate I play a scenario, stop for a week, play another and I can't see me ever touching the game once it's completed. I really enjoy the combat, the sense of one mistake is very costly is good. The way the cover system works I think is better than xcom, it forces trying to flank more rather than relying on RNG as much.",
+          "A pretty boring and repetitive game really. There are much better top-down zombie shooters than this. Nation Red is one example. Story's kinda boring too. Too simple a game to recommend."
+        ],
+        "col_index": [
+          3931701,
+          259843
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "When I headbutt some dancing dude, I expect him to stay the f*ck down, not get right back up and start dancing again. This completly broke the realism of the game for me, and I no longer believed I was a goat. Crap game, dont buy. 0 out of 83 stars.",
+          "Imagine, if you would, sitting in a forest clearing by a stream. The forest is silent, save for the gentle sound of the water, and a soft breeze moving through the leaves. Imagine that breeze lightly touching your cheek as you enjoy the gentle warmth of the sun as it shines from a cloudless sky. Okay, now imagine that stream just swells and crashes onto you like a violent tsunami, sucking you in and spitting you out like you're nothing but a plastic bag caught in a tornado. Imagine the leaves turn into knives, forcing you to move faster than you're actually capable of moving, but, driven by the desperate need to survive, you manage, barely, to survive with only a few severed arteries. Then, it all stops. The river returns to its gentle flow, the leaves blow gently in the breeze, and you're left there, bloody, exhausted, and eerily relaxed after the worst is over. This is not a game. This is a life choice. This is Chains."
+        ],
+        "col_index": [
+          3149756,
+          276066
+        ]
+      }
+    },
+    "28": {
+      "call_0": {
+        "reviews": [
+          "Looks like they spent 5 minutes in Roblox to make this game.",
+          "You are a stoned driver of a spinning limousine. Spinning. Limousine. 10/10"
+        ],
+        "col_index": [
+          3858093,
+          3858650
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Sentris is definitely worth looking into if you have any interest in creating music. It reminds me of my days playing with software such as FruityLoops, but puts its own unique spin on things. I\u2019ve enjoyed playing through the provided songs and am starting to create my own unique setups (as well as attempting to emulate some more widely-known music too). 'What is Sentris in 2 Minutes?' Video: /?id=502221656 Overall the game is a lot of fun, and quite a versatile tool once you get to grips with it. That said, there are a few features I would love to see implemented going forward. Primarily these are just additional expansions for added versatility when creating songs. It would be great to be able to select notes outside the standard scale that I choose, and to apply effects (such as reverb or echo) to specific instruments during remix. Nevertheless, the initial offering (at time of official launch) is a joy to play around with. When you hit upon a riff that catches your ear and develop it into something you love, it really brings a smile to your face. Whether you're smashing notes together until something sticks (or doesn't!) or meticulously crafting a pre-meditated loop from scratch, Sentris is really unique and wonderful take on musical creativity.",
+          "Funny game that can make you addicted for hours! Very simple to play and best with some friends together."
+        ],
+        "col_index": [
+          3858928,
+          3233965
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "You are a stoned driver of a spinning limousine. Spinning. Limousine. 10/10",
+          "Minecraft + dubstep. It's a very barebones game where you need to get from point A to point B, while fighting the square zombies. It looks like the developer just gave up on it after a certain stage. Not recommended."
+        ],
+        "col_index": [
+          3858650,
+          3858402
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Terrible game. Tight spaces with lots of large enemies and weapons that don't work well and don't do much damage makes this game hard. And not in the fun way. The models are aweful, the effects are annoying, the music is generic. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "You are a stoned driver of a spinning limousine. Spinning. Limousine. 10/10"
+        ],
+        "col_index": [
+          3858165,
+          3858650
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "You are a stoned driver of a spinning limousine. Spinning. Limousine. 10/10",
+          "Sentris is definitely worth looking into if you have any interest in creating music. It reminds me of my days playing with software such as FruityLoops, but puts its own unique spin on things. I\u2019ve enjoyed playing through the provided songs and am starting to create my own unique setups (as well as attempting to emulate some more widely-known music too). 'What is Sentris in 2 Minutes?' Video: /?id=502221656 Overall the game is a lot of fun, and quite a versatile tool once you get to grips with it. That said, there are a few features I would love to see implemented going forward. Primarily these are just additional expansions for added versatility when creating songs. It would be great to be able to select notes outside the standard scale that I choose, and to apply effects (such as reverb or echo) to specific instruments during remix. Nevertheless, the initial offering (at time of official launch) is a joy to play around with. When you hit upon a riff that catches your ear and develop it into something you love, it really brings a smile to your face. Whether you're smashing notes together until something sticks (or doesn't!) or meticulously crafting a pre-meditated loop from scratch, Sentris is really unique and wonderful take on musical creativity."
+        ],
+        "col_index": [
+          3858650,
+          3858928
+        ]
+      }
+    },
+    "29": {
+      "call_0": {
+        "reviews": [
+          "nice game but update it fast and make more stages please",
+          "This is your computer on drugs. (It's unique and really "
+        ],
+        "col_index": [
+          3954058,
+          4649278
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "nice game but update it fast and make more stages please",
+          "Absolutely perfect puzzle game. The creators of this game could not have made a better game if they had triple the budget and triple the dev time. Absolute masterpiece 10/10."
+        ],
+        "col_index": [
+          3954058,
+          4547972
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Absolutely perfect puzzle game. The creators of this game could not have made a better game if they had triple the budget and triple the dev time. Absolute masterpiece 10/10.",
+          "This is your computer on drugs. (It's unique and really "
+        ],
+        "col_index": [
+          4547972,
+          4649278
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This is your computer on drugs. (It's unique and really ",
+          "Maybe good game but I was not choose by this game."
+        ],
+        "col_index": [
+          4649278,
+          4012830
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "nice game but update it fast and make more stages please",
+          "You have always wanted to jump off a roof. I know. There's no need to deny it. Now it's possible and even more fun than in your fantasies. Almost 70% (* Not a valid method of suicide)"
+        ],
+        "col_index": [
+          3954058,
+          364196
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1835 @@
+{
+  "new_topic_labels": {
+    "-1": {
+      "call_0": "The review appears to be positive overall, praising the game's art, music, and storytelling. The reviewer enjoyed the characters, finding them unique and charming, and appreciated the game's themes of artificial intelligence and cyberpunk detective stories. However, there are some criticisms mentioned, such as the heavy-handed moralizations and the unrealistic choices in the game. Despite these issues, the reviewer concludes that ROM is worth playing if you enjoy point and click adventures and cool stories about robots. Overall score is listed as \"Positive\".",
+      "call_1": "\nLabel: Enjoyable C-Y-O-A Game with Deep Story and Good Atmosphere",
+      "call_2": "\"Fun cyberpunk adventure with unique characters and storyline.\"",
+      "call_3": "\"Underwhelming Experience with Too Much Potential\"",
+      "call_4": "The text you provided is a mixed review of the game Shattered Planet. The reviewer mentions that the game has some positive aspects such as visually pleasing graphics and comical lines of dialogue, but also lists several negative aspects of the game. Here are the main points from the review:\n\n* The game has a \"binary\" review, meaning it is either good or bad, without much in between.\n* The reviewer finds the game's visuals to be engaging and visually pleasing.\n* The game has a \"comical\" tone with funny lines of dialogue.\n* The level design is great, with original and fun maps to explore.\n* The game has an extensive amount of gamemodes, which the reviewer finds to be a positive aspect.\n* The weapons in the game are simple and lack depth, with a small pool of abilities and no crafting stations.\n* The AI for companions is poor, with them rarely attacking or defending the player.\n* The upgrades in the game are expensive and insignificant, leading to a boring grind.\n* The reviewer concludes that the game falls flat due to lack of depth in systems and customization options.\n\nOverall, the review is mixed but leaning more towards negative aspects of the game. The reviewer suggests that players may find the game enjoyable for a few hours, but eventually, the lack of depth in the game's systems will become apparent."
+    },
+    "0": {
+      "call_0": "Topic Label: Tower Defense Game",
+      "call_1": "\"Fun FPS with some issues.\"",
+      "call_2": "Fun FPS",
+      "call_3": "\"Fun space game with limited replay value.\"",
+      "call_4": "Topic Label: Fun Tower Defense Game"
+    },
+    "1": {
+      "call_0": "Freddy's Rage Game",
+      "call_1": "\"Scary Horror Game\"",
+      "call_2": "\nTopic Label: Scary Horror Game",
+      "call_3": "Freddy's Nightmare",
+      "call_4": "\nTopic: Good Horror Game with Emotional Voice Acting"
+    },
+    "2": {
+      "call_0": "Minecraft-like",
+      "call_1": "\n\"Minecraft-like experience with more depth\"",
+      "call_2": "\nTopic Label: Minecraft-like",
+      "call_3": "\nTopic Label: Not 2D Minecraft",
+      "call_4": "Terraria"
+    },
+    "3": {
+      "call_0": "Addicted Fun",
+      "call_1": "Addictive Fun",
+      "call_2": "\n\"Fun and Addictive Game\"",
+      "call_3": "Addictive Game",
+      "call_4": "Addictive Fun"
+    },
+    "4": {
+      "call_0": "\nMac Game",
+      "call_1": "Game Crashes on Mac",
+      "call_2": "Bad Game After Update",
+      "call_3": "Mac issues",
+      "call_4": "Mac Support"
+    },
+    "5": {
+      "call_0": "\n\"Hackers Revenge\"",
+      "call_1": "Best Game Ever",
+      "call_2": "\"Haunting Teamates\"",
+      "call_3": "\nTopic: \"Murderous Fun with Doors\"",
+      "call_4": "\nTopic Label: Underwhelming Experience with Limited Content"
+    },
+    "6": {
+      "call_0": "\nLabel: ATS",
+      "call_1": "\nTopic Label: American Truck Simulator",
+      "call_2": "\nVR Truck Simulator",
+      "call_3": "\nLabel: American Truck Simulator",
+      "call_4": "\"Trucking Simulation Heaven\""
+    },
+    "7": {
+      "call_0": "Goat Simulator",
+      "call_1": "Goat Simulator",
+      "call_2": "Goat Simulator",
+      "call_3": "Goat Simulator",
+      "call_4": "\nGoat Simulator"
+    },
+    "8": {
+      "call_0": "\nTopic: Serious Sam Action",
+      "call_1": "\nTopic: Guns & Weapons\n\nLabel: \"Gun-Centric Fun\"",
+      "call_2": "\nTopic: Weird and Challenging Shooter Game with Time Mechanic\nLabel: Super Hot",
+      "call_3": "\"Guns and Grinding\"",
+      "call_4": "Serious Sam 3: BFE - Underwhelming Experience with too much Repetition"
+    },
+    "9": {
+      "call_0": "\nTopic: Fun Game\nLabel: Good",
+      "call_1": "Cool game",
+      "call_2": "\"Good Fun\"",
+      "call_3": "\n\"Good game\"",
+      "call_4": "\"Good game\""
+    },
+    "10": {
+      "call_0": "Depression Quest: A Boring and Inaccurate Portrayal",
+      "call_1": "\nRelaxing journey through depression",
+      "call_2": "\nTopic Label: \"Depression Simulator\"",
+      "call_3": "Relaxing Depression Quest",
+      "call_4": "\nRelaxing Quest for Understanding Depression"
+    },
+    "11": {
+      "call_0": "\"Music Lover's Dream\"",
+      "call_1": "Liquid Diarrhea Music Game",
+      "call_2": "Game: Rhythm Heaven",
+      "call_3": "Music Game",
+      "call_4": "Music Games"
+    },
+    "12": {
+      "call_0": "\"Intense Game for Team Play\"",
+      "call_1": "\"Shark Food\"",
+      "call_2": "Shark Meat Fun",
+      "call_3": "Level: Shark Meat Fun",
+      "call_4": "\nTopic Label: Shark Meat Fun\n\nReviews:\n\n* Super hard but good\n* Like a mature Super Mario game with great music\n* Determined to save love of his life"
+    },
+    "13": {
+      "call_0": "Salem Murder",
+      "call_1": "\nThe topic of the reviews is \"Town of Salem\".",
+      "call_2": "\"Town of Salem: Witch Trials and LOLs\"",
+      "call_3": "Sure! Here is a label for the topic in less than 5 words:\n\n\"Roles and fun in Salem\"",
+      "call_4": "\nTown of Salem - A Game of Deception and Strategy\n\n* Addictive gameplay with a unique blend of Werewolf and Mafia elements\n* User-friendly interface with clear role assignments and objectives\n* Engaging community with a focus on teamwork and strategy\n* Simple yet effective music tracks that enhance the gaming experience\n* Free to play on website, worth purchasing on Steam for improved performance and features\n\nOverall, Town of Salem is an enjoyable and challenging game that combines elements of popular party games to create a unique and exciting experience. Despite some minor technical issues, the game is well-designed and engaging, making it worth playing for fans of strategy and deception games."
+    },
+    "14": {
+      "call_0": "\nTopic: Cards",
+      "call_1": "Trading Cards",
+      "call_2": "\"Solid card game with interesting mechanics.\"",
+      "call_3": "\nTrading Cards",
+      "call_4": "Trading Cards"
+    },
+    "15": {
+      "call_0": "Topic Label: Fun Short Game",
+      "call_1": "\nTopic Label: Fun Short Game",
+      "call_2": "\nTopic: Short and Sweet Game",
+      "call_3": "Topic Label: Short Games",
+      "call_4": "\nFun Short Game"
+    },
+    "16": {
+      "call_0": "\nOil Riches",
+      "call_1": "\nLemons Capitalism",
+      "call_2": "\n\"Lemon Money Magic\"",
+      "call_3": "\n\"Lemon Money\"",
+      "call_4": "\"Lemon Money\""
+    },
+    "17": {
+      "call_0": "\"Fun RPG with challenging achievements\"",
+      "call_1": "\"Easy Achievements in Short Time\"",
+      "call_2": "Fun Short Game",
+      "call_3": "Waste Time",
+      "call_4": "\n\"Challenging Achievements\""
+    },
+    "18": {
+      "call_0": "Floating Mountains",
+      "call_1": "\nLabel: Mountain Screensaver",
+      "call_2": "\nTopic Label: Mountains and Piano Screensaver",
+      "call_3": "Mountain Screensaver Scam",
+      "call_4": "\nTopic Label: Mountain Interactive Screensaver"
+    },
+    "19": {
+      "call_0": "Revenge",
+      "call_1": "Topic Label: Bad Rats",
+      "call_2": "Bad Rats",
+      "call_3": "\nTopic Label: Bad Rats",
+      "call_4": "Revenge for Bad Rats"
+    },
+    "20": {
+      "call_0": "\nFun",
+      "call_1": "\"Gud Game\"",
+      "call_2": "\n\"Gam's Grate\"",
+      "call_3": "Grate game",
+      "call_4": "Grat Game"
+    },
+    "21": {
+      "call_0": "\n\"Geometry Dash Fun\"",
+      "call_1": "\"Geometry Dash Fun\"",
+      "call_2": "\"Geometry Dash Fun\"",
+      "call_3": "Geometry Dash",
+      "call_4": "\n\"Geometry Dash Fun\""
+    },
+    "22": {
+      "call_0": "\"Cute Cat Overload\"",
+      "call_1": "\nLabel: Cat Game",
+      "call_2": "\"Cat Cuteness Overload\"",
+      "call_3": "\n\"Cat Game\"",
+      "call_4": "\nTopic Label: Cat Rampage"
+    },
+    "23": {
+      "call_0": "\"Lighthearted fairy tale with beautiful art direction and an intriguing storyline\"",
+      "call_1": "Trine 1: A Beautiful and Challenging Puzzle Adventure",
+      "call_2": "\nTopic: Trine 3 Puzzle Adventure\nLabel: Underwhelming experience with too much repetition.",
+      "call_3": "Trine 3: Underwhelming but visually stunning.",
+      "call_4": "Trine 1: Better than Trine 2"
+    },
+    "24": {
+      "call_0": "\nTopic Label: Whiskey Simulator",
+      "call_1": "\"Whiskey Pass\"",
+      "call_2": "\nTopic Label: Whiskey Pass",
+      "call_3": "\n\"Whiskey Pass\"",
+      "call_4": "\nDrinking Game"
+    },
+    "25": {
+      "call_0": "Quack Topic",
+      "call_1": "Quack Game",
+      "call_2": "Quack Game",
+      "call_3": "Quack Craze",
+      "call_4": "Duck Immersion"
+    },
+    "26": {
+      "call_0": "\nTopic Label: Painful Fun",
+      "call_1": "\"Finger pain\"",
+      "call_2": "\nTopic Label: Finger Tapping",
+      "call_3": "\nTopic Label: Finger Pain",
+      "call_4": "\nTopic Label: \"Carpal Tunnel Nightmare\""
+    },
+    "27": {
+      "call_0": "\"Cancer Cured\"",
+      "call_1": "\nTopic Label: Cancer Game",
+      "call_2": "\"Cancer Game\"",
+      "call_3": "\"Game Gives Cancer\"",
+      "call_4": "\"Cancer Game\""
+    },
+    "28": {
+      "call_0": "Requested Refund",
+      "call_1": "\"Refund Requests\"",
+      "call_2": "Bad Refunds",
+      "call_3": "Bad Refunds",
+      "call_4": "\nTopic Label: Refund Requests"
+    },
+    "29": {
+      "call_0": "\"Beautiful, unique game with puzzles and platforming.\"",
+      "call_1": "\"Braid: A Puzzle Platformer Masterpiece\"",
+      "call_2": "\nBraid: A Masterpiece of Art and Puzzle-Solving - 5/5",
+      "call_3": "\nTopic Label: Puzzle Platformer",
+      "call_4": "\nBraid: A Timeless Puzzle-Platformer\n\nIn conclusion, Braid is a great game that is worth purchasing, but it's short. The gameplay is enjoyable, and the artwork is beautiful. However, the story can be difficult to follow, and some puzzle pieces are very challenging to obtain. Despite this, the game offers a unique experience with its time manipulation mechanic, making it worth playing for fans of puzzle-platformers."
+    }
+  },
+  "randomed_topic_reviews": {
+    "-1": {
+      "call_0": {
+        "reviews": [
+          "_-_- SLIGHT POTENTIAL SPOILERS -_-_ This game was interesting, i've been looking for a game like Tenchu for years now and this caught my eye. but ultimately i believe it is not worth the money when i bought it) due to a number of reasons: Firstly let me point out where this game went well [Pros] -Amazing art style: The game looks beautiful and i believe it will age very well. -Mechanically interesting: The Shadow mechanic which is used to maneuver and stay hidden, while also gaining power is done perfectly in my opinion. -Sound and Music: Very good audio cues and traditional japanese music make a nice environment. On the other hand, the negatives i feel make this game not worth the price [Cons] -Short: This game is short, when i mean short, im saying i 100%ed this game in 10 hours, completed every achievement as well as every optional mission complete objective for all 13 missions. My fastest time to complete a level was 7 minutes and i feel that this is a disgustingly weak part of the game. -Repetitive: This game can be completed simply by either teleporting in a straight line to the next objective (and when i say straight line i mean STRAIGHT), waiting 5 seconds for a guard to move from an orb that blocks the next location. Hitting that orb and moving to the next area. If you are trying to kill every enemy in the missions, its simply teleport behind them, kill, rinse and repeat. Or leading them into a room around the corner, kill, repeat. -Extremely Easy Difficulty: Every enemy in this game either suffers from cataracts or a severe case of short sight. As long as you stay crouched and teleport around with the use of the shadows, you can be 10 feet infront of any enemy on a bright sunny day. If they do spot you, its simply a quick teleport away and recover. Because of this, the developers put an excessive amount of enemies in an area that just adds to the time of progressing through the level. Once you have unlocked the upgrade to your Bird, you can locate all scrolls in the game, ultimately destroying any level of exploration or fun regarding secrets. -Lack Luster Boss missions: It just involves the same mechanic of teleporting behind them for a stealth kill just repeated 3 times with a slight alteration of an aeriel kill on the second hit. The final boss is no different but i believe it is 5 times instead. -Uninteresting Story: the story was generally uninteresting and a bit rushed in my opinion, i believe this is partly due to the shortness of the game and how vague the plot is through out, besides at the end where the plot just begins to open up and i feel that the game could have alot more But it ends. The character development was terrible, what felt like simply throwing characters existences in to give some reason as to why you even exist in the first place. The origins of the Aragami were a good idea to begin with but wasn't correctly followed through. -2nd to last mission: This mission takes what ive just said about difficulty and doesn't make it harder, it makes it frustrating. Being sniped continously while trying to kill everyone in the map is the most hair pullingly rage inducing thing i've experienced in this game. 85% of my deaths in my 10 hour run were in the last 40 minutes it took me to complete this game under those conditions. IT ISN'T FUN as a mechanic, I see where the developers were going, but i don't believe it fits with the theme by having an aimbotting archer continually rain sweet justice down on the Stealth Assassin that hasn't been spotted or killed anyone since the first mission began. To say, it ruined my immersion. [IN CONCLUSION] The game is fun and very pretty, I definitely enjoyed myself but it shouldn't be classed as a full game. If you came here expecting something difficult and gritty, you are only met with hand holding, mediocre challenges and repetition. The story needed a revision and for the price that is requested I wouldn't buy this again if i knew everything i know now.",
+          "PROS: Beautiful character art, fun nostalgia inducing music, and compelling story CONS: Sometimes heavy-handed morals OVERALL SCORE: Read Only Memories is definitely a labor of love, filled with carefully crafted pixel art, quirky characters, and a unique story. ROM is a lovely cyberpunk adventure, and one that has a great number of strengths, particularly in its art and in its storytelling. The art is gorgeous, especially the character art. Whether it's the lanky, butch Lexi or our character's tiny round robotic companion, Turing, the characters all have a unique feel to them. Even the background characters were really cool to look at. The music was also lovely, reminiscent of the old school point and click adventures. It hit just enough nostalgia points for me, and I honestly really enjoy most of the scores. I found myself pausing a lot on the menu screen especially, just to listen to the songs. Storywise, I thought the game was pretty good. The protagonist is a journalist who finds himself being approached by a ROM named Turing who is searching for his creator - and your old friend - Hayden. Sometimes the choices in the game felt a little unrealistic, but the protagonist is a journalist, so them being willing to do things risky and dangerous did make more sense. Generally speaking, however, I enjoyed the story. The characters are really charming, and you care about their struggles. There's a lot of humor, but there's also quite a bit of darkness, and the emotional moments of the story hit hard. One thing I really enjoyed - the game's twists make sense, but they aren't predictable and I found myself frequently second guessing my plot predictions. As someone who hates really obvious plotlines, I really enjoyed this. It was definitely a fun little journey, especially for someone interested in artificial intelligence and cyberpunk detective stories. As far as the puzzles, they are mostly clear and logical. There were a few that didn't make sense to me, and some that required digging into the background because the items you needed weren't obvious. Occasionally, I found myself resorting to the age-old strategy of 'use every item with everything', but I found that happened less often than using actual logic to solve the problems. In general, there wasn't a whole lot to complain about. The one major complaint I had was the heavy handed moralizations the game tried to dole out from time to time. The most obvious of this is with the character Jess, who seems to hate the protagonist no matter what they do, and never really changes. I don't necessarily have a problem with characters disliking the player, but the game gives no reason for this hatred. Jess seems to be there to show the evils of discrimination - she is a genetically modified human 'hybrid' that is supposedly reviled in the game never shows this. The only people who hate hybrids are a group of extremists known as the Human Revolution, who are basically seen as a joke by everyone, no one seems to support their opinions. At any rate - all of this wouldn't irk me so much if Jess was a one time character, but she actually makes many appearances in the game, all of which are about as baffling as the first encounter. On the other hand, most of the characters are quite interesting. All of the main characters had something unique about them, both physically and in their personalities. I'm so used to games with anime styles have characters that all look the same, so I was really impressed by this. There is a lot of diversity in the cast and most of it - Jess aside - is done in a way that makes it seem natural. The game also includes some very frank discussions on gender fluidity that I thought were really refreshing. Even though the game can come off as strong sometimes, there are many beautiful moments of subtlety that make the game great. Overall, I would say ROM is worth playing, if you enjoy point and click adventures and cool stories about robots. For the price of the game, you're getting an excellent little adventure that will keep you occupied for quite some time."
+        ],
+        "col_index": [
+          3408467,
+          4285725
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "The Yawgh is a fun 'Choose-Your-Own-Adventure'-type game in which you can control 2-4 characters in a town for 6 weeks as well as build up different character stats which also affect the story. What I Did Like: The story was well-written and entertaining, including all the different story options. It's nice they didn't always make it terribly obvious what was going to happen or what stats you would need in order to have a 'successful' result when making a choice. I liked the art and loved the music. What I Didn't Like: Each play-through is pretty quick, even using all 4 characters - about 10-15 minutes. After 45 minutes of playing, I felt I had seen 80% of the 'event triggers' if that makes sense, and was ready to play something else for the time being. Overall: I found the game to be really enjoyable as well as relaxing. I experienced maybe half of what the game has to offer, story-wise, and for me this definitely has replay value. Not a bad deal for $10 if you know you like 'C-Y-O-A' and an even better deal if you can get it on sale.",
+          "I have been looking forward to the release of this game since its reveal back 2013, I think it was 2013. Not that i kept up with it that much, not that i keep up with many games in development to be honest, i have played both Amnesia and Penumbra a decent amount but have not completed either. I finished SOMA around 10 minutes ago so here are my thoughts on the game, i have tried to keep it spoiler free but still cover a decent amount of ground. First off do i think it is worth playing? YES! - Do i think its worth full retail price? Yes to the right person. Just for the amazingly deep and interesting story and well crafted world it is worth it. it took me around 9 hours with some help along the way where i got stuck because i am an idiot and couldnt see a wire i had to plug in (yep those sort of problems i had several during the game) I feel like the puzzles in the game could have easily been cut out and the game even though it would have been shorter, would still have been just as full of an experience. Some of the monsters are a bit repetitive in the way they hunt and how you avoid them but they do scale in difficulty but a bit more variation would have been nice and possibly more seperation they did seem a bit bunched during the middle of story. The story itself runs on quite a linear path with a tiny bit exploration, people say you cant get lost but i have several times when being chased by Monsters trust me it is not that hard to get lost or end up where you started, though that might just be me. Also the game is not scary upfront like Amnesia is, this game has its moments like being chased around by a Monster in almost pitch black and it could be anywhere and it will run after you if it catches a hint of where you are, but the game is definately creepy throughout. The story itself is very interesting, mind bendingly interesting in some apsects and has a lot of depth and there are a lot of things you can interact with in the game to gain more insight like Black boxes inside of dead corpses and notes etc which is a nice added layer of detail. I like how the story progresses though it has been done before with Bioshock and Dead Space where you move from station to station, but SOMA does do it in a refreshing way with some guidance when you come in contact with the character that will aid you through the somewhat linear path to the end. The world frictional have created is also very nice to look at and the atmosphere they have created puts you in a state of fear at all times even when walking around, the sound design in this game is some of the best work i have ever experienced which should also be noted. *A NOTE ON OPTIMIZATION AND CRASHES* I have a i7 4770k , 8GB RAM and a GTX660Ti , so slighty above mid-range and i have had 0 frame rate issues bar when it was obviously loading or saving which i can cope with. through my whole 9 hour journey i had 1 crash when opening a door around 6 hours in, which i also think is acceptable. Solid would possibly play again at a slower rate to see if missed any easter eggs or different paths. Sorry if there are grammar issues in this review just thought i would get it on here may add or edit it at a later point. Thanks for reading."
+        ],
+        "col_index": [
+          3205705,
+          3439195
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "PROS: Beautiful character art, fun nostalgia inducing music, and compelling story CONS: Sometimes heavy-handed morals OVERALL SCORE: Read Only Memories is definitely a labor of love, filled with carefully crafted pixel art, quirky characters, and a unique story. ROM is a lovely cyberpunk adventure, and one that has a great number of strengths, particularly in its art and in its storytelling. The art is gorgeous, especially the character art. Whether it's the lanky, butch Lexi or our character's tiny round robotic companion, Turing, the characters all have a unique feel to them. Even the background characters were really cool to look at. The music was also lovely, reminiscent of the old school point and click adventures. It hit just enough nostalgia points for me, and I honestly really enjoy most of the scores. I found myself pausing a lot on the menu screen especially, just to listen to the songs. Storywise, I thought the game was pretty good. The protagonist is a journalist who finds himself being approached by a ROM named Turing who is searching for his creator - and your old friend - Hayden. Sometimes the choices in the game felt a little unrealistic, but the protagonist is a journalist, so them being willing to do things risky and dangerous did make more sense. Generally speaking, however, I enjoyed the story. The characters are really charming, and you care about their struggles. There's a lot of humor, but there's also quite a bit of darkness, and the emotional moments of the story hit hard. One thing I really enjoyed - the game's twists make sense, but they aren't predictable and I found myself frequently second guessing my plot predictions. As someone who hates really obvious plotlines, I really enjoyed this. It was definitely a fun little journey, especially for someone interested in artificial intelligence and cyberpunk detective stories. As far as the puzzles, they are mostly clear and logical. There were a few that didn't make sense to me, and some that required digging into the background because the items you needed weren't obvious. Occasionally, I found myself resorting to the age-old strategy of 'use every item with everything', but I found that happened less often than using actual logic to solve the problems. In general, there wasn't a whole lot to complain about. The one major complaint I had was the heavy handed moralizations the game tried to dole out from time to time. The most obvious of this is with the character Jess, who seems to hate the protagonist no matter what they do, and never really changes. I don't necessarily have a problem with characters disliking the player, but the game gives no reason for this hatred. Jess seems to be there to show the evils of discrimination - she is a genetically modified human 'hybrid' that is supposedly reviled in the game never shows this. The only people who hate hybrids are a group of extremists known as the Human Revolution, who are basically seen as a joke by everyone, no one seems to support their opinions. At any rate - all of this wouldn't irk me so much if Jess was a one time character, but she actually makes many appearances in the game, all of which are about as baffling as the first encounter. On the other hand, most of the characters are quite interesting. All of the main characters had something unique about them, both physically and in their personalities. I'm so used to games with anime styles have characters that all look the same, so I was really impressed by this. There is a lot of diversity in the cast and most of it - Jess aside - is done in a way that makes it seem natural. The game also includes some very frank discussions on gender fluidity that I thought were really refreshing. Even though the game can come off as strong sometimes, there are many beautiful moments of subtlety that make the game great. Overall, I would say ROM is worth playing, if you enjoy point and click adventures and cool stories about robots. For the price of the game, you're getting an excellent little adventure that will keep you occupied for quite some time.",
+          "The Yawgh is a fun 'Choose-Your-Own-Adventure'-type game in which you can control 2-4 characters in a town for 6 weeks as well as build up different character stats which also affect the story. What I Did Like: The story was well-written and entertaining, including all the different story options. It's nice they didn't always make it terribly obvious what was going to happen or what stats you would need in order to have a 'successful' result when making a choice. I liked the art and loved the music. What I Didn't Like: Each play-through is pretty quick, even using all 4 characters - about 10-15 minutes. After 45 minutes of playing, I felt I had seen 80% of the 'event triggers' if that makes sense, and was ready to play something else for the time being. Overall: I found the game to be really enjoyable as well as relaxing. I experienced maybe half of what the game has to offer, story-wise, and for me this definitely has replay value. Not a bad deal for $10 if you know you like 'C-Y-O-A' and an even better deal if you can get it on sale."
+        ],
+        "col_index": [
+          4285725,
+          3205705
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Only If, Only if this was a good game I wouldn't have to write a negative review for it. The good bits about this game. The developers actually managed to make the Unity engine good, which is pretty shocking due to the nature of Unity the majority of the games that use it as its engine look terrible, however there is quite a rather beautiful park section of the game that looked pretty good even on the lowest settings. The game is also free, which is honestly the right price for this game. There also some short pieces that 'mess with your mind' but that's about it. You start off in a bedroom, facing a giant poster of some Japanese girl bent over with somebody behind her (not joking) two seconds into the game you see that, it's just stuck there for no reason and pretty much sums up the quality of the rest the game. You leave that room and are surrounded in darkness with a floating orb of light that you are told to follow. You smash through the door and then some 'internet tough guy' starts shouting at you through a radio. You're told to look for a key, you get it escape that room and then you are told to choose a chess piece. Black or White. The choice you make doesn't really matter you'll end up taking the same path eventually anyway. I decided to take the black piece and my god was it bad. The game really fell apart quickly. I was thrown into a lake and then told to mash the E key because everybody loves QTE's. Then you aren't given any instructions what to do next, you crawl one direction whilst constantly mashing E and then you get insta-killed and have to watch the cutscene again, after seeing it three times it gets pretty damn annoying. So you do the same thing you just did but crawl ever so slightly to the left and you survive, you then walk along a path and black smoke appears, you turn around to run and then more smoke appears, so you die and get killed and have to watch the cutscene again. Now the way the save system works on this game is by entering a certain phase or the name of a particular level, so luckily I was able to skip that level. However this is 2014 not the 90's so either they were too lazy or unable due to lack of skill to program a save system, looking at this game it's kind of hard to tell which one it is. After that you're stuck in the darkest house ever, considering the fact that it's midday and the sun is shining outside. You'll bumble around in this mansion for a few levels and finally you'll end up back to the choice you got with the two puzzle pieces. Unfortunately the devs couldn't be bothered to make a model for Vinny 'the angry radio' (the antagonist) he appears in the game as a flashlight. The game did get a little better on the white puzzle piece, however the game never really tells you where you are supposed to go or what you are supposed to do, It's obvious that they tried to do a similar thing to The Stanley Parable, unfortunately I guess they missed the part where The Stanley Parable had good voice acting and for the most part was obvious what you needed to do. As well as clever writing. This game seems to mistake random swearing for wit. The voice acting and audio levels are all over in this place. One minute the protagonist is talking loudly to the antagonist and then he'll just start mumbling to himself like the VA forgot to turn his microphone on when he delivered the lines, you could turn your speakers up if you want to run the risk of Vinny blowing both your speakers and ear drums. The voice acting itself is sub-par. The Stanley Parable had a top-notch narrator. The narrator in this game sounds like he was trying to do a Vinnie Gognitti impression from the excellent Max Payne series. The ending, my god, that ending, I have never seen any game use the subject matter that it did for a surprise twist ending. Not even South Park: The Stick of Truth touched it and that is the most messed up game I've ever played. This part probably doesn't matter for most of you but man the achievement icons look like they were taken straight from Google Images. Really bad unprofessional images used for the achievement icons. Overall, unless you are really really bored and/or don't have a great machine to play games on I can't recommend this game. It's free so some of you may be able to overlook it's flaws but so is Unturned and that game is actually being updated for free.",
+          "I really wanted to like this although there are some upsides, the downsides dominate. This game draws inspiration from traditional turn-based RPGs, and personally I got quite some Suikoden that's about it. The graphic and overall visual look is really good. There could have been more varied enemy types but it's ok. Character design and animations fine as well, for an indie game it's rather more than I had expected. Music and sound effects are nice, nothing feels out of place. On the other hand bugged me the most about the game is the characters, their behaviour and 'character developement' if it can so be called. Same goes for the story, which feels kind of shallow, there isn't that much to talk about, and the plot twists are unexpected because things turn up you can't possibly know, so not the good kind of plot twists (except one very obvious). There are 6 playable characters in total, because nonsensical reasons you can only have 3 fight, the actual reason probably being it had made the game too easy. The biggest problem is, that the characters don't add replay value, not to me. Differences in dialogues and 'cut scenes' aren't that notable. Almost every character has despicable traits he/she doesn't get rid off, or only partially gets rid off. This may just be my personal taste, but I don't like to play characters that put religion above all else, or feeling okay with treating the less fortunate like they're my possession. I could go on. On top of that there are some bugs/glitches and plot holes. Bugs/glitches like characters having their top level skills when starting a new game or graphics popping up behind the character when they should be in front, or vice versa walking in front of a house's corner, but said corner suddenly popping up over the character leaving only the feet visible). All in all the game is rather small and short. Max Level is 30, max playtime should be 7 if you're really slow. If you're quick and know what you're doing you can finish the game with everry collectible in well under 4 hours. Take this into account if you want all achievements. Finishing the game with all characters is a chore. It's not hard, just time consuming. Though there are some upsides, the downsides are too much for me to recommend this game. Though that doesn't exactly make it an actual bad game. It's just wasted LOADS of potential, and anyone with expectations should step away from thinking of buying this game. If you're fine with short and simple turn-based RPGs go ahead and buy. If you expect something of the style, quality or complexity of a Suikoden or anything like that, you should only get this on high discounts."
+        ],
+        "col_index": [
+          3735407,
+          4078712
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Runestone Keeper looks nice, has some interesting elements, and is easy to pick up and learn. I enjoyed my first few hours playing Runestone Keeper until I got a hang of things and realized what I was really dealing with: a somewhat shallow, repetitive grinder. The gloss of your first dozen dashes into the dungeon soon wears off and what remains is a decidedly 'mobile' feeling to the gameplay and a sense that the slow progression isn't really leading anywhere exciting. You begin with one character, with many more unlockable. There are perks to unlock with gold, and gods to discover (which then cost gold to worship). The rate at which you unlock them partly depends on skill/luck, but much of it is simply grinding. I enjoy working for progression, but not for excessive amounts of time and while doing the exact same thing. The gods and characters have little effects that alter gameplay enough to be noticed, but not enough to make a huge impact on the way the game is played. It soon becomes the same old same old. For a roguelike game, that's the nail in the coffin. The lack of variety in monsters, layouts, weapons, etc. are what killed this game for me. Be aware that this game is less roguelike exploration and more puzzle/board game. The objective seems to be clearing each board (level) as much as possible before decending to the next. 'Movement' consists of selecting any available open tile on a small grid. If you go too fast, or are forced to go too fast, your run will end as monsters quickly outlevel you. One or two levels of unfortunate circumstances will end you. Buckle up and do it again. The currency of the game, literally, is gold. It is the ONLY thing that carries over from adventure to adventure (you restart at character level 1 every time) and is used to buy items, worship gods, and unlock tiered perks and characters. The problem is that is is gained/lost/spent both in the dungeon and out of it. You need to spend gold to get further, which may or may not help bring in more so you see there is a highly questionable level of progression. You can't buy all the nifty stuff without gold, but you need to go into the dungeon to earn it, and you wont get far in the dungeon without spending gold because everything else resets. So you work and work to save gold incrementally. Since nothing really is permanent, you don't feel like you're getting stronger, only slightly wiser in how to deal with the game mechanics. The game mechanics are okay. If the dungeon levels were larger and more variety was thrown in, I might have been kept interested longer. However, making progress with unlocks or new depths seems like a long grind with a hefty dose of luck involved. I don't have the patience to play 5 hours until I get a dungeon layout and drops that provide me with enough strength/progression to accomplish something that may not be repeatable. The concept is good. The presentation is decent. There are numerous little things (note: not inconsequential) you will also notice that detract from the game, but you learn to live with, such as not being able to visually see which weapon you are holding despite having 2 swappable weapon setups. Runestone Keeper is an interesting jaunt into something a little different and for that I give it props. But it lacks depth, variety, proper English translation (the text encounters are laughably confusing), and a sense of forward progression to keep the player invested/interested for long. If Runestone Keeper is on sale for a few bucks, and the art and concept interest you, I think it's worth looking into, albeit briefly. If you want a classic roguelike, avoid this game. If you want something to enjoy for many hours, building yourself up and mastering the game, avoid this. If you like puzzle RPGs with no story and a heavy-handed system based on luck, check Runestone Keeper out. That certainly sounded because unfortunately, that is the taste Runestone Keeper left me with. With more development of the ideas and progression methods, this game could be solid. As it stands, Runestone Keeper just can't hold water.",
+          "Shattered Planet leaves a lot to be wanted, as the mechanics of the game are very enjoyable, but the execution is incredibly poor. Although you may have fun with this game for a few hours after you purchase it, you'll find that during your later gameplay, you'll be feeling a lack of depth that doesn't really deserve to be there. Like another user said, binary reviews like this are bad for games like this, but I'll have to give it a thumbs down until other things are implemented. For those who don't know, Shattered Planet is a rogue-life, turn-based strategy game in which your character travels to distant planets. These planets are the equivalent to dungeons in any other rogue-like; you find items, gain currency, and inevitably die only to return and do a little better each time. To Shattered Planets strong points, this game has several things to collect and playthrough, but that's the extent of depth you'll end up getting. Pros: - Very visually pleasing. - Comical lines of dialogue. - Level design is great. - Extensive amount of gamemodes. Cons: - Not enough items. - Small pool of abilities. - AI on companions lack-luster. - No crafting stations. - Expensive upgrades. - Sometimes dull grind. The things that Shattered Planet does right is in its visuals. The game deserves to pride itself on how aesthetically engaging it is, considering the variety of biomes you can explore and the massive level design that continues to produce original and fun maps over the several hours I've played. I've not once felt annoyed to go into a certain point in the level because no specific artwork bores me, unlike other games like Tales of Maj'eyal and Dungeons of Dredmor. However, there is a massive shadow looming over this game that makes it not enjoyable after a certain amount of hours. You can experience this with the substantial lack of items, small pool of abilities, horrible companion AI, and almost zero ability to craft your own items or at least upgrade them to a better weapon. This can sometimes make it a very difficult grind because, without much customization, the game falls flat quickly. When you first play the game, finding all the weapons are pretty fun. All seem to have their own traits, like increased punctured damage or critical hit, but that's about all the depth you'll get with the weapons. It would be nice if the developers would add a crafting bench, another currency sink other than simply spending tons of money on static weapons from the store. I imagine that adding this bench would allow you to spend currency in order to put different upgrades on your weapons or smelt them in order to get different resources in order to make your own weapon. Since enemies in the game have specific weaknesses and they appear on predictable levels of the game, having this type of crafting bench would be very important for people wanting to breeze past the first levels. Right now, you'll struggle through every run-through, which can be dull. There's also a very small pool of abilities. What I mean by that is, you don't have any active abilities, the characters that you choose have passive abilities. Some are much more strong than the other characters, which almost defaults you to a couple of playstyles, which sucks for a rogue-like. It would be great to add some more abilities, even active ones, that players could use to enhance their gameplay. Right now, all you do is chop with subpar weapons and try to take as less damage as possible before going to the next floor. AI's suck. They're supposed to be companions that attack for you, defend you, and stop you from taking damage. 9 times out of 10, they don't listen and they rarely attack unless you force them into a position to attack by moving several spaces. It can be tedious, especially when you're surrounded with tough enemies and your companion is doing nothing but snoozing in the corner. You'll die because of this - several times, and that just adds to your misery. this all adds up to a boring game, giving you very little for what you're putting in. With how expensive some of the upgrades are (health, dodge, and attack) and how insignificant they seem to be in-game, you're going to find that you'll get bored of grinding the first few floors until you just switch the game off and uninstall. The only reason I haven't done this is because I'm an achievement hunter and look to collect them all, haha. All-in-all, I don't recommend this game just because of the systems I wish were added. The weapons are simple, the characters are simple too - it just leaves so much to be wanted and it's unfortunate for a game like this, a game that is very pleasing and has so much potential, but falls flat on its face because of developers that aren't attentive to quality designs. Find another rogue-like to play, mates, this isn't a good one to sink your time into."
+        ],
+        "col_index": [
+          4419998,
+          3910345
+        ]
+      }
+    },
+    "0": {
+      "call_0": {
+        "reviews": [
+          "I haven't played a Tower Defense game in years. I got h this one on sale, let it sit for a bit, and then decided to check it out. I am glad I did. Yeah, I know. I don't have a ton of time in. Yet. That will change, Pros: Singleplayer. No a-holes coming in and destroying your defenses just for sheets and giggles. It's all on you, you vs. the AI. I like that. Idiot griefers in MP TD games in the past are why I stopped playing. Not having to deal with them here is a HUGE plus. Not 'easy'. It is easy to pick up, but can already tell in my short playtime, that it will not be easy to master. You need good strategy and planning, even early on. Interersting story to the game. Reading the pages as you unlock them adds a nice element. Nice graphics and audio. Nothing spectacular, but nothing ugly either. It's bright enough and colorful enough to captivate, without being blinding with flashes and flying particles everywhere. The ambient sounds are realistic and not overwhemingly loud or distracting. Cons: Needs a little more of a Tutorial for new players, and those who are not familiar with Tower Defense games. But this is a minor thing, there is a Tutorial Booklet with all of the neccessary commands, it just does not explain to a first-timer how things work, and how they work together or against each other. Game is forgiving though- you can go back and replay any field until you get the hang of it. May be a bit overpriced at full price ($10 USD), for what you are getting. Steam Achievements- if you are hoping for a quick and easy 100% game, this isn't the game for you, lol! There are 400+ Achievements, and the global stats show that many of them take a ton of time and effort to get. (But if you like challenging Achievements- this IS a game for you!) Overall? 8/10. Not a 'must have', but a solid 'Should have', especially if you love Tower Defense and can get it on sale. Now, I need to go and play this game some more. It calls to ",
+          "I played it a good bit before release and must say it is a well made puzzle/portal style game. Cheap and fun with another person. Controls are nice and simple and lots of levels to play. Buy this if it is ever on sale or in a bundle. Well worth it!"
+        ],
+        "col_index": [
+          3712629,
+          4074609
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "good game, some problems it doesnt have much replay value. they show you a lot of sectors on the sector map and first map you think that each map will be like a new level but after first area the rest of the game sends you into pretty much all the other areas for a short time. they have some awesome looking huge ships with a ton of guns worth a butt load of money but by the time you have the money to purchase them the games done leaving you with pick up escort and some attack side missions, at the same time you dont really even need the big ships you can beat the game with the third ship fairly easy. they say you have ability to choose factions and that may be true but from my play you have people already hostile and the good guys with no way of really becoming a bad guy unless you hammer out pirate/raider w/e side missions non stop for a long time to get them to like you. i would buy this game again if i had to but would definitely wait for a sale. hopefully they update the game to give it some more content. i never review so sorry if its written bad",
+          "The game was made by people that know what makes a FPS great. Save yourself some time and just buy the full version. Because You will in the end anyway. Pros: Nice graphics Nice maps Nice weapons Smooth game play Good price for what your getting Steam workshop support Has a level editor Cons: Not really a con, but would like some larger maps. Support games like this so we can get "
+        ],
+        "col_index": [
+          3581479,
+          4232785
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The game was made by people that know what makes a FPS great. Save yourself some time and just buy the full version. Because You will in the end anyway. Pros: Nice graphics Nice maps Nice weapons Smooth game play Good price for what your getting Steam workshop support Has a level editor Cons: Not really a con, but would like some larger maps. Support games like this so we can get ",
+          "good game and im have fun"
+        ],
+        "col_index": [
+          4232785,
+          4528693
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It's a great game and it's really fun! Especially with friends. If you don't want to get it on Steam with the $5 worth of credits , play the online version for FREE! And although i don't play it on steam much , when i do it , gives an enjoyable experience to play in full screen",
+          "good game, some problems it doesnt have much replay value. they show you a lot of sectors on the sector map and first map you think that each map will be like a new level but after first area the rest of the game sends you into pretty much all the other areas for a short time. they have some awesome looking huge ships with a ton of guns worth a butt load of money but by the time you have the money to purchase them the games done leaving you with pick up escort and some attack side missions, at the same time you dont really even need the big ships you can beat the game with the third ship fairly easy. they say you have ability to choose factions and that may be true but from my play you have people already hostile and the good guys with no way of really becoming a bad guy unless you hammer out pirate/raider w/e side missions non stop for a long time to get them to like you. i would buy this game again if i had to but would definitely wait for a sale. hopefully they update the game to give it some more content. i never review so sorry if its written bad"
+        ],
+        "col_index": [
+          4361695,
+          3581479
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I haven't played a Tower Defense game in years. I got h this one on sale, let it sit for a bit, and then decided to check it out. I am glad I did. Yeah, I know. I don't have a ton of time in. Yet. That will change, Pros: Singleplayer. No a-holes coming in and destroying your defenses just for sheets and giggles. It's all on you, you vs. the AI. I like that. Idiot griefers in MP TD games in the past are why I stopped playing. Not having to deal with them here is a HUGE plus. Not 'easy'. It is easy to pick up, but can already tell in my short playtime, that it will not be easy to master. You need good strategy and planning, even early on. Interersting story to the game. Reading the pages as you unlock them adds a nice element. Nice graphics and audio. Nothing spectacular, but nothing ugly either. It's bright enough and colorful enough to captivate, without being blinding with flashes and flying particles everywhere. The ambient sounds are realistic and not overwhemingly loud or distracting. Cons: Needs a little more of a Tutorial for new players, and those who are not familiar with Tower Defense games. But this is a minor thing, there is a Tutorial Booklet with all of the neccessary commands, it just does not explain to a first-timer how things work, and how they work together or against each other. Game is forgiving though- you can go back and replay any field until you get the hang of it. May be a bit overpriced at full price ($10 USD), for what you are getting. Steam Achievements- if you are hoping for a quick and easy 100% game, this isn't the game for you, lol! There are 400+ Achievements, and the global stats show that many of them take a ton of time and effort to get. (But if you like challenging Achievements- this IS a game for you!) Overall? 8/10. Not a 'must have', but a solid 'Should have', especially if you love Tower Defense and can get it on sale. Now, I need to go and play this game some more. It calls to ",
+          "good game and im have fun"
+        ],
+        "col_index": [
+          3712629,
+          4528693
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "You see, Five Nights at Freddy's 2 isn't a horror game. It's a RAGE GAME.",
+          "Like being scared? Amnesia is probably one of the best horror games out there."
+        ],
+        "col_index": [
+          4326889,
+          6098601
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is very hard and was very scary for me. I think it's pretty amazing and if you like horror games, you should definitley play this.",
+          "Like being scared? Amnesia is probably one of the best horror games out there."
+        ],
+        "col_index": [
+          4120950,
+          6098601
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Amnesia: The Dark Descent is a horror gaming masterpiece. It's atmosphere, the custom maps, and the good scares it gives you, makes it an enjoyable horror experience, especially when you close the curtains. wear headphones and close the lights, it goes from spooky to scary.",
+          "Good game. The game has awesome voice acting and the emotion of the character made a game good. But i don't think its a horror game. Please make a second one. It was great another one would be fun"
+        ],
+        "col_index": [
+          6092948,
+          3305676
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "You see, Five Nights at Freddy's 2 isn't a horror game. It's a RAGE GAME.",
+          "very good horror game"
+        ],
+        "col_index": [
+          4326889,
+          4323656
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Best free horror game ever!",
+          "Good game. The game has awesome voice acting and the emotion of the character made a game good. But i don't think its a horror game. Please make a second one. It was great another one would be fun"
+        ],
+        "col_index": [
+          6094744,
+          3305676
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "Great fun and not a rip off of minecraft!",
+          "No, It is not 2D Minecraft"
+        ],
+        "col_index": [
+          70760,
+          115816
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "'just play minecraft'",
+          "Minecraft but with much, much more content."
+        ],
+        "col_index": [
+          126622,
+          87241
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Minecraft but with much, much more content.",
+          "its not minecraft"
+        ],
+        "col_index": [
+          87241,
+          90549
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "No, It is not 2D Minecraft",
+          "'just play minecraft'"
+        ],
+        "col_index": [
+          115816,
+          126622
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "If you like MineCraft then you should try Terraria out.",
+          "Great fun and not a rip off of minecraft!"
+        ],
+        "col_index": [
+          124607,
+          70760
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "addictive!",
+          "I love this game, very addicting and fun to play!"
+        ],
+        "col_index": [
+          244320,
+          123524
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "VERY addictive :)",
+          "Good game. Very addictive!"
+        ],
+        "col_index": [
+          4111486,
+          4360582
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Addictive and fun!",
+          "I love this game, very addicting and fun to play!"
+        ],
+        "col_index": [
+          127914,
+          123524
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "VERY addictive :)",
+          "Such a fun, and addicting game!"
+        ],
+        "col_index": [
+          4111486,
+          3072728
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A very fun addictive game.",
+          "this game is very fun and addicting. I LOVE IT!!!!!!!!!!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          253877,
+          4023686
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "LOVE THIS GAME, anso how u can now play it on Mac!! great game to play with your friends",
+          "It's a really good game, but if it can play on mac, would be perfect!"
+        ],
+        "col_index": [
+          104943,
+          80095
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "DO NOT BUY THIS GAME FOR MAC. IT CRASHES EVERY TIME YOU TRY TO LOAD A SAVED GAME.",
+          "i love the game but if you get to much money the game crashes every time u try to go to the moon it crashes the point is it crashes to much devs can u fix that it would make the game better also there needs to be a reset switch not for angels for the whole game so can u devs fix that "
+        ],
+        "col_index": [
+          3219102,
+          4527313
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "It had become a bad game after update,it cant play on linux game have a lot of bugs that dont fix,The creator call this game ccg ,but it's not a real ccg ,it's also a tcg game .",
+          "i love the game but if you get to much money the game crashes every time u try to go to the moon it crashes the point is it crashes to much devs can u fix that it would make the game better also there needs to be a reset switch not for angels for the whole game so can u devs fix that "
+        ],
+        "col_index": [
+          3765516,
+          4527313
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "It's a really good game, but if it can play on mac, would be perfect!",
+          "i love the game but if you get to much money the game crashes every time u try to go to the moon it crashes the point is it crashes to much devs can u fix that it would make the game better also there needs to be a reset switch not for angels for the whole game so can u devs fix that "
+        ],
+        "col_index": [
+          80095,
+          4527313
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "make it for mac please",
+          "It's a really good game, but if it can play on mac, would be perfect!"
+        ],
+        "col_index": [
+          4325224,
+          80095
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "I hacked a door, the door hacked me back. 10/10",
+          "10/10 would haunt teamates again"
+        ],
+        "col_index": [
+          6364770,
+          4167998
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "10/10 Would murder again.",
+          "10/10 top game"
+        ],
+        "col_index": [
+          3343554,
+          4271626
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I don't even own this game. 10/10",
+          "10/10 would haunt teamates again"
+        ],
+        "col_index": [
+          3350383,
+          4167998
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10/10 Would murder again.",
+          "I hacked a door, the door hacked me back. 10/10"
+        ],
+        "col_index": [
+          3343554,
+          6364770
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Can't actually see any tiddies 1/10",
+          "You escape That's about it. 10/10"
+        ],
+        "col_index": [
+          4590085,
+          3743552
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "American Truck Simulator is a superb game. I LOVE Eurotruck Simulator 2 however strangely enough ETS2 wasn't the type of game I would normally have chosen to buy for myself. I was hooked when I saw the trailer but not immediately by the visuals but by the music track 'Hot' by Sarah Ozelle LOL. However while searching for that music track I watched a collection of ETS2 videos on Youtube and decided to purchase the game. From the first trip out in a truck I was hooked. I hmmm'd and haa'd about buying ATS, after all, I thought, its not going to be able to beat ETS2, the best truck simulator out it!? Then the demo was released on Steam. I gave it a and I was hooked. Not by the music but by the game this time. It runs even better on my system than ETS2 does and ATS runs on Ultra settings superbly too. I am really looking forward to see what SCS do to flesh out this already excellent base game! 10/10",
+          "American Truck Simulator offers a variety of playing ability in the world of owning a Trucking Business. This simulator allows the player to start off their trucking by working for other companies in order to make money. OR. Players can borrow a bank loan, to immediately make money, which simple deductions being made over time. Grow and develop your own company (which you can name, buy trucks for, and buy garages for) to become the ultimate trucking company in the (California, Nevada, Arizona so far) WHAT I LIKE - -The defualt trucks are the 'kings of the road' -Both Steam and exotic mod support -LOTS of customization for the trucks -Default trailers look amazing -Realism includes fines for disobeying the law, speed limits, traffic lights, traffic, other truck traffic, landmarks Golden Gate Bridge) (PLUS A LOT MORE) -Free map expansions (Arizona) -Little to no crashes (unless using a corrupt mod) -No 'super-computer' needed (runs smoothly on mostly anyting) WHAT I DON'T LIKE- -Too many police cars around -Very high citation prices (raised if police are involved or around the incident) -Only 3 default truck designs (unless modded) -Speed limits are high on very twisty roads -Some drop off points are annoying Overall, American Truck Simulator, or ATS for short, is an amazing game by the SCS Software crew, who were also the creators of ETS and ETS2 (Euro Truck Simulator and Euro Truck Simulator 2)"
+        ],
+        "col_index": [
+          3244320,
+          3242124
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I really like American Truck Simulator alot. I really enjoyed ETS2 and now I am enjoying driving around the west coast of America too! I am looking forward to more content from SCS for this game like more states and more trucks, but what we have so far is good enough for the beginning of your career.",
+          "Great game! I was already a big fan of the Euro Truck Simulator 2 and couldn't wait to get my hands on my favorite setting and drive some trucks over American roads. Yes, it's smaller than the European version of the game, but I really don't mind. California and Nevada are beatifully recreated and the cities now look greatly unique and have more individual atmosphere. As usual, truck models look stunning and the handling feels as heavy as it should. This really sticks out as one of the simulators you BASOLUTELY SHOULD play. There is actually a very good and addicting game behind the fassade and once you're hooked, you just need to keep playing. Cheers and truck on!"
+        ],
+        "col_index": [
+          3244876,
+          3244318
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "American Truck Simulator is not bad game as well, familiar to ETS2",
+          "I can not get American Truck Simulator to work"
+        ],
+        "col_index": [
+          3241328,
+          3243969
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "American Truck Simulator is not bad game as well, familiar to ETS2",
+          "American Truck Simulator offers a variety of playing ability in the world of owning a Trucking Business. This simulator allows the player to start off their trucking by working for other companies in order to make money. OR. Players can borrow a bank loan, to immediately make money, which simple deductions being made over time. Grow and develop your own company (which you can name, buy trucks for, and buy garages for) to become the ultimate trucking company in the (California, Nevada, Arizona so far) WHAT I LIKE - -The defualt trucks are the 'kings of the road' -Both Steam and exotic mod support -LOTS of customization for the trucks -Default trailers look amazing -Realism includes fines for disobeying the law, speed limits, traffic lights, traffic, other truck traffic, landmarks Golden Gate Bridge) (PLUS A LOT MORE) -Free map expansions (Arizona) -Little to no crashes (unless using a corrupt mod) -No 'super-computer' needed (runs smoothly on mostly anyting) WHAT I DON'T LIKE- -Too many police cars around -Very high citation prices (raised if police are involved or around the incident) -Only 3 default truck designs (unless modded) -Speed limits are high on very twisty roads -Some drop off points are annoying Overall, American Truck Simulator, or ATS for short, is an amazing game by the SCS Software crew, who were also the creators of ETS and ETS2 (Euro Truck Simulator and Euro Truck Simulator 2)"
+        ],
+        "col_index": [
+          3241328,
+          3242124
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "American Truck Simulator is a superb game. I LOVE Eurotruck Simulator 2 however strangely enough ETS2 wasn't the type of game I would normally have chosen to buy for myself. I was hooked when I saw the trailer but not immediately by the visuals but by the music track 'Hot' by Sarah Ozelle LOL. However while searching for that music track I watched a collection of ETS2 videos on Youtube and decided to purchase the game. From the first trip out in a truck I was hooked. I hmmm'd and haa'd about buying ATS, after all, I thought, its not going to be able to beat ETS2, the best truck simulator out it!? Then the demo was released on Steam. I gave it a and I was hooked. Not by the music but by the game this time. It runs even better on my system than ETS2 does and ATS runs on Ultra settings superbly too. I am really looking forward to see what SCS do to flesh out this already excellent base game! 10/10",
+          "TLDR; I never thought I would buy this game but I am in love now that I have. A note before my review: I laughed out loud when I saw this game on Steam. I hadn't heard of ETS and haven't played simulator games in years. I saw a truck sim game and thought 'who the hell wants to drive around and make deliveries in a truck?' Well, apparently I do! I've spent about 4 hours in this game (played the demo for some time before purchasing) and I am hooked. The scenery is gorgeous, controls are great (I recommend using a gamepad), and the game as a whole is so simple that it is amazing. It doesn't waste time overcomplicating things, the game is what it is, drive a truck around and listen to music, make more money and buy more trucks. The map is already large and they are expanding it right now and in a few months it will be much larger. With the potential to add new states down the road you are looking at a gorgeous new game that will continue to expand, grow and improve for years to come. This game is the perfect end to a long day at work. I can go home and just drive around viewing beautiful sunsets and sunrises across some of the best roads in America for cruising. The added ability to listen to internet radio makes it so much better. I personally like driving around jamming to some 80s rock, it's a perfect compliment to life on the road. If you aren't sure if this game will suit you try out the demo, you can get quite a bit of time in it and it's a great way to get used to the controls and decide if it's a game you will enjoy. I recognize that simulators like this might not be for everybody, but if you enjoy sims or driving you will probably love this game. I just can't wait for work to end so I can go home and play some more!"
+        ],
+        "col_index": [
+          3244320,
+          3241094
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "You've goat to get this game.",
+          "you play as a goat"
+        ],
+        "col_index": [
+          3127208,
+          3132489
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "What could top this, you're a goat",
+          "you play as a goat"
+        ],
+        "col_index": [
+          3148401,
+          3132489
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "You've goat to get this game.",
+          "You are a goat YOU CAN GO IN SPACE AS A GOAT!"
+        ],
+        "col_index": [
+          3127208,
+          3142532
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I am goat destroyer of everything",
+          " You can be a goat!"
+        ],
+        "col_index": [
+          3147950,
+          3144018
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The Game is about a Goat. Just about a Goat.",
+          "Goat fun. Will goat more "
+        ],
+        "col_index": [
+          3129443,
+          3132800
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "Pure Serious Sam action with nice eyecandy graphics and also an interesting backstory to the original games. If you liked the old Serious Sam games, then it's a must have! :)",
+          "this game could be fun but all i want to do is see how the guns fire and i want to look at all the guns, for some reason you have to disasembly all the guns very slowly before you can do any thing interesting and you have to unlock every gun very very VERY SLOWLY. i want to play with any gun from the start, not wasteing my time taking apart a colt twice."
+        ],
+        "col_index": [
+          5361108,
+          3044550
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "dinasours and guns, fun",
+          "Just like call of but with guns and cultist."
+        ],
+        "col_index": [
+          6235291,
+          140179
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "World of Guns is a game where you disassamble, reassemble and use various guns while listening to some mediocre music. You can also take apart skeletons of humans and dinosaurs. 'All that for free!?!?!?' you scream out, showering the room with spit as you slap and slide your hands on your mouse and keyboard frantically trying to download WoG. Well, not exactly. Each gun has to be unlocked using Exp which you get by completing various achievements with each gun. However as you buy one gun and unlock the achievements for it you are often not left with enough Exp to get the next gun you want or don't want. You don't get much choice as to which gun you unlock. Certain guns such as a flintlock pistol require you to unlock multiple guns before. 'But what do I do now' you sputter out while cowering in fear at the thought of not being able to take apart any more guns. Well there are a total of three options. 1. You can play with the same old guns for hours and hours trying to scrape together a little bit of Exp so you can unlock the next gun and end up in the same situation again. 2. You can pay the developers REAL money to get Exp so you can unlock a couple more guns and then run out and end up in the same situation again or buy the dlc so you can play with all the guns/cars/skeletons at your little hearts desire at the expense of $75. Or lastly you have option 3. Uninstall the game and never play it again. This game is a lot like Spiral Knights in the sense that if you do one thing wrong or sometimes do everything right you will have to PAY in order to continue playing and enjoying a free to play game. With that said I can not recommend this game at all. You'll just get your heart broken or your wallet emptied.",
+          "SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! Seriously though, one of the weirder games I've played in a while. I love the time mechanic, it adds variety, but still is challenging. The game is a little expensive however. All in all, if you have the extra money and really want it then you should get it. Otherwise wait for a sale. Still a great game though. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. SUPER. HOT. 9/10"
+        ],
+        "col_index": [
+          3043721,
+          4184374
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Pure Serious Sam action with nice eyecandy graphics and also an interesting backstory to the original games. If you liked the old Serious Sam games, then it's a must have! :)",
+          "World of Guns is a game where you disassamble, reassemble and use various guns while listening to some mediocre music. You can also take apart skeletons of humans and dinosaurs. 'All that for free!?!?!?' you scream out, showering the room with spit as you slap and slide your hands on your mouse and keyboard frantically trying to download WoG. Well, not exactly. Each gun has to be unlocked using Exp which you get by completing various achievements with each gun. However as you buy one gun and unlock the achievements for it you are often not left with enough Exp to get the next gun you want or don't want. You don't get much choice as to which gun you unlock. Certain guns such as a flintlock pistol require you to unlock multiple guns before. 'But what do I do now' you sputter out while cowering in fear at the thought of not being able to take apart any more guns. Well there are a total of three options. 1. You can play with the same old guns for hours and hours trying to scrape together a little bit of Exp so you can unlock the next gun and end up in the same situation again. 2. You can pay the developers REAL money to get Exp so you can unlock a couple more guns and then run out and end up in the same situation again or buy the dlc so you can play with all the guns/cars/skeletons at your little hearts desire at the expense of $75. Or lastly you have option 3. Uninstall the game and never play it again. This game is a lot like Spiral Knights in the sense that if you do one thing wrong or sometimes do everything right you will have to PAY in order to continue playing and enjoying a free to play game. With that said I can not recommend this game at all. You'll just get your heart broken or your wallet emptied."
+        ],
+        "col_index": [
+          5361108,
+          3043721
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Serious Sam 3: BFE is a old-school FPS game developed by Croteam and released in 2011. It is the latest game in the Serious Sam series and a prequel to Serious Sam: The First Encounter. The game's story takes place in the 22nd century, during Mental's invasion of Earth, as implied in The First Encounter. Like previous titles in the series, Serious Sam 3: BFE involves fighting against many hordes of enemies in wide-open environments. However Serious Sam 3 has more closed environments than its predecessors, particularly in the early levels. There are also a larger number of enemies that can attack the player from a distance. Now lets talk about the game shall we. While Serious Sam 3: BFG BFE is clearly a shooter that pays homage to the old-school PC shooters from the late 90's, all the way to 2004 (The end of the golden age of PC FPS games), it holds on to this vision of the past so hard, that it insisted to even bring back the old problems of the genre. While without a doubt this game has some really satisfying gunplay, interesting monster design, where it fall short is the level design, the voice acting, the soundtrack and the story. I know, it's a serious sam game, but they insisted on the story this time around (hence the cut-scenes and dialogue) but it's annoyingly bad. So, so bad. Sam's one-liners are even worse. An old, battered Sam feels like the return of Duke, in Duke Nukem Forever. The charm is just not there. Also, the game barely introduced anything new to the formula, it's just a HD remake of the same old formula, with the exception of a a handful enemy types. Talk about lazy designers. I guess Croteam don't want to traverse into unknown territory. As for the level design, the game starts out decent enough, the engine showcasing detailed buildings lying in ruins, once you get to the 2nd level, the game takes a massive turn to the worse. And there will be a theme repeating here. Once you get to the corridor shooting of Serious Sam 3, you can't turn back. The very thing they wanted to stand apart from, has crawled itself in here aswel. While not all the game is a 'corridor theme', there are certain areas that will leave you extremely bored, or just unsatisfied. Piramids, ancient temples and such. And when finally you get to the arenas, you will find a tedious experience. Shooting wave after wave of enemies, collecting items and health packs, The fun of it all fades away pretty fast. Which brings FUN. Fun is the biggest issue with this game, you have none . This is more of a personal opinion, but honestly, blasting through all those hoards of never ending monters, just felt tedious, instead of fun. Especially in the later levels. It's just not there anymore, I didn't have much satisfaction dying instantly because the game throws dust in my face, and 100 hitscan enemies at once, while I get piled up by skeletons throwing chains at me. It's just infuriating at times, and while the game takes some patience, that patience is not rewarded enough. Secrets consist of small objects such as: mini health packs, armor shards and ammo. Not much if you ask me. The frustration builds up in the later levels when the game thorws enemies that jump all over the place, rockets that hit you with 70% accuracy and suicide bombers everywhere. It's not challenging if you just throw more enemies at once, at least build up a pattern. The last hour of the game will be a real letdown. Anyways, before I give the game a score, I'll just break it down into stuff I liked and disliked. The good : Old school run and gun mechanics Detailed weapon models + really satisfying to use them Detailed enemy design (and interesting at times) No regenerating health / no cover system (this is a + for me) Fluid melee system Unlimited sprint Hundreds of enemies at once on the screen for you to shoot Overall good intentions, but they fall flat because of some of the idiotic design choices. The bad Boring level design Subpar voice acting and lame story Weak supply placement on higher difficutly Over powered hitscan enemies Shotgun penetration does not exist, as for the rocket launcher, the AOE is a joke. Unsatisfying arenas The last two hours are utterly frustrating Bad ending Dead multiplayer In the end of the day, if you find yourself with this game on a sale, I'd say you should think twice before purchasing this. It's not going to be the ride of your life, the older ones we're way better. Personal rating : 6/10",
+          "Just like call of but with guns and cultist."
+        ],
+        "col_index": [
+          5362303,
+          140179
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "It is good :) :) :) :) :)",
+          "this is good"
+        ],
+        "col_index": [
+          4156504,
+          3232425
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "It is so good :)",
+          "A good one."
+        ],
+        "col_index": [
+          114815,
+          3301629
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "this is good",
+          "Pretty good and fun :) \u2730\u2730\u2730\u2730"
+        ],
+        "col_index": [
+          3232425,
+          119760
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "this is good",
+          "IT IS SO GOOD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          3232425,
+          4122105
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It is so good :)",
+          "IT IS SO GOOD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          114815,
+          4122105
+        ]
+      }
+    },
+    "10": {
+      "call_0": {
+        "reviews": [
+          "This may not be a game for everyone but it definitly gives an idea to people without depression of what it's like. altough not everyone with depression has the same story so for some people it can be very different. For the rest i think it's very important that people who play this game remember not everybody with depression act's like the person in the game. And one last thing, this game needs a trigger warning on the store page.",
+          "This game is very rude towards people like me who deal with depression. I could only sit through 12 minutes of the game before I just shook my head and turned it off to write this review. This character you play as isn't even depressed. They just have no personality. I mean I understand that the creator wants YOU as the player to experience what it's like to go through life and make every day choices while dealing with depression, but this is far from accurate. Maybe it IS like this for some people in worst case scenarios, but still, even depressed people have a personality of some sort. Also, the music was very boring, slow, annoyingly repetitive, and just made me even less interested in playing more of the game. This also applies to the visuals. If I could, I'd rather continue to read it as a visual novel instead. Maybe it gets better the further you play, but until then, I wouldn't recommend playing this game if you have depression. It'll just make you angry at the creator. Even if you don't have depression the overall game so far is very boring."
+        ],
+        "col_index": [
+          3228564,
+          3225960
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "So, I use to think I go through bouts of depression, but after playing this game it was just have had no idea what depression actually does to and thats why I reccommend this to those who don't have depression. Its an eye opener for sure and even though I got a more postive end, I can feel the narrator emotion and how it expresses it all is amazing. So please. Do pick this up and go through but as people have said before me those with depression may have this game trigger some of their symptoms. Overall: Pick this game up. Its an experience that I would would reccommend to anyone who doesn't have depression.",
+          "This may not be a game for everyone but it definitly gives an idea to people without depression of what it's like. altough not everyone with depression has the same story so for some people it can be very different. For the rest i think it's very important that people who play this game remember not everybody with depression act's like the person in the game. And one last thing, this game needs a trigger warning on the store page."
+        ],
+        "col_index": [
+          3228259,
+          3228564
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "If you have depression, this game will make you want to kill yourself. 9/11 worth a kek",
+          "For someone who has had quite bad depression i was really interested in this game i would deffinitley say get this game its free to play and it will give you an insite of how people with depression feel. It is short it will last you around 30-40 minutes so it wont be that long. You bassically are a character who has depression and you are put through scenarios and you have to choose what you would do through those senarios."
+        ],
+        "col_index": [
+          3226994,
+          3228407
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Finally a game that shows the grimness of depression I very much recommend this game Very, very well done Everyone should play it Games are art and this is a prime example of such Understand how it feels to have depression when you play this game You will love it, I promise Seriously, go play it",
+          "This game is very rude towards people like me who deal with depression. I could only sit through 12 minutes of the game before I just shook my head and turned it off to write this review. This character you play as isn't even depressed. They just have no personality. I mean I understand that the creator wants YOU as the player to experience what it's like to go through life and make every day choices while dealing with depression, but this is far from accurate. Maybe it IS like this for some people in worst case scenarios, but still, even depressed people have a personality of some sort. Also, the music was very boring, slow, annoyingly repetitive, and just made me even less interested in playing more of the game. This also applies to the visuals. If I could, I'd rather continue to read it as a visual novel instead. Maybe it gets better the further you play, but until then, I wouldn't recommend playing this game if you have depression. It'll just make you angry at the creator. Even if you don't have depression the overall game so far is very boring."
+        ],
+        "col_index": [
+          3226811,
+          3225960
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Finally a game that shows the grimness of depression I very much recommend this game Very, very well done Everyone should play it Games are art and this is a prime example of such Understand how it feels to have depression when you play this game You will love it, I promise Seriously, go play it",
+          "This may not be a game for everyone but it definitly gives an idea to people without depression of what it's like. altough not everyone with depression has the same story so for some people it can be very different. For the rest i think it's very important that people who play this game remember not everybody with depression act's like the person in the game. And one last thing, this game needs a trigger warning on the store page."
+        ],
+        "col_index": [
+          3226811,
+          3228564
+        ]
+      }
+    },
+    "11": {
+      "call_0": {
+        "reviews": [
+          "If you love music, U will love this game",
+          "Great Music"
+        ],
+        "col_index": [
+          5851798,
+          5331828
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is awesome, It's music gave me liquid diarrhea. A++, would recommend again.",
+          "great music"
+        ],
+        "col_index": [
+          6124996,
+          4157107
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Awesome story, gameplay and music! :D",
+          "I love the music and the levels."
+        ],
+        "col_index": [
+          167786,
+          4159648
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I love the music and the levels.",
+          "great music"
+        ],
+        "col_index": [
+          4159648,
+          4157107
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "music is amazing. do not play without it",
+          "This game is awesome, It's music gave me liquid diarrhea. A++, would recommend again."
+        ],
+        "col_index": [
+          4160941,
+          6124996
+        ]
+      }
+    },
+    "12": {
+      "call_0": {
+        "reviews": [
+          "At first I was like :\\ But then I Super Meat Boy'd.",
+          "Very intense, fun game that encourages team play no matter what team you choose: divers or sharks. As a shark you'll find that you are easily shot down. There is only one way to survive; surprise and cunning. Wait for that diver to separate himself a bit from the group. Sense him as he approaches the edge to take a peek and sweep him away from the safety of his peers as you tear him to bits. Get that greedy diver that separates himself to fill his pockets with gold, never to be seen again. But now they are all guarding a cavern, protecting the remote sub as it opens a safe. To enter is to get harpooned. Whilst your team mate shark breaks the walls and all attention focuses on those walls you approach from behind and snag a diver out of there. Now their team rushes to save him, firing everything they've got at you, but it is too late and their attention-shift allowed your shark companion to snag yet another diver from behind again. Hide, ambush, coordinate attacks so that all the divers see is chaos and bloody death. But what is it like if you are the diver? It is like the movie Jaws only worse; there are 2 of them. Starting with only a basic weapon means you the only way to survive is to stick together and protect your fellow divers from becoming a meal. Experience the thrill of hearing your heart beat indicating a nearby shark presence. Try to figure out where in the darkness of the ocean the shark will come from only to have him drag a friend out of there from behind without you even noticing. Feel the anxiousness of knowing you have to cross an open part of water, trying to make out shapes as far as you can see with your flashlight only to have a shark appear from the depths and take you far away as you attempt to stab him before your inevitable demise. You need money to buy better weapons so you have to resort to the scavenging of gold you find spread around the place. Get enough money and this whole situation could potentially turn itself around. Place mines around suspected shark entrances, or perhaps just as important, shark exits. The shark will try to drag a diver away only to blow itself up on a mine. Boys placed around the place will alert you of nearby sharks so you can aim that harpoon in that direction and get yourself some shark. Careful not to miss as the long reload could well mean seeing your limbless friend drifting in the water next to you. Be smart about it: sharks can only expend their energy in short bursts. When they rush in to grab and tear your fellow diver to bits he will be tired. If you have not managed to save your fellow diver, avenge him, chase that tired shark before he recovers and get yourself some fin soup! Later towards the dive, divers become more dangerous as they are able to afford good equipment. The sharks however, have unlocked perks with the kills they got giving them abilities that will make them much more dangerous. Abilites like increasing the range at which they can sense you, detect mines, even what type of weapon you are carrying! Gain health from eating you, ignore pain at expense of stamina, etc. I prefer games that have low HUD elements, glowing things on my screen, etc. Would prefer a bit less of it but in the fast paced action that can happen once ambushed it is useful to direct attention to certain elements. PROBLEMS? Any ISSUES? Yes. At the moment there are issues regarding multiplayer gameplay. Trying to join a match is a royal pain. Six people have to join the lobby and by that time people will realise that the host is actually AFK and not starting the happens a lot. A lot of waiting. Host yourself, sure. Wait for it to fill, convince people not to quit. Now you can actually host it. Problem? Sometimes instead of 'creating server' it will say 'connecting to and never actually load or do anything. You have to leave your lobby, rejoin and have someone else try again. Created server? Second potential problem: most players will gain status 'connected' whilst one or 2 will have status and they will never connect. After 1m30s game kicks to lobby. Does this happen all the time? No. Does it happen regularly? quite (when I host, I only get the first problem). Just gotta be a bit patient, sure they will patch this. The hosting UI needs to be improved too because the way it's set out is non-intuitive. Instead of 'host' or 'start match/server' you have to click 'Find Match' to host. Deal breaker? No. Way. I have expanded my steam-friends list quite a bit so we can quickly populate a lobby and enjoy the game together over and over again as every game feels so different depending on the shark's attack plan. VERDICT: The game is fun. You enjoy it with your team. It's intense. Love it, I can deal with it's issues. It'd be nice if they fixed them but I am still happy I can enjoy this gem of a game."
+        ],
+        "col_index": [
+          5333082,
+          3346685
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Awesome shark game really like it",
+          "You get to be a shark and eat people. Or a diver who gets eaten by a shark. Hours of delcious nom nom nom,"
+        ],
+        "col_index": [
+          3350564,
+          3347526
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "At first I was like :\\ But then I Super Meat Boy'd.",
+          "Left 4 Dead meets Jaws The aim of the game is to collect as much tresure as you the sharks come and eat you alive. Divers can spend the loot on upgrades of equipment. The game is quite nerve-wrecking with a sense of danger and panic from knowing the sharks are around and the music which changes to more pounding as the sharks appear. The game allows you to play as a shark which gives you a choice at the start. However you can find yourself outnumbered by people choosing to play as divers rather than as shark-which means some games 1vs4 or 2vs 4. One bad point about the game is that once you've choosing to play as shark-it's impossible to change type of shark that you want to be."
+        ],
+        "col_index": [
+          5333082,
+          3347482
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Super Meat Boy. What can I say? Hard. Bloody Bloody hard! So hard that I spent one hour on a tutorial level. But is hard good? Yes. For this game hard is a good thing. This indie platformer game challenges you and gives you a sense of acomplishment when you complete just one level, unlike many other games *cough* 'Tomb You could say Meat boy is like a more mature Super Mario game. And my god the music so good! In the game you play as the character Meat boy. Meat because he has no flesh, and the beautiful in game art shows that. Meat boy can only live with his love Bandage Girl (the Princess Peach of Super Meat Boy). But then Dr Fetus (obviosly the Bowser) kidnaps Bandage Girl, and Meat Boy's only goal is to save her! You can even see the determination on Meat Boy's face as he sprints to try and save the love of his life. This game has many comparisions with Super Mario, (with characters that is) but if you ask me I think this game is better than any Mario game I have ever played. So go out and buy this game now! Seriously why are you still reading this. GO! GO! BUY IT NOW! Rowan :)",
+          "Left 4 Dead meets Jaws The aim of the game is to collect as much tresure as you the sharks come and eat you alive. Divers can spend the loot on upgrades of equipment. The game is quite nerve-wrecking with a sense of danger and panic from knowing the sharks are around and the music which changes to more pounding as the sharks appear. The game allows you to play as a shark which gives you a choice at the start. However you can find yourself outnumbered by people choosing to play as divers rather than as shark-which means some games 1vs4 or 2vs 4. One bad point about the game is that once you've choosing to play as shark-it's impossible to change type of shark that you want to be."
+        ],
+        "col_index": [
+          5328939,
+          3347482
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Left 4 Dead meets Jaws The aim of the game is to collect as much tresure as you the sharks come and eat you alive. Divers can spend the loot on upgrades of equipment. The game is quite nerve-wrecking with a sense of danger and panic from knowing the sharks are around and the music which changes to more pounding as the sharks appear. The game allows you to play as a shark which gives you a choice at the start. However you can find yourself outnumbered by people choosing to play as divers rather than as shark-which means some games 1vs4 or 2vs 4. One bad point about the game is that once you've choosing to play as shark-it's impossible to change type of shark that you want to be.",
+          "Super Meat Boy. What can I say? Hard. Bloody Bloody hard! So hard that I spent one hour on a tutorial level. But is hard good? Yes. For this game hard is a good thing. This indie platformer game challenges you and gives you a sense of acomplishment when you complete just one level, unlike many other games *cough* 'Tomb You could say Meat boy is like a more mature Super Mario game. And my god the music so good! In the game you play as the character Meat boy. Meat because he has no flesh, and the beautiful in game art shows that. Meat boy can only live with his love Bandage Girl (the Princess Peach of Super Meat Boy). But then Dr Fetus (obviosly the Bowser) kidnaps Bandage Girl, and Meat Boy's only goal is to save her! You can even see the determination on Meat Boy's face as he sprints to try and save the love of his life. This game has many comparisions with Super Mario, (with characters that is) but if you ask me I think this game is better than any Mario game I have ever played. So go out and buy this game now! Seriously why are you still reading this. GO! GO! BUY IT NOW! Rowan :)"
+        ],
+        "col_index": [
+          3347482,
+          5328939
+        ]
+      }
+    },
+    "13": {
+      "call_0": {
+        "reviews": [
+          "Such a nice game about murder. -Town in middle-ages -15 people in the circle. They don't know roles of their neighbour -Unkown murderers, mafia and another evil roles like an arsonist -Powerful town roles to find the felonry like a investigator -Great game for everyone who wants to play on-line in the criminal game, find the felonry or kill every one as serial killer. Can you survive in the Town of Salem?",
+          "Still the best game about hacking."
+        ],
+        "col_index": [
+          4360362,
+          355577
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Town of Salem is a cartoony witch trial simulator. Quick matchmaking and large community fills up the wait queues very fast. Roles are handed in secret, play your role and help your team wins. The learning curve is very manageable as most of the roles are intuitive enough. Value is not very clear here as the concept is a rip off from SCII custom map and the dev decided to add a cash shop on top of the game not being free to play. You can earn the rewards through enough grind and the rewards are mostly cosmetic except for an item which lets you pick a role. All in all I have a lot of fun in this game, and everything that ruins other communities like immaturity and trolling end up reinforcing this game's concept, making the trials hilarious and all in all people really do want to play their roles and win so the competitive edge can be very present, and when things go wrong then it is comedy gold even when the reasons are a little dubious. If you find this in a bundle I would say you owe it to yourself to try this. However if you own starcraft II already you might find this version of the game is slightly underpar in comparison to the free custom map. Its up to the dev to raise the bar for its steam release.",
+          "Town of Salem is a very interesting game for sure. You have different roles with abilities and goals where you're either a good guy trying to save the town, a killer hiding in the shadows or simply a maniac out to create chaos. One game has about 15 players in it and it's more of a board-type game, not much movement here. At day you talk amongst eachother and try to find the guilty whilst avoiding the confusing mindgames of jesters and general kids with no clue how to play. At night you do your role (depending on which). The developers are actively communicating with their fans via twitter, offering support and help whilst putting alot of effort into game improvement and additional features. Recently we got vampries and vampire hunters, so be ware! You don't have to pay for this; you can play it in browser for free. But if you get it on steam, there are a bunch of achievements to obtain, playtime and you get startup gold to make up for having to pay here. I didn't understand the paranoia of this game until I watched the series 'Salem' on netflix, which is the town this game is heavily based upon. I promise you, if you watch 'Salem' it'll all make sense. I used to get annoyed over how paranoid people were but I was reminded right away how awful that time was. It's not a game I'll play for hours and hours same day, but it's most certianly a fun break inbetween other games. This is definitely fun both alone and with friends, though you have tendencies to target eachother right away. 10/10."
+        ],
+        "col_index": [
+          4362036,
+          4360703
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Town of Salem. It's fun in a 'Guess Who' sort of way. Pretty much two teams of people (and some unaffiliated people) in a town trying to collect information or convince the others of this or that. No one knows what anyone else is at first. Everyone chooses a name, the game begins, and you're given a random role which no one knows but you. There's a buncha roles. With each having their own ability and goal. Some need to lynch or kill the enemy team. Some just need to survive to the end of the game regardless of which team wins. Some even win by getting lynched. Roles basically boil down to either collecting information, attacking other players, defending other players, blocking other players from performing their actions, or misleading other players. All of which are done in various ways. This game has the effect much like Civilization. You keep deciding to play just one more game (or 'turn' in Civ's case) but before you know it you've played 10 more games. Especially if you play with friends and laugh over the dumb names people use and the silly last-wills and death-notes they make.",
+          "Town of Salem is a cartoony witch trial simulator. Quick matchmaking and large community fills up the wait queues very fast. Roles are handed in secret, play your role and help your team wins. The learning curve is very manageable as most of the roles are intuitive enough. Value is not very clear here as the concept is a rip off from SCII custom map and the dev decided to add a cash shop on top of the game not being free to play. You can earn the rewards through enough grind and the rewards are mostly cosmetic except for an item which lets you pick a role. All in all I have a lot of fun in this game, and everything that ruins other communities like immaturity and trolling end up reinforcing this game's concept, making the trials hilarious and all in all people really do want to play their roles and win so the competitive edge can be very present, and when things go wrong then it is comedy gold even when the reasons are a little dubious. If you find this in a bundle I would say you owe it to yourself to try this. However if you own starcraft II already you might find this version of the game is slightly underpar in comparison to the free custom map. Its up to the dev to raise the bar for its steam release."
+        ],
+        "col_index": [
+          4360638,
+          4362036
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Town of Salem is a cartoony witch trial simulator. Quick matchmaking and large community fills up the wait queues very fast. Roles are handed in secret, play your role and help your team wins. The learning curve is very manageable as most of the roles are intuitive enough. Value is not very clear here as the concept is a rip off from SCII custom map and the dev decided to add a cash shop on top of the game not being free to play. You can earn the rewards through enough grind and the rewards are mostly cosmetic except for an item which lets you pick a role. All in all I have a lot of fun in this game, and everything that ruins other communities like immaturity and trolling end up reinforcing this game's concept, making the trials hilarious and all in all people really do want to play their roles and win so the competitive edge can be very present, and when things go wrong then it is comedy gold even when the reasons are a little dubious. If you find this in a bundle I would say you owe it to yourself to try this. However if you own starcraft II already you might find this version of the game is slightly underpar in comparison to the free custom map. Its up to the dev to raise the bar for its steam release.",
+          "It's like Mafia or Werewolf, except that EVERYONE gets a fun role. There are many different roles that make every match different. One of the most addicting games I have ever played. You can play the browser version for free to determine whether you like it or not, but I'm pretty sure you will. Only bad thing are the occasional trolls and spammers."
+        ],
+        "col_index": [
+          4362036,
+          4362192
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Town of Salem is a cartoony witch trial simulator. Quick matchmaking and large community fills up the wait queues very fast. Roles are handed in secret, play your role and help your team wins. The learning curve is very manageable as most of the roles are intuitive enough. Value is not very clear here as the concept is a rip off from SCII custom map and the dev decided to add a cash shop on top of the game not being free to play. You can earn the rewards through enough grind and the rewards are mostly cosmetic except for an item which lets you pick a role. All in all I have a lot of fun in this game, and everything that ruins other communities like immaturity and trolling end up reinforcing this game's concept, making the trials hilarious and all in all people really do want to play their roles and win so the competitive edge can be very present, and when things go wrong then it is comedy gold even when the reasons are a little dubious. If you find this in a bundle I would say you owe it to yourself to try this. However if you own starcraft II already you might find this version of the game is slightly underpar in comparison to the free custom map. Its up to the dev to raise the bar for its steam release.",
+          "Please Note: The game does include people cursing like sailors. However, the most offensive words (N and Hitler [They are not offensive to me by the way]) are censored! Don't let the simple flash animation styled graphics or the over use of popular Youtube personalities that some people may not like fool you. Town of Salem is an addctivley fun game that has just the right amount of depth to not be overbearing on new players and veterans (not the class) to get along. The gameplay is a mixture of the popular card game Werewolf, but expanded upon by mixing another popular game Mafia. Don't let the idea of mixing two vastly different party games as a lazy attempt to make its own idenity. It is woven together in a way that puts most tripple AAA games that try to mix two differnent gameplay styles to shame. Every round you are chosen a random role from either a pre-set amount of roles, or completley randomly chosen. You are then supposed to use your class to either help save the town, kill the town, or everything in between. It is fun, enduring, and addictive as hell. You can write info into your will, or even if you are a killing role you can write a death note to really stir up the town. Every role, no matter how big or small, has their certain quirk that makes a difference during the game. The user friendly interface is just in most places. It gives you an overview of your role which is friendly new-player friendly. However, there are some instances where the revil button for the mayor, looks like the mediums' 'talk to the dead' button for the daytime, which can confuse new and old players into accidently reviling themselves which could make or break the round. Speaking of breaking rounds. Sometimes you get THOSE people who join the game and just try to cheat to make one team win. For example, a round I played had two friends, one was the mayor and the other was the mafia. When the mafia was winning the mayor started working with the mafia by ghosting and what the TOS community describes as 'game throwing' which is, while against the rules, still happens on occasions. For a game so simple in its visuals it is impressive that it pulls me in every round I play and really puts stress (the good kind) on me. If you have ever played a game like Trouble in Terrorist Town, or Murder the game evokes that kind of stress that really gets you pumped and wants to you to start up another round just to see if maybe this time you will help find the evil roles before they kill the town. The music is fantastic. Most of it is really short however from the fear building night theme that builds up to a point where even if you are the killing role you, yourself, may just believe that you are dead. The day theme is effective and simple along with most of the other tracks. The winning fanfare really truley is a prize to hear once you win a round and really feel like you made a difference in saving the town. The game runs like a console game. It chugs when all the players are walking to and from their houses during the day, and sometimes it chugs when nothing is going on (hovering around the 20-25fps marker) which may more be a problem with flash/HTML-5 then the game itself. Additionally the save your savings, so if you make it windowed, it will default back to full-screen when you relaunch it. This isn't much a problem for me as it is more of a problem for others with awkward resolutions. Overall Town of Salem is worth the 5 dollars on Steam. IF you feel you need to try it first, check it out on their website as it is completley free there! It shares the same servers as the Steam version so there are no differences (Besdies the Steam version running slightly Check it out, if you give it a few rounds to set it, I will assure you it will be worth your time! Can you survive the Town of Salem?"
+        ],
+        "col_index": [
+          4362036,
+          4361286
+        ]
+      }
+    },
+    "14": {
+      "call_0": {
+        "reviews": [
+          "This game has good cards in it. The best part is when you get more cards. The cards move well. Really good cards. Just look at these cards, they're probably the best cards in videogame history.",
+          "I am only milking it for the cards"
+        ],
+        "col_index": [
+          3164764,
+          3672434
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "NOW WITH STEAM CARDS!",
+          "Only play this for the cards"
+        ],
+        "col_index": [
+          235275,
+          3857132
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I picked this game up because I love trading card games. I've played a lot of YU-GI-OH back in the day and quite a lot of Magic the gathering and I'm familiar with a few other TCG's like Pok\u00e9mon and Duelmonsters and this game is really cheap. I'll admit right away that I didn't really like the game because this card game is not my cup of tea but I can imagine there are a lot of TCG fans out there that will like it. The game pretty much is a card game, you battle opponents, gain boosterpacks to change your deck and earn money to buy cards so you can take on stronger opponents. The game does have a storyline, all I know about it is that you have to collect the 8 legendary cards by defeating the holders of those cards so you can take on the champion of the game, but it's a card game so no need for a fancy story there anyway. Its kinda hard to explain how the card game works so it might be better looking up some gameplay videos but I'm gonna try anyway. Both players start with 7 shields (hp). You win the game if your opponent drops to 0 shields or if he can't play anymore cards. The playingfield consists of 3 by 3 spaces where you can play your cards, the goal is to create a combo of 3 cards and that will trigger a certain effect based on the types of the cards used in the combo which I'll explain later on. You must play one card a turn and you cannot remove any of the cards on the playingfield so if you donnot make combinations you'll run out of spaces and lose the game. There are 4 types of cards: defensive, offensive, revive and neutral. If you make a combination using 3 defensive cards you gain 3 shields, if you make a combination using 3 offensive cards you can deal 3 damage to the shields of your opponent or disable one of his cards on the playingfield, if a card is disabled it cannot be used for combinations and it just stays on the playingfield. Use a combination of 3 revive cards and you can re-enable a disabled card and neutral cards don't have any effect and are just used for making combinations. The way combinations are made is rather interesting. You can combine all 4 types of cards in the combinations, for example you can use 2 offensive cards and 1 defensive card in a combination, but ony one effect can happen based on the most cards of a single type within the combination so that means this combo does damage but does not give you additional shields and because there are only 2 offensive cards in the combo it only does 2 damage. The position of the cards on the playingfield also plays a role, the playingfield consists of 3 by 3 spaces and there are arrows on every card indicating in what directions they can make combo's, for example you place a card in the centre of the playingfield and it has 2 arrows, 1 pointing up and 1 pointing left. That means it can only make a combination with cards placed above or on the left of this card if however that card also has an arrow pointing towards it. I hope that kind of explained how the game works. The reason why I give the game a recomendation is because the card game is solid and I cannot deny that. Because it wasn't my cup of tea doesn't mean I cannot recomend it to others especially because it's cheap and solid. I won't give it a rating though because I would give it a low rating because there wasn't much fun to be had for me personally and I rate games based on the fun factor. If you like TCG's you should definitely try it because there is a fair chance you will like it and it's only 4 bucks (if not on sale). They're practicly giving it away.",
+          "Only play this for the cards"
+        ],
+        "col_index": [
+          3302125,
+          3857132
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "the steam cards are worth more than the game",
+          "This game has good cards in it. The best part is when you get more cards. The cards move well. Really good cards. Just look at these cards, they're probably the best cards in videogame history."
+        ],
+        "col_index": [
+          6373171,
+          3164764
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Only play this for the cards",
+          "I am only milking it for the cards"
+        ],
+        "col_index": [
+          3857132,
+          3672434
+        ]
+      }
+    },
+    "15": {
+      "call_0": {
+        "reviews": [
+          "Fun but short.",
+          "Short and "
+        ],
+        "col_index": [
+          3205473,
+          4487528
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Fun but short.",
+          "short, but good"
+        ],
+        "col_index": [
+          3205473,
+          4186038
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Very short but fun.",
+          "to short"
+        ],
+        "col_index": [
+          5948265,
+          4487807
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Very short but fun.",
+          "to short"
+        ],
+        "col_index": [
+          5948265,
+          4487807
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Short but very fun.",
+          "Very short but fun."
+        ],
+        "col_index": [
+          4184332,
+          5948265
+        ]
+      }
+    },
+    "16": {
+      "call_0": {
+        "reviews": [
+          "When life gives you lemons, buy an oil company",
+          "Squeezed lemons till I was a millionaire 10/10"
+        ],
+        "col_index": [
+          4530958,
+          4529328
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Time is an illusion. Everything is lemons.",
+          "It's like cookie clicker, but with lemons. If life is giving you lemons, don't make lemonade. Just play AdVenture Capitalist."
+        ],
+        "col_index": [
+          4528281,
+          4525948
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Squeezed lemons till I was a millionaire 10/10",
+          "When life gives you lemons, take those lemons and build a multimillionaire empire."
+        ],
+        "col_index": [
+          4529328,
+          4522424
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Im getting rich on lemons :D",
+          "Squeezed lemons till I was a millionaire 10/10"
+        ],
+        "col_index": [
+          4527930,
+          4529328
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Im getting rich on lemons :D",
+          "Squeezed lemons till I was a millionaire 10/10"
+        ],
+        "col_index": [
+          4527930,
+          4529328
+        ]
+      }
+    },
+    "17": {
+      "call_0": {
+        "reviews": [
+          "Last Dream is one of the best RPG Maker Games that I have ever played. The very fact that I spend 190+ hours on it and completed the game at least 10 times, should speak volume. The interesting thing about this game is the steam achievements. There are 236 steam achievements, which make it necessary to play the games many times to get all the achievements. There are achievements for playing each of the 8 character classes in the game. There are achievements to play the game at all 5 level of difficulties. Furthermore, there are achievements to kill every monster and every boss in the game. To do that you will need to play the game more than once, because different bosses appear towards the end game, based on earlier game decisions that you made at the beginning of the game. Hence to kill all the bosses, you need to finished the game, and then start a Newgame+ game and make DIFFERENT game decisions. There are also achievements for exploring every location, opening every treasure chest, solving every puzzle, finding every treasure, using sonar at every available location, etc. These achievements make it necessary for you to play the game very slowly so that you do not miss anything. Conversely there are aslo achievements that require you to play he game fast, like finishing the game in less than 10 hours, finishing the game in less than a certain number of steps, or killing certain monsters before your party reach certain levels. Then, there those really tedious achievements, like achievements for NOT staying at any inn throught the game, or achievements for saving the game less than 5 times!! I had to really crack my head on these achievements. Actually one of the most fun achievements in this game is the Ultimate Achievements. The user have to play the game on Legendary Difficulty, with the number of monster spawns set to Maximum (Grinding Level) and with savings disabled inside all dungeon. This is particularly difficult, especially during the final dungeon, called the Well of Soul, where all the monster, bosses and super boss is really out to kill you. without the developer must be quite a sadist. However, I had a lot of fun with that achievement too, and really wished that there were more games like 'Last Dream' that makes it interesting enough for me to play the same game more than 10 times!! I definitely get much more than my money's worth, playing the Last Dream and will definitely love to recommend the game to any RPG Maker fans out there. I love this game, and am looking for the expansion of Last Dream which is suppose to be available anytime now. In the meantime, I am having 'Last Dream' withdrawal symptoms, after about 194 hours of immersive game play.",
+          "Probs the game with most hacked achievements Still a nice puzzle to waste time with"
+        ],
+        "col_index": [
+          3159987,
+          3153294
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "It's short and insane, but it's fun! (And all the achievements are very easy to get)",
+          "Another game to get 100% achievements in a short time."
+        ],
+        "col_index": [
+          3719139,
+          3926677
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "It's short and insane, but it's fun! (And all the achievements are very easy to get)",
+          "Another game to get 100% achievements in a short time."
+        ],
+        "col_index": [
+          3719139,
+          3926677
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "did it for the achievements",
+          "Probs the game with most hacked achievements Still a nice puzzle to waste time with"
+        ],
+        "col_index": [
+          4586607,
+          3153294
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Last Dream is one of the best RPG Maker Games that I have ever played. The very fact that I spend 190+ hours on it and completed the game at least 10 times, should speak volume. The interesting thing about this game is the steam achievements. There are 236 steam achievements, which make it necessary to play the games many times to get all the achievements. There are achievements for playing each of the 8 character classes in the game. There are achievements to play the game at all 5 level of difficulties. Furthermore, there are achievements to kill every monster and every boss in the game. To do that you will need to play the game more than once, because different bosses appear towards the end game, based on earlier game decisions that you made at the beginning of the game. Hence to kill all the bosses, you need to finished the game, and then start a Newgame+ game and make DIFFERENT game decisions. There are also achievements for exploring every location, opening every treasure chest, solving every puzzle, finding every treasure, using sonar at every available location, etc. These achievements make it necessary for you to play the game very slowly so that you do not miss anything. Conversely there are aslo achievements that require you to play he game fast, like finishing the game in less than 10 hours, finishing the game in less than a certain number of steps, or killing certain monsters before your party reach certain levels. Then, there those really tedious achievements, like achievements for NOT staying at any inn throught the game, or achievements for saving the game less than 5 times!! I had to really crack my head on these achievements. Actually one of the most fun achievements in this game is the Ultimate Achievements. The user have to play the game on Legendary Difficulty, with the number of monster spawns set to Maximum (Grinding Level) and with savings disabled inside all dungeon. This is particularly difficult, especially during the final dungeon, called the Well of Soul, where all the monster, bosses and super boss is really out to kill you. without the developer must be quite a sadist. However, I had a lot of fun with that achievement too, and really wished that there were more games like 'Last Dream' that makes it interesting enough for me to play the same game more than 10 times!! I definitely get much more than my money's worth, playing the Last Dream and will definitely love to recommend the game to any RPG Maker fans out there. I love this game, and am looking for the expansion of Last Dream which is suppose to be available anytime now. In the meantime, I am having 'Last Dream' withdrawal symptoms, after about 194 hours of immersive game play.",
+          "I do not give a lot of achievements that for? "
+        ],
+        "col_index": [
+          3159987,
+          4453752
+        ]
+      }
+    },
+    "18": {
+      "call_0": {
+        "reviews": [
+          "Well, its a screensaver. A pretty damn good one. A game? Dono. I don't think it has any sort of gameplay or anything that has known game mechanics, but its pretty. If you like floating mountains, its pretty cool. I named my mountain Frankie.",
+          "Pretty much like an interactive screensaver."
+        ],
+        "col_index": [
+          4054725,
+          4443442
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Mountain Is Basically That Thing You Leave On When You Know Life Is Getting To Ya, Basically A Anime Screensaver That Looks Like It Dissaproves Of You, If You Don't Know What I Mean Then Life Must Be Completely Ignoring You, You Demon From Hell, I It's A Mountain, Theres Not Much I Can Say, But It Sure Makes Something Good To Laugh About With Your Friends.",
+          "i'm just gonna write a short review, as i don't wanna waste much time with this game. i kinda like this but i don't have the patience to wait for items to come. it's a great screensaver, but it would be much more fun to have more freedom in the game. for example you could spawn stuff, zoom further out, get free camera. that sort of stuff maybe control the weather, so you can affect your mountain, and if you don't do it correctly. something happens? i don't know, it just feels empty, but maybe that's just the way this game intended to be. i do recommend it tho, while i still regret buying it , as i don't use it as much wouldn't recommend to any of my friends, but i see why people would like it so a positive review TL;DR- not bad screensaver"
+        ],
+        "col_index": [
+          4054104,
+          4053238
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          " what to say about this game when it has so many things to I guess the best thing is you can play the piano while you I am Beethoven with a I am Mountain. 5 Mountains out of 5 Mountains",
+          "Well, its a screensaver. A pretty damn good one. A game? Dono. I don't think it has any sort of gameplay or anything that has known game mechanics, but its pretty. If you like floating mountains, its pretty cool. I named my mountain Frankie."
+        ],
+        "col_index": [
+          4054389,
+          4054725
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          " what to say about this game when it has so many things to I guess the best thing is you can play the piano while you I am Beethoven with a I am Mountain. 5 Mountains out of 5 Mountains",
+          "My Mountain died multiple times w/o any interaction. So yeah after 40+ hours of letting this run and streaming it, I will try to give a better review of what this title is. It is a screensaver that is claiming to be art, while titled a game. The game itself is labled with features such as no controls. This is false, the game will trigger events that can lead to mountain death, and there are interactions that you can take with the Mountain, and the objects that it attracts. I am sorry but text input is a control and affects how you 'play' this game. This is truly a mindless screensaver that is a scam. This is a sad attempt at art and should not be taken seriously. If you want a screensaver that will crash, and requires user input, then sure, this might be the right thing for you. If you really expect anything more than that, avoid this title."
+        ],
+        "col_index": [
+          4054389,
+          4053051
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I've actually 'played' this 'game' for about 1000 hours, because I set it as my screensaver. Mountain isn't a game. you can play music and throw junk around. It's best to leave it in the corner of your screen while you work, and occasionally look at it to see how it has changed. There is a thing that happens later into the game, thats actually quite distressing.",
+          "In short: interactive screensaver with 'some' stuff to do. 'Art stuff', not a real game. If you're into trying out weird concepts, it's certainly worth a few pennies / cents / whatever currency. You can basically interact with the mountain a little bit, play the piano (more or less), and 'unlock' certain features via playing melodies. Or just let it run, like some fancy screensaver / quote of the day box. Don't miss out on the games guide section: / Slight cons: this game is actually quite performance heavy, more than it should be. So keeping it open all the time might cause quite some undesirable load on lower end system."
+        ],
+        "col_index": [
+          4055346,
+          4051844
+        ]
+      }
+    },
+    "19": {
+      "call_0": {
+        "reviews": [
+          "rats is not bad, but you!!!",
+          "As bad as rats."
+        ],
+        "col_index": [
+          4550778,
+          4554874
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "the game bad rats should have been",
+          "The rats are bad and so is the game"
+        ],
+        "col_index": [
+          4058828,
+          4554479
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Sometimes when a really good game comes out, i get really into it and it engulfs my very being. bad rats is a very exception to this. as i played bad rats i found it repulsive and very bad rats. but i found a charm underneath the bad rats that shows that bad rats can bad rats. but bad rats will bad rats that bad rats can really be a real bad rats without bad rats bad rats. bad rats bad rats but bad rats bad rats, bad rats bad rats bad rats bad rats bad rats bad rats, bad rats bad rats bad rats. bad rats bad rats bad rats bad rats; bad rats bad rats bad rats, bad rats bad rats bad rats. bad rats. 10/10 would badrats again",
+          "These rats are bad."
+        ],
+        "col_index": [
+          4547503,
+          4549595
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The rats are bad and so is the game",
+          "Bad Rats gave me a holocuast flashback"
+        ],
+        "col_index": [
+          4554479,
+          4546957
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It's bad rats.",
+          "bad rats isn't a game. bad rats is a lyfestyle"
+        ],
+        "col_index": [
+          4550110,
+          4548867
+        ]
+      }
+    },
+    "20": {
+      "call_0": {
+        "reviews": [
+          "is gud fun time baby killin'",
+          "Pretty Gud Game!"
+        ],
+        "col_index": [
+          247213,
+          4361194
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is too gud for u",
+          "This is gud."
+        ],
+        "col_index": [
+          5257462,
+          103312
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is gud.",
+          "such gud geim lov to plei when im alone in the derk full of dark"
+        ],
+        "col_index": [
+          103312,
+          5357795
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Rely gud",
+          "Its A gud gaim"
+        ],
+        "col_index": [
+          151767,
+          4012538
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Gud game, worth the moolah.",
+          "Its Gud."
+        ],
+        "col_index": [
+          5252179,
+          83877
+        ]
+      }
+    },
+    "21": {
+      "call_0": {
+        "reviews": [
+          "Geometry dash is a awesome and really addicting game, if bored get geometry dash! Geometry dash is worth the money you pay!",
+          "I like playing Geometry Dash."
+        ],
+        "col_index": [
+          4156362,
+          4153227
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I like playing Geometry Dash.",
+          "Geometry Dash is one of the best games. I have 58 hours"
+        ],
+        "col_index": [
+          4153227,
+          4161554
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Geometry Dash you the BEST GAME",
+          "Geometry dash = the best thing ever"
+        ],
+        "col_index": [
+          4156884,
+          4161822
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Geometry Dash you the BEST GAME",
+          "Geometry dash is a awesome and really addicting game, if bored get geometry dash! Geometry dash is worth the money you pay!"
+        ],
+        "col_index": [
+          4156884,
+          4156362
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Wow!! Steam Geometry dash is very big update. Mobile Geometry dash is very tired, but steam Geomrtry dash very fun. Steam Geometry dash very good choice.",
+          "Geometry Dash Is The Best"
+        ],
+        "col_index": [
+          4158534,
+          4160632
+        ]
+      }
+    },
+    "22": {
+      "call_0": {
+        "reviews": [
+          "Coconut is best cat",
+          "i dont want to look at my cat now"
+        ],
+        "col_index": [
+          4334536,
+          4334659
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Cat in the house there no mouse i dont now what to do Whooooooooo let the cat in? IT'S NOT A CAT IT'S A FLY AND IM GOING TO DESTROY IT IF IT MEANS DESTROYING THE WORLD!!!!!!!! scary game",
+          "The Cat and the Coup: simply delectable!"
+        ],
+        "col_index": [
+          4567664,
+          6393900
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game teached me that I need a cat.",
+          "i dont want to look at my cat now"
+        ],
+        "col_index": [
+          3227811,
+          4334659
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Now I understand my cat.",
+          "Cat in the house there no mouse i dont now what to do Whooooooooo let the cat in? IT'S NOT A CAT IT'S A FLY AND IM GOING TO DESTROY IT IF IT MEANS DESTROYING THE WORLD!!!!!!!! scary game"
+        ],
+        "col_index": [
+          4281597,
+          4567664
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "The Cat and the Coup: simply delectable!",
+          "The ultimate first person cat-simulator! You play as a badass cat and in this game you go on a rampage around in different houses/stages. The goal is simple, break objects by knocking them down to the floor trash the place, in two different modes. Has a wide selection of cats and even 'Fart Cat', which farts instead of meowing. It's a purrrrfect cat game and it's fun, with enjoyable music. If you like cute cats and always wanted to be a cat that's breaking things, then you might like this :3!"
+        ],
+        "col_index": [
+          6393900,
+          4281403
+        ]
+      }
+    },
+    "23": {
+      "call_0": {
+        "reviews": [
+          "The single player experience is a little short, clocking in at around 6 hours for me. However, everything else about this game is thoroughly enjoyable. I play games on GNU/Linux exclusively and the performance for this game on my OS is great. The art direction is top notch, as in the last two games. Everything about this entry feels like a worthy addition to the Trine franchise. There are some things different in this game, most notably the lack of skill progression. I know former Trine fans might really miss that, but honestly I felt rather ambivalent about it myself. I does it really make much sense anymore anyways? For me, I love Trine for its light-hearted storybook-style fairy tale setting and story. It actually kind of bugged me that if you played the first Trine you started off in Trine 2 without some of the skills you gained in the first one, and some don't even exist in Trine 2 that existed in the first Trine. Likewise when people complain that Amadeus can no longer conjure more than 1 box at a time in Trine 3, I have only to remind everyone about the lack of floating platforms in Trine 2, other player abilities, equipment in chests, etc. So, it's not without precedent. I actually think it's good to see Frozenbyte trying to stretch out and experiment. Accordingly, having the freedom to move along the Z axis in 3D is a great addition. At first I was skeptical and thought it might be too confusing or change up the core gameplay mechanic. But, how it's implemented is done really well. It's different enough to be interesting, but subtle enough to keep things familiar and intuitive. Really, the biggest thing for me (as I mentioned earlier) is the story, and Trine 3 presents something very intriguing that recontextualizes the two prior entries in the franchise. I don't want to give any spoilers away, but suffice it to say the game goes back to its roots and sets out to answer a question I hadn't really thought to ask before: what is the Trine in the first place? What is *its* origin? It's not just this new revelation either. The game also goes back to its roots in bringing back skeletons and other darker elements seen in the first Trine. I actually played Trine 2 first, so going back to the first Trine felt a bit disjointed at first, since the story seemed more epic and a little darker. Trine 3 manages to keep the light-hearted fun tone of Trine 2 while telling a story more on par with the first Trine. Sadly, it looks like the devs were shooting for a story scope that would fit the epic premise of Trine 3. I say sadly, because the game ends rather abruptly on a cliffhanger. Maybe in the future with a DLC or two the story presented can be properly finished. I know some players could look at this as some kind of money grab, since in the past with Trine 2 its DLC expansion was truly an expansion, with the original story relatively standing alone. But, y'know, even there there's precedent. Plenty of films have ended on cliffhangers, and $8 for a 2 hour film at the theatre is still more expensive than $22 for a 6 hour game--especially when said game also includes multiplayer. (Disclaimer: I actually only purchased the game while it was on sale here recently, but mainly that's because I was waiting to get the game once the Linux version exited Beta). All in all, I would definitely recommend getting this game if you like the Trine series. It's definitely different than the prior entries, but if you go into it with an open mind you might just be pleasantly surprised.",
+          "Trine 3 isn't my favourite Trine game. The character powers are a bit lacking, the game has a few bugs, and it is short. But with saying that, I still had fun playing! Trine 3 is very pretty to look at! -Of course It's Trine!- and I do just luv the Trine world. So, if you can get passed the few bugs it has and the length of the game - I'm sure you'd enjoy it. I'd recommend Trine 3 if it was on sale."
+        ],
+        "col_index": [
+          4132871,
+          4133340
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "UPDATE Still love this game, my first trine game is trine 2 and I love it and i decide to play trine 1, and still make me enjoy the music, story, gameplay, this is more than casual game. funny to play with my friends, i never try trine 3 but so many people say it bad, I see it change into 3D, I love trine with 2D and please dont destroy what you make from trine1, still waiting for trine 4. Final score: 10/10",
+          "This was a real blast to play; the first few levels are worse than the levels in Trine 2, but eventually the levels become of a calliber that far exceeds the levels in Trine 2. Especially the end level was one that I had a lot of fun in. Overall, I'd say that Trine 1 is better than Trine 2, as Trine 1 feels more difficult whereas Trine 2 is more of a walk in the park. But, Trine 2 has better artwork, though Trine 1's artwork is nothing to scoff at."
+        ],
+        "col_index": [
+          4641692,
+          4641762
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Not as good as Trine 2.",
+          "Trine 2 was better"
+        ],
+        "col_index": [
+          4643228,
+          4133201
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "A sad end to a great Game Series. Trine 1 and Trine 2 are great games Trine 3 is to short and to easy. It\u00b4s still a fun game.",
+          "Trine 3 isn't my favourite Trine game. The character powers are a bit lacking, the game has a few bugs, and it is short. But with saying that, I still had fun playing! Trine 3 is very pretty to look at! -Of course It's Trine!- and I do just luv the Trine world. So, if you can get passed the few bugs it has and the length of the game - I'm sure you'd enjoy it. I'd recommend Trine 3 if it was on sale."
+        ],
+        "col_index": [
+          4133940,
+          4133340
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This was a real blast to play; the first few levels are worse than the levels in Trine 2, but eventually the levels become of a calliber that far exceeds the levels in Trine 2. Especially the end level was one that I had a lot of fun in. Overall, I'd say that Trine 1 is better than Trine 2, as Trine 1 feels more difficult whereas Trine 2 is more of a walk in the park. But, Trine 2 has better artwork, though Trine 1's artwork is nothing to scoff at.",
+          "A sad end to a great Game Series. Trine 1 and Trine 2 are great games Trine 3 is to short and to easy. It\u00b4s still a fun game."
+        ],
+        "col_index": [
+          4641762,
+          4133940
+        ]
+      }
+    },
+    "24": {
+      "call_0": {
+        "reviews": [
+          "You pass the whiskey, YOU HAVE TO PASS THE WHISKEY Whiskey/10",
+          "P-P-Pass the Whiskey"
+        ],
+        "col_index": [
+          3118542,
+          3115415
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "pass the whiskey.",
+          "pass de whiskey"
+        ],
+        "col_index": [
+          3116424,
+          3122447
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "You pass the whiskey, YOU HAVE TO PASS THE WHISKEY Whiskey/10",
+          "What was this game about again? 'Pass the Whiskey' wasn't it?"
+        ],
+        "col_index": [
+          3118542,
+          3118744
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "pass the whiskey.",
+          "What was this game about again? 'Pass the Whiskey' wasn't it?"
+        ],
+        "col_index": [
+          3116424,
+          3118744
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Pass the whiskey.",
+          "P-P-Pass the Whiskey"
+        ],
+        "col_index": [
+          3112912,
+          3115415
+        ]
+      }
+    },
+    "25": {
+      "call_0": {
+        "reviews": [
+          "Super Smash on quack.",
+          "Quack. That is all"
+        ],
+        "col_index": [
+          4021354,
+          4023149
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Super Smash on quack.",
+          "Quack game"
+        ],
+        "col_index": [
+          4021354,
+          4024671
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Super Smash on quack.",
+          "Quack game"
+        ],
+        "col_index": [
+          4021354,
+          4024671
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "As of this review, I have quacked over 56 thousand times. This game is more addicting than quack cocaine! This is a silly game for some fun with friends. (It does help if you learn the maps and weapons!) It's one of the best steam games I have. Special thanks to MrRocka26 for sending it my way! :D For those of you who have fully become ducks, here is the duck version of the review. Quack quack, quack quackity. Quack quack quack! Quack quack quack quack. (Quack quack quack quack!) Quack quack quack. Quack quack quack quackquack quack! :D",
+          " would quack again."
+        ],
+        "col_index": [
+          4021741,
+          4023269
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Quack? A question asked throughout the ages. This game not only is the most amazing and realisting duck immersion experience, but answers that question. Quack? Quack. QUACK QUACK Yes, this game is for you. Your friends may look at it with disgust, BUT THEY ARE NO MATTER! QUACK QUACK QUACK QUACK. This game made me realise that I am a duck in a human's body. I am getting surgery to attatch a beak and feathers to my body. Quack? QUACK! 10/10 would quack again",
+          "Quack. That is all"
+        ],
+        "col_index": [
+          4023044,
+          4023149
+        ]
+      }
+    },
+    "26": {
+      "call_0": {
+        "reviews": [
+          "2nd most fun I've had with 2 fingers.",
+          "Flash version of Dark Souls aka my head and fingers hurt"
+        ],
+        "col_index": [
+          3073401,
+          5331867
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "My fingers are all dead.",
+          "hand hurts lol"
+        ],
+        "col_index": [
+          3076186,
+          170123
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Kind of like DDR but with using your fingers.",
+          "My fingers are all dead."
+        ],
+        "col_index": [
+          3230711,
+          3076186
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Kind of like DDR but with using your fingers.",
+          "Flash version of Dark Souls aka my head and fingers hurt"
+        ],
+        "col_index": [
+          3230711,
+          5331867
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I can't feel my eyes 10/10",
+          "rt if you broke your fingers playing this game"
+        ],
+        "col_index": [
+          4533317,
+          4152395
+        ]
+      }
+    },
+    "27": {
+      "call_0": {
+        "reviews": [
+          "I got cancer :/",
+          "If cancer was a "
+        ],
+        "col_index": [
+          3219541,
+          4550569
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This 'game' gave me cancer.",
+          "This game is cancer stay away"
+        ],
+        "col_index": [
+          4437863,
+          4125832
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "this game gave me cancer.",
+          "Cancer!"
+        ],
+        "col_index": [
+          152936,
+          4326068
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "this game gave me cancer.",
+          "Cancer!"
+        ],
+        "col_index": [
+          152936,
+          4326068
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Cancer Game.",
+          "This game is cancer stay away"
+        ],
+        "col_index": [
+          4523832,
+          4125832
+        ]
+      }
+    },
+    "28": {
+      "call_0": {
+        "reviews": [
+          "wheres refund",
+          "I got this for free and still want a refund"
+        ],
+        "col_index": [
+          3074082,
+          3309580
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "refund while you have the chance to :)",
+          "I got this for free and still want a refund"
+        ],
+        "col_index": [
+          3153356,
+          3309580
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "wheres refund",
+          "Bought with NMS refund"
+        ],
+        "col_index": [
+          3074082,
+          4056941
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "wheres refund",
+          "i want a refund (please)"
+        ],
+        "col_index": [
+          3074082,
+          97319
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Can I refund",
+          "i do not like this game i want a refund please"
+        ],
+        "col_index": [
+          5271191,
+          45754
+        ]
+      }
+    },
+    "29": {
+      "call_0": {
+        "reviews": [
+          "Braid is a platforming puzzle game which was released on Xbox Live initially in 2008 before later being ported onto PC in 2009. You play the character, Tim, as you attempt to rescue the princess from a monster (very cliche!). Game play in Braid looks like a very generic puzzle platformer on face value, however with the addition of the special ability to manipulate time by rewinding and fast forwarding, you can find yourself in some very unique situations. The other gameplay elements are very much the same though, running, jumping and climbing around a standard platforming environment. Each level in the game adds a little bit of a change to the time bending ability which keeps things fresh each time you progress. Braid is a very simple looking game; the graphics are standard two 2D style, however they do have a very pleasing charm to it. The art style within the game is just gorgeous to look at. The art work alone apparently took over a year to produce, and you can really tell a huge amount of heart and effort went into creating it. The plot in Braid is very intriguing indeed. You are certainly in for a few twists and turns and very unpredictable outcomes throughout - I was personally in no way shape or form expecting the end of the game to end up how it did; and that is a nice change from a game since they can sometimes become very predictable. After finishing the game, you are able to find additional text that expand the story even further too. The music used in Braid was selected by the developer himself, from licensed music, this was done to reduce the cost in the development stage. What I really liked about the music is that each tune has a different feel to it when you re-wind time in game; its a really small element, but it makes a huge difference to how you feel when playing. I found Braid to be a difficult game; purely because I am the worst person possible when it comes to 1) Puzzles and 2) Platformers. Put the two together and it's just a mess. At times I had to resort to a trusty walkthrough to work it out, but for the majority of the time I was able to figure out each level on my own. Puzzle veterans may well find this game's puzzles to be easy, and still struggle on the platforming element to it! Braid took me just over six hour to complete; this was purely a run through the story mode; there are a lot of Jigsaw pieces to find in the game which result in achievements, so will add a couple more hours of gameplay. Some of which are unobtainable at the first time of coming across them, so a little bit of replaying older levels is needed to collect them all. However I personally see no reason to replay the game only for the achievements. The story and gameplay 100% linear. I had no technical problems whilst playing. Braid can be played at all resolutions up to 4k in windowed mode and full screen. A controller, as always with platformers is highly recommended to play but can also be played with keyboard. To sum up, I am only going to Recommend Braid, simply because the two genres put together are my least favorite of all time, however take that with a pinch of salt because if you really enjoy puzzle/platformers, then this game is certainly for you and you need to pick it up, even at the full price of \u00a36,99 this game is a steal! Tom's Score Card 1) Stay away 2) Only recommended when on sale 3) Recommended 4) Highly recommended 5) This is a must play If you found this review helpful, please consider giving it a thumbs up. You can also find more reviews over at / ",
+          "A nice little puzzle/platformer with a unique style."
+        ],
+        "col_index": [
+          3174386,
+          3123645
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A nice little puzzle/platformer with a unique style.",
+          "Braid is a platforming puzzle game which was released on Xbox Live initially in 2008 before later being ported onto PC in 2009. You play the character, Tim, as you attempt to rescue the princess from a monster (very cliche!). Game play in Braid looks like a very generic puzzle platformer on face value, however with the addition of the special ability to manipulate time by rewinding and fast forwarding, you can find yourself in some very unique situations. The other gameplay elements are very much the same though, running, jumping and climbing around a standard platforming environment. Each level in the game adds a little bit of a change to the time bending ability which keeps things fresh each time you progress. Braid is a very simple looking game; the graphics are standard two 2D style, however they do have a very pleasing charm to it. The art style within the game is just gorgeous to look at. The art work alone apparently took over a year to produce, and you can really tell a huge amount of heart and effort went into creating it. The plot in Braid is very intriguing indeed. You are certainly in for a few twists and turns and very unpredictable outcomes throughout - I was personally in no way shape or form expecting the end of the game to end up how it did; and that is a nice change from a game since they can sometimes become very predictable. After finishing the game, you are able to find additional text that expand the story even further too. The music used in Braid was selected by the developer himself, from licensed music, this was done to reduce the cost in the development stage. What I really liked about the music is that each tune has a different feel to it when you re-wind time in game; its a really small element, but it makes a huge difference to how you feel when playing. I found Braid to be a difficult game; purely because I am the worst person possible when it comes to 1) Puzzles and 2) Platformers. Put the two together and it's just a mess. At times I had to resort to a trusty walkthrough to work it out, but for the majority of the time I was able to figure out each level on my own. Puzzle veterans may well find this game's puzzles to be easy, and still struggle on the platforming element to it! Braid took me just over six hour to complete; this was purely a run through the story mode; there are a lot of Jigsaw pieces to find in the game which result in achievements, so will add a couple more hours of gameplay. Some of which are unobtainable at the first time of coming across them, so a little bit of replaying older levels is needed to collect them all. However I personally see no reason to replay the game only for the achievements. The story and gameplay 100% linear. I had no technical problems whilst playing. Braid can be played at all resolutions up to 4k in windowed mode and full screen. A controller, as always with platformers is highly recommended to play but can also be played with keyboard. To sum up, I am only going to Recommend Braid, simply because the two genres put together are my least favorite of all time, however take that with a pinch of salt because if you really enjoy puzzle/platformers, then this game is certainly for you and you need to pick it up, even at the full price of \u00a36,99 this game is a steal! Tom's Score Card 1) Stay away 2) Only recommended when on sale 3) Recommended 4) Highly recommended 5) This is a must play If you found this review helpful, please consider giving it a thumbs up. You can also find more reviews over at / "
+        ],
+        "col_index": [
+          3123645,
+          3174386
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Braid is a modern day visual masterpiece. Crafted by true artist, and refined to perfection. It brings together several very original gameplay concepts, a subtle and mysterious storyline, that all just mesh into one special experience. Put in its most simple terms, Braid is a unique puzzle game. Have I hyped the game up enough? Nay I say unto you. Nay! Braid is classic. It could have come out 15 years ago and would still be just as good. Braid is a side scrollin\u2019 action platformer. You\u2019ll start each level at the far left side, and you\u2019re objective is to reach the far right side. Its pretty much Mario Bros game in that sense. You can\u2019t punch, attack, or shoot anything. You\u2019re only offensive weapon is your ability to inexplicably kill foes when making contact with the top of their heads with your feet. What sets Braid\u2019s gameplay apart and makes it so darn special, is its manipulation of time and space. At any point in the game, you can turn back time. You just simply press the \u201cX\u201d button and you can go all the way back to the beginning of the level. Even when your character dies, you can still turn back time and come back to life. But don\u2019t think for a second that you\u2019re adventure is going to be a breeze just because you can turn back time. Oh boy do things get dicey! Each level is a labyrinth filled with key, locked doors, foes, flame pits, seemingly insurmountable gaps and walls. Its a madhouse. If I were to tell you half of the things I experienced in Braid, you\u2019d all think I was a madman. There are some things you just have to experience for yourself. As you progress through the storyline, you\u2019ll unlock new abilities. You\u2019ll need to use these abilities in conjunction with other abilities to pass most levels. And its not super easy to know which ability to use. For example, in Zelda you\u2019ll have a certain color block that you can use a hammer on. Or a block that you can hookshot to. Braid is not at all like that, its more like building a house. The game supplies you with the required tools and the lumber, but you need to make your own blueprints and build it yourself. It feels like a big sandbox playground of wonder and delight. Braid looks spectacular. Downloadable game or not, Braid is a work of art. To me, each level resembles a a fluid watercolor painting. There is so much originality and detail. Its almost otherworldly. The sound track and music is all original and composed. I have actually downloaded several of the tracks and I listen to them sometimes when I\u2019ve surfing the net. Also, one thing the game does, is whenever you turn back time, the musical track will also play backward. Each level contains a couple of hidden or hard to reach puzzle pieces. You\u2019ll need to collect all of these puzzle pieces in order to reach the final level. You will really need to stretch your mind sometimes to figure out exactly how to get some of the pieces in the latter level. But it can be extremely rewarding once you do figure it out. One thing I will strongly suggest against; DO NOT USE GAMEFAQS! Its ok to use Gamefaqs for some games, but don\u2019t use it for this one. There is no reward in cheating in a puzzle game. Just use your mind, or get a friends opinion on what to do. You\u2019ll thank me when all is said and done. Since its original release on the Xbox 360, Braid has been ported to the PC and the Playstation 3. All three versions are spectacular. I haven\u2019t liked a puzzle game as much as Braid since I played Shadow of the Colossus about 5 years ago. They both provide a sense of ambiguous anxiety that I love when approaching a puzzle. Braid a masterpiece of art, a series of modern day puzzle/riddles, and just basically an overall fun game. Easiest 5/5 all year. Written April 2010 for website allgamesplayed given a 5 out of 5",
+          "i like flow of the puzzles."
+        ],
+        "col_index": [
+          3175953,
+          3395699
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "A good puzzle platformer with a unique art style. Quite short though.",
+          "When you start Another Perspective one thing immediately becomes clear. And that\u2019s how much it looks like Braid, another puzzle platformer from a couple of years ago (which, to this day, is still mighty brilliant). Not only that, but you also have to use clones. So in a way it\u2019s also very similar to The Swapper. Again, another amazing game. The puzzles, however, are what make it different and unique from these other games and overall they're pretty good. And wow, this game made my brain hurt sometimes, and I mean that in the most positive sense possible. Some of the puzzles are pretty hard and require patience and dedication. Once you \u2018see\u2019 the solution it\u2019s actually very obvious, like most of the puzzles out there. Now, not all of the puzzles were difficult. It varies greatly in its difficulty. That\u2019s also partly because of its narration, which basically consist of text lines shown during the levels that try to explain the \u2018story\u2019, or the general idea behind it. At first I thought it was shallow but the further I got the deeper the narration became and by the end I was truly intrigued by the lesson it tried to \u2018teach\u2019 me. As I said, the graphics are reminiscent to those of Braid, so it has a style that looks like everything\u2019s made with watercolor paint. It looks pretty, but it\u2019s also very dark at the same time. The lighting is done very well, and gives the game a bit more style. It would\u2019ve been nice if it used some variety in its backgrounds instead of just showing black but I can\u2019t argue with the developer here as it\u2019s an artistic choice. There\u2019s only music; there is no voice acting here. The game doesn\u2019t need any and the music is relaxing and fits the genre. It doesn\u2019t want to push you forward but wants to let you play at your own leisure, which is absolutely a good thing. Especially if you want/need to think things through. There were some typos in some of the narrated lines. I don\u2019t think these were intentional and I suppose they could be fixed with a patch. It didn\u2019t break the game or anything, but it did pull me out of the experience, even if it was for just a little bit. A minor problem, in any case. Another Perspective isn\u2019t a very long game, depending of course on how good you are at solving puzzles. It will take roughly between 30 minutes and 2 hours to complete the story. After that you can start the Mystery mode which gives you even more puzzles and apparently a different, real ending, so I guess there must be even more to the story than I originally thought. I have to be honest and say that I haven\u2019t completed the Mystery mode (yet) but I think it\u2019s safe to say that you can add 30-60 minutes to the total playtime, maybe even more. Well, well, well, time to wrap things up: If you enjoyed Braid and The Swapper you really shouldn\u2019t have to think twice. It might not have the same narration or complex puzzles as those games have but it still manages to stand on its own two feet. And even if you haven\u2019t played those games \u2013 or as long as you enjoy puzzle games in general - this is absolutely a fine experience to begin with. [Rating: 76/100]"
+        ],
+        "col_index": [
+          5753662,
+          3910944
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Braid: A 2D platformer, puzzle game. The goal is to collect all of the puzzle pieces by completing puzzles, then put them together. Pros: +Great gameplay +Makes you think +Fun +Great music Cons: -Short game, about 5 hours of gameplay, start to finish, not including challenges or star collection. -Story is very difficult to follow -Some puzzle pieces are very, very difficult to get. -Only 6 worlds with a few levels in each world, plus one final boss level. Conclusion: This is a great game, but it's short. Buy it on sale.",
+          "Braid is a platforming puzzle game which was released on Xbox Live initially in 2008 before later being ported onto PC in 2009. You play the character, Tim, as you attempt to rescue the princess from a monster (very cliche!). Game play in Braid looks like a very generic puzzle platformer on face value, however with the addition of the special ability to manipulate time by rewinding and fast forwarding, you can find yourself in some very unique situations. The other gameplay elements are very much the same though, running, jumping and climbing around a standard platforming environment. Each level in the game adds a little bit of a change to the time bending ability which keeps things fresh each time you progress. Braid is a very simple looking game; the graphics are standard two 2D style, however they do have a very pleasing charm to it. The art style within the game is just gorgeous to look at. The art work alone apparently took over a year to produce, and you can really tell a huge amount of heart and effort went into creating it. The plot in Braid is very intriguing indeed. You are certainly in for a few twists and turns and very unpredictable outcomes throughout - I was personally in no way shape or form expecting the end of the game to end up how it did; and that is a nice change from a game since they can sometimes become very predictable. After finishing the game, you are able to find additional text that expand the story even further too. The music used in Braid was selected by the developer himself, from licensed music, this was done to reduce the cost in the development stage. What I really liked about the music is that each tune has a different feel to it when you re-wind time in game; its a really small element, but it makes a huge difference to how you feel when playing. I found Braid to be a difficult game; purely because I am the worst person possible when it comes to 1) Puzzles and 2) Platformers. Put the two together and it's just a mess. At times I had to resort to a trusty walkthrough to work it out, but for the majority of the time I was able to figure out each level on my own. Puzzle veterans may well find this game's puzzles to be easy, and still struggle on the platforming element to it! Braid took me just over six hour to complete; this was purely a run through the story mode; there are a lot of Jigsaw pieces to find in the game which result in achievements, so will add a couple more hours of gameplay. Some of which are unobtainable at the first time of coming across them, so a little bit of replaying older levels is needed to collect them all. However I personally see no reason to replay the game only for the achievements. The story and gameplay 100% linear. I had no technical problems whilst playing. Braid can be played at all resolutions up to 4k in windowed mode and full screen. A controller, as always with platformers is highly recommended to play but can also be played with keyboard. To sum up, I am only going to Recommend Braid, simply because the two genres put together are my least favorite of all time, however take that with a pinch of salt because if you really enjoy puzzle/platformers, then this game is certainly for you and you need to pick it up, even at the full price of \u00a36,99 this game is a steal! Tom's Score Card 1) Stay away 2) Only recommended when on sale 3) Recommended 4) Highly recommended 5) This is a must play If you found this review helpful, please consider giving it a thumbs up. You can also find more reviews over at / "
+        ],
+        "col_index": [
+          3175743,
+          3174386
+        ]
+      }
+    }
+  }
+}

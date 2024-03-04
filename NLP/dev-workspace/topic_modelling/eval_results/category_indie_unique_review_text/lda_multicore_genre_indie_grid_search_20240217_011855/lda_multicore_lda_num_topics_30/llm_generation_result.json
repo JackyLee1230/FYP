@@ -1,0 +1,1776 @@
+{
+  "new_topic_labels": {
+    "0": {
+      "call_0": "\nTopic Label: \"Worth the Money\"",
+      "call_1": "\nThe output is:\n\n''Btw Lemons.\nMust buy at any price \u2713\nWorth the money but wait for a small sale \u2718\nWait for a huge discount \u2718\nAvoid at all costs \u2718''\n\nExplanation:\n\n* `Btw Lemons` is a heading or title.\n* `Must buy at any price \u2713` means that the user has to buy it regardless of the price.\n* `Worth the money but wait for a small sale \u2718` means that the product is worth buying, but the user should wait for a sale to get a better price.\n* `Wait for a huge discount \u2718` means that the user should wait for a significant discount before purchasing the product.\n* `Avoid at all costs \u2718` means that the user should not buy the product under any circumstances, even if it's on sale or discounted.",
+      "call_2": "\nTopic Label: Cheap Game",
+      "call_3": "\nTopic Label: \"Worth It\"",
+      "call_4": "Cheap game"
+    },
+    "1": {
+      "call_0": "\nTopic: \"War AI Simulator\"",
+      "call_1": "\nTopic Label: War Drive",
+      "call_2": "Topic Label: War Simulator",
+      "call_3": "Topic Label: Realistic City Driving Simulator",
+      "call_4": "\nTopic Label: \"War on Wheels\""
+    },
+    "2": {
+      "call_0": "\nTopic Label: \"Challenging but Enjoyable\"",
+      "call_1": "\nTopic Label: Fun Game with Limited Content",
+      "call_2": "\nTopic Label: Good Game with Limited Content",
+      "call_3": "\nTopic: Enjoyable, but lacking content\nLabel: Good, but limited",
+      "call_4": "\nLabel: Happy Gaming"
+    },
+    "3": {
+      "call_0": "\nTopic Label: SCARY GAME",
+      "call_1": "\nTopic Label: \"Free Scary Game\"",
+      "call_2": "\nLabel: \"The Moon\"",
+      "call_3": "\n\"Mobile Freebie\"",
+      "call_4": "\nTopic Label: Worth Playing On Mobile"
+    },
+    "4": {
+      "call_0": "\nRage-Inducing Fun",
+      "call_1": "\nTopic Label: Addictive Fun",
+      "call_2": "\nTopic Label: Addictive Fun",
+      "call_3": "\nTopic Label: Slow-Paced Story",
+      "call_4": "\nTopic Label: Underwhelming experience with too much repetition"
+    },
+    "5": {
+      "call_0": "\nTopic Label: Action-Packed RPG",
+      "call_1": "\nTopic Label: Crawler Fun",
+      "call_2": "\nTopic Label: Action-Packed RPG Adventure",
+      "call_3": "\nTopic: Action-Packed Strategy RPG with Magic Coins\nLabel: Magic Battle",
+      "call_4": "\nTopic Label: Action-Packed Strategy RPG"
+    },
+    "6": {
+      "call_0": "\nTopic Label: \"Controversial World\"",
+      "call_1": "\nTopic Label: Terraria",
+      "call_2": "\nTopic: Terraria",
+      "call_3": "\nTopic: Building Worlds\nLabel: Fun Adventure",
+      "call_4": "\nTopic Label: Adventure Building"
+    },
+    "7": {
+      "call_0": "\nCool Game",
+      "call_1": "\nTopic Label: Addictive Fun",
+      "call_2": "\nTopic Label: Cool Game",
+      "call_3": "\nLabel: Awesome",
+      "call_4": "\"Cool Game with Too Much Cheese\""
+    },
+    "8": {
+      "call_0": "\nTopic: Good Music Game with Nice Graphics and Challenging Gameplay",
+      "call_1": "\nTopic Label: Indie Gem",
+      "call_2": "\nRetro Platformer Delight",
+      "call_3": "\nTopic: Nice Game with Beautiful Graphics and Good Gameplay\nLabel: NiceGame",
+      "call_4": "Topic: Beautiful Game with Nice Gameplay and Good Storyline"
+    },
+    "9": {
+      "call_0": "\nTopic: \"Spending too much time playing the game\"\nLabel: \"Life sucks when you're stuck in the game\"",
+      "call_1": "\nTopic Label: \"Buy It\"",
+      "call_2": "\nTopic Label: Goat Game",
+      "call_3": "\nTopic: \"Disappointing and Frustrating Experience with Too Much Madness\"\nLabel: \"Madness Abounds\"",
+      "call_4": "\nTopic: Must-Buy Game"
+    },
+    "10": {
+      "call_0": "\nLabel: Innovative Shooter",
+      "call_1": "\nLabel: SuperHot",
+      "call_2": "\n Label: Innovative Shooter",
+      "call_3": "Innovative Shooter",
+      "call_4": "\nTopic: Superhot\nLabel: Innovative Shooter"
+    },
+    "11": {
+      "call_0": "\nTopic Label: \"Shoot-'em-up\"",
+      "call_1": "\nTopic Label: Shooting Frenzy",
+      "call_2": "\nTopic Label: Death in a Pit of Spikes",
+      "call_3": "\"Gun-Fest\"",
+      "call_4": "\nTopic Label: Pew Pew"
+    },
+    "12": {
+      "call_0": "\nTopic Label: Time",
+      "call_1": "\nTopic Label: Surreal Adventure",
+      "call_2": "\nTopic Label: \"Night Walk\"",
+      "call_3": "\nTopic Label: \"Rats' Reign\"",
+      "call_4": "\nTopic Label: Pinball"
+    },
+    "13": {
+      "call_0": "\nTopic: Game Crashes\nLabel: \"Game Crashes\"",
+      "call_1": "\nTopic: Frustrating Gameplay\nLabel: Annoying",
+      "call_2": "\nTopic: Frustrating game with too much repetition.\nLabel: Annoying",
+      "call_3": "Topic: Crashes and bugs in the game.\nLabel: \"Game Crashes\"",
+      "call_4": "\nTopic: Mouse Issues\n\nLabel: Crashes"
+    },
+    "14": {
+      "call_0": "\nTopic Label: Challenging Fun",
+      "call_1": "\nTopic Label: \"Challenging Fun\"",
+      "call_2": "\nTopic Label: \"Challenging Fun\"",
+      "call_3": "\nTopic Label: \"Easy to Learn, Hard to Master\"",
+      "call_4": "\nTopic Label: Addictive Challenge"
+    },
+    "15": {
+      "call_0": "\"Suicide by Mine\"",
+      "call_1": "Topic Label: Tables Flipped",
+      "call_2": "\"FLIP TABLES\"",
+      "call_3": "\"FLIP THE TABLES!\"",
+      "call_4": "\"Painful Game\""
+    },
+    "16": {
+      "call_0": "\nShort Visual Novel",
+      "call_1": "\nTopic Label: \"Sakura Game\"",
+      "call_2": "\nTopic: Disappointing Ending with Too Many Questions",
+      "call_3": "\nTopic Label: Dark Visual Novel",
+      "call_4": "\nTopic Label: Unconventional Storytelling"
+    },
+    "17": {
+      "call_0": "\nTopic Label: \"Funny Card Boy\"",
+      "call_1": "\nTopic Label: \"Weird Meat Boy\"",
+      "call_2": "Topic Label: Funny Card Boy Meat Joke",
+      "call_3": "Funny Boy Meat",
+      "call_4": "\nTopic Label: \"Meat Boy's Weird Adventure\""
+    },
+    "18": {
+      "call_0": "\nTopic Label: Bad Game, Good Fun",
+      "call_1": "\nLabel: \"Underwhelming Experience with Too Much Repetition\"",
+      "call_2": "Label: Bad but Good",
+      "call_3": "\nTopic Label: \"Bad but Good\"",
+      "call_4": "\"Bad rat\""
+    },
+    "19": {
+      "call_0": "\nTopic Label: \"Toxic Fun\"",
+      "call_1": "\nTopic Label: \"Scream-inducing Fun\"",
+      "call_2": "\nTopic Label: \"Cat Lady Game\"",
+      "call_3": "\nTopic Label: \"Cute Anime Screams\"",
+      "call_4": "\nTopic Label: Anime Cat Game"
+    },
+    "20": {
+      "call_0": "\nTopic: Fun and Engaging Game to Play with Friends\nLabel: FunGame",
+      "call_1": "\nTopic Label: Fun Game for Friends",
+      "call_2": "\nTopic Label: Fun Game for Social Gatherings",
+      "call_3": "\nTopic Label: Fun Game",
+      "call_4": "\nTopic Label: Fun Multiplayer Game"
+    },
+    "21": {
+      "call_0": "\nTopic Label: \"Great Game\"",
+      "call_1": "\nTopic Label: Old School RPG",
+      "call_2": "\nTopic Label: Great Old-School Mystery Game",
+      "call_3": "\nTopic Label: Old School Fun",
+      "call_4": "\n\"Amazing Game with Great Soundtrack\""
+    },
+    "22": {
+      "call_0": "\nTopic Label: Broken Game",
+      "call_1": "\nTopic Label: Game Developer Responsive",
+      "call_2": "Topic Label: Abandoned Game",
+      "call_3": "\nTopic Label: Broken Game",
+      "call_4": "\nTopic Label: Must-Have Game"
+    },
+    "23": {
+      "call_0": "\nTopic Label: Broken Multiplayer",
+      "call_1": "\nTopic Label: Online Multiplayer Gaming",
+      "call_2": "\nTopic Label: Multiplayer Disaster",
+      "call_3": "\nTopic Label: Disconnected",
+      "call_4": "\nTopic Label: \"Chinese-Only Multiplayer Mode\""
+    },
+    "24": {
+      "call_0": "\"Whiskey\"",
+      "call_1": "\nTopic: \"Whiskey and Reviews\"",
+      "call_2": "\nTopic: Whiskey\n\nLabel: \"Whiskey, oh whiskey\"",
+      "call_3": "\nIt seems that the input you provided is a string of text that appears to be a copy of a longer piece of text. The string contains multiple instances of the phrase \"SUPER HOT\" followed by a series of random letters and symbols.\n\nI cannot accurately interpret or analyze this string of text as it does not contain any meaningful information or context. It is possible that this is a result of a bug or error in your code, or it could be a deliberate attempt to create a nonsensical string for testing purposes.\n\nIf you have any further questions or concerns, please feel free to ask!",
+      "call_4": "\"Whiskey Pass\""
+    },
+    "25": {
+      "call_0": "\nHorror Fanfare",
+      "call_1": "\nHorror masterpiece",
+      "call_2": "\nLabel: Lovecraftian Horror Experience",
+      "call_3": "\nHorror Fanfare",
+      "call_4": "\nTopic Label: \"Creepy Horror Game\""
+    },
+    "26": {
+      "call_0": "\nTopic Label: Pomf-tastic",
+      "call_1": "\nTopic Label: \"Starship Defense\"",
+      "call_2": "Topic Label: Fun Space Defense Game",
+      "call_3": "\nTopic Label: Bleep Blop Land",
+      "call_4": "\nTopic Label: Bleep Bloop"
+    },
+    "27": {
+      "call_0": "Physics Puzzle Game",
+      "call_1": "Puzzle Platformer Challenge",
+      "call_2": "\nTopic Label: Challenging Space Platformer",
+      "call_3": "\nTopic Label: Puzzle Adventure",
+      "call_4": "\nChallenge Puzzle"
+    },
+    "28": {
+      "call_0": "Epic.",
+      "call_1": "\n\"Beauty in brutality\"",
+      "call_2": "\nTopic Label: Epic Classic",
+      "call_3": "\nTopic Label: \"Hack and Slash Masterpiece\"",
+      "call_4": "\nTopic: \"Absolutely Epic\"\nLabel: \"Sexy?\""
+    },
+    "29": {
+      "call_0": "\nTopic Label: Unconventional Fun",
+      "call_1": "\nTopic Label: Game of Giant Rock Rollers",
+      "call_2": "\nTopic Label: Underwhelming Experience with Unique Level Design",
+      "call_3": "\nTopic Label: Underwhelming Experience with Limited Freedom",
+      "call_4": "\nLabel: Underwhelming experience with too much repetition."
+    }
+  },
+  "randomed_topic_reviews": {
+    "0": {
+      "call_0": {
+        "reviews": [
+          "Must buy at any price [\u2713] Worth the money but wait for a small sale [x] Wait for a huge discount [x] Avoid at all costs [x]",
+          "money money money money money money money money money money"
+        ],
+        "col_index": [
+          68921,
+          4531299
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "*Starts game, and gets more then a Million dollars in less then an hour* MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY!MONEY! Btw Lemons.",
+          "Must buy at any price [\u2713] Worth the money but wait for a small sale [x] Wait for a huge discount [x] Avoid at all costs [x]"
+        ],
+        "col_index": [
+          4524766,
+          68921
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "money money money money money money money money money money",
+          "I bought this for about \u00a33 during a sale. It usually costs \u00a310 which is ridiculous, the game took me 2 hours to complete, which is something you'd expect from a cheap game. The game itself was good but it's not worth it unless it's on sale."
+        ],
+        "col_index": [
+          4531299,
+          3398706
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I bought this for about \u00a33 during a sale. It usually costs \u00a310 which is ridiculous, the game took me 2 hours to complete, which is something you'd expect from a cheap game. The game itself was good but it's not worth it unless it's on sale.",
+          "Must buy at any price [\u2713] Worth the money but wait for a small sale [x] Wait for a huge discount [x] Avoid at all costs [x]"
+        ],
+        "col_index": [
+          3398706,
+          68921
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money, Money!",
+          "I bought this for about \u00a33 during a sale. It usually costs \u00a310 which is ridiculous, the game took me 2 hours to complete, which is something you'd expect from a cheap game. The game itself was good but it's not worth it unless it's on sale."
+        ],
+        "col_index": [
+          4529670,
+          3398706
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "A few lines of text can't do this game justice. It's just something you need to witness on your own...",
+          "DONALD TRUMP SIM 2020 is the next name for this because this is DONALD TRUMP SIM 2020"
+        ],
+        "col_index": [
+          3438341,
+          4521222
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A few lines of text can't do this game justice. It's just something you need to witness on your own...",
+          "Total war This is how you should handle AI  ;)"
+        ],
+        "col_index": [
+          3438341,
+          3923981
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis",
+          "DONALD TRUMP SIM 2020 is the next name for this because this is DONALD TRUMP SIM 2020"
+        ],
+        "col_index": [
+          4553750,
+          4521222
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis why is there a Z axis",
+          "I drove the truck and listened to the radio. 10/10 would drive the truck again."
+        ],
+        "col_index": [
+          4553750,
+          3243855
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Total war This is how you should handle AI  ;)",
+          "Police car drive through your trailer, and you get fine 1800$..."
+        ],
+        "col_index": [
+          3923981,
+          3240819
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "its hard. like really hard.  like reallly really hard. like really really really hard. like really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really hard. but its alright. (did i mention its hard?)",
+          "I love the game but i think they should add more things to do.But in all i really like it.If i were to rate it i would rate it a 8/10 its a really good game but there not much to do.:)"
+        ],
+        "col_index": [
+          4407392,
+          3745019
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I like this game, but i really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really Like this game :3",
+          "I love the game but i think they should add more things to do.But in all i really like it.If i were to rate it i would rate it a 8/10 its a really good game but there not much to do.:)"
+        ],
+        "col_index": [
+          76061,
+          3745019
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "I LOVE this game! I REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY Recommend you play this game!",
+          "I love the game but i think they should add more things to do.But in all i really like it.If i were to rate it i would rate it a 8/10 its a really good game but there not much to do.:)"
+        ],
+        "col_index": [
+          136115,
+          3745019
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I love the game but i think they should add more things to do.But in all i really like it.If i were to rate it i would rate it a 8/10 its a really good game but there not much to do.:)",
+          "This game made me feel happy.   I like things that make me feel happy.   I like things that make me feel."
+        ],
+        "col_index": [
+          3745019,
+          6184015
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "I LOVE this game! I REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY Recommend you play this game!",
+          "This game made me feel happy.   I like things that make me feel happy.   I like things that make me feel."
+        ],
+        "col_index": [
+          136115,
+          6184015
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "Alright lets play this.. *SCARY SOUNDS* Nope, nope, nope, nope, nope, nope, nope, nope, nope, nope, nope, nope, nope, nope, nope.",
+          "I couldn't stand playing anymore. SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!SO SCARY!"
+        ],
+        "col_index": [
+          6093952,
+          6097052
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "dont play on pc play ios or xbox 360 or xbox ONE",
+          "it a mobile port (and the phone version is free and has more content)"
+        ],
+        "col_index": [
+          97751,
+          3125130
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "dont play on pc play ios or xbox 360 or xbox ONE",
+          "This game is neat and all, but... What happened to 1 the moon, 2 the moon, 3 the moon, 4 the moon, 5 the moon, 6 the moon, 7 the moon, 8 the moon, 9 the moon, 10 the moon, 11 the moon, 12 the moon, 13 the moon, 14 the moon, 15 the moon, 16 the moon, 17 the moon, 18 the moon, 19 the moon, 20 the moon, 21 the moon, 22 the moon, 23 the moon, 24 the moon, 25 the moon, 26 the moon, 27 the moon, 28 the moon, 29 the moon, 30 the moon, 31 the moon, 32 the moon, 33 the moon, 34 the moon, 35 the moon, 36 the moon, 37 the moon, 38 the moon, 39 the moon, 40 the moon, 41 the moon, 42 the moon, 43 the moon, 44 the moon, 45 the moon, 46 the moon, 47 the moon, 48 the moon, 49 the moon, 50 the moon, 51 the moon, 52 the moon, 53 the moon, 54 the moon, 55 the moon, 56 the moon, 57 the moon, 58 the moon, 59 the moon, 60 the moon, 61 the moon, 62 the moon, 63 the moon, 64 the moon, 65 the moon, 66 the moon, 67 the moon, 68 the moon, 69 the moon, 70 the moon, 71 the moon, 72 the moon, 73 the moon, 74 the moon, 75 the moon, 76 the moon, 77 the moon, 78 the moon, 79 the moon, 80 the moon, 81 the moon, 82 the moon, 83 the moon, 84 the moon, 85 the moon, 86 the moon, 87 the moon, 88 the moon, 89 the moon, 90 the moon, 91 the moon, 92 the moon, 93 the moon, 94 the moon, 95 the moon, 96 the moon, 97 the moon, 98 the moon, 99 the moon, 100 the moon...      ...6161 the moon, 6162 the moon, 6163 the moon, 6164 the moon, 6165 the moon, 6166 the moon, 6167 the moon, 6168 the moon, 6169 the moon, 6170 the moon, 6171 the moon, 6172 the moon, 6173 the moon, 6174 the moon, 6175 the moon, 6176 the moon, 6177 the moon, 6178 the moon, and 6179 the moon?"
+        ],
+        "col_index": [
+          97751,
+          3757470
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "it a mobile port (and the phone version is free and has more content)",
+          "You can get it for free in the app/play store on mobile"
+        ],
+        "col_index": [
+          3125130,
+          3493371
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "dont play on pc play ios or xbox 360 or xbox ONE",
+          "it a mobile port (and the phone version is free and has more content)"
+        ],
+        "col_index": [
+          97751,
+          3125130
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "Play level, die, rage.  Exit game, rest for while. Play level, die, rage. 10/10 would play and rage again.",
+          "Here's a video I made taking a look at the start of this game.         YouTube\u2122 Video:  Let's look at Platformines&nbsp;"
+        ],
+        "col_index": [
+          4150475,
+          3083385
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Play . Die. Play. Die. Play Again never get bored 10/10",
+          "Orcs. They must die. DIE! DIE! DIE! DIE! DIE! DIE! DIE!!"
+        ],
+        "col_index": [
+          4013171,
+          37339
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Play . Die. Play. Die. Play Again never get bored 10/10",
+          "Boring and just 50 min gameplay lol probably 40 min if you dont fail in any level."
+        ],
+        "col_index": [
+          4013171,
+          3913485
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Very slow story. I didn't even get to a part of the game where I could make choices. It's super slow, no gameplay at all for the first part of the story and I don't want to play more because it's too boring.",
+          "Orcs. They must die. DIE! DIE! DIE! DIE! DIE! DIE! DIE!!"
+        ],
+        "col_index": [
+          4059726,
+          37339
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Boring and just 50 min gameplay lol probably 40 min if you dont fail in any level.",
+          "Play level, die, rage.  Exit game, rest for while. Play level, die, rage. 10/10 would play and rage again."
+        ],
+        "col_index": [
+          3913485,
+          4150475
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "Very good with large area to explore and more things to find and unlock with bosses and many enemies.",
+          "+11/10  Can do anything in this game !  Build your own houses.   Have Mounts  Boss battles  Be a mage, warrior, archer and have pets !  Many places to explore"
+        ],
+        "col_index": [
+          119477,
+          114168
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "It's like... a Zelda dungeon crawler thing, with gross themes. But anyway, randomized dungeons, with randomized selections of rooms, with randomized selections of layouts, with randomized selections of enemies, etc... Tons of items, random drops. You get the point, it's very fun and very replayable.",
+          "Very good with large area to explore and more things to find and unlock with bosses and many enemies."
+        ],
+        "col_index": [
+          243463,
+          119477
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "its amazing i love it so many new things to explore new bosses to fight lots of action over 100 enimeis lot of events",
+          "+11/10  Can do anything in this game !  Build your own houses.   Have Mounts  Boss battles  Be a mage, warrior, archer and have pets !  Many places to explore"
+        ],
+        "col_index": [
+          79437,
+          114168
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "LOVE THIS GAME!!!! It has a good mix of action and chill and strait up strategy this game has lots going for it as long as they keep pushing DLC. Thair is replayability in this game and many different ways to escape i rate it 8.5/10",
+          "Coin Crypt is a game where you huck magic coins at other people that are also hucking magic coins at you. When you huck enough coins at them, they'll die and you can steal whatever coins they didn't use. Bretty good game."
+        ],
+        "col_index": [
+          3746290,
+          3083670
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "LOVE THIS GAME!!!! It has a good mix of action and chill and strait up strategy this game has lots going for it as long as they keep pushing DLC. Thair is replayability in this game and many different ways to escape i rate it 8.5/10",
+          "A+. This game has everything you need in an adventure/fighting game: A lot of different content to explore, and a lot of different types of weapons. Also, many referances were made in this game. lol"
+        ],
+        "col_index": [
+          3746290,
+          136223
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "Hatoful Boyfriend was everything I wanted and more. Who doesn't want to live in a world where beastiality is the only reality?",
+          "I JUST CALLED THE COP TO COME AND GET YOU MOTHERF***RS!!!!! I HATE THIS F**KING GAME!!!! I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT I HATE IT !!!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          3952580,
+          3735889
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Terraria is an amazing, open-world adventure/survival game.",
+          "I hate this game. I hate this game. I hate this game. I hate this game. I hate this game!"
+        ],
+        "col_index": [
+          134775,
+          5330474
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Imagine 2D MineCraft. Now imagine it better than MineCraft. Now you have Terraria!",
+          "I hate this game. I hate this game. I hate this game. I hate this game. I hate this game!"
+        ],
+        "col_index": [
+          125127,
+          5330474
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "fun...If you prefer adventuring more than building then Terraria over Minecraft, if u prefer building over adventuring then Minecraft over Terraria",
+          "Hatoful Boyfriend was everything I wanted and more. Who doesn't want to live in a world where beastiality is the only reality?"
+        ],
+        "col_index": [
+          84762,
+          3952580
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Terraria is an amazing, open-world adventure/survival game.",
+          "Imagine a world where you can build anything you want....  Now imagine an adventure. Terraria is a fusion."
+        ],
+        "col_index": [
+          134775,
+          125899
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "This is a cool cool game for cool cool peoples.",
+          "its cool cool cool"
+        ],
+        "col_index": [
+          4628530,
+          3744518
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Simple game, cool concept and ADDICTIVE AS HELL!",
+          "This is a cool cool game for cool cool peoples."
+        ],
+        "col_index": [
+          246704,
+          4628530
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "its cool cool cool",
+          "cool, cool cool cool"
+        ],
+        "col_index": [
+          3744518,
+          5334306
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Awesome, an awesome clash of awesome stuff",
+          "This is a cool cool game for cool cool peoples."
+        ],
+        "col_index": [
+          402405,
+          4628530
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this game in nutshell No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^No cheese for you! ^_^",
+          "its cool cool cool"
+        ],
+        "col_index": [
+          4370233,
+          3744518
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "This is a really solid top down shooter. I expect to go back to this quite a bit. Nice gameplay loop making you go back for one more try. Nice artwork too. Recommended!",
+          "A nice little indie game with good graphics, a nice plot, a good challenge, and bronies. 8/10"
+        ],
+        "col_index": [
+          4386648,
+          4586743
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A really well executed game; and even though the sound and graphics are minimalist, it looks beautiful and the sounds effects are great \u2013 perfectly fit the mood of the game.",
+          "A nice little indie game with good graphics, a nice plot, a good challenge, and bronies. 8/10"
+        ],
+        "col_index": [
+          5757647,
+          4586743
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "What a great retro-style platformer. Quite a surprise...  Extremely fluid controls, solid and challenging level design. Sound and music are perfectly suited and not annoying.  For something basic, this is really about as good as it gets. Recommended to any fan of 2D platformers.",
+          "This is a really solid top down shooter. I expect to go back to this quite a bit. Nice gameplay loop making you go back for one more try. Nice artwork too. Recommended!"
+        ],
+        "col_index": [
+          3212634,
+          4386648
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "A really well executed game; and even though the sound and graphics are minimalist, it looks beautiful and the sounds effects are great \u2013 perfectly fit the mood of the game.",
+          "Beautiful graphics, nice gameplay and a good storyline. A little short though. But I'd definitely recommend this game. 9/10"
+        ],
+        "col_index": [
+          5757647,
+          162147
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A really well executed game; and even though the sound and graphics are minimalist, it looks beautiful and the sounds effects are great \u2013 perfectly fit the mood of the game.",
+          "Beautiful graphics, nice gameplay and a good storyline. A little short though. But I'd definitely recommend this game. 9/10"
+        ],
+        "col_index": [
+          5757647,
+          162147
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "\u015e\u0394\u0141V\u0394\u0110\u00d8\u0158\u2122 23 hours ago  \u0441\u00ed\u0438\u010f\u0443 \ud83d\udca4 : LMFAO wuat\u015e\u0394\u0141V\u0394\u0110\u00d8\u0158\u2122 23 hours ago  \u0441\u00ed\u0438\u010f\u0443 \ud83d\udca4 : LMFAO wuat\u015e\u0394\u0141V\u0394\u0110\u00d8\u0158\u2122 23 hours ago  \u0441\u00ed\u0438\u010f\u0443 \ud83d\udca4 : LMFAO wuat\u015e\u0394\u0141V\u0394\u0110\u00d8\u0158\u2122 23 hours ago  \u0441\u00ed\u0438\u010f\u0443 \ud83d\udca4 : LMFAO wuat",
+          "Goat is love. Goat is life. We are all goat now. Goat/Goat, would Goat."
+        ],
+        "col_index": [
+          6013479,
+          3129818
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "GOATS!! GOAT GOAT GOAT GOAT!!!! &lt;Turns into goat and eats computer&gt; GOAT!!!!!!!   10/10 would turn into goat again.",
+          "This game is AMAZING if you need something to do alone, BUY IT! If you need something to do with friends BUY IT! If you need something to do BUY IT!!!!!! 10/10"
+        ],
+        "col_index": [
+          3129236,
+          129065
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Goat is love. Goat is life. We are all goat now. Goat/Goat, would Goat.",
+          "GOATS!! GOAT GOAT GOAT GOAT!!!! &lt;Turns into goat and eats computer&gt; GOAT!!!!!!!   10/10 would turn into goat again."
+        ],
+        "col_index": [
+          3129818,
+          3129236
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Goat goaty goat goat goatyness goats goat goat baaahhhhhh goat.  Goaty goat goaty goat goat goat goat.",
+          "why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?why you heff to be mad?"
+        ],
+        "col_index": [
+          3140693,
+          3234934
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "BUY IT BUY IT BUY IT! BUY IT NOW BUY IT LATER BUY IT YESTERDAY!  IF YOU DON'T BUY IT! than you won't own the game...",
+          "i bought this game a day ago didnt get a chance to play it until 5 hours ago ive now played 5 hours   nuff said.."
+        ],
+        "col_index": [
+          3128204,
+          4186674
+        ]
+      }
+    },
+    "10": {
+      "call_0": {
+        "reviews": [
+          "superHot is thE most innovative game i've pLayed in years suPerhot is the Most innovativE shooter i've played in years superhot Is the most innovAtive gaMe i've played in years superhoT is the most innovative game i've played in yeaRs superhot is the most innovAtive game i've Played in years suPErhot is the most innovative game i've playeD in years",
+          "The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best"
+        ],
+        "col_index": [
+          4183726,
+          87305
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best",
+          "superHot is thE most innovative game i've pLayed in years suPerhot is the Most innovativE shooter i've played in years superhot Is the most innovAtive gaMe i've played in years superhoT is the most innovative game i've played in yeaRs superhot is the most innovAtive game i've Played in years suPErhot is the most innovative game i've playeD in years"
+        ],
+        "col_index": [
+          87305,
+          4183726
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS!",
+          "this game is a frikken trip at your fingertips. its the best free game ive ever played. PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT PLAY IT  THE CAKE IS NOT A LIE"
+        ],
+        "col_index": [
+          4183919,
+          3735698
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS!",
+          "superHot is thE most innovative game i've pLayed in years suPerhot is the Most innovativE shooter i've played in years superhot Is the most innovAtive gaMe i've played in years superhoT is the most innovative game i've played in yeaRs superhot is the most innovAtive game i've Played in years suPErhot is the most innovative game i've playeD in years"
+        ],
+        "col_index": [
+          4186519,
+          4183726
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS! SUPERHOT IS THE MOST INNOVATIVE SHOOTER I'VE PLAYED IN YEARS!",
+          "The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best The best The Best"
+        ],
+        "col_index": [
+          4183919,
+          87305
+        ]
+      }
+    },
+    "11": {
+      "call_0": {
+        "reviews": [
+          "Zombie Wave starts:   'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'   Simple Game? :D",
+          "Died in a pit of spikes, turned back time, and proceeded to die in the same pit of spikes.  10/10 would die in a pit of spikes again"
+        ],
+        "col_index": [
+          5221732,
+          3176028
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Shoot bullets shoot shoot Shoot all the things must die shoot Shoot laz0rz shoot SHOOOOOOOOOOOOOOOOOOOOOOT!",
+          "+Guns +Guns +Guns made of guns +Guns made of guns made of guns +Tower made of guns +Gandalfbot and the Hibbot"
+        ],
+        "col_index": [
+          4535237,
+          3155916
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Died in a pit of spikes, turned back time, and proceeded to die in the same pit of spikes.  10/10 would die in a pit of spikes again",
+          "Zombie Wave starts:   'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'  'Shoot!' 'Shoot!' 'Shoot!' 'Shoot!'   Simple Game? :D"
+        ],
+        "col_index": [
+          3176028,
+          5221732
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot shoot",
+          "+Guns +Guns +Guns made of guns +Guns made of guns made of guns +Tower made of guns +Gandalfbot and the Hibbot"
+        ],
+        "col_index": [
+          5354340,
+          3155916
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This game can be summarized in a few words: 'Pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew......................................................................................pew '  11/10 would pew.",
+          "Died in a pit of spikes, turned back time, and proceeded to die in the same pit of spikes.  10/10 would die in a pit of spikes again"
+        ],
+        "col_index": [
+          3467654,
+          3176028
+        ]
+      }
+    },
+    "12": {
+      "call_0": {
+        "reviews": [
+          "This hill need time to grow into the mountain,and your life need time to become more colourful.Everything around us just need time to change themselves.Only time...",
+          "my sister started a new game when i was on night 5 never got back to night 5 10/10 would beat up my sister again"
+        ],
+        "col_index": [
+          4051907,
+          4116993
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "fell down a hole couldn't get out needed life alert didn't have enough wood to craft    10/10 would fall again",
+          "I woke up with this 'game' in my library and a used condom in my pocket after going to a party the night before and blacking out on Xanax. Perhaps i need to rethink my life."
+        ],
+        "col_index": [
+          99984,
+          4452241
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Night 1: c d +  Night 2: c d +  Night 3: c d +  Night 4: c d +  Night 5: c d +  Night 6 c d +  20/20/20/20: c d +",
+          "SPOILER ALERT:   Old lady walks around.   She might die.   Game over."
+        ],
+        "col_index": [
+          4124605,
+          3229224
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "rats,rats we're the rats we prey at night,we stalk at night we're the rats  I'M THE GIANT RAT THAT MAKES ALL OF THE RULES",
+          "This hill need time to grow into the mountain,and your life need time to become more colourful.Everything around us just need time to change themselves.Only time..."
+        ],
+        "col_index": [
+          4547349,
+          4051907
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "At one time in my life I used to travel to all the places around town that had pinball. Bars, Laundramats, etc, that time has come to an end, AND FINally I can merge my dnding with my pinballing. Man what an 80'sed out day and age we live in.",
+          "SPOILER ALERT:   Old lady walks around.   She might die.   Game over."
+        ],
+        "col_index": [
+          3046666,
+          3229224
+        ]
+      }
+    },
+    "13": {
+      "call_0": {
+        "reviews": [
+          "Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart",
+          "Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click Click"
+        ],
+        "col_index": [
+          3335681,
+          4521723
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Left right left left right right right right right left left left left left right left right right right right left left left right left right left right right right Left right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right right... WHEN IS THIS ROUND OVER WITH!!! OOOO I beat the round!!! well i guess I can play one more. Left right left left right right right right right left left left left left right left right right right right left left left right left right...",
+          "Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart"
+        ],
+        "col_index": [
+          3076974,
+          3335681
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Left right left left right right right right right left left left left left right left right right right right left left left right left right left right right right Left right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right rightLeft right left left right right right right right left left left left left right left right right right right left left left right left right left right right right... WHEN IS THIS ROUND OVER WITH!!! OOOO I beat the round!!! well i guess I can play one more. Left right left left right right right right right left left left left left right left right right right right left left left right left right...",
+          "One word to describe this game : D\u00e9j\u00e0 vu  ps : need endings for olga and viola too. I dont mind screwing up older ladies  And for the time being, I'll keep on clicking click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click"
+        ],
+        "col_index": [
+          3076974,
+          4302257
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart Press R To Restart",
+          "click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click click"
+        ],
+        "col_index": [
+          3335681,
+          3923219
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes,Crashes, but no hackers",
+          "Click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click.   Dammit you need a new mouse...   1 hour later...   Click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click, click..."
+        ],
+        "col_index": [
+          6013955,
+          4161716
+        ]
+      }
+    },
+    "14": {
+      "call_0": {
+        "reviews": [
+          "I played on expert mode for to long now expert mode is easy.  10/10 would make game easy again!",
+          "Easy to pick up and play, incredibly hard to master. This game will keep you on your toes and challenge your reflexes!"
+        ],
+        "col_index": [
+          70588,
+          3838012
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I love this game... so simple, but yet so addicting... Easy to learn, hard to master. :3",
+          "Easy to play, hard to master, this game can give you everything or nothing and it is skill that will get you through it. This is a complete gem."
+        ],
+        "col_index": [
+          3831300,
+          243409
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Easy to play , very hard too put down , hard to master! Love it!",
+          "Easy to play, hard to master, this game can give you everything or nothing and it is skill that will get you through it. This is a complete gem."
+        ],
+        "col_index": [
+          3077657,
+          243409
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "I played on expert mode for to long now expert mode is easy.  10/10 would make game easy again!",
+          "I love this game... so simple, but yet so addicting... Easy to learn, hard to master. :3"
+        ],
+        "col_index": [
+          70588,
+          3831300
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Easy to play , very hard too put down , hard to master! Love it!",
+          "Easy to pick up, difficult to master. Endless replay value. Get it."
+        ],
+        "col_index": [
+          3077657,
+          4021745
+        ]
+      }
+    },
+    "15": {
+      "call_0": {
+        "reviews": [
+          "the suicide rat goes against allah and the islamic state ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR",
+          "Kills self with mine, kills self with mine again, kills self with mine AGAIN. 10/10 Would kill self with mine again."
+        ],
+        "col_index": [
+          4553829,
+          3350484
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Poked Cthulu's eye and brain. 10/10 would poke again",
+          "(\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b FLIP THAT TABLE.  \u253b\u2501\u253b \ufe35 \u30fd(\u00b0\u25a1\u00b0\u30fd) FLIP THIS TABLE.  \u253b\u2501\u253b \ufe35 \uff3c\\('0')/\uff0f \ufe35 \u253b\u2501\u253b FLIP ALL THE TABLES  \u0ca0_\u0ca0 Son... \u0ca0_\u0ca0 Put.  \u0ca0__\u0ca0 The tables.  \u0ca0___\u0ca0 Back.  (\u256e\u00b0-\u00b0)\u256e\u2533\u2501\u2533  (\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b NEVER\u200f\u200f\u200f\u200f!  \u0ca0_\u0ca0  (\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b \u253b\u2501\u253b  (\u0ca0_\u0ca0)\u250c\u2229\u2510  (\u256e\u00b0-\u00b0)\u256e\u253b\u2501\u253b  \u0ca0__\u0ca0 \u2533\u2501\u2533 \u2533\u2501\u2533 \u2533\u2501\u2533  (\u256e\u22df\ufe4f\u22de)\u256e     Don't flip tables. Please."
+        ],
+        "col_index": [
+          84705,
+          3500894
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "(\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b FLIP THAT TABLE.  \u253b\u2501\u253b \ufe35 \u30fd(\u00b0\u25a1\u00b0\u30fd) FLIP THIS TABLE.  \u253b\u2501\u253b \ufe35 \uff3c\\('0')/\uff0f \ufe35 \u253b\u2501\u253b FLIP ALL THE TABLES  \u0ca0_\u0ca0 Son... \u0ca0_\u0ca0 Put.  \u0ca0__\u0ca0 The tables.  \u0ca0___\u0ca0 Back.  (\u256e\u00b0-\u00b0)\u256e\u2533\u2501\u2533  (\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b NEVER\u200f\u200f\u200f\u200f!  \u0ca0_\u0ca0  (\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b \u253b\u2501\u253b  (\u0ca0_\u0ca0)\u250c\u2229\u2510  (\u256e\u00b0-\u00b0)\u256e\u253b\u2501\u253b  \u0ca0__\u0ca0 \u2533\u2501\u2533 \u2533\u2501\u2533 \u2533\u2501\u2533  (\u256e\u22df\ufe4f\u22de)\u256e     Don't flip tables. Please.",
+          "3/10 is gud game i high me buy game play bad i can see ball shoot up down and around no comprende, this game is worse than fergeson. also i shall send isis to attack bad rats creator! the suicide rat goes against allah and the islamic state!!!!!!!!!!!!!!!!!!! ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR"
+        ],
+        "col_index": [
+          3500894,
+          4546917
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "the suicide rat goes against allah and the islamic state ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR",
+          "(\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b FLIP THAT TABLE. \u253b\u2501\u253b \ufe35 \u30fd(\u00b0\u25a1\u00b0\u30fd) FLIP THIS TABLE.  \u253b\u2501\u253b \ufe35 \uff3c\\('0')/\uff0f \ufe35 \u253b\u2501\u253b FLIP ALL THE TABLES! \u0ca0_\u0ca0 bob... \u0ca0_\u0ca0 Put. \u0ca0__\u0ca0 The tables. \u0ca0___\u0ca0 Back. (\u256e\u00b0-\u00b0)\u256e\u2533\u2501\u2533 (\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b NEVER!"
+        ],
+        "col_index": [
+          4553829,
+          3502029
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "3/10 is gud game i high me buy game play bad i can see ball shoot up down and around no comprende, this game is worse than fergeson. also i shall send isis to attack bad rats creator! the suicide rat goes against allah and the islamic state!!!!!!!!!!!!!!!!!!! ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR ALLAHU AKBAR",
+          "Poked Cthulu's eye and brain. 10/10 would poke again"
+        ],
+        "col_index": [
+          4546917,
+          84705
+        ]
+      }
+    },
+    "16": {
+      "call_0": {
+        "reviews": [
+          "This is quite a short visual novel. It's one of those kinetic novel! (No choices)  There's not much to it, you can expect at most 30 to 40 minutes of reading.  The story is short, and quite a bit developed.",
+          "It's definitely something different. You can kind of have to make sense of it first, there's no hand holding so you are just thrown right into it, Solid atmosphere, but I wish the story was told in a more interesting manner than journal entries."
+        ],
+        "col_index": [
+          3927042,
+          4468259
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is a kinetic visual novel with a shallow linear story. Artistic 'fanservice' hampers the development of a richer plot, however the iconic general art style of the sakura series of games is solid, and the UI is strong as well. Plot devices are well placed for quick feels (the solely metaphoric type) and I found no significant qualms with the game overall, which is uncommon :)",
+          "The First 15 Minutes will set up a tone unlike any other game that you may have previously encountered.   Behind the simplistic graphical design and the sarcastic humor there is a much more darker and brooding experience.   I'm honestly afraid of this game."
+        ],
+        "col_index": [
+          4061394,
+          4384215
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game has absolutely no point, and I was left walking away with more questions than answers. The plot resolves very poorly, and the drama (esp. on the black pawn route) isn't really relevant to the ending and doesn't contribute to the ending at all. I was very disappointed and expected much more considering how the game began.",
+          "The First 15 Minutes will set up a tone unlike any other game that you may have previously encountered.   Behind the simplistic graphical design and the sarcastic humor there is a much more darker and brooding experience.   I'm honestly afraid of this game."
+        ],
+        "col_index": [
+          3738451,
+          4384215
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "The First 15 Minutes will set up a tone unlike any other game that you may have previously encountered.   Behind the simplistic graphical design and the sarcastic humor there is a much more darker and brooding experience.   I'm honestly afraid of this game.",
+          "Beneath The Cherry Trees / \u685c\u306e\u6a39\u306e\u4e0b\u306b\u306fis a neat, but short Visual Novel. I liked it, but there is not much to say otherwise because of its length. If you are interested I recommend you just go through it considering its length."
+        ],
+        "col_index": [
+          4384215,
+          5939110
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "It's definitely something different. You can kind of have to make sense of it first, there's no hand holding so you are just thrown right into it, Solid atmosphere, but I wish the story was told in a more interesting manner than journal entries.",
+          "The First 15 Minutes will set up a tone unlike any other game that you may have previously encountered.   Behind the simplistic graphical design and the sarcastic humor there is a much more darker and brooding experience.   I'm honestly afraid of this game."
+        ],
+        "col_index": [
+          4468259,
+          4384215
+        ]
+      }
+    },
+    "17": {
+      "call_0": {
+        "reviews": [
+          "Serious Sam, dude! Serious Sam.",
+          "Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny"
+        ],
+        "col_index": [
+          5353944,
+          88113
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "this very F*CKING f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking crezy game //// pls call 911 ..... 215 out of 10 coc*s",
+          "meat meat boy"
+        ],
+        "col_index": [
+          3437598,
+          5330665
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "%100 PATRIOT, %100 JUSTICE %100 SHERIFF OF THE WORLD %100 0wn4g3 Against 3rd WORLD COUNTRIEZ..  OP, n0sc0p1ngg NOOBZ  %100 PATRIOTIZM GOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICAGOD BLESS 'MURICA",
+          "Meat your meat boy"
+        ],
+        "col_index": [
+          4035411,
+          5335140
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny Oh it's Funny",
+          "meat meat boy"
+        ],
+        "col_index": [
+          88113,
+          5330665
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Meat your meat boy",
+          "this very F*CKING f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking f*cking crezy game //// pls call 911 ..... 215 out of 10 coc*s"
+        ],
+        "col_index": [
+          5335140,
+          3437598
+        ]
+      }
+    },
+    "18": {
+      "call_0": {
+        "reviews": [
+          "This is probably one of the worst games I have ever played, in fact it's so bad that I love playing it. It's so bad that it's good, but it's also more bad and I probably wouldn't recommend it.",
+          "I thought I was disappointed as I played through Bastion, maybe everything I had read and heard oversold it a little. But as soon as I finished I was looking forward to starting over."
+        ],
+        "col_index": [
+          4369836,
+          167970
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "I thought think game was going to be pretty good being i loved 'Haunt the House' but i dont think i loved it enough sure it is a good game and beats the orignal by far but you really going to love 'Haunt the House' to really love it.",
+          "THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS."
+        ],
+        "col_index": [
+          3238864,
+          4552480
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is LOADING ---------------- The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never The end is never",
+          "This is probably one of the worst games I have ever played, in fact it's so bad that I love playing it. It's so bad that it's good, but it's also more bad and I probably wouldn't recommend it."
+        ],
+        "col_index": [
+          4550878,
+          4369836
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This is probably one of the worst games I have ever played, in fact it's so bad that I love playing it. It's so bad that it's good, but it's also more bad and I probably wouldn't recommend it.",
+          "Pretty interesting, the worst part is that you expect things to happen that never do, and things you never would of thought to happen do instead."
+        ],
+        "col_index": [
+          4369836,
+          3221720
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "\ud83d\udc4c\ud83d\udc40\ud83d\udc4c\ud83d\udc40\ud83d\udc4c\ud83d\udc40\ud83d\udc4c\ud83d\udc40\ud83d\udc4c\ud83d\udc40 bad rat bad rAt\ud83d\udc4c thats \u2714 some bad\ud83d\udc4c\ud83d\udc4crat right\ud83d\udc4c\ud83d\udc4cth \ud83d\udc4c ere\ud83d\udc4c\ud83d\udc4c\ud83d\udc4c right\u2714there \u2714\u2714if i do\u200a\u01bda\u04af so\u2007my sel\uff46 \ud83d\udcaf i say so \ud83d\udcaf thats what im talking about right there right there (chorus: \u02b3\u1da6\u1d4d\u02b0\u1d57 \u1d57\u02b0\u1d49\u02b3\u1d49) mMMMM\u13b7\u041c\ud83d\udcaf \ud83d\udc4c\ud83d\udc4c \ud83d\udc4c\u041dO0\u041e\u0b20\uff2fOO\uff2fO\u041e\u0b20\u0b20Oooo\u1d52\u1d52\u1d52\u1d52\u1d52\u1d52\u1d52\u1d52\u1d52\ud83d\udc4c \ud83d\udc4c\ud83d\udc4c \ud83d\udc4c \ud83d\udcaf \ud83d\udc4c \ud83d\udc40 \ud83d\udc40 \ud83d\udc40 \ud83d\udc4c\ud83d\udc4cBad rat  10/10",
+          "THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS. THE RIDE NEVER ENDS."
+        ],
+        "col_index": [
+          4550681,
+          4552480
+        ]
+      }
+    },
+    "19": {
+      "call_0": {
+        "reviews": [
+          "Do you want cancer? Cause that's how you get cancer.",
+          "do you enjoy running around screaming at children and autists while children and autists scream at you? this is the game for you"
+        ],
+        "col_index": [
+          4550143,
+          5247863
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "do you enjoy running around screaming at children and autists while children and autists scream at you? this is the game for you",
+          "Meow meow meow. Meow meow meooooow. Meow. Meeeeeeeeow!! Meow meow meow meow. *toot*  (Rough translation: Game is awesome.)"
+        ],
+        "col_index": [
+          5247863,
+          4281464
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Perfect Game if you want to hear little girls scream.",
+          "Meow :3 Meow Meow Meow Meow, Meow Meow Meow. Meow Meow, Me-yow. (Great :3 I wish i was a cat and could do all this. Its just so much fun)"
+        ],
+        "col_index": [
+          5247598,
+          4281665
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Perfect Game if you want to hear little girls scream.",
+          "Meow meow meow. Meow meow meooooow. Meow. Meeeeeeeeow!! Meow meow meow meow. *toot*  (Rough translation: Game is awesome.)"
+        ],
+        "col_index": [
+          5247598,
+          4281464
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Meow meow meow. Meow meow meooooow. Meow. Meeeeeeeeow!! Meow meow meow meow. *toot*  (Rough translation: Game is awesome.)",
+          "Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome Awsome"
+        ],
+        "col_index": [
+          4281464,
+          6185169
+        ]
+      }
+    },
+    "20": {
+      "call_0": {
+        "reviews": [
+          "Its actually really fun and a good laugh to play with your friends. definitely recommend",
+          "YES. THIS GAME IS EPIC AND FUN AND REALLY GOOD AND I LOVE IT AND ITS REALLY COOL AND IS HOURS OF FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN!!!!!!!!!!!!!!!!!!! IT RULES"
+        ],
+        "col_index": [
+          3236687,
+          3745429
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "YES. THIS GAME IS EPIC AND FUN AND REALLY GOOD AND I LOVE IT AND ITS REALLY COOL AND IS HOURS OF FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN FUN!!!!!!!!!!!!!!!!!!! IT RULES",
+          "Really fun game. Would recommend, especially if you have friends to play with. Multiplayer is really fun. 9/10"
+        ],
+        "col_index": [
+          3745429,
+          78648
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "A fun game that can turn into many and many hours of fun. I would recommend this game. Go get this game and play it with some friends. It is a ton of fun.",
+          "Its actually really fun and a good laugh to play with your friends. definitely recommend"
+        ],
+        "col_index": [
+          5252005,
+          3236687
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Very good and fun game to play. I'm still playing and enjoying it even with all the hours I played. It's also very fun with friends!   11/10",
+          "Really good fun to play by yourself or with friends. It's a good challenge and keeps me coming back for more each time."
+        ],
+        "col_index": [
+          74100,
+          3458038
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A fun game that can turn into many and many hours of fun. I would recommend this game. Go get this game and play it with some friends. It is a ton of fun.",
+          "the fnest gae i have played. even though there is no one playing the four pack helped me o play with my friends  if you are looking for a fun quick game to play with tree others friends i would recomened this."
+        ],
+        "col_index": [
+          5252005,
+          4024067
+        ]
+      }
+    },
+    "21": {
+      "call_0": {
+        "reviews": [
+          "This was a great game i find myself playing this allnight and day great game sean great game!",
+          "Great, Great just Great! play it"
+        ],
+        "col_index": [
+          3200678,
+          117571
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "A great game for fans of old school RPGs!",
+          "this game is great this game is great this game is great this game is great this game is great this game is great this game is great this game is great but not for everyone 8/10 GOOOOOOOOOLD"
+        ],
+        "col_index": [
+          234382,
+          4531246
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This is a great game, reminds me of an old BBS game I used to play called Exitilus.",
+          "You're not gonna understand the game at first, but the moreyou play the more you understand this amazing game  10/10"
+        ],
+        "col_index": [
+          4272948,
+          4363081
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Great game, never get old, i could play it for days.",
+          "This was a great game i find myself playing this allnight and day great game sean great game!"
+        ],
+        "col_index": [
+          244565,
+          3200678
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Great game, great soundtrack, great everything!  10/10 Would play again.",
+          "You're not gonna understand the game at first, but the moreyou play the more you understand this amazing game  10/10"
+        ],
+        "col_index": [
+          4159667,
+          4363081
+        ]
+      }
+    },
+    "22": {
+      "call_0": {
+        "reviews": [
+          "Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack",
+          "Update as of 9/22/2016 game is all but abandonded my the devs no info or update in over a year game is dead and broken dont buy i repeat do not buy game is unstable and all but broken."
+        ],
+        "col_index": [
+          4022527,
+          3731651
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Public reviews are removed from store page after 30 days, so I'm not even going to waste effort writing these anymore.",
+          "Gave a negative review because one aspect of the game wasn't working. The devs saw my review and fixed it in 1 day."
+        ],
+        "col_index": [
+          4438503,
+          4558422
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT SUPER ORIGINAL COMMENT",
+          "Update as of 9/22/2016 game is all but abandonded my the devs no info or update in over a year game is dead and broken dont buy i repeat do not buy game is unstable and all but broken."
+        ],
+        "col_index": [
+          4186336,
+          3731651
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Update as of 9/22/2016 game is all but abandonded my the devs no info or update in over a year game is dead and broken dont buy i repeat do not buy game is unstable and all but broken.",
+          "Its a MUST TO HAVE game! Early 2015 patch 1.3 will be added. A big content update!  Buy this game! support the DEV.  One day we will maybe see part 2."
+        ],
+        "col_index": [
+          3731651,
+          133037
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack Quack",
+          "Its a MUST TO HAVE game! Early 2015 patch 1.3 will be added. A big content update!  Buy this game! support the DEV.  One day we will maybe see part 2."
+        ],
+        "col_index": [
+          4022527,
+          133037
+        ]
+      }
+    },
+    "23": {
+      "call_0": {
+        "reviews": [
+          "if you want to play this with a friend, don't. There is NO WAY to get into a server with anyone and your friends can't get into the server you created. When you search for a server, NO SERVERS SHOW UP! The single player actually works but if your going to give the option to play with friends, MAKE SURE IT WORKS!",
+          "Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server"
+        ],
+        "col_index": [
+          2256029,
+          6015058
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Personally, I love this game because of the unlimited things you can do in it! You can join servers and make new friends, you can make a server and play with your friends, and a lot more!",
+          "You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server. You have been disconnected from the server."
+        ],
+        "col_index": [
+          5246227,
+          6013923
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "if you want to play this with a friend, don't. There is NO WAY to get into a server with anyone and your friends can't get into the server you created. When you search for a server, NO SERVERS SHOW UP! The single player actually works but if your going to give the option to play with friends, MAKE SURE IT WORKS!",
+          "We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese!We need Chinese! We need Chinese! We need Chinese!We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese!"
+        ],
+        "col_index": [
+          2256029,
+          88663
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Disconnected from the Server.  Disconnected from the Server. Disconnected from the Server. Disconnected from the Server. Disconnected from the Server. Disconnected from the Server. Disconnected from the Server. Disconnected from the Server.",
+          "Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server Disconnected from the Server"
+        ],
+        "col_index": [
+          6014151,
+          6015058
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese!We need Chinese! We need Chinese! We need Chinese!We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese! We need Chinese!",
+          "Just play Unreal Tournament 2004 as the gameplay is basically the same and most likely has a bigger player base."
+        ],
+        "col_index": [
+          88663,
+          4233344
+        ]
+      }
+    },
+    "24": {
+      "call_0": {
+        "reviews": [
+          "Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey.",
+          "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey"
+        ],
+        "col_index": [
+          3114693,
+          5246799
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey",
+          "Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey."
+        ],
+        "col_index": [
+          5246799,
+          3114693
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey",
+          "PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY"
+        ],
+        "col_index": [
+          5246799,
+          3116917
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY PASS THE WHISKEY",
+          "i\u0336t\u0336 \u0336w\u0336a\u0336s\u0336 \u0336r\u0336e\u0336a\u0336l\u0336l\u0336y\u0336 \u0336f\u0336u\u0336n\u0336 \u0336a\u0336n\u0336d\u0336 \u0336t\u0336h\u0336e\u0336 \u0336m\u0336e\u0336c\u0336h\u0336a\u0336n\u0336i\u0336c\u0336s\u0336 \u0336w\u0336e\u0336r\u0336e\u0336 \u0336s\u0336i\u0336l\u0336k\u0336y\u0336 \u0336s\u0336m\u0336o\u0336o\u0336t\u0336h\u0336,\u0336 \u0336a\u0336n\u0336d\u0336 \u0336a\u0336l\u0336t\u0336h\u0336o\u0336u\u0336g\u0336h\u0336 \u0336i\u0336t\u0336 \u0336w\u0336a\u0336s\u0336 \u0336s\u0336h\u0336o\u0336r\u0336t\u0336 \u0336t\u0336h\u0336e\u0336r\u0336e\u0336 \u0336i\u0336s\u0336 \u0336l\u0336o\u0336t\u0336s\u0336 \u0336o\u0336f\u0336 \u0336e\u0336n\u0336d\u0336g\u0336a\u0336m\u0336e\u0336 \u0336c\u0336o\u0336n\u0336t\u0336e\u0336n\u0336t\u0336.\u0336  SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT SUPER HOT"
+        ],
+        "col_index": [
+          3116917,
+          4188362
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey. Pass the whiskey.",
+          "Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey Hey"
+        ],
+        "col_index": [
+          3114693,
+          5246799
+        ]
+      }
+    },
+    "25": {
+      "call_0": {
+        "reviews": [
+          "A wonderful and incredibly immersive first person horror experience in which you experience the wonderful mind of H.P. Lovecraft and his monstrous creations.  wait thats the other game uhhhmmmmm",
+          "Absolutely amazing horror experience, i fully recommend this game to any horror fans out there"
+        ],
+        "col_index": [
+          175071,
+          6098880
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS DEEPER THAN DEEP THAT IS A POTATO",
+          "Absolutely amazing horror experience, i fully recommend this game to any horror fans out there"
+        ],
+        "col_index": [
+          3954610,
+          6098880
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "A wonderful and incredibly immersive first person horror experience in which you experience the wonderful mind of H.P. Lovecraft and his monstrous creations.  wait thats the other game uhhhmmmmm",
+          "Amazing narrative experience. Don't go into it looking for another Stanley Parable, this is completely different, and just as wonderful but in a very, very different way."
+        ],
+        "col_index": [
+          175071,
+          3849742
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Absolutely amazing horror experience, i fully recommend this game to any horror fans out there",
+          "A wonderful and incredibly immersive first person horror experience in which you experience the wonderful mind of H.P. Lovecraft and his monstrous creations.  wait thats the other game uhhhmmmmm"
+        ],
+        "col_index": [
+          6098880,
+          175071
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A wonderful and incredibly immersive first person horror experience in which you experience the wonderful mind of H.P. Lovecraft and his monstrous creations.  wait thats the other game uhhhmmmmm",
+          "Amazing replayability for the price. Easily 50+ hours of entertainment and you can always come back to it for a fresh experience."
+        ],
+        "col_index": [
+          175071,
+          250891
+        ]
+      }
+    },
+    "26": {
+      "call_0": {
+        "reviews": [
+          "POMF POMF WAY WAY WAY POMF POMF POMF WAY POMF WAY POMF POMF TWIST TWIST TWIST BOOM BOOM TWIST BOOM TWIST BOOM TWIST BOOM TWIST POMF POMF WAY WAY WAY POMF POMF POMF WAY POMF WAY POMF POMF TWIST TWIST TWIST BOOM BOOM TWIST BOOM TWIST BOOM TWIST BOOM TWIST",
+          "*cough*  *cough*  *cough*  *cough*  *cough*  *cough*"
+        ],
+        "col_index": [
+          6244774,
+          5246236
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "*cough*  *cough*  *cough*  *cough*  *cough*  *cough*",
+          "Do I reommend this game? YES YES YES YES YES!"
+        ],
+        "col_index": [
+          5246236,
+          131106
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Do I reommend this game? YES YES YES YES YES!",
+          "POMF POMF WAY WAY WAY POMF POMF POMF WAY POMF WAY POMF POMF TWIST TWIST TWIST BOOM BOOM TWIST BOOM TWIST BOOM TWIST BOOM TWIST POMF POMF WAY WAY WAY POMF POMF POMF WAY POMF WAY POMF POMF TWIST TWIST TWIST BOOM BOOM TWIST BOOM TWIST BOOM TWIST BOOM TWIST"
+        ],
+        "col_index": [
+          131106,
+          6244774
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This review is the ever present and infinite unfolding of all things that ever were or will be, yet the illusion of florp prevents us from this simple realization of blah bloo blah. Your conscious mind is vibronging with jibber joobers and interconnected potatoness. Open your mind and blonk, surrender to blah blah blah blah blah blah blah blah blah blah blah blah bleep blorp blah blah blah blah blah blah blah blah blah blah blah blah blah blip blah troof troof troof blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blee blah blah blah blah blah blah blah blah blah blah blonkblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+          "staring and staring and staring and staring    10/10 would stare again"
+        ],
+        "col_index": [
+          4271621,
+          4531642
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "This review is the ever present and infinite unfolding of all things that ever were or will be, yet the illusion of florp prevents us from this simple realization of blah bloo blah. Your conscious mind is vibronging with jibber joobers and interconnected potatoness. Open your mind and blonk, surrender to blah blah blah blah blah blah blah blah blah blah blah blah bleep blorp blah blah blah blah blah blah blah blah blah blah blah blah blah blip blah troof troof troof blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blee blah blah blah blah blah blah blah blah blah blah blonkblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+          "Yes Yes Yes Yes Yes - 5 Yes for 5 Stars!"
+        ],
+        "col_index": [
+          4271621,
+          361006
+        ]
+      }
+    },
+    "27": {
+      "call_0": {
+        "reviews": [
+          "10/10 can't get enough of it. If you want a physics based puzzle game that is 100% working and not at all gitchy, then this is for you.",
+          "BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP"
+        ],
+        "col_index": [
+          4546900,
+          5656714
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "This game is for you chemists out there. Here you can solve and create puzzles involving synthesising compounds from elements and the puzzles can get very very loopy. If you want something to work your brain on, then this is for you.",
+          "BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP"
+        ],
+        "col_index": [
+          6375371,
+          5656714
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "Incredibly challenging space-themed retro platformer, with a bouncy 8-bit soundtrack, which will have you frustrated and smiling at the same time.",
+          "BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP BUCKLE UP"
+        ],
+        "col_index": [
+          6240371,
+          5656714
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Infuriatingly simple in it's concept - &amp; it's power. Recommended puzzle game. [requires a brain] ;)",
+          "This game is for you chemists out there. Here you can solve and create puzzles involving synthesising compounds from elements and the puzzles can get very very loopy. If you want something to work your brain on, then this is for you."
+        ],
+        "col_index": [
+          3152866,
+          6375371
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "Hexcells is a challenging puzzle game. Not challenging in completing it, but doing it without any mistakes without using guides would be a challenge. It's simplistic, and quite relaxing.",
+          "10/10 can't get enough of it. If you want a physics based puzzle game that is 100% working and not at all gitchy, then this is for you."
+        ],
+        "col_index": [
+          3127113,
+          4546900
+        ]
+      }
+    },
+    "28": {
+      "call_0": {
+        "reviews": [
+          "____Sexy?Sex ____?Sexy?Sexy ___y?Sexy?Sexy? ___?Sexy?Sexy?S ___?Sexy?Sexy?S __?Sexy?Sexy?Se _?Sexy?Sexy?Se _?Sexy?Sexy?Se _?Sexy?Sexy?Sexy? ?Sexy?Sexy?Sexy?Sexy ?Sexy?Sexy?Sexy?Sexy?Se ?Sexy?Sexy?Sexy?Sexy?Sex _?Sexy?__?Sexy?Sexy?Sex ___?Sex____?Sexy?Sexy? ___?Sex_____?Sexy?Sexy ___?Sex_____?Sexy?Sexy ____?Sex____?Sexy?Sexy _____?Se____?Sexy?Sex ______?Se__?Sexy?Sexy _______?Sexy?Sexy?Sex ________?Sexy?Sexy?sex _______?Sexy?Sexy?Sexy?Se _______?Sexy?Sexy?Sexy?Sexy? _______?Sexy?Sexy?Sexy?Sexy?Sexy _______?Sexy?Sexy?Sexy?Sexy?Sexy?S ________?Sexy?Sexy____?Sexy?Sexy?se _________?Sexy?Se_______?Sexy?Sexy? _________?Sexy?Se_____?Sexy?Sexy? _________?Sexy?S____?Sexy?Sexy _________?Sexy?S_?Sexy?Sexy ________?Sexy?Sexy?Sexy ________?Sexy?Sexy?S ________?Sexy?Sexy _______?Sexy?Se _______?Sexy? ______?Sexy? ______?Sexy? ______?Sexy? ______?Sexy ______?Sexy _______?Sex _______?Sex _______?S",
+          "Masterpiece with absolutely beautiful soundtrack"
+        ],
+        "col_index": [
+          3849478,
+          157086
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Beautiful hack and slash game (10/10).",
+          "Disturbingly beautiful. Grotesquely beautiful. Horrifyingly beautiful. I love it."
+        ],
+        "col_index": [
+          3058843,
+          5758065
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "epic, simply epic",
+          "Masterpiece with absolutely beautiful soundtrack"
+        ],
+        "col_index": [
+          4155836,
+          157086
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "Beautiful hack and slash game (10/10).",
+          "Brilliant game, truly is a classic."
+        ],
+        "col_index": [
+          3058843,
+          5333242
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "____Sexy?Sex ____?Sexy?Sexy ___y?Sexy?Sexy? ___?Sexy?Sexy?S ___?Sexy?Sexy?S __?Sexy?Sexy?Se _?Sexy?Sexy?Se _?Sexy?Sexy?Se _?Sexy?Sexy?Sexy? ?Sexy?Sexy?Sexy?Sexy ?Sexy?Sexy?Sexy?Sexy?Se ?Sexy?Sexy?Sexy?Sexy?Sex _?Sexy?__?Sexy?Sexy?Sex ___?Sex____?Sexy?Sexy? ___?Sex_____?Sexy?Sexy ___?Sex_____?Sexy?Sexy ____?Sex____?Sexy?Sexy _____?Se____?Sexy?Sex ______?Se__?Sexy?Sexy _______?Sexy?Sexy?Sex ________?Sexy?Sexy?sex _______?Sexy?Sexy?Sexy?Se _______?Sexy?Sexy?Sexy?Sexy? _______?Sexy?Sexy?Sexy?Sexy?Sexy _______?Sexy?Sexy?Sexy?Sexy?Sexy?S ________?Sexy?Sexy____?Sexy?Sexy?se _________?Sexy?Se_______?Sexy?Sexy? _________?Sexy?Se_____?Sexy?Sexy? _________?Sexy?S____?Sexy?Sexy _________?Sexy?S_?Sexy?Sexy ________?Sexy?Sexy?Sexy ________?Sexy?Sexy?S ________?Sexy?Sexy _______?Sexy?Se _______?Sexy? ______?Sexy? ______?Sexy? ______?Sexy? ______?Sexy ______?Sexy _______?Sex _______?Sex _______?S",
+          "*************SPOILER ALERT! SPOILER ALERT! SPOILER ALERT!*************  You are a goat."
+        ],
+        "col_index": [
+          3849478,
+          3138436
+        ]
+      }
+    },
+    "29": {
+      "call_0": {
+        "reviews": [
+          "This game has unconventional (not to mention isometric based) movement but do not let that discourage you. This allows for intruiging and unique level design and a high score challenge that'll keep you on the EDGE! (Get it?)",
+          "One of the few games I've played through multiple times and keep coming back to. The level design is almost flawless and the mechanics are perfect. The controls are extremely tight and do not allow for the slightest margin of error. Masocore at its finest!"
+        ],
+        "col_index": [
+          5040786,
+          6239724
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "Too much random chance, both in die rolls and what events show up. Difficult even on the easiest setting. You run out of resources very quickly while the number and difficulty of events that you might have to clear increase very quickly.",
+          "You get to roll a Giant rock...A GIANT ROCK, into your opponents gates then after they let out a girlish screech you can crush them...or roll around them a bit for any last words. Also has quite a tactical strategy bit to it...some maps can prove difficult with the parts! you have!! There is also collectables! :D  TL;DR Non-frustrating-i-can-get-this-done defensive strategy with a good deal of slapstick!"
+        ],
+        "col_index": [
+          4195435,
+          1463524
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "This game is surprisingly linear and constraining for a game about destruction. The limited amount of resources and a timer really don't give you much to work with aside from figuring out the optimal route and sticking to it every playtrough. This is essentially a prettier looking flash game (and not by much). 3/10",
+          "This game has unconventional (not to mention isometric based) movement but do not let that discourage you. This allows for intruiging and unique level design and a high score challenge that'll keep you on the EDGE! (Get it?)"
+        ],
+        "col_index": [
+          6401532,
+          5040786
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "This game is surprisingly linear and constraining for a game about destruction. The limited amount of resources and a timer really don't give you much to work with aside from figuring out the optimal route and sticking to it every playtrough. This is essentially a prettier looking flash game (and not by much). 3/10",
+          "Controls are a bit wonky and the difficulty level spikes through the rough really quickly. Not to mention many of the items such as keys aren't exactly easy to spot. I spent about an hour trying the arcade level because I couldn't spot the key that was right in front of me because of the interface."
+        ],
+        "col_index": [
+          6401532,
+          4040169
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "A decent enough casual game where the aim is to fire your balls at the approaching board so that you match three or more of the same colour ball, which causes any now unattached balls to fall off as well. The idea is to clear the board in as few moves as possible, but also against the clock - or rather the board, which moves down steadily (or fast if you haven't made any matches for a few seconds).  There is an upgrade mechanism to give you skills you can use to get through awkward sections of the board, which rewards playing well in earlier rounds and getting low scores - you can get up to three upgrade points per board cleared, or as few as one if you take lots of shots to win. There is also some physics you can take advantage of (or get scuppered by), if a group of balls is only connected by one ball they will hang loose and swing around, sometimes banging into other groups, which can cause a chain reaction - or block off an area you wanted to be able to fire at next.  Overall it is a decent enough game to play through if you like this sort of thing, don't expect anything new after the first level - each group of levels just adds another row of balls to clear, and each new zone adds one more colour to the mix to make things harder (but resets the depth of the game board to be much shorter again at first)",
+          "Interesting 'story', game had such high potential, but lacks execution. You would expect the challenges to be 'think before you leap and you can win' but 99% of them are 'start the mission over because in the last roll you got a 5 instead of a 6'. The dice part is interesting but I don't think that the tasks are balanced enough in order to make the game fair. TL;DR - Roll &lt;5 lose - Roll 6 win sometiems"
+        ],
+        "col_index": [
+          4581428,
+          4194881
+        ]
+      }
+    }
+  }
+}
