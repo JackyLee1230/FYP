@@ -33,188 +33,197 @@ sys.path.append('../')
 
 from dataset_loader import GENRES, load_dataset
 
-genre = GENRES.INDIE
+genre = GENRES.ACTION
 unique_list = ['review_text']
-# dataset_folder = Path(f'../../dataset/topic_modelling/top_11_genres_unique_[{",".join(unique_list)}]')
-# dataset, dataset_path = load_dataset(genre, dataset_folder)
+dataset_folder = Path(f'../../dataset/topic_modelling/top_11_genres_unique_[{",".join(unique_list)}]')
+dataset, dataset_path = load_dataset(genre, dataset_folder)
 
-genre = -1
-unique_list = ['review_text']
-dataset_folder = Path(f'../../dataset/topic_modelling/00_dataset_filtered_all_4045065.pkl').resolve()
-dataset, dataset_path = pd.read_pickle(dataset_folder), dataset_folder
-dataset_folder = dataset_path.parent
+# genre = -1
+# unique_list = ['review_text']
+# dataset_folder = Path(f'../../dataset/topic_modelling/00_dataset_filtered_all_4045065.pkl').resolve()
+# dataset, dataset_path = pd.read_pickle(dataset_folder), dataset_folder
+# dataset_folder = dataset_path.parent
 
 dataset.info(verbose=True)
 
 
-# # The path of the dataset to be stored to the config file
-# str(dataset_path.relative_to(dataset_path.parent.parent.parent.parent))
+# The path of the dataset to be stored to the config file
+str(dataset_path.relative_to(dataset_path.parent.parent.parent.parent))
+
+####################
+# If load from a previous generated pandas dataset,
+# can comment out the following data preprocessing
+####################
+
+# data preprocessing
+
+import sys
+sys.path.append('../../sa/')
+
+import str_cleaning_functions
+
+# copied from lda_demo_gridsearch.ipynb
+def cleaning(df, review):
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links2(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.clean(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.deEmojify(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_non_letters(x))
+    df[review] = df[review].apply(lambda x: x.lower())
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_stopword(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
+
+# def cleaning_strlist(str_list):
+#     str_list = list(map(lambda x: clean(x), str_list))
+#     str_list = list(map(lambda x: deEmojify(x), str_list))
+
+#     str_list = list(map(lambda x: x.lower(), str_list))
+#     str_list = list(map(lambda x: remove_num(x), str_list))
+#     str_list = list(map(lambda x: unify_whitespaces(x), str_list))
+
+#     str_list = list(map(lambda x: _deaccent(x), str_list))
+#     str_list = list(map(lambda x: remove_non_alphabets(x), str_list))
+#     str_list = list(map(lambda x: remove_stopword(x), str_list))
+#     return str_list
+
+# copied from bert_demo_gridsearch.ipynb
+def cleaning_little(df, review):
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links2(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.clean(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.deEmojify(x))
+    df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
 
 
-# # data preprocessing
 
-# import sys
-# sys.path.append('../../sa/')
-
-# import str_cleaning_functions
-
-# # copied from lda_demo_gridsearch.ipynb
-# def cleaning(df, review):
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links2(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.clean(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.deEmojify(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_non_letters(x))
-#     df[review] = df[review].apply(lambda x: x.lower())
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_stopword(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
-
-# # def cleaning_strlist(str_list):
-# #     str_list = list(map(lambda x: clean(x), str_list))
-# #     str_list = list(map(lambda x: deEmojify(x), str_list))
-
-# #     str_list = list(map(lambda x: x.lower(), str_list))
-# #     str_list = list(map(lambda x: remove_num(x), str_list))
-# #     str_list = list(map(lambda x: unify_whitespaces(x), str_list))
-
-# #     str_list = list(map(lambda x: _deaccent(x), str_list))
-# #     str_list = list(map(lambda x: remove_non_alphabets(x), str_list))
-# #     str_list = list(map(lambda x: remove_stopword(x), str_list))
-# #     return str_list
-
-# # copied from bert_demo_gridsearch.ipynb
-# def cleaning_little(df, review):
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.remove_links2(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.clean(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.deEmojify(x))
-#     df[review] = df[review].apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
+# create a copy of the dataset, as we need both untouched text and cleaned text
+# create a column copy
+dataset['review_text_bow'] = dataset['review_text'].copy()
 
 
-
-# # create a copy of the dataset, as we need both untouched text and cleaned text
-# # create a column copy
-# dataset['review_text_bow'] = dataset['review_text'].copy()
+cleaning(dataset, 'review_text_bow')
+cleaning_little(dataset, 'review_text')
 
 
-# cleaning(dataset, 'review_text_bow')
-# cleaning_little(dataset, 'review_text')
+dataset
 
 
-# dataset
+# remove reviews with too many punctuations
+
+def calculate_nonalphabet_ratio(review: str) -> float:
+    count = 0
+    for char in review:
+        if not char.isalpha():
+            count += 1
+    return count / (len(review) + 1e-5)
+
+dataset['alphabet_ratio'] = dataset['review_text'].apply(calculate_nonalphabet_ratio)
+
+dataset['alphabet_ratio'].describe([0.25, 0.5, 0.75, 0.9, 0.95, 0.99])
 
 
-# # remove reviews with too many punctuations
+# remove reviews with too many punctuations
+# ratio threashold = 99 percentile
+dataset = dataset[dataset['alphabet_ratio'] < dataset.alphabet_ratio.quantile(0.99)]
 
-# def calculate_nonalphabet_ratio(review: str) -> float:
-#     count = 0
-#     for char in review:
-#         if not char.isalpha():
-#             count += 1
-#     return count / (len(review) + 1e-5)
+# dataset_tobe_removed = dataset[dataset['alphabet_ratio'] >= dataset.alphabet_ratio.quantile(0.99)]
 
-# dataset['alphabet_ratio'] = dataset['review_text'].apply(calculate_nonalphabet_ratio)
-
-# dataset['alphabet_ratio'].describe([0.25, 0.5, 0.75, 0.9, 0.95, 0.99])
+# remove reviews with too many punctuations by index
+# dataset = dataset.drop(dataset_tobe_removed.index)
+# dataset_preprocessed = dataset_preprocessed.drop(dataset_tobe_removed.index)
 
 
-# # remove reviews with too many punctuations
-# # ratio threashold = 99 percentile
-# dataset = dataset[dataset['alphabet_ratio'] < dataset.alphabet_ratio.quantile(0.99)]
+# remove docs with 0 len
 
-# # dataset_tobe_removed = dataset[dataset['alphabet_ratio'] >= dataset.alphabet_ratio.quantile(0.99)]
+def _filter_zero_len(x):
+    if len(x['review_text']) == 0 or len(x['review_text_bow']) == 0:
+        return False
+    return True
 
-# # remove reviews with too many punctuations by index
-# # dataset = dataset.drop(dataset_tobe_removed.index)
-# # dataset_preprocessed = dataset_preprocessed.drop(dataset_tobe_removed.index)
-
-
-# # remove docs with 0 len
-
-# def _filter_zero_len(x):
-#     if len(x['review_text']) == 0 or len(x['review_text_bow']) == 0:
-#         return False
-#     return True
-
-# dataset = dataset[dataset.apply(lambda x: _filter_zero_len(x), axis=1)]
+dataset = dataset[dataset.apply(lambda x: _filter_zero_len(x), axis=1)]
 
 
-# print(len(dataset))
+print(len(dataset))
 
 
-# import torch
-# import platform
+import torch
+import platform
 
 
-# if platform.system() == 'Linux' or platform.system() == 'Windows':
-#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# else:
-#     device = torch.device('mps')        # m-series mac machine
+if platform.system() == 'Linux' or platform.system() == 'Windows':
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+else:
+    device = torch.device('mps')        # m-series mac machine
 
-# print(device)
-
-
-# # Apply lemmatizing to the preprocessed dataset as well (for BoW)
-# # 
-# # The function is identical in LDA
+print(device)
 
 
-# # do lemmatization, but not stemming (as part of speech is important in topic modelling)
-# # use nltk wordnet for lemmatization
+# Apply lemmatizing to the preprocessed dataset as well (for BoW)
+# 
+# The function is identical in LDA
 
-# from nltk.stem import WordNetLemmatizer
-# from nltk.corpus import wordnet
 
-# lemma = WordNetLemmatizer()
+# do lemmatization, but not stemming (as part of speech is important in topic modelling)
+# use nltk wordnet for lemmatization
 
-# # from https://stackoverflow.com/questions/25534214/nltk-wordnet-lemmatizer-shouldnt-it-lemmatize-all-inflections-of-a-word
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
 
-# # from: https://www.cnblogs.com/jclian91/p/9898511.html
-# def get_wordnet_pos(tag):
-#     if tag.startswith('J'):
-#         return wordnet.ADJ
-#     elif tag.startswith('V'):
-#         return wordnet.VERB
-#     elif tag.startswith('N'):
-#         return wordnet.NOUN
-#     elif tag.startswith('R'):
-#         return wordnet.ADV
-#     else:
-#         return None     # if none -> created as noun by wordnet
+lemma = WordNetLemmatizer()
+
+# from https://stackoverflow.com/questions/25534214/nltk-wordnet-lemmatizer-shouldnt-it-lemmatize-all-inflections-of-a-word
+
+# from: https://www.cnblogs.com/jclian91/p/9898511.html
+def get_wordnet_pos(tag):
+    if tag.startswith('J'):
+        return wordnet.ADJ
+    elif tag.startswith('V'):
+        return wordnet.VERB
+    elif tag.startswith('N'):
+        return wordnet.NOUN
+    elif tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return None     # if none -> created as noun by wordnet
     
-# def lemmatization(text):
-#    # use nltk to get PoS tag
-#     tagged = nltk.pos_tag(nltk.word_tokenize(text))
+def lemmatization(text):
+   # use nltk to get PoS tag
+    tagged = nltk.pos_tag(nltk.word_tokenize(text))
 
-#     # then we only need adj, adv, verb, noun
-#     # convert from nltk Penn Treebank tag to wordnet tag
-#     wn_tagged = list(map(lambda x: (x[0], get_wordnet_pos(x[1])), tagged))
+    # then we only need adj, adv, verb, noun
+    # convert from nltk Penn Treebank tag to wordnet tag
+    wn_tagged = list(map(lambda x: (x[0], get_wordnet_pos(x[1])), tagged))
 
-#     # lemmatize by the PoS
-#     lemmatized = list(map(lambda x: lemma.lemmatize(x[0], pos=x[1] if x[1] else wordnet.NOUN), wn_tagged))
-#     # lemma.lemmatize(wn_tagged[0], pos=wordnet.NOUN)
+    # lemmatize by the PoS
+    lemmatized = list(map(lambda x: lemma.lemmatize(x[0], pos=x[1] if x[1] else wordnet.NOUN), wn_tagged))
+    # lemma.lemmatize(wn_tagged[0], pos=wordnet.NOUN)
 
-#     return lemmatized
-
-
+    return lemmatized
 
 
-# from datasets import Dataset
 
-# # X_preprocessed2 = list(map(lambda x: lemmatization(x), X_preprocessed))
-# # X_preprocessed2 = list(map(lambda x: ' '.join(x), X_preprocessed2))
 
-# def lemmatization_dataset(data):
-#     return {'review_text2': ' '.join(lemmatization(data['review_text']))}
+from datasets import Dataset
 
-# temp_dataset = Dataset.from_dict({'review_text': dataset['review_text_bow'].values})
-# temp_dataset = temp_dataset.map(lemmatization_dataset, num_proc=4)      # speed up lemmatization
-# dataset['review_text_bow'] = temp_dataset['review_text2']
+# X_preprocessed2 = list(map(lambda x: lemmatization(x), X_preprocessed))
+# X_preprocessed2 = list(map(lambda x: ' '.join(x), X_preprocessed2))
+
+def lemmatization_dataset(data):
+    return {'review_text2': ' '.join(lemmatization(data['review_text']))}
+
+temp_dataset = Dataset.from_dict({'review_text': dataset['review_text_bow'].values})
+temp_dataset = temp_dataset.map(lemmatization_dataset, num_proc=4)      # speed up lemmatization
+dataset['review_text_bow'] = temp_dataset['review_text2']
+
+###################
+# Comment out section ends
+###################
+
 
 
 # save the dataset obj to disk
-if genre >= 0:
+if type(genre) == GENRES and genre.value >= 0:
     dataset_preprocessed_path = Path(f'preprocessed_data/{genre.value:02}_{str(genre)}_dataset.pkl')
 else:
     dataset_preprocessed_path = Path(f'preprocessed_data/all_genres_dataset.pkl')
@@ -1012,9 +1021,9 @@ dataset_path_config = dataset_path.relative_to(dataset_path.parent.parent.parent
 search_behaviour = SEARCH_BEHAVIOUR.GRID_SEARCH
 # search_behaviour = SEARCH_BEHAVIOUR.RANDOM_SEARCH
 
-# training_datetime = datetime.now()
-training_datetime = datetime(2024, 2, 24, 14, 32, 52)
-if genre >= 0:
+training_datetime = datetime.now()
+# training_datetime = datetime(2024, 2, 24, 14, 32, 52)
+if type(genre) == GENRES and genre.value >= 0:
     training_folder_p = Path(f'category_{str(genre)}_unique_review_text')
     training_folder = Path(f'ctm{"[split]" if split_sentences else ""}_genre_{str(genre)}_{search_behaviour.value}_{training_datetime.strftime("%Y%m%d_%H%M%S")}')
 else:
@@ -1035,7 +1044,7 @@ best_model, best_model_path, best_hyperparameters = model_search(
     metrics=[METRICS.C_NPMI, METRICS.C_V, METRICS.UMASS, METRICS.C_UCI, METRICS.TOPIC_DIVERSITY, METRICS.INVERTED_RBO, METRICS.PAIRWISE_JACCARD_SIMILARITY],
     monitor=METRICS.C_NPMI,
     save_each_models=True,
-    run_from_checkpoints=True,
+    run_from_checkpoints=False,
     search_behaviour=search_behaviour,
     # search_rs=42,
     # search_n_iter=50
