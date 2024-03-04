@@ -19,6 +19,7 @@ import {
   MenuItem,
   Select,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { useRouter } from "next/router";
@@ -48,6 +49,7 @@ const RegisterBox = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setToken } = useAuthContext();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   function verifyUsername(): boolean {
     if (username === "") {
@@ -166,12 +168,16 @@ const RegisterBox = () => {
       }}
     >
       <Typography
-        variant="h5"
+        variant={isMobile ? "h6" : "h5"}
         sx={{
           marginBottom: 4,
           maxWidth: 600,
           fontWeight: 600,
           textAlign: "center",
+          [theme.breakpoints.down("sm")]: {
+            marginBottom: 2,
+            marginTop: 2,
+          }
         }}
       >
         Get started with a free CritiQ account to review and discover your
@@ -331,6 +337,15 @@ const RegisterBox = () => {
               />
             )}
           </Box>
+          <Typography 
+            variant="caption"
+            color="text.secondary"
+            sx={{
+              maxWidth: 350,
+            }}
+          >
+            By registering a CritiQ account, you agree to our terms of service and privacy policy.
+          </Typography>
         </Box>
       </form>
     </Box>

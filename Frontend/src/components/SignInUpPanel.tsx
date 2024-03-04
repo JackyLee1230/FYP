@@ -30,10 +30,11 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
         gap: 2,
         width: 500,
         [theme.breakpoints.down("sm")]: {
-          padding: "12px 24px",
+          padding: "36px 24px",
           borderRadius: 0,
           boxShadow: "none",
           minHeight: "100vh",
+          height: "100%",
           width: "100%",
           justifyContent: "flex-start",
         }
@@ -48,7 +49,6 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
           right: 36,
 
           [theme.breakpoints.down("sm")]: {
-            top: 12,
             right: 12,
           }
         }}
@@ -61,6 +61,11 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
         variant="fullWidth"
         value={mode}
         onChange={(e, newValue) => setMode(newValue)}
+        sx={{
+          [theme.breakpoints.down("sm")]: {
+            width: "100%",
+          }
+        }}
       >
         <Tab 
           value="register"
@@ -73,13 +78,29 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
       </Tabs>
       
       <Box
-        sx={{display: mode === 'register' ? "block" : "none"}}
+        sx={{
+          display: mode === 'register' ? "flex" : "none",
+          [theme.breakpoints.down("sm")]: {
+            alignSelf: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }
+        }}
       >
         <ResiterBox />
       </Box>
 
       <Box
-        sx={{display: mode === 'register' ? "none" : "block"}}
+        sx={{
+          display: mode === 'register' ? "none" : "flex",
+          [theme.breakpoints.down("sm")]: {
+            alignSelf: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }
+        }}
       >
         <LoginBox setOpen={setOpen} reloadOverride={false} />
       </Box>

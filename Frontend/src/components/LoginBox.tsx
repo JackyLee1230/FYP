@@ -10,6 +10,7 @@ import {
   Radio,
   IconButton,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { CustomInput } from "@/components/CustomInput";
@@ -39,6 +40,7 @@ const LoginBox = ({ setOpen, reloadOverride }: LoginBoxProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setToken } = useAuthContext();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   function verifyUsername(): boolean {
     if (username === "") {
@@ -113,8 +115,17 @@ const LoginBox = ({ setOpen, reloadOverride }: LoginBoxProps) => {
       }}
     >
       <Typography
-        variant="h5"
-        sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}
+        variant={isMobile ? "h6" : "h5"}
+        sx={{
+          marginBottom: 4,
+          maxWidth: 600,
+          fontWeight: 600,
+          textAlign: "center",
+          [theme.breakpoints.down("sm")]: {
+            marginBottom: 2,
+            marginTop: 2,
+          }
+        }}
       >
         Welcome back to CritiQ
       </Typography>
