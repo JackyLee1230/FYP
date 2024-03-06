@@ -252,11 +252,11 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
             }}
           >
             <Avatar
-              alt="User Avatar"
+              alt={user?.name ?? "Unknown User"}
               src={
                 user?.iconUrl != null
                   ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
-                  : "/static/images/avatar/1.jpg"
+                  : undefined
               }
               sx={{ width: 76, height: 76 }}
             />
@@ -515,11 +515,11 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
                 }}
               >
                 <Avatar
-                  alt="User Avatar"
+                  alt={user?.name ?? "Unknown User"}
                   src={
                     user?.iconUrl != null
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
-                      : "/static/images/avatar/1.jpg"
+                      : undefined
                   }
                   sx={{ width: 52, height: 52 }}
                 />
@@ -669,13 +669,20 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
             </Box>
   
             <Box
-              sx={{
+              sx={(theme) => ({
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 gap: "8px",
                 width: "100%",
-              }}
+
+                [theme.breakpoints.down("sm")]: {
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                  gap: "0px",
+                },
+              })}
             >
               <Box
                 sx={{

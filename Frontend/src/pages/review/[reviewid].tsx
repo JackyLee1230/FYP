@@ -532,11 +532,11 @@ function GamePage({
                 disabled={!review?.reviewer?.id}
               >
                 <Avatar
-                  alt="Reviewer Avatar Icon"
+                  alt={review?.reviewer?.name ?? "Unknown User"}
                   src={
                     review?.reviewer?.iconUrl != null
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                      : "/static/images/avatar/1.jpg"
+                      : undefined
                   }
                   sx={{ 
                     width: 96, 
@@ -1141,11 +1141,11 @@ function GamePage({
               }}
             >
               <Avatar
-                alt="User Avatar"
+                alt={user?.name ?? "Unknown User"}
                 src={
                   user?.iconUrl != null
                     ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
-                    : "/static/images/avatar/1.jpg"
+                    : undefined
                 }
                 sx={{ 
                   width: 104, 

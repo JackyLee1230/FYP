@@ -567,11 +567,11 @@ export default function User({ user }: UserPageProps) {
               </Fade>
             )}
             <Avatar
-              alt="User Avatar Icon"
+              alt={user?.name ?? "Unknown User"}
               src={
                 user?.iconUrl != null
                   ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
-                  : "/static/images/avatar/1.jpg"
+                  : undefined
               }
               sx={{ 
                 width: 264, 

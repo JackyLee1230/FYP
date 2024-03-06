@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import LoginBox from "@/components/LoginBox";
-import { Box, Button, CircularProgress, styled, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, styled, Typography, useTheme } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import { useAuthContext } from '@/context/AuthContext'
 import { useRouter } from "next/router";
@@ -14,7 +14,8 @@ const StyledLoginIcon = styled(LoginIcon)(({ theme }) => ({
 
 function LoginPage() {
   const router = useRouter();
-  const { user, token, isUserLoading } = useAuthContext()
+  const { user, token, isUserLoading } = useAuthContext();
+  const theme = useTheme();
 
   useEffect(() => {
     if(user && token) {
@@ -38,6 +39,9 @@ function LoginPage() {
           alignItems: "center",
           justifyContent: "center",
           padding: "48px 128px",
+          [theme.breakpoints.down('md')]: { 
+            padding: 0,
+          }
         }}
       >
         <Box
@@ -53,6 +57,11 @@ function LoginPage() {
             borderColor: "divider",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             margin: "0 auto",
+            [theme.breakpoints.down('md')]: { 
+              width: "100%",
+              padding: "48px 12px",
+              borderRadius: 0,
+            }
           }}
         >
           <Box

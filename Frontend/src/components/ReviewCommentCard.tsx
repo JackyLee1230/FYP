@@ -35,11 +35,11 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
         disabled={!ReviewComment?.commenter?.id}
       >
         <Avatar
-          alt="Reviewer Avatar Icon"
+          alt={ReviewComment?.commenter?.name ?? "Unknown User"}
           src={
             ReviewComment?.commenter?.iconUrl != null
               ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${ReviewComment?.commenter?.iconUrl}`
-              : "/static/images/avatar/1.jpg"
+              : undefined
           }
           sx={{ 
             width: 72, 

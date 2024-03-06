@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterBox from "@/components/RegisterBox";
-import { Box, CircularProgress, styled, Typography } from "@mui/material";
+import { Box, CircularProgress, styled, Typography, useTheme } from "@mui/material";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 import { useAuthContext } from '@/context/AuthContext'
 import Head from "next/head";
@@ -13,7 +13,8 @@ const StyledRegisterIcon = styled(LockPersonIcon)(({ theme }) => ({
 
 
 function RegisterPage() {
-  const { user, token, isUserLoading } = useAuthContext()
+  const { user, token, isUserLoading } = useAuthContext();
+  const theme = useTheme();
 
   return (
     <>
@@ -25,7 +26,10 @@ function RegisterPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "48px 128px"
+          padding: "48px 128px",
+          [theme.breakpoints.down('md')]: { 
+            padding: 0,
+          }
         }}
       >
         <Box
@@ -40,6 +44,11 @@ function RegisterPage() {
             border: "0.8px solid",
             borderColor: "divider",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            [theme.breakpoints.down('md')]: { 
+              width: "100%",
+              padding: "48px 12px",
+              borderRadius: 0,
+            }
           }}
         >
           <Box

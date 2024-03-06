@@ -93,6 +93,7 @@ const UpdateUsernameBox = ({ setUpdateUsernameOpen, oldName, userId, token }: Up
         [theme.breakpoints.down("sm")]: {
           padding: "18px 24px",
           boxShadow: "none",
+          width: "100%",
         }
       }}
     >

@@ -102,11 +102,11 @@ function GameReviewCard({
                   disabled={!review?.reviewedGame.id}
                 >
                   <Avatar
-                    alt="Game Icon"
+                    alt={`${review?.reviewedGame?.name} Icon`}
                     src={
                       review?.reviewedGame?.iconUrl != null
                         ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewedGame?.iconUrl}`
-                        : "/static/images/avatar/1.jpg"
+                        : undefined
                     }
                     sx={{ width: 54, height: 54 }}
                     variant="rounded"
@@ -142,11 +142,11 @@ function GameReviewCard({
                   disabled={!review?.reviewer?.id}
                 >
                   <Avatar
-                    alt="Reviewer Avatar Icon"
+                    alt={`${review?.reviewer?.name} Icon`}
                     src={
                       review?.reviewer?.iconUrl != null
                         ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
-                        : "/static/images/avatar/1.jpg"
+                        : undefined
                     }
                     sx={{ width: 54, height: 54 }}
                   />

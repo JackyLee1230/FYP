@@ -540,7 +540,14 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   }}
                   open={open}
                 >
-                  <GameDetailBox game={game} setOpen={setOpen} />
+                  <Box
+                    sx={{
+                      maxHeight: "100vh",
+                      overflowY: "auto",
+                    }}
+                  >
+                    <GameDetailBox game={game} setOpen={setOpen} />
+                  </Box>
                 </Modal>
               </Box>
               <Box
