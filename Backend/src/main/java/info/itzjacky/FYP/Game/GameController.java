@@ -5,6 +5,7 @@ import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
 import info.itzjacky.FYP.User.Gender;
 import info.itzjacky.FYP.User.User;
+import info.itzjacky.FYP.Utils.Others;
 import jakarta.transaction.Transactional;
 import jdk.jfr.TransitionTo;
 import org.json.JSONObject;
@@ -407,10 +408,23 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             neutralMap.put("MALE", 0);neutralMap.put("FEMALE", 0);
             neutralMap.put("OTHER", 0);neutralMap.put("UNDISCLOSED", 0);neutralMap.put("N/A", 0);
 
+            HashMap<String, Integer> positiveByAge = new HashMap<>();
+            positiveByAge.put("13-19", 0);positiveByAge.put("20-29", 0);positiveByAge.put("30-39", 0);positiveByAge.put("40-49", 0);positiveByAge.put("50-59", 0);
+            positiveByAge.put("60-69", 0);positiveByAge.put("70-79", 0);positiveByAge.put("80-89", 0);positiveByAge.put("90-99", 0);positiveByAge.put("N/A", 0);
+            HashMap<String, Integer> negativeByAge = new HashMap<>();
+            negativeByAge.put("13-19", 0);negativeByAge.put("20-29", 0);negativeByAge.put("30-39", 0);negativeByAge.put("40-49", 0);negativeByAge.put("50-59", 0);
+            negativeByAge.put("60-69", 0);negativeByAge.put("70-79", 0);negativeByAge.put("80-89", 0);negativeByAge.put("90-99", 0);negativeByAge.put("N/A", 0);
+
+
+
             HashMap<String, HashMap> sentimentCountByGender = new HashMap<>();
             sentimentCountByGender.put("POSITIVE", positiveMap);
             sentimentCountByGender.put("NEGATIVE", negativeMap);
             sentimentCountByGender.put("NEUTRAL", neutralMap);
+
+            HashMap<String, HashMap> sentimentCountByAge = new HashMap<>();
+            sentimentCountByAge.put("POSITIVE", positiveByAge);
+            sentimentCountByAge.put("NEGATIVE", negativeByAge);
 
 
             // array of [name, age, gender]
@@ -539,11 +553,20 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 //                SENTIMENT BY GENDER
                 if (sentiment != null) {
                     String s = sentimentMapper(r.getSentiment());
+                    HashMap<String , Integer> innerAgeMap = sentimentCountByAge.get(s);
                     HashMap<String, Integer> innerMap = sentimentCountByGender.get(s);
                     if (r.getReviewer().getGender() == null) {
                         innerMap.put("N/A", innerMap.get("N/A") + 1);
                     } else {
                         innerMap.put(r.getReviewer().getGender().toString(), innerMap.get(r.getReviewer().getGender().toString()) + 1);
+                    }
+                    if (r.getReviewer().getAge() == null || Others.getAgeGroupFromAge(Integer.valueOf(r.getReviewer().getAge())) == null || Others.getAgeGroupFromAge(Integer.valueOf(r.getReviewer().getAge())).equals("NA")) {
+                        innerAgeMap.put("N/A", innerAgeMap.get("N/A") + 1);
+                    } else {
+                        String tmpAgeGroup = Others.getAgeGroupFromAge(Integer.valueOf(r.getReviewer().getAge()));
+                        logger.warn(tmpAgeGroup);
+                        logger.warn(innerAgeMap.get(tmpAgeGroup).toString());
+                        innerAgeMap.put(tmpAgeGroup, innerAgeMap.get(tmpAgeGroup) + 1);
                     }
                 }
             }
@@ -568,6 +591,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             jsonObject.put("recommendedReviews", recommendedCount);
             jsonObject.put("reviewLength", reviewLength);
             jsonObject.put("sentimentReviewsByGender", sentimentCountByGender);
+            jsonObject.put("sentimentReviewsByAge", sentimentCountByAge);
             jsonObject.put("numberOfFavourites", game.getNumberOfFavourites());
             jsonObject.put("numberOfWishlists", game.getNumberOfWishlists());
             jsonObject.put("favouriteByAge", favouriteByAge);
