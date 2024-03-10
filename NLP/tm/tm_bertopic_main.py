@@ -1,4 +1,7 @@
+import json
+import traceback
 import numpy as np
+import requests
 import torch
 from sentence_transformers import SentenceTransformer
 from bertopic import BERTopic
@@ -16,6 +19,11 @@ from concurrent.futures import ThreadPoolExecutor
 import functools
 import pika
 from pika import PlainCredentials
+
+from read_game_specific_topic_name_json import read_game_specific_topic_name_json
+
+IP = "https://critiqbackend.itzjacky.info"
+PORT = 9000
 
 
 def cleaning(s_list: list[str]):
@@ -42,16 +50,14 @@ def _create_embedding_model(model_name:str):
 
 
 def inference(s_list: list[str]):
-    '''Inference to classify the sentiment of the list of strings
-    return a list of integers, each integer represents the sentiment of the corresponding string in the input list
-    integers should be either 1 or -1, where 1 = positive, -1 = negative
+    '''Inference to classify the topic of the list of strings
+    return a list of integers, each integer represents the id of the topic of the corresponding string in the input list
+    integers should be either from [-1, 0, ..., number of topics - 1] (total len of possible topics = number of topics + 1, -1 is the outlier topic)
 
     :param s_list: list of strings to be classified
 
-    return a list of integers, which contain the sentiment of the corresponding string in the input list
+    return a list of integers, which contain the topic id of the corresponding string in the input list
     '''
-    # TODO: rewrite inference functions for bertopic
-
     # clean the input list
     s_list = cleaning(s_list)
 
@@ -104,10 +110,35 @@ def ack_message(channel, delivery_tag):
 
 def consumer(ch, method, properties, body, inference_obj):
 
-    reviewId, comment = inference_obj
+    reviewId, gameid, comment = inference_obj
 
     start_time = time.time()
     result, _ = inference([comment])       # wrap the comment as a list
+
+    # also have to get the name of the game from the gameid
+    # temporarily hardcode the ip and port
+    req_url = f"{IP}:{PORT}/api/game/findGameById"
+    payload = json.dumps({
+        "id": 1,
+        "includeReviews": False,
+        "includePlatformReviews": False
+        })
+    headers = {
+    'Content-Type': 'application/json'
+    }
+    try:
+        response = requests.request("POST", req_url, headers=headers, data=payload)
+        print(response.json())
+        game_name = response.json()['name']
+
+        # then read the json file that contains the topic names for the specific game and topic name
+        topic_id_to_label_json = read_game_specific_topic_name_json(game_name, model_folder_path)
+        
+    except Exception as e:
+        print("Error getting the game name:", e)
+        print(traceback.format_exc())
+        return
+
     end_time = time.time()
     print('Time taken:', end_time-start_time)
 
@@ -121,13 +152,23 @@ def consumer(ch, method, properties, body, inference_obj):
         local.channel.confirm_delivery()
 
     # forming the result
-    resultToBeSentBack = bytes(str(reviewId) + ";" + str(result[0]), 'utf-8')
+    try:
+        resultToBeSentBack = json.dumps({
+            'reviewId': reviewId,
+            'gameId': gameid,
+            'topicId': result[0].item(),
+            "topicName": topic_id_to_label_json[f"{result[0].item()}"] if topic_id_to_label_json else "<Unknown>"       # a default value if the json file is not found
+        })
+    except Exception as e:
+        print("Error forming the result:", e)
+        print(traceback.format_exc())
+        return
 
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 
     print(
-        f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
+        f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
     try:
         # enable the test queue for debugging
         local.channel.basic_publish(
@@ -151,14 +192,25 @@ def consumer(ch, method, properties, body, inference_obj):
 def callback(ch, method, properties, body):
     # Process the received message
     print("Received message:", body)
-    # TODO: propose a JSON-like formating for msg
-    # find the first occurance of ; and split it intwo two parts
-    reviewId = str(body)[0: str(body).find(";")]
-    topic_id = str(body)[str(body).find(";")+1:]
+
+    try:
+        _body = json.loads(body)
+
+        gameid = int(_body['gameId'])
+        reviewId = int(_body['reviewId'])
+        comment = _body['reviewComment']
+    except json.JSONDecodeError as e:
+        print("Error decoding the message:", e)
+        print(traceback.format_exc())
+        return
+    except ValueError as e:
+        print("Error parsing the reviewId or gameid:", e)
+        print(traceback.format_exc())
+        return
 
     # use thread pool executor to limit the number of threads spawned
     threadpoolexecutor.submit(
-        consumer, ch, method, properties, body, (reviewId, topic_id)
+        consumer, ch, method, properties, body, (reviewId, gameid, comment)
     )
 
 
@@ -200,11 +252,11 @@ if __name__ == "__main__":
     device = torch.device('cpu')                            # use CPU
     
 
-    training_datetime = datetime(2024, 2, 7, 18, 47, 39)
+    training_datetime = datetime(2024, 3, 1, 9, 51, 49)
     training_folder = Path(
         "../NLP/tm",            # for the program to locate the parent folder of this project
-        f'bertopic_genre_indie_grid_search_{training_datetime.strftime("%Y%m%d_%H%M%S")}')
-    model_folder_path = training_folder.joinpath('bertopic_bt_nr_topics_40')
+        f'bertopic[split]_genre_action_grid_search_{training_datetime.strftime("%Y%m%d_%H%M%S")}')
+    model_folder_path = training_folder.joinpath('bertopic_bt_nr_topics_10')
     print('Loaded model from:', model_folder_path)
 
     # load the sbert model
