@@ -119,7 +119,7 @@ def consumer(ch, method, properties, body, inference_obj):
     # temporarily hardcode the ip and port
     req_url = f"{IP}:{PORT}/api/game/findGameById"
     payload = json.dumps({
-        "id": 1,
+        "id": gameid,
         "includeReviews": False,
         "includePlatformReviews": False
         })
