@@ -780,6 +780,7 @@ public class ReviewService {
             review.setEditedAt(new Date(System.currentTimeMillis())); // update new review edited at
             reviewRepository.save(review);
 //            send to sentiment analysis and topic modeling queue
+            reviewReq.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewReq);
             topicModelingForReview(reviewReq);
             review.getReviewer().setReviews(null);
