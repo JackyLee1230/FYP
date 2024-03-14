@@ -21,7 +21,8 @@ import java.util.List;
         @Index(name = "idx_user_name", columnList = "name"),
         @Index(name = "idx_user_id_name", columnList = "id, name"),
         @Index(name = "idx_user_email" , columnList = "email"),
-        @Index(name = "idx_user_verificationtoken", columnList = "verificationToken")
+        @Index(name = "idx_user_verificationtoken", columnList = "verificationToken"),
+        @Index(name = "idx_user_resetpasswordtoken", columnList = "resetPasswordToken"),
 })
 //@JsonIdentityInfo(
 //        generator = ObjectIdGenerators.PropertyGenerator.class,

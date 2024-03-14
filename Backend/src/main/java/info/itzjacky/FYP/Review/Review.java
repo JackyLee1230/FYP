@@ -28,7 +28,6 @@ import java.util.List;
 @Table(name = "Review", indexes = {
         @Index(name = "idx_review_reviewer_id", columnList = "reviewer_id"),
         @Index(name = "idx_review_game_id", columnList = "game_id")
-//        make an index that takes the reviewer_id and game_id
         , @Index(name = "idx_review_reviewer_id_game_id", columnList = "reviewer_id, game_id")
 }, uniqueConstraints = {
         @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = {"reviewer_id", "game_id", "gameVersion"})
