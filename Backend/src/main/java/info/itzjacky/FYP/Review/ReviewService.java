@@ -737,4 +737,60 @@ public class ReviewService {
         review.setReviewedGame(null);
         return review;
     }
+
+    @Transactional
+    public Review editReview(Integer reviewId, ReviewRequest reviewReq, User u) throws IOException, ExecutionException, InterruptedException {
+        if (reviewReq == null || reviewId == null) {
+            throw new IllegalStateException("Review ID/Review Request Cannot Be Empty");
+        }
+        if (u == null) {
+            throw new IllegalStateException("Please login to edit review!");
+        }
+        Review review = reviewRepository.findReviewById(reviewId);
+        if (!Objects.equals(review.getReviewer().getId(), u.getId())) {
+            throw new IllegalStateException("Unauthorized! You can only update your own review!");
+        }
+        boolean isUpdated = false;
+        if (reviewReq.getScore() != null && (reviewReq.getScore() > 0 && reviewReq.getScore() < 100) && !reviewReq.getScore().equals(review.getScore())) {
+            review.setScore(reviewReq.getScore());
+            isUpdated = true;
+        }
+        if (reviewReq.getIsSponsored() != null && reviewReq.getIsSponsored() != review.getSponsored()) {
+            review.setSponsored(reviewReq.getIsSponsored());
+            isUpdated = true;
+        }
+        if (reviewReq.getPlayTime() != null && !reviewReq.getPlayTime().equals(review.getPlayTime())) {
+            review.setPlayTime(reviewReq.getPlayTime());
+            isUpdated = true;
+        }
+        if (reviewReq.getComment() != null && !reviewReq.getComment().equals(review.getComment())) {
+            review.setComment(reviewReq.getComment());
+            isUpdated = true;
+        }
+        if (reviewReq.getRecommended() != null && reviewReq.getRecommended() != review.isRecommended()) {
+            review.setRecommended(reviewReq.getRecommended());
+            isUpdated = true;
+        }
+
+        if (isUpdated) {
+//            if edited within the past week, throw an error
+            if (review.getEditedAt() != null && (System.currentTimeMillis() - review.getEditedAt().getTime()) < 604800000) {
+                throw new IllegalStateException("You can update your review only once a week!");
+            }
+            review.setEditedAt(new Date(System.currentTimeMillis())); // update new review edited at
+            reviewRepository.save(review);
+//            send to sentiment analysis and topic modeling queue
+            sentimentAnalysisForReview(reviewReq);
+            topicModelingForReview(reviewReq);
+            review.getReviewer().setReviews(null);
+            review.getReviewedGame().setGameReviews(null);
+            if (review.getReviewedGame().getBaseGame() != null){
+                review.getReviewedGame().getBaseGame().setGameReviews(null);
+            }
+            return review;
+        } else {
+            throw new IllegalStateException("No changes made to the review");
+        }
+
+    }
 }

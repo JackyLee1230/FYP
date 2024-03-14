@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import LoginBox from "@/components/LoginBox";
-import { Box, Button, CircularProgress, styled, Typography, useTheme } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
-import { useAuthContext } from '@/context/AuthContext'
+import {
+  Box,
+  Button,
+  CircularProgress,
+  styled,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
+import { useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -18,15 +25,21 @@ function LoginPage() {
   const theme = useTheme();
 
   useEffect(() => {
-    if(user && token) {
-      if(window.history.length > 1 && 
-        document.referrer.indexOf(window.location.host) !== -1) {  
+    if (user && token) {
+      if (
+        window.history.length > 1 &&
+        document.referrer.indexOf(window.location.host) !== -1
+      ) {
         router.back();
       } else {
-      router.push('/')
+        console.log(
+          window.history.length,
+          document.referrer.indexOf(window.location.host)
+        );
+        router.push("/");
       }
     }
-  }, [user, token, router])
+  }, [user, token, router]);
 
   return (
     <>
@@ -39,9 +52,9 @@ function LoginPage() {
           alignItems: "center",
           justifyContent: "center",
           padding: "48px 128px",
-          [theme.breakpoints.down('md')]: { 
+          [theme.breakpoints.down("md")]: {
             padding: 0,
-          }
+          },
         }}
       >
         <Box
@@ -50,54 +63,66 @@ function LoginPage() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            background: "white", 
-            borderRadius: 4, 
-            padding: "36px 48px", 
+            background: "white",
+            borderRadius: 4,
+            padding: "36px 48px",
             border: "0.8px solid",
             borderColor: "divider",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             margin: "0 auto",
-            [theme.breakpoints.down('md')]: { 
+            [theme.breakpoints.down("md")]: {
               width: "100%",
               padding: "48px 12px",
               borderRadius: 0,
-            }
+            },
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
               gap: "12px",
               marginBottom: "12px",
             }}
           >
             <StyledLoginIcon />
-            <Typography variant="h2" color="primary" sx={{ fontWeight: 600, textAlign: "center" }}>
+            <Typography
+              variant="h2"
+              color="primary"
+              sx={{ fontWeight: 600, textAlign: "center" }}
+            >
               Login
             </Typography>
           </Box>
 
           {user && token ? (
             <>
-              <Typography variant="h5" sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}>
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: 4, fontWeight: 600, textAlign: "center" }}
+              >
                 Logged in successfully
               </Typography>
-              <Typography variant="body1" sx={{ marginBottom: 4, textAlign: "center" }}>
+              <Typography
+                variant="body1"
+                sx={{ marginBottom: 4, textAlign: "center" }}
+              >
                 You will be redirected in a few seconds.
               </Typography>
-              <Button variant="contained" color="primary" onClick={() => router.push('/')}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => router.push("/")}
+              >
                 Go to home page
               </Button>
             </>
+          ) : isUserLoading ? (
+            <CircularProgress />
           ) : (
-            isUserLoading ? (
-              <CircularProgress/>
-            ) : (
-              <LoginBox reloadOverride={true} />
-            )
+            <LoginBox reloadOverride={true} />
           )}
         </Box>
       </Box>

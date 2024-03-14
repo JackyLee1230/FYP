@@ -85,6 +85,9 @@ public class Review {
 
     private Date sentimentUpdatedAt;
 
+    @Column(insertable = true, updatable = true)
+    private Date editedAt;
+
     @ManyToMany(mappedBy = "likedReviews", fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonIgnore
