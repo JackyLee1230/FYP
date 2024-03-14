@@ -7,3 +7,5 @@ bertopic*split*_*/
 category_*/
 
 preprocessed_data/
+
+eval_results_external/
