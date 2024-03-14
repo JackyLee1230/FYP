@@ -1,0 +1,655 @@
+{
+  "new_topic_labels": {
+    "-1": {
+      "call_0": "\"Cute visual novel with good music and animation.\"",
+      "call_1": "\nTopic: \"Underwhelming experience with too much repetition\"",
+      "call_2": "\nGame: Trippy Adventure",
+      "call_3": "\"Enjoyable Puzzle Adventure\"",
+      "call_4": "Game Review Label: Fun & Challenging"
+    },
+    "0": {
+      "call_0": "\nTopic: Fun but Frustrating Puzzle Game with Poor Controls.",
+      "call_1": "Minecraft-like",
+      "call_2": "\nTopic Label: Fun Minecraft Alternative",
+      "call_3": "\"Fun Minecraft Experience\"",
+      "call_4": "\n\"Underwhelming experience with poor controls.\""
+    },
+    "1": {
+      "call_0": "\nSimulator",
+      "call_1": "Goat Fun",
+      "call_2": "Goat Fun",
+      "call_3": "Goat Simulator",
+      "call_4": "\"Goat Simulator\""
+    },
+    "2": {
+      "call_0": "Best game ever",
+      "call_1": "Ghostly Fun",
+      "call_2": "\nTopic Label: \"Gud Play, Fun Game\"",
+      "call_3": "Balloon Fun",
+      "call_4": "\"Killer Game\""
+    },
+    "3": {
+      "call_0": "\"Short but enjoyable\"",
+      "call_1": "\"Short but Fun\"",
+      "call_2": "\"Pretty Good Short Game\"",
+      "call_3": "\nCool Game",
+      "call_4": "Short Game"
+    },
+    "4": {
+      "call_0": "Depression Quest: A Difficult Journey",
+      "call_1": "\nTopic: Depression Quest\nLabel: Inaccurate portrayal of depression",
+      "call_2": "Depression Quest Accurate",
+      "call_3": "Depression Quest Fail",
+      "call_4": "\n\"Depression Simulator\""
+    },
+    "5": {
+      "call_0": "Geometry Dash - Challenging Fun",
+      "call_1": "Difficult Geometry Dash",
+      "call_2": "\"Geometry Dash\"",
+      "call_3": "\nGeometry Dash",
+      "call_4": "\"Geometry Dash\""
+    },
+    "6": {
+      "call_0": "\nLemon Money Adventure",
+      "call_1": "\nTopic Label: Capitalist Adventures",
+      "call_2": "\nLemonade Dreams",
+      "call_3": "\nTopic Label: \"Lemonade Money\"",
+      "call_4": "\nLemon Money Adventure"
+    },
+    "7": {
+      "call_0": "Fun Achievements",
+      "call_1": "\"Achievement Central\"",
+      "call_2": "Achievement Hell",
+      "call_3": "Legendary Achievements",
+      "call_4": "\nFun and easy."
+    },
+    "8": {
+      "call_0": "\nWhiskey Pass Simulator - 10/10",
+      "call_1": "Whiskey Pass",
+      "call_2": "\nDrinking Game",
+      "call_3": "\"Whiskey Passing Simulator\"",
+      "call_4": "Whiskey Simulator"
+    },
+    "9": {
+      "call_0": "Puzzling Adventure",
+      "call_1": "\"Braid: Timeless Puzzle Platformer\"",
+      "call_2": "Topic Label: Puzzle Platformer",
+      "call_3": "Closure: Light-Based Puzzles in a Dark World",
+      "call_4": "Braid: Puzzling Masterpiece"
+    }
+  },
+  "randomed_topic_reviews": {
+    "-1": {
+      "call_0": {
+        "reviews": [
+          "there are no negative reviews right now, and im assuming that ' s because a lot of the reviews come from people who got the game for free at pax or something such as myself. i don ' t think this is a 100 % pass, so just check out my pros and cons. pros : - nice basic graphics - interesting looking world - pretty simple, feels very zen - music is good - some puzzles that make you think cons : - very short, finished in under an hour and i wasn ' t rushing at all - $ 10 is too much for a game that you can finish in under an hour - story was pretty weak, was hoping for a little more since the gameplay was so simple - feels like a fleshed out flash game, would expect more from the number of people who worked on it as shown in the credits. if you like to replay simple games i think this game could be worth it at maybe $ 5, but for me personally i will probably never touch it again and would be very dissapointed if i had actually bought it for $ 10. i think a longer campaign, slightly better story, and puzzles that scale in difficulty would make this game much better. ( sidenote : met some of the developers",
+          "played the demo and definitely worth getting the game, i am not a huge fan of visual novels, i find them to get boring really quickly with too much reading and too much non relevant content. this one is fantastic, the music is well composed and changes in all the right places, the voices are too cute and just perfectly placed for each character. the storyline is more voiced with little extra descriptive text which is think is great. ui is clean and put together nicely. price is really cheap at i would probably buy it even if it was a bit more. also the animations are great, they add so much life to the characters and keep you from dying of the boredom involved in clicking through static content of 2 - 4 lines of text. best visual novel type game i have played by far i would recommend it to anyone who likes these types of games and if you dont like them but your an anime fan who loves cute things then definitely do youself a favor and grab this, support the developers they really did a great job and they are not even charging that much for it. will definitely be getting the second volumn when its out, keep up the great work. pro ' s great voice acting animated characters music awesome intro quick and clean ui con"
+        ],
+        "col_index": [
+          4569281,
+          4332462
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "it was so much fun to play",
+          "there are no negative reviews right now, and im assuming that ' s because a lot of the reviews come from people who got the game for free at pax or something such as myself. i don ' t think this is a 100 % pass, so just check out my pros and cons. pros : - nice basic graphics - interesting looking world - pretty simple, feels very zen - music is good - some puzzles that make you think cons : - very short, finished in under an hour and i wasn ' t rushing at all - $ 10 is too much for a game that you can finish in under an hour - story was pretty weak, was hoping for a little more since the gameplay was so simple - feels like a fleshed out flash game, would expect more from the number of people who worked on it as shown in the credits. if you like to replay simple games i think this game could be worth it at maybe $ 5, but for me personally i will probably never touch it again and would be very dissapointed if i had actually bought it for $ 10. i think a longer campaign, slightly better story, and puzzles that scale in difficulty would make this game much better. ( sidenote : met some of the developers"
+        ],
+        "col_index": [
+          59527,
+          4569281
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "surreal, short story, indie, 16 bit platformer. loopy. loopy is definitely the best word for it. i have no idea what i just played, i feel a little strange. i think i am glad i played it. i suddenly have an urge to listen to all my old linkin park favourites whilst playing really old console games. there is definitely a story. i think. no, i ' m sure there was. there was a duck. this game is trippy and tricky. without a guide this game does not offer up many hints and can lead you round and round and if you get easily frustrated by the obscure, you should definitely play this game * insert evil laugh *. trolololol. the graphics are exactly as represented, pixel goodness. really nice theme variation. the sound is very fitting. the controls are easy and redefinable. gameplay itself is easy. knowing which direction to go another story, or is it. achievements are quite obscure without a guide, easy with. it is a weird one to recommend. not my sort of thing. but, it does seem to be a very good version of whatever this is.",
+          "this is a good game, and a great party game if you have 2 or more players ( best with 4 ) there are a lot of people who play ' the yawhg ' a few times through and say that it is pretty monotonous. my statement to them is that they are probably monotonous in their play style. if you play this game trying to maximize your character, it turns into a boring game quickly. this is a game for adventurousness and sometimes crazy play styles will actually make a much more successful and interesting ending. those who played the game through 3 times are judging a game almost by the tutorial. you need to play quite a few times to see some of the interesting random occurances play out that make the game really fun."
+        ],
+        "col_index": [
+          3715740,
+          3204971
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "+ good story, little bit hard to understand still but still enjoyable. + puzzles, in this game you need to think befero doin '. + nice voiceacting - not much animations - seriosly, the achievement where you need to play the game in 4 hours or i think 2 - 2, 5 hours should be good overall : 8 / 10",
+          "it was so much fun to play"
+        ],
+        "col_index": [
+          3412620,
+          59527
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "+ good story, little bit hard to understand still but still enjoyable. + puzzles, in this game you need to think befero doin '. + nice voiceacting - not much animations - seriosly, the achievement where you need to play the game in 4 hours or i think 2 - 2, 5 hours should be good overall : 8 / 10",
+          "they were challenging you to. deadcore is one of the few games that i ' ve actually wanted to go back and replay. because you unlock new mechanics and powerups, going back and replaying levels to see new areas that you can reach and collecting ' sparks ' ( which reveal new parts of the level ) is super satisfying. beating a level five times faster than you did originally is a great experience that really shows off how much you ' ve progressed, through mastering mechanics and unlocking the new ones. also, if you ' re looking for a good story, this game doesn ' t really deliver i think. the story is entirely given through text files which you can collect. i haven ' t really read them, so it ' s possible they ' re really good. however, i like to leave it up to my imagination to come up with an explanation for the game and i feel like reading the logs might ruin it a bit. i might be completely wrong, but just be aware that this is not really a story driven gamemode. your goal is to get to the top, not to save the universe. this game is almost flawless, but it is important to point out the flaws. for one, even though almost everything in the level design is"
+        ],
+        "col_index": [
+          3412620,
+          3474676
+        ]
+      }
+    },
+    "0": {
+      "call_0": {
+        "reviews": [
+          "i would love to recommend this game but i can not. the biggist thing that makes me say that is the horroble controls. that and the bad save points. i like the idea of the game and i think it could be a fun game but as it is i can ' t say it ' s worth it.",
+          "nice puzzle game pros : good graphics multiplayer fun puzzles are awesome some are super easy though nice nane wow 10 $ i got it for dang and its theres another sale well really fun game to play with freinds cons : nothing ill give this game a 11 / 10"
+        ],
+        "col_index": [
+          3336592,
+          4074610
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "great game. if you like things like minecraft, then you ' ll definitely enjoy this.",
+          "great fun and a very good game!"
+        ],
+        "col_index": [
+          122380,
+          137398
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "great game. if you like things like minecraft, then you ' ll definitely enjoy this.",
+          "i would love to recommend this game but i can not. the biggist thing that makes me say that is the horroble controls. that and the bad save points. i like the idea of the game and i think it could be a fun game but as it is i can ' t say it ' s worth it."
+        ],
+        "col_index": [
+          122380,
+          3336592
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "its awesome game, gave me good hours of fun",
+          "pretty fun game should play"
+        ],
+        "col_index": [
+          5752697,
+          4515956
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "i would love to recommend this game but i can not. the biggist thing that makes me say that is the horroble controls. that and the bad save points. i like the idea of the game and i think it could be a fun game but as it is i can ' t say it ' s worth it.",
+          "pretty fun game should play"
+        ],
+        "col_index": [
+          3336592,
+          4515956
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "robot goat is cool",
+          "goat fun. will goat more"
+        ],
+        "col_index": [
+          3145469,
+          3132800
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "goat fun. will goat more",
+          "in this game, you get to be goat."
+        ],
+        "col_index": [
+          3132800,
+          3136544
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "goat fun. will goat more",
+          "oh my goat. this game is awesome."
+        ],
+        "col_index": [
+          3132800,
+          3133417
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "in this game, you get to be goat.",
+          "goat 10 / 10 will goat again"
+        ],
+        "col_index": [
+          3136544,
+          3135666
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "the best fun you can have with a goat.",
+          "because it is good at being goat."
+        ],
+        "col_index": [
+          3139426,
+          3129895
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "10 / 7",
+          "10 / 10 would thrash again."
+        ],
+        "col_index": [
+          125681,
+          3351867
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "10 / 10 would haunt a carrot again",
+          "i sneezed and lost my balloon. 9 / 10."
+        ],
+        "col_index": [
+          4181500,
+          3913700
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "10 / 10 would have smex with a firewall again",
+          "10 / 10 would haunt a carrot again"
+        ],
+        "col_index": [
+          4585900,
+          4181500
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "i sneezed and lost my balloon. 9 / 10.",
+          "10 / 10 would haunt a carrot again"
+        ],
+        "col_index": [
+          3913700,
+          4181500
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "10 / 10 would murder again.",
+          "a 7 / 10 by yourself."
+        ],
+        "col_index": [
+          3343554,
+          4472824
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "short but sweet.",
+          "completed in 3 great game but way too short."
+        ],
+        "col_index": [
+          415030,
+          3884864
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "too short about 1 hour : ( but super!",
+          "completed in 3 great game but way too short."
+        ],
+        "col_index": [
+          3047342,
+          3884864
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "pretty good ~",
+          "awesome but short!"
+        ],
+        "col_index": [
+          4062702,
+          3454347
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "short but very great game",
+          "good and super fun"
+        ],
+        "col_index": [
+          3394410,
+          3115744
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "good and fun",
+          "completed in 3 great game but way too short."
+        ],
+        "col_index": [
+          3236757,
+          3884864
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "if you want to see a little bit into what its like living with depression then yes, play this. if you feel like spending however much time feeling useless and wishing you weren ' t such a loser. everytime i looked at the choices i just wanted to beat myself if i was this person. game shows a good job at expressing depression, but forreal its just something i wouldn ' t really want to deal with. sad music, sad text, enjoy the depression.",
+          ". i suppose that in and of itself is not a problem, but if it ' s all about you then just say it ' s about you. don ' t try to speak for all depression suffers, because depression is not one - size fits all."
+        ],
+        "col_index": [
+          3228760,
+          3226583
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "don ' t play this ' game ', nor should you view it as an accurate depiction of depression. you don ' t make the choices in the game, instead, the developer has already crossed off certain options in order to force you down the same bad ending. depression quest only tries to show the worst case scenario for depression, not at all acknowledging that it is treatable by the choices you make, instead, it portrays the only way to treat depression is with pills and a therapist. notice how i said ' tries ', because even then everyone in the ' game ' acts like a complete idiot around the player. accuracy aside, this is just a poor excuse for a ' game '. from the static overlay constantly on the screen in a pathetic attempt to make the mediocre story seem ' deep ' to the lack of multiple endings with your choices basically doing nothing, there ' s a reason this game ' s top reviews are mostly negative.",
+          "i ' ve been depressed, i don ' t like talking about it, and i don ' t like reliving it much less playing a game about it. however, this game fails to deliver by outright not letting you pick activities which you know should pick you up. because when you are depressed you can choose to do nice things, but those nice things have no effect on your mood whatsover. this game is unrealistic. what is portrayed is an fake depression which speaks of a lack of self - control and giving up rather than genuine depression. it starts with the stereotype that depressed people lack motivation and works from there. this is wrong. because depression has nothing to do with what sort of activities you do, and if depression were so simple as that then it would not be a problem. this is not a good insight into depressed people and i wouldn ' t recommend it."
+        ],
+        "col_index": [
+          3226190,
+          3225954
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "don ' t play this ' game ', nor should you view it as an accurate depiction of depression. you don ' t make the choices in the game, instead, the developer has already crossed off certain options in order to force you down the same bad ending. depression quest only tries to show the worst case scenario for depression, not at all acknowledging that it is treatable by the choices you make, instead, it portrays the only way to treat depression is with pills and a therapist. notice how i said ' tries ', because even then everyone in the ' game ' acts like a complete idiot around the player. accuracy aside, this is just a poor excuse for a ' game '. from the static overlay constantly on the screen in a pathetic attempt to make the mediocre story seem ' deep ' to the lack of multiple endings with your choices basically doing nothing, there ' s a reason this game ' s top reviews are mostly negative.",
+          "well, i have a diagnosed clinical depression, and i found this game very very accurate, i would even recommend it to the people not just with depression, but with a relative that has depression, as it will provide a very nice and accurate insight of their ' head ', in a way that you will be able to understand better why people with this kind of health problems act and react the way they do, and how is the world for them."
+        ],
+        "col_index": [
+          3226190,
+          3227488
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          ". i suppose that in and of itself is not a problem, but if it ' s all about you then just say it ' s about you. don ' t try to speak for all depression suffers, because depression is not one - size fits all.",
+          "don ' t play this ' game ', nor should you view it as an accurate depiction of depression. you don ' t make the choices in the game, instead, the developer has already crossed off certain options in order to force you down the same bad ending. depression quest only tries to show the worst case scenario for depression, not at all acknowledging that it is treatable by the choices you make, instead, it portrays the only way to treat depression is with pills and a therapist. notice how i said ' tries ', because even then everyone in the ' game ' acts like a complete idiot around the player. accuracy aside, this is just a poor excuse for a ' game '. from the static overlay constantly on the screen in a pathetic attempt to make the mediocre story seem ' deep ' to the lack of multiple endings with your choices basically doing nothing, there ' s a reason this game ' s top reviews are mostly negative."
+        ],
+        "col_index": [
+          3226583,
+          3226190
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "cool concept, and i like the nice touch of the increase / decrease in static on the images the more or less depressed you are. it rings true to how depression really effects your memory and presence during important times in your life. definately recommend for people who want to better understand depression through something like this.",
+          "this game made me want to kill myself more than my depression does"
+        ],
+        "col_index": [
+          3227572,
+          3226039
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "while it does take skill to master all the mechanics in the game, geometry dash is an overall fantastic game. except for the parts that will make you want to punch your monitor out of frustrastion because the levels can be so diffucult, especially the custom levels like every single megalovania level ever, but setting that aside i highly recommend you play geometry dash",
+          "geometry dash is a great kinda rage, but still fun!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          4159948,
+          4162302
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "while it does take skill to master all the mechanics in the game, geometry dash is an overall fantastic game. except for the parts that will make you want to punch your monitor out of frustrastion because the levels can be so diffucult, especially the custom levels like every single megalovania level ever, but setting that aside i highly recommend you play geometry dash",
+          "i like playing geometry dash."
+        ],
+        "col_index": [
+          4159948,
+          4153227
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "geometry dash should be out by now! do you argee? yes or no.",
+          "i like playing geometry dash."
+        ],
+        "col_index": [
+          4153069,
+          4153227
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "i love geometry but i hate dash xd",
+          "geometry dash is love, geometry dash is"
+        ],
+        "col_index": [
+          4153252,
+          4156336
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "amazing addictive and fun geometry dash is an astoundingly fun game with great music",
+          "geometry dash is love, geometry dash is"
+        ],
+        "col_index": [
+          4150983,
+          4156336
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "when life gives you lemons, follow these simple steps : 1. buy a lemonade stand 2. buy more lemonade stands 3. buy your 1000th lemonade stand 4. sacrifice those cute little angels to our lord and saviour gaben. 5. repeat steps 1 - 4 until you unlock the moon 6. brag to your friends that you have businesses on the moon, wait for them to bestole you the title ' demi - god ' 7. figure out why your friends asked you to get a life. 8. adventure capitalist is love, adventure capitalist is life! 9. oh god why have you ruined my life?! tl ; dr when life gives you lemons, sell your soul to capitalism.",
+          "squeeze lemons to make money. buy a newspaper route to make money. buy a pizza delivery to make money. buy a donut shop to make money. buy a shrimp boat to make money. buy a hockey team to make money. buy a film studio to make money. buy a bank to make money. buy an oil platform to make money. sell these to get angels (? ) use angels to get more money. squeeze a lemon to make like money? get this game. don ' t like money? get this game, then write a bad review. like clicking? get this game. don ' t like clicking? get this game, then write a bad review."
+        ],
+        "col_index": [
+          4523736,
+          4529802
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "when life gives you lemons, follow these simple steps : 1. buy a lemonade stand 2. buy more lemonade stands 3. buy your 1000th lemonade stand 4. sacrifice those cute little angels to our lord and saviour gaben. 5. repeat steps 1 - 4 until you unlock the moon 6. brag to your friends that you have businesses on the moon, wait for them to bestole you the title ' demi - god ' 7. figure out why your friends asked you to get a life. 8. adventure capitalist is love, adventure capitalist is life! 9. oh god why have you ruined my life?! tl ; dr when life gives you lemons, sell your soul to capitalism.",
+          "this game let me know what i really want in life : i want eagles in my daydreams, diamonds in my and lemonade stands"
+        ],
+        "col_index": [
+          4523736,
+          4524056
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "when life gives you lemons make lemonade - cave johnson",
+          "when life gives you lemons, make money!"
+        ],
+        "col_index": [
+          4528486,
+          4521812
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "when life gives you lemons make lemonade - cave johnson",
+          "started with a simple lemonade stand and in one day i was able to purchase an oil company. seeing how simple it was to make money, i tried to replicate this in real life. i am now a multi - billionaire and its all thanks to this game showing me how to make money real quick. 10 / 10"
+        ],
+        "col_index": [
+          4528486,
+          4527635
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this game let me know what i really want in life : i want eagles in my daydreams, diamonds in my and lemonade stands",
+          "started with a simple lemonade stand and in one day i was able to purchase an oil company. seeing how simple it was to make money, i tried to replicate this in real life. i am now a multi - billionaire and its all thanks to this game showing me how to make money real quick. 10 / 10"
+        ],
+        "col_index": [
+          4524056,
+          4527635
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "great game and easy achievements!",
+          "why can ' t all multiplayer achievements be like this!!!!!!!!!!!!"
+        ],
+        "col_index": [
+          3153002,
+          5940786
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "the best game ( that i know of ) to get achievements in! : d",
+          "ok wtf! the achievements are really buggy!!!"
+        ],
+        "col_index": [
+          3049552,
+          67772
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "if you want to get achievements on this game, just give up!",
+          "the best game ( that i know of ) to get achievements in! : d"
+        ],
+        "col_index": [
+          4091912,
+          3049552
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "419 achievements? that ' s of legendary.",
+          "this game will be 5 / 5 stars when there are achievements. for now though it ' s a solid edit : they added achievements so it is 5 / 5"
+        ],
+        "col_index": [
+          3713213,
+          77887
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "i just can ' t suffer through playing this, not even for easy achievements.",
+          "great game and easy achievements!"
+        ],
+        "col_index": [
+          4438974,
+          3153002
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "10 / 10 would pass whiskey again pass the whiskey!",
+          "can ' t pass the whiskey. 0 / 10"
+        ],
+        "col_index": [
+          3122805,
+          3115184
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey",
+          "10 / 10 would pass whiskey again pass the whiskey!"
+        ],
+        "col_index": [
+          3113554,
+          3122805
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "pass the whiskey! hoho!!",
+          "can ' t pass the whiskey. 0 / 10"
+        ],
+        "col_index": [
+          3113303,
+          3115184
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10 / 10 would pass whiskey again pass the whiskey!",
+          "pass the whiskey"
+        ],
+        "col_index": [
+          3122805,
+          3113141
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey",
+          "9 / 10 can pass the whiskey but cant unpass it"
+        ],
+        "col_index": [
+          3116917,
+          3117877
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "puzzle platformers tend to be platform games with a few easy puzzles. braid is a puzzle games with some easy platform elements. the puzzle mechanic is one of the most innovative i have seen. it involves time manipulation and challenges you to think in new ways to predict the consequences of manipulating time in various ways and use this ability to achieve your goals. it starts out easy and the difficulty ramps up at a good pace. towards the end the game is challenging even for experienced puzzle solvers. the game is also non - linear in that you don ' t need to solve everything in one part of the game to progress to later parts, if you get stuck on a puzzle you can go somewhere else and come back to tackle that puzzle later. the game has an artistic style that feels completely natural and fits well with the unique style of the gameplay. graphics and sound contribute further to make the game atmospheric. the story is told in various ways, including texts you can read at the start of each level but also, in a way, through the pictures that you need to assemble to complete a level. all in all this is one of the best puzzle platformers i have played and highly recommended to anyone who likes puzzle games.",
+          "a puzzle in a puzzle in a puzzle. its like inception, only with puzzles. great puzzles that keep you guessing at times. some of them are pretty simple wile others can be a bit tricky. highly recommended if you like puzzles."
+        ],
+        "col_index": [
+          3174477,
+          3549971
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "one of my favorite games of all time : an art puzzle platformer.",
+          "puzzle platformers tend to be platform games with a few easy puzzles. braid is a puzzle games with some easy platform elements. the puzzle mechanic is one of the most innovative i have seen. it involves time manipulation and challenges you to think in new ways to predict the consequences of manipulating time in various ways and use this ability to achieve your goals. it starts out easy and the difficulty ramps up at a good pace. towards the end the game is challenging even for experienced puzzle solvers. the game is also non - linear in that you don ' t need to solve everything in one part of the game to progress to later parts, if you get stuck on a puzzle you can go somewhere else and come back to tackle that puzzle later. the game has an artistic style that feels completely natural and fits well with the unique style of the gameplay. graphics and sound contribute further to make the game atmospheric. the story is told in various ways, including texts you can read at the start of each level but also, in a way, through the pictures that you need to assemble to complete a level. all in all this is one of the best puzzle platformers i have played and highly recommended to anyone who likes puzzle games."
+        ],
+        "col_index": [
+          3177563,
+          3174477
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "braid is a puzzle platformer. you play as tim, a guy attempting to rescue his princess from a monster. you explore 6 worlds, each with several levels filled with puzzles. you solve puzzles using a time manipulation mechanics, which are enhanced the further you go in the game. levels also feature hidden collectibles which unlock more of the story. the puzzles are clever and really engaging. it is so fulfilling when you finally figure out what it is you need to do. i think that the puzzles are made to be engaging but not so obscure that you will never work out the answer without that is my opinion. the levels themselves look so beautiful and have actually spent time just waltzing through the levels alone and admiring the art and music. the game seems to draw on many aspects of gaming and comes into its own when you look at the game and its plot from a philosophical standpoint. it really makes you think and encourages you to do so. replayability is limited with the beautiful art and music. once you complete the levels, find the hidden collctibles and see the ending, there isn ' t much to keep doing. the time trials extend replayability slightly, but not everyone likes time trials. despite this, i still think this is a game worth",
+          "one of my favorite games of all time : an art puzzle platformer."
+        ],
+        "col_index": [
+          3176851,
+          3177563
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "one of my favorite games of all time : an art puzzle platformer.",
+          "if i can \u2019 t see it, it doesn \u2019 t exist. this is pretty much the premise of the game and it is executed to very good effect. closure is a puzzle platformer in which you are a weird little creature with no face, running about in the dark, and clinging desperately to the light so you don \u2019 t fall off into nothingness while you try to map out each level and locate the exit. oh and then you steal some people \u2019 s faces or something and solve light based puzzles in their bodies or whatever. the puzzles themselves are pretty clever. in each new zone you start out with some pretty simple puzzles which gradually introduce new elements to you, but towards the end of the zone you \u2019 re having to work out some pretty complicated stuff. the way these puzzles work is that walls and floors do not exist in the dark, so you have to position lamps and orbs of light about the place to let you do stuff like pass through a wall and not fall through the floor into the abyss, or maybe ride a spotlight up a wall to the exit. it \u2019 s a bit weird at first really, but definitely an innovative twist on the standard puzzle platformer. one thing i really like about closure as a puzzle platformer is that it"
+        ],
+        "col_index": [
+          3177563,
+          6252596
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "default, the player can rewind time in each world, but each world has its own special mechanics that also deal with time. the player has to solve puzzles using this time mechanic, often with some precision platforming. each of the puzzles can be difficult to solve, but the levels are designed such that the player can walk past a puzzle to solve it later. some of the level designs are repeated in this game, but with new twists to be used with a new time based mechanic. the time based mechanics of braid are amazing for solving the tricky puzzles while also being cool yet confusing when thinking about how some of the mechanics work. although some of the puzzles can be a pain to figure out or time well with precise actions, braid tends to be a short game at 5 hours, and maybe more if players are really stuck on some puzzles. braid has its strong and unique puzzle gameplay while having good design and a story to think about. while the puzzles may be hard at times and the story a bit strange, this is a great indie title to check out and play for the different things it brings in the game.",
+          "a puzzle in a puzzle in a puzzle. its like inception, only with puzzles. great puzzles that keep you guessing at times. some of them are pretty simple wile others can be a bit tricky. highly recommended if you like puzzles."
+        ],
+        "col_index": [
+          3174486,
+          3549971
+        ]
+      }
+    }
+  }
+}

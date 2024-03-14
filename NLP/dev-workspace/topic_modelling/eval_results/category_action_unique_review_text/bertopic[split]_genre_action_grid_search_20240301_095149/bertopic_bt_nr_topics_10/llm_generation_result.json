@@ -1,0 +1,655 @@
+{
+  "new_topic_labels": {
+    "-1": {
+      "call_0": "\"Single-player masterpiece\"",
+      "call_1": "\"Fun Game\"",
+      "call_2": "\nTopic Label: Fun Game",
+      "call_3": "Open World Boredom",
+      "call_4": "Game"
+    },
+    "0": {
+      "call_0": "The topic label in less than 5 words is: \"Deep RPG with engaging story\".",
+      "call_1": "\"Witcher RPG\"",
+      "call_2": "\nTopic Label: Fun Adventure Game",
+      "call_3": "Fun Game",
+      "call_4": "\nTopic: Teraria\nLabel: Fun Sandbox Game"
+    },
+    "1": {
+      "call_0": "Fun but glitchy",
+      "call_1": "\nTopic Label: PC Port Issues",
+      "call_2": "\nCrash-prone",
+      "call_3": "\nTopic Label: \"Underwhelming PC Port\"",
+      "call_4": "Topic Label: Gaming Issues"
+    },
+    "2": {
+      "call_0": "\nTopic Label: \"Disappointing Shooter\"",
+      "call_1": "\n\"Good Shooting Game\"",
+      "call_2": "\"Gun-blazing good time with friends.\"",
+      "call_3": "Topic Label: \"Gun-Based Mayhem\"",
+      "call_4": "\n\"Shark Shooter\""
+    },
+    "3": {
+      "call_0": "Cool game.",
+      "call_1": "Topic Label: \"Too Short\"",
+      "call_2": "Awesome Game",
+      "call_3": "\"Short but sweet\"",
+      "call_4": "Topic Label: Fun Short Game"
+    },
+    "4": {
+      "call_0": "Learn Russian",
+      "call_1": "\nLearn Russian",
+      "call_2": "\nTopic Label: Russian Gamers",
+      "call_3": "\nLearn Russian Fast",
+      "call_4": "Learn Russian"
+    },
+    "5": {
+      "call_0": "Sonic masterpiece",
+      "call_1": "\nTopic Label: Sonic Modern Classic",
+      "call_2": "\nSonic Comeback: Goodness Returned",
+      "call_3": "\nLabel: Sonic Revival",
+      "call_4": "Modern Sonic: Frustrating, Buggy, Painful"
+    },
+    "6": {
+      "call_0": "Lie",
+      "call_1": "Cake is a Lie",
+      "call_2": "Lie Cake",
+      "call_3": "\nCake is a Lie",
+      "call_4": "\nLie About Cake"
+    },
+    "7": {
+      "call_0": "Classic Game",
+      "call_1": "Classic Game",
+      "call_2": "\"Classic Fun\"",
+      "call_3": "Classic Fun",
+      "call_4": "Classic Game"
+    },
+    "8": {
+      "call_0": "\nVirtual Hat Simulator",
+      "call_1": "\"Hat Simulator\"",
+      "call_2": "\"Hat Simulator\"",
+      "call_3": "\"Hat Simulator\"",
+      "call_4": "Topic Label: Hats Simulator"
+    },
+    "9": {
+      "call_0": "Whiskey Pass",
+      "call_1": "\n\"Whiskey Pass\"",
+      "call_2": "Whiskey Pass",
+      "call_3": "Passed",
+      "call_4": "Topic Label: Pass Whiskey"
+    }
+  },
+  "randomed_topic_reviews": {
+    "-1": {
+      "call_0": {
+        "reviews": [
+          "have no friends to play with or just want to get away from them with a single player game? then look no further, this game has an amazing storyline, very good gameplay and alomost any computer can run it ( unless your computer is made out of wood ). if you feel lonely playing this then no problem, you can just download synergy and the server tools ( all free ) and play this game with friends! it is worth your money. the only thing i have to say is : watch out for the head humpers.",
+          "like : game play and ingame graphics dont ' like : all the rest. first 30 min is like a movie ( with bad storyline graphics ) and when you finally start to play you will soon realise the an open world isn ' t fun when each mission is 99 % the same as the previous. boring!!!!! in short the game is like this : hey! a kill a nameless walk boring"
+        ],
+        "col_index": [
+          1268109,
+          3540163
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "fun as hell. uy it and play it with me",
+          "this is a really fun game"
+        ],
+        "col_index": [
+          6384102,
+          70013
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "this is an amazing game!! great graphics, awesome storyline, and a lotof fun to mess around with!!! the only thing that is not good is the download time, but it is worth the wait : d",
+          "this game is great. really fun to play together with friends. would reccommend to all who cant buy games. 10 / 10"
+        ],
+        "col_index": [
+          3285612,
+          6170242
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "like : game play and ingame graphics dont ' like : all the rest. first 30 min is like a movie ( with bad storyline graphics ) and when you finally start to play you will soon realise the an open world isn ' t fun when each mission is 99 % the same as the previous. boring!!!!! in short the game is like this : hey! a kill a nameless walk boring",
+          "this game is fantastic and well worth your time. the only problem i have with it is that it isnt multiplayer, but still a great game. would play alone again 10 / 10"
+        ],
+        "col_index": [
+          3540163,
+          4536890
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this is an amazing game!! great graphics, awesome storyline, and a lotof fun to mess around with!!! the only thing that is not good is the download time, but it is worth the wait : d",
+          "this game is really good"
+        ],
+        "col_index": [
+          3285612,
+          243856
+        ]
+      }
+    },
+    "0": {
+      "call_0": {
+        "reviews": [
+          "a good game that becomes even better if you play with friends",
+          "i always wanted to play the witcher series, especially after seeing all the amazing trailers for 2 and 3. but when i tried to play this game back in summer ' 14 but i couldn ' t wrap my head around the inventory and preparation method of playing. i was too used to playing skyrim at this point. so i let it sit in my library for a few months and decided to play it again after watching gopher play it in his let ' s play series. it clicked when i watched him play. i love this game, as i love the rpg genre in general ( check my review / time put into skyrim ). the game is 8 years old now but it holds up quite well. some game - play aspects are hard to grasp and sometime movement is frustrating but overall it is a fantastic piece of gaming. i really enjoy it and almost have it finished. i will definitely move straight into the second one once i finish this one. thumbs up if you want a true rpg experience but it requires a patient gamer who likes story drive narrative and a very dangerous, depressing and visceral world to explore. also mods are available to fix some bugs and improve some visuals but it ' s mostly the core experience you ' re left with."
+        ],
+        "col_index": [
+          5493623,
+          782685
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "a good game that becomes even better if you play with friends",
+          "i always wanted to play the witcher series, especially after seeing all the amazing trailers for 2 and 3. but when i tried to play this game back in summer ' 14 but i couldn ' t wrap my head around the inventory and preparation method of playing. i was too used to playing skyrim at this point. so i let it sit in my library for a few months and decided to play it again after watching gopher play it in his let ' s play series. it clicked when i watched him play. i love this game, as i love the rpg genre in general ( check my review / time put into skyrim ). the game is 8 years old now but it holds up quite well. some game - play aspects are hard to grasp and sometime movement is frustrating but overall it is a fantastic piece of gaming. i really enjoy it and almost have it finished. i will definitely move straight into the second one once i finish this one. thumbs up if you want a true rpg experience but it requires a patient gamer who likes story drive narrative and a very dangerous, depressing and visceral world to explore. also mods are available to fix some bugs and improve some visuals but it ' s mostly the core experience you ' re left with."
+        ],
+        "col_index": [
+          5493623,
+          782685
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "very awesome!! i like this game, it ' s perfect to play with your friends! i recommend it!",
+          "it ' s a good game, if you beat the whole game without any dlc ' s then you ' re going to keep doing the same thing over and over again. it ' s like an rpg / rogue - like adventure i ' ll recommend this game because it is fun and you can play with friends too!!!!"
+        ],
+        "col_index": [
+          3575359,
+          3211626
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "really good game and the best thing about it, it was free",
+          "it ' s a good game, if you beat the whole game without any dlc ' s then you ' re going to keep doing the same thing over and over again. it ' s like an rpg / rogue - like adventure i ' ll recommend this game because it is fun and you can play with friends too!!!!"
+        ],
+        "col_index": [
+          6180260,
+          3211626
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "like, god ) this adds a whole new level to the gameplay, and new challenges to overcome. hardmode is very hard for the player when they first enter it, but once you start getting new armor, weapons, etc. it starts to balance very nicely. for a sandbox game, this is one of the best ones out there. and if you still view it as a clone of minecraft, go right ahead. they do have many similarities, yet terraria goes on to add completely new things to minecraft ' s formula and blew my mind when i first tried it out. but make sure to give this amazing experience a try. great work on this game, can ' t wait for the next update whenever theyre announced, and want more people to see this game as it really is. an experience.",
+          "a good game that becomes even better if you play with friends"
+        ],
+        "col_index": [
+          72206,
+          5493623
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "does not work on windows 10, dont buy it.",
+          "some of the most fun i ' ve had gaming in years. i haven ' t had any problems with this pc port either!"
+        ],
+        "col_index": [
+          4622547,
+          3698267
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "* * disclaimer i ' m only writing about how the pc port is, not reviewing the game itself as i believe most people know how good the game is already disclaimer end * * pc speccs : * sapphire radeon hd7970 3gb, using amd beta drivers * intel i7 4770k @ * 16 gb ram @ 1600mhz * 256gb ssd @ 540mb / s readspeed i was really on the edge with buying this game as rockstar haven ' t really had the cleanest track record with pc ports in the past, but not with gta v! this game runs as smooth as a baby ' s bottom. i am able to run the game with most things turned up to very high and i get solid 65 - 75 fps ( sometimes dipping a bit below during intensive moments ), the only things i have turned off is msaa aswell as extra shadow texture settings ( can ' t remember the name ). the game is beautiful and sometimes it looks like a pretty picture instead of a video game! so as you can see above the game runs really great but however suffer from a couple of issues ; * online can sometimes be very unstable and a bit buggy, this might be",
+          "this game was good for its time, however the only reason one would get this version is because of mods, and that ' s the only reason pros + mods + controller support + big game with a long story + basically gta 3 but more advanced cons - frame rate issues - graphic setting are screwed up - terrible pc port - chance of a invisible overworld ( which can be fixed ) - uses gfwl instead of steamworks - has trouble running on windows 8 and 10 bottom line, unless you want mods, go buy the ps3 or xbox 360 version."
+        ],
+        "col_index": [
+          3286634,
+          306242
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "game crashes frequently if running on windows 10. there is a fix but you have to mess with the sound files ( / ). seemed like a great game and runs fine except for the crashing every 20ish minutes.",
+          "does not work on windows 10, dont buy it."
+        ],
+        "col_index": [
+          3572585,
+          4622547
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "this game was good for its time, however the only reason one would get this version is because of mods, and that ' s the only reason pros + mods + controller support + big game with a long story + basically gta 3 but more advanced cons - frame rate issues - graphic setting are screwed up - terrible pc port - chance of a invisible overworld ( which can be fixed ) - uses gfwl instead of steamworks - has trouble running on windows 8 and 10 bottom line, unless you want mods, go buy the ps3 or xbox 360 version.",
+          "game crashes frequently if running on windows 10. there is a fix but you have to mess with the sound files ( / ). seemed like a great game and runs fine except for the crashing every 20ish minutes."
+        ],
+        "col_index": [
+          306242,
+          3572585
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "fainlly i been waiting 1 half year released for pc : - ) because i don ' t have consoles like playstation3 / 4 & xbox360 / one feel low fps, i liked most pc is powerful & high fps & high setting & high resolution 1080p. keyboard & mouse is much easy aim for shooting & sniper, if driving or on foot switch to xbox360 controller wired easy to driving good for racing & chase car. my main pc desktop gamin rig core i7 4770 turbo memory 16gb ram asus gtx 770 2gb windows 7 high setting 1080p 80 - 100fps vsync off my laptop for travel core i7 4700mq turbo memory 8gb ram gt 840m windows med / low setting 1366x768 40 - 50fps can ' t use 1080p cause low fps * laptop how fix it launcher crashed - youtube tutorial youtube\u2122 video : gta 5 funny moments - helicopter vs bus",
+          "if you guys want a fix for the higher graphics go to the end of the review call of duty black ops iii is awesome in its own way but the optimsation is horrible could get higher framerates and minor stutters, also when i play gta lag is barley noticed and i get 8mbps download speed and even higher at times wheras in this nothing works! its like playing on 200kbps you teleport all over the place, fix the servers!! but over all its a great experience and players are friendly if you guys want a good cod game this is it. tell me if there is a fix availible pc specs gtx 960 4gb ssc i5 6500 1tb storage windows 10 msi motherboard 8gb ddr4 ram fix : go to disk c program files x86 steam steamapps common black ops 3 players config and change ( / / hide graphics options that are too demanding for the user ' s video card restrictgraphicsoptions = 1 ) to ( 0 ) 2nd october working perfectly with minor lag spikes in the menus multiplayer ; etc"
+        ],
+        "col_index": [
+          3263214,
+          3989737
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "0 / 10 would not cod again",
+          "10 / 10 go find yourself why."
+        ],
+        "col_index": [
+          5459221,
+          6336521
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "10",
+          "its a good game 10 / 10"
+        ],
+        "col_index": [
+          262261,
+          190104
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "10 / 0",
+          "one of my top 10 games."
+        ],
+        "col_index": [
+          94211,
+          6233561
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10",
+          "10 / 0"
+        ],
+        "col_index": [
+          262261,
+          94211
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "sharks everywhere 10 / 10",
+          "its a good game 10 / 10"
+        ],
+        "col_index": [
+          3348905,
+          190104
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "short but fun, kinda demented game.",
+          "the last good one."
+        ],
+        "col_index": [
+          5755606,
+          6388349
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "way to short",
+          "is good, the dead"
+        ],
+        "col_index": [
+          345464,
+          6168381
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "the last good one.",
+          "fun but too short. it also should be"
+        ],
+        "col_index": [
+          6388349,
+          3386000
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "really good game, but really really short.",
+          "great fun play it all the time!"
+        ],
+        "col_index": [
+          6372759,
+          4158378
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "the last good one.",
+          "fun but too short. it also should be"
+        ],
+        "col_index": [
+          6388349,
+          3386000
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "typical russian community",
+          "you will learn russian faster than in any class 10 / 10"
+        ],
+        "col_index": [
+          6065264,
+          6037736
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "if you love russian - made games here ' s a good one 8 / 10",
+          "the best place to learn russian fastest, valve ' s new russian for children game."
+        ],
+        "col_index": [
+          3522580,
+          6040288
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "dota is so free it ' s funny ( russian people everywhere )",
+          "typical russian community"
+        ],
+        "col_index": [
+          6029190,
+          6065264
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "you will learn russian faster than in any class 10 / 10",
+          "if you want to learn to speak russian language, download this game, don ' t be afraid. there ' s a free russian dictionary, just kill russian kid and he will answer you!"
+        ],
+        "col_index": [
+          6037736,
+          6070094
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "get in here, stalker. this game is like fallout, but russian ( in a good way )",
+          "the best place to learn russian fastest, valve ' s new russian for children game."
+        ],
+        "col_index": [
+          5651875,
+          6040288
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "it ' s a sonic game that ' s actually good",
+          "great game it ' s just the best sonic game i ' ve played since sonic unleashed but i think the game was a little too short for a sonic game again best sonic game love it"
+        ],
+        "col_index": [
+          6250531,
+          6251846
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "great game it ' s just the best sonic game i ' ve played since sonic unleashed but i think the game was a little too short for a sonic game again best sonic game love it",
+          "despite how the game auto scrolls on the act selection screen and during the level after you run it on the second time you play it i still enjoyed this game unlike other sonic games i enjoy its the first sonic game where you are able to equip certian abilities to a sonic. the point system gives this game more moral then the other sonic games. the new generation of sonic games are very entertaining and excting through sonic cd, sonic 3d blast and this game as well. i hope in later they ' ll bridge off and add more amazing ablitlites to sonic in the future. i gave it a 9 / 10. i ahve played sonic the hedgehog, sonic the hedgehog 2, sonic the hedgehog 3, sonic and knuckles, sonic advance, sonic advance 2, sonic advance 3, sonic pinball, sonic 3d blast, sonic cd, sonic generations."
+        ],
+        "col_index": [
+          6251846,
+          6251889
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "aside from ' sonic rush ' on the ds a while back, it is a common opinion that the last decent sonic game was ' sonic adventure 2 ' and its port to the gcn. ' sonic heroes ' signaled the descent of the series into games including the ' werehog ' sonic and whatever made the black hole that is my memory of sonic in 2006. however, ' sonic generations ' is both a love letter to the series and an apology to the fans. one level from each major sonic game since the first ' sonic the hedgehog ' is taken to compose the series of levels in this game. except, in a lovely twist, each one has a 2d and 3d version. one for original, genesis style sonic and one for modern sonic, who plays like he did in ' sonic it works wonderfully. this game rekindled my childlike love for game. aside from two mediocre levels ( crisis city and the one from ' sonic colors ' ), both parts of every level work wonderfully. that ' s right. 2d city escape is just as good as a 3d green hill zone. combined with collectible artwork, homage boss battles, a plethora of challenges, and remixed music for every level, the game will last you for",
+          "sonic ' s first comeback since the games on the sonic heroes engine ( games like shadow the hedgehog sonic riders 2 : zero gravity and of course sonic heroes ) you play as modern sonic and sonic from the years of sonics 1 to just before sonic adventure ( not sure what game it is ) it ' s fairly short at 9 stages and two acts for eatch stage for you to play as sonic and his younger self and 6 bosses ( 5 if you don ' t include the final boss ) in sonic generations you play most of sonic ' s best stages ( i mean best because there are some stages that arn ' t there that are good like cool edge stage in sonic unleashed and metel harbour for sonic adventure 2 and even emarald coast from sonic adventure but rooftop run is good enough ). this version of generations doesn ' t have everything unfortunitly. the only thing it doesn ' t have is the meggadrive emulator for sonic 1 but since the pc already has a few genesis emulators who cares? also theres a little suprise in intro for the final boss. also the community has forced modding into this game ( i think ) and there are already a set of awesome mods from rendering patches like fx pipeline to"
+        ],
+        "col_index": [
+          6250850,
+          6250258
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "sonic what can i say, i was a big fan of sonic games on pc in my youth and tried coming back to try the new games in the series. sadly they were incredibly frustrating, incredibly buggy or just plain painful to play, sonic generations is the first attempt to fix this. the game can be broken up into act1 ( classic sonic ), act2 ( modern sonic ), boss battles ( each boss fight has a particular sonic mandatory ) and finally challenges for each sonic. let ' s go over each of them : classic sonic ( act1 of each stage ) : classic sonic is the sonic of our past with a bit of a modern twist on it. the levels are straight forward, simple to play and good fun. if you have played any sonic game from the 90 ' s then you will have no worries here. the only thing that will grab you is the occasional 3d feel it gives off. modern sonic ( act2 of each stage ) : modern sonic is the character most associated with the bad sonic games in a 3d world. sonic generations gives modern sonic high speed levels to play in at the start and it ' s a lot of fun seeing how fast you can clear a level. the later stages though are annoying and painful to say the least",
+          "aside from ' sonic rush ' on the ds a while back, it is a common opinion that the last decent sonic game was ' sonic adventure 2 ' and its port to the gcn. ' sonic heroes ' signaled the descent of the series into games including the ' werehog ' sonic and whatever made the black hole that is my memory of sonic in 2006. however, ' sonic generations ' is both a love letter to the series and an apology to the fans. one level from each major sonic game since the first ' sonic the hedgehog ' is taken to compose the series of levels in this game. except, in a lovely twist, each one has a 2d and 3d version. one for original, genesis style sonic and one for modern sonic, who plays like he did in ' sonic it works wonderfully. this game rekindled my childlike love for game. aside from two mediocre levels ( crisis city and the one from ' sonic colors ' ), both parts of every level work wonderfully. that ' s right. 2d city escape is just as good as a 3d green hill zone. combined with collectible artwork, homage boss battles, a plethora of challenges, and remixed music for every level, the game will last you for"
+        ],
+        "col_index": [
+          6249316,
+          6250850
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "sonic ' s first comeback since the games on the sonic heroes engine ( games like shadow the hedgehog sonic riders 2 : zero gravity and of course sonic heroes ) you play as modern sonic and sonic from the years of sonics 1 to just before sonic adventure ( not sure what game it is ) it ' s fairly short at 9 stages and two acts for eatch stage for you to play as sonic and his younger self and 6 bosses ( 5 if you don ' t include the final boss ) in sonic generations you play most of sonic ' s best stages ( i mean best because there are some stages that arn ' t there that are good like cool edge stage in sonic unleashed and metel harbour for sonic adventure 2 and even emarald coast from sonic adventure but rooftop run is good enough ). this version of generations doesn ' t have everything unfortunitly. the only thing it doesn ' t have is the meggadrive emulator for sonic 1 but since the pc already has a few genesis emulators who cares? also theres a little suprise in intro for the final boss. also the community has forced modding into this game ( i think ) and there are already a set of awesome mods from rendering patches like fx pipeline to",
+          "sonic what can i say, i was a big fan of sonic games on pc in my youth and tried coming back to try the new games in the series. sadly they were incredibly frustrating, incredibly buggy or just plain painful to play, sonic generations is the first attempt to fix this. the game can be broken up into act1 ( classic sonic ), act2 ( modern sonic ), boss battles ( each boss fight has a particular sonic mandatory ) and finally challenges for each sonic. let ' s go over each of them : classic sonic ( act1 of each stage ) : classic sonic is the sonic of our past with a bit of a modern twist on it. the levels are straight forward, simple to play and good fun. if you have played any sonic game from the 90 ' s then you will have no worries here. the only thing that will grab you is the occasional 3d feel it gives off. modern sonic ( act2 of each stage ) : modern sonic is the character most associated with the bad sonic games in a 3d world. sonic generations gives modern sonic high speed levels to play in at the start and it ' s a lot of fun seeing how fast you can clear a level. the later stages though are annoying and painful to say the least"
+        ],
+        "col_index": [
+          6250258,
+          6249316
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "the cake is a lie ; )",
+          "the cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a lie the cake is a liethe cake is a"
+        ],
+        "col_index": [
+          5239882,
+          5232887
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "the cake is a lie!!!",
+          "the cake is a lie ; )"
+        ],
+        "col_index": [
+          5235846,
+          5239882
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "the cake was a lie and here we go again.",
+          "the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie!"
+        ],
+        "col_index": [
+          6161179,
+          5235543
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "if this game was a cake it would be a good cake wait a cake is a lie < : (",
+          "the cake is a lie ; )"
+        ],
+        "col_index": [
+          6157773,
+          5239882
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "the cake is a lie ; )",
+          "the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie! the cake is a lie!"
+        ],
+        "col_index": [
+          5239882,
+          5235543
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "love this classic",
+          "classic game!!!"
+        ],
+        "col_index": [
+          20208,
+          3446658
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "love this game - a classic!",
+          "classic, but"
+        ],
+        "col_index": [
+          6157547,
+          6229044
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "more of classic set.",
+          "love this classic"
+        ],
+        "col_index": [
+          1269639,
+          20208
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "love this classic",
+          "love this game - a classic!"
+        ],
+        "col_index": [
+          20208,
+          6157547
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this game is already a classic",
+          "classic game!!!"
+        ],
+        "col_index": [
+          6159357,
+          3446658
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "a game about hats.",
+          "not enough hats."
+        ],
+        "col_index": [
+          5576304,
+          5567963
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "not enough hats.",
+          "too many hats"
+        ],
+        "col_index": [
+          5567963,
+          5572693
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "has hats",
+          "its a game about hats"
+        ],
+        "col_index": [
+          5578405,
+          5579844
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "no hats : ^ }",
+          "all about hats"
+        ],
+        "col_index": [
+          2243179,
+          5577603
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "all about hats",
+          "not enough hats."
+        ],
+        "col_index": [
+          5577603,
+          5567963
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass the whiskey pass",
+          "10 / 10 would pass the whiskey again"
+        ],
+        "col_index": [
+          3113137,
+          3116096
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "would pass the whiskey again 10 / 10",
+          "10 / 10 would pass the whiskey again"
+        ],
+        "col_index": [
+          3121141,
+          3116096
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "9 / 10 whiskey pass another",
+          "would pass the whiskey again 10 / 10"
+        ],
+        "col_index": [
+          3114910,
+          3121141
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10 / 10 would pass the whiskey again",
+          "10 / 10 pass the whiskey."
+        ],
+        "col_index": [
+          3114917,
+          3120233
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "10 / 10 would pass the whiskey again",
+          "10 / 10 pass the whiskey."
+        ],
+        "col_index": [
+          3116096,
+          3120233
+        ]
+      }
+    }
+  }
+}
