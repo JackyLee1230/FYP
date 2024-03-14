@@ -82,7 +82,11 @@ public class Game {
     @JoinTable(
             name = "game_developers",
             joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id"),
+            indexes = {
+                    @Index(name = "idx_game_developers_game_id", columnList = "game_id"),
+                    @Index(name = "idx_game_developers_user_id", columnList = "user_id")
+            }
     )
     @JsonIgnore
     @ToString.Exclude
@@ -112,7 +116,11 @@ public class Game {
     @JoinTable(
             name = "game_testers",
             joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id"),
+            indexes = {
+                    @Index(name = "idx_game_testers_game_id", columnList = "game_id"),
+                    @Index(name = "idx_game_testers_user_id", columnList = "user_id")
+            }
     )
     @JsonIgnore
     @ToString.Exclude

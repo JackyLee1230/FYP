@@ -128,7 +128,11 @@ public class User implements UserDetails {
     @JoinTable(
             name = "review_likes",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "review_id")
+            inverseJoinColumns = @JoinColumn(name = "review_id"),
+            indexes = {
+                    @Index(name = "idx_review_likes_user_id", columnList = "user_id"),
+                    @Index(name = "idx_review_likes_review_id", columnList = "review_id")
+            }
     )
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> likedReviews;
@@ -139,7 +143,11 @@ public class User implements UserDetails {
     @JoinTable(
             name = "review_dislikes",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "review_id")
+            inverseJoinColumns = @JoinColumn(name = "review_id"),
+            indexes = {
+                    @Index(name = "idx_review_dislikes_user_id", columnList = "user_id"),
+                    @Index(name = "idx_review_dislikes_review_id", columnList = "review_id")
+            }
     )
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> dislikedReviews;
