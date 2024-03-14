@@ -23,6 +23,8 @@ import java.util.Objects;
         @Index(name = "idx_game_name", columnList = "name"),
         @Index(name = "idx_game_developercompany", columnList = "developerCompany"),
         @Index(name = "idx_game_isindevelopment", columnList = "isInDevelopment"),
+        @Index(name = "idx_game_name_platform_genre_isindevelopment", columnList = "name, isInDevelopment"),
+        @Index(name = "idx_game_developerCompany_platform_genre_isindevelopment", columnList = "developerCompany, isInDevelopment")
 }, uniqueConstraints = {
         @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = {"name", "developerCompany"})
 })
@@ -36,15 +38,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @RequiredArgsConstructor
-//@NamedEntityGraph(
-//        name = "Game.exceptPercentile",
-//        attributeNodes = {
-//                @NamedAttributeNode("name"),
-//                @NamedAttributeNode("id"),
-//                @NamedAttributeNode("isDLC"),
-//                @NamedAttributeNode("description"),
-//        }
-//)
 public class Game {
 
 

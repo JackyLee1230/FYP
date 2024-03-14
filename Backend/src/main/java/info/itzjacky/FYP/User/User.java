@@ -20,7 +20,8 @@ import java.util.List;
 @Table(name = "User", indexes = {
         @Index(name = "idx_user_name", columnList = "name"),
         @Index(name = "idx_user_id_name", columnList = "id, name"),
-        @Index(name = "idx_user_email" , columnList = "email")
+        @Index(name = "idx_user_email" , columnList = "email"),
+        @Index(name = "idx_user_verificationtoken", columnList = "verificationToken")
 })
 //@JsonIdentityInfo(
 //        generator = ObjectIdGenerators.PropertyGenerator.class,
