@@ -109,6 +109,8 @@ public class ReviewService {
         JSONObject request = new JSONObject();
         request.put("reviewId", reviewReq.getReviewId());
         request.put("reviewComment", reviewReq.getComment());
+        request.put("genre", reviewReq.getGenres());
+        request.put("name", reviewReq.getGameName());
         logger.info("Topic Modeling SENT to Python! ReviewId:" + reviewReq.getReviewId() + " Comment:" + reviewReq.getComment());
         String toBeSentToPython = String.format("%s;%s", reviewReq.getReviewId(), reviewReq.getComment());
         rabbitMQProducer.sendTopicModelingMessagetoRabbitMQ(request.toString());
@@ -594,6 +596,8 @@ public class ReviewService {
             reviewer.setReviews(reviewRepository.findReviewsByReviewerName(reviewer.getName()));
             userRepository.save(reviewer);
             reviewRequest.setReviewId(review.getId());
+            reviewRequest.setGameName(game.getName());
+            reviewRequest.setGenres(game.getGenre());
 //            Send Mes`sage to RabbitMQ (SA + TM)
             sentimentAnalysisForReview(reviewRequest);
             topicModelingForReview(reviewRequest);
@@ -782,6 +786,9 @@ public class ReviewService {
 //            send to sentiment analysis and topic modeling queue
             reviewReq.setReviewId(review.getId());
             sentimentAnalysisForReview(reviewReq);
+            Game g = gameRepository.findGameById(review.getReviewedGame().getId());
+            reviewReq.setGameName(g.getName());
+            reviewReq.setGenres(g.getGenre());
             topicModelingForReview(reviewReq);
             review.getReviewer().setReviews(null);
             review.getReviewedGame().setGameReviews(null);

@@ -1,6 +1,7 @@
 package info.itzjacky.FYP.Review;
 
 import info.itzjacky.FYP.Game.Game;
+import info.itzjacky.FYP.Game.GameGenre;
 import info.itzjacky.FYP.Game.Platform;
 import info.itzjacky.FYP.User.User;
 import jakarta.persistence.*;
@@ -61,6 +62,10 @@ public class ReviewRequest {
     private String order;
 
     private String createdAt;
+
+    private List<GameGenre> genres;
+
+    private String gameName;
 
 
 }
