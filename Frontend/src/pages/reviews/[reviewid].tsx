@@ -133,7 +133,7 @@ const StyledThumbUpIcon = styled(ThumbUpIcon)(({ theme }) => ({
 const StyledThumbDownIcon = styled(ThumbDownIcon)(({ theme }) => ({
   color: theme.palette.error.main,
   fontSize: 32,
-    [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("sm")]: {
     fontSize: 24,
   },
 }));
@@ -344,7 +344,11 @@ function GamePage({
       LinkComponent={Link}
       variant="text"
     >
-      <Typography variant={isTablet ? "h6" : "h4"} color="text.primary" sx={{ fontWeight: 700 }}>
+      <Typography
+        variant={isTablet ? "h6" : "h4"}
+        color="text.primary"
+        sx={{ fontWeight: 700 }}
+      >
         {review?.reviewedGame?.name}
       </Typography>
     </Button>,
@@ -361,7 +365,10 @@ function GamePage({
         [theme.breakpoints.down("md")]: { gap: "2px" },
       }}
     >
-      <Typography variant={isTablet ? "subtitle2" : "h6"} color="text.secondary">
+      <Typography
+        variant={isTablet ? "subtitle2" : "h6"}
+        color="text.secondary"
+      >
         Review by
       </Typography>
       <Button 
@@ -446,7 +453,7 @@ function GamePage({
               bgcolor: "grey.100",
               [theme.breakpoints.down("sm")]: {
                 width: "100%",
-                height: "86px"
+                height: "86px",
               },
             }}
           >
@@ -477,12 +484,12 @@ function GamePage({
             )}
           </ButtonBase>
 
-          <Breadcrumbs 
+          <Breadcrumbs
             separator={<NavigateNextIcon fontSize="small" />}
             sx={{
               "& .MuiBreadcrumbs-ol": {
                 justifyContent: "center",
-              }
+              },
             }}
           >
             {breadcrumbs}
@@ -518,7 +525,6 @@ function GamePage({
               gap: "12px",
               flex: "1 0 0",
               width: "100%",
-
             }}
           >
             <Box
@@ -543,11 +549,11 @@ function GamePage({
                       ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${review?.reviewer?.iconUrl}`
                       : undefined
                   }
-                  sx={{ 
-                    width: 96, 
+                  sx={{
+                    width: 96,
                     height: 96,
                     [theme.breakpoints.down("sm")]: {
-                      width: 64, 
+                      width: 64,
                       height: 64,
                     },
                   }}
@@ -593,12 +599,19 @@ function GamePage({
                     {review?.reviewer?.name ?? "Unknown User"}
                   </Typography>
                 </Button>
-                <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
-                  {`Posted on: ${
-                    review?.createdAt != null
-                      ? format(new Date(review?.createdAt), "yyyy-MM-dd")
-                      : "Unknown Date"
-                  }`}
+                <Typography
+                  variant={isTablet ? "subtitle2" : "subtitle1"}
+                  color="text.secondary"
+                >
+                  {review?.editedAt != null
+                    ? ` Edited at: ${format(
+                        new Date(review?.editedAt),
+                        "yyyy-MM-dd"
+                      )}`
+                    : review?.createdAt != null
+                    ? `Posted on
+                      ${format(new Date(review?.createdAt), "yyyy-MM-dd")}`
+                    : "Unknown Date"}
                 </Typography>
                 <Box
                   sx={{
@@ -608,20 +621,26 @@ function GamePage({
                     overflow: "hidden",
                     whiteSpace: "nowrap",
                     wordBreak: "break-all",
-                    
-                    [theme.breakpoints.down("md")]: { 
-                      gap: "6px", 
+
+                    [theme.breakpoints.down("md")]: {
+                      gap: "6px",
                       flexDirection: "column",
                       alignItems: "flex-start",
                     },
                   }}
                 >
-                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
+                  <Typography
+                    variant={isTablet ? "subtitle2" : "subtitle1"}
+                    color="text.secondary"
+                  >
                     {review?.playTime != null && review?.playTime > 1
                       ? `Played for: ${playTimeString(review.playTime)},`
                       : "Played for: Unknown,"}
                   </Typography>
-                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
+                  <Typography
+                    variant={isTablet ? "subtitle2" : "subtitle1"}
+                    color="text.secondary"
+                  >
                     {review?.platform != null
                       ? `Platform: ${getPlatform(review?.platform)}`
                       : "Platform: Unknown"}
@@ -657,8 +676,8 @@ function GamePage({
                           fontWeight: 700, 
                           color: "success.main", 
                           [theme.breakpoints.down("sm")]: {
-                            display: "none"
-                          }
+                            display: "none",
+                          },
                         }}
                       >
                         Recommended
@@ -670,11 +689,11 @@ function GamePage({
                       <Typography
                         variant={isTablet ? "subtitle1" : "h6"}
                         color="error.main"
-                        sx={{ 
+                        sx={{
                           fontWeight: 700,
                           [theme.breakpoints.down("sm")]: {
-                            display: "none"
-                          }
+                            display: "none",
+                          },
                         }}
                       >
                         Not Recommended
@@ -730,7 +749,11 @@ function GamePage({
                 alignSelf: "center",
               }}
             >
-              <Typography variant={isTablet ? "caption" : "overline"} color="info.main" fontWeight={500}>
+              <Typography
+                variant={isTablet ? "caption" : "overline"}
+                color="info.main"
+                fontWeight={500}
+              >
                 This section is generated by CritiQ automatically
               </Typography>
               <Tooltip title="This section is not part of the review. It is here to help you understand the review better.">
@@ -739,11 +762,11 @@ function GamePage({
             </Box>
             <Collapse
               in={showMLSummaries}
-              sx={{ 
-                margin: "12px 0px", 
+              sx={{
+                margin: "12px 0px",
                 width: "100%",
                 [theme.breakpoints.down("md")]: {
-                  margin: "6px 0px", 
+                  margin: "6px 0px",
                 },
               }}
             >
@@ -781,11 +804,11 @@ function GamePage({
                     <Typography
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ 
-                        fontWeight: 700, 
+                      sx={{
+                        fontWeight: 700,
                         width: "132px",
-                        [theme.breakpoints.down("md")]: { 
-                          width: "100px" 
+                        [theme.breakpoints.down("md")]: {
+                          width: "100px",
                         },
                       }}
                     >
@@ -819,17 +842,20 @@ function GamePage({
                     <Typography
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ 
-                        fontWeight: 700, 
+                      sx={{
+                        fontWeight: 700,
                         width: "132px",
-                        [theme.breakpoints.down("md")]: { 
-                          width: "100px" 
+                        [theme.breakpoints.down("md")]: {
+                          width: "100px",
                         },
                       }}
                     >
                       Main Topics:
                     </Typography>
-                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    <Typography
+                      variant={isTablet ? "subtitle1" : "h6"}
+                      color="text.secondary"
+                    >
                       Coming soon...
                     </Typography>
                   </Box>
@@ -843,17 +869,20 @@ function GamePage({
                     <Typography
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ 
-                        fontWeight: 700, 
+                      sx={{
+                        fontWeight: 700,
                         width: "132px",
-                        [theme.breakpoints.down("md")]: { 
-                          width: "100px" 
+                        [theme.breakpoints.down("md")]: {
+                          width: "100px",
                         },
                       }}
                     >
                       Key Words:
                     </Typography>
-                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    <Typography
+                      variant={isTablet ? "subtitle1" : "h6"}
+                      color="text.secondary"
+                    >
                       Coming soon...
                     </Typography>
                   </Box>
@@ -867,17 +896,20 @@ function GamePage({
                     <Typography
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.primary"
-                      sx={{ 
-                        fontWeight: 700, 
+                      sx={{
+                        fontWeight: 700,
                         width: "132px",
-                        [theme.breakpoints.down("md")]: { 
-                          width: "100px" 
+                        [theme.breakpoints.down("md")]: {
+                          width: "100px",
                         },
                       }}
                     >
                       Summary:
                     </Typography>
-                    <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    <Typography
+                      variant={isTablet ? "subtitle1" : "h6"}
+                      color="text.secondary"
+                    >
                       Coming soon...
                     </Typography>
                   </Box>
@@ -1147,8 +1179,8 @@ function GamePage({
                     ? `${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${user?.iconUrl}`
                     : undefined
                 }
-                sx={{ 
-                  width: 104, 
+                sx={{
+                  width: 104,
                   height: 104,
                   [theme.breakpoints.down("sm")]: {
                     width: 72,

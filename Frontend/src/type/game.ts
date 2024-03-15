@@ -57,6 +57,7 @@ export type GameReview = {
   dislikedUsers?: number[];
   reviewImages: string[];
   numberOfComments?: number;
+  editedAt: string;
 };
 
 export type GameReviewComment = {

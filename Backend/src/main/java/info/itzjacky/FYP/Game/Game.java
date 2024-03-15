@@ -22,7 +22,11 @@ import java.util.Objects;
 @Table(name = "Game", indexes = {
         @Index(name = "idx_game_name", columnList = "name"),
         @Index(name = "idx_game_developercompany", columnList = "developerCompany"),
+        @Index(name = "idx_game_name_developercompany", columnList = "name, developerCompany"),
         @Index(name = "idx_game_isindevelopment", columnList = "isInDevelopment"),
+        @Index(name = "idx_game_name_platform_genre_isindevelopment", columnList = "name, isInDevelopment"),
+        @Index(name = "idx_game_developerCompany_platform_genre_isindevelopment", columnList = "developerCompany, isInDevelopment"),
+        @Index(name = "idx_game_score", columnList = "score"),
 }, uniqueConstraints = {
         @UniqueConstraint(name = "UniqueGameNameAndDeveloper", columnNames = {"name", "developerCompany"})
 })
@@ -36,15 +40,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @RequiredArgsConstructor
-//@NamedEntityGraph(
-//        name = "Game.exceptPercentile",
-//        attributeNodes = {
-//                @NamedAttributeNode("name"),
-//                @NamedAttributeNode("id"),
-//                @NamedAttributeNode("isDLC"),
-//                @NamedAttributeNode("description"),
-//        }
-//)
 public class Game {
 
 
@@ -87,7 +82,11 @@ public class Game {
     @JoinTable(
             name = "game_developers",
             joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id"),
+            indexes = {
+                    @Index(name = "idx_game_developers_game_id", columnList = "game_id"),
+                    @Index(name = "idx_game_developers_user_id", columnList = "user_id")
+            }
     )
     @JsonIgnore
     @ToString.Exclude
@@ -117,7 +116,11 @@ public class Game {
     @JoinTable(
             name = "game_testers",
             joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id"),
+            indexes = {
+                    @Index(name = "idx_game_testers_game_id", columnList = "game_id"),
+                    @Index(name = "idx_game_testers_user_id", columnList = "user_id")
+            }
     )
     @JsonIgnore
     @ToString.Exclude

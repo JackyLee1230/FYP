@@ -45,6 +45,15 @@ public class ReviewController {
         return new ResponseEntity<>(reviewService.getAllReviews(), HttpStatus.OK);
     }
 
+    @PostMapping("/editReview/{reviewId}")
+    public ResponseEntity<Review> editReview(@PathVariable Integer reviewId, @RequestBody ReviewRequest reviewReq, @AuthenticationPrincipal User u){
+        try{
+            return new ResponseEntity<>(reviewService.editReview(reviewId, reviewReq, u), HttpStatus.OK);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
+        }
+    }
+
 
     /*
     * args gameId: Integer (Game.id)
