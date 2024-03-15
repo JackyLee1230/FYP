@@ -598,6 +598,9 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             jsonObject.put("favouriteByGender", favouriteByGender);
             jsonObject.put("wishlistByAge", wishlistByAge);
             jsonObject.put("wishlistByGender", wishlistByGender);
+            jsonObject.put("numberOfReviews", game.getNumberOfReviews());
+            jsonObject.put("percentile", game.getPercentile());
+
 
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
