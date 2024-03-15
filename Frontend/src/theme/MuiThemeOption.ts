@@ -23,7 +23,7 @@ export const themeOptions: ThemeOptions = {
       main: '#F18F01',
     },
     success: {
-      main: '#9CEC5B',
+      main: '#4FA639',
     },
     divider: '#8A948D',
     text: {

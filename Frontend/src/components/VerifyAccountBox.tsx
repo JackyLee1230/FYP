@@ -63,7 +63,7 @@ const VerifyAccountBox = ({ user, errorMessage }: ResetPasswordProps) => {
               sx={{ textDecoration: "underline", marginTop: 2.5 }}
               size="small"
               LinkComponent={Link}
-              href={`/user/${user.id}`}
+              href={`/users/${user.id}`}
             >
               Back To Profile
             </Button>

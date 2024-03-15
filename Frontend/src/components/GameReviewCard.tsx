@@ -137,7 +137,7 @@ function GameReviewCard({
               <>
                 <ButtonBase
                   LinkComponent={Link}
-                  href={`/user/${review?.reviewer?.id}`}
+                  href={`/users/${review?.reviewer?.id}`}
                   sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                   disabled={!review?.reviewer?.id}
                 >
@@ -160,7 +160,7 @@ function GameReviewCard({
                   }}
                   LinkComponent={Link}
                   variant="text"
-                  href={`/user/${review?.reviewer?.id}`}
+                  href={`/users/${review?.reviewer?.id}`}
                   disabled={!review?.reviewer?.id}
                 >
                   <Typography
@@ -281,13 +281,8 @@ function GameReviewCard({
               </Typography>
               <Typography variant="subtitle2" color="text.secondary">
                 {review?.platform != null
-                  ? `Platform: ${getPlatform(review?.platform)},`
-                  : "Platform: Unknown,"}
-              </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
-                {review?.gameVersion != null
-                  ? `Version: ${review?.gameVersion}`
-                  : "Version: Unknown"}
+                  ? `Platform: ${getPlatform(review?.platform)}`
+                  : "Platform: Unknown"}
               </Typography>
             </Box>
             <Button
@@ -295,7 +290,7 @@ function GameReviewCard({
               color="secondary"
               size="medium"
               LinkComponent={Link}
-              href={`/review/${review?.id}`}
+              href={`/reviews/${review?.id}`}
             >
               Read More
             </Button>

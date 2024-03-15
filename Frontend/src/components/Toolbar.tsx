@@ -111,7 +111,7 @@ const WebToolbar = () => {
   }, [token, user]);
 
   const handleProfileRedirect = (id: number) => {
-    router.push(`/user/${id}`);
+    router.push(`/users/${id}`);
   };
 
   const handleLogout = async () => {
@@ -337,7 +337,7 @@ const WebToolbar = () => {
                   <Divider sx={{marginBottom: "8px"}}/>
                   <MenuItem
                     component={Link}
-                    href={`/user/${user!.id}`}
+                    href={`/users/${user!.id}`}
                     onClick={handleUserMenuClose}
                   >
                     <ListItemIcon>

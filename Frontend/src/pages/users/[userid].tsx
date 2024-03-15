@@ -621,7 +621,7 @@ export default function User({ user }: UserPageProps) {
                       marginBottom: "8px",
                       padding: "2px",
                       borderRadius: "50%",
-                      bgcolor: user.isVerified ? "#4FA639" : "error.main",
+                      bgcolor: user.isVerified ? "success.main" : "error.main",
 
                       [theme.breakpoints.down("md")]: {
                         padding: "0px",
@@ -823,7 +823,7 @@ export default function User({ user }: UserPageProps) {
                     <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.primary">
                       {`Account Status:`}
                     </Typography>
-                    <Typography variant={isTablet ? "subtitle1" : "h6"} color={user.isVerified ? "#4FA639" : "error"}>
+                    <Typography variant={isTablet ? "subtitle1" : "h6"} color={user.isVerified ? "success.main" : "error"}>
                       {user.isVerified ? "Verified" : "Unverified"} 
                     </Typography>
                   </Box>
@@ -1031,7 +1031,7 @@ export default function User({ user }: UserPageProps) {
                         marginBottom: "8px",
                         padding: "2px",
                         borderRadius: "50%",
-                        bgcolor: user.isVerified ? "#4FA639" : "error.main",
+                        bgcolor: user.isVerified ? "success.main" : "error.main",
                       }}
                     >
                       {user.isVerified ? <StyledCheckIcon /> : <StyledPriorityHighIcon />}

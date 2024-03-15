@@ -29,12 +29,13 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
         borderColor: "divider",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
         gap: 4,
-        width: "610px",
+        width: "800px",
         [theme.breakpoints.down("sm")]: {
           minHeight: "100vh",
           width: "100%",
           borderRadius: 0,
           justifyContent: "flex-start",
+          padding: "48px 24px",
         },
       }}
     >
@@ -171,30 +172,6 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
                   : getPlatform(platform)
               )
               .join(", ")}.`}
-          </Typography>
-        </Box>
-      )}
-      {game?.version && (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Divider textAlign="left" sx={{textTransform: "uppercase"}} flexItem>
-            <Typography variant="h6" color="secondary">
-              Version
-            </Typography>
-          </Divider>
-          <Typography
-            variant="subtitle1"
-            color="text.secondary"
-            sx={{ alignSelf: "flex-start" }}
-          >
-            {`The version of this game is ${game?.version}.`}
           </Typography>
         </Box>
       )}

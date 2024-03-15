@@ -30,7 +30,7 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
     >
       <ButtonBase
         LinkComponent={Link}
-        href={`/user/${ReviewComment?.commenter?.id}`}
+        href={`/users/${ReviewComment?.commenter?.id}`}
         sx={{borderRadius: "50%", bgcolor: "grey.100"}}
         disabled={!ReviewComment?.commenter?.id}
       >
@@ -77,7 +77,7 @@ function ReviewCommentCard({ReviewComment}: ReviewCommentCardProps) {
             sx={{ textDecoration: 'none', textTransform: 'none', '&:hover': { textDecoration: 'underline' }, justifyContent: 'flex-start', padding: 0 }}
             LinkComponent={Link}
             variant="text"
-            href={`/user/${ReviewComment?.commenter?.id}`}
+            href={`/users/${ReviewComment?.commenter?.id}`}
             disabled={!ReviewComment?.commenter?.id}
           >
             <Typography variant={isMobile ? "subtitle1" : "h6"} color="text.primary" sx={{fontWeight: 700}}>

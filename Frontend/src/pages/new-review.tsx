@@ -60,7 +60,7 @@ const AddNewReview = () => {
       );
       if (response.status === 200) {
         console.debug("Review added successfully");
-        router.push(`/review/${response.data.id}`);
+        router.push(`/reviews/${response.data.id}`);
       } else {
         setError(response.data.message);
         console.debug("Failed to add review", response);

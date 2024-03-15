@@ -364,7 +364,12 @@ function GamePage({
       <Typography variant={isTablet ? "subtitle2" : "h6"} color="text.secondary">
         Review by
       </Typography>
-      <Button variant="text" size={isTablet ? "medium" : "large"}>
+      <Button 
+        variant="text" 
+        size={isTablet ? "medium" : "large"}
+        LinkComponent={Link}
+        href={`/users/${review?.reviewer?.id}`}
+      >
         <Typography
           variant={isTablet ? "subtitle1" : "h6"}
           color="text.secondary"
@@ -527,7 +532,7 @@ function GamePage({
             >
               <ButtonBase
                 LinkComponent={Link}
-                href={`/user/${review?.reviewer?.id}`}
+                href={`/users/${review?.reviewer?.id}`}
                 sx={{ borderRadius: "50%", bgcolor: "grey.100" }}
                 disabled={!review?.reviewer?.id}
               >
@@ -577,7 +582,7 @@ function GamePage({
                   }}
                   LinkComponent={Link}
                   variant="text"
-                  href={`/user/${review?.reviewer?.id}`}
+                  href={`/users/${review?.reviewer?.id}`}
                   disabled={!review?.reviewer?.id}
                 >
                   <Typography
@@ -618,13 +623,8 @@ function GamePage({
                   </Typography>
                   <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
                     {review?.platform != null
-                      ? `Platform: ${getPlatform(review?.platform)},`
-                      : "Platform: Unknown,"}
-                  </Typography>
-                  <Typography variant={isTablet ? "subtitle2" : "subtitle1"} color="text.secondary">
-                    {review?.gameVersion != null
-                      ? `Version: ${review?.gameVersion}`
-                      : "Version: Unknown"}
+                      ? `Platform: ${getPlatform(review?.platform)}`
+                      : "Platform: Unknown"}
                   </Typography>
                 </Box>
               </Box>
@@ -655,7 +655,7 @@ function GamePage({
                         variant={isTablet ? "subtitle1" : "h6"}
                         sx={{ 
                           fontWeight: 700, 
-                          color: "#4FA639", 
+                          color: "success.main", 
                           [theme.breakpoints.down("sm")]: {
                             display: "none"
                           }
@@ -797,7 +797,7 @@ function GamePage({
                         color:
                           review.sentiment != null
                             ? review.sentiment == 1
-                              ? "#4FA639"
+                              ? "success.main"
                               : "error.main"
                             : "text.secondary",
                       }}
@@ -1033,7 +1033,7 @@ function GamePage({
                       <StyledThumbUpIcon sx={{ fontSize: 24 }} />
                       <Typography
                         variant={isTablet ? "subtitle2" : "subtitle1"}
-                        sx={{ fontWeight: 700, color: "#4FA639" }}
+                        sx={{ fontWeight: 700, color: "success.main" }}
                       >
                         {newLikes ?? 0}
                       </Typography>

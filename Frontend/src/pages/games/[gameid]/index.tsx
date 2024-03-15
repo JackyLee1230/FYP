@@ -517,18 +517,35 @@ function GamePage({ game, errorMessage }: GamePageProps) {
 
               <Box
                 sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                  justifyContent: "flex-end",
+                  alignItems: "flex-end",
                   position: "absolute",
                   right: "42px",
                   
                   [theme.breakpoints.down("sm")]: {
                     right: "8px",
+                    gap: "8px",
                   }
                 }}
               >
                 <Button
                   variant="contained"
                   color="primary"
+                  LinkComponent={Link}
+                  href={`/games/analytics/${game.id}`}
+                >
+                  Analytics
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
                   onClick={() => setOpen(true)}
+                  sx={{
+                    width: "fit-content",
+                  }}
                 >
                   more
                 </Button>
@@ -800,7 +817,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   textAlign: "center",
                 }}
               >
-                {`${game.name} ${game.dlc && game.baseGame ? "(DLC)" : ""}`}
+                {game.name}
               </Typography>
             </Box>
 
@@ -929,16 +946,6 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                         .map((platform) => getPlatform(platform))
                         .join(", ")
                     : "Unknown"}
-                </Typography>
-                <Typography
-                  variant={isTablet? "body2" : "subtitle1"}
-                  color="text.primary"
-                  sx={{
-                    fontWeight: 500,
-                  }}
-                >
-                  <b>Version: </b>
-                  {`${game?.version ? game?.version : "Unknown"}`}
                 </Typography>
                 <Typography
                   variant={isTablet? "body2" : "subtitle1"}

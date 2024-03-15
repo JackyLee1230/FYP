@@ -17,22 +17,11 @@ export type GameInfo = {
   score: number;
   recommendationScore: number;
   genre: Genre[];
-  versions: GameVersion[];
-  version: string;
   platforms: string[];
   inDevelopment: boolean;
   gameReviews: GameReview[];
   percentile: number;
   numberOfReviews: number;
-};
-
-export type GameVersion = {
-  id: string;
-  versionedGame: GameInfo;
-  version: string;
-  releaseDate: string;
-  url: string;
-  createdAt: Date;
 };
 
 export type GamePageProps = {
@@ -58,7 +47,6 @@ export type GameReview = {
   recommended: boolean;
   comment: string;
   recommendationScore: number;
-  gameVersion: string;
   sentiment: number;
   sentimentUpdatedAt: string;
   inDevelopment: boolean;
@@ -87,6 +75,38 @@ export type GameReviewPageProps = {
   errorMessage: string;
   iconUrl: string;
   commentErrorMessage: string;
+};
+
+export type GameAnalytic = {
+  favouriteByAge: Record<string, number>,
+  recommendedReviews: Record<string, number>,
+  description: string,
+  developerCompany: string,
+  genderReviews: Record<string, number>,
+  reviewLength: Record<string, number>,
+  sentimentReviewsByGender: {
+      [key: string]: Record<string, number>
+  },
+  score: number,
+  isInDevelopment: boolean,
+  id: number,
+  iconUrl: string,
+  favouriteByGender: Record<string, number>,
+  sentimentReviews: Record<string, number>,
+  releaseDate: string,
+  ageReviews: Record<string, number>,
+  wishlistByAge: Record<string, number>,
+  isDLC: boolean,
+  numberOfWishlists: number,
+  wishlistByGender: Record<string, number>,
+  percentile: number,
+  name: string,
+  generatedAt: string,
+  publisher: string,
+  sentimentReviewsByAge: {
+      [key: string]: Record<string, number>
+  },
+  numberOfFavourites: number
 };
 
 export const allGameSearchTypes = ["NAME", "DEVELOPER"] as const;

@@ -96,7 +96,7 @@ function GameReviewCardSmall({
           >
             <ButtonBase
               LinkComponent={Link}
-              href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/user/${review?.reviewer?.id}`}
+              href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/users/${review?.reviewer?.id}`}
               sx={{ 
                 borderRadius: mode === "game" ? "6%" : "50%" ,
                 bgcolor: "grey.100" 
@@ -137,7 +137,7 @@ function GameReviewCardSmall({
                 }}
                 LinkComponent={Link}
                 variant="text"
-                href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/user/${review?.reviewer?.id}`}
+                href={mode === "game" ? `/games/${review?.reviewedGame.id}` : `/users/${review?.reviewer?.id}`}
                 disabled={mode === "game" ? !review?.reviewedGame.id : !review?.reviewer?.id}
               >
                 <Typography
@@ -258,11 +258,8 @@ function GameReviewCardSmall({
                   ? `${playTimeString(review.playTime)} Played, `
                   : "Unknown Playtime, "}
                 {review?.platform != null
-                  ? `Platform: ${getPlatform(review?.platform)}, `
-                  : "Platform: Unknown, "}
-                {review?.gameVersion != null
-                  ? `Version: ${review?.gameVersion}`
-                  : "Version: Unknown"}
+                  ? `Platform: ${getPlatform(review?.platform)}`
+                  : "Platform: Unknown"}
               </Typography>
             </Box>
             <Button
@@ -270,7 +267,7 @@ function GameReviewCardSmall({
               color="secondary"
               size="medium"
               LinkComponent={Link}
-              href={`/review/${review?.id}`}
+              href={`/reviews/${review?.id}`}
             >
               Read More
             </Button>

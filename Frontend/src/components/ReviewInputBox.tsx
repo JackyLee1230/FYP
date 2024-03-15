@@ -186,19 +186,19 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
         if(images){
           uploadReviewImages(reviewId).then((data) => {
             setImages(undefined);
-            router.push(`/review/${reviewId}`);
+            router.push(`/reviews/${reviewId}`);
           }).catch((error) => {
             displaySnackbarVariant(
               error?.response?.data?.message ?? `Failed to upload review images.`,
               "error"
             );
             setLoading(false);
-            router.push(`/review/${reviewId}`);
+            router.push(`/reviews/${reviewId}`);
           }
           );
         }
         else{
-          router.push(`/review/${reviewId}`);
+          router.push(`/reviews/${reviewId}`);
         }
       }
       else{
