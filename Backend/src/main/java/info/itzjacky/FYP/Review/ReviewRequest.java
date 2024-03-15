@@ -67,5 +67,7 @@ public class ReviewRequest {
 
     private String gameName;
 
+    private String gameDescription;
+
 
 }

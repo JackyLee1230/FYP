@@ -598,6 +598,7 @@ public class ReviewService {
             reviewRequest.setReviewId(review.getId());
             reviewRequest.setGameName(game.getName());
             reviewRequest.setGenres(game.getGenre());
+            reviewRequest.setGameDescription(game.getDescription());
 //            Send Mes`sage to RabbitMQ (SA + TM)
             sentimentAnalysisForReview(reviewRequest);
             topicModelingForReview(reviewRequest);
@@ -788,7 +789,9 @@ public class ReviewService {
             sentimentAnalysisForReview(reviewReq);
             Game g = gameRepository.findGameById(review.getReviewedGame().getId());
             reviewReq.setGameName(g.getName());
+            reviewReq.setGameDescription(g.getDescription());
             reviewReq.setGenres(g.getGenre());
+
             topicModelingForReview(reviewReq);
             review.getReviewer().setReviews(null);
             review.getReviewedGame().setGameReviews(null);
