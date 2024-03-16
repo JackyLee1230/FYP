@@ -17,6 +17,9 @@ const nextConfig = {
     ],
   },
   transpilePackages: ["mui-file-input"],
+  ssr: {
+    noExternal: ["@nivo/*"],
+},
 };
 
 module.exports = withPWA(nextConfig);
