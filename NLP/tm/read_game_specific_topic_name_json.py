@@ -19,7 +19,7 @@ def read_game_specific_topic_name_json(game_name:str, topic_model_dir:Path):
     _json_path = Path(
         "../NLP/tm",            # for the program to locate the parent folder of this project
         "game_specific_topic_name",
-        f"{game_name}",
+        f"{_game_name}",
         *_topic_model_dir,
         "topic_id_to_label.json"
     )
