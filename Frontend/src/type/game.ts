@@ -107,7 +107,8 @@ export type GameAnalytic = {
   sentimentReviewsByAge: {
       [key: string]: Record<string, number>
   },
-  numberOfFavourites: number
+  numberOfFavourites: number,
+  numberOfReviews: number,
 };
 
 export const allGameSearchTypes = ["NAME", "DEVELOPER"] as const;

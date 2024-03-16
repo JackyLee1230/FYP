@@ -359,6 +359,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
           flex: "1 0 0",
           margin: "0 auto",
           gap: "32px",
+          overflowX: "hidden",
           
           [theme.breakpoints.down("md")]: {
             padding: "18px 16px",
