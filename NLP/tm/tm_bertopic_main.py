@@ -20,7 +20,8 @@ import functools
 import pika
 from pika import PlainCredentials
 
-from read_game_specific_topic_name_json import read_game_specific_topic_name_json
+from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_DICT
+from _load_bertopic_models import _load_bertopic_model, GENRES
 
 IP = "https://critiqbackend.itzjacky.info"
 PORT = 9000
@@ -36,11 +37,11 @@ def cleaning(s_list: list[str]):
     return s_list
 
 
-def _load_bertopic_model(model_path:Path):
-    # load bertopic model
-    topic_model = BERTopic.load(str(model_path))
+# def _load_bertopic_model(model_path:Path):
+#     # load bertopic model
+#     topic_model = BERTopic.load(str(model_path))
 
-    return topic_model
+#     return topic_model
 
 def _create_embedding_model(model_name:str):
     # load the sbert model
@@ -132,7 +133,8 @@ def consumer(ch, method, properties, body, inference_obj):
         game_name = response.json()['name']
 
         # then read the json file that contains the topic names for the specific game and topic name
-        topic_id_to_label_json = read_game_specific_topic_name_json(game_name, model_folder_path)
+        # topic_id_to_label_json = read_game_specific_topic_name_json(game_name, model_folder_path)
+        topic_id_to_label_json = SPECIFIC_TOPIC_NAME_DICT.get((game_name, GENRES.ACTION, 10), None)
         
     except Exception as e:
         print("Error getting the game name:", e)
@@ -250,21 +252,25 @@ if __name__ == "__main__":
     # GLOBAL SETTINGS
     os.environ['TOKENIZERS_PARALLELISM'] = 'false'          # disable huggingface warning
     device = torch.device('cpu')                            # use CPU
-    
 
-    training_datetime = datetime(2024, 3, 1, 9, 51, 49)
-    training_folder = Path(
-        "../NLP/tm",            # for the program to locate the parent folder of this project
-        f'bertopic[split]_genre_action_grid_search_{training_datetime.strftime("%Y%m%d_%H%M%S")}')
-    model_folder_path = training_folder.joinpath('bertopic_bt_nr_topics_10')
-    print('Loaded model from:', model_folder_path)
+
+    # training_datetime = datetime(2024, 3, 1, 9, 51, 49)
+    # training_folder = Path(
+    #     "../NLP/tm",            # for the program to locate the parent folder of this project
+    #     f'bertopic[split]_genre_action_grid_search_{training_datetime.strftime("%Y%m%d_%H%M%S")}')
+    # model_folder_path = training_folder.joinpath('bertopic_bt_nr_topics_10')
+    # print('Loaded model from:', model_folder_path)
+
+    # load the BERTopic model
+    # topic_model = _load_bertopic_model(model_folder_path)
+
+    model_folder_path, topic_model = _load_bertopic_model(
+        GENRES.ACTION, 10)      # load the action genre model with 10 topics
 
     # load the sbert model
     sbert_model_name = 'all-MiniLM-L6-v2'
     sbert_model = _create_embedding_model(sbert_model_name)
 
-    # load the BERTopic model
-    topic_model = _load_bertopic_model(model_folder_path)
 
     # test inference with BERTopic
     # topics, probs = inference(['I like this game'])

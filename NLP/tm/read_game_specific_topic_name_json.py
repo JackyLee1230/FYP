@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from _load_bertopic_models import GENRES, BERTOPIC_MODELS
+
 def read_game_specific_topic_name_json(game_name:str, topic_model_dir:Path):
     '''Read the json file that contains the topic names for the specific game and topic name
 
@@ -30,4 +32,21 @@ def read_game_specific_topic_name_json(game_name:str, topic_model_dir:Path):
         print(f"topic_id_to_label_json: {topic_id_to_label_json}")
 
     return topic_id_to_label_json
+
+
+
+# list of games supported with their topic names
+SPECIFIC_TOPIC_NAME_GAMES = [
+    "Counter-Strike 2",
+    "Cyberpunk 2077",
+    "Monster Hunter World",
+    "Starfield"
+]
+
+SPECIFIC_TOPIC_NAME_DICT = {
+    (SPECIFIC_TOPIC_NAME_GAMES[0], GENRES.ACTION, 10): read_game_specific_topic_name_json(SPECIFIC_TOPIC_NAME_GAMES[0], BERTOPIC_MODELS[(GENRES.ACTION, 10)][0]),
+    (SPECIFIC_TOPIC_NAME_GAMES[1], GENRES.ACTION, 10): read_game_specific_topic_name_json(SPECIFIC_TOPIC_NAME_GAMES[1], BERTOPIC_MODELS[(GENRES.ACTION, 10)][0]),
+    (SPECIFIC_TOPIC_NAME_GAMES[2], GENRES.ACTION, 10): read_game_specific_topic_name_json(SPECIFIC_TOPIC_NAME_GAMES[2], BERTOPIC_MODELS[(GENRES.ACTION, 10)][0]),
+    (SPECIFIC_TOPIC_NAME_GAMES[3], GENRES.ACTION, 10): read_game_specific_topic_name_json(SPECIFIC_TOPIC_NAME_GAMES[3], BERTOPIC_MODELS[(GENRES.ACTION, 10)][0]),
+}
     
