@@ -216,8 +216,8 @@ def consumer(ch, method, properties, body, inference_obj):
 
         # the production queue
         # use the local thread channel to send back the result (to maintain thread-safe queue)
-        # local.channel.basic_publish(
-        #     exchange='FYP_exchange', routing_key='FYP_TopicModelingResult', body=resultToBeSentBack, mandatory=True)
+        local.channel.basic_publish(
+            exchange='FYP_exchange', routing_key='FYP_TopicModelingResult', body=resultToBeSentBack, mandatory=True)
 
     except pika.exceptions.UnroutableError as e:
         print("UnroutableError" + str(reviewId) + ";" + e)
