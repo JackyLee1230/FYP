@@ -83,6 +83,7 @@ public class RabbitMQConsumer {
         JSONObject llm = jsonObject.getJSONObject("LLM");
 
         String llmSummary = llm.getString("summary");
+        Boolean isSpam = llm.getBoolean("isSpam");
         llm.remove("summary"); // remove summary, only leave aspects in LLM JSON
 
         Review review = reviewRepository.findReviewById(reviewId);
@@ -94,6 +95,7 @@ public class RabbitMQConsumer {
             review.setTopics(bert.toString());
             review.setAspects(llm.toString());
             review.setSummary(llmSummary);
+            review.setSpam(isSpam);
             reviewRepository.save(review);
             channel.basicAck(tag, false);
         }

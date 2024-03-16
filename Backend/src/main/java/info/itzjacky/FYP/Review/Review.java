@@ -94,6 +94,9 @@ public class Review {
     private String summary;
 
     @Column(insertable = true, updatable = true)
+    private boolean isSpam;
+
+    @Column(insertable = true, updatable = true)
     private Date editedAt;
 
     @ManyToMany(mappedBy = "likedReviews", fetch = FetchType.LAZY)
