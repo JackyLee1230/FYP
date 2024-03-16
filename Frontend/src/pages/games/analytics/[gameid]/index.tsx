@@ -1,5 +1,5 @@
 import { GameAnalytic } from "@/type/game";
-import { Box, Breadcrumbs, Button, Divider, Typography, styled, useMediaQuery, useTheme, alpha, CircularProgress, circularProgressClasses } from "@mui/material";
+import { Box, Breadcrumbs, Button, Divider, Typography, styled, useMediaQuery, useTheme, alpha, CircularProgress, circularProgressClasses, ButtonBase } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ChecklistIcon from "@mui/icons-material/Checklist";
@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Grid from '@mui/material/Unstable_Grid2';
 import { ResponsivePie } from '@nivo/pie';
+import { ResponsiveBar } from '@nivo/bar';
 import { getScoreColor } from "@/utils/DynamicScore";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
@@ -72,6 +73,10 @@ interface Datum {
   value: number;
 }
 
+interface BarDatum {
+  [key: string]: string | number;
+}
+
 const StatisticBox = ({ IconComponent, number, description, color, colorCode }: StatisticBoxProps) => (
   <Box
     sx={{
@@ -129,6 +134,45 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
   const router = useRouter();
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
+  const nivoTheme = {
+    "text": {
+      "fontSize": 14,
+      "fill": theme.palette.text.primary,
+    },
+    "axis": {
+      "legend": {
+          "text": {
+              "fontSize": 18,
+              "fill": theme.palette.text.primary,
+          },
+      },
+      "ticks": {
+        "text": {
+            "fontSize": 12,
+            "fill": theme.palette.text.secondary,
+        }
+      },
+    }, 
+    "labels":{
+      "text": {
+        "fontSize": 14,
+      }
+    },
+    "legends": {
+      "title": {
+          "text": {
+              "fontSize": 18,
+              "fill": theme.palette.text.primary,
+          }
+      },
+      "text": {
+          "fontSize": 14,
+          "fill": theme.palette.text.secondary,
+
+      },
+  },
+  }
 
   if (!gameAnalytics || errorMessage) {
     return (
@@ -209,11 +253,25 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
       value: gameAnalytics.recommendedReviews["DO NOT RECOMMEND"],
     },
   ];
+
+  const reviewLengthData: BarDatum[] = [
+    { reviewLength: "0-100", count: gameAnalytics.reviewLength["0-100"] ?? 0},
+    { reviewLength: "100-200", count: gameAnalytics.reviewLength["100-200"] ?? 0},
+    { reviewLength: "200-300", count: gameAnalytics.reviewLength["200-300"] ?? 0},
+    { reviewLength: "300-400", count: gameAnalytics.reviewLength["300-400"] ?? 0},
+    { reviewLength: "400-500", count: gameAnalytics.reviewLength["400-500"] ?? 0},
+    { reviewLength: "500-600", count: gameAnalytics.reviewLength["500-600"] ?? 0},
+    { reviewLength: "600-700", count: gameAnalytics.reviewLength["600-700"] ?? 0},
+    { reviewLength: "700-800", count: gameAnalytics.reviewLength["700-800"] ?? 0},
+    { reviewLength: "800-900", count: gameAnalytics.reviewLength["800-900"] ?? 0},
+    { reviewLength: "900-1000", count: gameAnalytics.reviewLength["900-1000"] ?? 0},
+    { reviewLength: "1000+", count: gameAnalytics.reviewLength["1000+"] ?? 0},
+  ];
         
   return (
     <div>
       <Head>
-        <title>{`${gameAnalytics.name} Game Analytics | CritiQ`}</title>
+        <title>{`Analytics | ${gameAnalytics.name} | CritiQ`}</title>
       </Head>
       <Box
         sx={{
@@ -332,16 +390,31 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 />
               </Grid>
               <Grid xs={2} md={4}>
-                <StatisticBox
-                  IconComponent={StyledRateReviewOutlinedIcon}
-                  number={gameAnalytics.numberOfReviews?.toString() ?? "Unknown"}
-                  description="Reviews"
-                  color="warning.main"
-                  colorCode={theme.palette.warning.main}
-                />
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <ButtonBase
+                    LinkComponent={Link}
+                    href={`/games/${router.query.gameid}/reviews`}
+                    sx={{
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <StatisticBox
+                      IconComponent={StyledRateReviewOutlinedIcon}
+                      number={gameAnalytics.numberOfReviews?.toString() ?? "Unknown"}
+                      description="Reviews"
+                      color="warning.main"
+                      colorCode={theme.palette.warning.main}
+                    />
+                  </ButtonBase>
+                </Box>  
               </Grid>     
             </Grid>
-
             <Grid container spacing={4} columns={{xs: 2, md: 4, lg: 12}}>
               <Grid xs={2} lg={4}>
                 <Box
@@ -361,7 +434,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     color="text.primary"
                   >
-                    Review Recommendation Distrubution
+                    Recommendation Ratio
                   </Typography>
                   <Box
                     sx={{
@@ -369,37 +442,58 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       width: "300px",
                     }}
                   >
-                    <ResponsivePie
-                      data={reviewsRecommendationData}
-                      innerRadius={0.65}
-                      margin={{ top: 12, right: 0, bottom: 36, left: 0 }}
-                      padAngle={1.8}
-                      cornerRadius={6}
-                      activeOuterRadiusOffset={8}
-                      colors={{ scheme: 'accent' }}
-                      borderWidth={1}
-                      borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-                      enableArcLinkLabels={false}
-                      arcLabelsSkipAngle={10}
-                      legends={[
-                        {
-                            anchor: 'bottom',
-                            direction: 'row',
-                            justify: false,
-                            translateX: 0,
-                            translateY: 36,
-                            itemsSpacing: 12,
-                            itemWidth: 125,
-                            itemHeight: 18,
-                            itemTextColor: theme.palette.text.primary,
-                            itemDirection: 'left-to-right',
-                            itemOpacity: 1,
-                            symbolSize: 18,
-                            symbolShape: 'circle',
-    
-                        }
-                      ]}
-                    />
+                    {(gameAnalytics?.numberOfReviews && gameAnalytics?.numberOfReviews) > 0 ? (
+                      <ResponsivePie
+                        theme={nivoTheme}
+                        data={reviewsRecommendationData}
+                        innerRadius={0.65}
+                        margin={{ top: 12, right: 0, bottom: 36, left: 0 }}
+                        padAngle={1.8}
+                        cornerRadius={6}
+                        activeOuterRadiusOffset={8}
+                        colors={{ scheme: 'accent' }}
+                        borderWidth={1}
+                        borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                        enableArcLinkLabels={false}
+                        arcLabelsSkipAngle={10}
+                        legends={[
+                          {
+                              anchor: 'bottom',
+                              direction: 'row',
+                              justify: false,
+                              translateX: 0,
+                              translateY: 36,
+                              itemsSpacing: 0,
+                              itemWidth: 150,
+                              itemHeight: 18,
+                              itemTextColor: theme.palette.text.primary,
+                              itemDirection: 'left-to-right',
+                              itemOpacity: 1,
+                              symbolSize: 18,
+                              symbolShape: 'circle',
+      
+                          }
+                        ]}
+                      />) : (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: "300px",
+                          height: "300px",
+                          borderRadius: "50%",
+                          bgcolor: "divider",
+                          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                          opacity: 0.48,
+                          marginTop: "12px",
+                        }}
+                      >
+                        <Typography variant="h4" color="primary" sx={{ fontWeight: 700 }}>
+                          No Review Data
+                        </Typography>
+                      </Box>
+                    )}
                   </Box>
                 </Box>
               </Grid>       
@@ -570,6 +664,92 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 </Box>
               </Grid>     
             </Grid>
+          </Box>
+        </Box>
+        
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+            gap: "12px",
+          }}
+        >
+          <Divider textAlign="center" flexItem>
+            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+              Reviews
+            </Typography>
+          </Divider>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "12px",
+              bgcolor: "background.paper",
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            }}
+          >
+            <Typography
+              variant={isTablet? "subtitle1" : "h6"}
+              color="text.primary"
+              sx={{
+                textAlign: "center",
+                fontWeight: 500,
+                marginTop: "12px",
+              }} 
+            >
+              Distribution of Review Lengths
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                height: "425px",
+                [theme.breakpoints.down("md")]: {
+                  height: "350px",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  height: "300px",
+                },
+              }}
+            >
+              <ResponsiveBar
+                  theme={nivoTheme}
+                  data={reviewLengthData}
+                  keys={['count']}
+                  indexBy="reviewLength"
+                  margin={{ top: 12, right: 0, bottom: 68, left: 60 }}
+                  padding={0.3}
+                  valueScale={{ type: 'linear' }}
+                  indexScale={{ type: 'band', round: true }}
+                  colors={{ scheme: 'accent' }}
+                  borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                  axisTop={null}
+                  axisRight={null}
+                  axisBottom={{
+                    tickSize: 8,
+                    tickPadding: 4,
+                    legend: 'Review Length',
+                    legendPosition: 'middle',
+                    legendOffset: 48,
+                    tickRotation: isTablet ? -25 : 0
+                  }}
+                  axisLeft={{
+                    tickSize: 8,
+                    tickPadding: 4,
+                    tickRotation: 0,
+                    legend: 'Count',
+                    legendPosition: 'middle',
+                    legendOffset: -40
+                  }}
+                  labelSkipWidth={12}
+                  labelSkipHeight={12}
+                  labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                  animate={true}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
