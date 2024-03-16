@@ -21,7 +21,7 @@ except:
 # load the eval dataset
 
 eval_dataset_folder_path = Path('../../dataset/sa/eval_inference/')
-df = pd.read_pickle(eval_dataset_folder_path / 'dataset_cleaned_heartless_cleaned_3k_eval.pkl')
+df = pd.read_pickle(eval_dataset_folder_path / 'dataset_heartless_20240116_3k_eval.pkl')
 
 
 # create dataset for warmup and evaluation
@@ -66,20 +66,24 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from accelerate import Accelerator
 
 
-DATASET_SIZE = 240
+DATASET_SIZE = 480
 DATASET_IS_BALANCED = True
 
-training_name = 'bert-finetune_{}k_{}'.format(
+training_args_datetime = datetime(year=2024, month=1, day=18)          # change the date to the date of training
+training_name = 'bert-finetune_{}k_{}_{}'.format(
     DATASET_SIZE,
-    'bal' if DATASET_IS_BALANCED else 'imbal'
+    'bal' if DATASET_IS_BALANCED else 'imbal',
+    training_args_datetime.strftime('%Y-%m-%d')
 )
 
-training_args_datetime = datetime(year=2023, month=12, day=18)          # change the date to the date of training
 training_storing_folder = Path(training_name).resolve()
 
 model_path = Path.joinpath(
         training_storing_folder, 
-        '{}_{}_model'.format(training_name, training_args_datetime.strftime('%Y-%m-%d')))
+        '{}_model'.format(
+            training_name, 
+            training_args_datetime.strftime('%Y-%m-%d')
+        ))
 
 # find from online
 # tokenizer = AutoTokenizer.from_pretrained('bert-base-cased', device_map='cpu')                         # load in cpu
@@ -192,28 +196,40 @@ np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_hg_vect_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_hg_vect_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     hg_vect_times)
 
 np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_hg_inf_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_hg_inf_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     hg_inf_times)
 
 np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_onnx_vect_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_onnx_vect_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     onnx_vect_times)
 
 np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_onnx_inf_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_onnx_inf_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     onnx_inf_times)
 
 print('inference times saved to {}'.format(

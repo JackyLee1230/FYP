@@ -20,7 +20,7 @@ except:
 # load the eval dataset
 
 eval_dataset_folder_path = Path('../../dataset/sa/eval_inference/')
-df = pd.read_pickle(eval_dataset_folder_path / 'dataset_cleaned_heartless_cleaned_3k_eval.pkl')
+df = pd.read_pickle(eval_dataset_folder_path / 'dataset_heartless_20240116_3k_eval.pkl')
 
 
 # create dataset for warmup and evaluation
@@ -47,14 +47,16 @@ import str_cleaning_functions
 
 # define your own cleaning function
 
+# define your own cleaning function
+
 def cleaning_arr(str_arr):
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links2(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.clean(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.deEmojify(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_non_letters(x))
     str_arr = str_arr.apply(lambda x: x.lower())
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_num(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_symbols(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_punctuation(x))
-    # str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_stopword(x))      # no need to remove stopwords, as previous study shown including stopwords can improve performance (https://aclanthology.org/P12-1092.pdf)
+    # str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_stopword(x))      # no need to remove stopwords, as glove is trained with stopwords
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
     # str_arr = str_arr.apply(lambda x: str_cleaning_functions.stemming(x))
 
@@ -73,19 +75,20 @@ import pickle
 import tensorflow as tf
 import keras
 
-DATASET_SIZE = 240
+DATASET_SIZE = 480
 DATASET_IS_BALANCED = True
 
 
 MAX_FEATURES = 20000        # max_features params for CountVectorizer
 
-training_name = 'glove-cnn-{}_{}k_{}'.format(
+training_args_datetime = datetime(year=2024, month=2, day=26)
+training_name = 'glove-cnn-{}_{}k_{}_{}'.format(
     MAX_FEATURES,
     DATASET_SIZE,
-    'bal' if DATASET_IS_BALANCED else 'imbal'
+    'bal' if DATASET_IS_BALANCED else 'imbal',
+    training_args_datetime.strftime("%Y-%m-%d")
 )
 
-training_args_datetime = datetime(year=2023, month=12, day=20)
 training_storing_folder = Path(training_name).resolve()
 
 # load the tf model
@@ -94,9 +97,9 @@ training_storing_folder = Path(training_name).resolve()
 
 with tf.device('/cpu:0'):
 
-    text_vectorizer_path = Path.joinpath(training_storing_folder, "{}_{}_textvectorizer.pkl".format(
+    text_vectorizer_path = Path.joinpath(training_storing_folder, "{}_textvectorizer.pkl".format(
         training_name,
-        training_args_datetime.strftime("%Y-%m-%d")
+        # training_args_datetime.strftime("%Y-%m-%d")
     ))
     vectorizer_from_disk = pickle.load(open(text_vectorizer_path, 'rb'))
     vectorizer = tf.keras.layers.TextVectorization(
@@ -105,15 +108,15 @@ with tf.device('/cpu:0'):
 
     vectorizer.set_weights(vectorizer_from_disk['weights'])
 
-    model_path = Path.joinpath(training_storing_folder, "{}_{}_model.keras".format(
+    model_path = Path.joinpath(training_storing_folder, "{}_model.keras".format(
         training_name,
-        training_args_datetime.strftime("%Y-%m-%d")
+        # training_args_datetime.strftime("%Y-%m-%d")
     ))
     model = keras.models.load_model(model_path)
 
-    end_to_end_model_path = Path.joinpath(training_storing_folder, "{}_{}_end2end.keras".format(
+    end_to_end_model_path = Path.joinpath(training_storing_folder, "{}_end2end.keras".format(
         training_name,
-        training_args_datetime.strftime("%Y-%m-%d")
+        # training_args_datetime.strftime("%Y-%m-%d")
     ))
 
     end_to_end_model = keras.models.load_model(end_to_end_model_path)
@@ -127,9 +130,9 @@ with tf.device('/cpu:0'):
 
 import onnxruntime as rt
 
-onnx_model_path = Path.joinpath(training_storing_folder, "{}_{}_modelonly.onnx".format(
+onnx_model_path = Path.joinpath(training_storing_folder, "{}_modelonly.onnx".format(
     training_name,
-    training_args_datetime.strftime("%Y-%m-%d")
+    # training_args_datetime.strftime("%Y-%m-%d")
 ))
 
 sess = rt.InferenceSession(
@@ -219,21 +222,30 @@ np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_keras_inf_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_keras_inf_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     np.array(keras_inf_times))
 
 np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_onnx_keras_vect_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_onnx_keras_vect_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     np.array(onnx_keras_vect_times))
 
 np.save(
     Path.joinpath(
         training_storing_folder, 
         inference_times_output_folder, 
-        '{}_{}_onnx_inf_times.npy'.format(training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+        '{}_onnx_inf_times.npy'.format(
+            training_name, 
+            # training_args_datetime.strftime("%Y-%m-%d")
+        )),
     np.array(onnx_inf_times))
 
 print('inference times saved to {}'.format(Path.joinpath(training_storing_folder, inference_times_output_folder).resolve()))

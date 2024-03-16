@@ -32,7 +32,7 @@ except:
 # load the eval dataset
 
 eval_dataset_folder_path = Path('../../dataset/sa/eval_inference/')
-df = pd.read_pickle(eval_dataset_folder_path / 'dataset_cleaned_heartless_cleaned_3k_eval.pkl')
+df = pd.read_pickle(eval_dataset_folder_path / 'dataset_heartless_20240116_3k_eval.pkl')
 
 # create dataset for warmup and evaluation
 
@@ -58,15 +58,17 @@ import str_cleaning_functions
 
 def cleaning_arr(str_arr):
     '''apply all cleaning functions to a numpy array, or a pandas series object'''
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_links2(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.clean(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.deEmojify(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_non_letters(x))
     str_arr = str_arr.apply(lambda x: x.lower())
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_num(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_symbols(x))
-    str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_punctuation(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.remove_stopword(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
     str_arr = str_arr.apply(lambda x: str_cleaning_functions.stemming(x))
+    str_arr = str_arr.apply(lambda x: str_cleaning_functions.unify_whitespaces(x))
 
     return str_arr
 
@@ -79,18 +81,19 @@ X_eval = cleaning_arr(X_eval)
 
 import pickle
 
-DATASET_SIZE = 240          # change this to load diff model
+DATASET_SIZE = 480          # change this to load diff model
 DATASET_IS_BALANCED = True  # change this to load diff model
 
 MAX_FEATURES = 20000        # max_features params for CountVectorizer
 
-training_name = 'tfidf-rf-{}_{}k_{}'.format(
+training_args_datetime = datetime(year=2024, month=2, day=26)
+training_name = 'tfidf-rf-{}_{}k_{}_{}'.format(
     MAX_FEATURES,
     DATASET_SIZE,
-    'bal' if DATASET_IS_BALANCED else 'imbal'
+    'bal' if DATASET_IS_BALANCED else 'imbal',
+    training_args_datetime.strftime('%Y-%m-%d')
 )
 
-training_args_datetime = datetime(year=2023, month=12, day=20)
 
 
 training_storing_folder = Path(f"{training_name}/").resolve()
@@ -98,21 +101,21 @@ if not training_storing_folder.exists():
     training_storing_folder.mkdir(parents=True, exist_ok=True)
 
 
-rf_model_path = Path.joinpath(training_storing_folder, "{}_{}_model.sav".format(
+rf_model_path = Path.joinpath(training_storing_folder, "{}_model.sav".format(
     training_name,
-    training_args_datetime.strftime("%Y-%m-%d")
+    # training_args_datetime.strftime("%Y-%m-%d")
 ))
 model = pickle.load(open(rf_model_path, 'rb'))
 
-count_vectorizer_path = Path.joinpath(training_storing_folder, "{}_{}_count_vectorizer.pkl".format(
+count_vectorizer_path = Path.joinpath(training_storing_folder, "{}_count_vectorizer.pkl".format(
     training_name,
-    training_args_datetime.strftime("%Y-%m-%d")
+    # training_args_datetime.strftime("%Y-%m-%d")
 ))
 vectorizer = pickle.load(open(count_vectorizer_path, 'rb'))
 
-tfidf_transformer_path = Path.joinpath(training_storing_folder, "{}_{}_tfidf.pkl".format(
+tfidf_transformer_path = Path.joinpath(training_storing_folder, "{}_tfidf.pkl".format(
     training_name,
-    training_args_datetime.strftime("%Y-%m-%d")
+    # training_args_datetime.strftime("%Y-%m-%d")
 ))
 tfidf = pickle.load(open(tfidf_transformer_path, 'rb'))
 
@@ -134,8 +137,10 @@ print('Pipeline loaded')
 
 import onnxruntime as rt
 
-onnx_model_path = Path.joinpath(training_storing_folder, "{}_{}_pipeline.onnx".format(
-        training_name, training_args_datetime.strftime("%Y-%m-%d")))
+onnx_model_path = Path.joinpath(training_storing_folder, "{}_pipeline.onnx".format(
+        training_name, 
+        # training_args_datetime.strftime("%Y-%m-%d")
+))
 
 sess = rt.InferenceSession(
     onnx_model_path,
@@ -202,14 +207,18 @@ if not Path.joinpath(training_storing_folder, inference_times_output_folder).exi
     Path.joinpath(training_storing_folder, inference_times_output_folder).mkdir(parents=True)
 
 np.save(
-    Path.joinpath(training_storing_folder, inference_times_output_folder, "{}_{}_sklearn_inf_times.npy".format(
-        training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+    Path.joinpath(training_storing_folder, inference_times_output_folder, "{}_sklearn_inf_times.npy".format(
+        training_name, 
+        # training_args_datetime.strftime("%Y-%m-%d")
+    )),
     np.array(sklearn_inf_times)
 )
 
 np.save(
-    Path.joinpath(training_storing_folder, inference_times_output_folder, "{}_{}_onnx_inf_times.npy".format(
-        training_name, training_args_datetime.strftime("%Y-%m-%d"))),
+    Path.joinpath(training_storing_folder, inference_times_output_folder, "{}_onnx_inf_times.npy".format(
+        training_name, 
+        # training_args_datetime.strftime("%Y-%m-%d")
+    )),
     np.array(onnx_inf_times)
 )
 
