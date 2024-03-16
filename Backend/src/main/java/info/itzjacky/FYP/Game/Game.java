@@ -51,19 +51,19 @@ public class Game {
     private String name;
     private boolean isDLC;
 
-    @Column(insertable = true, updatable = true, length = 10000)
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
     @JsonIgnore
     private String analytic;
     @Column(insertable = true, updatable = true)
     private Date analyticUpdatedAt;
 
-    @Column(insertable = true, updatable = true, length = 2000)
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
     @JsonIgnore
     private String aggregatedReview;
     @Column(insertable = true, updatable = true)
     private Date aggregatedReviewUpdatedAt;
 
-    @Column(insertable = true, updatable = true, length = 2000)
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
     @JsonIgnore
     private String topicFrequency;
     @Column(insertable = true, updatable = true)

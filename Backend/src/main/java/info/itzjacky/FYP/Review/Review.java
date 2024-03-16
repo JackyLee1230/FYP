@@ -22,9 +22,6 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-//@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueReviewerAndReviewedGame", columnNames = { "reviewer_id", "game_id" }) })
-//    a column that stores the game version, game has a one to many attribute call versions
-//    make this into the unique constraint
 @Table(name = "Review", indexes = {
         @Index(name = "idx_review_reviewer_id", columnList = "reviewer_id"),
         @Index(name = "idx_review_game_id", columnList = "game_id")
@@ -71,29 +68,30 @@ public class Review {
 
     private boolean recommended;
 
-    @Column(length = 10000)
+    @Column(columnDefinition = "TEXT")
     @NonNull
     private String comment;
-
-    @Column(insertable = true, updatable = true, length = 3000)
-    private String topics;
-
-    @Column(insertable = true, updatable = true, length = 3000)
-    private String aspects;
-
-    @Column(insertable = true, updatable = true, length = 3000)
-    private String summary;
 
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     @JsonIgnoreProperties("gameReviews")
     private Game reviewedGame;
 
+    @Column(insertable = true, updatable = true, length = 300)
     private String gameVersion;
 
     private Integer sentiment;
 
     private Date sentimentUpdatedAt;
+
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
+    private String topics;
+
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
+    private String aspects;
+
+    @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
+    private String summary;
 
     @Column(insertable = true, updatable = true)
     private Date editedAt;
