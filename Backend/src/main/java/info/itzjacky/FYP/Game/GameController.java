@@ -497,12 +497,14 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 //                TOPICS to TOPIC FREQUENCY
                 String reviewTopics = r.getTopics();
 //                parse this string as a json
-                JSONObject topics = new JSONObject(reviewTopics);
-                for (String key: topics.keySet()) {
-                    if (topicFreq.has(key)) {
-                        topicFreq.put(key, topicFreq.getInt(key) + 1);
-                    } else {
-                        topicFreq.put(key, topics.getInt(key));
+                if(reviewTopics != null && !reviewTopics.isEmpty()){
+                    JSONObject topics = new JSONObject(reviewTopics);
+                    for (String key : topics.keySet()) {
+                        if (topicFreq.has(key)) {
+                            topicFreq.put(key, topicFreq.getInt(key) + 1);
+                        } else {
+                            topicFreq.put(key, topics.getInt(key));
+                        }
                     }
                 }
 

@@ -95,7 +95,7 @@ public class RabbitMQConsumer {
             review.setTopics(bert.toString());
             review.setAspects(llm.toString());
             review.setSummary(llmSummary);
-            review.setSpam(isSpam);
+            review.setIsSpam(isSpam);
             reviewRepository.save(review);
             channel.basicAck(tag, false);
         }

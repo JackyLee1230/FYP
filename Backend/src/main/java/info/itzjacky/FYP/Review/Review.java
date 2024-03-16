@@ -94,7 +94,7 @@ public class Review {
     private String summary;
 
     @Column(insertable = true, updatable = true)
-    private boolean isSpam;
+    private Boolean isSpam;
 
     @Column(insertable = true, updatable = true)
     private Date editedAt;
