@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Objects;
 
 @Service
 public class RabbitMQConsumer {
@@ -46,12 +47,8 @@ public class RabbitMQConsumer {
         String reviewId = rId.toString();
         Integer sentiment = jsonObject.getInt("sentiment");
 
-//        String result = payload.replace("b\"", "").replace("b'", "");
-//        String reviewId = result.contains(";") ? result.substring(0, result.indexOf(";")) : null;
-//        String sentiment = result.contains(";") ? result.substring(result.indexOf(";") + 1) : null;
         if (reviewId == null || sentiment == null) {
             logger.warn("Sentiment got back with Non Existent Review ID: " + payload);
-//            acknowledge the message and remove it from the queue
             channel.basicNack(tag, false, true);
             return;
         }
@@ -74,14 +71,34 @@ public class RabbitMQConsumer {
         channel.basicAck(tag, false);
     }
 
-//    @Transactional
-//    @RabbitListener(queues = "${spring.rabbitmq.TopicModelingResultQueueName}")
-//    public void receiveTopicModelling(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
-//            throws IOException {
-//        String result = payload.replace("b'", "");
-//        logger.info("Topic Modelling RESULT: " + result);
-//        channel.basicAck(tag, false);
-//    }
+    @Transactional
+    @RabbitListener(queues = "${spring.rabbitmq.TopicModelingResultQueueName}")
+    public void receiveTopicModelling(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
+            throws IOException {
+        logger.info("Received Payload: " + payload);
+//        given a json string is received, it is converted to a json object
+        JSONObject jsonObject = new JSONObject(payload.replace("b'", "").replace("b\"", ""));
+        Integer reviewId = jsonObject.getInt("reviewId");
+        JSONObject bert = jsonObject.getJSONObject("BERT");
+        JSONObject llm = jsonObject.getJSONObject("LLM");
+
+        String llmSummary = llm.getString("summary");
+        llm.remove("summary"); // remove summary, only leave aspects in LLM JSON
+
+        Review review = reviewRepository.findReviewById(reviewId);
+        if (review == null) {
+            logger.warn("Topic Modelling got back with Non Existent Review ID: " + reviewId);
+            channel.basicNack(tag, false, true);
+            return;
+        } else {
+            review.setTopics(bert.toString());
+            review.setAspects(llm.toString());
+            review.setSummary(llmSummary);
+            reviewRepository.save(review);
+            channel.basicAck(tag, false);
+        }
+        channel.basicAck(tag, false);
+    }
 
 }
 

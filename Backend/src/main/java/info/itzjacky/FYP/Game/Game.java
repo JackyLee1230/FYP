@@ -57,6 +57,18 @@ public class Game {
     @Column(insertable = true, updatable = true)
     private Date analyticUpdatedAt;
 
+    @Column(insertable = true, updatable = true, length = 2000)
+    @JsonIgnore
+    private String aggregatedReview;
+    @Column(insertable = true, updatable = true)
+    private Date aggregatedReviewUpdatedAt;
+
+    @Column(insertable = true, updatable = true, length = 2000)
+    @JsonIgnore
+    private String topicFrequency;
+    @Column(insertable = true, updatable = true)
+    private Date topicFrequencyUpdatedAt;
+
     @Transient
     private List<Game> DLCS;
     @Transient

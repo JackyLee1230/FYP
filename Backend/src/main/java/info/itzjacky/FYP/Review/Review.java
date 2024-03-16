@@ -75,6 +75,15 @@ public class Review {
     @NonNull
     private String comment;
 
+    @Column(insertable = true, updatable = true, length = 3000)
+    private String topics;
+
+    @Column(insertable = true, updatable = true, length = 3000)
+    private String aspects;
+
+    @Column(insertable = true, updatable = true, length = 3000)
+    private String summary;
+
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     @JsonIgnoreProperties("gameReviews")

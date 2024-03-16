@@ -492,8 +492,20 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             }
 
 
-
+            JSONObject topicFreq = new JSONObject();
             for (Review r: reviews) {
+//                TOPICS to TOPIC FREQUENCY
+                String reviewTopics = r.getTopics();
+//                parse this string as a json
+                JSONObject topics = new JSONObject(reviewTopics);
+                for (String key: topics.keySet()) {
+                    if (topicFreq.has(key)) {
+                        topicFreq.put(key, topicFreq.getInt(key) + 1);
+                    } else {
+                        topicFreq.put(key, topics.getInt(key));
+                    }
+                }
+
 //                GENDER
                 Gender g = r.getReviewer().getGender();
                 if (g == null) {
@@ -604,6 +616,10 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
+            if (topicFreq.toString() != null && !topicFreq.isEmpty()) {
+                game.setTopicFrequency(topicFreq.toString());
+                game.setTopicFrequencyUpdatedAt(generatedAt);
+            }
             gameRepository.save(game);
             return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
         } catch (Exception e) {
