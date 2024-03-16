@@ -33,13 +33,6 @@ TRAINING_DATETIME_DICT = {
     GENRES.INDIE: datetime(2024, 2, 14, 11, 15, 56),
 }
 
-
-def _load_bertopic_model(model_path:Path):
-    # load bertopic model
-    topic_model = BERTopic.load(str(model_path))
-
-    return topic_model
-
 def _load_bertopic_model(genre:GENRES, n_topics:int):
 
     training_datetime = TRAINING_DATETIME_DICT[genre]
@@ -47,19 +40,19 @@ def _load_bertopic_model(genre:GENRES, n_topics:int):
 
     model_folder_path = Path(
         "../NLP/tm",
-        f"bertopic[split]_{'genre_'+str(genre) if genre.value >= 0 else 'all'}_grid_search_{training_datetime.strftime('%Y%m%d_%H%M%S')}",
+        f"bertopic[split]_{'genre_'+str(genre)+'_' if genre.value >= 0 else ''}grid_search_{training_datetime.strftime('%Y%m%d_%H%M%S')}",
     )
     model_folder_path = model_folder_path.joinpath(f'bertopic_bt_nr_topics_{n_topics}')
     print('Loaded model from:', model_folder_path)
 
-    bertopic_model = _load_bertopic_model(model_folder_path)
+    bertopic_model = BERTopic.load(str(model_folder_path))
 
     return model_folder_path, bertopic_model
 
 
 # cache bertopic models
 # identify by the genre and the number of topics
-BERTOPIC_MODELS_LIST = list(product([GENRES.ALL, GENRES.ACTION, GENRES.INDIE], [10]))
+BERTOPIC_MODELS_LIST = list(product([GENRES.ALL, GENRES.ACTION, GENRES.INDIE], [10, 30]))
 
 # also used in loading game specfic topic name json
 BERTOPIC_MODELS = {k: _load_bertopic_model(k[0], k[1]) for k in BERTOPIC_MODELS_LIST}

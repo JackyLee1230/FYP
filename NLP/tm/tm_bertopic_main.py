@@ -11,6 +11,7 @@ from datetime import datetime
 from pathlib import Path
 import time
 import os
+import sys
 
 import str_cleaning_functions
 
@@ -20,11 +21,12 @@ import functools
 import pika
 from pika import PlainCredentials
 
-from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_DICT
-from _load_bertopic_models import _load_bertopic_model, GENRES
+sys.path.append('llm_rag')
+from llm_main import get_per_review_analysis
 
-IP = "https://critiqbackend.itzjacky.info"
-PORT = 9000
+from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_GAMES, SPECIFIC_TOPIC_NAME_DICT, MODEL_SPECIFIC_TOPIC_NAME_DICT
+from _load_bertopic_models import _load_bertopic_model, GENRES
+from _utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC
 
 
 def cleaning(s_list: list[str]):
@@ -111,38 +113,70 @@ def ack_message(channel, delivery_tag):
 
 def consumer(ch, method, properties, body, inference_obj):
 
-    reviewId, gameid, comment = inference_obj
+    global model_folder_path, topic_model
 
-    start_time = time.time()
-    result, _ = inference([comment])       # wrap the comment as a list
+    reviewId, comment, game_genres, game_name = inference_obj
 
-    # also have to get the name of the game from the gameid
-    # temporarily hardcode the ip and port
-    req_url = f"{IP}:{PORT}/api/game/findGameById"
-    payload = json.dumps({
-        "id": gameid,
-        "includeReviews": False,
-        "includePlatformReviews": False
-        })
-    headers = {
-    'Content-Type': 'application/json'
-    }
     try:
-        response = requests.request("POST", req_url, headers=headers, data=payload)
-        print(response.json())
-        game_name = response.json()['name']
+        # first based on the game genre to find the model
+        game_genres_enum = [GENRES_DB[game_genre] for game_genre in game_genres]
 
-        # then read the json file that contains the topic names for the specific game and topic name
-        # topic_id_to_label_json = read_game_specific_topic_name_json(game_name, model_folder_path)
-        topic_id_to_label_json = SPECIFIC_TOPIC_NAME_DICT.get((game_name, GENRES.ACTION, 10), None)
+        # check game name and genre
+        if game_name in SPECIFIC_TOPIC_NAME_GAMES and GENRES_DB.ACTION_AND_ADVENTURE in game_genres_enum:
+
+            # load the model
+            
+            model_folder_path, topic_model = _load_bertopic_model(
+                GENRES_DB_TO_GENRE_BERTOPIC[GENRES_DB.ACTION_AND_ADVENTURE], 10)
+
+            print((game_name, GENRES_DB_TO_GENRE_BERTOPIC[GENRES_DB.ACTION_AND_ADVENTURE], 10))
+
+            # get the topic name json
+            topic_id_to_label_json = SPECIFIC_TOPIC_NAME_DICT.get(
+                (game_name, GENRES_DB_TO_GENRE_BERTOPIC[GENRES_DB.ACTION_AND_ADVENTURE], 10), None)
+        else:
+            # indie games
+            model_folder_path, topic_model = _load_bertopic_model(
+                GENRES_DB_TO_GENRE_BERTOPIC[GENRES_DB.INDIE], 30)
+            
+            topic_id_to_label_json = MODEL_SPECIFIC_TOPIC_NAME_DICT.get(
+                (GENRES_DB_TO_GENRE_BERTOPIC[GENRES_DB.INDIE], 30), None)
+
+        start_time = time.time()
         
+        topics, probs = inference([comment])       # wrap the comment as a list
+
+        print('BERTopic Inference result:', topics, probs)
     except Exception as e:
-        print("Error getting the game name:", e)
+        print("Error during BERTopic inference:", e)
         print(traceback.format_exc())
         return
+    
 
+    # LLM results
+    try:
+        is_spam, aspect_keywords, tldr = get_per_review_analysis(comment)
+        print('LLM Inference result:', is_spam, aspect_keywords, tldr)
+
+        llm_result = {
+            "isSpam": is_spam,
+        }
+
+        if not is_spam:
+            llm_result.update(aspect_keywords)
+            llm_result.update({
+                "summary": tldr
+            })
+
+    except:
+        print("Error during LLM inference:", e)
+        print(traceback.format_exc())
+        return
+    
     end_time = time.time()
-    print('Time taken:', end_time-start_time)
+    print('Time taken for bertopic & llm:', end_time-start_time)
+
+    print(topic_id_to_label_json)
 
     # use a BlockingConnection per-thread
     # reuse created BlockingConnection if the thread in the threadpool has created one
@@ -157,9 +191,13 @@ def consumer(ch, method, properties, body, inference_obj):
     try:
         resultToBeSentBack = json.dumps({
             'reviewId': reviewId,
-            'gameId': gameid,
-            'topicId': result[0].item(),
-            "topicName": topic_id_to_label_json[f"{result[0].item()}"] if topic_id_to_label_json else "<Unknown>"       # a default value if the json file is not found
+            'BERT':{
+                topics[0].item():  [
+                    topic_id_to_label_json[f"{topics[0].item()}"] if topic_id_to_label_json else "<Unknown>",       # a default value if the json file is not found
+                    f"{probs[0][topics[0] + 1].item()}"
+                ]
+            },
+            'LLM':llm_result
         })
     except Exception as e:
         print("Error forming the result:", e)
@@ -174,12 +212,12 @@ def consumer(ch, method, properties, body, inference_obj):
     try:
         # enable the test queue for debugging
         local.channel.basic_publish(
-            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{str(reviewId) + ";" + str(result[0])}\" sent by thread {threading.currentThread().ident}', mandatory=True)
+            exchange='FYP_exchange', routing_key='FYP_TestQueue', body=f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident}', mandatory=True)
 
         # the production queue
         # use the local thread channel to send back the result (to maintain thread-safe queue)
-        local.channel.basic_publish(
-            exchange='FYP_exchange', routing_key='FYP_TopicModelingResult', body=resultToBeSentBack, mandatory=True)
+        # local.channel.basic_publish(
+        #     exchange='FYP_exchange', routing_key='FYP_TopicModelingResult', body=resultToBeSentBack, mandatory=True)
 
     except pika.exceptions.UnroutableError as e:
         print("UnroutableError" + str(reviewId) + ";" + e)
@@ -198,9 +236,11 @@ def callback(ch, method, properties, body):
     try:
         _body = json.loads(body)
 
-        gameid = int(_body['gameId'])
         reviewId = int(_body['reviewId'])
         comment = _body['reviewComment']
+        game_genres = _body['genre']
+        game_name = _body['name']
+
     except json.JSONDecodeError as e:
         print("Error decoding the message:", e)
         print(traceback.format_exc())
@@ -212,7 +252,7 @@ def callback(ch, method, properties, body):
 
     # use thread pool executor to limit the number of threads spawned
     threadpoolexecutor.submit(
-        consumer, ch, method, properties, body, (reviewId, gameid, comment)
+        consumer, ch, method, properties, body, (reviewId, comment, game_genres, game_name)
     )
 
 
