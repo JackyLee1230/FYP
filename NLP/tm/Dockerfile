@@ -9,6 +9,7 @@ SHELL ["/bin/bash", "-i", "-c"]
 # Copy all files under this directory to the container with the path as in github
 # contining the models, conda env information, python script to run inference
 COPY . /NLP/tm/
+COPY --from=llm_path . /NLP/llm_rag/
 
 # packages related files (pre-downloaded large files)
 # COPY /docker_setup_files/ /NLP/docker_setup_files/

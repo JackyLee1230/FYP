@@ -12,6 +12,9 @@ def read_game_specific_topic_name_json(game_name:str, topic_model_dir:Path):
     return a list of strings, each string is a topic name
     '''
 
+    _game_name = game_name
+    _game_name = _game_name.replace(":", "")        # remove the colon in the game name
+
     _topic_model_dir = topic_model_dir.parts[-2:]
     _json_path = Path(
         "../NLP/tm",            # for the program to locate the parent folder of this project
