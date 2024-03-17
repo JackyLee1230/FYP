@@ -385,7 +385,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             HashMap<String, Integer> sentimentCount = new HashMap<>();
             sentimentCount.put("POSITIVE", 0);
             sentimentCount.put("NEGATIVE", 0);
-            sentimentCount.put("NEUTRAL", 0);
             sentimentCount.put("N/A", 0);
 
             HashMap<String, Integer> recommendedCount = new HashMap<>();
@@ -404,9 +403,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             HashMap<String, Integer> negativeMap = new HashMap<>();
             negativeMap.put("MALE", 0);negativeMap.put("FEMALE", 0);
             negativeMap.put("OTHER", 0);negativeMap.put("UNDISCLOSED", 0);negativeMap.put("N/A", 0);
-            HashMap<String, Integer> neutralMap = new HashMap<>();
-            neutralMap.put("MALE", 0);neutralMap.put("FEMALE", 0);
-            neutralMap.put("OTHER", 0);neutralMap.put("UNDISCLOSED", 0);neutralMap.put("N/A", 0);
 
             HashMap<String, Integer> positiveByAge = new HashMap<>();
             positiveByAge.put("13-19", 0);positiveByAge.put("20-29", 0);positiveByAge.put("30-39", 0);positiveByAge.put("40-49", 0);positiveByAge.put("50-59", 0);
@@ -420,7 +416,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             HashMap<String, HashMap> sentimentCountByGender = new HashMap<>();
             sentimentCountByGender.put("POSITIVE", positiveMap);
             sentimentCountByGender.put("NEGATIVE", negativeMap);
-            sentimentCountByGender.put("NEUTRAL", neutralMap);
 
             HashMap<String, HashMap> sentimentCountByAge = new HashMap<>();
             sentimentCountByAge.put("POSITIVE", positiveByAge);
