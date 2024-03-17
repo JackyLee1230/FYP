@@ -84,7 +84,7 @@ public class RabbitMQConsumer {
 
         Boolean isSpam = llm.getBoolean("isSpam");
         String llmSummary = null;
-        if (isSpam == false) {
+        if (isSpam == false && !Objects.equals(llm.get("summary").toString(), "null")) {
             llmSummary = llm.getString("summary");
         }
 
