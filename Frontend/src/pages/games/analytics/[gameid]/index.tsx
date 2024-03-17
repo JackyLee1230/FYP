@@ -13,6 +13,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { ResponsivePie } from '@nivo/pie';
 import { ResponsiveBar } from '@nivo/bar';
 import { getScoreColor } from "@/utils/DynamicScore";
+import { getGender } from "@/type/user";
+import { genderList } from "@/type/user";
+import { useState } from "react";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -267,7 +270,95 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     { reviewLength: "900-1000", count: gameAnalytics.reviewLength["900-1000"] ?? 0},
     { reviewLength: "1000+", count: gameAnalytics.reviewLength["1000+"] ?? 0},
   ];
-        
+
+  if (gameAnalytics?.genderReviews['N/A']) {
+    if (gameAnalytics?.genderReviews['UNDISCLOSED']) {
+      gameAnalytics.genderReviews['UNDISCLOSED'] += gameAnalytics.genderReviews['N/A'];
+    } else {
+      gameAnalytics.genderReviews['UNDISCLOSED'] = gameAnalytics.genderReviews['N/A'];
+    }
+  }
+
+  const genderReviewsData: BarDatum[] = Object.keys(gameAnalytics.genderReviews).filter(gender => gender !== 'N/A').map(gender => ({
+    gender: getGender(gender),
+    count: gameAnalytics.genderReviews[gender]
+  }));
+
+  let tuples = Object.entries(gameAnalytics.ageReviews);
+  tuples.sort();
+  gameAnalytics.ageReviews = Object.fromEntries(tuples);
+
+  const ageReviewsData: BarDatum[] = Object.keys(gameAnalytics.ageReviews).map(age => ({
+    age: age,
+    count: gameAnalytics.ageReviews[age]
+  }));
+
+  if(gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"]) {
+    if (gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"]) {
+      gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
+      gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+    } else {
+      gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
+      gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+    }
+  }
+
+  delete gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
+  delete gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+  delete gameAnalytics.sentimentReviewsByAge["POSITIVE"]["N/A"];
+  delete gameAnalytics.sentimentReviewsByAge["NEGATIVE"]["N/A"];
+
+  // Sort the age group values in NEGATIVE and POSITIVE
+  for (let sentiment in gameAnalytics.sentimentReviewsByAge) {
+    let sorted = Object.entries(gameAnalytics.sentimentReviewsByAge[sentiment]).sort();
+    gameAnalytics.sentimentReviewsByAge[sentiment] = Object.fromEntries(sorted);
+  }
+
+  interface NewSentiment {
+    [key: string]: number;
+  }
+
+  // copy gameAnalytics.sentimentReviewsByGender
+  let sentimentReviewsByGender = JSON.parse(JSON.stringify(gameAnalytics.sentimentReviewsByGender));
+
+  for (let sentiment in gameAnalytics.sentimentReviewsByGender) {
+    if(sentiment === "NEUTRAL") continue;
+    const newSentiment: NewSentiment = {};
+    for (let gender in gameAnalytics.sentimentReviewsByGender[sentiment]) {
+      if(!gender) continue;
+      if(gender === "N/A") continue;
+      if(!genderList.includes(gender)) continue;
+      newSentiment[getGender(gender)] = gameAnalytics.sentimentReviewsByGender[sentiment][gender];
+    }
+    sentimentReviewsByGender[sentiment] = newSentiment;
+  }
+
+  const sentimentReviewsData: BarDatum[] = [
+    {
+      "sentiment": "Positive",
+      ...sentimentReviewsByGender["POSITIVE"],
+      ...gameAnalytics.sentimentReviewsByAge["POSITIVE"]
+    },
+    {
+      "sentiment": "Negative",
+      ...sentimentReviewsByGender["NEGATIVE"],
+      ...gameAnalytics.sentimentReviewsByAge["NEGATIVE"]
+    },
+  ]
+
+  const sentimentReviewsPieData: Datum[] = [
+    {
+      "id": "Positive",
+      "label": "Positive",
+      "value": gameAnalytics.sentimentReviews["POSITIVE"]
+    },
+    {
+      "id": "Negative",
+      "label": "Negative",
+      "value": gameAnalytics.sentimentReviews["NEGATIVE"]
+    },
+  ]
+  
   return (
     <div>
       <Head>
@@ -720,7 +811,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   data={reviewLengthData}
                   keys={['count']}
                   indexBy="reviewLength"
-                  margin={{ top: 12, right: 0, bottom: 68, left: 60 }}
+                  margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                   padding={0.3}
                   valueScale={{ type: 'linear' }}
                   indexScale={{ type: 'band', round: true }}
@@ -740,15 +831,387 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     tickSize: 8,
                     tickPadding: 4,
                     tickRotation: 0,
-                    legend: 'Count',
-                    legendPosition: 'middle',
-                    legendOffset: -40
                   }}
                   labelSkipWidth={12}
                   labelSkipHeight={12}
                   labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
                   animate={true}
               />
+            </Box>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+            gap: "12px",
+          }}
+        >
+          <Divider textAlign="center" flexItem>
+            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+              Players
+            </Typography>
+          </Divider>
+          <Grid container spacing={2} columns={12}>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Reviews by Gender
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={genderReviewsData}
+                    keys={['count']}
+                    indexBy="gender"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'paired' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Gender Type',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                      legendOffset: -40
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Reviews by Age
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={ageReviewsData}
+                    keys={['count']}
+                    indexBy="age"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set2' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Age Group',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={4}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Sentiment Ratio
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsivePie
+                    theme={nivoTheme}
+                    data={sentimentReviewsPieData}
+                    innerRadius={0}
+                    margin={{ top: 12, right: 24, bottom: 60, left: 24 }}
+                    padAngle={1.8}
+                    cornerRadius={6}
+                    activeOuterRadiusOffset={8}
+                    colors={{ scheme: 'dark2' }}
+                    borderWidth={1}
+                    borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                    enableArcLinkLabels={false}
+                    arcLabelsSkipAngle={10}
+                    legends={[
+                      {
+                          anchor: 'bottom',
+                          direction: 'row',
+                          justify: false,
+                          translateX: 0,
+                          translateY: 36,
+                          itemsSpacing: 0,
+                          itemWidth: 100,
+                          itemHeight: 18,
+                          itemTextColor: theme.palette.text.primary,
+                          itemDirection: 'left-to-right',
+                          itemOpacity: 1,
+                          symbolSize: 18,
+                          symbolShape: 'circle',
+  
+                      }
+                    ]}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={8}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Review Sentiment by Age and Gender
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={sentimentReviewsData}
+                    keys={Object.keys(gameAnalytics.sentimentReviewsByAge.POSITIVE).concat(Object.keys(sentimentReviewsByGender.POSITIVE))}
+                    indexBy="sentiment"
+                    margin={{ top: 12, right: 136, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set3' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                      legend: 'Sentiment',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    legends={[
+                      {
+                        dataFrom: 'keys',
+                        anchor: 'bottom-right',
+                        direction: 'column',
+                        justify: false,
+                        translateX: 120,
+                        translateY: isTablet ? 48 : 0,
+                        itemsSpacing: isTablet ? 1 : 6,
+                        itemWidth: 100,
+                        itemHeight: 20,
+                        itemDirection: 'left-to-right',
+                        itemOpacity: 0.85,
+                        symbolSize: 20,
+                        effects: [
+                          {
+                            on: 'hover',
+                            style: {
+                              itemOpacity: 1,
+                              itemTextColor: theme.palette.error.main,
+                            }
+                          }
+                        ],
+                        toggleSerie: true
+                      }
+                    ]}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+          </Grid>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+            gap: "12px",
+          }}
+        >
+          <Divider textAlign="center" flexItem>
+            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+              Wish List and Favourite
+            </Typography>
+          </Divider>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "12px",
+              bgcolor: "background.paper",
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            }}
+          >
+            <Typography
+              variant={isTablet? "subtitle1" : "h6"}
+              color="text.primary"
+              sx={{
+                textAlign: "center",
+                fontWeight: 500,
+                marginTop: "12px",
+              }} 
+            >
+
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                height: "425px",
+                [theme.breakpoints.down("md")]: {
+                  height: "350px",
+                },
+                [theme.breakpoints.down("sm")]: {
+                  height: "300px",
+                },
+              }}
+            >
+             
             </Box>
           </Box>
         </Box>
