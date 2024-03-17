@@ -25,7 +25,7 @@ sys.path.append('llm_rag')
 from llm_main import get_per_review_analysis
 
 from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_GAMES, SPECIFIC_TOPIC_NAME_DICT, MODEL_SPECIFIC_TOPIC_NAME_DICT
-from _load_bertopic_models import _load_bertopic_model, GENRES
+from _load_bertopic_models import _load_bertopic_model, GENRES, BERTOPIC_MODELS
 from _utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC
 
 
@@ -304,8 +304,10 @@ if __name__ == "__main__":
     # load the BERTopic model
     # topic_model = _load_bertopic_model(model_folder_path)
 
-    model_folder_path, topic_model = _load_bertopic_model(
-        GENRES.ACTION, 10)      # load the action genre model with 10 topics
+    # model_folder_path, topic_model = _load_bertopic_model(
+    #     GENRES.ACTION, 10)      # load the action genre model with 10 topics
+
+    model_folder_path, topic_model = BERTOPIC_MODELS[(GENRES.ACTION, 10)]
 
     # load the sbert model
     sbert_model_name = 'all-MiniLM-L6-v2'

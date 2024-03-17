@@ -90,6 +90,8 @@ def _get_aspects_content(review:str):
     del db
     del retriever
 
+    print('LLM result for aspects_response:', aspects_response)
+
     return aspects_response
 
 def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
@@ -104,7 +106,9 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
     # set a number of times for repeating if the response is not a JSON
     repeat_limit = 5
 
-    for _ in range(repeat_limit):
+    for i in range(repeat_limit):
+
+        print(f'Attempt {i+1} for generating keywords...')
 
         chat_prompt_02 = ChatPromptTemplate.from_messages([
             ("system", _prompts.SYSTEM_TEMPLATE),
@@ -131,16 +135,19 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
             print(f'response_02: \'\'\'{response_02}\'\'\' is not a JSON. Retry...')
             continue
 
-    # further tidying
-    # replace a list of 'NA' with only a list of 'NA'
-    for k, v in response_02_json.items():
-        if isinstance(v, list):
-            if all([x == 'NA' for x in v]):
-                response_02_json[k] = ['NA']
+        # further tidying
+        # replace a list of 'NA' with only a list of 'NA'
+        for k, v in response_02_json.items():
+            if isinstance(v, list):
+                if all([x == 'NA' for x in v]):
+                    response_02_json[k] = ['NA']
 
-    print('LLM result for response_02_json:', response_02_json)
+        print('LLM result for response_02_json:', response_02_json)
 
-    return response_02_json
+        return response_02_json
+    
+    # return None if the response is not a JSON after repeat_limit times of trying
+    return None
 
 def _gen_TLDR_per_review(review:str, is_spam:bool, aspects_response:dict):
     # step 1: if the number of words in the review is less than 50, return None

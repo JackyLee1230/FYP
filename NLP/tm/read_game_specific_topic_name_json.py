@@ -32,7 +32,9 @@ def read_game_specific_topic_name_json(game_name:str, topic_model_dir:Path):
     with open(_json_path, "r") as f:
         topic_id_to_label_json = json.load(f)
 
-        print(f"topic_id_to_label_json: {topic_id_to_label_json}")
+        print('Loaded game specific topic names for:', game_name)
+
+        # print(f"topic_id_to_label_json: {topic_id_to_label_json}")
 
     return topic_id_to_label_json
 
@@ -59,6 +61,8 @@ def read_model_specific_topic_name_json(topic_model_dir:Path):
     # read the json file
     with open(_json_path, "r") as f:
         topic_id_to_label_json = json.load(f)
+
+        print('Loaded model specific topic names for:', topic_model_dir)
 
         # print(f"topic_id_to_label_json: {topic_id_to_label_json}")
 
