@@ -82,8 +82,12 @@ public class RabbitMQConsumer {
         JSONObject bert = jsonObject.getJSONObject("BERT");
         JSONObject llm = jsonObject.getJSONObject("LLM");
 
-        String llmSummary = llm.getString("summary");
         Boolean isSpam = llm.getBoolean("isSpam");
+        String llmSummary = null;
+        if (isSpam == false) {
+            llmSummary = llm.getString("summary");
+        }
+
         llm.remove("summary"); // remove summary, only leave aspects in LLM JSON
 
         Review review = reviewRepository.findReviewById(reviewId);
