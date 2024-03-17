@@ -14,12 +14,16 @@ from langchain_core.prompts import PromptTemplate
 import _prompts
 
 import json
+import os
+
+OLLAMA_IP = os.environ.get('OLLAMA_IP', 'localhost')
+
 
 # global constants
 GAME_ASPECTS = ['Gameplay', 'Narrative', 'Accessibility', 'Sound', 'Graphics & Art Design', 'Performance', 'Bug', 'Suggestion', 'Price', 'Overall']
 
 # global variables
-llm = Ollama(model='llama2', temperature=0.2)       # lower temperature for more deterministic results
+llm = Ollama(model='llama2', temperature=0.2, base_url=str(OLLAMA_IP)+":11434")       # lower temperature for more deterministic results
 chroma_client = chromadb.HttpClient(host='localhost', port=8000)
 
 def _check_spam(review:str):
@@ -247,7 +251,7 @@ if __name__ == "__main__":
     sample_w_12 = "The bosses are WAY too hard. I died 30 times on a boss, rage quit."
 
     # change the sample to test diff reviews
-    temp_sample = sample_01
+    temp_sample = sample_11
 
     print('The review is:',temp_sample)
     print('\n\n')
