@@ -213,6 +213,11 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
                   ? `| ${gameData?.baseGame.name} DLC`
                   : ""
               }
+              ${
+                gameData?.numberOfReviews  && gameData?.numberOfReviews > 0
+                  ? gameData?.numberOfReviews > 1 ? `| ${gameData?.numberOfReviews} Reviews` : "| 1 Review"
+                  : "| No Reviews"
+              }
               `}
             </Typography>
           </Box>
