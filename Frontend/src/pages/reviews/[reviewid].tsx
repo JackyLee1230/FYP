@@ -388,6 +388,20 @@ function GamePage({
     </Box>,
   ];
 
+  function displayAspects(aspects: string): string {
+    let aspectsArray = JSON.parse(aspects);
+    let result = '';
+
+    for (let aspect in aspectsArray) {
+      if (aspect !== 'isSpam' && aspectsArray[aspect][0] !== 'NA') {
+          let keywords = aspectsArray[aspect].join(', ');
+          result += `${aspect}: ${keywords}.\n`;
+      }
+    }
+
+    return result.trim(); 
+  }
+
   return (
     <div>
       <Head>
@@ -797,7 +811,8 @@ function GamePage({
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
+                      alignItems: "flex-start",
+                      justifyContent: "center",
                       gap: "12px",
                     }}
                   >
@@ -807,8 +822,10 @@ function GamePage({
                       sx={{
                         fontWeight: 700,
                         width: "132px",
+                        minWidth: "132px",
                         [theme.breakpoints.down("md")]: {
                           width: "100px",
+                          minWidth: "100px",
                         },
                       }}
                     >
@@ -829,13 +846,14 @@ function GamePage({
                         ? review.sentiment == 1
                           ? "Positive"
                           : "Negative"
-                        : "Generating..."}
+                        : "Not Available"}
                     </Typography>
                   </Box>
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
+                      alignItems: "flex-start",
+                      justifyContent: "center",
                       gap: "12px",
                     }}
                   >
@@ -845,8 +863,10 @@ function GamePage({
                       sx={{
                         fontWeight: 700,
                         width: "132px",
+                        minWidth: "132px",
                         [theme.breakpoints.down("md")]: {
                           width: "100px",
+                          minWidth: "100px",
                         },
                       }}
                     >
@@ -856,13 +876,17 @@ function GamePage({
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.secondary"
                     >
-                      Coming soon...
+                      {review.topics != null ?
+                        Object.keys(JSON.parse(review.topics)).map(key => JSON.parse(review.topics)[key][0]).join(", ")
+                      : "Not Available"}
+
                     </Typography>
                   </Box>
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
+                      alignItems: "flex-start",
+                      justifyContent: "center",
                       gap: "12px",
                     }}
                   >
@@ -872,8 +896,10 @@ function GamePage({
                       sx={{
                         fontWeight: 700,
                         width: "132px",
+                        minWidth: "132px",
                         [theme.breakpoints.down("md")]: {
                           width: "100px",
+                          minWidth: "100px",
                         },
                       }}
                     >
@@ -882,14 +908,16 @@ function GamePage({
                     <Typography
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.secondary"
+                      sx={{ whiteSpace: "pre-wrap" }}
                     >
-                      Coming soon...
+                      {review.aspects != null ? displayAspects(review.aspects) : "Not Available"}
                     </Typography>
                   </Box>
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
+                      alignItems: "flex-start",
+                      justifyContent: "center",
                       gap: "12px",
                     }}
                   >
@@ -899,8 +927,10 @@ function GamePage({
                       sx={{
                         fontWeight: 700,
                         width: "132px",
+                        minWidth: "132px",
                         [theme.breakpoints.down("md")]: {
                           width: "100px",
+                          minWidth: "100px",
                         },
                       }}
                     >
@@ -910,7 +940,7 @@ function GamePage({
                       variant={isTablet ? "subtitle1" : "h6"}
                       color="text.secondary"
                     >
-                      Coming soon...
+                      {review.summary ?? "Not Available"}
                     </Typography>
                   </Box>
                 </Box>

@@ -37,6 +37,9 @@ export type GameSearchPageProps = {
 };
 
 export type GameReview = {
+  topics: string;
+  summary: string;
+  aspects: string;
   numberOfDislikes: number;
   numberOfLikes: number;
   id: string;

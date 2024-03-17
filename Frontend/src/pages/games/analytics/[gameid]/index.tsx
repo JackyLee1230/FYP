@@ -143,7 +143,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     "axis": {
       "legend": {
           "text": {
-              "fontSize": 18,
+              "fontSize": 16,
               "fill": theme.palette.text.primary,
           },
       },
@@ -162,7 +162,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     "legends": {
       "title": {
           "text": {
-              "fontSize": 18,
+              "fontSize": 16,
               "fill": theme.palette.text.primary,
           }
       },
