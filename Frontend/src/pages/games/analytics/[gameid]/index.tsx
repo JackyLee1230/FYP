@@ -152,7 +152,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           setActiveStep(anchorToStep(entry.target.id));
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.8 });
   }, []);
 
   useEffect(() => {
@@ -173,7 +173,6 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
       anchorObserver.current?.observe(wishlistFavouriteElement);
     }
   }, []);
-
 
   const [activeStep, setActiveStep] = useState(0);
   const anchorToStep = (anchor: string) => {
@@ -1696,6 +1695,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           [theme.breakpoints.down("sm")]:{
             top: 72, 
             left: 16,
+            alignItems: 'flex-start',
           } 
         }}
       >
