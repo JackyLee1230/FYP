@@ -152,7 +152,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           setActiveStep(anchorToStep(entry.target.id));
         }
       });
-    }, { threshold: 0.8 });
+    }, { threshold: 0.7 });
   }, []);
 
   useEffect(() => {
