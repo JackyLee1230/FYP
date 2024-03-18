@@ -1,5 +1,7 @@
 import { GameAnalytic } from "@/type/game";
-import { Box, Breadcrumbs, Button, Divider, Typography, styled, useMediaQuery, useTheme, alpha, CircularProgress, circularProgressClasses, ButtonBase } from "@mui/material";
+import { Box, Breadcrumbs, Button, Divider, Typography, styled, useMediaQuery, useTheme, alpha, CircularProgress, circularProgressClasses, ButtonBase, Collapse, Fab, Paper, Stepper, Step, StepLabel, StepButton } from "@mui/material";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ChecklistIcon from "@mui/icons-material/Checklist";
@@ -15,7 +17,7 @@ import { ResponsiveBar } from '@nivo/bar';
 import { getScoreColor } from "@/utils/DynamicScore";
 import { getGender } from "@/type/user";
 import { genderList } from "@/type/user";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -136,7 +138,74 @@ const StyledRateReviewOutlinedIcon = styled(RateReviewOutlinedIcon)(({ theme }) 
 function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPageProps) {
   const router = useRouter();
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"))
+  const [contentOpen, setContentOpen] = useState(false);
+  function handleContentOpen() {
+    setContentOpen(prev=>!prev);
+  }
+  const anchorObserver = useRef<IntersectionObserver | undefined>();
+
+  useEffect(() => {
+    anchorObserver.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveStep(anchorToStep(entry.target.id));
+        }
+      });
+    }, { threshold: 0.5 });
+  }, []);
+
+  useEffect(() => {
+    const statisticsElement = document.getElementById("statistics");
+    if (statisticsElement) {
+      anchorObserver.current?.observe(statisticsElement);
+    }
+    const reviewsElement = document.getElementById("reviews");
+    if (reviewsElement) {
+      anchorObserver.current?.observe(reviewsElement);
+    }
+    const playersElement = document.getElementById("players");
+    if (playersElement) {
+      anchorObserver.current?.observe(playersElement);
+    }
+    const wishlistFavouriteElement = document.getElementById("wishlist-favourite");
+    if (wishlistFavouriteElement) {
+      anchorObserver.current?.observe(wishlistFavouriteElement);
+    }
+  }, []);
+
+
+  const [activeStep, setActiveStep] = useState(0);
+  const anchorToStep = (anchor: string) => {
+    switch (anchor) {
+      case "statistics":
+        return 0;
+      case "reviews":
+        return 1;
+      case "players":
+        return 2;
+      case "wishlist-favourite":
+        return 3;
+      default:
+        return 0;
+    }
+  }
+
+  const scrollOffset = useCallback(() => {
+    window.scrollBy({top:-80, behavior : "smooth"});
+  }, [])
+
+  const handleStep = (step: string) => () => {
+    setActiveStep(anchorToStep(step));
+    router.push(`/games/analytics/${router.query.gameid}#${step}`, undefined, { shallow: true });
+  };
+
+  useEffect(() => {
+    if(window.location.hash){
+      setActiveStep(anchorToStep(window.location.hash.substring(1)));
+      scrollOffset();
+    }
+  }, [router, scrollOffset]);
 
   const nivoTheme = {
     "text": {
@@ -174,8 +243,50 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           "fill": theme.palette.text.secondary,
 
       },
-  },
+    },
   }
+
+  useEffect(() => {
+    if (gameAnalytics?.genderReviews['N/A']) {
+      if (gameAnalytics?.genderReviews['UNDISCLOSED']) {
+        gameAnalytics.genderReviews['UNDISCLOSED'] += gameAnalytics.genderReviews['N/A'];
+      } else {
+        gameAnalytics.genderReviews['UNDISCLOSED'] = gameAnalytics.genderReviews['N/A'];
+      }
+    }
+
+    if(gameAnalytics?.sentimentReviewsByGender["POSITIVE"]["N/A"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"]) {
+      if (gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"]) {
+        gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
+        gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+      } else {
+        gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
+        gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+      }
+    }
+    delete gameAnalytics?.sentimentReviewsByGender["POSITIVE"]["N/A"];
+    delete gameAnalytics?.sentimentReviewsByGender["NEGATIVE"]["N/A"];
+    delete gameAnalytics?.sentimentReviewsByAge["POSITIVE"]["N/A"];
+    delete gameAnalytics?.sentimentReviewsByAge["NEGATIVE"]["N/A"];
+
+    if (gameAnalytics?.wishlistByGender['N/A']) {
+      if (gameAnalytics?.wishlistByGender['UNDISCLOSED']) {
+        gameAnalytics.wishlistByGender['UNDISCLOSED'] += gameAnalytics.wishlistByGender['N/A'];
+      } else {
+        gameAnalytics.wishlistByGender['UNDISCLOSED'] = gameAnalytics.wishlistByGender['N/A'];
+      }
+    }
+    delete gameAnalytics?.wishlistByGender['N/A'];
+
+    if (gameAnalytics?.favouriteByGender['N/A']) {
+      if (gameAnalytics?.favouriteByGender['UNDISCLOSED']) {
+        gameAnalytics.favouriteByGender['UNDISCLOSED'] += gameAnalytics.favouriteByGender['N/A'];
+      } else {
+        gameAnalytics.favouriteByGender['UNDISCLOSED'] = gameAnalytics.favouriteByGender['N/A'];
+      }
+    }
+    delete gameAnalytics?.favouriteByGender['N/A'];
+  }, [gameAnalytics]);
 
   if (!gameAnalytics || errorMessage) {
     return (
@@ -271,14 +382,6 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     { reviewLength: "1000+", count: gameAnalytics.reviewLength["1000+"] ?? 0},
   ];
 
-  if (gameAnalytics?.genderReviews['N/A']) {
-    if (gameAnalytics?.genderReviews['UNDISCLOSED']) {
-      gameAnalytics.genderReviews['UNDISCLOSED'] += gameAnalytics.genderReviews['N/A'];
-    } else {
-      gameAnalytics.genderReviews['UNDISCLOSED'] = gameAnalytics.genderReviews['N/A'];
-    }
-  }
-
   const genderReviewsData: BarDatum[] = Object.keys(gameAnalytics.genderReviews).filter(gender => gender !== 'N/A').map(gender => ({
     gender: getGender(gender),
     count: gameAnalytics.genderReviews[gender]
@@ -292,21 +395,6 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     age: age,
     count: gameAnalytics.ageReviews[age]
   }));
-
-  if(gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"]) {
-    if (gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] && gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"]) {
-      gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
-      gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] += gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
-    } else {
-      gameAnalytics.sentimentReviewsByGender["POSITIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
-      gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["UNDISCLOSED"] = gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
-    }
-  }
-
-  delete gameAnalytics.sentimentReviewsByGender["POSITIVE"]["N/A"];
-  delete gameAnalytics.sentimentReviewsByGender["NEGATIVE"]["N/A"];
-  delete gameAnalytics.sentimentReviewsByAge["POSITIVE"]["N/A"];
-  delete gameAnalytics.sentimentReviewsByAge["NEGATIVE"]["N/A"];
 
   // Sort the age group values in NEGATIVE and POSITIVE
   for (let sentiment in gameAnalytics.sentimentReviewsByAge) {
@@ -333,16 +421,25 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     sentimentReviewsByGender[sentiment] = newSentiment;
   }
 
-  const sentimentReviewsData: BarDatum[] = [
+  const sentimentReviewsAgeData: BarDatum[] = [
     {
       "sentiment": "Positive",
-      ...sentimentReviewsByGender["POSITIVE"],
       ...gameAnalytics.sentimentReviewsByAge["POSITIVE"]
     },
     {
       "sentiment": "Negative",
-      ...sentimentReviewsByGender["NEGATIVE"],
       ...gameAnalytics.sentimentReviewsByAge["NEGATIVE"]
+    },
+  ]
+
+  const sentimentReviewsGenderData: BarDatum[] = [
+    {
+      "sentiment": "Positive",
+      ...sentimentReviewsByGender["POSITIVE"]
+    },
+    {
+      "sentiment": "Negative",
+      ...sentimentReviewsByGender["NEGATIVE"]
     },
   ]
 
@@ -358,7 +455,26 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
       "value": gameAnalytics.sentimentReviews["NEGATIVE"]
     },
   ]
-  
+  const wishlistByAgeData: BarDatum[] = Object.keys(gameAnalytics.wishlistByAge).map(age => ({
+    age: age,
+    count: gameAnalytics.wishlistByAge[age]
+  }));
+
+  const wishlistByGenderData: BarDatum[] = Object.keys(gameAnalytics.wishlistByGender).map(gender => ({
+    gender: getGender(gender),
+    count: gameAnalytics.wishlistByGender[gender]
+  }))
+
+  const favouriteByAgeData: BarDatum[] = Object.keys(gameAnalytics.favouriteByAge).map(age => ({
+    age: age,
+    count: gameAnalytics.favouriteByAge[age]
+  }));
+
+  const favouriteByGenderData: BarDatum[] = Object.keys(gameAnalytics.favouriteByGender).map(gender => ({
+    gender: getGender(gender),
+    count: gameAnalytics.favouriteByGender[gender]
+  }))
+
   return (
     <div>
       <Head>
@@ -394,8 +510,14 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
             alignItems: "center",
             height: "350px",
             borderRadius: "36px 12px",
+            overflow: "hidden",
             background: `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameAnalytics.iconUrl}) lightgray 50% / cover no-repeat`,
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+
+            [theme.breakpoints.down("sm")]: {
+              borderRadius: "24px 12px",
+              height: "280px"
+            }
           }}
         >
           <Box
@@ -429,6 +551,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         </Box>
 
         <Box
+          id="statistics"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -439,6 +562,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           }}
         >
           <Box
+
             sx={{
               display: "flex",
               padding: "24px",
@@ -759,6 +883,8 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         </Box>
         
         <Box
+          id={"reviews"}
+          
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -842,6 +968,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         </Box>
 
         <Box
+          id={"players"}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -856,6 +983,75 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
             </Typography>
           </Divider>
           <Grid container spacing={2} columns={12}>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Reviews by Age
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={ageReviewsData}
+                    keys={['count']}
+                    indexBy="age"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set2' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Age Group',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
             <Grid xs={12} md={6}>
               <Box
                 sx={{
@@ -926,76 +1122,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 </Box>
               </Box>
             </Grid> 
-            <Grid xs={12} md={6}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "12px",
-                  bgcolor: "background.paper",
-                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                }}
-              >
-                <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
-                  color="text.primary"
-                  sx={{
-                    textAlign: "center",
-                    fontWeight: 500,
-                    marginTop: "12px",
-                  }} 
-                >
-                  Distribution of Reviews by Age
-                </Typography>
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "425px",
-                    [theme.breakpoints.down("md")]: {
-                      height: "350px",
-                    },
-                    [theme.breakpoints.down("sm")]: {
-                      height: "300px",
-                    },
-                  }}
-                >
-                  <ResponsiveBar
-                    theme={nivoTheme}
-                    data={ageReviewsData}
-                    keys={['count']}
-                    indexBy="age"
-                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
-                    padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set2' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                    axisTop={null}
-                    axisRight={null}
-                    axisBottom={{
-                      tickSize: 8,
-                      tickPadding: 4,
-                      legend: 'Age Group',
-                      legendPosition: 'middle',
-                      legendOffset: 48,
-                      tickRotation: isTablet ? -25 : 0,
-                    }}
-                    axisLeft={{
-                      tickSize: 8,
-                      tickPadding: 4,
-                      tickRotation: 0,
-                    }}
-                    labelSkipWidth={12}
-                    labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                    animate={true}
-                  />
-                </Box>
-              </Box>
-            </Grid> 
-            <Grid xs={12} md={4}>
+            <Grid xs={12}>
               <Box
                 sx={{
                   display: "flex",
@@ -1058,14 +1185,108 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                           itemOpacity: 1,
                           symbolSize: 18,
                           symbolShape: 'circle',
-  
                       }
                     ]}
                   />
                 </Box>
               </Box>
             </Grid> 
-            <Grid xs={12} md={8}>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Sentiment Distribution by Age
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={sentimentReviewsAgeData}
+                    keys={Object.keys(gameAnalytics.sentimentReviewsByAge.POSITIVE)}
+                    indexBy="sentiment"
+                    margin={{ top: 12, right: 136, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set3' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                      legend: 'Sentiment',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    legends={[
+                      {
+                        dataFrom: 'keys',
+                        anchor: 'bottom-right',
+                        direction: 'column',
+                        justify: false,
+                        translateX: 120,
+                        translateY: isTablet ? 48 : 0,
+                        itemsSpacing: isTablet ? 1 : 6,
+                        itemWidth: 100,
+                        itemHeight: 20,
+                        itemDirection: 'left-to-right',
+                        itemOpacity: 0.85,
+                        symbolSize: 20,
+                        effects: [
+                          {
+                            on: 'hover',
+                            style: {
+                              itemOpacity: 1,
+                              itemTextColor: theme.palette.error.main,
+                            }
+                          }
+                        ],
+                        toggleSerie: true
+                      }
+                    ]}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={6}>
               <Box
                 sx={{
                   display: "flex",
@@ -1102,8 +1323,8 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 >
                   <ResponsiveBar
                     theme={nivoTheme}
-                    data={sentimentReviewsData}
-                    keys={Object.keys(gameAnalytics.sentimentReviewsByAge.POSITIVE).concat(Object.keys(sentimentReviewsByGender.POSITIVE))}
+                    data={sentimentReviewsGenderData}
+                    keys={Object.keys(sentimentReviewsByGender.POSITIVE)}
                     indexBy="sentiment"
                     margin={{ top: 12, right: 136, bottom: 68, left: 46 }}
                     padding={0.3}
@@ -1164,6 +1385,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         </Box>
 
         <Box
+          id={"wishlist-favourite"}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -1177,44 +1399,351 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               Wish List and Favourite
             </Typography>
           </Divider>
-          <Box
+          <Grid container spacing={2} columns={12}>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Wishlist Distribution by Age
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={wishlistByAgeData}
+                    keys={['count']}
+                    indexBy="age"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set2' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Age Group',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Wishlist Distribution by Gender
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={wishlistByGenderData}
+                    keys={['count']}
+                    indexBy="gender"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'paired' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Gender Type',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Favourite Distribution by Age
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={favouriteByAgeData}
+                    keys={['count']}
+                    indexBy="age"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'set2' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Age Group',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={6}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Favourite Distribution by Gender
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={favouriteByGenderData}
+                    keys={['count']}
+                    indexBy="gender"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'paired' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Gender Type',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+      <Box
+        sx={{ 
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column', 
+          gap: '12px',
+          position: 'fixed', 
+          top: 86, 
+          left: 32,
+          [theme.breakpoints.down("md")]:{
+            top: 82, 
+            left: 24,
+          },
+          [theme.breakpoints.down("sm")]:{
+            top: 72, 
+            left: 16,
+          } 
+        }}
+      >
+        <Fab
+          aria-label="Navigation Dial"
+          color="primary"
+          onClick={handleContentOpen}
+        >
+          {contentOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </Fab>
+        <Collapse in={contentOpen}>
+          <Paper
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
+              gap: "12px",
+              padding: "12px",
               borderRadius: "12px",
               bgcolor: "background.paper",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             }}
           >
-            <Typography
-              variant={isTablet? "subtitle1" : "h6"}
-              color="text.primary"
-              sx={{
-                textAlign: "center",
-                fontWeight: 500,
-                marginTop: "12px",
-              }} 
-            >
-
-            </Typography>
-            <Box
-              sx={{
-                width: "100%",
-                height: "425px",
-                [theme.breakpoints.down("md")]: {
-                  height: "350px",
-                },
-                [theme.breakpoints.down("sm")]: {
-                  height: "300px",
-                },
-              }}
-            >
-             
-            </Box>
-          </Box>
-        </Box>
+            <Stepper activeStep={activeStep} orientation="vertical" nonLinear	>
+              <Step key={"statistics"}>
+                <StepButton onClick={handleStep("statistics")}>
+                  <StepLabel>{"Statistics"}</StepLabel>
+                </StepButton>
+              </Step> 
+              <Step key={"reviews"}>
+                <StepButton onClick={handleStep("reviews")}>
+                  <StepLabel>{"Reviews"}</StepLabel>
+                </StepButton>
+              </Step>
+              <Step key={"players"}>
+                <StepButton onClick={handleStep("players")}>
+                  <StepLabel>{"Players"}</StepLabel>
+                </StepButton>
+              </Step>
+              <Step key={"wishlist-favourite"}>
+                <StepButton onClick={handleStep("wishlist-favourite")}>
+                  <StepLabel>{"Wishlist and Favourite"}</StepLabel>
+                </StepButton>
+              </Step>
+            </Stepper>
+          </Paper>
+        </Collapse>
       </Box>
     </div>
   );
