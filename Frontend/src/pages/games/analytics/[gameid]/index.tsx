@@ -1522,7 +1522,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       legend: 'Gender Type',
                       legendPosition: 'middle',
                       legendOffset: 48,
-                      tickRotation: isTablet ? -25 : 0,
+                      tickRotation: 0,
                     }}
                     axisLeft={{
                       tickSize: 8,
@@ -1660,7 +1660,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       legend: 'Gender Type',
                       legendPosition: 'middle',
                       legendOffset: 48,
-                      tickRotation: isTablet ? -25 : 0,
+                      tickRotation: 0,
                     }}
                     axisLeft={{
                       tickSize: 8,
