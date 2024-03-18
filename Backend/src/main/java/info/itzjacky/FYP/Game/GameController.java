@@ -99,7 +99,6 @@ public class GameController {
     @PostMapping("/addGameWithIcon")
     public ResponseEntity<Game> addGame(@RequestPart("data") GameRequest gameRequest, @RequestPart("icon") MultipartFile icon) {
         try {
-//            logger.info("Creating game with icon");
             return new ResponseEntity<>(gameService.addGame(gameRequest, icon), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
@@ -174,7 +173,6 @@ public class GameController {
     @PostMapping("/findGameById")
     public ResponseEntity<Game> findGameById(@RequestBody GameRequest gameRequest) {
         try {
-//            logger.info(String.valueOf(gameRequest));
             Game g = gameService.findGameById(gameRequest);
             if (g.getBaseGame() != null) {
                 g.getBaseGame().setGameReviews(null);
@@ -277,7 +275,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
     @PostMapping("/findGamesWithSearch")
     public ResponseEntity<List<Game>> findGamesWithSearch(@RequestBody GameRequest gameRequest) {
         try {
-//            logger.info(gameRequest.toString());
             return new ResponseEntity<>(gameRepository.customFindGames(gameRequest.getName(),gameRequest.getPlatforms(), gameRequest.getGenre(), gameRequest.getIsInDevelopment(), gameRequest.getOrderedByScore(), gameRequest.getOrderedByReleaseDate()), HttpStatus.OK);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());
@@ -440,9 +437,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             wishlistByGender.put("MALE", 0);wishlistByGender.put("FEMALE", 0);
             wishlistByGender.put("OTHER", 0);wishlistByGender.put("UNDISCLOSED", 0);wishlistByGender.put("N/A", 0);
 
-            logger.info("fav" + fav.toString());
-            logger.info("wish" + wish.toString());
-
             for (List<String> userArr: fav) {
                 String ageGroup = userArr.get(1);
                 String favGender = userArr.get(2);
@@ -491,15 +485,13 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             for (Review r: reviews) {
 //                TOPICS to TOPIC FREQUENCY
                 String reviewTopics = r.getTopics();
-//                parse this string as a json
                 if(reviewTopics != null && !reviewTopics.isEmpty()){
-                    logger.info(reviewTopics);
                     JSONObject topics = new JSONObject(reviewTopics);
                     for (String key : topics.keySet()) {
                         if (topicFreq.has(key)) {
                             topicFreq.put(key, topicFreq.getInt(key) + 1);
                         } else {
-                            topicFreq.put(key, topics.getInt(key));
+                            topicFreq.put(key, 1);
                         }
                     }
                 }
@@ -517,7 +509,11 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     ageCount.put("N/A", ageCount.get("N/A") + 1);
                 } else {
                     String tempAgeGroup = Others.getAgeGroupFromAge(Integer.valueOf(age));
-                    ageCount.put(tempAgeGroup, ageCount.get(tempAgeGroup) + 1);
+                    if (tempAgeGroup.equals("NA")) {
+                        ageCount.put("N/A", ageCount.get("N/A") + 1);
+                    } else {
+                        ageCount.put(tempAgeGroup, ageCount.get(tempAgeGroup) + 1);
+                    }
                 }
 //                SENTIMENT
                 Integer sentiment = r.getSentiment();
@@ -575,9 +571,11 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                         innerAgeMap.put("N/A", innerAgeMap.get("N/A") + 1);
                     } else {
                         String tmpAgeGroup = Others.getAgeGroupFromAge(Integer.valueOf(r.getReviewer().getAge()));
-                        logger.warn(tmpAgeGroup);
-                        logger.warn(innerAgeMap.get(tmpAgeGroup).toString());
-                        innerAgeMap.put(tmpAgeGroup, innerAgeMap.get(tmpAgeGroup) + 1);
+                        if (tmpAgeGroup.equals("NA")) {
+                            innerAgeMap.put("N/A", innerAgeMap.get("N/A") + 1);
+                        } else {
+                            innerAgeMap.put(tmpAgeGroup, innerAgeMap.get(tmpAgeGroup) + 1);
+                        }
                     }
                 }
             }
