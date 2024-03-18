@@ -26,7 +26,7 @@ from llm_main import get_per_review_analysis
 
 from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_GAMES, SPECIFIC_TOPIC_NAME_DICT, MODEL_SPECIFIC_TOPIC_NAME_DICT
 from _load_bertopic_models import _load_bertopic_model, GENRES, BERTOPIC_MODELS
-from _utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC
+from _utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC, _print_message
 
 
 def cleaning(s_list: list[str]):
@@ -146,7 +146,11 @@ def consumer(ch, method, properties, body, inference_obj):
         
         topics, probs = inference([comment])       # wrap the comment as a list
 
-        print('BERTopic Inference result:', topics, probs)
+        end_time = time.time()
+
+        _print_message(f'BERTopic Inference result: {topics} ; {probs}')
+        _print_message(topic_id_to_label_json)
+        _print_message(f'Time taken for BERTopic inference: {end_time-start_time:.2f}')
     except Exception as e:
         print("Error during BERTopic inference:", e)
         print(traceback.format_exc())
@@ -154,9 +158,12 @@ def consumer(ch, method, properties, body, inference_obj):
     
 
     # LLM results
+
+    start_time = time.time()
+
     try:
         is_spam, aspect_keywords, tldr = get_per_review_analysis(comment)
-        print('LLM Inference result:', is_spam, aspect_keywords, tldr)
+        _print_message(f'LLM Inference result: {is_spam}, {aspect_keywords}, {tldr}')
 
         llm_result = {
             "isSpam": is_spam,
@@ -174,16 +181,14 @@ def consumer(ch, method, properties, body, inference_obj):
         return
     
     end_time = time.time()
-    print('Time taken for bertopic & llm:', end_time-start_time)
-
-    print(topic_id_to_label_json)
+    _print_message(f'Time taken for LLM inference: {end_time-start_time:.2f}')
 
     # use a BlockingConnection per-thread
     # reuse created BlockingConnection if the thread in the threadpool has created one
     if not hasattr(local, 'channel'):
         thread_channel, _ = init_connection()
         thread_id = threading.currentThread().ident
-        print(f'Thread {thread_id} created channel.')
+        _print_message(f'Thread {thread_id} created channel.')
         local.channel = thread_channel
         local.channel.confirm_delivery()
 
@@ -207,8 +212,9 @@ def consumer(ch, method, properties, body, inference_obj):
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 
-    print(
+    _print_message(
         f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
+    
     try:
         # enable the test queue for debugging
         local.channel.basic_publish(
@@ -231,7 +237,7 @@ def consumer(ch, method, properties, body, inference_obj):
 
 def callback(ch, method, properties, body):
     # Process the received message
-    print("Received message:", body)
+    _print_message("Received message:", body)
 
     try:
         _body = json.loads(body)

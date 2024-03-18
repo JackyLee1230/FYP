@@ -1,6 +1,7 @@
 # keyword mapping from DB to Enum for Python
 
 from enum import Enum
+from datetime import datetime
 
 from _load_bertopic_models import GENRES
 
@@ -28,3 +29,10 @@ GENRES_DB_TO_GENRE_BERTOPIC = {
     GENRES_DB.ACTION_AND_ADVENTURE: GENRES.ACTION,
     GENRES_DB.INDIE: GENRES.INDIE,
 }
+
+def _print_message(message):
+    '''Print message with a timestamp in front of it
+
+    Timestamp format: YYYY-MM-DD HH:MM:SS,mmm
+    '''
+    print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]} - {message}')
