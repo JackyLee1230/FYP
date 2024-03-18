@@ -101,6 +101,21 @@ public class ReviewController {
         }
     }
 
+    @PostMapping("/sendForTopicModelling")
+    public ResponseEntity<Void> sendForTopicModelling(@RequestBody ReviewRequest reviewReq){
+        try{
+            Review r = reviewRepository.findReviewById(reviewReq.getReviewId());
+            reviewReq.setReviewId(r.getId());
+            reviewReq.setComment(r.getComment());
+            reviewReq.setGenres(r.getReviewedGame().getGenre());
+            reviewReq.setGameName(r.getReviewedGame().getName());
+            reviewService.topicModelingForReview(reviewReq);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(500), e.getMessage());
+        }
+    }
+
 
     @PostMapping("/hasUserReviewedGame")
     public ResponseEntity<Review> hasUserReviewedGame(@RequestBody ReviewRequest reviewReq){
