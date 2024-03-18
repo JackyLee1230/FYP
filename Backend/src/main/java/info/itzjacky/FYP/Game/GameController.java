@@ -493,6 +493,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                 String reviewTopics = r.getTopics();
 //                parse this string as a json
                 if(reviewTopics != null && !reviewTopics.isEmpty()){
+                    logger.info(reviewTopics);
                     JSONObject topics = new JSONObject(reviewTopics);
                     for (String key : topics.keySet()) {
                         if (topicFreq.has(key)) {
@@ -511,11 +512,12 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     genderCount.put(r.getReviewer().getGender().toString(), genderCount.get(r.getReviewer().getGender().toString()) + 1);
                 }
 //                AGE
-                String ageGroup = r.getReviewer().getAgeGroup();
-                if (ageGroup == null || ageGroup.isEmpty() || ageGroup.equals("NA")) {
+                String age = r.getReviewer().getAge();
+                if (age == null || age.isEmpty() || age.equals("NA")) {
                     ageCount.put("N/A", ageCount.get("N/A") + 1);
                 } else {
-                    ageCount.put(r.getReviewer().getAgeGroup(), ageCount.get(r.getReviewer().getAgeGroup()) + 1);
+                    String tempAgeGroup = Others.getAgeGroupFromAge(Integer.valueOf(age));
+                    ageCount.put(tempAgeGroup, ageCount.get(tempAgeGroup) + 1);
                 }
 //                SENTIMENT
                 Integer sentiment = r.getSentiment();
