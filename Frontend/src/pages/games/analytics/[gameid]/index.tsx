@@ -1261,8 +1261,8 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                         direction: 'column',
                         justify: false,
                         translateX: 120,
-                        translateY: isTablet ? 48 : 0,
-                        itemsSpacing: isTablet ? 1 : 6,
+                        translateY: 0,
+                        itemsSpacing: isTablet ? 3 : 6,
                         itemWidth: 100,
                         itemHeight: 20,
                         itemDirection: 'left-to-right',
@@ -1306,7 +1306,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     marginTop: "12px",
                   }} 
                 >
-                  Review Sentiment by Age and Gender
+                  Review Sentiment by Gender
                 </Typography>
                 <Box
                   sx={{
@@ -1356,8 +1356,8 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                         direction: 'column',
                         justify: false,
                         translateX: 120,
-                        translateY: isTablet ? 48 : 0,
-                        itemsSpacing: isTablet ? 1 : 6,
+                        translateY: 0,
+                        itemsSpacing: isTablet ? 3 : 6,
                         itemWidth: 100,
                         itemHeight: 20,
                         itemDirection: 'left-to-right',
@@ -1395,7 +1395,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         >
           <Divider textAlign="center" flexItem>
             <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
-              Wish List and Favourite
+              Wish List & Favourite
             </Typography>
           </Divider>
           <Grid container spacing={2} columns={12}>
@@ -1738,7 +1738,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               </Step>
               <Step key={"wishlist-favourite"}>
                 <StepButton onClick={handleStep("wishlist-favourite")}>
-                  <StepLabel>{"Wishlist and Favourite"}</StepLabel>
+                  <StepLabel>{"Wishlist & Favourite"}</StepLabel>
                 </StepButton>
               </Step>
             </Stepper>
