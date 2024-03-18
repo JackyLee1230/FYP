@@ -26,8 +26,14 @@ from hashlib import sha224
 GAME_ASPECTS = ['Gameplay', 'Narrative', 'Accessibility', 'Sound', 'Graphics & Art Design', 'Performance', 'Bug', 'Suggestion', 'Price', 'Overall']
 
 # global variables
-llm_mistral7b = Ollama(model='mistral:7b-instruct-v0.2-q4_0', temperature=0.2)       # lower temperature for more deterministic results
-llm_gemma2b = Ollama(model='gemma:2b-instruct-q4_0', temperature=0.2)                # lower temperature for more deterministic results
+llm_mistral7b = Ollama(
+    model='mistral:7b-instruct-v0.2-q4_0', temperature=0.2,                         # lower temperature for more deterministic results
+    base_url = 'http://localhost:11434'
+)       
+llm_gemma2b = Ollama(
+    model='gemma:2b-instruct-q4_0', temperature=0.2,                                # lower temperature for more deterministic results
+    base_url='http://localhost:11454'
+)                
 
 chroma_client = chromadb.HttpClient(host='localhost', port=8000)
 
