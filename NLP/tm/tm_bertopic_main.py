@@ -237,7 +237,7 @@ def consumer(ch, method, properties, body, inference_obj):
 
 def callback(ch, method, properties, body):
     # Process the received message
-    _print_message("Received message:", body)
+    _print_message(f"Received message: {body}")
 
     try:
         _body = json.loads(body)
