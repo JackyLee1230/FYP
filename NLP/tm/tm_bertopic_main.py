@@ -149,7 +149,6 @@ def consumer(ch, method, properties, body, inference_obj):
         end_time = time.time()
 
         _print_message(f'BERTopic Inference result: {topics} ; {probs}')
-        _print_message(topic_id_to_label_json)
         _print_message(f'Time taken for BERTopic inference: {end_time-start_time:.2f}')
     except Exception as e:
         print("Error during BERTopic inference:", e)
