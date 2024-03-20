@@ -1,15 +1,16 @@
-import { Box, InputLabel, Card, CardContent, CardMedia, CircularProgress, FormControl, Menu, MenuItem, Select, SelectChangeEvent, Typography, circularProgressClasses, styled, Autocomplete, TextField, Slider, Grid, Switch, FormControlLabel, Button, Avatar, Toolbar, Tooltip, Checkbox } from "@mui/material";
-import { useState } from "react";
+import { Box, CircularProgress, FormControl, Typography, Autocomplete, TextField, Slider, Grid, FormControlLabel, Button, Avatar, Tooltip, Checkbox } from "@mui/material";
+import { useEffect, useState } from "react";
 import { CustomInput } from "./CustomInput";
-import { getPlatform, PlatformList } from "@/type/gamePlatform";
+import { getPlatform } from "@/type/gamePlatform";
 import { MuiFileInput } from 'mui-file-input';
 import { User } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import axios from "axios";
-import { GameInfo } from "@/type/game";
+import { GameInfo, GameReview } from "@/type/game";
 import { useRouter } from "next/router";
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { useAuthContext } from "@/context/AuthContext";
 
 const NEXT_PUBLIC_BACKEND_PATH_PREFIX =
   process.env.NEXT_PUBLIC_BACKEND_PATH_PREFIX;
@@ -18,6 +19,7 @@ type ReviewInputBoxProps = {
   user: User;
   game: GameInfo;
   size?: "small" | "normal";
+  review?: GameReview;
 };
 
 const scores = [
@@ -47,17 +49,18 @@ const scoresNoLabel = [
   },
 ];
 
-function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
+function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps) {
   const router = useRouter();
 
   const [comment, setComment] = useState("");
   const [score, setScore] = useState<number>(-1);
   const [platform, setPlatform] = useState<string | null>(game?.platforms?.length === 1 ? game?.platforms[0] : null);
-  const [playTime, setplayTime] = useState<number>(-1);
+  const [playTime, setplayTime] = useState<number | string>(-1);
   const [recommended, setRecommended] = useState(false);
   const [isSponsored, setIsSponsored] = useState(false);
   const [images, setImages] = useState<File[] | undefined>(undefined);
   const [loading, setLoading] = useState(false);
+  const auth = useAuthContext();
 
   const handleRecommendedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRecommended(event.target.checked);
@@ -105,6 +108,17 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
       setImages(newFiles);
   };
 
+  useEffect(() => {
+    if(review){
+      setComment(review.comment);
+      setScore(review.score);
+      setPlatform(review.platform);
+      setplayTime(review.playTime);
+      setRecommended(review.recommended);
+      setIsSponsored(review.sponsored);
+    }
+  }, [review]);
+
   async function addReview() {
     const apiURL = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/addReview`;
 
@@ -124,6 +138,33 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
       body,
       {
         headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+    return response.data;
+  }
+
+  async function editReview() {
+    const apiURL = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/review/editReview/${review?.id}`;
+
+    const body = {
+      score: score,
+      comment: comment,
+      recommended: recommended,
+      isSponsored: isSponsored,
+      playTime: playTime,
+    };
+    
+    const response = await axios.post(
+      apiURL,
+      body,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
@@ -161,60 +202,90 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
     return response.data;
   }
 
+  console.log(score);
+
   const handleReviewSubmit = () => {
-    if(comment.trim() === "" || score < 0 || (platform === null && game?.platforms && game?.platforms.length > 0) || playTime < 0){
+    if(comment.trim() === "" || score < 0 || (platform === null && game?.platforms && game?.platforms.length > 0) || (typeof playTime != "number" || playTime < 0)){
       displaySnackbarVariant(
-        `Please fill in all the  fields.`,
+        `Please fill in all the fields.`,
         "error"
       );
       return;
     }
     setLoading(true);
-    addReview().then((data) => {
-      if(data.id){
-        const reviewId = data.id;
-        displaySnackbarVariant(
-          `Review added successfully.`,
-          "success"
-        );
-        setComment("");
-        setScore(-1);
-        setPlatform(null);
-        setplayTime(-1);
-        setRecommended(false);
-        setIsSponsored(false);
-        if(images){
-          uploadReviewImages(reviewId).then((data) => {
-            setImages(undefined);
-            router.push(`/reviews/${reviewId}`);
-          }).catch((error) => {
-            displaySnackbarVariant(
-              error?.response?.data?.message ?? `Failed to upload review images.`,
-              "error"
+    if(!review){
+      addReview().then((data) => {
+        if(data.id){
+          const reviewId = data.id;
+          displaySnackbarVariant(
+            `Review added successfully.`,
+            "success"
+          );
+          setComment("");
+          setScore(-1);
+          setPlatform(null);
+          setplayTime(-1);
+          setRecommended(false);
+          setIsSponsored(false);
+          if(images){
+            uploadReviewImages(reviewId).then((data) => {
+              setImages(undefined);
+              router.push(`/reviews/${reviewId}`);
+            }).catch((error) => {
+              displaySnackbarVariant(
+                error?.response?.data?.message ?? `Failed to upload review images.`,
+                "error"
+              );
+              setLoading(false);
+              router.push(`/reviews/${reviewId}`);
+            }
             );
-            setLoading(false);
+          }
+          else{
             router.push(`/reviews/${reviewId}`);
           }
-          );
         }
         else{
-          router.push(`/reviews/${reviewId}`);
+          displaySnackbarVariant(
+            data.message,
+            "error"
+          );
         }
-      }
-      else{
+        setLoading(false);
+      }).catch((error) => {
         displaySnackbarVariant(
-          data.message,
+          error?.response?.data?.message ?? `Failed to add review.`,
           "error"
         );
-      }
-      setLoading(false);
-    }).catch((error) => {
-      displaySnackbarVariant(
-        error?.response?.data?.message ?? `Failed to add review.`,
-        "error"
-      );
-      setLoading(false);
-    });
+        setLoading(false);
+      });
+    }
+    else{
+      editReview().then((data) => {
+        if(data.id){
+          const reviewId = data.id;
+          displaySnackbarVariant(
+            `Review edited successfully.`,
+            "success"
+          );
+          review = data;
+          router.push(`/reviews/${reviewId}`);
+        }
+        else{
+          displaySnackbarVariant(
+            data.message,
+            "error"
+          );
+        }
+        setLoading(false);
+      }).catch((error) => {
+        displaySnackbarVariant(
+          error?.response?.data?.message ?? `Failed to edit review.`,
+          "error"
+        );
+        setLoading(false);
+      });
+    }
   }
 
   if(size === "normal"){
@@ -311,7 +382,8 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
   
             <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
               <FormControlLabel 
-                control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
+                control={<Checkbox size="small" color="secondary" onChange={handleRecommendedChange}/>} 
+                checked={recommended}
                 label="Recommended" 
                 sx={{margin: 0}}
               />
@@ -353,6 +425,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
               {game?.platforms && game?.platforms?.length > 0 && (
                 <FormControl sx={{ minWidth: 200 }}>
                   <Autocomplete
+                    disabled={!!review}
                     size="small"
                     options={game?.platforms}
                     sx={{
@@ -385,7 +458,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
                 value={playTime === -1 ? "" : playTime}
                 onChange={(e) => {
                   const value = parseInt(e.target.value);
-                  setplayTime(value > 0 ? value : 0);
+                  setplayTime(value > 0 ? value : "");
                 }}
                 placeholder="Play Time (Minutes)"
                 sx={{
@@ -400,6 +473,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
   
               <Tooltip title="Upload images">        
                 <MuiFileInput 
+                  disabled={!!review}
                   multiple 
                   size="small"
                   value={images} 
@@ -408,7 +482,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
                     inputProps: {
                       accept: '.png, .jpeg, .jpg'
                     },
-                    startAdornment: <InsertPhotoIcon />
+                    startAdornment: <InsertPhotoIcon color={!!review ? "disabled" : "inherit"} />
                   }}
                   sx={{
                     '& .MuiInputBase-root': {
@@ -425,7 +499,8 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
   
               <Tooltip title={"Please use this field to state whether you received this game for free."}>
                 <FormControlLabel 
-                  control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
+                  control={<Checkbox size="small" color="secondary" onChange={handleIsSponsoredChange}/>} 
+                  checked={isSponsored}
                   label="Sponsored" 
                   sx={{margin: 0}}
                 />
@@ -531,7 +606,8 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
   
               <Tooltip title={"Please use this field to state whether you recommend this game to other player."}>
                 <FormControlLabel 
-                  control={<Checkbox size="small" color="secondary" value={recommended} onChange={handleRecommendedChange}/>} 
+                  control={<Checkbox size="small" color="secondary" onChange={handleRecommendedChange}/>} 
+                  checked={recommended}
                   label="Recommended" 
                   sx={{margin: 0}}
                 />
@@ -623,6 +699,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
               {game?.platforms && game?.platforms?.length > 0 && (
                 <FormControl sx={{ width: "100%"}}>
                   <Autocomplete
+                    disabled={!!review}
                     size="small"
                     options={game?.platforms}
                     sx={{
@@ -655,7 +732,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
                 value={playTime === -1 ? "" : playTime}
                 onChange={(e) => {
                   const value = parseInt(e.target.value);
-                  setplayTime(value > 0 ? value : 0);
+                  setplayTime(value > 0 ? value : "");
                 }}
                 placeholder="Play Time (Minutes)"
                 sx={{
@@ -697,6 +774,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
               >
                 <Tooltip title="Upload images">        
                   <MuiFileInput 
+                    disabled={!!review}
                     multiple 
                     size="small"
                     value={images} 
@@ -721,7 +799,8 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
                 </Tooltip>
                 <Tooltip title={"Please use this field to state whether you received this game for free."}>
                   <FormControlLabel 
-                    control={<Checkbox size="small" color="secondary" value={isSponsored} onChange={handleIsSponsoredChange}/>} 
+                    control={<Checkbox size="small" color="secondary" onChange={handleIsSponsoredChange}/>} 
+                    checked={isSponsored}
                     label="Sponsored" 
                     sx={{margin: 0}}
                   />

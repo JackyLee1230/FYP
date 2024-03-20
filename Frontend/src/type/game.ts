@@ -37,6 +37,7 @@ export type GameSearchPageProps = {
 };
 
 export type GameReview = {
+  sponsored: boolean;
   topics: string;
   summary: string;
   aspects: string;

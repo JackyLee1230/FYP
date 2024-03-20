@@ -32,10 +32,6 @@ function LoginPage() {
       ) {
         router.back();
       } else {
-        console.log(
-          window.history.length,
-          document.referrer.indexOf(window.location.host)
-        );
         router.push("/");
       }
     }

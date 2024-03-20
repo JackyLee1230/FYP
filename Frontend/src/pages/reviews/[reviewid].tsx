@@ -399,6 +399,10 @@ function GamePage({
       }
     }
 
+    if(result === '') {
+      return "Not Available";
+    }
+
     return result.trim(); 
   }
 

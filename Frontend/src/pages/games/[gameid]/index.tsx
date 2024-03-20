@@ -143,13 +143,13 @@ function GamePage({ game, errorMessage }: GamePageProps) {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   const [favourited, setFavourited] = useState<boolean | null>(null);
   const [favouriteButtonDisabled, setFavouriteButtonDisabled] =
     useState<boolean>(false);
   const [wishlisted, setWishlisted] = useState<boolean | null>(null);
   const [wishlistButtonDisabled, setWishlistButtonDisabled] =
     useState<boolean>(false);
+  const [editEnabled, setEditEnabled] = useState<boolean>(false);
 
   const fetchUserReview = useCallback(async () => {
     if (game && user) {
@@ -1244,27 +1244,26 @@ function GamePage({ game, errorMessage }: GamePageProps) {
             },
           }}
         >
-          <a id="add-review">
-            <Divider textAlign="left">
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "12px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              > 
-                <Typography
-                  variant={isTablet? "h6" : "h4"}
-                  color="secondary.main"
-                  sx={{ fontWeight: 700 }}
-                >
-                  {`User Reviews (${game.numberOfReviews ?? 0})`}
-                </Typography>
-              </Box>
-            </Divider>
-          </a>
+          <Divider textAlign="left">
+            <Box
+              id="add-review"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "12px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            > 
+              <Typography
+                variant={isTablet? "h6" : "h4"}
+                color="secondary.main"
+                sx={{ fontWeight: 700 }}
+              >
+                {`User Reviews (${game.numberOfReviews ?? 0})`}
+              </Typography>
+            </Box>
+          </Divider>
           
           {!isUserLoading && user && isUserReviewLoading ? (
             <Skeleton variant="rectangular" height={348} />
@@ -1279,21 +1278,39 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 width: "100%",
               }}
             >
-              <Typography
-                variant={isTablet? "subtitle1" : "h5"}
-                color="secondary.main"
-                sx={{ fontWeight: 500 }}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "12px",
+                  alignItems: "center",
+                  width: "100%",
+                }}
               >
-                Your Review
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ fontWeight: 500 }}
-              >
-                Edit review feature is not available yet.
-              </Typography>
-              {isTablet ? <GameReviewCardSmall review={userReview} fullWidth={true} />: <GameReviewCard review={userReview} fullWidth={true} />}
+                <Typography
+                  variant={isTablet? "subtitle1" : "h5"}
+                  color="secondary.main"
+                  sx={{ fontWeight: 500 }}
+                >
+                  Your Review
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setEditEnabled(!editEnabled)}
+                >
+                  {editEnabled ? "Cancel" : "Edit Review"}
+                </Button>
+              </Box>
+              {editEnabled && user ? (
+                <ReviewInputBox
+                  user={user}
+                  game={game}
+                  size={isTablet ? "small" : "normal"}
+                  review={userReview}
+                />
+              ) 
+              : (isTablet ? <GameReviewCardSmall review={userReview} fullWidth={true} />: <GameReviewCard review={userReview} fullWidth={true} />)}
             </Box>
           ) : user ? (
             <ReviewInputBox user={user} game={game} size={isTablet ? "small" : "normal"} />
