@@ -536,7 +536,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   variant="contained"
                   color="primary"
                   LinkComponent={Link}
-                  href={`/games/analytics/${game.id}`}
+                  href={`/games/${game.id}/analytics`}
                 >
                   Analytics
                 </Button>

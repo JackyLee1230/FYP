@@ -323,6 +323,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
             onChange={(e) => setComment(e.target.value)}
             multiline 
             fullWidth
+            inputProps={{ maxLength: 10000 }}
             sx={{
               '& .MuiInputBase-input': {
                 width: "100%",
@@ -592,6 +593,7 @@ function ReviewInputBox({user, game, size="normal"}: ReviewInputBoxProps) {
             onChange={(e) => setComment(e.target.value)}
             multiline 
             fullWidth
+            inputProps={{ maxLength: 10000 }}
             sx={{
               '& .MuiInputBase-input': {
                 width: "100%",

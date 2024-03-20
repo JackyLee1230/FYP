@@ -196,7 +196,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
 
   const handleStep = (step: string) => () => {
     setActiveStep(anchorToStep(step));
-    router.push(`/games/analytics/${router.query.gameid}#${step}`, undefined, { shallow: true })
+    router.push(`/games/${router.query.gameid}/analytics/#${step}`, undefined, { shallow: true })
     .catch((e) => { 
       if (!e.cancelled) {
         throw e
