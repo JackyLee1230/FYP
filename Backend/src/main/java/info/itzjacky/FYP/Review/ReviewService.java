@@ -756,7 +756,7 @@ public class ReviewService {
             throw new IllegalStateException("Unauthorized! You can only update your own review!");
         }
         boolean isUpdated = false;
-        if (reviewReq.getScore() != null && (reviewReq.getScore() > 0 && reviewReq.getScore() < 100) && !reviewReq.getScore().equals(review.getScore())) {
+        if (reviewReq.getScore() != null && (reviewReq.getScore() >= 0 && reviewReq.getScore() <= 100) && !reviewReq.getScore().equals(review.getScore())) {
             review.setScore(reviewReq.getScore());
             isUpdated = true;
         }
