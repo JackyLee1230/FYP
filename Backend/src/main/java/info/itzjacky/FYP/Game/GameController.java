@@ -482,6 +482,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 
 
             JSONObject topicFreq = new JSONObject();
+//            topic freq has the following format {topidId: name: name, freq: freq}
             for (Review r: reviews) {
 //                TOPICS to TOPIC FREQUENCY
                 String reviewTopics = r.getTopics();
@@ -489,9 +490,15 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     JSONObject topics = new JSONObject(reviewTopics);
                     for (String key : topics.keySet()) {
                         if (topicFreq.has(key)) {
-                            topicFreq.put(key, topicFreq.getInt(key) + 1);
+                            JSONObject temp = new JSONObject();
+                            temp.put("name", key);
+                            temp.put("freq", Integer.parseInt( ((String[])topics.get(key))[1] + 1));
+                            topicFreq.put(key, temp);
                         } else {
-                            topicFreq.put(key, 1);
+                            JSONObject temp = new JSONObject();
+                            temp.put("name", key);
+                            temp.put("freq", ((String[])topics.get(key))[1]);
+                            topicFreq.put(key, temp);
                         }
                     }
                 }
@@ -616,6 +623,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             if (topicFreq.toString() != null && !topicFreq.isEmpty()) {
                 game.setTopicFrequency(topicFreq.toString());
                 game.setTopicFrequencyUpdatedAt(generatedAt);
+                jsonObject.put("topicFrequency", topicFreq);
+                logger.info("Topic Frequency: " + topicFreq.toString());
             }
             gameRepository.save(game);
             return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
