@@ -158,7 +158,7 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
       isSponsored: isSponsored,
       playTime: playTime,
     };
-    
+
     const response = await axios.post(
       apiURL,
       body,
@@ -201,9 +201,7 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
     );
     return response.data;
   }
-
-  console.log(score);
-
+  
   const handleReviewSubmit = () => {
     if(comment.trim() === "" || score < 0 || (platform === null && game?.platforms && game?.platforms.length > 0) || (typeof playTime != "number" || playTime < 0)){
       displaySnackbarVariant(

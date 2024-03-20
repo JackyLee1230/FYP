@@ -1283,8 +1283,15 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   display: "flex",
                   flexDirection: "row",
                   gap: "12px",
-                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-end",
                   width: "100%",
+
+                  [theme.breakpoints.down("sm")]: {
+                    flexDirection: "column",
+                    gap: "4px",
+                    alignItems: "flex-start",
+                  },
                 }}
               >
                 <Typography
@@ -1294,13 +1301,24 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                 >
                   Your Review
                 </Typography>
-                <Button
+                {!!userReview.editedAt && (Date.now() - Date.parse(userReview.editedAt)) <= Number(7 * 24 * 60 * 60 * 1000) ? (
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontWeight: 500 }}
+                  >
+                    {`You can edit your review after ${Math.round((7 * 24 * 60 * 60 * 1000 - (Date.now() - Date.parse(userReview.editedAt))) / (24 * 60 * 60 * 1000))} days`}
+                  </Typography>
+                ) : (
+                  <Button
                   variant="contained"
                   color="secondary"
                   onClick={() => setEditEnabled(!editEnabled)}
+                  disabled={!!userReview.editedAt && (Date.now() - Date.parse(userReview.editedAt)) <= Number(7 * 24 * 60 * 60 * 1000)}
                 >
                   {editEnabled ? "Cancel" : "Edit Review"}
                 </Button>
+                )}
               </Box>
               {editEnabled && user ? (
                 <ReviewInputBox
