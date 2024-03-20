@@ -8,6 +8,7 @@ import info.itzjacky.FYP.User.User;
 import info.itzjacky.FYP.Utils.Others;
 import jakarta.transaction.Transactional;
 import jdk.jfr.TransitionTo;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -492,12 +493,15 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                         if (topicFreq.has(key)) {
                             JSONObject temp = new JSONObject();
                             temp.put("name", key);
-                            temp.put("freq", Integer.parseInt( ((String[])topics.get(key))[1] + 1));
+                            temp.put("freq", topicFreq.getJSONObject(key).getInt("freq") + 1);
+//                            update and remove the old
+                            topicFreq.remove(key);
                             topicFreq.put(key, temp);
+
                         } else {
                             JSONObject temp = new JSONObject();
                             temp.put("name", key);
-                            temp.put("freq", ((String[])topics.get(key))[1]);
+                            temp.put("freq", 1);
                             topicFreq.put(key, temp);
                         }
                     }
