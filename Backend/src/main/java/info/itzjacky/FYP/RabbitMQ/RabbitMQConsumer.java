@@ -83,12 +83,19 @@ public class RabbitMQConsumer {
         JSONObject llm = jsonObject.getJSONObject("LLM");
 
         Boolean isSpam = llm.getBoolean("isSpam");
+        Integer tokenUsed = null;
         String llmSummary = null;
         if (isSpam == false && !Objects.equals(llm.get("summary").toString(), "null")) {
             llmSummary = llm.getString("summary");
         }
+//        extract tokenUsageBreakdown from llm
+        JSONObject tokenUsageBreakdown = llm.getJSONObject("tokenUsageBreakdown");
+        if (tokenUsageBreakdown != null) {
+            tokenUsed = tokenUsageBreakdown.getInt("total_tokens");
+        }
 
         llm.remove("summary"); // remove summary, only leave aspects in LLM JSON
+        llm.remove("tokenUsageBreakdown");
 
         Review review = reviewRepository.findReviewById(reviewId);
         if (review == null) {
@@ -100,6 +107,13 @@ public class RabbitMQConsumer {
             review.setAspects(llm.toString());
             review.setSummary(llmSummary);
             review.setIsSpam(isSpam);
+            if (tokenUsed != null) {
+                if (review.getTokenUsed() != null) {
+                    review.setTokenUsed(review.getTokenUsed() + tokenUsed);
+                } else {
+                    review.setTokenUsed(tokenUsed);
+                }
+            }
             reviewRepository.save(review);
             channel.basicAck(tag, false);
         }
