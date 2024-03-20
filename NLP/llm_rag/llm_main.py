@@ -18,12 +18,15 @@ from transformers import AutoTokenizer
 
 # mistralAI
 from langchain_mistralai.chat_models import ChatMistralAI
-from langchain_mistralai.embeddings import MistralAIEmbeddings
+# from langchain_mistralai.embeddings import MistralAIEmbeddings
+from mistralai_embeddings import CustomMistralAIEmbeddings
+from mistralai.models.common import UsageInfo
 
 
 import json
 import os
 import sys
+from collections import deque
 from pathlib import Path
 from datetime import datetime
 from hashlib import sha224
@@ -60,12 +63,6 @@ llm_mistralai = ChatMistralAI(
     timeout=300,
     # callbacks=[MyCustomHandler(), MyCustomHandler2()],
     # verbose=True
-)
-
-mistralai_embedding = MistralAIEmbeddings(
-    model="mistral-embed",
-    mistral_api_key=MISTRAL_API_KEY,
-    timeout=300
 )
 
 # use RootListenersTracer to get the token usage for ChatMistralAI
@@ -198,6 +195,15 @@ def _get_aspects_content(review:str):
     # text_splitter = CharacterTextSplitter(chunk_size=800, chunk_overlap=0)
     # text_splitter = TokenTextSplitter(chunk_size=300, chunk_overlap=45)         # idk 
 
+    embedding_stats_deque = deque()
+
+    mistralai_embedding = CustomMistralAIEmbeddings(
+        model="mistral-embed",
+        mistral_api_key=MISTRAL_API_KEY,
+        timeout=300,
+        embedding_stats_deque=embedding_stats_deque
+    )
+
     # instead of using any tokentext splitter, we can use the tokenizer of the model itself. As the tokenizer is available in HuggingFace
     tokenizer = AutoTokenizer.from_pretrained(llm_rag_folder.joinpath("Mixtral-8x7B-Instruct-v0.1_tokenizer"))
     text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=250, chunk_overlap=40)
@@ -211,15 +217,19 @@ def _get_aspects_content(review:str):
     )
     retriever = db.as_retriever(search_kwargs={"k": 5})
 
+    embedding_stats = embedding_stats_deque.popleft()           # get embedding token usage
+    _print_message(f'Embedding stats: {embedding_stats}')
+    embedding_usage_info_01 = _process_embedding_stats(embedding_stats)
+
     n_docs = len(docs)
     _print_message(f'Created embedding. Number of splited documents: {n_docs}')
 
     # if the text exceeds roughtly 1000 words, then we get the aspects one by one
     # else, we get all aspects at once
     if n_docs <= 10:
-        aspects_response, chain_llm_output_json_list = _get_aspects_334(retriever)
+        aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_334(retriever, embedding_func)
     else:
-        aspects_response, chain_llm_output_json_list = _get_aspects_10(retriever)
+        aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_10(retriever, embedding_func)
 
     _print_message(f'LLM aspects content: {aspects_response}')
 
@@ -227,8 +237,19 @@ def _get_aspects_content(review:str):
     db.delete_collection()      # delete the collection from the db
     del db
 
-    return aspects_response, chain_llm_output_json_list
+    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
 
+def _process_embedding_stats(embedding_stats:list):
+    usage_info_sum = {
+        'prompt_tokens': 0, 'total_tokens': 0, 'completion_tokens': 0
+    }
+
+    for usage_info in embedding_stats:
+        usage_info_sum['prompt_tokens'] += usage_info.prompt_tokens
+        usage_info_sum['total_tokens'] += usage_info.total_tokens
+        usage_info_sum['completion_tokens'] += usage_info.completion_tokens
+
+    return usage_info_sum
 
 def _parsing_json_single(resp:str, aspects_response:dict, aspects:list):
 
@@ -313,9 +334,10 @@ def _parsing_json_multiple(resp:str, open_brace_count:int, aspects_response:dict
         prev_close_brace = close_brace
 
 
-def _get_aspects_334(retriever):
+def _get_aspects_334(retriever, embedding_func):
     aspects_response = {k: '' for k in GAME_ASPECTS}
     chain_llm_output_json_list = []
+    embedding_usage_info_list = []
 
     for (start, end) in [(0, 3), (3, 6), (6, 10)]:
         aspects = GAME_ASPECTS[start:end]
@@ -326,6 +348,10 @@ def _get_aspects_334(retriever):
         )
 
         relevant_docs = retriever.get_relevant_documents(query=my_question, k=5)
+        embedding_stats = embedding_func.get_embedding_stats_queue().popleft()           # get embedding token usage
+        _print_message(f'Embedding stats: {embedding_stats}')
+        embedding_usage_info_01 = _process_embedding_stats(embedding_stats)
+        embedding_usage_info_list.append(embedding_usage_info_01)
 
         prompt = PromptTemplate(
             template=_prompts.KEYWORD_TEMPLATE_01,
@@ -403,12 +429,13 @@ def _get_aspects_334(retriever):
             # leave the retry loop if the response is a JSON
             break
 
-    return aspects_response, chain_llm_output_json_list
+    return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
 
 
-def _get_aspects_10(retriever):
+def _get_aspects_10(retriever, embedding_func):
     aspects_response = {k: '' for k in GAME_ASPECTS}
     chain_llm_output_json_list = []
+    embedding_usage_info_list = []
 
     for aspect in GAME_ASPECTS:
         my_question = _prompts.QUESTION_TEMPLATE_01 + f"is {aspect}"
@@ -417,6 +444,10 @@ def _get_aspects_10(retriever):
         )
 
         relevant_docs = retriever.get_relevant_documents(query=my_question, k=5)
+        embedding_stats = embedding_func.get_embedding_stats_queue().popleft()           # get embedding token usage
+        _print_message(f'Embedding stats: {embedding_stats}')
+        embedding_usage_info_01 = _process_embedding_stats(embedding_stats)
+        embedding_usage_info_list.append(embedding_usage_info_01)
 
         prompt = PromptTemplate(
             template=_prompts.KEYWORD_TEMPLATE_01,
@@ -464,7 +495,7 @@ def _get_aspects_10(retriever):
             # leave the retry loop if the response is a JSON
             break
     
-    return aspects_response, chain_llm_output_json_list
+    return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
 
 
 def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
@@ -622,13 +653,14 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
 
     spam_llm_output_json = []
     aspects_response_llm_output_json_list = []
+    aspects_response_embedding_usage_info = ()
     keywords_llm_output_json_list = []
     tldr_llm_output_json = None
     
     is_spam, spam_llm_output_json = _check_spam(review)
     
     if not is_spam:
-        aspects_response, aspects_response_llm_output_json_list = _get_aspects_content(review)
+        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info_list = _get_aspects_content(review)
     else:
         aspects_response = None
 
@@ -641,16 +673,20 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
 
 
     # get token usage for each func
-    token_usage_breakdown = _calculate_token_usage(spam_llm_output_json, aspects_response_llm_output_json_list, keywords_llm_output_json_list, tldr_llm_output_json)
+    token_usage_breakdown = _calculate_token_usage(
+        spam_llm_output_json, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info_list,
+        keywords_llm_output_json_list, tldr_llm_output_json
+    )
 
     return is_spam, aspect_keywords, tldr, token_usage_breakdown
 
 
-def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
+def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]], keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
     _sum_total_token = 0
 
     _sum_spam_token = 0
     _sum_aspect_resp_token = 0
+    _sum_aspect_resp_embedding_token = 0
     _sum_keywords_token = 0
     _sum_tldr_token = 0
 
@@ -666,6 +702,13 @@ def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_outpu
         _total_tokens = _token_usage.get('total_tokens', 0)
         _sum_aspect_resp_token += _total_tokens
 
+    # calculate aspect response embedding token
+    _embedding_usage_info_01, _embedding_usage_info_list = aspects_response_embedding_usage_info
+    _sum_aspect_resp_embedding_token += _embedding_usage_info_01.get('total_tokens', 0)     # the embedding token required to build the in-memory vector db
+    for _embedding_usage_info in _embedding_usage_info_list:
+        _total_tokens = _embedding_usage_info.get('total_tokens', 0)
+        _sum_aspect_resp_embedding_token += _total_tokens
+
     # calculate keywords token
     for keywords_llm_output in keywords_llm_output_json_list:
         _token_usage = keywords_llm_output.get('token_usage', {})
@@ -677,12 +720,13 @@ def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_outpu
     _total_tokens = _token_usage.get('total_tokens', 0)
     _sum_tldr_token += _total_tokens
 
-    _sum_total_token = _sum_spam_token + _sum_aspect_resp_token + _sum_keywords_token + _sum_tldr_token
+    _sum_total_token = _sum_spam_token + _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + _sum_keywords_token + _sum_tldr_token
 
     token_usage_breakdown = {
         "total_tokens": _sum_total_token,
         "spam_tokens": _sum_spam_token,
         "aspect_response_tokens": _sum_aspect_resp_token,
+        "aspect_response_embedding_tokens": _sum_aspect_resp_embedding_token,
         "keywords_tokens": _sum_keywords_token,
     }
 
@@ -886,7 +930,7 @@ Overall Score
 
 
     # change the sample to test diff reviews
-    temp_sample = long_review_02
+    temp_sample = long_review_05
 
     print('The review is:',temp_sample)
     print('\n\n')
