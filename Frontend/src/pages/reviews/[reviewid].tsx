@@ -393,7 +393,7 @@ function GamePage({
     let result = '';
 
     for (let aspect in aspectsArray) {
-      if (aspect !== 'isSpam' && aspectsArray[aspect][0] !== 'NA') {
+      if (aspect !== 'isSpam' && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
           let keywords = aspectsArray[aspect].join(', ');
           result += `${aspect}: ${keywords}.\n`;
       }
