@@ -1,3 +1,6 @@
 *.txt
 *.rtf
 chromadb_storage/
+
+Mistral-7B-Instruct-v0.2_tokenizer/
+Mixtral-8x7B-Instruct-v0.1_tokenizer/
