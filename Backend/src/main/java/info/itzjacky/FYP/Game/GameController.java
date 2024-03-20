@@ -492,7 +492,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                     for (String key : topics.keySet()) {
                         if (topicFreq.has(key)) {
                             JSONObject temp = new JSONObject();
-                            temp.put("name", key);
+                            JSONArray tempArray = (JSONArray) topics.get(key);
+                            temp.put("name", tempArray.get(0));
                             temp.put("freq", topicFreq.getJSONObject(key).getInt("freq") + 1);
 //                            update and remove the old
                             topicFreq.remove(key);
@@ -500,7 +501,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 
                         } else {
                             JSONObject temp = new JSONObject();
-                            temp.put("name", key);
+                            JSONArray tempArray = (JSONArray) topics.get(key);
+                            temp.put("name", tempArray.get(0));
                             temp.put("freq", 1);
                             topicFreq.put(key, temp);
                         }
