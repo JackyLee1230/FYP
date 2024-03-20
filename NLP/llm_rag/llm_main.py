@@ -139,11 +139,18 @@ def _check_spam(review:str):
     ])
 
     chain_01 = chat_prompt_01 | llm_mistralai
-    response_01 = chain_01.invoke({
-        "review": review,
-    }, config=chain_config)
-    _print_message(f'LLM result for spam check: {response_01}')
-    chat_01_llm_output_json = latest_llm_output_json
+
+    # wrap with try-except block, as exception may be raised (e.g. mistralai.exceptions.MistralAPIStatusException: Status: 500. Message: {"object":"error","message":"Service unavailable.","type":"internal_server_error","param":null,"code":"1000"})
+    try:
+        response_01 = chain_01.invoke({
+            "review": review,
+        }, config=chain_config)
+    except:
+        print(traceback.format_exc())
+        return True, [chat_01_llm_output_json, chat_02_llm_output_json]         # default return true (i.e. isSpam)
+    else:
+        _print_message(f'LLM result for spam check: {response_01}')
+        chat_01_llm_output_json = latest_llm_output_json
 
     chat_prompt_02 = ChatPromptTemplate.from_messages([
         ("system", _prompts.SYSTEM_TEMPLATE),
@@ -153,12 +160,17 @@ def _check_spam(review:str):
     ])
 
     chain_02 = chat_prompt_02 | llm_mistralai
-    response_02 = chain_02.invoke({
-        "review": review
-    }, config=chain_config)
 
-    _print_message(f'LLM result_2 for spam check: {response_02}')
-    chat_02_llm_output_json = latest_llm_output_json
+    try:
+        response_02 = chain_02.invoke({
+            "review": review
+        }, config=chain_config)
+    except:
+        print(traceback.format_exc())
+        return True, [chat_01_llm_output_json, chat_02_llm_output_json]     # default return true (i.e. isSpam)
+    else:
+        _print_message(f'LLM result_2 for spam check: {response_02}')
+        chat_02_llm_output_json = latest_llm_output_json
 
     response_02 = response_02.content         # to get the response string
 
@@ -365,11 +377,20 @@ def _get_aspects_334(retriever, embedding_func):
 
             _print_message(f'Attempt {i+1} for getting aspects...')
 
-            _resp = chain.invoke({
-                "aspects": aspects,
-                "output_format": output_format,
-                "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
-            }, config=chain_config)
+            try:
+                _resp = chain.invoke({
+                    "aspects": aspects,
+                    "output_format": output_format,
+                    "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
+                }, config=chain_config)
+            except:
+                print(traceback.format_exc())
+
+                # put 'NA' for each aspect
+                for aspect in aspects:
+                    aspects_response[aspect] = 'NA'
+
+                break       # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result in _get_aspects_334: {_resp}')
             chain_llm_output_json_list.append(latest_llm_output_json)
@@ -461,11 +482,19 @@ def _get_aspects_10(retriever, embedding_func):
 
             _print_message(f'Attempt {i+1} for getting aspect: {aspect}...')
 
-            _resp = chain.invoke({
-                "aspects": [aspect],
-                "output_format": output_format,
-                "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
-            }, config=chain_config)
+            try:
+                _resp = chain.invoke({
+                    "aspects": [aspect],
+                    "output_format": output_format,
+                    "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
+                }, config=chain_config)
+            except:
+                print(traceback.format_exc())
+
+                # put 'NA' to the aspect
+                aspects_response[aspect] = 'NA'
+
+                break           # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result for _get_aspects_10: {_resp}')
             chain_llm_output_json_list.append(latest_llm_output_json)
@@ -527,11 +556,20 @@ def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_respo
         for i in range(repeat_limit):
             _print_message(f'Attempt {i+1} for getting aspects...')
 
-            _resp = chain.invoke({
-                "aspects": str(aspects),
-                "context": str({k: v for k, v in aspects_response.items() if k in aspects}),
-                "output_format": str(output_format)
-            }, config=chain_config)
+            try:
+                _resp = chain.invoke({
+                    "aspects": str(aspects),
+                    "context": str({k: v for k, v in aspects_response.items() if k in aspects}),
+                    "output_format": str(output_format)
+                }, config=chain_config)
+            except:
+                print(traceback.format_exc())
+
+                # put 'NA' for each aspect
+                for aspect in aspects:
+                    aspects_resp_sentiment[aspect] = 'NA'
+
+                break           # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result in _get_sentiment_per_aspect_per_review: {_resp}')
             chain_llm_output_json_list.append(latest_llm_output_json)
@@ -624,10 +662,15 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
         ])
         
         chain_02 = chat_prompt_02 | llm_mistralai
-        _resp = chain_02.invoke({
-            "aspects": GAME_ASPECTS,
-            "context": str(aspects_response)
-        }, config=chain_config)
+
+        try:
+            _resp = chain_02.invoke({
+                "aspects": GAME_ASPECTS,
+                "context": str(aspects_response)
+            }, config=chain_config)
+        except:
+            print(traceback.format_exc())
+            return None, chain_llm_output_json_list     # early return if error of MistralAI API occurs
 
         _print_message(f'LLM result for gen_keywords_per_review: {_resp}')
         chain_llm_output_json_list.append(latest_llm_output_json)
