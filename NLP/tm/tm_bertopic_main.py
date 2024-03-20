@@ -26,7 +26,7 @@ from llm_main import get_per_review_analysis
 
 from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_GAMES, SPECIFIC_TOPIC_NAME_DICT, MODEL_SPECIFIC_TOPIC_NAME_DICT
 from _load_bertopic_models import _load_bertopic_model, GENRES, BERTOPIC_MODELS
-from _utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC, _print_message
+from _utm_tils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC, _print_message
 
 
 def cleaning(s_list: list[str]):
@@ -161,8 +161,9 @@ def consumer(ch, method, properties, body, inference_obj):
     start_time = time.time()
 
     try:
-        is_spam, aspect_keywords, tldr = get_per_review_analysis(comment)
+        is_spam, aspect_keywords, tldr, token_usage_breakdown = get_per_review_analysis(comment)
         _print_message(f'LLM Inference result: {is_spam}, {aspect_keywords}, {tldr}')
+        _print_message(f'Token usage breakdown: {token_usage_breakdown}')
 
         llm_result = {
             "isSpam": is_spam,
@@ -173,6 +174,10 @@ def consumer(ch, method, properties, body, inference_obj):
             llm_result.update({
                 "summary": tldr
             })
+
+        llm_result.update({
+            "tokenUsageBreakdown": token_usage_breakdown
+        })
 
     except:
         print("Error during LLM inference:", e)
