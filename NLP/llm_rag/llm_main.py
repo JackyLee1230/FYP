@@ -60,7 +60,7 @@ llm_mistralai = ChatMistralAI(
     model="open-mixtral-8x7b",
     mistral_api_key = MISTRAL_API_KEY,
     temperature = 0.4,
-    timeout=300,
+    timeout=120,
     # callbacks=[MyCustomHandler(), MyCustomHandler2()],
     # verbose=True
 )
@@ -210,7 +210,7 @@ def _get_aspects_content(review:str):
     docs = text_splitter.create_documents([review], metadatas=[{"source":"review_01"}])
 
     # embedding_func = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-    embedding_func = mistralai_embedding        # use mistralAI for embeddings      # TODO: find a way to get the embedding token usage...
+    embedding_func = mistralai_embedding        # use mistralAI for embeddings
     db = Chroma.from_documents(
         docs, embedding_func,
         collection_name=_review_obj['hash']
@@ -498,6 +498,106 @@ def _get_aspects_10(retriever, embedding_func):
     return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
 
 
+def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_response:dict):
+
+    chain_llm_output_json_list = []
+
+    if is_spam:
+        return None, chain_llm_output_json_list
+    
+
+    repeat_limit = 5
+    aspects_resp_sentiment = {k: '' for k in GAME_ASPECTS}
+
+    for (start, end) in ((0, 3), (3, 6), (6, 10)):
+        aspects = GAME_ASPECTS[start:end]
+
+        output_json_template = {k: '...' for k in aspects}
+        output_format = "Output the JSON as a single line with no spaces between the key, value pairs. For example, if the aspects are {}, the JSON should be: {}".format(
+            str(aspects)[1:-1].replace('\'', '\"'), str(output_json_template).replace('\'', '\"')
+        )
+
+        prompt = PromptTemplate(
+            template=_prompts.ASPECT_SENTIMENT_TEMPLATE,
+            input_variables=["aspects", "output_format", "context"]
+        )
+
+        chain = prompt | llm_mistralai
+
+        for i in range(repeat_limit):
+            _print_message(f'Attempt {i+1} for getting aspects...')
+
+            _resp = chain.invoke({
+                "aspects": str(aspects),
+                "context": str({k: v for k, v in aspects_response.items() if k in aspects}),
+                "output_format": str(output_format)
+            }, config=chain_config)
+
+            _print_message(f'LLM result in _get_sentiment_per_aspect_per_review: {_resp}')
+            chain_llm_output_json_list.append(latest_llm_output_json)
+
+            resp = _resp.content         # to get the response string
+
+            # string processing for the response to get a JSON object
+            open_brace_count = resp.count('{')
+            close_brace_count = resp.count('}')
+
+            # a single json
+            if open_brace_count < 2 and close_brace_count < 2:
+
+                # Step 2
+                # manually get the JSON object by finding each aspect in the response
+                # have to consider both single and double quotes
+                # as mistral AI sometimes uses single quotes and sometimes double quotes
+                _parsing_json_single(resp, aspects_resp_sentiment, aspects)
+
+                try:
+                    for aspect in aspects:
+                        _ = aspects_resp_sentiment[aspect]      # attempting to have access to each value
+                except:
+                    print(f'Error in accessing: {aspect}. Retry...')
+                    continue
+
+
+            # it returns multiple JSON
+            # i.e. the model adopted a step by step output to consider each aspect, and then create a JSON for each aspect
+            # resulting in multiple JSONs interlaced with other text
+            # an example of such a response:
+            # '''Gameplay: The game is challenging with a variety of weapons and builds to try. Bosses can be frustrating but are ultimately fun and fair. Platforming sections are less successful, but rare. ({"Gameplay": "The game is challenging with a variety of weapons and builds to try. Bosses can be frustrating but are ultimately fun and fair. Platforming sections are less successful, but rare."})\n\nNarrative: The game features a fantastic narrative that becomes more rewarding as you progress, with new secrets to discover during each playthrough. ({"Narrative": "The game features a fantastic narrative that becomes more rewarding as you progress, with new secrets to discover during each playthrough."})\n\nAccessibility: The game is not very accessible for players new to the genre, with a steep learning curve and some frustrating elements. ({"Accessibility": "The game is not very accessible for players new to the genre, with a steep learning curve and some frustrating elements."})''''
+            else:
+                # sanity check
+                if open_brace_count != close_brace_count:
+                    print(f'open_brace_count: {open_brace_count} != close_brace_count: {close_brace_count}. Retry...')
+                    continue
+
+                # manually get the JSON object by finding each aspect in the response
+                # have to consider both single and double quotes
+                # as mistral AI sometimes uses single quotes and sometimes double quotes
+                _parsing_json_multiple(resp, open_brace_count, aspects_resp_sentiment, aspects)
+
+                try:
+                    for aspect in aspects:
+                        _ = aspects_resp_sentiment[aspect]      # attempting to have access to each value
+                except:
+                    print(f'Error in accessing: {aspect}. Retry...')
+                    continue
+                
+
+            # leave the retry loop if the response is a JSON
+            break
+
+
+    # further formatting
+    # replace "positive" -> "Positive" and "negative" -> "Negative"
+    for k, v in aspects_resp_sentiment.items():
+        if v == 'positive':
+            aspects_resp_sentiment[k] = 'Positive'
+        elif v == 'negative':
+            aspects_resp_sentiment[k] = 'Negative'
+
+    return aspects_resp_sentiment, chain_llm_output_json_list
+
+
 def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
     # step 1: prompt LLM to determine if the review is a spam given the game name and description
     # step 2: if spam, simply return None
@@ -653,40 +753,52 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
 
     spam_llm_output_json = []
     aspects_response_llm_output_json_list = []
-    aspects_response_embedding_usage_info = ()
+    aspects_response_embedding_usage_info = ({}, [])
+    aspect_sentiment_llm_output_json_list = []
     keywords_llm_output_json_list = []
     tldr_llm_output_json = None
     
     is_spam, spam_llm_output_json = _check_spam(review)
     
     if not is_spam:
-        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info_list = _get_aspects_content(review)
+        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspects_content(review)
     else:
         aspects_response = None
 
     aspect_keywords, keywords_llm_output_json_list = _gen_keywords_per_review(review, is_spam, aspects_response)
 
+    # get sentiment for each aspect
+    aspect_sentiment, aspect_sentiment_llm_output_json_list = _get_sentiment_per_aspect_per_review(review, is_spam, aspects_response)
+
     print(aspect_keywords)
+    print('\n\n')
+    print(aspect_sentiment)
     print('\n\n')
 
     tldr, tldr_llm_output_json = _gen_TLDR_per_review(review, is_spam, aspects_response)
 
+    # print( is_spam, aspect_keywords, aspect_sentiment, tldr)
+
 
     # get token usage for each func
     token_usage_breakdown = _calculate_token_usage(
-        spam_llm_output_json, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info_list,
-        keywords_llm_output_json_list, tldr_llm_output_json
+        spam_llm_output_json, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info,
+        aspect_sentiment_llm_output_json_list, keywords_llm_output_json_list, tldr_llm_output_json
     )
 
-    return is_spam, aspect_keywords, tldr, token_usage_breakdown
+    # print(token_usage_breakdown)
+
+    return is_spam, aspect_keywords, aspect_sentiment, tldr, token_usage_breakdown
 
 
-def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]], keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
+def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]], 
+                           aspect_sentiment_llm_output_json_list:list, keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
     _sum_total_token = 0
 
     _sum_spam_token = 0
     _sum_aspect_resp_token = 0
     _sum_aspect_resp_embedding_token = 0
+    _sum_aspect_sentiment_token = 0
     _sum_keywords_token = 0
     _sum_tldr_token = 0
 
@@ -709,6 +821,12 @@ def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_outpu
         _total_tokens = _embedding_usage_info.get('total_tokens', 0)
         _sum_aspect_resp_embedding_token += _total_tokens
 
+    # calculate aspect sentiment token
+    for aspect_sentiment_llm_output in aspect_sentiment_llm_output_json_list:
+        _token_usage = aspect_sentiment_llm_output.get('token_usage', {})
+        _total_tokens = _token_usage.get('total_tokens', 0)
+        _sum_aspect_sentiment_token += _total_tokens
+
     # calculate keywords token
     for keywords_llm_output in keywords_llm_output_json_list:
         _token_usage = keywords_llm_output.get('token_usage', {})
@@ -720,14 +838,18 @@ def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_outpu
     _total_tokens = _token_usage.get('total_tokens', 0)
     _sum_tldr_token += _total_tokens
 
-    _sum_total_token = _sum_spam_token + _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + _sum_keywords_token + _sum_tldr_token
+    _sum_total_token = _sum_spam_token + \
+        _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + \
+        _sum_aspect_sentiment_token + _sum_keywords_token + _sum_tldr_token
 
     token_usage_breakdown = {
         "total_tokens": _sum_total_token,
         "spam_tokens": _sum_spam_token,
         "aspect_response_tokens": _sum_aspect_resp_token,
         "aspect_response_embedding_tokens": _sum_aspect_resp_embedding_token,
+        "aspect_sentiment_tokens": _sum_aspect_sentiment_token,
         "keywords_tokens": _sum_keywords_token,
+        "tldr_tokens": _sum_tldr_token
     }
 
     return token_usage_breakdown
@@ -871,6 +993,12 @@ Overall, it is pretty difficult to justify paying full price for this game, but 
 '''After 11 years, Counter-Strike: Global Offensive has been, somewhat unceremoniously, shut down in favour of the newer, shinier Counter-Strike: 2. Whether you like it or not, Valve wants you playing CS2. For those who don\'t take their CS all too seriously, CS2 won\'t seem like much of a change from CS:GO, besides some grenade changes, more detailed maps, and a disappointing lack of fan favourite game modes. And for those who train their aim on the reg and line up their smoke grenades, CS2 might look the part but lacks the precision of CS:GO\'s movement and gunplay.\\n\\nStill, CS2 captures what makes Counter-Strike tick and even if the foundation seems a little sparse and a touch shaky right now, I\'m confident Valve have an FPS that\'ll supersede CS:GO in time.\\n\\nFor your average Counter-Strike-enjoyer, CS2 will seem more like a large CS:GO patch than a sequel eleven years in the making. Sure CS2 is powered by Valve\'s newer Source 2 engine, with a slew of smaller tweaks to menus and bigger tweaks to the way grenades work. Ultimately, though, it\'s still terrorists versus counter terrorists where budgets wax and wane depending on how many heads players have dinked in their crosshairs. Hop into a game of CS2 and it\'ll feel very, very similar to CS:GO. It\'s to be expected right? CS2 was always going to elevate a winning formula and not like, introduce wall running and a perk system.\\n\\nTransitioning from CS:GO to CS2 is easy peasy, as all of your settings and binds port over, alongside all your cosmetics. As a returning player, I had no problem hopping into CS2 and finding my feet quickly, which deserves a big thumbs up. Unfortunately for newcomers, the game\'s still poor at guiding you towards useful things, like tweaking your aim sensitivity or adjusting your crosshair or even what any of the modes actually entail. Guides or an experienced mate are likely necessities if you\'re feeling a bit overwhelmed, so CS still has some growing to do on the tutorial front.\\n\\nI\'d say your mileage may vary if you\'re playing Casual matches, as they\'re still a chaotic mass of bodies and grenades that offset the intricacies of bomb defusal, but hop into Deathmatch, Competitive or the new Premier mode and CS2 captures what makes Counter-Strike so damn crispy. As much as guns have personality and it\'s satisfying when you land your shots, CS is about question and answer, both in response to your teammates\' dots as they scurry about the map, as well as the sudden cracks of gunfire that break long periods of silence. Are you covering your allies\' blind spot? Is it time to rush B no stop? Yes and absolutely 1000%, yes.\\n\\nAnd if we examine the small changes more closely, they do play a more significant role in making match admin a bit easier. The flexibility of the new inventory means you\'re able to curate your weapons pool with a drag and drop, so you can finally have both CT assault rifles available in the buy menu if you\'d like (I am giddy). And the buy menu\'s been updated, so as your teammates purchase guns in-between rounds, little dots underneath each weapon\'s portrait help you see everyone\'s loadout at a glance. There\'s even a handy refund button to undo those slip-ups or ease last minute hits to the bank account.\\n\\nA web where players pick and ban maps in the Premier mode of CS2.\\nThere\'s a new Premier game mode that\'s distinct from Competitive in a way that\'s not explained by any tooltips anywhere. Essentially, Competitive is the equivalent of ranked matches where you get to choose the maps you\'d like to play before you queue up. Premier has a whole map pick and ban phase, as well as a global/regional ranking with a points system dependent on how good you are.\\nIt\'s on the surface where the game\'s most obvious change lies. Step into any map and it\'ll appear brighter and more colourful, with dark corners abolished in favour of visibility. Step into Mirage\'s palace and there\'s a proper sheen to the marble floor, the monster graffiti in Overpass now wraps around the tunnel with a mighty splash, and I\'d spend my Steam Points on a long weekend at Inferno\'s apartments because they\'re gorgeous now (noise might be an issue, but we compromise). Gone are the days of walls with the texture of hummus and I\'m here for it.\\n\\nOn the slightly-less-obvious-until-you-sling-one-across-a-map scale, grenades are more reactive to their surroundings. In CS:GO, smoke grenades would generate a puff of static fog that wouldn\'t budge until it disappeared. But in CS2, fog will curve around an arch and spill outwards, or wedge itself into a narrow gap and shoot upwards like it\'s been pinched by the stone. What\'s neat is how explosions from regular grenades will dissipate smoke for a second, exposing any poor bastards hiding away inside. And if you shoot through the edges of a cloud, it\'ll bobble around your bullets and potentially expose enemies, too.\\n\\nGenerally, I think the smoke grenade tweaks affect both your regular and serious players equally, as they\'re substantial enough to alter their most basic usage as quickly chucked sight blockers or entirely change how top players use them. I\'m by no means a serious player and even I\'ve found the new smokes awaken options that hadn\'t previously existed. Rather than waiting around tentatively for them to vanish or being surprised when someone erupts from the darkness, it finally feels like you\'re able to manipulate smokes inline with the rest of CS\'s sandbox.\\n\\nOverall match length has been reduced from a race to 16, to 13. Or in other terms, the maximum number of rounds has been reduced from 30 to 24 overall per match. I\'ve not found it an issue, and if anything, makes each and every round feel a little more meaningful.\\nDespite some of these positive strides in maps and grenades, there\'s also a lot of goodness from CS:GO that hasn\'t found its way into CS2\'s launch. There\'s no Mac support. No Arms Race or War Games. No way in the console to go left-handed. Fan favourite maps like Cache and Train are absent. All of these will undoubtedly come with time, but it\'s frustrating that we can\'t go back to CS:GO and enjoy them because Valve snapped it out of existence. I don\'t blame players for thinking CS2 has \\"cut the game in half\\", as it sort of seems that way.\\n\\nThere\'s also an argument to be made about how some of the maps like Inferno and Italy have been \\"overhauled\\" and what overhauled means for most people. For folks like me, most of the changes are about as perceptible as spotting a lobster with pink eye. Most of these tweaks involve shifting a ledge a few inches to the right, which serves the side of the community for whom minutiae matter. Again an example of how CS2\'s updates will seem more substantial to some and barely present for others.\\n\\nA player in Counter-Strike 2 inspects their knife in front of a wall with colourful graffiti on it.\\n\\nHaving tuned into pro-players and their streams, it seems like there\'s a lot of talk about CS2 feeling off compared to CS:GO. Movement isn\'t quite as smooth and spraying with your weapon doesn\'t feel as accurate. The new servers with their 64 tick/sub-tick thing just doesn\'t cut it, apparently (I have zero idea what sub-tick means). For long-time fans and serious CS-heads, it seems like CS2 has some catching up to do. And as a sort of lapsed player who used to take it quite seriously but doesn\'t anymore, I agree that the sensation of accuracy in holding down the trigger feels a bit\\u2026 off in CS2? I\'ve also been sniped around a corner a few times, which didn\'t happen in CS:GO, and might be something to do with those server ticks? But hey, I\'m finding my matches of CS2 just as thrilling as before! And I\'m sure most players will, too.\\n\\nIt wouldn\'t be CS - or any videogame, I suppose - without rounding off a game and being hit by cosmetic rewards and the like. If you bought CS:GO back in the day, you\'ll get what\'s called \\"Prime Status\\" free of charge in CS2, otherwise it will cost you \xc2\xa315. Those with Prime Status unlock the competitive and premier modes, plus queues with other Prime members. In theory, it\'s Valve\'s way of saying that you\'re more likely to play against people who don\'t take their FPS video games for granted. Eh, I\'ve still been matched up with both lovely people and horrible folks I\'ve reported almost instantly, so I doubt it makes much of a difference. Either way, what Prime also enables is the Weekly Care Package, so if you earn enough EXP and level up, you\'ll get to choose two cosmetic rewards to add to your collection. Cool, I guess.\\n\\nValve\'s still at it with loot crates you\'ve got to pay to open and the dodgy marketplaces that orbit it. But I wouldn\'t say it\'s super in your face, as you can choose to not engage with it if you\'d like. I basically do not care for any skins or crates or anything and the game doesn\'t hit me with pop-ups or punish me for tuning out. I\'m not saying I like the whole gambling thing and I wish it didn\'t exist, but you\'re at least free to disengage.\\n\\nEven so, if I\'m being perfectly honest, I think my CS days are behind me. It\'s an FPS that requires a lot from you, and those after a shooter you can sort of switch your mind off to should look elsewhere. But if you\'re a newcomer, lapsed player, or veteran, I think CS2 offers up thrilling matches that can twist and turn after a smart play or a remarkable shot. Many will find it\'s rather close to CS:GO with neat upgrades to grenades and extra pop to maps, while another portion of the community might just want CS:GO back. Right now CS2 is a great iterative update to a tried and true formula... that\'s missing an awful lot of fan favourite stuff. Give it time, though, and I think it\'s onto something pretty special.
 '''
 
+    test_2 = \
+'''this game is pretty trash. the beginning was horrible and honestly made no sense, a space game with very little cool space stuff, and I mean that seriously. Its just wild to me how out of touch Bethesda has become'''
+    
+    test_3 = \
+'''An incredible game that i discovered thanks to my friend and aswell as ark mods believe it or not. I recommend this to be played by people that are ACCEPTING to be defeated from time to time and that dont have as much frustration over losing. Game itself is peak overall. While i do prefer multiplayer WAY more than solo you can for sure solo this game quite fast actually. hours in this game are like minutes. extremely fun game i recommend it! Monster designs are beyond perfect.'''
+
     critic_review_01 = \
 '''Cyberpunk 2077
 Review by John Tucker, January 3, 2021
@@ -930,7 +1058,7 @@ Overall Score
 
 
     # change the sample to test diff reviews
-    temp_sample = long_review_05
+    temp_sample = test_3
 
     print('The review is:',temp_sample)
     print('\n\n')
@@ -938,7 +1066,7 @@ Overall Score
 
     try:
 
-        is_spam, aspect_keywords, tldr, token_usage_breakdown = get_per_review_analysis(temp_sample)
+        is_spam, aspect_keywords, aspect_sentiment, tldr, token_usage_breakdown = get_per_review_analysis(temp_sample)
 
     except Exception as e:
         print('Error:', e)
@@ -946,6 +1074,7 @@ Overall Score
 
     print('Is spam:', is_spam)
     print('Aspect keywords:', aspect_keywords)
+    print('Aspect sentiment:', aspect_sentiment)
     print('TLDR:', tldr)
     print('\n')
     print('Token usage breakdown:', token_usage_breakdown)

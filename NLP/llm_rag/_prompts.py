@@ -43,6 +43,20 @@ QUESTION_TEMPLATE_01 = \
 '''Extract the the following aspect of the game from the reviews. The aspect '''
 
 
+ASPECT_SENTIMENT_TEMPLATE = \
+'''You are reading reviews of a game to understand the characteristics of the game. Determine whether the reviews of each aspect are positive, or negative.
+The aspects are {aspects}. For each aspect, output \'positive\' if the review is positive, and \'negative\' if the review is negative. Output \'NA\' if there is no review for an aspect. Only output the decision. Do NOT output other text. Then create a JSON with apsects name as key and sentiment as value.
+{output_format}
+Do NOT output other text.
+
+The reviews are as follows. The reviews are wrapped by thee consecitive apostrophes
+\'\'\'
+{context}
+\'\'\'
+
+Do NOT try to make up an answer. Do NOT output other text.'''
+
+
 
 KEYWORD_TEMPLATE_02 = \
 '''Extract the following aspects of the game from the reviews, and providwe a list of keywords, each of max length 5 words, for each aspect. The aspects are: {aspects}. Output a JSON with each of the aspects as key, and the list of keywords as the value. Only output the JSON. Do NOT output other text.

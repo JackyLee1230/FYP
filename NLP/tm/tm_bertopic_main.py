@@ -161,8 +161,8 @@ def consumer(ch, method, properties, body, inference_obj):
     start_time = time.time()
 
     try:
-        is_spam, aspect_keywords, tldr, token_usage_breakdown = get_per_review_analysis(comment)
-        _print_message(f'LLM Inference result: {is_spam}, {aspect_keywords}, {tldr}')
+        is_spam, aspect_keywords, aspect_sentiment, tldr, token_usage_breakdown = get_per_review_analysis(comment)
+        _print_message(f'LLM Inference result: {is_spam}, {aspect_keywords}, {aspect_sentiment}, {tldr}')
         _print_message(f'Token usage breakdown: {token_usage_breakdown}')
 
         llm_result = {
@@ -173,6 +173,9 @@ def consumer(ch, method, properties, body, inference_obj):
             llm_result.update(aspect_keywords)
             llm_result.update({
                 "summary": tldr
+            })
+            llm_result.update({
+                'sentiment': aspect_sentiment
             })
 
         llm_result.update({

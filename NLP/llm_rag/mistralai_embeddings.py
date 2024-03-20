@@ -1,5 +1,5 @@
 ####################
-# Copy from: https://github.com/langchain-ai/langchain/blob/master/libs/partners/mistralai/langchain_mistralai/embeddings.py
+# Modified from: https://github.com/langchain-ai/langchain/blob/master/libs/partners/mistralai/langchain_mistralai/embeddings.py
 ####################
 
 
