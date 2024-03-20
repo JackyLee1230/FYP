@@ -783,6 +783,11 @@ public class ReviewService {
                 throw new IllegalStateException("You can update your review only once a week!");
             }
             review.setEditedAt(new Date(System.currentTimeMillis())); // update new review edited at
+            if (review.getEditCount() == null) {
+                review.setEditCount(1);
+            } else {
+                review.setEditCount(review.getEditCount() + 1);
+            }
             reviewRepository.save(review);
 //            send to sentiment analysis and topic modeling queue
             reviewReq.setReviewId(review.getId());

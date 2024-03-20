@@ -99,6 +99,14 @@ public class Review {
     @Column(insertable = true, updatable = true)
     private Date editedAt;
 
+    @Column(insertable = true, updatable = true)
+    @JsonIgnore
+    private Integer editCount;
+
+    @Column(insertable = true, updatable = true)
+    @JsonIgnore
+    private Integer tokenUsed;
+
     @ManyToMany(mappedBy = "likedReviews", fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonIgnore
