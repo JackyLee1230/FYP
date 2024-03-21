@@ -218,6 +218,8 @@ def _get_aspects_content(review:str):
 
     # instead of using any tokentext splitter, we can use the tokenizer of the model itself. As the tokenizer is available in HuggingFace
     tokenizer = AutoTokenizer.from_pretrained(llm_rag_folder.joinpath("Mixtral-8x7B-Instruct-v0.1_tokenizer"))
+    # only separate by the space character, targetting the word level (then multiple paragraphs can be in the same chunk)       # potential improvement to separate only space character ??
+    # text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=250, chunk_overlap=40, separators=[" "])
     text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=250, chunk_overlap=40)
     docs = text_splitter.create_documents([review], metadatas=[{"source":"review_01"}])
 
@@ -799,7 +801,7 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     aspects_response_embedding_usage_info = ({}, [])
     aspect_sentiment_llm_output_json_list = []
     keywords_llm_output_json_list = []
-    tldr_llm_output_json = None
+    tldr_llm_output_json = {}
     
     is_spam, spam_llm_output_json = _check_spam(review)
     
@@ -813,6 +815,8 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     # get sentiment for each aspect
     aspect_sentiment, aspect_sentiment_llm_output_json_list = _get_sentiment_per_aspect_per_review(review, is_spam, aspects_response)
 
+    print(aspects_response)
+    print('\n\n')
     print(aspect_keywords)
     print('\n\n')
     print(aspect_sentiment)
@@ -1099,9 +1103,31 @@ Overall Score
 70
 '''
 
+    # https://steamcommunity.com/profiles/76561198845032034/recommended/1817190/
+    middle_review_01 =  \
+'''Alright, so after completing all achievements I feel like this game has some decent replayablilty. But I do have my share of complaints and praises about this game.
+
+1. This game is too short. I mean for almost the same price as Marvel's Spiderman, I finished all objectives in well around 26 hrs as compared to the 100+ hrs it took me for Spiderman.
+2. There needs to be some varieties of enemies and bosses. I feel like I only remember Prowler, Rhino and Tinkerer fights, but then again the first point kinda covers it.
+3. The venom and cloaking are awesomely done in this game, loved those abilities.
+4. Costumes are downright sick, better than the Spiderman ones' imo.
+5. Ran really well on Steam Deck (finished it on deck).
+
+If this game had the same or almost similar amount of gameplay content as Spiderman, this would have been my favorite spiderman game yet.
+
+Iac, this game is worth playing, maybe get it on sale coz original price ain't worth it.'''
+
+    # https://steamcommunity.com/id/chrono2jam/recommended/1817190/
+    middle_review_02 = \
+'''The game is good but imo, it's not as good as the first one. It way shorter and lack of content compared to the first one, it feels like bigger than normal DLC but way too small for a standalone game. It also has less gadget, but there few mechanic's to make it up. On top of that, I encountered couple of annoying crashes when doing some challenges.
+
+That said, the story is (un)surprisingly good and new mechanic's are amazing, I still miss some of the old skills and gadgets tho. However, this price point is way too expensive for the content it offer, especially if you compare with the first one.
+
+Be patience and wait for the sale.'''
+
 
     # change the sample to test diff reviews
-    temp_sample = test_3
+    temp_sample = critic_review_01
 
     print('The review is:',temp_sample)
     print('\n\n')
