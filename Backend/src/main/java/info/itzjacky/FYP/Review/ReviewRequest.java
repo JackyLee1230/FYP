@@ -69,5 +69,7 @@ public class ReviewRequest {
 
     private String gameDescription;
 
+    private Boolean filterSpam;
+
 
 }
