@@ -62,6 +62,7 @@ export type GameReview = {
   reviewImages: string[];
   numberOfComments?: number;
   editedAt: string;
+  isSpam: boolean;
 };
 
 export type GameReviewComment = {
