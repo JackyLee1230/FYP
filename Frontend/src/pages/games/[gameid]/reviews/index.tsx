@@ -332,7 +332,6 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                       fontWeight: 600,
                       textDecoration: "underline",
                     }}
-                    noWrap
                   >
                     {game.name}
                   </Typography>
