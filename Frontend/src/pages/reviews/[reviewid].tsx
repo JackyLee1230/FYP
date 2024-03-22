@@ -388,22 +388,122 @@ function GamePage({
     </Box>,
   ];
 
-  function displayAspects(aspects: string): string {
+  const DisplayAspects = (aspects: string) => {
     let aspectsArray = JSON.parse(aspects);
-    let result = '';
 
-    for (let aspect in aspectsArray) {
-      if (aspect !== 'isSpam' && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
-          let keywords = aspectsArray[aspect].join(', ');
-          result += `${aspect}: ${keywords}.\n`;
-      }
+    if(!aspectsArray || aspectsArray.length === 0) {
+      return (
+        <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+          Not Available
+        </Typography>
+      )
     }
 
-    if(result === '') {
-      return "Not Available";
-    }
+    let aspectSentiment = aspectsArray['sentiment'];
 
-    return result.trim(); 
+    if (aspectSentiment) {
+      let sortedAspects = Object.keys(aspectSentiment).sort((a, b) => {
+        if (aspectSentiment[a] === 'Positive') {
+          return -1;
+        } else if (aspectSentiment[a] === 'Negative' && aspectSentiment[b] !== 'Positive') {
+          return -1;
+        } else if (aspectSentiment[a] === 'NA' && aspectSentiment[b] !== 'Positive' && aspectSentiment[b] !== 'Negative') {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          {sortedAspects.map((aspect) => {
+            if (aspect != "overall" && aspect != "sentiment" && aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
+              return (
+                <Box 
+                  key={aspect}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0px",
+                    alignItems: "flex-start",
+                    width: "100%",
+                  }}
+                >
+                  <Typography key={aspect} variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment[aspect] === "Negative" ? "error.main" : "success.main"}>
+                    {aspect}:
+                  </Typography>
+                  <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspectsArray[aspect].join(', ')}
+                  </Typography>
+                </Box>
+              );
+            }
+          })}
+          {aspectsArray["overall"] && aspectsArray["overall"].length > 0 && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+                alignItems: "flex-start",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment["Overall"] === "Negative" ? "error.main" : "success"}>
+                Overall:
+              </Typography>
+              <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                {aspectsArray["overall"].join(', ')}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      );
+    } else{
+      return(
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          {Object.keys(aspectsArray).map((aspect) => {
+            if (aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
+              return (
+                <Box 
+                  key={aspect}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0px",
+                    alignItems: "flex-start",
+                    width: "100%",
+                  }}
+                >
+                  <Typography key={aspect} variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspect}:
+                  </Typography>
+                  <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspectsArray[aspect].join(', ')}
+                  </Typography>
+                </Box>
+              );
+            }
+          })}
+        </Box>
+      )
+    }
   }
 
   return (
@@ -909,13 +1009,7 @@ function GamePage({
                     >
                       Key Words:
                     </Typography>
-                    <Typography
-                      variant={isTablet ? "subtitle1" : "h6"}
-                      color="text.secondary"
-                      sx={{ whiteSpace: "pre-wrap" }}
-                    >
-                      {review.aspects != null ? displayAspects(review.aspects) : "Not Available"}
-                    </Typography>
+                    {DisplayAspects(review.aspects)}
                   </Box>
                   <Box
                     sx={{
