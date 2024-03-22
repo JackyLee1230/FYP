@@ -394,6 +394,14 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             reviewLength.put("500-600", 0);reviewLength.put("600-700", 0);reviewLength.put("700-800", 0);reviewLength.put("800-900", 0);reviewLength.put("900-1000", 0);
             reviewLength.put("1000+", 0);
 
+            HashMap<GameGenre, Integer> reviewedPlatform = new HashMap<>();
+            for (GameGenre g: game.getGenre()) {
+                reviewedPlatform.put(g, 0);
+            }
+
+            HashMap<String, Integer> playTime = new HashMap<>();
+            playTime.put("<1 Hour", 0);playTime.put("1-20 Hours", 0);playTime.put("20-50 Hours", 0);playTime.put("50-100 Hours", 0);
+            playTime.put("100+ Hours", 0);playTime.put("N/A", 0);
 
             HashMap<String, Integer> positiveMap = new HashMap<>();
             positiveMap.put("MALE", 0);positiveMap.put("FEMALE", 0);
@@ -409,8 +417,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             negativeByAge.put("13-19", 0);negativeByAge.put("20-29", 0);negativeByAge.put("30-39", 0);negativeByAge.put("40-49", 0);negativeByAge.put("50-59", 0);
             negativeByAge.put("60-69", 0);negativeByAge.put("70-79", 0);negativeByAge.put("80-89", 0);negativeByAge.put("90-99", 0);negativeByAge.put("N/A", 0);
 
-
-
             HashMap<String, HashMap> sentimentCountByGender = new HashMap<>();
             sentimentCountByGender.put("POSITIVE", positiveMap);
             sentimentCountByGender.put("NEGATIVE", negativeMap);
@@ -418,7 +424,6 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             HashMap<String, HashMap> sentimentCountByAge = new HashMap<>();
             sentimentCountByAge.put("POSITIVE", positiveByAge);
             sentimentCountByAge.put("NEGATIVE", negativeByAge);
-
 
             // array of [name, age, gender]
             List<List<String>> fav = gameRepository.findUsersThatFavouritedGame(gameRequest.getId());
@@ -507,6 +512,29 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                             topicFreq.put(key, temp);
                         }
                     }
+                }
+
+//                PLATFORM
+                GameGenre genre = r.getReviewedGame().getGenre().get(0);
+                reviewedPlatform.put(genre, reviewedPlatform.get(genre) + 1);
+
+//                PLAYTIME
+//                given the review time is in minues, convert it for the folling sections
+//                playTime.put("<1 Hour", 0);playTime.put("1-20 Hours", 0);playTime.put("20-50 Hours", 0);playTime.put("50-100 Hours", 0);
+//                playTime.put("100+ Hours", 0);
+                Integer playTimeStr = r.getPlayTime();
+                if (playTimeStr == null) {
+                    playTime.put("N/A", playTime.get("N/A") + 1);
+                } else if (playTimeStr <= 60) {
+                    playTime.put("<1 Hour", playTime.get("<1 Hour") + 1);
+                } else if (playTimeStr <= 1200) {
+                    playTime.put("1-20 Hours", playTime.get("1-20 Hours") + 1);
+                } else if (playTimeStr <= 3000) {
+                    playTime.put("20-50 Hours", playTime.get("20-50 Hours") + 1);
+                } else if (playTimeStr <= 6000) {
+                    playTime.put("50-100 Hours", playTime.get("50-100 Hours") + 1);
+                } else {
+                    playTime.put("100+ Hours", playTime.get("100+ Hours") + 1);
                 }
 
 //                GENDER
