@@ -391,7 +391,7 @@ function GamePage({
   const DisplayAspects = (aspects: string) => {
     let aspectsArray = JSON.parse(aspects);
 
-    if(!aspectsArray || aspectsArray.length === 0) {
+    if(!aspectsArray || aspectsArray.length === 0 || aspectsArray['isSpam'] === true) {
       return (
         <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
           Not Available
