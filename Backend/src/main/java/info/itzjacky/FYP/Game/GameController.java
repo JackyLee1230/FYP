@@ -394,9 +394,9 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             reviewLength.put("500-600", 0);reviewLength.put("600-700", 0);reviewLength.put("700-800", 0);reviewLength.put("800-900", 0);reviewLength.put("900-1000", 0);
             reviewLength.put("1000+", 0);
 
-            HashMap<GameGenre, Integer> reviewedPlatform = new HashMap<>();
-            for (GameGenre g: game.getGenre()) {
-                reviewedPlatform.put(g, 0);
+            HashMap<Platform, Integer> reviewedPlatform = new HashMap<>();
+            for (Platform p: game.getPlatforms()) {
+                reviewedPlatform.put(p, 0);
             }
 
             HashMap<String, Integer> playTime = new HashMap<>();
@@ -515,8 +515,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                 }
 
 //                PLATFORM
-                GameGenre genre = r.getReviewedGame().getGenre().get(0);
-                reviewedPlatform.put(genre, reviewedPlatform.get(genre) + 1);
+                Platform reviewPlatform = r.getPlatform();
+                reviewedPlatform.put(reviewPlatform, reviewedPlatform.get(reviewPlatform) + 1);
 
 //                PLAYTIME
 //                given the review time is in minues, convert it for the folling sections
