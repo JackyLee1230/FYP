@@ -70,61 +70,7 @@ llm_mistralai = ChatMistralAI(
 
 # use RootListenersTracer to get the token usage for ChatMistralAI
 # https://github.com/langchain-ai/langchain/issues/16379
-from langchain_core.tracers.root_listeners import RootListenersTracer
-from langchain_core.runnables.config import RunnableConfig
-
-# global variable to store the latest token usage
-latest_llm_output_json = None
-
-# Define your callbacks
-def on_start(run):
-    # print(f"Start: {run}")
-    pass
-
-def on_end(run):
-    # print(f"End: {run}")
-    global latest_llm_output_json
-
-    str_run = str(run)
-    idx = str_run.find('llm_output')
-
-    if idx == -1:
-        print(f"on_end callback llm_output not found in the run: {str_run}")
-        return
-
-    # get first '{ and first '}' after idx
-    first_brace = str_run.find('{', idx)
-    second_brace = str_run.find('{', first_brace)
-    second_closing_brace = str_run.find('}', second_brace+1)
-    first_closing_brace = str_run.find('}', second_closing_brace+1)
-
-    _print_message(f"on_end callback llm_output: {str_run[first_brace:first_closing_brace+1]}")
-
-    try:
-        llm_output_json = json.loads(str_run[first_brace:first_closing_brace+1].replace('\'', '\"'))
-        _print_message(f"Token usage: {llm_output_json['token_usage']}")
-
-        latest_llm_output_json = llm_output_json
-    except:
-        print(f"Error in parsing JSON: {str_run[first_brace:first_closing_brace+1]}")
-        traceback.print_exc()
-
-        latest_llm_output_json = None
-
-
-def on_error(run):
-    # print(f"Error: {run}")
-    pass
-
-# shared config to retrieve toke usage of a chain
-chain_config = {"callbacks": [
-    RootListenersTracer(
-        config=RunnableConfig(),
-        on_start=on_start,
-        on_end=on_end,
-        on_error=on_error
-    )]
-}
+# update: no need to do that, as the response object from chain.invoke() contains the token usage info
 
 
 
@@ -133,8 +79,11 @@ chroma_client = chromadb.HttpClient(host='localhost', port=8000)
 def _check_spam(review:str):
 
     # store token usage for the two LLM call
-    chat_01_llm_output_json = None
-    chat_02_llm_output_json = None
+    # chat_01_llm_output_json = None
+    # chat_02_llm_output_json = None
+
+    token_usage_list = []
+    token_usage_stats = {"spam_tokens": token_usage_list}
 
     chat_prompt_01 = ChatPromptTemplate.from_messages([
         ("system", _prompts.SYSTEM_TEMPLATE),
@@ -147,13 +96,14 @@ def _check_spam(review:str):
     try:
         response_01 = chain_01.invoke({
             "review": review,
-        }, config=chain_config)
+        })
     except:
         print(traceback.format_exc())
-        return True, [chat_01_llm_output_json, chat_02_llm_output_json]         # default return true (i.e. isSpam)
+        return True, token_usage_stats         # default return true (i.e. isSpam)
     else:
         _print_message(f'LLM result for spam check: {response_01}')
-        chat_01_llm_output_json = latest_llm_output_json
+    
+    token_usage_list.append(response_01.response_metadata['token_usage'])
 
     chat_prompt_02 = ChatPromptTemplate.from_messages([
         ("system", _prompts.SYSTEM_TEMPLATE),
@@ -165,26 +115,25 @@ def _check_spam(review:str):
     chain_02 = chat_prompt_02 | llm_mistralai
 
     try:
-        response_02 = chain_02.invoke({
+        response_02 = chain_02.invoke({         # response_02 is an object with str output like: '''content='NO.' response_metadata={'token_usage': {'prompt_tokens': 2568, 'total_tokens': 2570, 'completion_tokens': 2}, 'model': 'open-mixtral-8x7b', 'finish_reason': 'stop'}'''
             "review": review
-        }, config=chain_config)
+        })
     except:
         print(traceback.format_exc())
-        return True, [chat_01_llm_output_json, chat_02_llm_output_json]     # default return true (i.e. isSpam)
+        return True, token_usage_stats     # default return true (i.e. isSpam)
     else:
         _print_message(f'LLM result_2 for spam check: {response_02}')
-        chat_02_llm_output_json = latest_llm_output_json
+    
+
+    token_usage_list.append(response_02.response_metadata['token_usage'])
 
     response_02 = response_02.content         # to get the response string
 
 
-    # formulate the llm_output_json
-    llm_output_json = [chat_01_llm_output_json, chat_02_llm_output_json]
-
     if "YES" in response_02 or "Yes" in response_02 or "yes" in response_02:
-        return True, llm_output_json
+        return True, token_usage_stats
     else:
-        return False, llm_output_json
+        return False, token_usage_stats
     
 
 def _create_review_obj(review:str):
@@ -204,6 +153,13 @@ def _create_review_obj(review:str):
 
 def _get_aspect_content_per_review(review:str):
 
+    aspect_response_token_usage_list = []
+    aspect_response_embedding_tokens_list = []
+    token_usage_stats = {
+        "aspect_response_tokens": aspect_response_token_usage_list,
+        "aspect_response_embedding_tokens": aspect_response_embedding_tokens_list
+    }
+
     _review_obj = _create_review_obj(review)
 
     _rag_request = {
@@ -212,21 +168,31 @@ def _get_aspect_content_per_review(review:str):
     }
 
     db, retriever, embedding_func, embedding_usage_info_01 = _get_rag_documents(_rag_request)
+    aspect_response_token_usage_list.append(embedding_usage_info_01)
 
     # sanity check onlt, the PER_REVIEW enum is defined and a db will always be returned
     if db is None:
-        return None, None, ({}, [])
+        return None, token_usage_stats
     
     aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_content(db, retriever, embedding_func)
+    aspect_response_token_usage_list.extend(chain_llm_output_json_list)
+    aspect_response_embedding_tokens_list.extend(embedding_usage_info_list)
 
-    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+    return aspects_response, token_usage_stats
 
 
 def _get_aspect_content_per_game(game_name:str):
 
+    aspect_response_token_usage_list = []
+    aspect_response_embedding_tokens_list = []
+    token_usage_stats = {
+        "aspect_response_tokens": aspect_response_token_usage_list,
+        "aspect_response_embedding_tokens": aspect_response_embedding_tokens_list
+    }
+
     # sanity check
     if game_name not in set(GAME_NAMES_TO_DB_NAME.values()):
-        return None, None, ({}, [])
+        return None, token_usage_stats
 
     _rag_request = {
         "type": RagType.PER_GAME,
@@ -238,14 +204,18 @@ def _get_aspect_content_per_game(game_name:str):
     }
 
     db, retriever, embedding_func, embedding_usage_info_01 = _get_rag_documents(_rag_request)
+    aspect_response_embedding_tokens_list.append(embedding_usage_info_01)
 
     # sanity check only, the PER_GAME enum is defined and a db will always be returned
     if db is None:
-        return None, None, ({}, [])
+        return None, token_usage_stats
     
     aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_content(db, retriever, embedding_func)
+    aspect_response_token_usage_list.extend(chain_llm_output_json_list)
+    aspect_response_embedding_tokens_list.extend(embedding_usage_info_list)
 
-    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+    # return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+    return aspects_response, token_usage_stats
 
 
 def _get_rag_documents(_rag_request:dict):
@@ -345,7 +315,7 @@ def _process_embedding_stats(embedding_stats:list):
 
 def _get_aspects_334(retriever, embedding_func):
     aspects_response = {k: '' for k in GAME_ASPECTS}
-    chain_llm_output_json_list = []
+    token_usage_json_list = []
     embedding_usage_info_list = []
 
     for (start, end) in [(0, 3), (3, 6), (6, 10)]:
@@ -379,7 +349,7 @@ def _get_aspects_334(retriever, embedding_func):
                     "aspects": aspects,
                     "output_format": output_format,
                     "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
-                }, config=chain_config)
+                })
             except:
                 print(traceback.format_exc())
 
@@ -390,7 +360,7 @@ def _get_aspects_334(retriever, embedding_func):
                 break       # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result in _get_aspects_334: {_resp}')
-            chain_llm_output_json_list.append(latest_llm_output_json)
+            token_usage_json_list.append(_resp.response_metadata['token_usage'])
 
             resp = _resp.content         # to get the response string
 
@@ -447,12 +417,12 @@ def _get_aspects_334(retriever, embedding_func):
             # leave the retry loop if the response is a JSON
             break
 
-    return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
+    return aspects_response, token_usage_json_list, embedding_usage_info_list
 
 
 def _get_aspects_10(retriever, embedding_func):
     aspects_response = {k: '' for k in GAME_ASPECTS}
-    chain_llm_output_json_list = []
+    token_usage_json_list = []
     embedding_usage_info_list = []
 
     for aspect in GAME_ASPECTS:
@@ -484,7 +454,7 @@ def _get_aspects_10(retriever, embedding_func):
                     "aspects": [aspect],
                     "output_format": output_format,
                     "summaries": str('\n'.join([d.page_content for d in relevant_docs]))
-                }, config=chain_config)
+                })
             except:
                 print(traceback.format_exc())
 
@@ -494,7 +464,7 @@ def _get_aspects_10(retriever, embedding_func):
                 break           # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result for _get_aspects_10: {_resp}')
-            chain_llm_output_json_list.append(latest_llm_output_json)
+            token_usage_json_list.append(_resp.response_metadata['token_usage'])
 
 
             resp = _resp.content         # to get the response string
@@ -521,15 +491,16 @@ def _get_aspects_10(retriever, embedding_func):
             # leave the retry loop if the response is a JSON
             break
     
-    return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
+    return aspects_response, token_usage_json_list, embedding_usage_info_list
 
 
 def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_response:dict):
 
-    chain_llm_output_json_list = []
+    token_usage_json_list = []
+    token_usage_stats = {"aspect_sentiment_tokens": token_usage_json_list}
 
     if is_spam:
-        return None, chain_llm_output_json_list
+        return None, token_usage_stats
     
 
     repeat_limit = 5
@@ -558,7 +529,7 @@ def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_respo
                     "aspects": str(aspects),
                     "context": str({k: v for k, v in aspects_response.items() if k in aspects}),
                     "output_format": str(output_format)
-                }, config=chain_config)
+                })
             except:
                 print(traceback.format_exc())
 
@@ -569,7 +540,8 @@ def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_respo
                 break           # leave the retry loop if error of MistralAI API occurs
 
             _print_message(f'LLM result in _get_sentiment_per_aspect_per_review: {_resp}')
-            chain_llm_output_json_list.append(latest_llm_output_json)
+            token_usage_json_list.append(_resp.response_metadata['token_usage'])
+
 
             resp = _resp.content         # to get the response string
 
@@ -630,7 +602,7 @@ def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_respo
         elif v == 'negative':
             aspects_resp_sentiment[k] = 'Negative'
 
-    return aspects_resp_sentiment, chain_llm_output_json_list
+    return aspects_resp_sentiment, token_usage_stats
 
 
 def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
@@ -638,10 +610,13 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
     # step 2: if spam, simply return None
     # step 3: if not spam, prompt LLM to generate keywords for the review. Return a JSON
 
-    chain_llm_output_json_list = []
+    token_usage_json_list = []
+    token_usage_stats = {
+        'keywords_tokens': token_usage_json_list
+    }
 
     if is_spam:
-        return None, chain_llm_output_json_list
+        return None, token_usage_stats
     
 
     # set a number of times for repeating if the response is not a JSON
@@ -664,13 +639,13 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
             _resp = chain_02.invoke({
                 "aspects": GAME_ASPECTS,
                 "context": str(aspects_response)
-            }, config=chain_config)
+            })
         except:
             print(traceback.format_exc())
-            return None, chain_llm_output_json_list     # early return if error of MistralAI API occurs
+            return None, token_usage_stats     # early return if error of MistralAI API occurs
 
         _print_message(f'LLM result for gen_keywords_per_review: {_resp}')
-        chain_llm_output_json_list.append(latest_llm_output_json)
+        token_usage_json_list.append(_resp.response_metadata['token_usage'])
 
         response_02 = _resp.content         # to get the response string
 
@@ -733,7 +708,7 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
             response_02_json[aspect] = keywords
 
 
-        return response_02_json, chain_llm_output_json_list
+        return response_02_json, token_usage_stats
     
 
     _print_message(f'LLM result for keywords extraction: {response_02_json}')
@@ -746,8 +721,8 @@ def _gen_keywords_per_review(review:str, is_spam:bool, aspects_response:dict):
                 response_02_json[k] = ['NA']
     
     # return None if the dict remains empty
-    return (response_02_json, chain_llm_output_json_list) if response_02_json \
-        else (None, chain_llm_output_json_list)
+    return (response_02_json, token_usage_stats) if response_02_json \
+        else (None, token_usage_stats)
 
 def _gen_TLDR_per_review(review:str, is_spam:bool, aspects_response:dict):
     # step 1: if the number of words in the review is less than 50, return None
@@ -755,13 +730,14 @@ def _gen_TLDR_per_review(review:str, is_spam:bool, aspects_response:dict):
     # step 3: if spam, simply return None
     # step 4: if not spam, prompt LLM to generate a TLDR for the review. Return a JSON
 
-    chain_llm_output_json = {}
+    token_usage_list = []
+    token_usage_stats = {"tldr_tokens": token_usage_list}
 
     if is_spam:
-        return None, chain_llm_output_json
+        return None, token_usage_stats
 
     if len(review.split()) < 50:
-        return None, chain_llm_output_json
+        return None, token_usage_stats
     
     chat_prompt_01 = ChatPromptTemplate.from_messages([
         ("system", _prompts.SYSTEM_TEMPLATE),
@@ -771,14 +747,14 @@ def _gen_TLDR_per_review(review:str, is_spam:bool, aspects_response:dict):
     chain_01 = chat_prompt_01 | llm_mistralai
     _resp = chain_01.invoke({
         "context": aspects_response
-    }, config=chain_config)
+    })
 
     _print_message(f'LLM result for generating TLDR: {_resp}')
-    chain_llm_output_json = latest_llm_output_json
+    token_usage_list.append(_resp.response_metadata['token_usage'])
 
     response_01 = _resp.content         # to get the response string
 
-    return response_01, chain_llm_output_json
+    return response_01, token_usage_stats
 
 def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     '''Get the LLM assisted analysis for a review
@@ -791,24 +767,36 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     - a string, the TLDR for the review
     '''
 
-    spam_llm_output_json = []
-    aspects_response_llm_output_json_list = []
-    aspects_response_embedding_usage_info = ({}, [])
-    aspect_sentiment_llm_output_json_list = []
-    keywords_llm_output_json_list = []
-    tldr_llm_output_json = {}
+    # spam_llm_output_json = []
+    # aspects_response_llm_output_json_list = []
+    # aspects_response_embedding_usage_info = ({}, [])
+    # aspect_sentiment_llm_output_json_list = []
+    # keywords_llm_output_json_list = []
+    # tldr_llm_output_json = {}
+    token_usage_stats_list = []
+
+
     
-    is_spam, spam_llm_output_json = _check_spam(review)
+    is_spam, token_usage_stats = _check_spam(review)
+    token_usage_stats_list.append(token_usage_stats)
     
     if not is_spam:
-        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspect_content_per_review(review)
+        aspects_response, token_usage_stats = _get_aspect_content_per_review(review)
     else:
         aspects_response = None
+        token_usage_stats = {
+            "aspect_response_tokens": [],
+            "aspect_response_embedding_tokens": []
+        }
+    token_usage_stats_list.append(token_usage_stats)
 
-    aspect_keywords, keywords_llm_output_json_list = _gen_keywords_per_review(review, is_spam, aspects_response)
+
+    aspect_keywords, token_usage_stats = _gen_keywords_per_review(review, is_spam, aspects_response)
+    token_usage_stats_list.append(token_usage_stats)
 
     # get sentiment for each aspect
-    aspect_sentiment, aspect_sentiment_llm_output_json_list = _get_sentiment_per_aspect_per_review(review, is_spam, aspects_response)
+    aspect_sentiment, token_usage_stats = _get_sentiment_per_aspect_per_review(review, is_spam, aspects_response)
+    token_usage_stats_list.append(token_usage_stats)
 
     print(aspects_response)
     print('\n\n')
@@ -817,16 +805,14 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     print(aspect_sentiment)
     print('\n\n')
 
-    tldr, tldr_llm_output_json = _gen_TLDR_per_review(review, is_spam, aspects_response)
+    tldr, token_usage_stats = _gen_TLDR_per_review(review, is_spam, aspects_response)
+    token_usage_stats_list.append(token_usage_stats)
 
     # print( is_spam, aspect_keywords, aspect_sentiment, tldr)
 
 
     # get token usage for each func
-    token_usage_breakdown = _calculate_token_usage(
-        spam_llm_output_json, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info,
-        aspect_sentiment_llm_output_json_list, keywords_llm_output_json_list, tldr_llm_output_json
-    )
+    token_usage_breakdown = _calculate_token_usage(token_usage_stats_list)
 
     # print(token_usage_breakdown)
 
@@ -834,66 +820,29 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
 
 
 # TODO: move to _llm_rag_utils.py
-def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]], 
-                           aspect_sentiment_llm_output_json_list:list, keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
-    _sum_total_token = 0
+def _calculate_token_usage(token_usage_stats_list:list) -> dict:
 
-    _sum_spam_token = 0
-    _sum_aspect_resp_token = 0
-    _sum_aspect_resp_embedding_token = 0
-    _sum_aspect_sentiment_token = 0
-    _sum_keywords_token = 0
-    _sum_tldr_token = 0
+    # for token_usage_stats in token_usage_stats_list:
+    #     print(token_usage_stats); print()
 
-    # calculate spam detection token
-    for spam_llm_output in spam_llm_output_json:
-        _token_usage = spam_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_spam_token += _total_tokens
+    token_usage_breakdown = {}
 
-    # calculate aspect response token
-    for aspects_response_llm_output in aspects_response_llm_output_json_list:
-        _token_usage = aspects_response_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_aspect_resp_token += _total_tokens
+    # iterate over the list of token usage stats to get the fields
+    # and initialize the breakdown dict with 0
+    for token_usage_stats in token_usage_stats_list:
+        token_usage_breakdown.update({k: 0 for k in token_usage_stats.keys()})
+ 
+    # print(token_usage_breakdown)
 
-    # calculate aspect response embedding token
-    _embedding_usage_info_01, _embedding_usage_info_list = aspects_response_embedding_usage_info
-    _sum_aspect_resp_embedding_token += _embedding_usage_info_01.get('total_tokens', 0)     # the embedding token required to build the in-memory vector db
-    for _embedding_usage_info in _embedding_usage_info_list:
-        _total_tokens = _embedding_usage_info.get('total_tokens', 0)
-        _sum_aspect_resp_embedding_token += _total_tokens
-
-    # calculate aspect sentiment token
-    for aspect_sentiment_llm_output in aspect_sentiment_llm_output_json_list:
-        _token_usage = aspect_sentiment_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_aspect_sentiment_token += _total_tokens
-
-    # calculate keywords token
-    for keywords_llm_output in keywords_llm_output_json_list:
-        _token_usage = keywords_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_keywords_token += _total_tokens
-
-    # calculate tldr token
-    _token_usage = tldr_llm_output_json.get('token_usage', {})
-    _total_tokens = _token_usage.get('total_tokens', 0)
-    _sum_tldr_token += _total_tokens
-
-    _sum_total_token = _sum_spam_token + \
-        _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + \
-        _sum_aspect_sentiment_token + _sum_keywords_token + _sum_tldr_token
-
-    token_usage_breakdown = {
-        "total_tokens": _sum_total_token,
-        "spam_tokens": _sum_spam_token,
-        "aspect_response_tokens": _sum_aspect_resp_token,
-        "aspect_response_embedding_tokens": _sum_aspect_resp_embedding_token,
-        "aspect_sentiment_tokens": _sum_aspect_sentiment_token,
-        "keywords_tokens": _sum_keywords_token,
-        "tldr_tokens": _sum_tldr_token
-    }
+    # iterate over the list of token usage stats to get the values
+    # and sum them up
+    for token_usage_stats in token_usage_stats_list:
+        for k, v in token_usage_stats.items():
+            for token_usage in v:       # v is a list
+                token_usage_breakdown[k] += token_usage.get('total_tokens', 0)
+    
+    # then calculate the total tokens
+    token_usage_breakdown['total_tokens'] = sum(token_usage_breakdown.values())
 
     return token_usage_breakdown
 
@@ -905,7 +854,13 @@ def gen_TLDR_per_game(game_name:str, game_steamid:int):
     # step 4: ask for tm stats
     # step 5: return a TLDR (str) for displaying in the "game page"
 
-    aspect_content_per_game, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspect_content_per_game(game_name)
+    token_usage_stats_list = []
+
+    aspect_content_per_game, token_usage_stats = _get_aspect_content_per_game(game_name)
+    token_usage_stats_list.append(token_usage_stats)
+
+    if aspect_content_per_game is None:
+        return '', _calculate_token_usage(token_usage_stats_list)        
 
     # skip step 2 to try try first
 
@@ -914,74 +869,28 @@ def gen_TLDR_per_game(game_name:str, game_steamid:int):
     dfs = _pergame_tldr._load_sa_results_from_local(game_name, game_steamid)
 
     # step 3
-    sa_stats, sa_llm_output_json_list = _get_sa_stats(dfs, llm_mistralai)
+    sa_stats, token_usage_stats = _get_sa_stats(dfs, llm_mistralai)
+    token_usage_stats_list.append(token_usage_stats)
 
     # step 4: get top N topics name from BERTopic stats
     topN_topicnames = _get_tm_top_N_topic_names(dfs['topicFreq'])
 
     # step 5: the prompt
-    tldr, tldr_llm_output_json = _gen_TLDR_per_game(aspect_content_per_game, sa_stats, topN_topicnames)
+    tldr, token_usage_stats = _gen_TLDR_per_game(aspect_content_per_game, sa_stats, topN_topicnames)
+    token_usage_stats_list.append(token_usage_stats)
 
     # calculate the prompt usage
-    token_usage_breakdown = _calculate_tldr_per_game_token_usage(
-        aspects_response_llm_output_json_list, aspects_response_embedding_usage_info, sa_llm_output_json_list, tldr_llm_output_json
-    )
+    token_usage_breakdown = _calculate_token_usage(token_usage_stats_list)
 
     return tldr, token_usage_breakdown
-
-
-def _calculate_tldr_per_game_token_usage(
-        aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]],
-        sa_llm_output_json_list:list[dict], tldr_llm_output_json:dict):
-    
-    _sum_total_token = 0
-    _sum_aspect_resp_token = 0
-    _sum_aspect_resp_embedding_token = 0
-    _sum_sa_token = 0
-    _sum_tldr_token = 0
-
-    # calculate aspect response token
-    for aspects_response_llm_output in aspects_response_llm_output_json_list:
-        _token_usage = aspects_response_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_aspect_resp_token += _total_tokens
-
-    # calculate aspect response embedding token
-    _embedding_usage_info_01, _embedding_usage_info_list = aspects_response_embedding_usage_info
-    _sum_aspect_resp_embedding_token += _embedding_usage_info_01.get('total_tokens', 0)     # the embedding token required to build the in-memory vector db
-    for _embedding_usage_info in _embedding_usage_info_list:
-        _total_tokens = _embedding_usage_info.get('total_tokens', 0)
-        _sum_aspect_resp_embedding_token += _total_tokens
-
-    # calculate sentiment analysis token
-    for sa_llm_output in sa_llm_output_json_list:
-        _token_usage = sa_llm_output.get('token_usage', {})
-        _total_tokens = _token_usage.get('total_tokens', 0)
-        _sum_sa_token += _total_tokens
-    
-    # calculate tldr token
-    _token_usage = tldr_llm_output_json.get('token_usage', {})
-    _total_tokens = _token_usage.get('total_tokens', 0)
-    _sum_tldr_token += _total_tokens
-
-    _sum_total_token = _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + _sum_sa_token + _sum_tldr_token
-
-    token_usage_breakdown = {
-        "total_tokens": _sum_total_token,
-        "aspect_response_tokens": _sum_aspect_resp_token,
-        "aspect_response_embedding_tokens": _sum_aspect_resp_embedding_token,
-        "sentiment_analysis_tokens": _sum_sa_token,
-        "tldr_tokens": _sum_tldr_token
-    }
-
-    return token_usage_breakdown
 
 
 # main functions
 
 def _get_sa_stats(dfs:dict, llm_model):
     responses = {}
-    llm_output_json_list = []
+    token_usage_list = []
+    token_usage_stats = {'sentiment_analysis_tokens': token_usage_list}
 
     assert set(_pergame_tldr.PROMPT_PER_DFS.keys()) <= set(dfs.keys()), f'{set(_pergame_tldr.PROMPT_PER_DFS.keys())} <= {set(dfs.keys())}'
 
@@ -999,17 +908,20 @@ def _get_sa_stats(dfs:dict, llm_model):
                 'df_markdown': dfs[df_key].to_markdown(),
                 'df_specific_task': _pergame_tldr.SPECIFIC_TASK_REQS_PER_DFS[df_key],
                 'description_of_the_table': _pergame_tldr.PROMPT_PER_DFS[df_key],
-            }, config=chain_config)
+            })
 
             responses[df_key] = _resp_01.content
         except:
             print(traceback.format_exc())
             responses[df_key] = 'NA'
         else:
-            llm_output_json_list.append(latest_llm_output_json)
             _print_message('LLM result in _get_sa_stats, of {}: {}'.format(df_key, _resp_01))
+            
+            token_usage_list.append(
+                _resp_01.response_metadata['token_usage']
+            )
 
-    return responses, llm_output_json_list
+    return responses, token_usage_stats
 
 def _get_tm_top_N_topic_names(topicFreq_df:pd.DataFrame, top_N=5):
     d = topicFreq_df.sort_values(by="Count", ascending=False).head(top_N)
@@ -1019,7 +931,8 @@ def _get_tm_top_N_topic_names(topicFreq_df:pd.DataFrame, top_N=5):
 
 
 def _gen_TLDR_per_game(aspect_content_per_game:dict, sa_stats:dict, topN_topicnames:list[str]):
-    chain_01_llm_output_json = None
+    token_usage_list = []
+    token_usage_stats = {'tldr_tokens': token_usage_list}
 
     chat_prompt_01 = ChatPromptTemplate.from_messages([
         ('system', _prompts.SYSTEM_TEMPLATE),
@@ -1033,17 +946,20 @@ def _gen_TLDR_per_game(aspect_content_per_game:dict, sa_stats:dict, topN_topicna
             'aspect_content': aspect_content_per_game,
             'sentiment_content': sa_stats,
             'topic_names': topN_topicnames
-        }, config=chain_config)
+        })
 
         resp_01 = _resp_01.content
     except:
         print(traceback.format_exc())
-        return None, chain_01_llm_output_json
+        return None, token_usage_stats
     else:
-        chain_01_llm_output_json = latest_llm_output_json
         _print_message(f'LLM result in _gen_TLDR_per_game: {resp_01}')
+
+        token_usage_list.append(
+            _resp_01.response_metadata['token_usage']
+        )
     
-    return resp_01, chain_01_llm_output_json
+    return resp_01, token_usage_stats
 
 
 if __name__ == "__main__":
@@ -1292,6 +1208,9 @@ Be patience and wait for the sale.'''
     # per game TLDR testing
     # game_name = 'starfield'
     # game_steamid = 1716740
+
+    # game_steamid = 1118010
+    # game_name = 'monster_hunter_world_iceborne'
 
     # pergame_tldr, token_usage_breakdown = gen_TLDR_per_game(game_name, game_steamid)
 
