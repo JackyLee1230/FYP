@@ -38,8 +38,8 @@ git clone https://github.com/certbot/certbot.git
 cd certbot
 
 # Replace critiqbackend.itzjacky.info with your domain
-./certbot-auto certonly -a standalone -d itzjacky.info -d critiqbackend.itzjacky.info
-cd /etc/letsencrypt/live/critiqbackend.itzjacky.info
+./certbot-auto certonly -a standalone -d critiqbackend.itzjacky.info
+cd /etc/letsencrypt/live/critiqbackend.itzjacky.info-0001#
 
 openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out keystore.p12 -name tomcat -CAfile chain.pem -caname root
 ```
