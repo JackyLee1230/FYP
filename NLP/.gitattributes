@@ -2,6 +2,6 @@ steam-games-reviews-analysis-sentiment-analysis_model_12-09-2023.sav filter=lfs 
 sa/bert-finetune_240k_bal/** filter=lfs diff=lfs merge=lfs -text
 * text=auto
 llm_rag/Mixtral-8x7B-Instruct-v0.1_tokenizer/** filter=lfs diff=lfs merge=lfs -text
-
 # chromadb storage (critic reviews for TLDR per game)
 llm_rag/chromadb_storage/** filter=lfs diff=lfs merge=lfs -text
+sa/bert-finetune_480k_bal_2024-01-18/** filter=lfs diff=lfs merge=lfs -text

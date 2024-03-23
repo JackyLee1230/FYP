@@ -7,7 +7,7 @@ from scipy.special import softmax
 from pathlib import Path
 import time
 
-from string_cleaning_functions import clean, deEmojify
+import str_cleaning_functions
 from transformers import AutoTokenizer
 from onnxruntime import InferenceSession
 
@@ -19,8 +19,11 @@ from pika import PlainCredentials
 
 
 def cleaning(s_list: list[str]):
-    s_list = list(map(clean, s_list))
-    s_list = list(map(deEmojify, s_list))
+    s_list = list(map(lambda x: str_cleaning_functions.remove_links(x), s_list))
+    s_list = list(map(lambda x: str_cleaning_functions.remove_links2(x), s_list))
+    s_list = list(map(lambda x: str_cleaning_functions.clean(x), s_list))
+    s_list = list(map(lambda x: str_cleaning_functions.deEmojify(x), s_list))
+    s_list = list(map(lambda x: str_cleaning_functions.unify_whitespaces(x), s_list))
 
     return s_list
 
@@ -197,19 +200,20 @@ def listen_to_queue():
 
 if __name__ == "__main__":
 
-    DATASET_SIZE = 240
+    DATASET_SIZE = 480
     DATASET_IS_BALANCED = True
 
-    training_name = 'bert-finetune_{}k_{}'.format(
+    training_args_datetime = datetime(year=2024, month=1, day=18)
+    training_name = 'bert-finetune_{}k_{}_{}'.format(
         DATASET_SIZE,
-        'bal' if DATASET_IS_BALANCED else 'imbal'
+        'bal' if DATASET_IS_BALANCED else 'imbal',
+        training_args_datetime.strftime('%Y-%m-%d')
     )
-    training_args_datetime = datetime(year=2023, month=12, day=18)
 
     model_folder_path = Path(
         "../NLP/sa",
         training_name,
-        '{}_{}_model_onnx'.format(training_name, training_args_datetime.strftime('%Y-%m-%d'))).resolve()
+        '{}_model_onnx'.format(training_name)).resolve()
 
     print(model_folder_path)
 
