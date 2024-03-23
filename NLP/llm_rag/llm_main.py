@@ -22,6 +22,8 @@ from langchain_mistralai.chat_models import ChatMistralAI
 from mistralai_embeddings import CustomMistralAIEmbeddings
 from mistralai.models.common import UsageInfo
 
+import pandas as pd
+
 
 import json
 import os
@@ -33,7 +35,8 @@ from hashlib import sha224
 
 
 import _prompts
-from _llm_rag_utils import _print_message
+from _llm_rag_utils import _print_message, _parsing_json_single, _parsing_json_multiple, RagType, GAME_NAMES_TO_DB_NAME
+import _pergame_tldr
 
 # OLLAMA_IP = os.environ.get('OLLAMA_IP', 'localhost')
 llm_rag_folder = Path((os.path.dirname(os.path.abspath(__file__))))
@@ -199,13 +202,53 @@ def _create_review_obj(review:str):
     return review_obj
 
 
-def _get_aspects_content(review:str):
-    # create a temporary db for one-time RAG
+def _get_aspect_content_per_review(review:str):
 
     _review_obj = _create_review_obj(review)
 
-    # text_splitter = CharacterTextSplitter(chunk_size=800, chunk_overlap=0)
-    # text_splitter = TokenTextSplitter(chunk_size=300, chunk_overlap=45)         # idk 
+    _rag_request = {
+        "type": RagType.PER_REVIEW,
+        "payload" : _review_obj
+    }
+
+    db, retriever, embedding_func, embedding_usage_info_01 = _get_rag_documents(_rag_request)
+
+    # sanity check onlt, the PER_REVIEW enum is defined and a db will always be returned
+    if db is None:
+        return None, None, ({}, [])
+    
+    aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_content(db, retriever, embedding_func)
+
+    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+
+
+def _get_aspect_content_per_game(game_name:str):
+
+    # sanity check
+    if game_name not in set(GAME_NAMES_TO_DB_NAME.values()):
+        return None, None, ({}, [])
+
+    _rag_request = {
+        "type": RagType.PER_GAME,
+        "payload": {
+            "game_name": game_name,
+            # "db_name": GAME_NAMES_TO_DB_NAME[game_name]
+            "db_name": game_name
+        }
+    }
+
+    db, retriever, embedding_func, embedding_usage_info_01 = _get_rag_documents(_rag_request)
+
+    # sanity check only, the PER_GAME enum is defined and a db will always be returned
+    if db is None:
+        return None, None, ({}, [])
+    
+    aspects_response, chain_llm_output_json_list, embedding_usage_info_list = _get_aspects_content(db, retriever, embedding_func)
+
+    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+
+
+def _get_rag_documents(_rag_request:dict):
 
     embedding_stats_deque = deque()
 
@@ -215,28 +258,62 @@ def _get_aspects_content(review:str):
         timeout=300,
         embedding_stats_deque=embedding_stats_deque
     )
-
+    embedding_func = mistralai_embedding        # use mistralAI for embeddings
+    
     # instead of using any tokentext splitter, we can use the tokenizer of the model itself. As the tokenizer is available in HuggingFace
     tokenizer = AutoTokenizer.from_pretrained(llm_rag_folder.joinpath("Mixtral-8x7B-Instruct-v0.1_tokenizer"))
-    # only separate by the space character, targetting the word level (then multiple paragraphs can be in the same chunk)       # potential improvement to separate only space character ??
-    # text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=250, chunk_overlap=40, separators=[" "])
     text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=250, chunk_overlap=40)
-    docs = text_splitter.create_documents([review], metadatas=[{"source":"review_01"}])
 
-    # embedding_func = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-    embedding_func = mistralai_embedding        # use mistralAI for embeddings
-    db = Chroma.from_documents(
-        docs, embedding_func,
-        collection_name=_review_obj['hash']
-    )
+    if _rag_request['type'] == RagType.PER_REVIEW:
+        _payload = _rag_request['payload']
+        review = _payload['review_text']
+        _collection_name = _payload['hash']
+        
+        docs = text_splitter.create_documents([review], metadatas=[{"source":"review_01"}])
+
+        db = Chroma.from_documents(
+            docs, embedding_func,
+            collection_name=_collection_name
+        )
+
+    elif _rag_request['type'] == RagType.PER_GAME:
+        _payload = _rag_request['payload']
+        _collection_name = _payload['db_name']
+
+        try:
+            db = Chroma(collection_name=_collection_name, client=chroma_client, embedding_function=embedding_func)       # get the collection from the docker client (the docker client provides persistent memory)
+        except:
+            print(f'Failed to create a db for the collection {_collection_name}. Exiting...')
+            print(traceback.format_exc())
+            db = None
+
+    if db is None:
+        return None, None, None, {}
+    
     retriever = db.as_retriever(search_kwargs={"k": 5})
+    try:
+        embedding_stats = embedding_stats_deque.popleft()           # get embedding token usage
+    except IndexError:
+        embedding_stats = []        # no embedding stats
 
-    embedding_stats = embedding_stats_deque.popleft()           # get embedding token usage
     _print_message(f'Embedding stats: {embedding_stats}')
     embedding_usage_info_01 = _process_embedding_stats(embedding_stats)
 
-    n_docs = len(docs)
-    _print_message(f'Created embedding. Number of splited documents: {n_docs}')
+    # n_docs in the collection
+    n_docs = len(db.get()['documents'])
+    _print_message(f'Number of documents in the collection: {n_docs}')
+
+    return db, retriever, embedding_func, embedding_usage_info_01
+            
+
+    
+def _get_aspects_content(db, retriever, embedding_func):
+    # create a temporary db for one-time RAG
+
+    # get the documents from the db
+    n_docs = len(db.get()['documents'])
+    _print_message(f'Number of documents in the collection @_get_aspects_content: {n_docs}')
+
 
     # if the text exceeds roughtly 1000 words, then we get the aspects one by one
     # else, we get all aspects at once
@@ -248,10 +325,10 @@ def _get_aspects_content(review:str):
     _print_message(f'LLM aspects content: {aspects_response}')
 
     # clean up
-    db.delete_collection()      # delete the collection from the db
+    # db.delete_collection()      # delete the collection from the db       # for per review, the collection is in-memory. for per game, the collection shd be persistent -> in both case no need to rm the collection
     del db
 
-    return aspects_response, chain_llm_output_json_list, (embedding_usage_info_01, embedding_usage_info_list)
+    return aspects_response, chain_llm_output_json_list, embedding_usage_info_list
 
 def _process_embedding_stats(embedding_stats:list):
     usage_info_sum = {
@@ -264,88 +341,6 @@ def _process_embedding_stats(embedding_stats:list):
         usage_info_sum['completion_tokens'] += usage_info.completion_tokens
 
     return usage_info_sum
-
-def _parsing_json_single(resp:str, aspects_response:dict, aspects:list):
-
-    # gets the first '{' and last '}'
-    first_brace = resp.find('{')
-    last_brace = resp.rfind('}')
-
-    resp_sub = resp[first_brace:] if last_brace == -1 else resp[first_brace:last_brace+1]
-
-    try:
-        resp_sub_json = json.loads(resp_sub)
-        aspects_response.update(resp_sub_json)
-
-    except:
-        print(f'sub response: \'\'\'{resp_sub}\'\'\' is not a JSON. Resort to manual parse...')
-
-
-    for i, aspect in enumerate(aspects):
-        if ((f'\"{aspect}\"' not in resp_sub) and (f'\'{aspect}\'' not in resp_sub)):
-            print(f'aspect: {aspect} not in resp_sub. Retry...')
-            continue
-
-        # manually get the JSON object by finding each aspect in the response
-        # have to consider both single and double quotes
-        # as mistral AI sometimes uses single quotes and sometimes double quotes
-        # consider both single and double quotes, as mistral AI sometimes uses single quotes and sometimes double quotes
-        resp_start = max(resp_sub.find(f'\"{aspect}\"'), resp_sub.find(f'\'{aspect}\'')) + len(f'\"{aspect}\"')
-        value_start = max(resp_sub.find('\"', resp_start + 1), resp_sub.find('\'', resp_start + 1))
-        value_end = max(resp_sub.find('\"', value_start + 1), resp_sub.find('\'', value_start + 1))
-
-        # only update the value if it is empty (i.e. accept only first update for each aspect)
-        if aspects_response[aspect] == '':
-            aspects_response[aspect] = resp_sub[value_start + 1:value_end]
-        
-
-def _parsing_json_multiple(resp:str, open_brace_count:int, aspects_response:dict, aspects:list):
-
-    prev_open_brace = -1
-    prev_close_brace = -1
-
-    for i in range(open_brace_count):
-        # get the ith open brace and the immediate next close brace
-        open_brace = resp.find('{' , prev_open_brace + 1)
-        close_brace = resp.find('}', prev_close_brace + 1)
-
-        # try to get the JSON object
-        resp_sub = resp[open_brace:close_brace+1]
-
-        try:
-            resp_sub_json = json.loads(resp_sub)
-
-            aspects_response.update(resp_sub_json)          # dict is inplace update
-            
-
-            # update the prev_open_brace and prev_close_brace ptrs if successful
-            prev_open_brace = open_brace
-            prev_close_brace = close_brace
-
-            continue
-        except:
-            _print_message(f'sub response: \'\'\'{resp_sub}\'\'\' is not a JSON. Resort to manual parse...')
-
-        # manually get the JSON object by finding each aspect in the response
-        for i, aspect in enumerate(aspects):
-            if ((f'\"{aspect}\"' not in resp_sub) and (f'\'{aspect}\'' not in resp_sub)):
-                print(f'aspect: {aspect} not in resp_sub. Skipping...')
-                continue
-
-            # manually get the JSON object by finding each aspect in the response
-            # have to consider both single and double quotes
-            # as mistral AI sometimes uses single quotes and sometimes double quotes
-            # consider both single and double quotes, as mistral AI sometimes uses single quotes and sometimes double quotes
-            resp_start = max(resp_sub.find(f'\"{aspect}\"'), resp_sub.find(f'\'{aspect}\'')) + len(f'\"{aspect}\"')
-            value_start = max(resp_sub.find('\"', resp_start + 1), resp_sub.find('\'', resp_start + 1))
-            value_end = max(resp_sub.find('\"', value_start + 1), resp_sub.find('\'', value_start + 1))
-
-            if aspects_response[aspect] == '':
-                aspects_response[aspect] = resp_sub[value_start + 1:value_end]
-
-        # update the prev_open_brace and prev_close_brace ptrs
-        prev_open_brace = open_brace
-        prev_close_brace = close_brace
 
 
 def _get_aspects_334(retriever, embedding_func):
@@ -806,7 +801,7 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     is_spam, spam_llm_output_json = _check_spam(review)
     
     if not is_spam:
-        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspects_content(review)
+        aspects_response, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspect_content_per_review(review)
     else:
         aspects_response = None
 
@@ -838,6 +833,7 @@ def get_per_review_analysis(review:str) -> tuple[bool, dict, str]:
     return is_spam, aspect_keywords, aspect_sentiment, tldr, token_usage_breakdown
 
 
+# TODO: move to _llm_rag_utils.py
 def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]], 
                            aspect_sentiment_llm_output_json_list:list, keywords_llm_output_json_list:list, tldr_llm_output_json:dict):
     _sum_total_token = 0
@@ -901,14 +897,153 @@ def _calculate_token_usage(spam_llm_output_json:list, aspects_response_llm_outpu
 
     return token_usage_breakdown
 
-def gen_TLDR_per_game(game_name:str):
+
+def gen_TLDR_per_game(game_name:str, game_steamid:int):
     # step 1: go to chromadb to find the collection with all critic reviews. If not found, return None
-    # step 2: prompt LLm to generate a JSON with a list of keywords per aspect from those critic reviews with RAG
+    # step 2: prompt LLm to generate a JSON with a list of keywords per aspect (or sentences from each aspect) from those critic reviews with RAG
     # step 3: ask for sentiment analysis stats
     # step 4: ask for tm stats
     # step 5: return a TLDR (str) for displaying in the "game page"
 
-    pass
+    aspect_content_per_game, aspects_response_llm_output_json_list, aspects_response_embedding_usage_info = _get_aspect_content_per_game(game_name)
+
+    # skip step 2 to try try first
+
+    # load the reviews from folder
+    # TODO: replace that with the API call
+    dfs = _pergame_tldr._load_sa_results_from_local(game_name, game_steamid)
+
+    # step 3
+    sa_stats, sa_llm_output_json_list = _get_sa_stats(dfs, llm_mistralai)
+
+    # step 4: get top N topics name from BERTopic stats
+    topN_topicnames = _get_tm_top_N_topic_names(dfs['topicFreq'])
+
+    # step 5: the prompt
+    tldr, tldr_llm_output_json = _gen_TLDR_per_game(aspect_content_per_game, sa_stats, topN_topicnames)
+
+    # calculate the prompt usage
+    token_usage_breakdown = _calculate_tldr_per_game_token_usage(
+        aspects_response_llm_output_json_list, aspects_response_embedding_usage_info, sa_llm_output_json_list, tldr_llm_output_json
+    )
+
+    return tldr, token_usage_breakdown
+
+
+def _calculate_tldr_per_game_token_usage(
+        aspects_response_llm_output_json_list:list, aspects_response_embedding_usage_info:tuple[dict, list[dict]],
+        sa_llm_output_json_list:list[dict], tldr_llm_output_json:dict):
+    
+    _sum_total_token = 0
+    _sum_aspect_resp_token = 0
+    _sum_aspect_resp_embedding_token = 0
+    _sum_sa_token = 0
+    _sum_tldr_token = 0
+
+    # calculate aspect response token
+    for aspects_response_llm_output in aspects_response_llm_output_json_list:
+        _token_usage = aspects_response_llm_output.get('token_usage', {})
+        _total_tokens = _token_usage.get('total_tokens', 0)
+        _sum_aspect_resp_token += _total_tokens
+
+    # calculate aspect response embedding token
+    _embedding_usage_info_01, _embedding_usage_info_list = aspects_response_embedding_usage_info
+    _sum_aspect_resp_embedding_token += _embedding_usage_info_01.get('total_tokens', 0)     # the embedding token required to build the in-memory vector db
+    for _embedding_usage_info in _embedding_usage_info_list:
+        _total_tokens = _embedding_usage_info.get('total_tokens', 0)
+        _sum_aspect_resp_embedding_token += _total_tokens
+
+    # calculate sentiment analysis token
+    for sa_llm_output in sa_llm_output_json_list:
+        _token_usage = sa_llm_output.get('token_usage', {})
+        _total_tokens = _token_usage.get('total_tokens', 0)
+        _sum_sa_token += _total_tokens
+    
+    # calculate tldr token
+    _token_usage = tldr_llm_output_json.get('token_usage', {})
+    _total_tokens = _token_usage.get('total_tokens', 0)
+    _sum_tldr_token += _total_tokens
+
+    _sum_total_token = _sum_aspect_resp_token + _sum_aspect_resp_embedding_token + _sum_sa_token + _sum_tldr_token
+
+    token_usage_breakdown = {
+        "total_tokens": _sum_total_token,
+        "aspect_response_tokens": _sum_aspect_resp_token,
+        "aspect_response_embedding_tokens": _sum_aspect_resp_embedding_token,
+        "sentiment_analysis_tokens": _sum_sa_token,
+        "tldr_tokens": _sum_tldr_token
+    }
+
+    return token_usage_breakdown
+
+
+# main functions
+
+def _get_sa_stats(dfs:dict, llm_model):
+    responses = {}
+    llm_output_json_list = []
+
+    assert set(_pergame_tldr.PROMPT_PER_DFS.keys()) <= set(dfs.keys()), f'{set(_pergame_tldr.PROMPT_PER_DFS.keys())} <= {set(dfs.keys())}'
+
+    for df_key in dfs.keys() & _pergame_tldr.PROMPT_PER_DFS.keys():
+        chat_prompt_01 = ChatPromptTemplate.from_messages([
+            ('system', _pergame_tldr.SYSTEM_TEMPLATE),
+            ('human', _pergame_tldr.PROMPT_TEMPLATE),
+        ])
+
+        chain_01 = chat_prompt_01 | llm_model
+
+        try:
+
+            _resp_01 = chain_01.invoke({
+                'df_markdown': dfs[df_key].to_markdown(),
+                'df_specific_task': _pergame_tldr.SPECIFIC_TASK_REQS_PER_DFS[df_key],
+                'description_of_the_table': _pergame_tldr.PROMPT_PER_DFS[df_key],
+            }, config=chain_config)
+
+            responses[df_key] = _resp_01.content
+        except:
+            print(traceback.format_exc())
+            responses[df_key] = 'NA'
+        else:
+            llm_output_json_list.append(latest_llm_output_json)
+            _print_message('LLM result in _get_sa_stats, of {}: {}'.format(df_key, _resp_01))
+
+    return responses, llm_output_json_list
+
+def _get_tm_top_N_topic_names(topicFreq_df:pd.DataFrame, top_N=5):
+    d = topicFreq_df.sort_values(by="Count", ascending=False).head(top_N)
+    # get the topic names
+    topic_names = d['Topic Name'].tolist()
+    return topic_names
+
+
+def _gen_TLDR_per_game(aspect_content_per_game:dict, sa_stats:dict, topN_topicnames:list[str]):
+    chain_01_llm_output_json = None
+
+    chat_prompt_01 = ChatPromptTemplate.from_messages([
+        ('system', _prompts.SYSTEM_TEMPLATE),
+        ('human', _pergame_tldr.TLDR_PERGAME_PROMPT_TEMPLATE),
+    ])
+
+    chain_01 = chat_prompt_01 | llm_mistralai
+
+    try:
+        _resp_01 = chain_01.invoke({
+            'aspect_content': aspect_content_per_game,
+            'sentiment_content': sa_stats,
+            'topic_names': topN_topicnames
+        }, config=chain_config)
+
+        resp_01 = _resp_01.content
+    except:
+        print(traceback.format_exc())
+        return None, chain_01_llm_output_json
+    else:
+        chain_01_llm_output_json = latest_llm_output_json
+        _print_message(f'LLM result in _gen_TLDR_per_game: {resp_01}')
+    
+    return resp_01, chain_01_llm_output_json
 
 
 if __name__ == "__main__":
@@ -1126,7 +1261,8 @@ That said, the story is (un)surprisingly good and new mechanic's are amazing, I 
 Be patience and wait for the sale.'''
 
 
-    # change the sample to test diff reviews
+    # change the sample to test diff reviews (per review testing)
+
     temp_sample = critic_review_01
 
     print('The review is:',temp_sample)
@@ -1149,4 +1285,20 @@ Be patience and wait for the sale.'''
     print('Token usage breakdown:', token_usage_breakdown)
     print('\n\n')
     print('-'*20 + 'END' + '-'*20)
+
+
+
+
+    # per game TLDR testing
+    # game_name = 'starfield'
+    # game_steamid = 1716740
+
+    # pergame_tldr, token_usage_breakdown = gen_TLDR_per_game(game_name, game_steamid)
+
+    # print('Game:', game_name)
+    # print('TLDR:', pergame_tldr)
+    # print('\n')
+    # print('Token usage breakdown:', token_usage_breakdown)
+    # print('\n\n')
+    # print('-'*20 + 'END' + '-'*20)
 
