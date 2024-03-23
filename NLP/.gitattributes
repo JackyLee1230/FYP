@@ -4,14 +4,4 @@ sa/bert-finetune_240k_bal/** filter=lfs diff=lfs merge=lfs -text
 llm_rag/Mixtral-8x7B-Instruct-v0.1_tokenizer/** filter=lfs diff=lfs merge=lfs -text
 
 # chromadb storage (critic reviews for TLDR per game)
-llm_rag/chromadb_storage/28f7822d-25d5-4717-b9e6-32f20ba24f1d filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/4422285a-a7f4-4718-ba77-1ad08a5c8522 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/47e8bf2c-6206-4796-99dd-e8d045cd940f filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/82c77b27-5877-430c-8313-cf364bff0740 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/862026a5-1570-4614-8edf-a67b916e880f filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/15adb7c0-ba0a-470c-88cb-7be8d2c86861 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/870512f8-f32f-4c2b-8194-5926f6a4ac61 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/9bf92cf5-1e24-4710-8501-1c99297d7f49 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/9f50349f-c840-4089-8177-46eb4ac374ae filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/chroma.sqlite3 filter=lfs diff=lfs merge=lfs -text
-llm_rag/chromadb_storage/d3a7bd94-e193-4e37-a41a-9eb82e7e4d3a filter=lfs diff=lfs merge=lfs -text
+llm_rag/chromadb_storage/** filter=lfs diff=lfs merge=lfs -text
