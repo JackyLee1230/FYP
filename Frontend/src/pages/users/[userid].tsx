@@ -297,6 +297,15 @@ export default function User({ user }: UserPageProps) {
       };
     }
   }, [isInitialLoading, isReviewLoading, observerTarget, reachEnd]);
+  
+  // when user changes, reset the reviews
+  useEffect(() => {
+    setReviews(null);
+    setPageNum(1);
+    setReachEnd(false);
+    setIsInitialLoading(true);
+  }, [user]);
+
 
   if (user == null) {
     return (

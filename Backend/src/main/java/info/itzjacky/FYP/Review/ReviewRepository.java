@@ -92,14 +92,26 @@ public interface ReviewRepository extends JpaRepository<Review,Integer>{
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 order by r.created_at desc")
     Page<Review> findReviewsByGameIdPagedSortByCreatedAt(Integer gameId, Pageable pageable);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and (r.is_spam = false or r.is_spam is null) order by r.created_at desc")
+    Page<Review> findReviewsByGameIdPagedSpamFilteredSortByCreatedAt(Integer gameId, Pageable pageable);
+
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 order by r.score desc")
     Page<Review> findReviewsByGameIdPagedSortByScore(Integer gameId, Pageable pageable);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and (r.is_spam = false or r.is_spam is null) order by r.score desc")
+    Page<Review> findReviewsByGameIdPagedSpamFilteredSortByScore(Integer gameId, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 order by r.created_at desc")
     Page<Review> findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(Integer gameId, Boolean Recommended, Pageable pageable);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 and (r.is_spam = false or r.is_spam is null) order by r.created_at desc")
+    Page<Review> findReviewsByGameIdAndRecommendedPagedSpamFilteredSortByCreatedAt(Integer gameId, Boolean Recommended, Pageable pageable);
+
     @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 order by r.score desc")
     Page<Review> findReviewsByGameIdAndRecommendedPagedSortByScore(Integer gameId, Boolean Recommended, Pageable pageable);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM review r WHERE r.game_id = ?1 and r.recommended = ?2 and (r.is_spam = false or r.is_spam is null) order by r.score desc")
+    Page<Review> findReviewsByGameIdAndRecommendedPagedSpamFilteredSortByScore(Integer gameId, Boolean Recommended, Pageable pageable);
 
     @Query("SELECT r FROM Review r WHERE r.reviewedGame.id = ?1 and r.sentiment = ?2")
     List<Review> findReviewsByGameIdAndSentiment(Integer gameId, Integer sentiment);

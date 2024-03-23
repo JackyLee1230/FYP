@@ -8,16 +8,19 @@ import {
   styled,
   Button,
   ButtonBase,
+  Tooltip,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentIcon from "@mui/icons-material/Comment";
+import WarningIcon from '@mui/icons-material/Warning';
 import ImageIcon from "@mui/icons-material/Image";
 import { getReviewColor } from "@/utils/DynamicScore";
 import { format } from "date-fns";
 import { playTimeString } from "@/utils/Other";
+
 
 type GameReviewCardProps = {
   review: GameReview;
@@ -45,6 +48,11 @@ const StyledImageIcon = styled(ImageIcon)(({ theme }) => ({
   fontSize: 24,
 }));
 
+const StyledWarningIcon = styled(WarningIcon)(({ theme }) => ({
+  color: theme.palette.warning.main,
+  fontSize: 18,
+}));
+
 function GameReviewCard({
   review,
   fullWidth,
@@ -55,6 +63,7 @@ function GameReviewCard({
   return (
     <Box
       sx={{
+        position: "relative",
         borderRadius: "12px",
         bgcolor: "background.paper",
         display: "flex",
@@ -382,6 +391,28 @@ function GameReviewCard({
           </Box>
         </Box>
       </Box>
+
+      {review?.isSpam && (
+        <Tooltip title="This review is flagged as possible spam " arrow>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "4px",
+              right: "4px",
+
+              display: "flex",
+              padding: "6px",
+              borderRadius: "50%",
+              border: "2px solid",
+              borderColor: "warning.main",
+
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+            }}
+          >
+            <StyledWarningIcon />
+          </Box>
+        </Tooltip>
+      )}
     </Box>
   );
 }

@@ -387,22 +387,29 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
               />
             </Tooltip>
           </Box>
-          <CustomInput 
-            value={comment}
-            placeholder="Write a review..."
-            onChange={(e) => setComment(e.target.value)}
-            multiline 
-            fullWidth
-            inputProps={{ maxLength: 10000 }}
-            sx={{
-              '& .MuiInputBase-input': {
-                width: "100%",
-                bgcolor: "white",
-                resize: "vertical",
-                minHeight: "160px",
-              },
-            }}
-          />
+          <Box sx={{position: "relative", width: "100%"}}>
+            <CustomInput 
+              value={comment}
+              placeholder="Write a review..."
+              onChange={(e) => setComment(e.target.value)}
+              multiline 
+              fullWidth
+              inputProps={{ maxLength: 10000 }}
+              sx={{
+                '& .MuiInputBase-input': {
+                  width: "100%",
+                  bgcolor: "white",
+                  resize: "vertical",
+                  minHeight: "160px",
+                },
+              }}
+            />
+            <Box sx={{position: "absolute", right: "8px", bottom: "0px"}}>
+              <Typography variant="overline" color="text.secondary">
+                {comment.length}/10000
+              </Typography>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -661,22 +668,29 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
             </Box>
   
           </Box>
-          <CustomInput 
-            value={comment}
-            placeholder="Write a review..."
-            onChange={(e) => setComment(e.target.value)}
-            multiline 
-            fullWidth
-            inputProps={{ maxLength: 10000 }}
-            sx={{
-              '& .MuiInputBase-input': {
-                width: "100%",
-                bgcolor: "white",
-                resize: "vertical",
-                minHeight: "220px",
-              },
-            }}
-          />
+          <Box sx={{position: "relative", width: "100%"}}>
+            <CustomInput 
+              value={comment}
+              placeholder="Write a review..."
+              onChange={(e) => setComment(e.target.value)}
+              multiline 
+              fullWidth
+              inputProps={{ maxLength: 10000 }}
+              sx={{
+                '& .MuiInputBase-input': {
+                  width: "100%",
+                  bgcolor: "white",
+                  resize: "vertical",
+                  minHeight: "220px",
+                },
+              }}
+            />
+            <Box sx={{position: "absolute", right: "8px", bottom: "0px"}}>
+              <Typography variant="overline" color="text.secondary">
+                {comment.length}/10000
+              </Typography>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",

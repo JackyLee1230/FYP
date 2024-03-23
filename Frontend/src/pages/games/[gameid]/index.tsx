@@ -21,9 +21,11 @@ import {
   Box,
   Button,
   ButtonBase,
+  Checkbox,
   CircularProgress,
   Divider,
   FormControl,
+  FormControlLabel,
   Grid,
   MenuItem,
   Modal,
@@ -100,6 +102,7 @@ const StyledBrokenImageIcon = styled(BrokenImageIcon)(({ theme }) => ({
 const fetchReview = async (
   gameId: string,
   recommended: boolean | null,
+  filterSpam: boolean | null,
   sortBy: "recency" | "score"
 ) => {
   let review = null;
@@ -110,6 +113,7 @@ const fetchReview = async (
     pageNum: 0,
     recommended: recommended,
     sortBy: sortBy,
+    filterSpam: filterSpam,
   };
   try {
     const response = await axios.post(apiAddress, body, {
@@ -150,6 +154,13 @@ function GamePage({ game, errorMessage }: GamePageProps) {
   const [wishlistButtonDisabled, setWishlistButtonDisabled] =
     useState<boolean>(false);
   const [editEnabled, setEditEnabled] = useState<boolean>(false);
+  const [filterSpam, setFilterSpam] = useState<boolean>(false);
+
+  const handleFilterSpamChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFilterSpam(event.target.checked);
+  };
 
   const fetchUserReview = useCallback(async () => {
     if (game && user) {
@@ -181,6 +192,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
     if (!isUserLoading) {
       fetchUserReview();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchUserReview, user, game, token]);
 
   const handleReviewTypeChange = (
@@ -194,12 +206,12 @@ function GamePage({ game, errorMessage }: GamePageProps) {
     async (recommended: boolean | null) => {
       if (game) {
         setIsReviewLoading(true);
-        const reviews = await fetchReview(game.id, recommended, sortBy);
+        const reviews = await fetchReview(game.id, recommended, filterSpam, sortBy);
         setReviews(reviews);
         setIsReviewLoading(false);
       }
     },
-    [game, sortBy]
+    [filterSpam, game, sortBy]
   );
 
   const favouriteGame = async (favourite: number, access_token: string) => {
@@ -1307,7 +1319,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                     color="text.secondary"
                     sx={{ fontWeight: 500 }}
                   >
-                    {`You can edit your review after ${Math.round((7 * 24 * 60 * 60 * 1000 - (Date.now() - Date.parse(userReview.editedAt))) / (24 * 60 * 60 * 1000))} days`}
+                    {`You can edit your review in ${Math.round((7 * 24 * 60 * 60 * 1000 - (Date.now() - Date.parse(userReview.editedAt))) / (24 * 60 * 60 * 1000))} days`}
                   </Typography>
                 ) : (
                   <Button
@@ -1369,7 +1381,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               alignItems: "center",
               gap: "12px",
               
-              [theme.breakpoints.down("sm")]: {
+              [theme.breakpoints.down("md")]: {
                 flexDirection: "column",
                 gap: "4px",
                 alignItems: "flex-end",
@@ -1390,19 +1402,35 @@ function GamePage({ game, errorMessage }: GamePageProps) {
               <Tab label="Positive" />
               <Tab label="Negative" />
             </Tabs>
-            <FormControl sx={{ minWidth: 124 }}>
-              <Select
-                color="secondary"
-                value={sortBy}
-                onChange={(event) =>
-                  setSortBy(event.target.value as "recency" | "score")
-                }
-                autoWidth={false}
-              >
-                <MenuItem value="recency">Recency</MenuItem>
-                <MenuItem value="score">Score</MenuItem>
-              </Select>
-            </FormControl>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                gap: "12px",
+                [theme.breakpoints.down("md")]: {
+                  justifyContent: "space-between",
+                  width: "100%",
+                  gap: "4px",
+                },
+              }}
+            >
+              <FormControlLabel sx={{ minWidth: 125 }} value={filterSpam} control={<Checkbox color="secondary" checked={filterSpam} onChange={handleFilterSpamChange} />} label="Filter Spam" labelPlacement="start" />
+              <FormControl sx={{ minWidth: 124 }}>
+                <Select
+                  color="secondary"
+                  value={sortBy}
+                  onChange={(event) =>
+                    setSortBy(event.target.value as "recency" | "score")
+                  }
+                  autoWidth={false}
+                >
+                  <MenuItem value="recency">Recency</MenuItem>
+                  <MenuItem value="score">Score</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </Box>
 
           {isReviewLoading ? (

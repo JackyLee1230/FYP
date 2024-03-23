@@ -5,8 +5,10 @@ import { GamePageProps, GameReview } from "@/type/game";
 import {
   Box,
   Button,
+  Checkbox,
   Divider,
   FormControl,
+  FormControlLabel,
   Grid,
   MenuItem,
   Pagination,
@@ -67,6 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const fetchReview = async (
   gameId: string,
   recommended: boolean | null,
+  filterSpam: boolean,
   sortBy: "recency" | "score",
   reviewsPerPage: number,
   pageNum: number
@@ -80,6 +83,7 @@ const fetchReview = async (
     pageNum: pageNum,
     recommended: recommended,
     sortBy: sortBy,
+    filterSpam: filterSpam,
   };
   try {
     const response = await axios.post(apiAddress, body, {
@@ -111,6 +115,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
   const [pageNum, setPageNum] = useState<number>(0);
   const [numberOfReviews, setNumberOfReviews] = useState<number | null>(null);
   const [isReviewLoading, setIsReviewLoading] = useState<boolean>(false);
+  const [filterSpam, setFilterSpam] = useState<boolean>(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -124,6 +129,11 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
   ) => {
     scrollToTop();
     setPageNum(value - 1);
+  };
+
+  const handleFilterSpamChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPageNum(0);
+    setFilterSpam(event.target.checked);
   };
 
   const handleReviewTypeChange = (
@@ -141,6 +151,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
         const reviews = await fetchReview(
           game?.id,
           recommended,
+          filterSpam,
           sortBy,
           reviewsPerPage,
           pageNum
@@ -150,7 +161,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
         setIsReviewLoading(false);
       }
     },
-    [game?.id, pageNum, reviewsPerPage, sortBy]
+    [filterSpam, game?.id, pageNum, reviewsPerPage, sortBy]
   );
 
   useEffect(() => {
@@ -295,6 +306,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
                   variant={isMobile ? "subtitle1" : "h6"}
                   component="div"
                   sx={{
+                    whiteSpace: "nowrap",
                     color: "text.secondary",
                     [theme.breakpoints.down("sm")]: {
                       textAlign: "left",
@@ -394,6 +406,7 @@ function GameReviewPage({ game, errorMessage }: GamePageProps) {
               <Tab label="Negative" />
             </Tabs>
           )}
+          <FormControlLabel sx={{ minWidth: 125 }} value={filterSpam} control={<Checkbox color="secondary" checked={filterSpam} onChange={handleFilterSpamChange} />} label="Filter Spam" labelPlacement="start" />
           {isReviewLoading || numberOfReviews == null ? (
             <Grid container rowSpacing={{ xs: 2, lg: 4 }} columnSpacing={2}>
               <Grid item xs={12} lg={6}>

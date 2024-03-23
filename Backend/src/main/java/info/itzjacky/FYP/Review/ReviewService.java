@@ -329,9 +329,17 @@ public class ReviewService {
         if (reviewRequest.getRecommended() == null) {
             Page<Review> r = null;
             if (Objects.equals(reviewRequest.getSortBy(), "recency")){
-                r = reviewRepository.findReviewsByGameIdPagedSortByCreatedAt(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getFilterSpam() != null && reviewRequest.getFilterSpam() == true) {
+                    r = reviewRepository.findReviewsByGameIdPagedSpamFilteredSortByCreatedAt(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByGameIdPagedSortByCreatedAt(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             } else {
-                r = reviewRepository.findReviewsByGameIdPagedSortByScore(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getFilterSpam() != null && reviewRequest.getFilterSpam() == true) {
+                    r = reviewRepository.findReviewsByGameIdPagedSpamFilteredSortByScore(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByGameIdPagedSortByScore(reviewRequest.getGameId(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
 
             for (Review review : r.getContent()){
@@ -349,10 +357,18 @@ public class ReviewService {
         } else {
             Page<Review> r = null;
             if (Objects.equals(reviewRequest.getSortBy(), "recency")) {
-                r =  reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getFilterSpam() != null && reviewRequest.getFilterSpam() == true) {
+                    r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSpamFilteredSortByCreatedAt(reviewRequest.getGameId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByCreatedAt(reviewRequest.getGameId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
             else {
-                r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByScore(reviewRequest.getGameId(),reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                if (reviewRequest.getFilterSpam() != null && reviewRequest.getFilterSpam() == true) {
+                    r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSpamFilteredSortByScore(reviewRequest.getGameId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                } else {
+                    r = reviewRepository.findReviewsByGameIdAndRecommendedPagedSortByScore(reviewRequest.getGameId(), reviewRequest.getRecommended(), PageRequest.of(reviewRequest.getPageNum(), reviewRequest.getReviewsPerPage()));
+                }
             }
 
             for (Review review : r.getContent()){

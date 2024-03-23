@@ -14,6 +14,7 @@ import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import ForumIcon from "@mui/icons-material/Forum";
 import HelpIcon from "@mui/icons-material/Help";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import WarningIcon from '@mui/icons-material/Warning';
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import {
@@ -140,6 +141,14 @@ const StyledThumbDownIcon = styled(ThumbDownIcon)(({ theme }) => ({
 
 const StyledHelpIcon = styled(HelpIcon)(({ theme }) => ({
   color: theme.palette.info.main,
+  fontSize: 24,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
+}));
+
+const StyledWarningIcon = styled(WarningIcon)(({ theme }) => ({
+  color: theme.palette.warning.main,
   fontSize: 24,
   [theme.breakpoints.down("sm")]: {
     fontSize: 16,
@@ -388,22 +397,122 @@ function GamePage({
     </Box>,
   ];
 
-  function displayAspects(aspects: string): string {
+  const DisplayAspects = (aspects: string) => {
     let aspectsArray = JSON.parse(aspects);
-    let result = '';
 
-    for (let aspect in aspectsArray) {
-      if (aspect !== 'isSpam' && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
-          let keywords = aspectsArray[aspect].join(', ');
-          result += `${aspect}: ${keywords}.\n`;
-      }
+    if(!aspectsArray || aspectsArray.length === 0 || aspectsArray['isSpam'] === true) {
+      return (
+        <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+          Not Available
+        </Typography>
+      )
     }
 
-    if(result === '') {
-      return "Not Available";
-    }
+    let aspectSentiment = aspectsArray['sentiment'];
 
-    return result.trim(); 
+    if (aspectSentiment) {
+      let sortedAspects = Object.keys(aspectSentiment).sort((a, b) => {
+        if (aspectSentiment[a] === 'Positive') {
+          return -1;
+        } else if (aspectSentiment[a] === 'Negative' && aspectSentiment[b] !== 'Positive') {
+          return -1;
+        } else if (aspectSentiment[a] === 'NA' && aspectSentiment[b] !== 'Positive' && aspectSentiment[b] !== 'Negative') {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          {sortedAspects.map((aspect) => {
+            if (aspect != "overall" && aspect != "sentiment" && aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
+              return (
+                <Box 
+                  key={aspect}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0px",
+                    alignItems: "flex-start",
+                    width: "100%",
+                  }}
+                >
+                  <Typography key={aspect} variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment[aspect] === "Negative" ? "error.main" : "success.main"}>
+                    {aspect}:
+                  </Typography>
+                  <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspectsArray[aspect].join(', ')}
+                  </Typography>
+                </Box>
+              );
+            }
+          })}
+          {aspectsArray["overall"] && aspectsArray["overall"].length > 0 && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+                alignItems: "flex-start",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment["Overall"] === "Negative" ? "error.main" : "success"}>
+                Overall:
+              </Typography>
+              <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                {aspectsArray["overall"].join(', ')}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      );
+    } else{
+      return(
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          {Object.keys(aspectsArray).map((aspect) => {
+            if (aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
+              return (
+                <Box 
+                  key={aspect}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0px",
+                    alignItems: "flex-start",
+                    width: "100%",
+                  }}
+                >
+                  <Typography key={aspect} variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspect}:
+                  </Typography>
+                  <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
+                    {aspectsArray[aspect].join(', ')}
+                  </Typography>
+                </Box>
+              );
+            }
+          })}
+        </Box>
+      )
+    }
   }
 
   return (
@@ -774,10 +883,31 @@ function GamePage({
               >
                 This section is generated by CritiQ automatically
               </Typography>
-              <Tooltip title="This section is not part of the review. It is here to help you understand the review better.">
+              <Tooltip title="The content of this section may not be accurate, please refer to the review for more information.">
                 <StyledHelpIcon />
               </Tooltip>
             </Box>
+            {review?.isSpam && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  alignSelf: "center",
+                }}
+              >
+                <Typography
+                  variant={isTablet ? "caption" : "overline"}
+                  color="error.main"
+                  fontWeight={700}
+                >
+                  Possible Spam
+                </Typography>
+                <Tooltip title="Due to the content of the review, our system has flagged this review as possible spam.">
+                  <StyledWarningIcon />
+                </Tooltip>
+              </Box>
+            )}
             <Collapse
               in={showMLSummaries}
               sx={{
@@ -909,13 +1039,7 @@ function GamePage({
                     >
                       Key Words:
                     </Typography>
-                    <Typography
-                      variant={isTablet ? "subtitle1" : "h6"}
-                      color="text.secondary"
-                      sx={{ whiteSpace: "pre-wrap" }}
-                    >
-                      {review.aspects != null ? displayAspects(review.aspects) : "Not Available"}
-                    </Typography>
+                    {DisplayAspects(review.aspects)}
                   </Box>
                   <Box
                     sx={{
