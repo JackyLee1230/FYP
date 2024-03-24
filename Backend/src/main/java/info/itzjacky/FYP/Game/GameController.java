@@ -652,6 +652,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             jsonObject.put("percentile", game.getPercentile());
             jsonObject.put("reviewedPlatform", reviewedPlatform);
             jsonObject.put("playTime", playTime);
+            jsonObject.put("topicFrequency", topicFreq);
 
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
