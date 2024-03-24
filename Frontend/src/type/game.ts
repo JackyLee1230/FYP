@@ -84,6 +84,8 @@ export type GameReviewPageProps = {
 };
 
 export type GameAnalytic = {
+  reviewedPlatform: Record<string, number>;
+  playTime: Record<string, number>;
   favouriteByAge: Record<string, number>,
   recommendedReviews: Record<string, number>,
   description: string,

@@ -479,6 +479,21 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     count: gameAnalytics.favouriteByGender[gender]
   }))
 
+  const reviewdPlatformData: Datum[] = Object.keys(gameAnalytics.reviewedPlatform).map(platform => ({
+    id: platform,
+    label: platform,
+    value: gameAnalytics.reviewedPlatform[platform]
+  }));
+
+  //{1-20 Hours: 4, 50-100 Hours: 0, 100+ Hours: 1, <1 Hour: 0, 20-50 Hours: 0}
+  const playTimeData: BarDatum[] = [
+    { playTime: "<1", count: gameAnalytics.playTime["<1 Hour"] ?? 0},
+    { playTime: "1-20", count: gameAnalytics.playTime["1-20 Hours"] ?? 0},
+    { playTime: "20-50", count: gameAnalytics.playTime["20-50 Hours"] ?? 0},
+    { playTime: "50-100", count: gameAnalytics.playTime["50-100 Hours"] ?? 0},
+    { playTime: "100+", count: gameAnalytics.playTime["100+ Hours"] ?? 0},
+  ]
+
   return (
     <div>
       <Head>
@@ -902,73 +917,216 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               Reviews
             </Typography>
           </Divider>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "12px",
-              bgcolor: "background.paper",
-              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-            }}
-          >
-            <Typography
-              variant={isTablet? "subtitle1" : "h6"}
-              color="text.primary"
-              sx={{
-                textAlign: "center",
-                fontWeight: 500,
-                marginTop: "12px",
-              }} 
-            >
-              Distribution of Review Lengths
-            </Typography>
-            <Box
-              sx={{
-                width: "100%",
-                height: "425px",
-                [theme.breakpoints.down("md")]: {
-                  height: "350px",
-                },
-                [theme.breakpoints.down("sm")]: {
-                  height: "300px",
-                },
-              }}
-            >
-              <ResponsiveBar
-                  theme={nivoTheme}
-                  data={reviewLengthData}
-                  keys={['count']}
-                  indexBy="reviewLength"
-                  margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
-                  padding={0.3}
-                  valueScale={{ type: 'linear' }}
-                  indexScale={{ type: 'band', round: true }}
-                  colors={{ scheme: 'accent' }}
-                  borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                  axisTop={null}
-                  axisRight={null}
-                  axisBottom={{
-                    tickSize: 8,
-                    tickPadding: 4,
-                    legend: 'Review Length',
-                    legendPosition: 'middle',
-                    legendOffset: 48,
-                    tickRotation: isTablet ? -25 : 0
+          <Grid container spacing={2} columns={12}>
+            <Grid xs={12}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Review Lengths
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
                   }}
-                  axisLeft={{
-                    tickSize: 8,
-                    tickPadding: 4,
-                    tickRotation: 0,
+                >
+                  <ResponsiveBar
+                      theme={nivoTheme}
+                      data={reviewLengthData}
+                      keys={['count']}
+                      indexBy="reviewLength"
+                      margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                      padding={0.3}
+                      valueScale={{ type: 'linear' }}
+                      indexScale={{ type: 'band', round: true }}
+                      colors={{ scheme: 'accent' }}
+                      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                      axisTop={null}
+                      axisRight={null}
+                      axisBottom={{
+                        tickSize: 8,
+                        tickPadding: 4,
+                        legend: 'Review Length',
+                        legendPosition: 'middle',
+                        legendOffset: 48,
+                        tickRotation: isTablet ? -25 : 0
+                      }}
+                      axisLeft={{
+                        tickSize: 8,
+                        tickPadding: 4,
+                        tickRotation: 0,
+                      }}
+                      labelSkipWidth={12}
+                      labelSkipHeight={12}
+                      labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                      animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={4}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Platforms
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
                   }}
-                  labelSkipWidth={12}
-                  labelSkipHeight={12}
-                  labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                  animate={true}
-              />
-            </Box>
-          </Box>
+                >
+                  <ResponsivePie
+                    theme={nivoTheme}
+                    data={reviewdPlatformData}
+                    innerRadius={0.6}
+                    margin={{ top: 12, right: 24, bottom: 60, left: 24 }}
+                    padAngle={1.8}
+                    cornerRadius={6}
+                    activeOuterRadiusOffset={8}
+                    colors={{ scheme: 'nivo' }}
+                    borderWidth={1}
+                    borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                    enableArcLinkLabels={isTablet? true : false}
+                    arcLabelsSkipAngle={10}
+                    legends={[
+                      {
+                          anchor: 'bottom',
+                          direction: 'row',
+                          justify: false,
+                          translateX: 0,
+                          translateY: 36,
+                          itemsSpacing: 0,
+                          itemWidth: 100,
+                          itemHeight: 18,
+                          itemTextColor: theme.palette.text.primary,
+                          itemDirection: 'left-to-right',
+                          itemOpacity: 1,
+                          symbolSize: 18,
+                          symbolShape: 'circle',
+                      }
+                    ]}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+            <Grid xs={12} md={8}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "12px",
+                  bgcolor: "background.paper",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                }}
+              >
+                <Typography
+                  variant={isTablet? "subtitle1" : "h6"}
+                  color="text.primary"
+                  sx={{
+                    textAlign: "center",
+                    fontWeight: 500,
+                    marginTop: "12px",
+                  }} 
+                >
+                  Distribution of Play Times
+                </Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "425px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "350px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "300px",
+                    },
+                  }}
+                >
+                  <ResponsiveBar
+                    theme={nivoTheme}
+                    data={playTimeData}
+                    keys={['count']}
+                    indexBy="playTime"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: 'linear' }}
+                    indexScale={{ type: 'band', round: true }}
+                    colors={{ scheme: 'paired' }}
+                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: 'Time (Hours)',
+                      legendPosition: 'middle',
+                      legendOffset: 48,
+                      tickRotation: 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                      legendOffset: -40
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    animate={true}
+                  />
+                </Box>
+              </Box>
+            </Grid> 
+          </Grid>
         </Box>
 
         <Box
@@ -1172,7 +1330,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     colors={{ scheme: 'dark2' }}
                     borderWidth={1}
                     borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-                    enableArcLinkLabels={false}
+                    enableArcLinkLabels={true}
                     arcLabelsSkipAngle={10}
                     legends={[
                       {
