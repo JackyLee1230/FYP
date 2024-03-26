@@ -8,6 +8,7 @@ This is a Final Year Project (FYP) for the BEng(CompSci) at the University of Ho
 
 - [Getting Started](#getting-started)
   - [Backend](#backend)
+  - [Frontend](#frontend)
   - [Technologies](#technologies)
   - [Project Structure](#project-structure)
   - [Contributing](#contributing)
@@ -18,9 +19,7 @@ This is a Final Year Project (FYP) for the BEng(CompSci) at the University of Ho
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-<!-- backend section, make it a sub-section of getting started -->
-
-### Backend
+## Backend
 
     Backend can be hosted locally or on a cloud platform. The backend is built using Spring Boot.
     If hosted on a Virtual Machine/VPS, make sure to open the required ports.
@@ -28,15 +27,26 @@ These instructions will get you a copy of the project up and running on your loc
     HTTPS can be enabled by using a reverse proxy such as Nginx or Apache.
     Our server is hosted on a DigitalOcean Droplet and we use Nginx as the reverse proxy.
 
+- To run the Spring Boot App Locally, please use the **LOCAL** profile which will use the application-local.properties file. The following options can be used.
+
+  - VS Code Extension: Spring Boot Dashboard
+  - IntelliJ IDEA's Run/Debug Configuration
+
+  * _**Running in Local Profile will disable the SSL Requirement**_
+
+- Dockerfile and Jenkinsfile are provided for self-deployment and CI/CD.
+
 #### Properties File:
 
-Modifies the properties below in the application.properties file.
+Modifies the properties below in the **application.properties** file.
 
 ```properties
 SSL Certificate:
   # Use the Key Store Password used while creating the keystore with Certbot
+  # See 1. SELF SIGNING (Let's Encrypt and Certbot)
   server.ssl.key-store-password=
-Gmail (For Email Verification and Authentication):
+Email (Gmail is used here for Email Verification and Authentication):
+  # If Gmail is used, create an app password instead of using the account password
   spring.mail.username=
   spring.mail.password=
   spring.mail.host=
@@ -46,8 +56,11 @@ Gmail (For Email Verification and Authentication):
 JWT (Spring Security):
   application.security.jwt.secret-key=
 MySQL Database:
+  # If Digital Ocean's Managed Database is used, sql_require_primary_key should be disabled
+  # https://www.digitalocean.com/community/questions/how-to-disable-sql_require_primary_key-in-digital-ocean-manged-database-for-mysql
   spring.datasource.username=
   spring.datasource.password=
+  # use a JDBC URL for the MySQL database
   spring.datasource.url=
 S3 Bucket (Digital Ocean Space is used, AWS S3 can also be used direcyly):
   do.space.key=
@@ -92,6 +105,42 @@ server.ssl.keyAlias=tomcatåå
 
 #### 2. Use a Cloud Hosting Solution that provides HTTPS
 
+## Frontend
+
+The frontend can be deployed to Vercel or ran locally.
+Modifies the properties below in the **.env** and **.env.production** file.
+
+```properties
+S3 Bucket (Digital Ocean Space is used, AWS S3 can also be used direcyly):
+  NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX=
+  NEXT_PUBLIC_GAMES_STORAGE_HOSTNAME=
+JWT Key:
+  NEXT_PUBLIC_JWT_KEY=
+Backend URL:
+  NEXT_PUBLIC_BACKEND_PATH_PREFIX=
+```
+
+### Local Run
+
+NPM/Yarn is required. Bun is not supported as of writing.</br>
+
+- Development Server/Mode
+
+  ```bash
+  npm run dev
+  ```
+
+- Production Build
+
+  ```bash
+  npm run build
+  npm start
+  ```
+
+### Vercel
+
+- Fork this repository and edit the above environment variables and deploy it to Vercel.
+
 ## Technologies
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
@@ -112,13 +161,12 @@ A brief explanation of the project's directory structure.
 - `SaveToDB.py`: Python script to save data to the database.
 - `steam-review-scraper.ipynb`: Jupyter notebook for scraping Steam reviews.
 
-## Contributing
-
-Details about how to contribute to this project.
-
 ## License
 
-Details about the license.
+This project is muti-licensed under Apache License 2.0 and TBD.
+Please see LICENSE.md for more detail
+
+`SPDX-License-Identifier: Apache-2.0`
 
 ## Contact
 
