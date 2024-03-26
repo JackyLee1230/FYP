@@ -28,6 +28,41 @@ These instructions will get you a copy of the project up and running on your loc
     HTTPS can be enabled by using a reverse proxy such as Nginx or Apache.
     Our server is hosted on a DigitalOcean Droplet and we use Nginx as the reverse proxy.
 
+#### Properties File:
+
+Modifies the properties below in the application.properties file.
+
+```properties
+SSL Certificate:
+  # Use the Key Store Password used while creating the keystore with Certbot
+  server.ssl.key-store-password=
+Gmail (For Email Verification and Authentication):
+  spring.mail.username=
+  spring.mail.password=
+  spring.mail.host=
+  spring.mail.port=
+  # URL is used as URL prefix for authentication related email
+  application.web.url=https://critiq.itzjacky.info
+JWT (Spring Security):
+  application.security.jwt.secret-key=
+MySQL Database:
+  spring.datasource.username=
+  spring.datasource.password=
+  spring.datasource.url=
+S3 Bucket (Digital Ocean Space is used, AWS S3 can also be used direcyly):
+  do.space.key=
+  do.space.secret=
+  do.space.endpoint=
+  do.space.region=
+  do.space.bucket=
+RabbitMQ Host and Port:
+  spring.rabbitmq.host=
+  spring.rabbitmq.port=
+  spring.rabbitmq.username=
+  spring.rabbitmq.password=
+  # Modifies the Queue and Exchange name as needed
+```
+
 #### 1. SELF SIGNING (Let's Encrypt and Certbot)
 
 A VALID DOMAIN IS REQUIRED FOR SELF-SIGNING. </br>
