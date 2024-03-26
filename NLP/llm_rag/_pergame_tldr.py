@@ -1,5 +1,6 @@
 from pathlib import Path
 import pickle, traceback, sys, os, json
+import requests
 
 import pandas as pd
 import numpy as np
@@ -159,6 +160,127 @@ def _load_sa_results_from_local(game_name:str, game_steamid:int):
 
     return dfs
 
+# supported game and their id on the fyp platform
+GAME_NAME_TO_ID = {
+    'Counter-Strike 2':1,
+    'Monster Hunter World':4,
+    'Cyberpunk 2077': 5,
+    'Cyberpunk 2077 Phantom Liberaty': 7,
+    'Starfield': 8,
+    'Dota 2': 9,
+    'Monster Hunter World: Iceborne': 30
+}
+
+# just store in the script is OK
+DOMAIN = 'https://critiqbackend.itzjacky.info'
+PORT = 9000
+GENDERS = ['MALE', 'FEMALE', "OTHER", "UNDISCLOSED", "N/A"]     # shd be consistent with the API & sqldb
+
+def _load_sa_results_from_api(game_id:int):
+
+    api = f'{DOMAIN}:{PORT}/api/game/gameAnalytic'
+
+    # send the data to the backend
+    try:
+        req = requests.post(api, json={"id":game_id})
+        return_json = req.json()
+    except Exception as e:
+        print('Error:', e)
+        traceback.print_exc()
+        return None
+    
+
+    # create ageReviews df
+    ageReviews_json = {}
+    ageReviews_from_api = return_json['ageReviews']
+    for k, v in ageReviews_from_api.items():
+        ageReviews_json[k] = v
+
+    ageReviews_df = pd.DataFrame(ageReviews_json.items(), columns=['age_group', 'count'])
+    ageReviews_df.sort_values(by='age_group', inplace=True)
+    ageReviews_df.reset_index(drop=True, inplace=True)
+    print('Loaded ageReviews_df')
 
 
+    # create genderReviews df
+    genderReviews_json = {k:0 for k in GENDERS}     # define the ordering in genderReviews_df
+    genderReviews_from_api = return_json['genderReviews']
+    for k, v in genderReviews_from_api.items():
+        genderReviews_json[k] = v
 
+    genderReviews_df = pd.DataFrame(genderReviews_json.items(), columns=['gender', 'count'])
+    print('Loaded genderReviews_df')
+
+
+    # create sentimentReviews_df
+
+    sentimentReviews_json = {k:0 for k in ['POSITIVE', 'NEGATIVE', "N/A"]}
+    sentimentReviews_from_api = return_json['sentimentReviews']
+    for k, v in sentimentReviews_from_api.items():
+        sentimentReviews_json[k] = v
+
+    sentimentReviews_df = pd.DataFrame(sentimentReviews_json.items(), columns=['sentiment', 'count'])
+    print('Loaded sentimentReviews_df')
+
+
+    # create sentimentByAgeGroup_df
+
+    # get all possible combination of (age_group, sentiment)
+    sentimentByAgeGroup = []
+
+    sentimentByAgeGroup_from_api = return_json['sentimentReviewsByAge']
+    for sentiment, sentiment_json in sentimentByAgeGroup_from_api.items():
+        for age_group, count in sentiment_json.items():
+            sentimentByAgeGroup.append((age_group, sentiment, count))
+
+    # create a three column df
+    sentimentByAgeGroup_df = pd.DataFrame(sentimentByAgeGroup, columns=['age_group', 'sentiment', 'count'])
+    # reorder columns
+    sentimentByAgeGroup_df = sentimentByAgeGroup_df[['sentiment', 'age_group', 'count']]
+    # sort by sentiment, then age_group
+    sentimentByAgeGroup_df = sentimentByAgeGroup_df.sort_values(by=['sentiment', 'age_group'])
+
+    # drop row with count = 0
+    sentimentByAgeGroup_df = sentimentByAgeGroup_df[sentimentByAgeGroup_df['count'] > 0]
+    print('Loaded sentimentByAgeGroup_df')
+
+
+    # sentimentByGender_df
+
+    # get all possible combination of (gender, sentiment)
+    sentimentByGender = []
+
+    for sentiment, sentiment_json in return_json['sentimentReviewsByGender'].items():
+        for gender, count in sentiment_json.items():
+            sentimentByGender.append((sentiment, gender, count))
+
+    # create a three column df
+    sentimentByGender_df = pd.DataFrame(sentimentByGender, columns=['sentiment','gender', 'count'])
+    # sort by sentiment then gender
+    sentimentByGender_df = sentimentByGender_df.sort_values(by=['sentiment', 'gender'])
+    # drop rows with count = 0
+    sentimentByGender_df = sentimentByGender_df[sentimentByGender_df['count'] > 0]
+    print('Loaded sentimentByGender_df')
+
+
+    # topicFreq_df
+
+    topicFreq = []
+
+    for topic, val in return_json['topicFrequency'].items():
+        topicFreq.append((topic, val['freq'], val['name']))
+
+    topicFreq_df = pd.DataFrame(topicFreq, columns=['Topic', 'Count', 'Topic Name'])
+    topicFreq_df = topicFreq_df.sort_values(by='Topic', ascending=True)
+    print('Loaded topicFreq_df')
+
+    dfs = {
+        'ageReviews': ageReviews_df,
+        'genderReviews': genderReviews_df,
+        'sentimentReviews': sentimentReviews_df,
+        'sentimentByAgeGroup': sentimentByAgeGroup_df,
+        'sentimentByGender': sentimentByGender_df, 
+        'topicFreq': topicFreq_df
+    }
+
+    return dfs
