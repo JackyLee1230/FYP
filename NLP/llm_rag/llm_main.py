@@ -204,7 +204,7 @@ def _get_aspect_content_per_review(review:str) -> Tuple[Dict, Dict]:
     return aspects_response, token_usage_stats
 
 
-def _get_aspect_content_per_game(game_name:str) -> Tuple[Dict, Dict[list]]:
+def _get_aspect_content_per_game(game_name:str) -> Tuple[Dict, Dict]:
     '''Get description of each aspect of the game. It will search for critic reviews of the game stored in the db and get the description of each aspect through LLM. One of the two entrance functions for getting content per aspect.
     (Another function is _get_aspect_content_per_review, which gets the content per aspect from a single review text)
     
@@ -439,6 +439,13 @@ def _get_aspects_334(retriever, embedding_func) -> Tuple[Dict, List, List]:
             open_brace_count = resp.count('{')
             close_brace_count = resp.count('}')
 
+            # first condition implies there is no json in the response
+            # if first condition is false -> evaluate 2nd condition 
+            # it implies there shd a open brace for identifying the beginning of a possible json
+            if (open_brace_count <= 0 and close_brace_count <= 0) or (open_brace_count < 1):
+                _print_message(f'open_brace_count: {open_brace_count} or close_brace_count: {close_brace_count}. Retry...')
+                continue
+
             # a single json
             if open_brace_count < 2 and close_brace_count < 2:
 
@@ -538,6 +545,13 @@ def _get_aspects_10(retriever, embedding_func):
             open_brace_count = resp.count('{')
             close_brace_count = resp.count('}')
 
+            # first condition implies there is no json in the response
+            # if first condition is false -> evaluate 2nd condition 
+            # it implies there shd a open brace for identifying the beginning of a possible json
+            if (open_brace_count <= 0 and close_brace_count <= 0) or (open_brace_count < 1):
+                _print_message(f'open_brace_count: {open_brace_count} or close_brace_count: {close_brace_count}. Retry...')
+                continue
+
             if open_brace_count < 1 or close_brace_count < 1:
                 _print_message(f'open_brace_count: {open_brace_count} or close_brace_count: {close_brace_count}. Retry...')
                 continue
@@ -624,6 +638,13 @@ def _get_sentiment_per_aspect_per_review(review:str, is_spam:bool, aspects_respo
             # string processing for the response to get a JSON object
             open_brace_count = resp.count('{')
             close_brace_count = resp.count('}')
+
+            # first condition implies there is no json in the response
+            # if first condition is false -> evaluate 2nd condition 
+            # it implies there shd a open brace for identifying the beginning of a possible json
+            if (open_brace_count <= 0 and close_brace_count <= 0) or (open_brace_count < 1):
+                _print_message(f'open_brace_count: {open_brace_count} or close_brace_count: {close_brace_count}. Retry...')
+                continue
 
             # a single json
             if open_brace_count < 2 and close_brace_count < 2:
@@ -1080,7 +1101,7 @@ if __name__ == "__main__":
 
     # change the sample to test diff reviews (per review testing)
 
-    # temp_sample = _llm_sample_reviews.critic_review_01
+    # temp_sample = _llm_sample_reviews.middle_review_01
 
     # print('The review is:',temp_sample)
     # print('\n\n')
