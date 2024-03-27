@@ -22,11 +22,11 @@ import pika
 from pika import PlainCredentials
 
 sys.path.append('llm_rag')
-from llm_main import get_per_review_analysis
+from llm_main import get_per_review_analysis, gen_TLDR_per_game
 
 from read_game_specific_topic_name_json import SPECIFIC_TOPIC_NAME_GAMES, SPECIFIC_TOPIC_NAME_DICT, MODEL_SPECIFIC_TOPIC_NAME_DICT
 from _load_bertopic_models import _load_bertopic_model, GENRES, BERTOPIC_MODELS
-from _utm_tils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC, _print_message
+from _tm_utils import GENRES_DB, GENRES_DB_TO_GENRE_BERTOPIC, _print_message
 
 
 def cleaning(s_list: list[str]):
@@ -38,12 +38,6 @@ def cleaning(s_list: list[str]):
 
     return s_list
 
-
-# def _load_bertopic_model(model_path:Path):
-#     # load bertopic model
-#     topic_model = BERTopic.load(str(model_path))
-
-#     return topic_model
 
 def _create_embedding_model(model_name:str):
     # load the sbert model
@@ -111,12 +105,8 @@ def ack_message(channel, delivery_tag):
         pass
 
 
-def consumer(ch, method, properties, body, inference_obj):
-
-    global model_folder_path, topic_model
-
-    reviewId, comment, game_genres, game_name = inference_obj
-
+def per_review_analysis(reviewId, comment, game_genres, game_name):
+    
     try:
         # first based on the game genre to find the model
         game_genres_enum = [GENRES_DB[game_genre] for game_genre in game_genres]
@@ -153,7 +143,7 @@ def consumer(ch, method, properties, body, inference_obj):
     except Exception as e:
         print("Error during BERTopic inference:", e)
         print(traceback.format_exc())
-        return
+        return None
     
 
     # LLM results
@@ -185,19 +175,11 @@ def consumer(ch, method, properties, body, inference_obj):
     except:
         print("Error during LLM inference:", e)
         print(traceback.format_exc())
-        return
+        return None
     
     end_time = time.time()
     _print_message(f'Time taken for LLM inference: {end_time-start_time:.2f}')
 
-    # use a BlockingConnection per-thread
-    # reuse created BlockingConnection if the thread in the threadpool has created one
-    if not hasattr(local, 'channel'):
-        thread_channel, _ = init_connection()
-        thread_id = threading.currentThread().ident
-        _print_message(f'Thread {thread_id} created channel.')
-        local.channel = thread_channel
-        local.channel.confirm_delivery()
 
     # forming the result
     try:
@@ -214,13 +196,52 @@ def consumer(ch, method, properties, body, inference_obj):
     except Exception as e:
         print("Error forming the result:", e)
         print(traceback.format_exc())
-        return
+        return None
 
-    now = datetime.now()
-    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+    return resultToBeSentBack
+
+def per_game_analysis(gameId):
+
+    try:
+        tldr, token_usage_breakdown = gen_TLDR_per_game(gameId)
+    except Exception as e:
+        print("Error during generating per-game TLDR:", e)
+        print(traceback.format_exc())
+        return None
+
+    resultToBeSentBack = json.dumps({
+        'gameId': gameId,
+        'tldr': tldr,
+        'tokenUsageBreakdown': token_usage_breakdown
+    })
+
+    return resultToBeSentBack
+    
+
+def consumer(ch, method, properties, body, inference_obj):
+
+    global model_folder_path, topic_model
+
+    reviewId, comment, game_genres, game_name = inference_obj
+
+    resultToBeSentBack = per_review_analysis(
+        reviewId, comment, game_genres, game_name)
+
+    # use a BlockingConnection per-thread
+    # reuse created BlockingConnection if the thread in the threadpool has created one
+    if not hasattr(local, 'channel'):
+        thread_channel, _ = init_connection()
+        thread_id = threading.currentThread().ident
+        _print_message(f'Thread {thread_id} created channel.')
+        local.channel = thread_channel
+        local.channel.confirm_delivery()
+
+    if resultToBeSentBack is None:
+        return      # no ack is made
+
 
     _print_message(
-        f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident} At Time {date_time}')
+        f'Result \"{resultToBeSentBack}\" sent by thread {threading.currentThread().ident} At Time {datetime.now().strftime("%m/%d/%Y, %H:%M:%S")}')
     
     try:
         # enable the test queue for debugging
@@ -245,6 +266,8 @@ def consumer(ch, method, properties, body, inference_obj):
 def callback(ch, method, properties, body):
     # Process the received message
     _print_message(f"Received message: {body}")
+
+    # TODO: change here to support per-review analysis and per-game TLDR generation
 
     try:
         _body = json.loads(body)
