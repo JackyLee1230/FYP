@@ -927,11 +927,11 @@ def get_per_review_analysis(review:str) -> Tuple[bool, Dict, Dict, str, Dict]:
 
 
 
-def gen_TLDR_per_game(game_name:str) -> Tuple[str, Dict]:
+def gen_TLDR_per_game(game_id:int) -> Tuple[str, Dict]:
     '''Generate a TLDR for a game using the critic reviews. The main function for generating a TLDR for a game.
     
     Args:
-        game_name (str): the name of the game (in the platform)
+        game_id (int): the id of the game (in the platform)
     
     Returns:
         str: the TLDR for the game
@@ -950,11 +950,17 @@ def gen_TLDR_per_game(game_name:str) -> Tuple[str, Dict]:
 
     # check if the game supports this feature
 
-    if game_name not in set(_pergame_tldr.GAME_NAME_TO_ID.keys()):
+    if game_id not in set(_pergame_tldr.TLDR_PERGAME_SUPPORTED_GAMES.keys()):
+        return '', _calculate_token_usage(token_usage_stats_list)
+    
+    # step 0: get the gameAnalystic api result
+    gameAnalystic_json = _pergame_tldr._get_gameAnalystic_result_from_api(game_id)
+
+    if gameAnalystic_json is None:
         return '', _calculate_token_usage(token_usage_stats_list)
     
     # step 1 + step 2: get a sentence per aspect
-
+    game_name = gameAnalystic_json['name']
     aspect_content_per_game, token_usage_stats = _get_aspect_content_per_game(game_name)
     token_usage_stats_list.append(token_usage_stats)
 
@@ -964,7 +970,7 @@ def gen_TLDR_per_game(game_name:str) -> Tuple[str, Dict]:
 
     # load the reviews from folder
     # dfs = _pergame_tldr._load_sa_results_from_local(game_name, game_steamid)
-    dfs = _pergame_tldr._load_sa_results_from_api(_pergame_tldr.GAME_NAME_TO_ID[game_name])
+    dfs = _pergame_tldr._load_sa_results_from_api_result(gameAnalystic_json)
 
     # step 3
     sa_stats, token_usage_stats = _get_sa_stats(dfs, llm_mistralai)

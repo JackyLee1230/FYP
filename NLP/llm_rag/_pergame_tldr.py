@@ -161,14 +161,15 @@ def _load_sa_results_from_local(game_name:str, game_steamid:int):
     return dfs
 
 # supported game and their id on the fyp platform
-GAME_NAME_TO_ID = {
-    'Counter-Strike 2':1,
-    'Monster Hunter World':4,
-    'Cyberpunk 2077': 5,
-    'Cyberpunk 2077 Phantom Liberaty': 7,
-    'Starfield': 8,
-    'Dota 2': 9,
-    'Monster Hunter World: Iceborne': 30
+# only the key matters
+TLDR_PERGAME_SUPPORTED_GAMES = {
+    1: 'Counter-Strike 2',
+    4: 'Monster Hunter World',
+    5: 'Cyberpunk 2077',
+    7: 'Cyberpunk 2077 Phantom Liberaty',
+    8: 'Starfield',
+    9: 'Dota 2',
+    30: 'Monster Hunter World: Iceborne'
 }
 
 # just store in the script is OK
@@ -176,8 +177,7 @@ DOMAIN = 'https://critiqbackend.itzjacky.info'
 PORT = 9000
 GENDERS = ['MALE', 'FEMALE', "OTHER", "UNDISCLOSED", "N/A"]     # shd be consistent with the API & sqldb
 
-def _load_sa_results_from_api(game_id:int):
-
+def _get_gameAnalystic_result_from_api(game_id:int):
     api = f'{DOMAIN}:{PORT}/api/game/gameAnalytic'
 
     # send the data to the backend
@@ -189,10 +189,14 @@ def _load_sa_results_from_api(game_id:int):
         traceback.print_exc()
         return None
     
+    return return_json
 
+
+def _load_sa_results_from_api_result(gameAnalystic_json:dict):
+    
     # create ageReviews df
     ageReviews_json = {}
-    ageReviews_from_api = return_json['ageReviews']
+    ageReviews_from_api = gameAnalystic_json['ageReviews']
     for k, v in ageReviews_from_api.items():
         ageReviews_json[k] = v
 
@@ -204,7 +208,7 @@ def _load_sa_results_from_api(game_id:int):
 
     # create genderReviews df
     genderReviews_json = {k:0 for k in GENDERS}     # define the ordering in genderReviews_df
-    genderReviews_from_api = return_json['genderReviews']
+    genderReviews_from_api = gameAnalystic_json['genderReviews']
     for k, v in genderReviews_from_api.items():
         genderReviews_json[k] = v
 
@@ -215,7 +219,7 @@ def _load_sa_results_from_api(game_id:int):
     # create sentimentReviews_df
 
     sentimentReviews_json = {k:0 for k in ['POSITIVE', 'NEGATIVE', "N/A"]}
-    sentimentReviews_from_api = return_json['sentimentReviews']
+    sentimentReviews_from_api = gameAnalystic_json['sentimentReviews']
     for k, v in sentimentReviews_from_api.items():
         sentimentReviews_json[k] = v
 
@@ -228,7 +232,7 @@ def _load_sa_results_from_api(game_id:int):
     # get all possible combination of (age_group, sentiment)
     sentimentByAgeGroup = []
 
-    sentimentByAgeGroup_from_api = return_json['sentimentReviewsByAge']
+    sentimentByAgeGroup_from_api = gameAnalystic_json['sentimentReviewsByAge']
     for sentiment, sentiment_json in sentimentByAgeGroup_from_api.items():
         for age_group, count in sentiment_json.items():
             sentimentByAgeGroup.append((age_group, sentiment, count))
@@ -250,7 +254,7 @@ def _load_sa_results_from_api(game_id:int):
     # get all possible combination of (gender, sentiment)
     sentimentByGender = []
 
-    for sentiment, sentiment_json in return_json['sentimentReviewsByGender'].items():
+    for sentiment, sentiment_json in gameAnalystic_json['sentimentReviewsByGender'].items():
         for gender, count in sentiment_json.items():
             sentimentByGender.append((sentiment, gender, count))
 
@@ -267,7 +271,7 @@ def _load_sa_results_from_api(game_id:int):
 
     topicFreq = []
 
-    for topic, val in return_json['topicFrequency'].items():
+    for topic, val in gameAnalystic_json['topicFrequency'].items():
         topicFreq.append((topic, val['freq'], val['name']))
 
     topicFreq_df = pd.DataFrame(topicFreq, columns=['Topic', 'Count', 'Topic Name'])
