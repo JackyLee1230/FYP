@@ -25,6 +25,6 @@ Reference: https://scikit-learn.org/stable/modules/cross_validation.html
 
     However, we plan to use LLMs (like Llama2) in topic modeling to generate human-friendly / interpretable topic names. Also generating a short summary of the general impression based on the sentiment analysis / topic modeling results.
 
-## TODO
+## Future Works
 
 Ignore the [positive, neutral, negative] output (even okay with [positive, negative]) first. Utlimately we may use chatgpt-3.5 // chatgpt-4 to generate [positive, neutral, negative] label from reviews.
