@@ -1,6 +1,8 @@
 package info.itzjacky.FYP.RabbitMQ;
 
 import com.rabbitmq.client.Channel;
+import info.itzjacky.FYP.Game.Game;
+import info.itzjacky.FYP.Game.GameRepository;
 import info.itzjacky.FYP.Review.Review;
 import info.itzjacky.FYP.Review.ReviewRepository;
 import jakarta.transaction.Transactional;
@@ -27,6 +29,9 @@ public class RabbitMQConsumer {
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    GameRepository gameRepository;
 
     Logger logger = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
@@ -115,6 +120,32 @@ public class RabbitMQConsumer {
                 }
             }
             reviewRepository.save(review);
+            channel.basicAck(tag, false);
+        }
+        channel.basicAck(tag, false);
+    }
+
+    @Transactional
+    @RabbitListener(queues = "${spring.rabbitmq.AggregatedReviewResultQueueName}")
+    public void receiveAggregatedReview(String payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag)
+            throws IOException {
+        logger.info("Received Aggregated Review Payload: " + payload);
+        JSONObject jsonObject = new JSONObject(payload.replace("b'", "").replace("b\"", ""));
+        Integer gameId = jsonObject.getInt("gameId");
+
+        String tldr = null;
+        if (!Objects.equals(jsonObject.get("tldr").toString(), "null")) {
+            tldr = jsonObject.getString("tldr");
+        }
+
+        Game game = gameRepository.findGameById(gameId);
+        if (game == null) {
+            logger.warn("Game Aggregated got back with Non Existent Game ID: " + gameId);
+            channel.basicNack(tag, false, true);
+            return;
+        } else {
+            game.setAggregatedReview(tldr);
+            gameRepository.save(game);
             channel.basicAck(tag, false);
         }
         channel.basicAck(tag, false);
