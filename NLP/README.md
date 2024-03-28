@@ -1,6 +1,23 @@
 # NLP
 
-Folder for NLP and Data Analysis related stuff
+NLP component of the platform. It consists of three parts
+
+- Sentiment Analysis
+- Topic Modeling
+- LLM prompting
+
+For more details of each component, please go to their corresponding folders and read their README.
+
+## Folder structure
+
+Only relevant folders are listed
+
+```
+|-- dev-workspace
+|-- llm_rag                 (folder for LLM prompting)
+|-- sa                      (folder for Sentiment Analysis)
+|-- tm                      (folder for Topic Modeling)
+```
 
 ## Development environment
 
@@ -19,7 +36,7 @@ According to offical documentation of tensorflow, WSL is required to use latest 
 
 Hence, here is the guideline of setting up WSL environment for gpu-enabled ML training.
 
-1. Install NVIDIA Driver for GPU Support
+1. Install NVIDIA Driver for GPU Support
 Install NVIDIA GeForce Game Ready or NVIDIA RTX Quadro Windows 11 display driver on your system with a compatible GeForce or NVIDIA RTX/Quadro card from https://www.nvidia.com/Download/index.aspx. Refer to the system requirements in the Appendix.  
 
     **This is the only driver you need to install. Do not install any Linux display driver in WSL.**
@@ -274,5 +291,3 @@ Output: a JSON with a list of short description for each aspects
 Implementation details
 
 First 3 operations will be run when a new review is added to a game. TBC operation no.4
-
-## TODO
