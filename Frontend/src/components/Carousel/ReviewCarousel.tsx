@@ -4,8 +4,8 @@ import {
   PrevButton,
   NextButton,
   usePrevNextButtons
-} from './EmblaCarouselArrowButtons'
-import { Thumb } from './EmblaCarouselThumbsButton'
+} from './CarouselArrowButtons'
+import { Thumb } from './CarouselThumbsButton'
 import { useTheme } from '@mui/material/styles';
 import ImageBackdrop from '@/components/ImageBackdrop';
 import { Button } from '@mui/material';
@@ -19,7 +19,7 @@ type PropType = {
 const NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX =
   process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX;
 
-const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
+const ReviewCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
@@ -66,13 +66,13 @@ const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
   }, [emblaApi, onSelect])
 
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+    <div className="review">
+      <div className="review__viewport" ref={emblaRef}>
+        <div className="review__container">
             {images.map((image, index) => (
-                <div className="embla__slide" key={index}>
+                <div className="review__slide" key={index}>
                     <div 
-                      className="embla__slide__number"           
+                      className="review__slide__number"           
                       style={{
                         backgroundColor: theme.palette.primary.main,
                         opacity: 0.8,
@@ -99,7 +99,7 @@ const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
                       </Button>
                     </div>
                     <Image
-                        className="embla__slide__img"
+                        className="review__slide__img"
                         src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
                         alt="review image"
                         width={0}
@@ -108,7 +108,7 @@ const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
                         sizes="100vw"
                     />
                     <Image
-                        className="embla__slide__img_background"
+                        className="review__slide__img_background"
                         src={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${image}`}
                         alt="review image background"
                         width={0}
@@ -122,14 +122,14 @@ const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
       </div>
       <ImageBackdrop open={open} handleClose={handleClose} imageUrl={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${images[selectedIndex]}`}/>
 
-      <div className="embla__buttons">
+      <div className="review__buttons">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
 
-      <div className="embla-thumbs">
-        <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
-          <div className="embla-thumbs__container">
+      <div className="review-thumbs">
+        <div className="review-thumbs__viewport" ref={emblaThumbsRef}>
+          <div className="review-thumbs__container">
             {images.map((image, index) => (
                 <Thumb
                     onClick={() => onThumbClick(index)}
@@ -146,4 +146,4 @@ const EmblaCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
   )
 }
 
-export default EmblaCarousel
+export default ReviewCarousel

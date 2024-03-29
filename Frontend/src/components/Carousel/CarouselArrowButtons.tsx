@@ -73,7 +73,7 @@ export const PrevButton: React.FC<PropType> = ({ children, ...restProps }: any) 
 
   return (
     <ButtonBase
-      className="embla__button embla__button--prev"
+      className="navigate__button navigate__button--prev"
       sx={{
         position: "absolute",
         zIndex: 10,
@@ -107,7 +107,7 @@ export const NextButton: React.FC<PropType> = ({ children, ...restProps }: any) 
 
   return (
     <ButtonBase
-      className="embla__button embla__button--next"
+      className="navigate__button navigate__button--next"
       sx={{
         position: "absolute",
         opacity: 0.8,

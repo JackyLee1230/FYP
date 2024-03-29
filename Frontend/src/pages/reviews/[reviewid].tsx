@@ -1,5 +1,5 @@
 import { CustomInput } from "@/components/CustomInput";
-import EmblaCarousel from "@/components/EmblaCarousel/EmblaCarousel";
+import ReviewCarousel from "@/components/Carousel/ReviewCarousel";
 import ReviewCommentCard from "@/components/ReviewCommentCard";
 import ScrollToTopFab from "@/components/ScrollToTopFAB";
 import { useAuthContext } from "@/context/AuthContext";
@@ -1158,7 +1158,7 @@ function GamePage({
           </Box>
           {review?.reviewImages?.length > 0 && (
             <>
-              <EmblaCarousel images={review.reviewImages} />
+              <ReviewCarousel images={review.reviewImages} />
             </>
           )}
 

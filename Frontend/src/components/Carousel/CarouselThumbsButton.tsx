@@ -12,16 +12,16 @@ type PropType = {
 export const Thumb: React.FC<PropType> = ({ selected, imgSrc, index, onClick }: PropType) => {
   return (
     <div
-      className={'embla-thumbs__slide'.concat(
-        selected ? ' embla-thumbs__slide--selected' : ''
+      className={'review-thumbs__slide'.concat(
+        selected ? ' review-thumbs__slide--selected' : ''
       )}
     >
       <ButtonBase
         onClick={onClick}
-        className="embla-thumbs__slide__button"
+        className="review-thumbs__slide__button"
       >
         <Image
-          className="embla-thumbs__slide__img"
+          className="review-thumbs__slide__img"
           src={imgSrc}
           alt="review image thumbnail"
           width={0}

@@ -21,7 +21,7 @@ body {
   min-height: 100vh;
 }
 
-.embla {
+.review {
   --slide-spacing: 1.8rem;
   --slide-size: 100%;
   --slide-height: 765px;
@@ -29,29 +29,29 @@ body {
   width: 100%;
   position: relative;
 }
-.embla__viewport {
+.review__viewport {
   overflow: hidden;
 }
-.embla__container {
+.review__container {
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y;
   margin-left: calc(var(--slide-spacing) * -1);
 }
-.embla__slide {
+.review__slide {
   overflow: hidden;
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;
 }
-.embla__slide__img {
+.review__slide__img {
   display: block;
   height: var(--slide-height);
   width: 100%;
   object-fit: scale-down;
 }
-.embla__slide__img_background {
+.review__slide__img_background {
   display: block;
   height: var(--slide-height);
   width: 100%;
@@ -62,7 +62,7 @@ body {
   filter: blur(4px);
   z-index: -1;
 }
-.embla__slide__number {
+.review__slide__number {
   width: 4.6rem;
   height: 4.6rem;
   z-index: 1;
@@ -76,7 +76,7 @@ body {
   text-align: center;
   pointer-events: none;
 }
-.embla__slide__number > span {
+.review__slide__number > span {
   background-clip: text;
   -webkit-background-clip: text;
   font-size: 1.6rem;
@@ -87,10 +87,7 @@ body {
   right: 0;
   bottom: 0;
 }
-.embla__buttons {
-  position: static;
-}
-.embla__button {
+.navigate__button {
   outline: 0;
   cursor: pointer;
   touch-action: manipulation;
@@ -102,45 +99,46 @@ body {
   align-items: center;
   padding: 0;
 }
-.embla__button:disabled {
+.navigate__button:disabled {
   cursor: default;
   opacity: 0.3;
 }
 
-.embla__button__svg {
+.navigate__button__svg {
   width: 100%;
   height: 100%;
 }
 
-.embla__button--prev {
+.navigate__button--prev {
   left: 24px;
 }
 
-.embla__button--next {
+.navigate__button--next {
   right: 24px;
 }
 
-.embla-thumbs {
+.review-thumbs {
   --thumbs-slide-spacing: 0.8rem;
   --thumbs-slide-height: 136px;
   margin-top: var(--thumbs-slide-spacing);
 }
-.embla-thumbs__viewport {
+.review-thumbs__viewport {
   overflow: hidden;
 }
-.embla-thumbs__container {
+.review-thumbs__container {
   display: flex;
   flex-direction: row;
   margin-left: calc(var(--thumbs-slide-spacing) * -1);
 }
-.embla-thumbs__slide {
+.review-thumbs__slide {
   flex: 0 0 18%;
   min-width: 0;
   padding-left: var(--thumbs-slide-spacing);
   position: relative;
 }
-.embla-thumbs__slide__button {
+.review-thumbs__slide__button {
   -webkit-appearance: none;
+  appearance: none;
   background-color: transparent;
   touch-action: manipulation;
   display: block;
@@ -155,16 +153,16 @@ body {
   border-radius: 5%;
   overflow: hidden;
 }
-.embla-thumbs__slide--selected .embla-thumbs__slide__button {
+.review-thumbs__slide--selected .review-thumbs__slide__button {
   opacity: 1;
 }
-.embla-thumbs__slide__img {
+.review-thumbs__slide__img {
   display: block;
   height: var(--thumbs-slide-height);
   width: 100%;
   object-fit: cover;
 }
-.embla-thumbs__slide__number {
+.review-thumbs__slide__number {
   width: 3rem;
   height: 3rem;
   z-index: 1;
@@ -178,7 +176,7 @@ body {
   text-align: center;
   pointer-events: none;
 }
-.embla-thumbs__slide__number > span {
+.review-thumbs__slide__number > span {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -191,38 +189,38 @@ body {
   bottom: 0;
 }
 @media (max-width: 900px) {
-  .embla-thumbs__slide {
+  .review-thumbs__slide {
     flex: 0 0 24%;
   }
-  .embla-thumbs {
+  .review-thumbs {
     --thumbs-slide-height: 106px;
   }
-  .embla {
+  .review {
     --slide-height: 532px;
   }
 }
 @media (max-width: 600px) {
-  .embla-thumbs__slide {
+  .review-thumbs__slide {
     flex: 0 0 36%;
   }
-  .embla-thumbs {
+  .review-thumbs {
     --thumbs-slide-height: 86px;
   }
-  .embla {
+  .review {
     --slide-height: 386px;
   }
-  .embla__button--prev {
+  .review__button--prev {
     left: 12px;
   }
-  .embla__button--next {
+  .review__button--next {
     right: 12px;
   }
-  .embla__slide__number {
+  .review__slide__number {
     width: 3.4rem;
     height: 3.4rem;
     line-height: 3.4rem;
   }
-  .embla__slide__number > span {
+  .review__slide__number > span {
     font-size: 1.2rem;
   }
 }
