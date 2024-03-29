@@ -418,7 +418,16 @@ public class GameService {
             if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
                 gameRequest.setNumOfGames(10);
             }
-            return gameRepository.topMostReviewedGames(gameRequest.getNumOfGames());
+            List<Game> games = gameRepository.topMostReviewedGames(gameRequest.getNumOfGames());
+            for (Game g: games) {
+                g.setGameReviews(null);
+                g.setVersions(null);
+                g.setDevelopers(null);
+                g.setTester(null);
+                g.setBaseGame(null);
+                g.setDLCS(null);
+            }
+            return games;
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
@@ -429,7 +438,16 @@ public class GameService {
             if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
                 gameRequest.setNumOfGames(10);
             }
-            return gameRepository.topRecentlyReleasedGames(gameRequest.getNumOfGames());
+            List<Game> games = gameRepository.topRecentlyReleasedGames(gameRequest.getNumOfGames());
+            for (Game g: games) {
+                g.setGameReviews(null);
+                g.setVersions(null);
+                g.setDevelopers(null);
+                g.setTester(null);
+                g.setBaseGame(null);
+                g.setDLCS(null);
+            }
+            return games;
         } catch (Exception e){
             e.printStackTrace();
             throw new IllegalStateException("Game Does Not Exist");
@@ -441,7 +459,16 @@ public class GameService {
             if(gameRequest.getNumOfGames() == null || gameRequest.getNumOfGames() < 1){
                 gameRequest.setNumOfGames(10);
             }
-            return gameRepository.topMostReviewedInDevelopmentGame(gameRequest.getNumOfGames());
+            List<Game> games = gameRepository.topMostReviewedInDevelopmentGame(gameRequest.getNumOfGames());
+            for (Game g: games) {
+                g.setGameReviews(null);
+                g.setVersions(null);
+                g.setDevelopers(null);
+                g.setTester(null);
+                g.setBaseGame(null);
+                g.setDLCS(null);
+            }
+            return games;
         } catch (Exception e){
             throw new IllegalStateException("Game Does Not Exist");
         }
