@@ -172,7 +172,11 @@ const Dashboard = () => {
     });
   }, []);
 
-  const OPTIONS: EmblaOptionsType = { slidesToScroll: 'auto' }
+  const OPTIONS: EmblaOptionsType = { 
+    slidesToScroll: 'auto',
+    watchDrag: isMobile ? true : false,
+    dragFree: isMobile ? true : false,
+  }
 
   return (
     <>

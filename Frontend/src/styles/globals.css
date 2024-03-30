@@ -252,6 +252,7 @@ body {
   padding-left: var(--slide-spacing);
 }
 
+
 @media (max-width: 900px) {
   .game {
     --slide-height: 345px;
@@ -264,5 +265,8 @@ body {
     --slide-height: 285px;
     --slide-spacing: 8px;
     --slide-size: 165px;
+  }
+  .game__buttons{
+    display: none;
   }
 }

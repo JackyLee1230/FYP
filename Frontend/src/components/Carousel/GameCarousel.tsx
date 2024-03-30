@@ -35,7 +35,7 @@ const GameCarousel: React.FC<PropType> = ({ options, gameList }:PropType) => {
         </div>
       </div>
 
-      <div>
+      <div className="game__buttons">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
