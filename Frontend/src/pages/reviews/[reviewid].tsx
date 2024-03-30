@@ -210,6 +210,7 @@ function GamePage({
       setLiked(review?.likedUsers?.includes(user?.id) ?? null);
       setDisliked(review?.dislikedUsers?.includes(user?.id) ?? null);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const handleReaction = async (newReaction: boolean | null) => {
