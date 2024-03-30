@@ -1,5 +1,5 @@
 import { GameInfo } from "@/type/game";
-import { Box, Button, Divider, Skeleton, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Divider, Skeleton, Typography, alpha, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
@@ -35,7 +35,7 @@ const getTopRecentlyReleasedGames = async (numOfGames: number) => {
 }
 
 const getTopMostReviewedInDevelopmentGames = async (numOfGames: number) => {
-  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopMostReviewedInDevelopmentGames`;
+  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopMostReviewedInDevelopmentGame`;
   const body = {
     numOfGames: numOfGames,
   }
@@ -79,7 +79,7 @@ const getTopMostReviewedGames = async (numOfGames: number) => {
 }
 
 const getTopMostFavouritedGames = async (numOfGames: number) => {
-  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopMostFavouritedGames`;
+  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopFavouritedGames`;
   const body = {
     numOfGames: numOfGames,
   }
@@ -101,7 +101,7 @@ const getTopMostFavouritedGames = async (numOfGames: number) => {
 }
 
 const getTopMostWishlistedGames = async (numOfGames: number) => {
-  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopMostWishlistedGames`;
+  const apiAddress = `${NEXT_PUBLIC_BACKEND_PATH_PREFIX}api/game/getTopWishlistedGames`;
   const body = {
     numOfGames: numOfGames,
   }
@@ -187,23 +187,42 @@ const Dashboard = () => {
         </title>
       </Head>
       <Box
+          sx={{
+            position: "absolute",
+            height: "216px",
+            width: "100%",
+            top: 0,
+            bgcolor: alpha(theme.palette.secondary.main, 0.65),
+            borderRadius: "0 0 100% 100% / 0 0 50% 50%",
+            [theme.breakpoints.down("md")]: {
+              height: "188px",
+              borderRadius: "0 0 100% 100% / 0 0 25% 25%",
+            },
+            [theme.breakpoints.down("sm")]: {
+              height: "146px",
+              borderRadius: "0 0 100% 100% / 0 0 15% 15%",
+            },
+          }}
+        />
+      <Box
         sx={(theme) => ({
           display: "flex",
           padding: "48px 32px",
-          gap: "24px",
+          gap: "48px",
           maxWidth: 1440,
           flexDirection: "column",
           flex: "1 0 0",
           margin: "0 auto",
+          position: "relative",
 
           [theme.breakpoints.down("md")]: {
             padding: "24px 16px",
-            gap: "16px",
+            gap: "36px",
           },
 
           [theme.breakpoints.down("sm")]: {
             padding: "12px 12px",
-            gap: "12px",
+            gap: "24px",
           },
         })}
       >
@@ -215,7 +234,7 @@ const Dashboard = () => {
             gap: "12px",
           }}
         >
-          <Image src="/logo.png" width={330} height={100} alt="CritiQ Icon" />
+          <Image src="/logo.png" width={isMobile ? 248 : 330} height={isMobile ? 75 : 100} alt="CritiQ Icon" />
             <Typography variant={isMobile? "subtitle1" : "h6"} color="primary">
               Revolutionary Game Testing and Evaluation Platform with Machine Learning
             </Typography>
@@ -226,11 +245,9 @@ const Dashboard = () => {
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "48px",
-
             [theme.breakpoints.down("md")]: {
               gap: "32px",
             },
-
             [theme.breakpoints.down("sm")]: {
               gap: "16px",
             },
@@ -289,7 +306,331 @@ const Dashboard = () => {
               recentlyReleasedGames && recentlyReleasedGames.length !== 0 ? (
                 <GameCarousel gameList={recentlyReleasedGames} options={OPTIONS}/>
               ) : (
-                <Typography variant={isMobile ? "h5" : "h4"} color="error.main">
+                <Typography 
+                  variant={isMobile ? "h6" : "h5"} 
+                  color="error.main"
+                  sx={{
+                    height: "375px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "345px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "285px",
+                    },
+                  }}
+                >
+                  Not Available
+                </Typography>
+              )
+            )}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "48px",
+            [theme.breakpoints.down("md")]: {
+              gap: "32px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "16px",
+            },
+          }}
+        
+        >
+          <Box
+            id="LatestGames"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "12px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "4px",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isMobile? "h6" : "h5"} color="text.primary">
+                Most Reviewed Early Access Titles
+              </Typography>
+              <Typography variant={isMobile? "subtitle2" : "subtitle1"} color="text.secondary">
+                Play the future today! Join the buzz and share your thoughts on these popular in development games.
+              </Typography>
+            </Box>
+            <Divider flexItem/>
+            {isMostReviewedInDevelopmentGamesLoading ? (
+              <Skeleton variant="rectangular"
+                sx={{
+                  width: "100%",
+                  height: "375px",
+                  [theme.breakpoints.down("md")]: {
+                    height: "345px"
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    height: "285px"
+                  }
+                }}
+              />
+            ): (
+              mostReviewedInDevelopmentGames && mostReviewedInDevelopmentGames.length !== 0 ? (
+                <GameCarousel gameList={mostReviewedInDevelopmentGames} options={OPTIONS}/>
+              ) : (
+                <Typography 
+                  variant={isMobile ? "h6" : "h5"} 
+                  color="error.main"
+                  sx={{
+                    height: "375px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "345px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "285px",
+                    },
+                  }}
+                >
+                  Not Available
+                </Typography>
+              )
+            )}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "48px",
+            [theme.breakpoints.down("md")]: {
+              gap: "32px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "16px",
+            },
+          }}
+        
+        >
+          <Box
+            id="LatestGames"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "12px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "4px",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isMobile? "h6" : "h5"} color="text.primary">
+                Most Reviewed Game
+              </Typography>
+              <Typography variant={isMobile? "subtitle2" : "subtitle1"} color="text.secondary">
+                Join the conversation now! These games have sparked the most discussions among players.
+              </Typography>
+            </Box>
+            <Divider flexItem/>
+            {isMostReviewedGamesLoading ? (
+              <Skeleton variant="rectangular"
+                sx={{
+                  width: "100%",
+                  height: "375px",
+                  [theme.breakpoints.down("md")]: {
+                    height: "345px"
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    height: "285px"
+                  }
+                }}
+              />
+            ): (
+              mostReviewedGames && mostReviewedGames.length !== 0 ? (
+                <GameCarousel gameList={mostReviewedGames} options={OPTIONS}/>
+              ) : (
+                <Typography 
+                  variant={isMobile ? "h6" : "h5"} 
+                  color="error.main"
+                  sx={{
+                    height: "375px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "345px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "285px",
+                    },
+                  }}
+                >
+                  Not Available
+                </Typography>
+              )
+            )}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "48px",
+            [theme.breakpoints.down("md")]: {
+              gap: "32px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "16px",
+            },
+          }}
+        
+        >
+          <Box
+            id="LatestGames"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "12px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "4px",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isMobile? "h6" : "h5"} color="text.primary">
+                Most Favourited Game
+              </Typography>
+              <Typography variant={isMobile? "subtitle2" : "subtitle1"} color="text.secondary">
+                Loved by many, these games have won the hearts of players!
+              </Typography>
+            </Box>
+            <Divider flexItem/>
+            {isMostFavouritedGamesLoading ? (
+              <Skeleton variant="rectangular"
+                sx={{
+                  width: "100%",
+                  height: "375px",
+                  [theme.breakpoints.down("md")]: {
+                    height: "345px"
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    height: "285px"
+                  }
+                }}
+              />
+            ): (
+              mostFavouritedGames && mostFavouritedGames.length !== 0 ? (
+                <GameCarousel gameList={mostFavouritedGames} options={OPTIONS}/>
+              ) : (
+                <Typography 
+                  variant={isMobile ? "h6" : "h5"} 
+                  color="error.main"
+                  sx={{
+                    height: "375px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "345px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "285px",
+                    },
+                  }}
+                >
+                  Not Available
+                </Typography>
+              )
+            )}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "48px",
+            [theme.breakpoints.down("md")]: {
+              gap: "32px",
+            },
+            [theme.breakpoints.down("sm")]: {
+              gap: "16px",
+            },
+          }}
+        
+        >
+          <Box
+            id="LatestGames"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "12px",
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "4px",
+                width: "100%",
+              }}
+            >
+              <Typography variant={isMobile? "h6" : "h5"} color="text.primary">
+                Most Wishlisted Game
+              </Typography>
+              <Typography variant={isMobile? "subtitle2" : "subtitle1"} color="text.secondary">
+                Can’t wait to play? You’re not alone! These are the games everyone’s eager to get their hands on.
+              </Typography>
+            </Box>
+            <Divider flexItem/>
+            {isMostWishlistedGamesLoading ? (
+              <Skeleton variant="rectangular"
+                sx={{
+                  width: "100%",
+                  height: "375px",
+                  [theme.breakpoints.down("md")]: {
+                    height: "345px"
+                  },
+                  [theme.breakpoints.down("sm")]: {
+                    height: "285px"
+                  }
+                }}
+              />
+            ): (
+              mostWishlistedGames && mostWishlistedGames.length !== 0 ? (
+                <GameCarousel gameList={mostWishlistedGames} options={OPTIONS}/>
+              ) : (
+                <Typography 
+                  variant={isMobile ? "h6" : "h5"} 
+                  color="error.main"
+                  sx={{
+                    height: "375px",
+                    [theme.breakpoints.down("md")]: {
+                      height: "345px",
+                    },
+                    [theme.breakpoints.down("sm")]: {
+                      height: "285px",
+                    },
+                  }}
+                >
                   Not Available
                 </Typography>
               )

@@ -227,7 +227,7 @@ body {
 }
 
 .game {
-  max-width: 100%;
+  width: 100%;
   margin: auto;
   --slide-height: 375px;
   --slide-spacing: 12px;
@@ -251,8 +251,6 @@ body {
   min-width: 0;
   padding-left: var(--slide-spacing);
 }
-
-
 @media (max-width: 900px) {
   .game {
     --slide-height: 345px;
