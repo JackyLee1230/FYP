@@ -36,7 +36,7 @@ RUN mamba init bash &&\
     # conda create -n fyp-nlp-production python=3.9.18 pika=1.3.1 scikit-learn=1.3.0 nltk=3.8.1 &&\
     mamba env create -f llm_rag/docker_setup_files/docker_conda_env_list.yml &&\
     conda clean -afy &&\
-    conda activate fyp-nlp-tm-production
+    conda activate fyp-nlp-llmrag-production
 
 # run
-ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "fyp-nlp-tm-production", "python", "-u", "llm_rag/llm_container_main.py" ]
+ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "fyp-nlp-llmrag-production", "python", "-u", "llm_rag/llm_container_main.py" ]
