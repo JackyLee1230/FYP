@@ -58,7 +58,6 @@ public class Game {
     private Date analyticUpdatedAt;
 
     @Column(insertable = true, updatable = true, columnDefinition = "TEXT")
-    @JsonIgnore
     private String aggregatedReview;
     @Column(insertable = true, updatable = true)
     private Date aggregatedReviewUpdatedAt;
