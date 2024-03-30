@@ -31,6 +31,7 @@ body {
 }
 .review__viewport {
   overflow: hidden;
+  position: relative;
 }
 .review__container {
   backface-visibility: hidden;
@@ -94,7 +95,7 @@ body {
   position: absolute;
   z-index: 1;
   top: 50%;
-  transform: translateY(-150%);
+  transform: translateY(-50%);
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -222,5 +223,46 @@ body {
   }
   .review__slide__number > span {
     font-size: 1.2rem;
+  }
+}
+
+.game {
+  max-width: 100%;
+  margin: auto;
+  --slide-height: 375px;
+  --slide-spacing: 12px;
+  --slide-size: 220px;
+  position: relative;
+}
+.game__viewport {
+  overflow: hidden;
+  position: relative;
+}
+.game__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.game__slide {
+  flex: 0 0 calc(var(--slide-size) + var(--slide-spacing));
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+
+@media (max-width: 900px) {
+  .game {
+    --slide-height: 345px;
+    --slide-spacing: 8px;
+    --slide-size: 200px;
+  }
+}
+@media (max-width: 600px) {
+  .game {
+    --slide-height: 285px;
+    --slide-spacing: 8px;
+    --slide-size: 165px;
   }
 }

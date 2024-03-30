@@ -1178,7 +1178,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                   color="info.main"
                   fontWeight={500}
                 >
-                  {`The Aggregated Review is not available for this game.`}
+                  {`Aggregated review is not available for this game.`}
                 </Typography>
               )}
             </Box>

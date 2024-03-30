@@ -119,13 +119,13 @@ const ReviewCarousel: React.FC<PropType> = ({ options, images }:PropType) => {
                 </div>
             ))}
         </div>
+
+        <div>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
       </div>
       <ImageBackdrop open={open} handleClose={handleClose} imageUrl={`${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${images[selectedIndex]}`}/>
-
-      <div className="review__buttons">
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      </div>
 
       <div className="review-thumbs">
         <div className="review-thumbs__viewport" ref={emblaThumbsRef}>

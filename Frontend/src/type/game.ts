@@ -3,6 +3,8 @@ import Platform from "./gamePlatform";
 import { User } from "./user";
 
 export type GameInfo = {
+  numberOfFavourites: number;
+  numberOfWishlists: number;
   aggregatedReview: string;
   aggregatedReviewUpdatedAt: string | number | Date;
   gamePage: string;
