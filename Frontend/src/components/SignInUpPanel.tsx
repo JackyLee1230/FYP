@@ -30,7 +30,7 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
         gap: 2,
         width: 500,
         [theme.breakpoints.down("sm")]: {
-          padding: "36px 24px",
+          padding: "64px 24px",
           borderRadius: 0,
           boxShadow: "none",
           minHeight: "100vh",
@@ -50,6 +50,7 @@ const SignInUpPanel = ({setOpen}: SignInUpPanelProps) => {
 
           [theme.breakpoints.down("sm")]: {
             right: 12,
+            top: 64,
           }
         }}
       >
