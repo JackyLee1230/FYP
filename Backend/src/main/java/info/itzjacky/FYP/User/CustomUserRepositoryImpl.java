@@ -28,7 +28,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     @Override
     public List<List<Integer>> findMostWishlistedGames(Integer numOfGames) {
         StringBuilder query = new StringBuilder();
-        query.append("select g, count(u.id) from User u join u.favouriteGames g group by g order by count(u.id) desc limit " + numOfGames);
+        query.append("select g, count(u.id) from User u join u.wishlistGames g group by g order by count(u.id) desc limit " + numOfGames);
         return entityManager.createQuery(query.toString()).setMaxResults(numOfGames).getResultList();
     }
 
