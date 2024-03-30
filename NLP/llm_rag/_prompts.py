@@ -2,7 +2,7 @@
 
 
 SYSTEM_TEMPLATE = \
-'''You are reading reviews of a game to understand the characteristics of the game. Use the following pieces of context to answer user's question.'''
+'''You are a player reading reviews of a game to understand the characteristics of the game. Use the following pieces of context to answer user's question.'''
 
 
 # _check_spam
@@ -32,7 +32,10 @@ The aspects are {aspects}. For each aspect, output a paragraph with less than 50
 {output_format}
 Only output the JSON. Do NOT output other text.
 
+The reviews are as follows:
+\'\'\'
 {summaries}
+\'\'\'
 
 If you don't know the answer, output only \"NA\". Do NOT try to make up an answer. Do NOT output other text.'''
 

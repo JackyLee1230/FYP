@@ -22,8 +22,8 @@ SPECIFIC_TOPIC_NAME_GAMES = [
 
 GAME_NAMES_TO_DB_NAME = {
     "Counter-Strike 2" : "counter-strike_2",
-    "Cyberpunk 2077": "cyberpunk2077",
-    "Cyberpunk 2077 Phantom Liberty": "cyberpunk2077_phantom_liberty",
+    "Cyberpunk 2077": "cyberpunk_2077",
+    "Cyberpunk 2077 Phantom Liberty": "cyberpunk_2077_phantom_liberty",
     "Dota 2": "dota2",
     "Monster Hunter World": "monster_hunter_world",
     "Monster Hunter World: Iceborne": "monster_hunter_world_iceborne",

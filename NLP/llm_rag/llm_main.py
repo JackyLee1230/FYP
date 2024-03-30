@@ -1107,7 +1107,7 @@ if __name__ == "__main__":
 
     # change the sample to test diff reviews (per review testing)
 
-    # temp_sample = _llm_sample_reviews.middle_review_01
+    # temp_sample = _llm_sample_reviews.sample_03
 
     # print('The review is:',temp_sample)
     # print('\n\n')
