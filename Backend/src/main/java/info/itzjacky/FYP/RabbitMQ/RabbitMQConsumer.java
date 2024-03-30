@@ -145,6 +145,7 @@ public class RabbitMQConsumer {
             return;
         } else {
             game.setAggregatedReview(tldr);
+            game.setAggregatedReviewUpdatedAt(new java.util.Date());
             gameRepository.save(game);
             channel.basicAck(tag, false);
         }
