@@ -47,7 +47,7 @@ dependencies:
   - libpng=1.6.42=h2797004_0
   - libprotobuf=4.24.4=hf27288f_0
   - libsqlite=3.44.2=h2797004_0
-  - libstdcxx-ng=13.2.0=h7e041cc_5
+  - libstdcxx-ng=13.2.0
   - libtiff=4.5.0=h6adf6a1_2
   - libtorch=2.1.0=cpu_generic_h7795521_3
   - libuuid=2.38.1=h0b41bf4_0
