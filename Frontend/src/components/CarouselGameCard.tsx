@@ -88,12 +88,12 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
             }
           })}
         >
-          {!gameData?.inDevelopment && (
+          {gameData?.inDevelopment && (
             <Chip
               size={isMobile ? "small" : "medium"}
               color="secondary"
               variant="filled"
-              label="In Development"
+              label="Early Access"
             />
           )}
           <Box id="gapHolderz" />

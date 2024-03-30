@@ -65,7 +65,7 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
               size="medium"
               color="secondary"
               variant="filled"
-              label="In Development"
+              label="Early Access"
             />
           )}
           <Box id="gapHolderz" />
