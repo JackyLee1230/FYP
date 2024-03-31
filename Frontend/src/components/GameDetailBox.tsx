@@ -35,7 +35,7 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
           width: "100%",
           borderRadius: 0,
           justifyContent: "flex-start",
-          padding: "48px 24px",
+          padding: "64px 24px",
         },
       }}
     >
@@ -48,7 +48,7 @@ function GameDetailBox({ game, setOpen }: GameDetailBoxProps) {
           top: 24,
           right: 36,
           [theme.breakpoints.down("sm")]: {
-            top: 12,
+            top: 64,
             right: 12,
           },
         }}

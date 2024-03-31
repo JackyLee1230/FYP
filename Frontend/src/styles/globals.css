@@ -231,7 +231,7 @@ body {
   margin: auto;
   --slide-height: 375px;
   --slide-spacing: 12px;
-  --slide-size: 220px;
+  --slide-size: 240px;
   position: relative;
 }
 .game__viewport {

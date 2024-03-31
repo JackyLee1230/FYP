@@ -17,6 +17,7 @@ import { GameInfo } from "../type/game";
 import { getGenre } from "../type/gameGenre";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ChecklistIcon from "@mui/icons-material/Checklist";
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 type CarouselGameCardProps = {
   gameData: GameInfo;
@@ -25,11 +26,34 @@ type CarouselGameCardProps = {
 const StyledFavoriteBorderOutlinedIcon = styled(FavoriteBorderOutlinedIcon)(({ theme }) => ({
   color: theme.palette.secondary.main,
   fontSize: 24,
+  [theme.breakpoints.down("md")]: {
+    fontSize: 20,
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
 }));
 
 const StyledChecklistIcon = styled(ChecklistIcon)(({ theme }) => ({
   color: theme.palette.info.main,
   fontSize: 24,
+  [theme.breakpoints.down("md")]: {
+    fontSize: 20,
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
+}));
+
+const StyledRateReviewIcon = styled(RateReviewIcon)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontSize: 24,
+  [theme.breakpoints.down("md")]: {
+    fontSize: 20,
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 16,
+  },
 }));
 
 function CarouselGameCard({ gameData }: CarouselGameCardProps) {
@@ -45,7 +69,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        width: "220px",
+        width: "234px",
         height: "375px",
         borderRadius: "8px",
         boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -143,7 +167,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
               }}
             >
               <Typography
-                variant={isMobile ? "subtitle1" : "h4"}
+                variant={isMobile ? "h6" : "h5"}
                 component="div"
                 sx={{
                   fontWeight: 700,
@@ -198,7 +222,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
           padding: "8px",
           flexDirection: "column",
           alignItems: "flex-start",
-          bgcolor: alpha(theme.palette.background.paper, 0.94),
+          bgcolor: alpha(theme.palette.background.paper, 0.9),
           width: "100%",
         }}
       >
@@ -206,15 +230,9 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
           variant={isMobile? "subtitle1" : "h6"} 
           color="text.primary" 
           fontWeight={700} 
-          sx={(theme)=>({ 
-            maxWidth: 212, 
-            [theme.breakpoints.down("md")]: {
-              maxWidth: 188,
-            },
-            [theme.breakpoints.down("sm")]: {
-              maxWidth: 152,
-            },
-          })} 
+          sx={{ 
+            maxWidth: "100%",
+          }} 
           noWrap
           >
           {gameData?.name}
@@ -223,13 +241,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
           variant={isMobile? "subtitle2" : "subtitle1"} 
           color="text.secondary"
           sx={(theme)=>({ 
-            maxWidth: 212, 
-            [theme.breakpoints.down("md")]: {
-              maxWidth: 188,
-            },
-            [theme.breakpoints.down("sm")]: {
-              maxWidth: 152,
-            },
+            maxWidth: "100%",
           })} 
           noWrap
         >
@@ -240,17 +252,41 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             gap: "8px",
             width: "100%",
+            [theme.breakpoints.down("md")]: {
+              gap: "4px",
+            },
           }}
         >
           <Box
             sx={{
               display: "flex",
-              justifyContent: "center",
+              padding: "4px 8px",
+              gap: "8px",
               alignItems: "center",
-              gap: "18px",
+              justifyContent: "center",
+              borderRadius: "24px",
+              background: alpha(theme.palette.primary.main, 0.16),
+              [theme.breakpoints.down("sm")]: {
+                padding: "2px 4px",
+                gap: "4px",
+              },
+            }}
+          >
+            <StyledRateReviewIcon />
+            <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="primary">
+              {gameData?.numberOfReviews}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "8px",
+              [theme.breakpoints.down("md")]: {
+                gap: "4px",
+              },
             }}
           >
             <Box
@@ -259,6 +295,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
                 padding: "4px 8px",
                 gap: "8px",
                 alignItems: "center",
+                justifyContent: "center",
                 borderRadius: "24px",
                 background: alpha(theme.palette.secondary.main, 0.16),
                 [theme.breakpoints.down("sm")]: {
@@ -268,26 +305,17 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
               }}
             >
               <StyledFavoriteBorderOutlinedIcon />
-              <Typography variant="subtitle1" color="secondary">
+              <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="secondary">
                 {gameData?.numberOfFavourites}
               </Typography>
             </Box>
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "18px",
-            }}
-          >
             <Box
               sx={{
                 display: "flex",
                 padding: "4px 8px",
                 gap: "8px",
                 alignItems: "center",
+                justifyContent: "center",
                 borderRadius: "24px",
                 background: alpha(theme.palette.info.main, 0.16),
                 [theme.breakpoints.down("sm")]: {
@@ -297,7 +325,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
               }}
             >
               <StyledChecklistIcon />
-              <Typography variant="subtitle1" color="info.main">
+              <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="info.main">
                 {gameData?.numberOfWishlists}
               </Typography>
             </Box>
