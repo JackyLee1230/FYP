@@ -28,7 +28,7 @@ Output 'YES' if the review is a spam and 'NO' if the review is not a spam. Only 
 # gen_keywords_per_review
 KEYWORD_TEMPLATE_01 = \
 '''You are reading reviews of a game to understand the characteristics of the game. Extract the following aspect of the game from the reviews.
-The aspects are {aspects}. For each aspect, output a paragraph with less than 50 words. Then create a JSON with apsects name as key and the paragraph as value.
+The aspects are {aspects}. For each aspect, output a paragraph with less than 50 words. Then create a JSON with aspects name as key and the paragraph as value.
 {output_format}
 Only output the JSON. Do NOT output other text.
 
@@ -48,7 +48,7 @@ QUESTION_TEMPLATE_01 = \
 
 ASPECT_SENTIMENT_TEMPLATE = \
 '''You are reading reviews of a game to understand the characteristics of the game. Determine whether the reviews of each aspect are positive, or negative.
-The aspects are {aspects}. For each aspect, output \'positive\' if the review is positive, and \'negative\' if the review is negative. Output \'NA\' if there is no review for an aspect. Only output the decision. Do NOT output other text. Then create a JSON with apsects name as key and sentiment as value.
+The aspects are {aspects}. For each aspect, output \'positive\' if the review is positive, and \'negative\' if the review is negative. Output \'NA\' if there is no review for an aspect. Only output the decision. Do NOT output other text. Then create a JSON with aspects name as key and sentiment as value.
 {output_format}
 Do NOT output other text.
 
