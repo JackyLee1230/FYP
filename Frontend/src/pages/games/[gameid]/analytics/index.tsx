@@ -14,6 +14,7 @@ import Link from "next/link";
 import Grid from '@mui/material/Unstable_Grid2';
 import { ResponsivePie } from '@nivo/pie';
 import { ResponsiveBar } from '@nivo/bar';
+import { ResponsiveTreeMap } from '@nivo/treemap';
 import { getScoreColor } from "@/utils/DynamicScore";
 import { getGender } from "@/type/user";
 import { genderList } from "@/type/user";
@@ -493,6 +494,16 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
     { playTime: "50-100", count: gameAnalytics.playTime["50-100 Hours"] ?? 0},
     { playTime: "100+", count: gameAnalytics.playTime["100+ Hours"] ?? 0},
   ]
+
+  const topicFrequencyData = {
+    "name": "topic",
+    "children": Object.keys(gameAnalytics?.topicFrequency).map(key => ({
+        "name": gameAnalytics?.topicFrequency[key].name,
+        "freq": gameAnalytics?.topicFrequency[key].freq
+    }))
+  }
+
+  console.log(topicFrequencyData);
 
   return (
     <div>
@@ -1030,10 +1041,10 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     padAngle={1.8}
                     cornerRadius={6}
                     activeOuterRadiusOffset={8}
-                    colors={{ scheme: 'nivo' }}
+                    colors={{ scheme: 'yellow_orange_red' }}
                     borderWidth={1}
                     borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-                    enableArcLinkLabels={isTablet? true : false}
+                    enableArcLinkLabels={false}
                     arcLabelsSkipAngle={10}
                     legends={[
                       {
@@ -1126,6 +1137,83 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 </Box>
               </Box>
             </Grid> 
+            {gameAnalytics?.topicFrequency && (
+              <Grid xs={12}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "12px",
+                    bgcolor: "background.paper",
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  <Typography
+                    variant={isTablet? "subtitle1" : "h6"}
+                    color="text.primary"
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: 500,
+                      marginTop: "12px",
+                    }} 
+                  >
+                    Reviews Topic Frequency
+                  </Typography>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: "425px",
+                      [theme.breakpoints.down("md")]: {
+                        height: "350px",
+                      },
+                      [theme.breakpoints.down("sm")]: {
+                        height: "300px",
+                      },
+                    }}
+                  >
+                    <ResponsiveTreeMap
+                      data={topicFrequencyData}
+                      identity="name"
+                      value="freq"
+                      valueFormat=" >-0.1~d"
+                      leavesOnly={true}
+                      margin={{ top: 12, right: 12, bottom: 12, left: 12 }}
+                      labelSkipSize={12}
+                      labelTextColor={{
+                          from: 'color',
+                          modifiers: [
+                              [
+                                  'darker',
+                                  1.2
+                              ]
+                          ]
+                      }}
+                      parentLabelPosition="left"
+                      parentLabelTextColor={{
+                          from: 'color',
+                          modifiers: [
+                              [
+                                  'darker',
+                                  2
+                              ]
+                          ]
+                      }}
+                      borderColor={{
+                          from: 'color',
+                          modifiers: [
+                              [
+                                  'darker',
+                                  0.1
+                              ]
+                          ]
+                      }}
+                    />
+                  </Box>
+                </Box>
+              </Grid> 
+            )}
           </Grid>
         </Box>
 

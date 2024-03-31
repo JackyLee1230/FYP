@@ -87,7 +87,15 @@ export type GameReviewPageProps = {
   commentErrorMessage: string;
 };
 
+type Topic = {
+  name: string;
+  freq: number;
+};
+
 export type GameAnalytic = {
+  topicFrequency: {
+    [key: string]: Topic;
+  }
   reviewedPlatform: Record<string, number>;
   playTime: Record<string, number>;
   favouriteByAge: Record<string, number>,
@@ -97,7 +105,7 @@ export type GameAnalytic = {
   genderReviews: Record<string, number>,
   reviewLength: Record<string, number>,
   sentimentReviewsByGender: {
-      [key: string]: Record<string, number>
+    [key: string]: Record<string, number>
   },
   score: number,
   isInDevelopment: boolean,

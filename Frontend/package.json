@@ -17,6 +17,7 @@
     "@nivo/bar": "^0.80.0",
     "@nivo/core": "^0.80.0",
     "@nivo/pie": "^0.80.0",
+    "@nivo/treemap": "^0.80.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.5.9",
     "@vercel/analytics": "^1.1.1",
