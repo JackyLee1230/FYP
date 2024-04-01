@@ -64,22 +64,17 @@ export default function StickyFooter() {
             </Grid>
             <Grid item xs={8} sm={4}>
               <Typography variant="h6" color="text.primary" gutterBottom>
-                {"Placeholder"}
+                {"Important Links"}
               </Typography>
               <ul>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Placeholder 1"}
+                    {"About Us"}
                   </Link>
                 </li>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Placeholder 2"}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Placeholder 3"}
+                    {"Contact Us"}
                   </Link>
                 </li>
               </ul>
@@ -87,7 +82,7 @@ export default function StickyFooter() {
 
             <Grid item xs={8} sm={4}>
               <Typography variant="h6" color="text.primary" gutterBottom>
-                {"TOS"}
+                {"Policies"}
               </Typography>
               <ul>
                 <li>
@@ -97,12 +92,7 @@ export default function StickyFooter() {
                 </li>
                 <li>
                   <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"About Us"}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" variant="subtitle1" color="text.secondary">
-                    {"Contact Us"}
+                    {"Privacy Policy"}
                   </Link>
                 </li>
               </ul>
