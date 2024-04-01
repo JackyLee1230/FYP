@@ -59,6 +59,8 @@ public class ReviewRequest {
 
     private List<Integer> resentSentimentId;
 
+    private List<Integer> resentTMId;
+
     private String order;
 
     private String createdAt;

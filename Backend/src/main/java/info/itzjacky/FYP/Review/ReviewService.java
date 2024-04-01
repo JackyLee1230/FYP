@@ -76,6 +76,25 @@ public class ReviewService {
         return true;
     }
 
+    public Boolean resendForTopicModelling (@RequestBody ReviewRequest req) {
+        if (req.getResentTMId() == null || req.getResentTMId().isEmpty()) {
+            throw new IllegalStateException("No review id provided");
+        }
+        for (Integer reviewId : req.getResentTMId()) {
+            Review review = reviewRepository.findReviewById(reviewId);
+            if (review == null) {
+                throw new IllegalStateException("Review does not exist");
+            }
+            JSONObject request = new JSONObject();
+            request.put("reviewId", review.getId());
+            request.put("reviewComment", review.getComment());
+            request.put("genre", review.getReviewedGame().getGenre());
+            request.put("name", review.getReviewedGame().getName());
+            rabbitMQProducer.sendTopicModelingMessagetoRabbitMQ(request.toString());
+        }
+        return true;
+    }
+
     public List<Review> getTopLikedReviews(ReviewRequest reviewRequest){
         try{
             if(reviewRequest.getNumberOfReviews() == null || reviewRequest.getNumberOfReviews() < 1){
