@@ -239,6 +239,7 @@ public class ReviewController {
     @PostMapping("/addReview")
     public ResponseEntity<Review> addUser(@RequestBody ReviewRequest reviewReq){
         try{
+            reviewReq.setCreatedAt(new java.sql.Timestamp(System.currentTimeMillis()).toString());
             return new ResponseEntity<>(reviewService.addReview(reviewReq), HttpStatus.OK);
         } catch (Exception e){
             throw new ResponseStatusException(HttpStatusCode.valueOf(400), e.getMessage());

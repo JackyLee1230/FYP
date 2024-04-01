@@ -192,6 +192,7 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
       formData,
       {
         headers: {
+          Authorization: `Bearer ${auth.token}`,
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
