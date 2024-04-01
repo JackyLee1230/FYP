@@ -435,7 +435,7 @@ function GamePage({
           }}
         >
           {sortedAspects.map((aspect) => {
-            if (aspect != "overall" && aspect != "sentiment" && aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
+            if (aspect != "Overall" && aspect != "sentiment" && aspect !== 'isSpam' && aspectsArray[aspect] && aspectsArray[aspect].length > 0 && aspectsArray[aspect][0] !== 'NA') {
               return (
                 <Box 
                   key={aspect}
@@ -457,7 +457,7 @@ function GamePage({
               );
             }
           })}
-          {aspectsArray["overall"] && aspectsArray["overall"].length > 0 && (
+          {aspectsArray["Overall"] && aspectsArray["Overall"].length > 0 && (
             <Box
               sx={{
                 display: "flex",
@@ -467,11 +467,11 @@ function GamePage({
                 width: "100%",
               }}
             >
-              <Typography variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment["Overall"] === "Negative" ? "error.main" : "success"}>
+              <Typography variant={isTablet ? "subtitle1" : "h6"} color={aspectSentiment["Overall"] === "Negative" ? "error.main" : "success.main"}>
                 Overall:
               </Typography>
               <Typography variant={isTablet ? "subtitle1" : "h6"} color="text.secondary">
-                {aspectsArray["overall"].join(', ')}
+                {aspectsArray["Overall"].join(', ')}
               </Typography>
             </Box>
           )}
