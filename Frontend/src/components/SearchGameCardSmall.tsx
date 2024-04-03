@@ -38,6 +38,7 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
         background: gameData.iconUrl
           ? `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat`
           : undefined,
+        backgroundPosition: "center center",
         backgroundSize: gameData.iconUrl ? "cover" : undefined,
         minHeight: "266px",
         justifyContent: "space-between",
@@ -193,8 +194,10 @@ function SearchGameCardSmall({ gameData }: SearchGameCardSmallProps) {
               : ""
           }
           ${
-            gameData?.numberOfReviews  && gameData?.numberOfReviews > 0
-              ? gameData?.numberOfReviews > 1 ? `| ${gameData?.numberOfReviews} Reviews` : "| 1 Review"
+            gameData?.numberOfReviews && gameData?.numberOfReviews > 0
+              ? gameData?.numberOfReviews > 1
+                ? `| ${gameData?.numberOfReviews} Reviews`
+                : "| 1 Review"
               : "| No Reviews"
           }
           `}

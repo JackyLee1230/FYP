@@ -542,12 +542,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
             borderRadius: "36px 12px",
             overflow: "hidden",
             background: `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameAnalytics.iconUrl}) lightgray 50% / cover no-repeat`,
+            backgroundPosition: "center center",
             boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
 
             [theme.breakpoints.down("sm")]: {
               borderRadius: "24px 12px",
-              height: "280px"
-            }
+              height: "280px",
+            },
           }}
         >
           <Box
@@ -567,12 +568,14 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               },
             }}
           >
-            <Breadcrumbs 
-              separator={<NavigateNextIcon fontSize="small" sx={{color: "white"}} />}
+            <Breadcrumbs
+              separator={
+                <NavigateNextIcon fontSize="small" sx={{ color: "white" }} />
+              }
               sx={{
                 "& .MuiBreadcrumbs-ol": {
                   justifyContent: "center",
-                }
+                },
               }}
             >
               {breadcrumbs}
@@ -592,7 +595,6 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           }}
         >
           <Box
-
             sx={{
               display: "flex",
               padding: "24px",
@@ -600,7 +602,11 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               alignItems: "center",
             }}
           >
-            <Typography variant={isTablet? "h6" : "h5"} color="primary.main" sx={{ fontWeight: 700 }}>
+            <Typography
+              variant={isTablet ? "h6" : "h5"}
+              color="primary.main"
+              sx={{ fontWeight: 700 }}
+            >
               Game Statistics
             </Typography>
           </Box>
@@ -615,20 +621,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               alignItems: "center",
             }}
           >
-            <Grid container spacing={2} columns={{xs: 2, sm: 4, md: 12}}>
+            <Grid container spacing={2} columns={{ xs: 2, sm: 4, md: 12 }}>
               <Grid xs={2} md={4}>
                 <StatisticBox
                   IconComponent={StyledFavoriteBorderOutlinedIcon}
-                  number={gameAnalytics.numberOfFavourites?.toString() ?? "Unknown"}
+                  number={
+                    gameAnalytics.numberOfFavourites?.toString() ?? "Unknown"
+                  }
                   description="Favorites"
                   color="secondary"
                   colorCode={theme.palette.secondary.main}
                 />
-              </Grid>       
+              </Grid>
               <Grid xs={2} md={4}>
                 <StatisticBox
                   IconComponent={StyledChecklistIcon}
-                  number={gameAnalytics.numberOfWishlists?.toString() ?? "Unknown"}
+                  number={
+                    gameAnalytics.numberOfWishlists?.toString() ?? "Unknown"
+                  }
                   description="Wishlists"
                   color="info.main"
                   colorCode={theme.palette.info.main}
@@ -651,16 +661,18 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   >
                     <StatisticBox
                       IconComponent={StyledRateReviewOutlinedIcon}
-                      number={gameAnalytics.numberOfReviews?.toString() ?? "Unknown"}
+                      number={
+                        gameAnalytics.numberOfReviews?.toString() ?? "Unknown"
+                      }
                       description="Reviews"
                       color="warning.main"
                       colorCode={theme.palette.warning.main}
                     />
                   </ButtonBase>
-                </Box>  
-              </Grid>     
+                </Box>
+              </Grid>
             </Grid>
-            <Grid container spacing={4} columns={{xs: 2, md: 4, lg: 12}}>
+            <Grid container spacing={4} columns={{ xs: 2, md: 4, lg: 12 }}>
               <Grid xs={2} lg={4}>
                 <Box
                   sx={{
@@ -687,7 +699,8 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       width: "300px",
                     }}
                   >
-                    {(gameAnalytics?.numberOfReviews && gameAnalytics?.numberOfReviews) > 0 ? (
+                    {(gameAnalytics?.numberOfReviews &&
+                      gameAnalytics?.numberOfReviews) > 0 ? (
                       <ResponsivePie
                         theme={nivoTheme}
                         data={reviewsRecommendationData}
@@ -696,30 +709,33 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                         padAngle={1.8}
                         cornerRadius={6}
                         activeOuterRadiusOffset={8}
-                        colors={{ scheme: 'accent' }}
+                        colors={{ scheme: "accent" }}
                         borderWidth={1}
-                        borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                        borderColor={{
+                          from: "color",
+                          modifiers: [["darker", 0.2]],
+                        }}
                         enableArcLinkLabels={false}
                         arcLabelsSkipAngle={10}
                         legends={[
                           {
-                              anchor: 'bottom',
-                              direction: 'row',
-                              justify: false,
-                              translateX: 0,
-                              translateY: 36,
-                              itemsSpacing: 0,
-                              itemWidth: 150,
-                              itemHeight: 18,
-                              itemTextColor: theme.palette.text.primary,
-                              itemDirection: 'left-to-right',
-                              itemOpacity: 1,
-                              symbolSize: 18,
-                              symbolShape: 'circle',
-      
-                          }
+                            anchor: "bottom",
+                            direction: "row",
+                            justify: false,
+                            translateX: 0,
+                            translateY: 36,
+                            itemsSpacing: 0,
+                            itemWidth: 150,
+                            itemHeight: 18,
+                            itemTextColor: theme.palette.text.primary,
+                            itemDirection: "left-to-right",
+                            itemOpacity: 1,
+                            symbolSize: 18,
+                            symbolShape: "circle",
+                          },
                         ]}
-                      />) : (
+                      />
+                    ) : (
                       <Box
                         sx={{
                           display: "flex",
@@ -734,14 +750,18 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                           marginTop: "12px",
                         }}
                       >
-                        <Typography variant="h4" color="primary" sx={{ fontWeight: 700 }}>
+                        <Typography
+                          variant="h4"
+                          color="primary"
+                          sx={{ fontWeight: 700 }}
+                        >
                           No Review Data
                         </Typography>
                       </Box>
                     )}
                   </Box>
                 </Box>
-              </Grid>       
+              </Grid>
               <Grid xs={2} lg={4}>
                 <Box
                   sx={{
@@ -766,7 +786,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     sx={{
                       height: "325px",
                       position: "relative",
-                      display: "inline-flex", 
+                      display: "inline-flex",
                       alignItems: "center",
                     }}
                   >
@@ -819,7 +839,9 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                             : "divider"
                         }
                       >
-                        {gameAnalytics.score ? Math.round(gameAnalytics.score).toString() : "N/A"}
+                        {gameAnalytics.score
+                          ? Math.round(gameAnalytics.score).toString()
+                          : "N/A"}
                       </Typography>
                     </Box>
                   </Box>
@@ -849,7 +871,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     sx={{
                       height: "325px",
                       position: "relative",
-                      display: "inline-flex", 
+                      display: "inline-flex",
                       alignItems: "center",
                     }}
                   >
@@ -902,19 +924,22 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                             : "divider"
                         }
                       >
-                        {gameAnalytics.percentile ? `${Math.round(gameAnalytics.percentile).toString()}%` : "N/A"}
+                        {gameAnalytics.percentile
+                          ? `${Math.round(
+                              gameAnalytics.percentile
+                            ).toString()}%`
+                          : "N/A"}
                       </Typography>
                     </Box>
                   </Box>
                 </Box>
-              </Grid>     
+              </Grid>
             </Grid>
           </Box>
         </Box>
-        
+
         <Box
           id={"reviews"}
-          
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -924,7 +949,11 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           }}
         >
           <Divider textAlign="center" flexItem>
-            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+            <Typography
+              variant={isTablet ? "h6" : "h5"}
+              color="primary"
+              fontWeight={700}
+            >
               Reviews
             </Typography>
           </Divider>
@@ -942,13 +971,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Distribution of Review Lengths
                 </Typography>
@@ -965,39 +994,45 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   }}
                 >
                   <ResponsiveBar
-                      theme={nivoTheme}
-                      data={reviewLengthData}
-                      keys={['count']}
-                      indexBy="reviewLength"
-                      margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
-                      padding={0.3}
-                      valueScale={{ type: 'linear' }}
-                      indexScale={{ type: 'band', round: true }}
-                      colors={{ scheme: 'accent' }}
-                      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                      axisTop={null}
-                      axisRight={null}
-                      axisBottom={{
-                        tickSize: 8,
-                        tickPadding: 4,
-                        legend: 'Review Length',
-                        legendPosition: 'middle',
-                        legendOffset: 48,
-                        tickRotation: isTablet ? -25 : 0
-                      }}
-                      axisLeft={{
-                        tickSize: 8,
-                        tickPadding: 4,
-                        tickRotation: 0,
-                      }}
-                      labelSkipWidth={12}
-                      labelSkipHeight={12}
-                      labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                      animate={true}
+                    theme={nivoTheme}
+                    data={reviewLengthData}
+                    keys={["count"]}
+                    indexBy="reviewLength"
+                    margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
+                    padding={0.3}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "accent" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      legend: "Review Length",
+                      legendPosition: "middle",
+                      legendOffset: 48,
+                      tickRotation: isTablet ? -25 : 0,
+                    }}
+                    axisLeft={{
+                      tickSize: 8,
+                      tickPadding: 4,
+                      tickRotation: 0,
+                    }}
+                    labelSkipWidth={12}
+                    labelSkipHeight={12}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
+                    animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12} md={4}>
               <Box
                 sx={{
@@ -1011,13 +1046,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Distribution of Platforms
                 </Typography>
@@ -1041,32 +1076,35 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     padAngle={1.8}
                     cornerRadius={6}
                     activeOuterRadiusOffset={8}
-                    colors={{ scheme: 'yellow_orange_red' }}
+                    colors={{ scheme: "yellow_orange_red" }}
                     borderWidth={1}
-                    borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 0.2]],
+                    }}
                     enableArcLinkLabels={false}
                     arcLabelsSkipAngle={10}
                     legends={[
                       {
-                          anchor: 'bottom',
-                          direction: 'row',
-                          justify: false,
-                          translateX: 0,
-                          translateY: 36,
-                          itemsSpacing: 0,
-                          itemWidth: 100,
-                          itemHeight: 18,
-                          itemTextColor: theme.palette.text.primary,
-                          itemDirection: 'left-to-right',
-                          itemOpacity: 1,
-                          symbolSize: 18,
-                          symbolShape: 'circle',
-                      }
+                        anchor: "bottom",
+                        direction: "row",
+                        justify: false,
+                        translateX: 0,
+                        translateY: 36,
+                        itemsSpacing: 0,
+                        itemWidth: 100,
+                        itemHeight: 18,
+                        itemTextColor: theme.palette.text.primary,
+                        itemDirection: "left-to-right",
+                        itemOpacity: 1,
+                        symbolSize: 18,
+                        symbolShape: "circle",
+                      },
                     ]}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12} md={8}>
               <Box
                 sx={{
@@ -1080,13 +1118,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Distribution of Play Times
                 </Typography>
@@ -1105,21 +1143,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={playTimeData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="playTime"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'paired' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "paired" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Time (Hours)',
-                      legendPosition: 'middle',
+                      legend: "Time (Hours)",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: 0,
                     }}
@@ -1127,16 +1168,19 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       tickSize: 8,
                       tickPadding: 4,
                       tickRotation: 0,
-                      legendOffset: -40
+                      legendOffset: -40,
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             {gameAnalytics?.topicFrequency && (
               <Grid xs={12}>
                 <Box
@@ -1151,13 +1195,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   }}
                 >
                   <Typography
-                    variant={isTablet? "subtitle1" : "h6"}
+                    variant={isTablet ? "subtitle1" : "h6"}
                     color="text.primary"
                     sx={{
                       textAlign: "center",
                       fontWeight: 500,
                       marginTop: "12px",
-                    }} 
+                    }}
                   >
                     Reviews Topic Frequency
                   </Typography>
@@ -1182,37 +1226,22 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       margin={{ top: 12, right: 12, bottom: 12, left: 12 }}
                       labelSkipSize={12}
                       labelTextColor={{
-                          from: 'color',
-                          modifiers: [
-                              [
-                                  'darker',
-                                  1.2
-                              ]
-                          ]
+                        from: "color",
+                        modifiers: [["darker", 1.2]],
                       }}
                       parentLabelPosition="left"
                       parentLabelTextColor={{
-                          from: 'color',
-                          modifiers: [
-                              [
-                                  'darker',
-                                  2
-                              ]
-                          ]
+                        from: "color",
+                        modifiers: [["darker", 2]],
                       }}
                       borderColor={{
-                          from: 'color',
-                          modifiers: [
-                              [
-                                  'darker',
-                                  0.1
-                              ]
-                          ]
+                        from: "color",
+                        modifiers: [["darker", 0.1]],
                       }}
                     />
                   </Box>
                 </Box>
-              </Grid> 
+              </Grid>
             )}
           </Grid>
         </Box>
@@ -1228,7 +1257,11 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           }}
         >
           <Divider textAlign="center" flexItem>
-            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+            <Typography
+              variant={isTablet ? "h6" : "h5"}
+              color="primary"
+              fontWeight={700}
+            >
               Players
             </Typography>
           </Divider>
@@ -1246,13 +1279,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Distribution of Reviews by Age
                 </Typography>
@@ -1271,21 +1304,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={ageReviewsData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="age"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set2' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "set2" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Age Group',
-                      legendPosition: 'middle',
+                      legend: "Age Group",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: isTablet ? -25 : 0,
                     }}
@@ -1296,12 +1332,15 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12} md={6}>
               <Box
                 sx={{
@@ -1315,13 +1354,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Distribution of Reviews by Gender
                 </Typography>
@@ -1340,21 +1379,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={genderReviewsData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="gender"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'paired' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "paired" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Gender Type',
-                      legendPosition: 'middle',
+                      legend: "Gender Type",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: 0,
                     }}
@@ -1362,16 +1404,19 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                       tickSize: 8,
                       tickPadding: 4,
                       tickRotation: 0,
-                      legendOffset: -40
+                      legendOffset: -40,
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12}>
               <Box
                 sx={{
@@ -1385,13 +1430,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Sentiment Ratio
                 </Typography>
@@ -1415,32 +1460,35 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     padAngle={1.8}
                     cornerRadius={6}
                     activeOuterRadiusOffset={8}
-                    colors={{ scheme: 'dark2' }}
+                    colors={{ scheme: "dark2" }}
                     borderWidth={1}
-                    borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 0.2]],
+                    }}
                     enableArcLinkLabels={true}
                     arcLabelsSkipAngle={10}
                     legends={[
                       {
-                          anchor: 'bottom',
-                          direction: 'row',
-                          justify: false,
-                          translateX: 0,
-                          translateY: 36,
-                          itemsSpacing: 0,
-                          itemWidth: 100,
-                          itemHeight: 18,
-                          itemTextColor: theme.palette.text.primary,
-                          itemDirection: 'left-to-right',
-                          itemOpacity: 1,
-                          symbolSize: 18,
-                          symbolShape: 'circle',
-                      }
+                        anchor: "bottom",
+                        direction: "row",
+                        justify: false,
+                        translateX: 0,
+                        translateY: 36,
+                        itemsSpacing: 0,
+                        itemWidth: 100,
+                        itemHeight: 18,
+                        itemTextColor: theme.palette.text.primary,
+                        itemDirection: "left-to-right",
+                        itemOpacity: 1,
+                        symbolSize: 18,
+                        symbolShape: "circle",
+                      },
                     ]}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12} md={6}>
               <Box
                 sx={{
@@ -1454,13 +1502,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Sentiment Distribution by Age
                 </Typography>
@@ -1479,22 +1527,27 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={sentimentReviewsAgeData}
-                    keys={Object.keys(gameAnalytics.sentimentReviewsByAge.POSITIVE)}
+                    keys={Object.keys(
+                      gameAnalytics.sentimentReviewsByAge.POSITIVE
+                    )}
                     indexBy="sentiment"
                     margin={{ top: 12, right: 136, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set3' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "set3" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
                       tickRotation: 0,
-                      legend: 'Sentiment',
-                      legendPosition: 'middle',
+                      legend: "Sentiment",
+                      legendPosition: "middle",
                       legendOffset: 48,
                     }}
                     axisLeft={{
@@ -1504,38 +1557,41 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     legends={[
                       {
-                        dataFrom: 'keys',
-                        anchor: 'bottom-right',
-                        direction: 'column',
+                        dataFrom: "keys",
+                        anchor: "bottom-right",
+                        direction: "column",
                         justify: false,
                         translateX: 120,
                         translateY: 0,
                         itemsSpacing: isTablet ? 3 : 6,
                         itemWidth: 100,
                         itemHeight: 20,
-                        itemDirection: 'left-to-right',
+                        itemDirection: "left-to-right",
                         itemOpacity: 0.85,
                         symbolSize: 20,
                         effects: [
                           {
-                            on: 'hover',
+                            on: "hover",
                             style: {
                               itemOpacity: 1,
                               itemTextColor: theme.palette.error.main,
-                            }
-                          }
+                            },
+                          },
                         ],
-                        toggleSerie: true
-                      }
+                        toggleSerie: true,
+                      },
                     ]}
                     animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
             <Grid xs={12} md={6}>
               <Box
                 sx={{
@@ -1549,13 +1605,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Review Sentiment by Gender
                 </Typography>
@@ -1578,18 +1634,21 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     indexBy="sentiment"
                     margin={{ top: 12, right: 136, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set3' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "set3" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
                       tickRotation: 0,
-                      legend: 'Sentiment',
-                      legendPosition: 'middle',
+                      legend: "Sentiment",
+                      legendPosition: "middle",
                       legendOffset: 48,
                     }}
                     axisLeft={{
@@ -1599,38 +1658,41 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     legends={[
                       {
-                        dataFrom: 'keys',
-                        anchor: 'bottom-right',
-                        direction: 'column',
+                        dataFrom: "keys",
+                        anchor: "bottom-right",
+                        direction: "column",
                         justify: false,
                         translateX: 120,
                         translateY: 0,
                         itemsSpacing: isTablet ? 3 : 6,
                         itemWidth: 100,
                         itemHeight: 20,
-                        itemDirection: 'left-to-right',
+                        itemDirection: "left-to-right",
                         itemOpacity: 0.85,
                         symbolSize: 20,
                         effects: [
                           {
-                            on: 'hover',
+                            on: "hover",
                             style: {
                               itemOpacity: 1,
                               itemTextColor: theme.palette.error.main,
-                            }
-                          }
+                            },
+                          },
                         ],
-                        toggleSerie: true
-                      }
+                        toggleSerie: true,
+                      },
                     ]}
                     animate={true}
                   />
                 </Box>
               </Box>
-            </Grid> 
+            </Grid>
           </Grid>
         </Box>
 
@@ -1645,7 +1707,11 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
           }}
         >
           <Divider textAlign="center" flexItem>
-            <Typography variant={isTablet? "h6" : "h5"} color="primary" fontWeight={700}>
+            <Typography
+              variant={isTablet ? "h6" : "h5"}
+              color="primary"
+              fontWeight={700}
+            >
               Wish List & Favourite
             </Typography>
           </Divider>
@@ -1663,13 +1729,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Wishlist Distribution by Age
                 </Typography>
@@ -1688,21 +1754,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={wishlistByAgeData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="age"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set2' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "set2" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Age Group',
-                      legendPosition: 'middle',
+                      legend: "Age Group",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: isTablet ? -25 : 0,
                     }}
@@ -1713,7 +1782,10 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
@@ -1732,13 +1804,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Wishlist Distribution by Gender
                 </Typography>
@@ -1757,21 +1829,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={wishlistByGenderData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="gender"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'paired' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "paired" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Gender Type',
-                      legendPosition: 'middle',
+                      legend: "Gender Type",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: 0,
                     }}
@@ -1782,7 +1857,10 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
@@ -1801,13 +1879,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Favourite Distribution by Age
                 </Typography>
@@ -1826,21 +1904,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={favouriteByAgeData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="age"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'set2' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "set2" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Age Group',
-                      legendPosition: 'middle',
+                      legend: "Age Group",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: isTablet ? -25 : 0,
                     }}
@@ -1851,7 +1932,10 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
@@ -1870,13 +1954,13 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                 }}
               >
                 <Typography
-                  variant={isTablet? "subtitle1" : "h6"}
+                  variant={isTablet ? "subtitle1" : "h6"}
                   color="text.primary"
                   sx={{
                     textAlign: "center",
                     fontWeight: 500,
                     marginTop: "12px",
-                  }} 
+                  }}
                 >
                   Favourite Distribution by Gender
                 </Typography>
@@ -1895,21 +1979,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                   <ResponsiveBar
                     theme={nivoTheme}
                     data={favouriteByGenderData}
-                    keys={['count']}
+                    keys={["count"]}
                     indexBy="gender"
                     margin={{ top: 12, right: 24, bottom: 68, left: 46 }}
                     padding={0.3}
-                    valueScale={{ type: 'linear' }}
-                    indexScale={{ type: 'band', round: true }}
-                    colors={{ scheme: 'paired' }}
-                    borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors={{ scheme: "paired" }}
+                    borderColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
                       tickSize: 8,
                       tickPadding: 4,
-                      legend: 'Gender Type',
-                      legendPosition: 'middle',
+                      legend: "Gender Type",
+                      legendPosition: "middle",
                       legendOffset: 48,
                       tickRotation: 0,
                     }}
@@ -1920,7 +2007,10 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                     labelSkipWidth={12}
                     labelSkipHeight={12}
-                    labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+                    labelTextColor={{
+                      from: "color",
+                      modifiers: [["darker", 1.6]],
+                    }}
                     animate={true}
                   />
                 </Box>
@@ -1930,24 +2020,24 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         </Box>
       </Box>
       <Box
-        sx={{ 
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column', 
-          gap: '12px',
-          position: 'fixed', 
-          top: 86, 
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "12px",
+          position: "fixed",
+          top: 86,
           left: 32,
-          [theme.breakpoints.down("md")]:{
-            top: 82, 
+          [theme.breakpoints.down("md")]: {
+            top: 82,
             left: 24,
           },
-          [theme.breakpoints.down("sm")]:{
-            top: 72, 
+          [theme.breakpoints.down("sm")]: {
+            top: 72,
             left: 16,
-            alignItems: 'flex-start',
-          } 
+            alignItems: "flex-start",
+          },
         }}
       >
         <Fab
@@ -1971,12 +2061,12 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             }}
           >
-            <Stepper activeStep={activeStep} orientation="vertical" nonLinear	>
+            <Stepper activeStep={activeStep} orientation="vertical" nonLinear>
               <Step key={"statistics"}>
                 <StepButton onClick={handleStep("statistics")}>
                   <StepLabel>{"Statistics"}</StepLabel>
                 </StepButton>
-              </Step> 
+              </Step>
               <Step key={"reviews"}>
                 <StepButton onClick={handleStep("reviews")}>
                   <StepLabel>{"Reviews"}</StepLabel>
@@ -2001,4 +2091,5 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
 }
 
 export default GameAnalyticsPage;
+
 

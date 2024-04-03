@@ -15,24 +15,26 @@ import {
 import Link from "next/link";
 import { GameInfo } from "../type/game";
 import { getGenre } from "../type/gameGenre";
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChecklistIcon from "@mui/icons-material/Checklist";
-import RateReviewIcon from '@mui/icons-material/RateReview';
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 type CarouselGameCardProps = {
   gameData: GameInfo;
 };
 
-const StyledFavoriteBorderOutlinedIcon = styled(FavoriteBorderOutlinedIcon)(({ theme }) => ({
-  color: theme.palette.secondary.main,
-  fontSize: 24,
-  [theme.breakpoints.down("md")]: {
-    fontSize: 20,
-  },
-  [theme.breakpoints.down("sm")]: {
-    fontSize: 16,
-  },
-}));
+const StyledFavoriteBorderOutlinedIcon = styled(FavoriteBorderOutlinedIcon)(
+  ({ theme }) => ({
+    color: theme.palette.secondary.main,
+    fontSize: 24,
+    [theme.breakpoints.down("md")]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 16,
+    },
+  })
+);
 
 const StyledChecklistIcon = styled(ChecklistIcon)(({ theme }) => ({
   color: theme.palette.info.main,
@@ -77,6 +79,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
         background: gameData.iconUrl
           ? `url(${process.env.NEXT_PUBLIC_GAMES_STORAGE_PATH_PREFIX}${gameData.iconUrl}), lightgray 50% / cover no-repeat`
           : undefined,
+        backgroundPosition: "center center",
         backgroundSize: gameData.iconUrl ? "cover" : undefined,
         [theme.breakpoints.down("md")]: {
           width: "200px",
@@ -98,7 +101,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
         }}
       >
         <Box
-          sx={(theme)=>({
+          sx={(theme) => ({
             display: "flex",
             padding: "12px",
             justifyContent: "space-between",
@@ -109,7 +112,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
             },
             [theme.breakpoints.down("sm")]: {
               padding: "4px",
-            }
+            },
           })}
         >
           {gameData?.inDevelopment && (
@@ -202,7 +205,7 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
             },
             [theme.breakpoints.down("sm")]: {
               padding: "4px",
-            }
+            },
           }}
         >
           {gameData.genre.slice(0, 1).map((genre, index) => (
@@ -226,26 +229,26 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
           width: "100%",
         }}
       >
-        <Typography 
-          variant={isMobile? "subtitle1" : "h6"} 
-          color="text.primary" 
-          fontWeight={700} 
-          sx={{ 
+        <Typography
+          variant={isMobile ? "subtitle1" : "h6"}
+          color="text.primary"
+          fontWeight={700}
+          sx={{
             maxWidth: "100%",
-          }} 
-          noWrap
-          >
-          {gameData?.name}
-        </Typography>
-        <Typography 
-          variant={isMobile? "subtitle2" : "subtitle1"} 
-          color="text.secondary"
-          sx={(theme)=>({ 
-            maxWidth: "100%",
-          })} 
+          }}
           noWrap
         >
-            {gameData?.developerCompany}
+          {gameData?.name}
+        </Typography>
+        <Typography
+          variant={isMobile ? "subtitle2" : "subtitle1"}
+          color="text.secondary"
+          sx={(theme) => ({
+            maxWidth: "100%",
+          })}
+          noWrap
+        >
+          {gameData?.developerCompany}
         </Typography>
         <Box
           sx={{
@@ -276,7 +279,10 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
             }}
           >
             <StyledRateReviewIcon />
-            <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="primary">
+            <Typography
+              variant={isMobile ? "subtitle2" : "subtitle1"}
+              color="primary"
+            >
               {gameData?.numberOfReviews}
             </Typography>
           </Box>
@@ -305,7 +311,10 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
               }}
             >
               <StyledFavoriteBorderOutlinedIcon />
-              <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="secondary">
+              <Typography
+                variant={isMobile ? "subtitle2" : "subtitle1"}
+                color="secondary"
+              >
                 {gameData?.numberOfFavourites}
               </Typography>
             </Box>
@@ -325,7 +334,10 @@ function CarouselGameCard({ gameData }: CarouselGameCardProps) {
               }}
             >
               <StyledChecklistIcon />
-              <Typography variant={isMobile ? "subtitle2" : "subtitle1"} color="info.main">
+              <Typography
+                variant={isMobile ? "subtitle2" : "subtitle1"}
+                color="info.main"
+              >
                 {gameData?.numberOfWishlists}
               </Typography>
             </Box>
