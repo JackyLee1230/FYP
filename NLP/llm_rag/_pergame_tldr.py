@@ -60,7 +60,7 @@ SPECIFIC_TASK_REQ_SENTIMENT_BY_GENDER_DF = \
 
 
 TLDR_PERGAME_PROMPT_TEMPLATE = \
-'''Write a summary of the game based on the revies of each aspects, the sentiment results of the reviews, and the most mentioned topics of all reviews. The summary should be less than 200 words. Do NOT try to make up an answer. Only output the summary. Do NOT output other text.
+'''Write a summary of the game based on the reviews of each aspect, the sentiment results of the reviews, and the most mentioned topics of all reviews. The summary should be less than 200 words. Do NOT try to make up an answer. Only output the summary. Do NOT output other text.
 
 The reviews are as follows:
 \'\'\'
@@ -72,7 +72,7 @@ The sentiment results are as follows:
 {sentiment_content}
 \'\'\'
 
-The most mentioned topics name are: {topic_names}
+The most mentioned topics names are: {topic_names}
 
 Do NOT try to make up an answer. Only output the summary. Do NOT output other text.
 '''

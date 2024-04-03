@@ -43,7 +43,7 @@ OUTPUT_FORMAT_TEMPATE = \
 '''Output the JSON as a single line with no spaces between the key, value pairs. For example, if the aspects are {aspects_list_01}, the JSON should be: {output_json_template}'''
 
 QUESTION_TEMPLATE_01 = \
-'''Extract the the following aspect of the game from the reviews. The aspect '''
+'''Extract the following aspect of the game from the reviews. The aspect '''
 
 
 ASPECT_SENTIMENT_TEMPLATE = \
@@ -52,7 +52,7 @@ The aspects are {aspects}. For each aspect, output \'positive\' if the review is
 {output_format}
 Do NOT output other text.
 
-The reviews are as follows. The reviews are wrapped by thee consecitive apostrophes
+The reviews are as follows. The reviews are wrapped by three consecutive apostrophes
 \'\'\'
 {context}
 \'\'\'
@@ -62,7 +62,7 @@ Do NOT try to make up an answer. Do NOT output other text.'''
 
 
 KEYWORD_TEMPLATE_02 = \
-'''Extract the following aspects of the game from the reviews, and providwe a list of keywords, each of max length 5 words, for each aspect. The aspects are: {aspects}. Output a JSON with each of the aspects as key, and the list of keywords as the value. Only output the JSON. Do NOT output other text.
+'''Extract the following aspects of the game from the reviews, and provide a list of keywords, each of max length 5 words, for each aspect. The aspects are: {aspects}. Output a JSON with each of the aspects as key, and the list of keywords as the value. Only output the JSON. Do NOT output other text.
 
 The context is wrapped by three consecutive apostrophes. The context is as follows:
 \'\'\'
