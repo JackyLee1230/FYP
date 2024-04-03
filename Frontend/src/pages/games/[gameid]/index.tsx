@@ -935,7 +935,7 @@ function GamePage({ game, errorMessage }: GamePageProps) {
                     fontWeight: 500,
                     overflow: "hidden",
                     height: "100%",
-                    wordBreak: "break-all",
+                    wordBreak: "break-word",
                     [theme.breakpoints.down("md")]: {
                       WebkitLineClamp: 4,
                     },

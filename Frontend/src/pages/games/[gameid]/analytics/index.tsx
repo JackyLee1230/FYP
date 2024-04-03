@@ -349,7 +349,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
         gap: "4px",
         overflow: "hidden",
         whiteSpace: "nowrap",
-        wordBreak: "break-all",
+        wordBreak: "break-word",
         color: "white",
         [theme.breakpoints.down("md")]: { gap: "2px" },
       }}

@@ -235,7 +235,7 @@ function GameReviewCardSmall({
                 textOverflow: "ellipsis",
                 fontWeight: 500,
                 overflow: "hidden",
-                wordBreak: "break-all",
+                wordBreak: "break-word",
                 maxHeight: "144px",
               }}
             >
@@ -258,7 +258,7 @@ function GameReviewCardSmall({
                 flex: "1 0 0",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
-                wordBreak: "break-all",
+                wordBreak: "break-word",
               }}
             >
               <Typography variant="subtitle2" color="text.secondary" noWrap sx={{minWidth: 0}}>

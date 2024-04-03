@@ -258,7 +258,7 @@ function GameReviewCard({
                 textOverflow: "ellipsis",
                 fontWeight: 500,
                 overflow: "hidden",
-                wordBreak: "break-all",
+                wordBreak: "break-word",
               }}
             >
               {review?.comment}
@@ -280,7 +280,7 @@ function GameReviewCard({
                 flex: "1 0 0",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
-                wordBreak: "break-all",
+                wordBreak: "break-word",
               }}
             >
               <Typography variant="subtitle2" color="text.secondary">

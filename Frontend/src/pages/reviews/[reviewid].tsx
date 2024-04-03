@@ -370,7 +370,7 @@ function GamePage({
         gap: "4px",
         overflow: "hidden",
         whiteSpace: "nowrap",
-        wordBreak: "break-all",
+        wordBreak: "break-word",
 
         [theme.breakpoints.down("md")]: { gap: "2px" },
       }}
@@ -748,7 +748,7 @@ function GamePage({
                     gap: "8px",
                     overflow: "hidden",
                     whiteSpace: "nowrap",
-                    wordBreak: "break-all",
+                    wordBreak: "break-word",
 
                     [theme.breakpoints.down("md")]: {
                       gap: "6px",

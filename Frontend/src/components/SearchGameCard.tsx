@@ -92,7 +92,7 @@ function SearchGameCard({ gameData }: SearchGameCardProps) {
             width: "100%",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
-            wordBreak: "break-all",
+            wordBreak: "break-word",
             overflow: "hidden",
             justifyContent: "space-between",
             height: "100%",

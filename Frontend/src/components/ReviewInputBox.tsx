@@ -582,7 +582,7 @@ function ReviewInputBox({user, game, size="normal", review}: ReviewInputBoxProps
                 alignItems: "center",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
-                wordBreak: "break-all",
+                wordBreak: "break-word",
                 overflow: "hidden",
                 width: "100%",
               }}
