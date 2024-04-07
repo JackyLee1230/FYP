@@ -1,0 +1,88 @@
+Section 3.1.1.3 Text Processing
+
+4.63M -> 3.95M, 27.8% reduction -> 38.4% reduction
+
+Section 3.1.1.4 EDA
+
+Figure 3 -> new figure 3
+Caption of Figure 3: 5.14 : 1 -> 4.89 : 1
+
+Figure 5(a) -> (d) -> New figure 5(a) -> (d)
+Go to NLP/dev-workspace/sa/eda.ipynb
+New figure 5(a) is the table in cell 36
+New figure 5(b) is the table in cell 41
+New figure 5(c) is the table in cell 43
+New figure 5(d) is the table in cell 46
+
+Section 3.1.1.5 Datasets preparation
+
+301344 reviews -> 268588 reviews
+925405 reviews -> 790655 reviews
+5.13:1 -> 4.90:1
+
+exactly 5.14:1 -> exaactly 5:1
+
+
+Section 4.1 Sentiment Analysis
+
+RQ1
+Change the graphs to new graphs with the same title in NLP/dev-workspace/sa/eval_graphs_2024
+
+RQ2
+Change the graphs to new graphs with the same title in NLP/dev-workspace/sa/eval_graphs_2024
+
+Table values
+
+Balanced training set: Go to NLP/dev-workspace/sa/evaluation_all.ipynb cell 31. Look for perc_change columns
+Imbalanced training set: Go to NLP/dev-workspace/sa/evaluation_all.ipynb cell 34. Look for perc_change columns
+
+remove the sentence: ... ", except for model GloVe-CNN, which suffered from a drop in performance in the 240K imbalanced dataset (See Figure 25)"
+
+RQ3
+
+Change the two tables to values as below
+
+Table for imbalanced validation set
+Balanced training set
+TFIDF-RF, 120K: 0.81
+TFIDF-RF, 240K: 0.82
+TFIDF-RF, 480K: 0.82
+GloVe-CNN, 120K: 0.89
+GloVe-CNN, 240K: 0.90
+GloVe-CNN, 480K: 0.91
+Imbalanced training set
+TFIDF-RF, 120K: 0.82
+TFIDF-RF, 240K: 0.83
+TFIDF-RF, 480K: 0.84
+GloVe-CNN, 120K: 0.91
+GloVe-CNN, 240K: 0.91
+GloVe-CNN, 480K: 0.92
+
+
+Table for balanced validation set
+Balanced training set
+TFIDF-RF, 120K: 0.81
+TFIDF-RF, 240K: 0.81
+TFIDF-RF, 480K: 0.82
+GloVe-CNN, 120K: 0.88
+GloVe-CNN, 240K: 0.88
+GloVe-CNN, 480K: 0.89
+Imbalanced training set
+TFIDF-RF, 120K: 0.55
+TFIDF-RF, 240K: 0.57
+TFIDF-RF, 480K: 0.59
+GloVe-CNN, 120K: 0.82
+GloVe-CNN, 240K: 0.81
+GloVe-CNN, 480K: 0.83
+
+Change the ROC curve graphs to BERT with 480K training set. 
+
+Change the median inference time graphs to graphs with the same title in NLP/dev-workspace/sa/eval_graphs_2024/inference_time
+
+Change the Speedup table with values as below
+
+||Machine 1 (i5-8250U)|Machine 2 (M1 Max)|
+|---|---|---|
+|TFIDF-RF|20.23|8.42|
+|GloVe-CNN|7.90|7.49|
+|BERT|1.81|2.71|
