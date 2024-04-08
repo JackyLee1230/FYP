@@ -1218,6 +1218,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     }}
                   >
                     <ResponsiveTreeMap
+                      theme={nivoTheme}
                       data={topicFrequencyData}
                       identity="name"
                       value="freq"
