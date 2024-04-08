@@ -790,6 +790,7 @@ public class ReviewService {
         if (!Objects.equals(review.getReviewer().getId(), u.getId())) {
             throw new IllegalStateException("Unauthorized! You can only update your own review!");
         }
+        float oldScore = review.getScore();
         boolean isUpdated = false;
         if (reviewReq.getScore() != null && (reviewReq.getScore() >= 0 && reviewReq.getScore() <= 100) && !reviewReq.getScore().equals(review.getScore())) {
             review.setScore(reviewReq.getScore());
@@ -832,6 +833,9 @@ public class ReviewService {
             reviewReq.setGameDescription(g.getDescription());
             reviewReq.setGenres(g.getGenre());
 
+//            update the game's score, minus the original score , add the new score, and calculate the new average
+            g.setScore((g.getScore()*g.getNumberOfReviews() - oldScore + review.getScore())/g.getNumberOfReviews());
+            gameRepository.save(g);
             topicModelingForReview(reviewReq);
             review.getReviewer().setReviews(null);
             review.getReviewedGame().setGameReviews(null);
