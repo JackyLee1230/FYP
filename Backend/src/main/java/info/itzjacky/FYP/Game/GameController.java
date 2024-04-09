@@ -659,12 +659,12 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 
             game.setAnalytic(jsonObject.toString());
             game.setAnalyticUpdatedAt(generatedAt);
+            if ((totalScore/ reviews.size()) != game.getScore()) {
+                game.setScore(totalScore/ reviews.size());
+            }
             if (topicFreq.toString() != null && !topicFreq.isEmpty()) {
                 game.setTopicFrequency(topicFreq.toString());
                 game.setTopicFrequencyUpdatedAt(generatedAt);
-                if ((totalScore/ reviews.size()) != game.getScore()) {
-                    game.setScore(totalScore/ reviews.size());
-                }
                 jsonObject.put("topicFrequency", topicFreq);
                 logger.info("Topic Frequency: " + topicFreq.toString());
             }
