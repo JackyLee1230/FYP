@@ -368,6 +368,8 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
                 return new ResponseEntity<String>(game.getAnalytic(), HttpStatus.OK);
             }
 
+            float totalScore = 0;
+
             List<Review> reviews = reviewRepository.findReviewsByGameId(gameRequest.getId());
             HashMap<String, Integer> genderCount = new HashMap<>();
             genderCount.put("MALE", 0);
@@ -491,6 +493,7 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
 //            topic freq has the following format {topidId: name: name, freq: freq}
             for (Review r: reviews) {
 //                TOPICS to TOPIC FREQUENCY
+                totalScore += r.getScore();
                 String reviewTopics = r.getTopics();
                 if(reviewTopics != null && !reviewTopics.isEmpty()){
                     JSONObject topics = new JSONObject(reviewTopics);
@@ -659,6 +662,9 @@ public ResponseEntity<List<Game>> findGamesByDeveloperCompany(@RequestBody GameR
             if (topicFreq.toString() != null && !topicFreq.isEmpty()) {
                 game.setTopicFrequency(topicFreq.toString());
                 game.setTopicFrequencyUpdatedAt(generatedAt);
+                if ((totalScore/ reviews.size()) != game.getScore()) {
+                    game.setScore(totalScore/ reviews.size());
+                }
                 jsonObject.put("topicFrequency", topicFreq);
                 logger.info("Topic Frequency: " + topicFreq.toString());
             }
