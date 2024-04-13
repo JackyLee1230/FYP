@@ -1713,7 +1713,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
               color="primary"
               fontWeight={700}
             >
-              Wish List & Favourite
+              Wishlist & Favourite
             </Typography>
           </Divider>
           <Grid container spacing={2} columns={12}>
