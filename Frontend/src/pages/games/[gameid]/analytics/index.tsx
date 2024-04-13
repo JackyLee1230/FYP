@@ -1439,7 +1439,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     marginTop: "12px",
                   }}
                 >
-                  Sentiment Ratio
+                  Review Sentiment Ratio
                 </Typography>
                 <Box
                   sx={{
@@ -1511,7 +1511,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     marginTop: "12px",
                   }}
                 >
-                  Sentiment Distribution by Age
+                  Review Sentiment Distribution by Age
                 </Typography>
                 <Box
                   sx={{
@@ -1614,7 +1614,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     marginTop: "12px",
                   }}
                 >
-                  Review Sentiment by Gender
+                  Review Sentiment Distribution by Gender
                 </Typography>
                 <Box
                   sx={{
