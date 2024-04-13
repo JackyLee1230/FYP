@@ -4,7 +4,7 @@ NLP component of the platform. It consists of three parts
 
 - Sentiment Analysis
 - Topic Modeling
-- LLM prompting
+- Keyword Extraction with LLM prompting
 
 For more details of each component, please go to their corresponding folders and read their README.
 
@@ -14,7 +14,7 @@ Only relevant folders are listed
 
 ```
 |-- dev-workspace
-|-- llm_rag                 (folder for LLM prompting)
+|-- llm_rag                 (folder for Keyword Extraction with LLM prompting)
 |-- sa                      (folder for Sentiment Analysis)
 |-- tm                      (folder for Topic Modeling)
 ```
