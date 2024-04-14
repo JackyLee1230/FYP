@@ -1220,6 +1220,7 @@ function GameAnalyticsPage({ gameAnalytics, errorMessage }: GameAnalyticsPagePro
                     <ResponsiveTreeMap
                       theme={nivoTheme}
                       data={topicFrequencyData}
+                      orientLabel={false}
                       identity="name"
                       value="freq"
                       valueFormat=" >-0.1~d"
