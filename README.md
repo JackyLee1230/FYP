@@ -154,6 +154,16 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
+- [![Nivo][Nivo]][Nivo-url]
+- [![Axios][Axios]][Axios-url]
+- [![cookies-next][cookies-next]][cookies-next-url]
+- [![date-fns][date-fns]][date-fns-url]
+- [![Embla][Embla]][Embla-url]
+- [![jsonwebtoken][jsonwebtoken]][jsonwebtoken-url]
+- [![MUI file input][MUI file input]][MUI file input-url]
+- [![notistack][notistack]][notistack-url]
+- [![react-avatar-editor][react-avatar-editor]][react-avatar-editor-url]
+- [![React Slick][React Slick]][React Slick-url]
 - [![SpringBoot][SpringBoot]][SpringBoot-url]
 
 ## Project Structure
@@ -177,10 +187,31 @@ Please see LICENSE-MIT.md for more detail
 
 @JackLee1230: justjackypvp@gmail.com  
 @pakyimcheng: pakyimcheng@gmail.com
+@Samsys1622: samuelsiu5222@gmail.com
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[Nivo]: https://img.shields.io/badge/nivo-v0.80.0-red?style=for-the-badge
+[Nivo-url]: https://nivo.rocks/
+[Axios]: https://img.shields.io/badge/axios-v1.5.1-red?style=for-the-badge&logo=axios
+[Axios-url]: https://github.com/axios/axios?tab=readme-ov-file
+[cookies-next]: https://img.shields.io/badge/cookies--next-v4.0.0-red?style=for-the-badge
+[cookies-next-url]: https://www.npmjs.com/package/cookies-next
+[date-fns]: https://img.shields.io/badge/date--fns-v2.30.0-red?style=for-the-badge&logo=date-fns
+[date-fns-url]: https://date-fns.org/
+[Embla]: https://img.shields.io/badge/embla-v8.0.0--rc17-red?style=for-the-badge
+[Embla-url]: https://www.embla-carousel.com/
+[jsonwebtoken]: https://img.shields.io/badge/jsonwebtoken-v8.5.1-red?style=for-the-badge
+[jsonwebtoken-url]: https://www.npmjs.com/package/jsonwebtoken/
+[MUI file input]: https://img.shields.io/badge/MUI%20file%20input-v4.0.3-red?style=for-the-badge
+[MUI file input-url]: https://www.npmjs.com/package/jsonwebtoken/
+[notistack]: https://img.shields.io/badge/notistack-v3.0.1-red?style=for-the-badge
+[notistack-url]: https://notistack.com/
+[react-avatar-editor]: https://img.shields.io/badge/react--avatar--editor-v13.0.1-red?style=for-the-badge
+[react-avatar-editor-url]: https://www.npmjs.com/package/react-avatar-editor
+[React Slick]: https://img.shields.io/badge/React%20Slick-v1.8.1-red?style=for-the-badge
+[React Slick-url]: https://react-slick.neostack.com/
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [SpringBoot]: https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white
