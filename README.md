@@ -9,6 +9,7 @@ This is a Final Year Project (FYP) for the BEng(CompSci) at the University of Ho
 - [Getting Started](#getting-started)
   - [Backend](#backend)
   - [Frontend](#frontend)
+  - [NLP](NLP/README.md)
   - [Technologies](#technologies)
   - [Project Structure](#project-structure)
   - [Contributing](#contributing)
@@ -120,6 +121,12 @@ Backend URL:
   NEXT_PUBLIC_BACKEND_PATH_PREFIX=
 ```
 
+Install required dependencies
+
+```bash
+npm install
+```
+
 ### Local Run
 
 NPM/Yarn is required. Bun is not supported as of writing.</br>
@@ -163,14 +170,13 @@ A brief explanation of the project's directory structure.
 
 ## License
 
-This project is muti-licensed under Apache License 2.0 and TBD.
-Please see LICENSE.md for more detail
-
-`SPDX-License-Identifier: Apache-2.0`
+This project is single-licensed under MIT.
+Please see LICENSE-MIT.md for more detail
 
 ## Contact
 
-@JackLee1230: justjackypvp@gmail.com
+@JackLee1230: justjackypvp@gmail.com  
+@pakyimcheng: pakyimcheng@gmail.com
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -178,8 +184,3 @@ Please see LICENSE.md for more detail
 [React-url]: https://reactjs.org/
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [SpringBoot]: https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white
-
-```
-
-```
-
