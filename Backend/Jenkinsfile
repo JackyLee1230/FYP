@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    tools{
+        maven 'maven_3_9_5'
+    }
+    stages{
+        stage('Build Maven'){
+            steps{
+                // checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '68abdbaa-2131-4b53-abcc-1993b5feb482', url: 'git@github.com:JackyLee1230/FYP.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'GitLFSPull']], userRemoteConfigs: [[credentialsId: '68abdbaa-2131-4b53-abcc-1993b5feb482', url: 'git@github.com:JackyLee1230/FYP.git']]])
+                sh 'cd Backend && mvn clean install'
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'cd Backend && docker build -t critiq/backend .'
+                    sh "docker stop backend || true"
+                    sh "docker rm backend || true"
+                    sh 'docker rmi $(docker images -f "dangling=true" -q)'
+                    sh 'docker run -d --network="host" --name backend critiq/backend'
+                }
+            }
+        }
+    }
+}

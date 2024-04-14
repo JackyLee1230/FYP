@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    stages{
+        stage('Git SCM'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'GitLFSPull']], userRemoteConfigs: [[credentialsId: '758b0f9d-cc69-4c66-9dd6-3a8ef77fa508', url: 'git@github.com:JackyLee1230/FYP.git']]])
+            }
+        }
+        stage('Build NLP-SA'){
+            when { changeset "NLP/sa/*"}
+            steps {
+                script{
+                    sh 'cd NLP && docker build -t nlp-sa/backend sa/'
+                    sh "docker stop nlp-sa || true"
+                    sh "docker rm nlp-sa || true"
+                    sh 'docker rmi $(docker images -f "dangling=true" -q) || true'
+                    sh 'docker run -d --network="host" --restart unless-stopped --name nlp-sa nlp-sa/backend'
+                }
+            }
+        }
+        stage('Build NLP-TM'){
+            when { anyOf { changeset "NLP/tm/*"; changeset "NLP/llm_rag/*" } }
+            steps {
+                script{
+                    sh 'cd NLP && docker build -t nlp-tm/backend --build-context llm_path=llm_rag tm/'
+                    sh "docker stop nlp-tm || true"
+                    sh "docker rm nlp-tm || true"
+                    sh 'docker rmi $(docker images -f "dangling=true" -q) || true'
+                    // sh 'docker run -d --env "OLLAMA_IP=https://" --network="host" --restart unless-stopped --name nlp-tm nlp-tm/backend'
+                    sh 'docker run -d -e "MISTRAL_API_KEY"="" --network="host" --restart unless-stopped --name nlp-tm nlp-tm/backend'
+                }
+            }
+        }
+        
+        stage('Build NLP-LLM_RAG'){
+            // when { anyOf { changeset "NLP/llm_rag/*" } }
+            steps {
+                script{
+                    sh 'cd NLP && docker build -t nlp-llm_rag/backend llm_rag/'
+                    sh "docker stop nlp-llm_rag || true"
+                    sh "docker rm nlp-llm_rag || true"
+                    sh 'docker rmi $(docker images -f "dangling=true" -q) || true'
+                    // sh 'docker run -d --env "OLLAMA_IP=https://" --network="host" --restart unless-stopped --name nlp-tm nlp-tm/backend'
+                    sh 'docker run -d -e "MISTRAL_API_KEY"="" --network="host" --restart unless-stopped --name nlp-llm_rag nlp-llm_rag/backend'
+                }
+            }
+        }
+    }
+}
