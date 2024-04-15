@@ -4,6 +4,8 @@ CritiQ is a web application that provides a platform for users to review and rat
 
 This is a Final Year Project (FYP) for the BEng(CompSci) at the University of Hong Kong.
 
+Project Website (HKU CS): https://wp2023.cs.hku.hk/fyp23004/
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -28,7 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
     HTTPS can be enabled by using a reverse proxy such as Nginx or Apache.
     Our server is hosted on a DigitalOcean Droplet and we use Nginx as the reverse proxy.
 
-- To run the Spring Boot App Locally, please use the **LOCAL** profile which will use the application-local.properties file. The following options can be used.
+- To run the Spring Boot App Locally, please use the _**LOCAL**_ profile which will use the application-local.properties file. The following options can be used.
 
   - VS Code Extension: Spring Boot Dashboard
   - IntelliJ IDEA's Run/Debug Configuration
@@ -77,10 +79,10 @@ RabbitMQ Host and Port:
   # Modifies the Queue and Exchange name as needed
 ```
 
-#### 1. SELF SIGNING (Let's Encrypt and Certbot)
+#### 1. Self Signing (Let's Encrypt and Certbot)
 
 A VALID DOMAIN IS REQUIRED FOR SELF-SIGNING. </br>
-If you are using a self-signed certificate, you may need to add the certificate to the Java keystore.
+If you are using a self-signed certificate, you will need to add the certificate to the Java keystore under the resources directory.
 
 ```bash
 git clone https://github.com/certbot/certbot.git
@@ -150,7 +152,7 @@ NPM/Yarn is required. Bun is not supported as of writing.</br>
 
 ## Technologies
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This section should list any major frameworks/libraries used to support the project.
 
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
@@ -165,10 +167,18 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [![react-avatar-editor][react-avatar-editor]][react-avatar-editor-url]
 - [![React Slick][React Slick]][React Slick-url]
 - [![SpringBoot][SpringBoot]][SpringBoot-url]
+- [![Hibernate][Hibernate]](Hibernate-url)
+- [![MySQL][MySQL]](MySQL-url)
+- [![RabbitMQ][RabbitMQ]](RabbitMQ-url)
+- [![Jenkins][Jenkins]](Jenkins-url)
+- [![Docker][Docker]](Docker-url)
+- [![Grafana][Grafana]](Grafana-url)
+- [![Prometheus][Prometheus]](Prometheus-url)
+- [![DigitalOcean][DigitalOcean]](DigitalOcean-url)
 
 ## Project Structure
 
-A brief explanation of the project's directory structure.
+The project's directory strcture is as follows.
 
 - `Backend/`: Contains the backend code of the project.
 - `Frontend/`: Contains the frontend code of the project.
@@ -180,13 +190,13 @@ A brief explanation of the project's directory structure.
 
 ## License
 
-This project is single-licensed under MIT.
-Please see LICENSE-MIT.md for more detail
+This project is single-licensed under the [MIT](https://pitt.libguides.com/openlicensing/MIT) License.  
+Please see LICENSE-MIT.md for more details.
 
 ## Contact
 
 @JackLee1230: justjackypvp@gmail.com  
-@pakyimcheng: pakyimcheng@gmail.com
+@pakyimcheng: pakyimcheng@gmail.com  
 @Samsys1622: samuelsiu5222@gmail.com
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
@@ -215,3 +225,20 @@ Please see LICENSE-MIT.md for more detail
 [React Slick-url]: https://react-slick.neostack.com/
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [SpringBoot]: https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white
+[MySQL]: https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]: https://www.mysql.com/
+[RabbitMQ]: https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white
+[RabbitMQ-url]: https://www.rabbitmq.com/
+[Jenkins]: https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white
+[Jenkins-url]: https://www.jenkins.io/
+[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+[Grafana]: https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=Grafana&logoColor=white
+[Grafana-url]: https://grafana.com/
+[Prometheus]: https://img.shields.io/badge/Prometheus-000000?style=for-the-badge&logo=Prometheus&logoColor=white
+[Prometheus-url]: https://prometheus.io/
+[DigitalOcean]: https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=DigitalOcean&logoColor=white
+[DigitalOcean-url]: https://www.digitalocean.com/
+[Hibernate]: https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white
+[Hibernate-url]: https://hibernate.org/
+
