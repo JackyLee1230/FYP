@@ -2,7 +2,7 @@ import UpdateUserIcon from "@/components/UpdateUserIcon";
 import UpdateUsernameBox from "@/components/UpdateUsername";
 import UpdateUserBannerBox from "@/components/UpdateUserBanner";
 import { useAuthContext } from "@/context/AuthContext";
-import { UserPageProps } from "@/type/user";
+import { UserPageProps, getGender } from "@/type/user";
 import { displaySnackbarVariant } from "@/utils/DisplaySnackbar";
 import { Avatar, Box, Button, ButtonBase, Fade, FormControl, FormControlLabel, Grid, InputLabel, LinearProgress, ListItemIcon, Menu, MenuItem, Modal, Pagination, Select, TextField, Tooltip, Typography, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
@@ -742,7 +742,7 @@ export default function User({ user }: UserPageProps) {
                 </Typography>
               </Box>
               <Typography variant={isTablet ? "body2" : "subtitle1"} color="text.secondary">
-                {isCurrentUser ? auth?.user?.gender ?? "Not provided" : isPrivate ? "Undisclosed" : user?.gender ?? "Not provided"}
+                {(isCurrentUser && auth?.user?.gender) ? getGender(auth?.user?.gender) ?? "Not provided" : isPrivate ? "Undisclosed" : getGender(user?.gender) ?? "Not provided"}
               </Typography>
             </Box>
 

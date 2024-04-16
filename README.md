@@ -156,6 +156,7 @@ This section should list any major frameworks/libraries used to support the proj
 
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
+- [![TypeScript][TypeScript]][TypeScript-url]
 - [![Nivo][Nivo]][Nivo-url]
 - [![Axios][Axios]][Axios-url]
 - [![cookies-next][cookies-next]][cookies-next-url]
@@ -203,6 +204,8 @@ Please see LICENSE-MIT.md for more details.
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
 [Nivo]: https://img.shields.io/badge/nivo-v0.80.0-red?style=for-the-badge
 [Nivo-url]: https://nivo.rocks/
 [Axios]: https://img.shields.io/badge/axios-v1.5.1-red?style=for-the-badge&logo=axios
