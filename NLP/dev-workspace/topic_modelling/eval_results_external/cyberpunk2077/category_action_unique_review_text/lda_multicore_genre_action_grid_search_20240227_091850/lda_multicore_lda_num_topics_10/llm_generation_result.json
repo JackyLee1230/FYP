@@ -1,0 +1,596 @@
+{
+  "new_topic_labels": {
+    "0": {
+      "call_0": "\nTopic: Kill Adam Smasher\n\nLabel: Action",
+      "call_1": "Topic: Action-packed shooting game with a focus on killing and violence.\nLabel: \"Kill 'Em All\"",
+      "call_2": "Kill Adam Smasher",
+      "call_3": "Topic: Violent Video Game\nLabel: \"NA\"",
+      "call_4": "Topic Label: Violent Game"
+    },
+    "1": {
+      "call_0": "Topic: Crashes and Bugs in the Game\nLabel: \"Crashy Fun\" (5 words)",
+      "call_1": "\nTopic Label: Crashing",
+      "call_2": "\nTopic: Game Performance Issues\n\nLabel: \"Game Unplayable\"",
+      "call_3": "\nTopic Label: Buggy Game",
+      "call_4": "Topic Label: Buggy"
+    },
+    "2": {
+      "call_0": "\nTopic Label: Bioshock World",
+      "call_1": "\nTopic Label: Bioshock Infinite",
+      "call_2": "\nTopic Label: Bioshock Infinite",
+      "call_3": "\nTopic: Bioshock with different endings\nLabel: \"Better Endings\"",
+      "call_4": "\nTopic Label: Bioshock Infinite"
+    },
+    "3": {
+      "call_0": "Topic: \"Fun and Different Gameplay\"\nLabel: \"Good Fun\"",
+      "call_1": "\nTopic: Fun and Engaging Gameplay\nLabel: \"Fun\"",
+      "call_2": "\nTopic Label: Nice",
+      "call_3": "Label: \"Fun and buggy game\"",
+      "call_4": "Topic: Bad Optimization in Game\nLabel: \"Bad Optimization\""
+    },
+    "4": {
+      "call_0": "\nTopic: Cyberpunk Game\nLabel: \"Excellent Cyberpunk Experience\"",
+      "call_1": "\nTopic: Cyberpunk Game with Immersive World and Engaging Gameplay\nLabel: \"Cyberpunk Gem\"",
+      "call_2": "Topic: Cyberpunk Gameplay Experience\nLabel: \"Cyberpunk Bliss\" (5 words)",
+      "call_3": "Cyberpunk",
+      "call_4": "\nIt seems like you're trying to generate a random text using a Markov chain. The output you provided is a valid example of this type of text generation. Here's a breakdown of the structure and characteristics of the text:\n\n1. Length: The text you provided contains 208 characters, which is a typical length for a generated text sample.\n2. Syllable count: The syllable count for the text is around 130-140, which is slightly higher than the average for a generated text sample.\n3. Word distribution: The words in the text follow a normal distribution, with some common words (e.g., \"the\", \"a\", \"and\") appearing more frequently than others.\n4. Sentence structure: The sentences in the text are simple and contain only one or two clauses.\n5. Grammar: The grammar in the text is basic and follows a simple sentence structure, with no complex grammatical structures observed.\n6. Vocabulary: The vocabulary used in the text is limited to around 100 unique words, which is typical for a generated text sample.\n7. Theme: There doesn't seem to be a clear theme or topic in the text, as it contains a mix of different words and phrases without any discernible pattern.\n\nOverall, the output you provided appears to be a valid example of a randomly generated text using a Markov chain."
+    },
+    "5": {
+      "call_0": "Great Game",
+      "call_1": "\nTopic Label: Great Game",
+      "call_2": "\nTopic Label: \"Great Game\"",
+      "call_3": "\nTopic Label: Fantastic Game",
+      "call_4": "Topic: Great Game with Amazing Gameplay and Graphics\nLabel: Fantastic"
+    },
+    "6": {
+      "call_0": "Topic: Game Worth Buying\nLabel: \"Buy Game\"",
+      "call_1": "Topic: Worth It\nLabel: Yes",
+      "call_2": "Topic: Cyberpunk Game\nLabel: \"Worth the Hype\"",
+      "call_3": "Topic: Worth Buying?\nLabel: Yes",
+      "call_4": "\nTopic Label: Worth the Hype"
+    },
+    "7": {
+      "call_0": "\nTopic Label: \"Classic FPS Fun\" (5 words)",
+      "call_1": "\nTopic Label: \"Old FPS Classic\"",
+      "call_2": "Topic Label: Classic FPS Masterpiece",
+      "call_3": "Topic: Classic First-Person Shooter\nLabel: \"FPS Classic\"",
+      "call_4": "Topic: \"Half-Life\"\nLabel: \"Classic FPS\""
+    },
+    "8": {
+      "call_0": "Label: Lemonade Stand",
+      "call_1": "\nTopic: Players' Reviews of the Game\n\nLabel: \"Love It\"",
+      "call_2": "Topic Label: Edge Runners",
+      "call_3": "\nTopic: Lemonade Stand\n\nLabel: \"Lemonade Stand\"",
+      "call_4": "Topic: \"Edge Runners\" Reviews\nLabel: \"Yes, really good\""
+    },
+    "9": {
+      "call_0": "\nTopic Label: Good Multiplayer Fun",
+      "call_1": "\nTopic: Online Multiplayer Game\nLabel: Good Fun",
+      "call_2": "Topic: Good Multiplayer Fun Game with Some Bugs and Glitches\nLabel: GMFG",
+      "call_3": "\nTopic Label: Fun Multiplayer Game",
+      "call_4": "\nTopic Label: Fun Multiplayer Game"
+    }
+  },
+  "randomed_topic_reviews": {
+    "0": {
+      "call_0": {
+        "reviews": [
+          "kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher",
+          "game made pick angel pick angel also want phone calls stop want someone calling talking judy"
+        ],
+        "recommendationid": [
+          "123948520",
+          "82082899"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "panam heart heart heart heart heart heart heart heart heart heart heart heart heart heart heart",
+          "kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher"
+        ],
+        "recommendationid": [
+          "130905052",
+          "123897600"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher",
+          "panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step panam please step"
+        ],
+        "recommendationid": [
+          "123897600",
+          "155921822"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "seabear poooooooooooooooooooooonk fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit fuck reddit",
+          "game made pick angel pick angel also want phone calls stop want someone calling talking judy"
+        ],
+        "recommendationid": [
+          "81931411",
+          "82082899"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "round bad course buggy understand swear fucking god make sit another fucking car hear talk minutes lose fucking mind",
+          "kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher kill adam smasher"
+        ],
+        "recommendationid": [
+          "141837229",
+          "123948520"
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash",
+          "bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs pretty fun game though"
+        ],
+        "recommendationid": [
+          "118488449",
+          "82259963"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash crash",
+          "performance lot improve sure running game p medium ti r getting fps average far major bugs crashes minor bugs common enjoying right recommend people game may unplayable"
+        ],
+        "recommendationid": [
+          "118488449",
+          "81937636"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "performance lot improve sure running game p medium ti r getting fps average far major bugs crashes minor bugs common enjoying right recommend people game may unplayable",
+          "despite numerous delays game seriously rough way current issues include poor optimization non rebindable keys visual bugs various bugs glitches purchase current update longer play game unless using exclusive fullscreen runs fps unless tabbed case runs normally obviously cannot interacted"
+        ],
+        "recommendationid": [
+          "81937636",
+          "81934586"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "forced automatic update stopped game never forced automatic update without option disable small patch forced onto game made unable launch despite numerous attempts repair waste time reinstalling meet result",
+          "bugs bugs bugs bugsbugs bugs bugs bugsbugs bugs bugs bugsbugs bugs bugs bugsbugs bugs bugs bugsbugs bugs bugs bugsbugs bugs bugs bugs bugs"
+        ],
+        "recommendationid": [
+          "157291093",
+          "89281541"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug",
+          "bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs bugs pretty fun game though"
+        ],
+        "recommendationid": [
+          "125100647",
+          "82259963"
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "large open world plenty side quests keep busy many hours lots different ways approach combat including non lethal options",
+          "city alive open world games big lands usually empty city feels real feels lived crowds fact cut thru alley find something"
+        ],
+        "recommendationid": [
+          "83485731",
+          "82782730"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "large open world plenty side quests keep busy many hours lots different ways approach combat including non lethal options",
+          "must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca must take revenge becca"
+        ],
+        "recommendationid": [
+          "83485731",
+          "122499101"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "love game minor glitches quick save easily resolves love open worlds getting lost side quests add overall story enjoy blowing time one",
+          "would love see relationship dynamic game able create work better relationships previously existing characters new characters"
+        ],
+        "recommendationid": [
+          "85300537",
+          "82234482"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "fair warning complete side quest lines get better ending options completing simply blasting main story give fairly dismal endings",
+          "love game minor glitches quick save easily resolves love open worlds getting lost side quests add overall story enjoy blowing time one"
+        ],
+        "recommendationid": [
+          "85168304",
+          "85300537"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "love game minor glitches quick save easily resolves love open worlds getting lost side quests add overall story enjoy blowing time one",
+          "game returns roots open world rpgs complex leveling systems many different ways specialize character"
+        ],
+        "recommendationid": [
+          "85300537",
+          "85168199"
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like",
+          "fun game different builds play styles story quite good v lines kinda cringle play"
+        ],
+        "recommendationid": [
+          "113992424",
+          "139717344"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "fun fun fun like lot fun play fun yes fun",
+          "like graphics story line far need put hours really give overall rating"
+        ],
+        "recommendationid": [
+          "83683202",
+          "108370003"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "see good cause yk nice think really means juicy yeah juicy good nice",
+          "fun fun fun like lot fun play fun yes fun"
+        ],
+        "recommendationid": [
+          "123036390",
+          "83683202"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like",
+          "story amazing really buggy like really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really buggy"
+        ],
+        "recommendationid": [
+          "113992424",
+          "82987092"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "dis game really sucks really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really bad optimization cityyyy",
+          "like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like like"
+        ],
+        "recommendationid": [
+          "82260707",
+          "113992424"
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk",
+          "game fantastic story deeply engaging exciting world feels well polished fleshed glitches purely visual physics based nothing game breaking highly recommend playing k minimum settings"
+        ],
+        "recommendationid": [
+          "123032571",
+          "82305378"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "truly feels like immersive cinematic cyberpunk world beautiful medium settings excited every bit gameplay shown far",
+          "may fully polished take away much experience world amazing characters real personalities time decisions make huge impact still feel part story combat good enough main reason play game"
+        ],
+        "recommendationid": [
+          "82040002",
+          "85696272"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk",
+          "cyberpunk well happened cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk"
+        ],
+        "recommendationid": [
+          "126248824",
+          "150025625"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk",
+          "love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk"
+        ],
+        "recommendationid": [
+          "126248824",
+          "123032571"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk love cyberpunk",
+          "cyberpunk well happened cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpunk cyberpu"
+        ],
+        "recommendationid": [
+          "123032571",
+          "81937332"
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars",
+          "flaws remains great game great story great gameplay great replayability"
+        ],
+        "recommendationid": [
+          "82120980",
+          "85955717"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "great game great graphics great storyline highly recommend perfect",
+          "amazing game absolutely beautiful awesome gameplay would recommend anyone love game"
+        ],
+        "recommendationid": [
+          "147539648",
+          "83053574"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "flaws remains great game great story great gameplay great replayability",
+          "amazing game absolutely beautiful awesome gameplay would recommend anyone love game"
+        ],
+        "recommendationid": [
+          "85955717",
+          "83053574"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "excellent game beautiful visuals great atmosphere great escape",
+          "great graphic especially u use rtx dlss turned great story line must game"
+        ],
+        "recommendationid": [
+          "83262837",
+          "83196485"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars liars",
+          "amazing game absolutely beautiful awesome gameplay would recommend anyone love game"
+        ],
+        "recommendationid": [
+          "82120980",
+          "83053574"
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game buy game",
+          "never played till recently started playing story sucked played first hours straight"
+        ],
+        "recommendationid": [
+          "141847314",
+          "110534034"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering",
+          "im one people played game day goddamn game come long way say today made one favorite games ever def worth money would recommend playing game"
+        ],
+        "recommendationid": [
+          "86035009",
+          "152605235"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "bought three copy game dropped get refunded cause knew one day game would blow away day today thank cdpr",
+          "love game bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla really love cyberpunk sorry cyberdialogue"
+        ],
+        "recommendationid": [
+          "147014728",
+          "82012544"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering stop preordering",
+          "bought three copy game dropped get refunded cause knew one day game would blow away day today thank cdpr"
+        ],
+        "recommendationid": [
+          "86035009",
+          "147014728"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy",
+          "bought three copy game dropped get refunded cause knew one day game would blow away day today thank cdpr"
+        ],
+        "recommendationid": [
+          "147822817",
+          "147014728"
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "sleep anymore game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life game life",
+          "ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh"
+        ],
+        "recommendationid": [
+          "82396870",
+          "124710299"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh",
+          "virgin game announced years ago years later finally released still virgin"
+        ],
+        "recommendationid": [
+          "124710299",
+          "81921530"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh",
+          "real come game slaps possibly favorite game time play"
+        ],
+        "recommendationid": [
+          "147677981",
+          "150377140"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "one best games played even huge fps fan thank cdpr giving",
+          "ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh"
+        ],
+        "recommendationid": [
+          "148343804",
+          "147677981"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "best universe ever created best game created around setting",
+          "ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh ponpon sh"
+        ],
+        "recommendationid": [
+          "145106704",
+          "147677981"
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "duck walked lemonade stand said man running stand hey bum bum bum got grapes man said sell lemonade cold fresh home made get glass duck said waddled away waddle waddle til next day bum bum bum bum ba bada dum duck walked lemonade stand said man running stand hey bum bum bum got grapes man said like said yesterday sell lemonade ok give try duck said day waddled away waddle waddle waddled away waddle waddle waddled away waddle waddle til next day bum bum bum bum ba ba dum duck walked lemonade stand said man running stand hey bum bum bum got grapes man said look getting old mean lemonade ever sold give go duck said bout",
+          "yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes"
+        ],
+        "recommendationid": [
+          "82438918",
+          "153462891"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes",
+          "yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes"
+        ],
+        "recommendationid": [
+          "153462891",
+          "155096943"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners",
+          "skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead skip ahead welcome cyberpunk"
+        ],
+        "recommendationid": [
+          "128638899",
+          "148637006"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "duck walked lemonade stand said man running stand hey bum bum bum got grapes man said sell lemonade cold fresh home made get glass duck said waddled away waddle waddle til next day bum bum bum bum ba bada dum duck walked lemonade stand said man running stand hey bum bum bum got grapes man said like said yesterday sell lemonade ok give try duck said day waddled away waddle waddle waddled away waddle waddle waddled away waddle waddle til next day bum bum bum bum ba ba dum duck walked lemonade stand said man running stand hey bum bum bum got grapes man said look getting old mean lemonade ever sold give go duck said bout",
+          "yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes"
+        ],
+        "recommendationid": [
+          "82438918",
+          "147589319"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes yes",
+          "dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners dont watch edge runners"
+        ],
+        "recommendationid": [
+          "147589319",
+          "128638899"
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "good game without mod mods mods easy install",
+          "game fun play loving game since day came experience updated game give try play game plus forget phantom liberty must try"
+        ],
+        "recommendationid": [
+          "122663127",
+          "147588130"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "listen ps players online game good getting better time update ty cdprojekt red",
+          "legend tier good tier bad graphics tier tier b tier c tier tier audio tier tier b tier c tier tier difficulty tier tier b tier c tier tier gameplay tier tier b tier c tier tier time consuming tier tier b tier c tier tier story tier tier b tier c tier tier pricing tier tier b tier c tier tier bugs glitches free tier tier b tier c tier tier community tier tier b tier c tier tier often need restart game missions buggy"
+        ],
+        "recommendationid": [
+          "82306777",
+          "153894400"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "legend tier good tier bad graphics tier tier b tier c tier tier audio tier tier b tier c tier tier difficulty tier tier b tier c tier tier gameplay tier tier b tier c tier tier time consuming tier tier b tier c tier tier story tier tier b tier c tier tier pricing tier tier b tier c tier tier bugs glitches free tier tier b tier c tier tier community tier tier b tier c tier tier often need restart game missions buggy",
+          "good game without mod mods mods easy install"
+        ],
+        "recommendationid": [
+          "153894400",
+          "122663127"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "game fun play loving game since day came experience updated game give try play game plus forget phantom liberty must try",
+          "strike rare strike strike iconic strike strike legendary strike game"
+        ],
+        "recommendationid": [
+          "147588130",
+          "124299668"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "fun buggy anymore mod support modding community silly based worldbuilding story fck corpos woooooooo",
+          "amazing sucks invites part grandesque community alternative future long live pro red"
+        ],
+        "recommendationid": [
+          "140308952",
+          "82533515"
+        ]
+      }
+    }
+  }
+}

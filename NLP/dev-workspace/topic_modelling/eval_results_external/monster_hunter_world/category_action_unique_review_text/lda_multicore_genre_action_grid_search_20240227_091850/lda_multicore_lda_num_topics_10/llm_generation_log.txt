@@ -1,0 +1,219 @@
+00_call0: Topic: "Kill or Die" Simulator
+Label: "Grindy Shooter"
+['use big sword kill big dog get bigger sword kill bigger weird dog dog simulator'
+ 'eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat']
+00_call1: 
+Topic Label: Kill Simulator
+['descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust'
+ 'eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat']
+00_call2: Topic: Violent Video Games
+Label: "Kill, shoot, and die in various scenarios."
+['go kill animals die try time kill animals blood thirst satisfied look animals find dragons kill dragons wear dragon skin pause bloodthirst kill bigger dragons happy'
+ 'poke poke poke backstep poke poke poke backstep poke poke poke backstep poke poke poke backstep']
+00_call3: Topic: Kill or Die
+Label: "Kill"
+['eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat'
+ 'kill big dinomonster wear dinomonster skin hat kill die cats chuck corpse ground kill big dinomonster']
+00_call4: 
+Topic: Bloody Carnage
+Label: "Kill, Shoot, Die"
+
+
+['graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed'
+ 'game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system']
+01_call0: 
+Topic: Game Crashes and Bugs
+Label: "Game Issues"
+['launch game anymore tried every fix internet crash apparently use windows bloatware make game works windows ltsc game works removed things like xbox game bar'
+ 'graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed']
+01_call1: 
+Topic: Game Crashes and Bugs
+Label: "Game Crashes"
+['one worse pc ports played bad optimalisation bad controls lots problems graphic driver let see patches one two month'
+ 'game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system']
+01_call2: 
+Topic Label: "Bad PC Port"
+['bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad'
+ 'graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed']
+01_call3: Topic: PC Work Crashes
+Label: Bad
+['graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed'
+ 'game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system']
+01_call4: 
+Topic: Game Crashes and Bugs
+Label: "Game Crashes"
+
+
+['grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind'
+ 'skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn']
+02_call0: Infinite Grind
+['love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love'
+ 'grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind never see sunlight ever']
+02_call1: 
+Love Capturing Monsters
+['grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind never see sunlight ever'
+ 'grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind']
+02_call2: Grind
+['hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt unless dodogama'
+ 'hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster']
+02_call3: 
+Label: "Bioshock"
+['hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt'
+ 'hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt unless dodogama']
+02_call4: 
+Label: "Hunting Frenzy"
+
+
+['played little bit far thought would kinda meh actually pretty good far'
+ 'got game play friends playing solo super boring normal hack slash game wish quest story line something']
+03_call0: 
+Topic Label: Good Fun Game
+['like like like like like good good good good'
+ 'yeah would game fun action rpg played long grindy time time surely something people look fan']
+03_call1: 
+Topic Label: Good Fun RPG
+['like like like like like good good good good'
+ 'wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow']
+03_call2: Topic: Fun game with good content
+Label: Good game
+['played little bit far thought would kinda meh actually pretty good far'
+ 'fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun']
+03_call3: Topic Label: Good Fun
+['got game play friends playing solo super boring normal hack slash game wish quest story line something'
+ 'played little bit far thought would kinda meh actually pretty good far']
+03_call4: 
+Topic: Game Play
+Label: Fun
+
+
+['opus brings breath fresh air series incredible experience gameplay story music breathtaking graphics recommendation incredible also recommend iceborn expansion'
+ 'usually action game person game forgiving love feel setting challenges truly hard fair']
+04_call0: 
+Topic Label: Incredible Gameplay Experience
+['huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment'
+ 'fan since mhfu world iceborne easily hours fun gameplay highly recommend anyone action rpg']
+04_call1: 
+Label: Monster Hunter
+['first introduction monster hunter game fantastic lot fun early game little rough without lot introduction really succeed part games character'
+ 'huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment']
+04_call2: 
+Topic: Monster Hunter Gameplay
+
+Label: Fun and Engaging
+['compared previous monster hunter games graphics worlds apart also combat styles sophisticated definitely recommend try interested monster hunter games'
+ 'excellent game polished controls sometimes clunky better previous monster hunter game far monsters excellent design superb extremely fun game give']
+04_call3: 
+Topic: Monster Hunter World
+Label: "Sophisticated Combat"
+['huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment'
+ 'excellent game polished controls sometimes clunky better previous monster hunter game far monsters excellent design superb extremely fun game give']
+04_call4: 
+Topic: Monster Hunter Gameplay
+
+Label: Excellent
+
+
+['amazing game great graphics much could recommend'
+ 'great game awesome gameplay nice graphics recommend']
+05_call0: Topic Label: Great Game
+['amazing game great graphics much could recommend'
+ 'love game great graphics great gameplay everything great']
+05_call1: 
+Topic Label: Great Game
+['awesome gameplay awesome graphics awesome monsters'
+ 'graphics great story amazing highly recommend']
+05_call2: Awesome Game
+['amazing game great graphics much could recommend'
+ 'great game great graphics runs great great']
+05_call3: 
+Topic Label: Great Game
+['nice nice nice nice nice'
+ 'cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake garlic bread ouuuchh corn brutha yeah like corn yeah mooiieet yeah moiiet moooieets back tha menyoo boys fuh fish chips']
+05_call4: 
+Topic: Nice game with great graphics and engaging gameplay.
+Label: "Nice Game"
+
+
+['weeks hours played weeks hours hours sleep per day days last weeks spent hours playing monster hunter'
+ 'hours game ps hr definitly recommend game anyone thinks buying worth money']
+06_call0: 
+Topic Label: Worth Playing
+['dud installing played game non stop hours currently install let play'
+ 'game months still playing know keeps pulling back maybe monsters maybe game play know love game definitely recommend buying worth money']
+06_call1: 
+Topic Label: Worth Playing
+['dud installing played game non stop hours currently install let play'
+ 'first monster hunter game ever played best monster hunter game ever played rise sale cheap search discounted keys definitely get iceborne dlc']
+06_call2: 
+Topic Label: "Monster Hunter"
+['hours game ps hr definitly recommend game anyone thinks buying worth money'
+ 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blablabla l']
+06_call3: 
+Topic Label: Worth Buying
+['hours game ps hr definitly recommend game anyone thinks buying worth money'
+ 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blablabla l']
+06_call4: Topic Label: Worth Buying
+
+
+['far best monster hunter played even new releases still best one play nowadays'
+ 'favorite game series ever iceborne expansion prompted get back game love seeing old favorites come back play']
+07_call0: 
+Topic Label: Best Classic FPS
+['absolute masterpiece playing games years far favorite'
+ 'much love generations ultimate deny world qol changes best way play monster hunter today']
+07_call1: 
+Topic Label: "Old School FPS Masterpiece"
+['absolute masterpiece playing games years far favorite'
+ 'much love generations ultimate deny world qol changes best way play monster hunter today']
+07_call2: Topic Label: "Classic Gaming Masterpiece"
+['best gaming days life thank comrades'
+ 'playing game years far best version played']
+07_call3: Topic: Classic First-Person Shooter Games
+Label: "FPS Gold Standard"
+['favorite game series ever iceborne expansion prompted get back game love seeing old favorites come back play'
+ 'rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke']
+07_call4: 
+Topic Label: Valve's Classic FPS Game
+
+
+['kind garbage game let skip cut scenes stupid programmers yeah giving bad review skip cut scenes wasting time stupid crap'
+ 'one minute rushing home work finally play game next thing know felt like played lose real life game']
+08_call0: 
+Topic Label: Garbage Game
+['hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos'
+ 'monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime']
+08_call1: Topic: Monster Hunter Franchise Reviews
+Label: "MH Reviews" (less than 5 words)
+['hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos'
+ 'monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime']
+08_call2: Topic: Monster Hunter Franchise Reviews
+Label: "Hate Rathalos"
+['kind garbage game let skip cut scenes stupid programmers yeah giving bad review skip cut scenes wasting time stupid crap'
+ 'yes updated yes steam wants update review yes iceborne coming soon even update even yes']
+08_call3: 
+Topic Label: Garbage Game
+['hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos'
+ 'monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime']
+08_call4: 
+Topic Label: "Rathalos Hate"
+
+
+['reached hours less week f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw'
+ 'game monster hunter gameplay hunting monsters pros hunting monsters cons enough monster need monster must monster eraaagh overall monster hunting fun extra monster hunting friends fun']
+09_call0: 
+Topic Label: Monster Hunting Fun
+['mostly relaxing game yet still lots depth things learn game gets fun learn better get tend experience multiplayer games rare experience willing put time'
+ 'mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw']
+09_call1: Topic Label: Multiplayer Fun
+['mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw u wanted break router apart'
+ 'mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw']
+09_call2: 
+Topic: Multiplayer Fun with Friends
+Label: "Mw Mw"
+['mostly relaxing game yet still lots depth things learn game gets fun learn better get tend experience multiplayer games rare experience willing put time'
+ 'mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw fuck']
+09_call3: Topic: Multiplayer Fun
+Label: "Good for relaxing and learning"
+['game monster hunter gameplay hunting monsters pros hunting monsters cons enough monster need monster must monster eraaagh overall monster hunting fun extra monster hunting friends fun'
+ 'mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw']
+09_call4: Topic Label: Monster Hunter Fun

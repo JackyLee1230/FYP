@@ -1,0 +1,596 @@
+{
+  "new_topic_labels": {
+    "0": {
+      "call_0": "\nTopic Label: Kill Game",
+      "call_1": "\nLabel: Action-Packed Shooter",
+      "call_2": "\nTopic: Action-Packed Shooter\nLabel: \"Kill or Die\"",
+      "call_3": "Topic Label: Kill",
+      "call_4": "Topic Label: Kill"
+    },
+    "1": {
+      "call_0": "Topic: Crashes\nLabel: \"Crashes galore\"",
+      "call_1": "Label: PC Work Issue",
+      "call_2": "\nTopic: Frustrating Experience with Too Much Back-and-Forth.\nLabel: Fustrating",
+      "call_3": "\nTopic: Load screens in the game.\nLabel: \"Load screens\"",
+      "call_4": "\nTopic: Frustrating Experience with Too Much Cutscenes\nLabel: \"Cutscene Hell\" (less than 5 words)"
+    },
+    "2": {
+      "call_0": "\nTopic Label: Bioshock Infinite",
+      "call_1": "\nTopic Label: Bioshock Infinite",
+      "call_2": "\nLabel: Bioshock",
+      "call_3": "\nTopic Label: Bioshock Infinite",
+      "call_4": "\nTopic Label: Bioshock Infinite"
+    },
+    "3": {
+      "call_0": "\nTopic Label: Fun Fallout-Like Game",
+      "call_1": "\nLabel for topic: \"Fun game with variety\"",
+      "call_2": "Topic: Fallout-like Game\nLabel: Fun Space Adventure",
+      "call_3": "Topic Label: Fallout",
+      "call_4": "Topic Label: Fun Game for Hours"
+    },
+    "4": {
+      "call_0": "\nTopic: \"Beautiful and Immersive Gameplay\"\nLabel: \"Fallout\"",
+      "call_1": "\nTopic Label: Space Adventure",
+      "call_2": "\nTopic Label: Good RPG Experience",
+      "call_3": "\nTopic Label: \"Underwhelming Experience with too much Repetition\"",
+      "call_4": "\nTopic Label: Good Fallout Experience"
+    },
+    "5": {
+      "call_0": "\nLabel: Great Game",
+      "call_1": "\nLabel for the topic: \"Great Game\"",
+      "call_2": "\nTopic: \"Awesome Graphic and Amazing Storyline\"\nLabel: \"Fantastic Game\"",
+      "call_3": "\nTopic Label: \"Amazing Gameplay\"",
+      "call_4": "\nTopic Label: \"Amazing Game\""
+    },
+    "6": {
+      "call_0": "\nTopic Label: Worth it",
+      "call_1": "\nTopic Label: Best Game Ever",
+      "call_2": "\nTopic Label: \"Worth Every Penny\"",
+      "call_3": "\nTopic Label: Best Game Ever",
+      "call_4": "\nTopic Label: Worth It"
+    },
+    "7": {
+      "call_0": "\nTopic Label: Best Classic FPS Game",
+      "call_1": "\nTopic Label: Best Game Ever",
+      "call_2": "\nTopic Label: Best Classic FPS Game",
+      "call_3": "\nTopic Label: Best FPS Game",
+      "call_4": "\nLabel: Best Classic FPS"
+    },
+    "8": {
+      "call_0": "\nTopic: Game Reviews\nLabel: \"Game Reviews\" (5 words)",
+      "call_1": "\nTopic: Skyrim-like game with procedurally generated planets and handcrafted structures.\n\nLabel: Underwhelming experience with too much repetition.",
+      "call_2": "\nTopic: Skyrim\n\nLabel: \"Skyrim\"",
+      "call_3": "\nLabel: Skyrim",
+      "call_4": "\nTopic: Skyrim-like Game with Procedurally Generated Planets\nLabel: \"Skyrim in Space\""
+    },
+    "9": {
+      "call_0": "\nTopic: Multiplayer Gaming Experience with Deep Gameplay and Good Potential for Future Updates.\nLabel: \"Good Depth\"",
+      "call_1": "\nTopic: \"Playing the Game\"\nLabel: \"Fun Multiplayer Experience with Online Play\"",
+      "call_2": "Topic Label: Play",
+      "call_3": "\nTopic Label: Good Multiplayer Fun",
+      "call_4": "\nTopic Label: Multiplayer Fun"
+    }
+  },
+  "randomed_topic_reviews": {
+    "0": {
+      "call_0": {
+        "reviews": [
+          "game sucks like sitting top lb woman stomach full smegma cheetos leftovers",
+          "see mountain gonna walk enemies chasing encumbered stuff need"
+        ],
+        "recommendationid": [
+          "145885538",
+          "146509696"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "hey finally awake trying jump systems right flew right uc ambush us smuggler",
+          "see mountain gonna walk enemies chasing encumbered stuff need"
+        ],
+        "recommendationid": [
+          "145865008",
+          "146509696"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "see mountain gonna walk enemies chasing encumbered stuff need",
+          "press random button enter simulator"
+        ],
+        "recommendationid": [
+          "146509696",
+          "146032299"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "game made cry like little girl pound man",
+          "starfield like watching magician pull rabbit hat close eyes"
+        ],
+        "recommendationid": [
+          "146376006",
+          "153559988"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "press random button enter simulator",
+          "hey finally awake trying jump systems right flew right uc ambush us smuggler"
+        ],
+        "recommendationid": [
+          "146032299",
+          "145865008"
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes",
+          "loading screen loading screen loading screen loading screen loading screen blank empty planet loading screen loading screen loading screen blank empty planet"
+        ],
+        "recommendationid": [
+          "147762766",
+          "152961674"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "game caliber limited ultrawide support x monitor either play weird borderless window small massive black bars game unplayable fully supports ultrawide",
+          "cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene"
+        ],
+        "recommendationid": [
+          "152591322",
+          "152026735"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth dont mind going back forth back forth back forth back forth back forth back forth back forth back forth fine im getting tired going back forth back forth back forth back forth back forth back forth back forth back forth",
+          "cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene"
+        ],
+        "recommendationid": [
+          "145872770",
+          "152026735"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "starfield load screen load screen load screen woke load screen fucking load screen mess load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen",
+          "loading screen loading screen loading screen loading screen loading screen blank empty planet loading screen loading screen loading screen blank empty planet"
+        ],
+        "recommendationid": [
+          "152617462",
+          "152961674"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene",
+          "starfield load screen load screen load screen woke load screen fucking load screen mess load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen"
+        ],
+        "recommendationid": [
+          "152026735",
+          "152617462"
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot",
+          "pros story ship building ship combat cons story content repetitive hub maps non existent"
+        ],
+        "recommendationid": [
+          "145748023",
+          "152339336"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "long story line many different ways get end yet many things anyone open world sand box player game amazing",
+          "game provides many different paths pursue addition main quest keep fully engaged long complete main story"
+        ],
+        "recommendationid": [
+          "148705460",
+          "148498751"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot",
+          "long story line many different ways get end yet many things anyone open world sand box player game amazing"
+        ],
+        "recommendationid": [
+          "145748023",
+          "148705460"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot",
+          "destiny meets elite dangerous one wish would like able use joystick flight mode"
+        ],
+        "recommendationid": [
+          "145748023",
+          "146014310"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "one gripe game far stat system skill system perk system stuff might available reward hitting certain skill threshhold put perk tree means cannot interact many game systems ship building ship combat stealth pickpocketing exploration meaningful way without first dumping tons perks first",
+          "similar outer worlds ship system combine fallout outer worlds add ability fly spaceships get"
+        ],
+        "recommendationid": [
+          "145740765",
+          "145875665"
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "think game pretty fun look think like probably look fun probably",
+          "sure people like feels like playing fallout spacecraft really enjoyed game far"
+        ],
+        "recommendationid": [
+          "146253531",
+          "153484708"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "lot hours say far really like little boring first play fun",
+          "kinds different things get bored one aspect jump another part game play another another always something fun explore"
+        ],
+        "recommendationid": [
+          "146194784",
+          "145907470"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good",
+          "games feels lot like fallout plays lot like fallout basically fallout space robot dogmeat overall fun game"
+        ],
+        "recommendationid": [
+          "145752493",
+          "146305020"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "games feels lot like fallout plays lot like fallout basically fallout space robot dogmeat overall fun game",
+          "yeah yeah yeah yeah yeah yeah yeah yeah"
+        ],
+        "recommendationid": [
+          "146305020",
+          "145737519"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "lot hours say far really like little boring first play fun",
+          "think game pretty fun look think like probably look fun probably"
+        ],
+        "recommendationid": [
+          "146194784",
+          "146253531"
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat",
+          "fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite"
+        ],
+        "recommendationid": [
+          "145903935",
+          "148618398"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "absolutely bgs game set space feel barely scratched surface run single boring moment resolved simply something else fun",
+          "beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat"
+        ],
+        "recommendationid": [
+          "145758009",
+          "145903935"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "love sound design story far pretty solid would recommend rpg fans",
+          "fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite"
+        ],
+        "recommendationid": [
+          "146253780",
+          "148618398"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "pretty bland previous titles depth companions bland story bland game play bland outposts bland",
+          "beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat"
+        ],
+        "recommendationid": [
+          "147007962",
+          "145903935"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite",
+          "story visuals combat music overall atmosphere incredible every aesthetic detail makes game enjoyable"
+        ],
+        "recommendationid": [
+          "148618398",
+          "145781741"
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "absolutely recommend great game perfect still great",
+          "awesome graphic amazing storyline"
+        ],
+        "recommendationid": [
+          "148529575",
+          "145850650"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "great game awesome graphics addictive highly recommended",
+          "quitando las pantallas de carga en todos lados la poca optimizaci n de esta hermoso este juego"
+        ],
+        "recommendationid": [
+          "147575906",
+          "147024469"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "awesome graphic amazing storyline",
+          "starfield excellent game great graphics amazing music"
+        ],
+        "recommendationid": [
+          "145850650",
+          "151385713"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "awesome graphic amazing storyline",
+          "absolutely recommend great game perfect still great"
+        ],
+        "recommendationid": [
+          "145850650",
+          "148529575"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "awesome graphic amazing storyline",
+          "amazing game totally recommend totally robot"
+        ],
+        "recommendationid": [
+          "145850650",
+          "148764537"
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "hour playtime take anymore thank fuck refunded dollar paid still fucking much",
+          "literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing"
+        ],
+        "recommendationid": [
+          "145738243",
+          "157172376"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "one best games ever played nearly hours days much content worth every penny",
+          "loved game picks lot hours entire play could easily hours"
+        ],
+        "recommendationid": [
+          "145764683",
+          "145879111"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "love game far would recommend anyone wants game sink time second play yet everything game offer",
+          "one best games ever played nearly hours days much content worth every penny"
+        ],
+        "recommendationid": [
+          "152192388",
+          "145764683"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing",
+          "dont pay full price get game pass wait sale worth maybe"
+        ],
+        "recommendationid": [
+          "157172376",
+          "145881656"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing",
+          "ok mind blowing basically fallout space certainly worth though wait drop price update uninstalled without finishing"
+        ],
+        "recommendationid": [
+          "157172376",
+          "145964731"
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "loved every minute far going playing years come",
+          "game dose best series playing years come"
+        ],
+        "recommendationid": [
+          "145749284",
+          "146361776"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "possibly best game ever released thus far",
+          "best game played year hands"
+        ],
+        "recommendationid": [
+          "145803686",
+          "146255439"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "best game played year hands",
+          "loved every minute far going playing years come"
+        ],
+        "recommendationid": [
+          "146255439",
+          "145749284"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "best game played year hands",
+          "game absolute dogshit painstakingly created massive world nothing happens"
+        ],
+        "recommendationid": [
+          "146255439",
+          "153926170"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "best game played year hands",
+          "one best games played years gamer"
+        ],
+        "recommendationid": [
+          "146255439",
+          "145978610"
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "admit grandiose change bsg formula thought would however less fell like gotten paid complain excited see far new ip well go future",
+          "warning might spoiler keep forward realize going forward circle means meaningless keep going feel tired go anymore well universe human dust know game developer may tell however feel like"
+        ],
+        "recommendationid": [
+          "145886883",
+          "146126113"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "underwhelming gets stale really played around launch time desire touch since played skyrim something like hr game missing spark",
+          "want love game much really wanted next skyrim space idea making planet procedurally generated pre made structures biggest downfall deliver planets handcrafted sculpted like skyrim fallout games missed potential game"
+        ],
+        "recommendationid": [
+          "152910763",
+          "153804978"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "firmly enjoy game know everyone cup tea feel disappointment arises established bias would similar elder scroll fallout title clearly game",
+          "never felt insulted game one plays like skyrim feels like skyrim space looks like skyrim remastered"
+        ],
+        "recommendationid": [
+          "146438213",
+          "152271942"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "im mad wasted years making instead next elder scrolls game would think company hits jackpot skyrim would give people want instead wasting time making things one asked",
+          "skyrim space know getting listen reviews try form opinion come exaggerated expectations bound get disappointed judge game supposed"
+        ],
+        "recommendationid": [
+          "154105350",
+          "146476800"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "want love game much really wanted next skyrim space idea making planet procedurally generated pre made structures biggest downfall deliver planets handcrafted sculpted like skyrim fallout games missed potential game",
+          "admit grandiose change bsg formula thought would however less fell like gotten paid complain excited see far new ip well go future"
+        ],
+        "recommendationid": [
+          "153804978",
+          "145886883"
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "good depth experience lot learn much experience lot work towards",
+          "good potential good future updates keep evolving experience"
+        ],
+        "recommendationid": [
+          "148295850",
+          "150726738"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "crying online fun able play got play even time enjoy nerdrage",
+          "game makes hard hoard new game plus lose everything reason play"
+        ],
+        "recommendationid": [
+          "145823990",
+          "153471490"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "enjoyable experience play quite bunch qol mods would recommend",
+          "good potential good future updates keep evolving experience"
+        ],
+        "recommendationid": [
+          "151134732",
+          "150726738"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "rate starfield ten plenty features story good hopefully content",
+          "needed good game get lost thanks todd team"
+        ],
+        "recommendationid": [
+          "148549937",
+          "145881085"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "needs lot mod support community good game",
+          "game makes hard hoard new game plus lose everything reason play"
+        ],
+        "recommendationid": [
+          "146563734",
+          "153471490"
+        ]
+      }
+    }
+  }
+}

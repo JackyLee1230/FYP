@@ -1,0 +1,224 @@
+['game sucks like sitting top lb woman stomach full smegma cheetos leftovers'
+ 'see mountain gonna walk enemies chasing encumbered stuff need']
+00_call0: 
+Topic Label: Kill Game
+['hey finally awake trying jump systems right flew right uc ambush us smuggler'
+ 'see mountain gonna walk enemies chasing encumbered stuff need']
+00_call1: 
+Label: Action-Packed Shooter
+['see mountain gonna walk enemies chasing encumbered stuff need'
+ 'press random button enter simulator']
+00_call2: 
+Topic: Action-Packed Shooter
+Label: "Kill or Die"
+['game made cry like little girl pound man'
+ 'starfield like watching magician pull rabbit hat close eyes']
+00_call3: Topic Label: Kill
+['press random button enter simulator'
+ 'hey finally awake trying jump systems right flew right uc ambush us smuggler']
+00_call4: Topic Label: Kill
+
+
+['crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes crashes'
+ 'loading screen loading screen loading screen loading screen loading screen blank empty planet loading screen loading screen loading screen blank empty planet']
+01_call0: Topic: Crashes
+Label: "Crashes galore"
+['game caliber limited ultrawide support x monitor either play weird borderless window small massive black bars game unplayable fully supports ultrawide'
+ 'cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene']
+01_call1: Label: PC Work Issue
+['back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth back forth dont mind going back forth back forth back forth back forth back forth back forth back forth back forth fine im getting tired going back forth back forth back forth back forth back forth back forth back forth back forth'
+ 'cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene']
+01_call2: 
+Topic: Frustrating Experience with Too Much Back-and-Forth.
+Label: Fustrating
+['starfield load screen load screen load screen woke load screen fucking load screen mess load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen'
+ 'loading screen loading screen loading screen loading screen loading screen blank empty planet loading screen loading screen loading screen blank empty planet']
+01_call3: 
+Topic: Load screens in the game.
+Label: "Load screens"
+['cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene cutscene'
+ 'starfield load screen load screen load screen woke load screen fucking load screen mess load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen load screen']
+01_call4: 
+Topic: Frustrating Experience with Too Much Cutscenes
+Label: "Cutscene Hell" (less than 5 words)
+
+
+['stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot'
+ 'pros story ship building ship combat cons story content repetitive hub maps non existent']
+02_call0: 
+Topic Label: Bioshock Infinite
+['long story line many different ways get end yet many things anyone open world sand box player game amazing'
+ 'game provides many different paths pursue addition main quest keep fully engaged long complete main story']
+02_call1: 
+Topic Label: Bioshock Infinite
+['stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot'
+ 'long story line many different ways get end yet many things anyone open world sand box player game amazing']
+02_call2: 
+Label: Bioshock
+['stuttering weapon switching scanner toggle everything fucking kind exploration game backwards weight system loot'
+ 'destiny meets elite dangerous one wish would like able use joystick flight mode']
+02_call3: 
+Topic Label: Bioshock Infinite
+['one gripe game far stat system skill system perk system stuff might available reward hitting certain skill threshhold put perk tree means cannot interact many game systems ship building ship combat stealth pickpocketing exploration meaningful way without first dumping tons perks first'
+ 'similar outer worlds ship system combine fallout outer worlds add ability fly spaceships get']
+02_call4: 
+Topic Label: Bioshock Infinite
+
+
+['think game pretty fun look think like probably look fun probably'
+ 'sure people like feels like playing fallout spacecraft really enjoyed game far']
+03_call0: 
+Topic Label: Fun Fallout-Like Game
+['lot hours say far really like little boring first play fun'
+ 'kinds different things get bored one aspect jump another part game play another another always something fun explore']
+03_call1: 
+Label for topic: "Fun game with variety"
+['good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good good'
+ 'games feels lot like fallout plays lot like fallout basically fallout space robot dogmeat overall fun game']
+03_call2: Topic: Fallout-like Game
+Label: Fun Space Adventure
+['games feels lot like fallout plays lot like fallout basically fallout space robot dogmeat overall fun game'
+ 'yeah yeah yeah yeah yeah yeah yeah yeah']
+03_call3: Topic Label: Fallout
+['lot hours say far really like little boring first play fun'
+ 'think game pretty fun look think like probably look fun probably']
+03_call4: Topic Label: Fun Game for Hours
+
+
+['beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat'
+ 'fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite']
+04_call0: 
+Topic: "Beautiful and Immersive Gameplay"
+Label: "Fallout"
+['absolutely bgs game set space feel barely scratched surface run single boring moment resolved simply something else fun'
+ 'beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat']
+04_call1: 
+Topic Label: Space Adventure
+['love sound design story far pretty solid would recommend rpg fans'
+ 'fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite']
+04_call2: 
+Topic Label: Good RPG Experience
+['pretty bland previous titles depth companions bland story bland game play bland outposts bland'
+ 'beautiful designs space world attention detail second airlocks sounds intricate styling make visual treat']
+04_call3: 
+Topic Label: "Underwhelming Experience with too much Repetition"
+['fallout entertaining per hour entertainment value much better movie etc highly recommended liked fallout although quite'
+ 'story visuals combat music overall atmosphere incredible every aesthetic detail makes game enjoyable']
+04_call4: 
+Topic Label: Good Fallout Experience
+
+
+['absolutely recommend great game perfect still great'
+ 'awesome graphic amazing storyline']
+05_call0: 
+Label: Great Game
+['great game awesome graphics addictive highly recommended'
+ 'quitando las pantallas de carga en todos lados la poca optimizaci n de esta hermoso este juego']
+05_call1: 
+Label for the topic: "Great Game"
+['awesome graphic amazing storyline'
+ 'starfield excellent game great graphics amazing music']
+05_call2: 
+Topic: "Awesome Graphic and Amazing Storyline"
+Label: "Fantastic Game"
+['awesome graphic amazing storyline'
+ 'absolutely recommend great game perfect still great']
+05_call3: 
+Topic Label: "Amazing Gameplay"
+['awesome graphic amazing storyline'
+ 'amazing game totally recommend totally robot']
+05_call4: 
+Topic Label: "Amazing Game"
+
+
+['hour playtime take anymore thank fuck refunded dollar paid still fucking much'
+ 'literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing']
+06_call0: 
+Topic Label: Worth it
+['one best games ever played nearly hours days much content worth every penny'
+ 'loved game picks lot hours entire play could easily hours']
+06_call1: 
+Topic Label: Best Game Ever
+['love game far would recommend anyone wants game sink time second play yet everything game offer'
+ 'one best games ever played nearly hours days much content worth every penny']
+06_call2: 
+Topic Label: "Worth Every Penny"
+['literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing'
+ 'dont pay full price get game pass wait sale worth maybe']
+06_call3: 
+Topic Label: Best Game Ever
+['literally best game ever cant wait updates plan playing game physically anymore worth money spend money shit game cause games worth starfield amazing'
+ 'ok mind blowing basically fallout space certainly worth though wait drop price update uninstalled without finishing']
+06_call4: 
+Topic Label: Worth It
+
+
+['loved every minute far going playing years come'
+ 'game dose best series playing years come']
+07_call0: 
+Topic Label: Best Classic FPS Game
+['possibly best game ever released thus far' 'best game played year hands']
+07_call1: 
+Topic Label: Best Game Ever
+['best game played year hands'
+ 'loved every minute far going playing years come']
+07_call2: 
+Topic Label: Best Classic FPS Game
+['best game played year hands'
+ 'game absolute dogshit painstakingly created massive world nothing happens']
+07_call3: 
+Topic Label: Best FPS Game
+['best game played year hands' 'one best games played years gamer']
+07_call4: 
+Label: Best Classic FPS
+
+
+['admit grandiose change bsg formula thought would however less fell like gotten paid complain excited see far new ip well go future'
+ 'warning might spoiler keep forward realize going forward circle means meaningless keep going feel tired go anymore well universe human dust know game developer may tell however feel like']
+08_call0: 
+Topic: Game Reviews
+Label: "Game Reviews" (5 words)
+['underwhelming gets stale really played around launch time desire touch since played skyrim something like hr game missing spark'
+ 'want love game much really wanted next skyrim space idea making planet procedurally generated pre made structures biggest downfall deliver planets handcrafted sculpted like skyrim fallout games missed potential game']
+08_call1: 
+Topic: Skyrim-like game with procedurally generated planets and handcrafted structures.
+
+Label: Underwhelming experience with too much repetition.
+['firmly enjoy game know everyone cup tea feel disappointment arises established bias would similar elder scroll fallout title clearly game'
+ 'never felt insulted game one plays like skyrim feels like skyrim space looks like skyrim remastered']
+08_call2: 
+Topic: Skyrim
+
+Label: "Skyrim"
+['im mad wasted years making instead next elder scrolls game would think company hits jackpot skyrim would give people want instead wasting time making things one asked'
+ 'skyrim space know getting listen reviews try form opinion come exaggerated expectations bound get disappointed judge game supposed']
+08_call3: 
+Label: Skyrim
+['want love game much really wanted next skyrim space idea making planet procedurally generated pre made structures biggest downfall deliver planets handcrafted sculpted like skyrim fallout games missed potential game'
+ 'admit grandiose change bsg formula thought would however less fell like gotten paid complain excited see far new ip well go future']
+08_call4: 
+Topic: Skyrim-like Game with Procedurally Generated Planets
+Label: "Skyrim in Space"
+
+
+['good depth experience lot learn much experience lot work towards'
+ 'good potential good future updates keep evolving experience']
+09_call0: 
+Topic: Multiplayer Gaming Experience with Deep Gameplay and Good Potential for Future Updates.
+Label: "Good Depth"
+['crying online fun able play got play even time enjoy nerdrage'
+ 'game makes hard hoard new game plus lose everything reason play']
+09_call1: 
+Topic: "Playing the Game"
+Label: "Fun Multiplayer Experience with Online Play"
+['enjoyable experience play quite bunch qol mods would recommend'
+ 'good potential good future updates keep evolving experience']
+09_call2: Topic Label: Play
+['rate starfield ten plenty features story good hopefully content'
+ 'needed good game get lost thanks todd team']
+09_call3: 
+Topic Label: Good Multiplayer Fun
+['needs lot mod support community good game'
+ 'game makes hard hoard new game plus lose everything reason play']
+09_call4: 
+Topic Label: Multiplayer Fun

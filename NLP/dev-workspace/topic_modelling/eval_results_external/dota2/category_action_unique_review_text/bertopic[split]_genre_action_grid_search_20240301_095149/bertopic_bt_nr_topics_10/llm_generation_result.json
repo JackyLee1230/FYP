@@ -1,0 +1,655 @@
+{
+  "new_topic_labels": {
+    "-1": {
+      "call_0": "\nTopic: Dota 2\nLabel: \"Toxic Players\"",
+      "call_1": "\n\"Fun game with toxic players.\"",
+      "call_2": "Good game",
+      "call_3": "Topic Label: Play",
+      "call_4": "\nTopic: Fun and Toxic Playing Experience\nLabel: \"Fun but Toxic\""
+    },
+    "0": {
+      "call_0": "\"Best Moba Ever\"",
+      "call_1": "Best Moba Game",
+      "call_2": "\"Best MOBA Ever\"",
+      "call_3": "Best MOBA Game",
+      "call_4": "Best MOBA Ever"
+    },
+    "1": {
+      "call_0": "\nTopic Label: Unfair Treatment After New Update",
+      "call_1": "\nTopic: Dota 2 Update Issues\nLabel: \"Frustrating Experience with Too Many Glitches\"",
+      "call_2": "Server updates crash.",
+      "call_3": "Topic: Buggy and Unstable Game\nLabel: \"Game Crashes\"",
+      "call_4": "The topic is \"BAD UPDATES\"."
+    },
+    "2": {
+      "call_0": "Topic Label: Life Ruined",
+      "call_1": "\"Cat Ruined Game\"",
+      "call_2": "Topic: Ruined Gaming Experience with Too Much Cat Content\nLabel: Ruined",
+      "call_3": "\"Must Play\"",
+      "call_4": "\nTopic Label: \"Cat Ruined Game\""
+    },
+    "3": {
+      "call_0": "Nice",
+      "call_1": "Disney",
+      "call_2": "Topic: Steven's Disney Adventure\n\nLabel: \"Steven's Disney Adventure\" (less than 5 words)",
+      "call_3": "Disney",
+      "call_4": "Nice"
+    },
+    "4": {
+      "call_0": "Game is a waste of time",
+      "call_1": "Game Not Running - NA",
+      "call_2": "\"Russian Game\"",
+      "call_3": "\nTopic: Bad game community\nLabel: \"BAD COMMUNITY\"",
+      "call_4": "\nTopic: Terrible game with a toxic community.\nLabel: Toxic Game"
+    },
+    "5": {
+      "call_0": "Topic: Pills and Ingredients\nLabel: \"Pill Quality\"",
+      "call_1": "Topic: Unpleasant Meeting with a Player\nLabel: \"Unpleasant Encounter\"",
+      "call_2": "Barry's Pills: Stress Generator",
+      "call_3": "\"Barry's Pills\"",
+      "call_4": "Topic: \"Rainbowwarrior's Unpleasant Surprise\"\nLabel: \"Unpleasant Alliances\""
+    },
+    "6": {
+      "call_0": "Pancakes.",
+      "call_1": "Pie Recipe",
+      "call_2": "Pancakes",
+      "call_3": "Mix for pancakes.",
+      "call_4": "Pancakes "
+    },
+    "7": {
+      "call_0": "Golden Oldie",
+      "call_1": "\"Old Classic\"",
+      "call_2": "\"Old Classic Masterpiece\"",
+      "call_3": "Golden Classic",
+      "call_4": "Golden Oldie"
+    },
+    "8": {
+      "call_0": "Topic Label: \"Valve's Lackluster Effort\" (5 words)",
+      "call_1": "Topic: Dota 2 Skins\nLabel: \"Money-gated skins\"",
+      "call_2": "Topic Label: Skins",
+      "call_3": "\nSkins and Money",
+      "call_4": "Topic Label: Money Grab"
+    },
+    "9": {
+      "call_0": "\"Homemade drug making\"",
+      "call_1": "\nTopic: How to Make Illegal Drugs\nLabel: \"Addictive and Dangerous\"",
+      "call_2": "Gambling Addiction",
+      "call_3": "Ether addiction",
+      "call_4": "Marinated chicken"
+    }
+  },
+  "randomed_topic_reviews": {
+    "-1": {
+      "call_0": {
+        "reviews": [
+          "i play drow!",
+          "don ' t play dota"
+        ],
+        "recommendationid": [
+          "135341881",
+          "147961491"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "kossher game ( 2933 h time play )",
+          "dont play this game"
+        ],
+        "recommendationid": [
+          "156807028",
+          "137637315"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "fun to play. must try : )",
+          "so good to play!"
+        ],
+        "recommendationid": [
+          "137410427",
+          "133873294"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "don ' t play dota",
+          "play play play"
+        ],
+        "recommendationid": [
+          "147961491",
+          "141408108"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "fun to play. must try : )",
+          "so good to play!"
+        ],
+        "recommendationid": [
+          "137410427",
+          "133873294"
+        ]
+      }
+    },
+    "0": {
+      "call_0": {
+        "reviews": [
+          "one of the best moba ever!",
+          "one of the best moba game i ' ve ever play in my life"
+        ],
+        "recommendationid": [
+          "139639046",
+          "154547277"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "this is the best moba games",
+          "best moba game ever you can play along with your friends"
+        ],
+        "recommendationid": [
+          "159343611",
+          "150962539"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "the best moba",
+          "best game that you will ever play in all time"
+        ],
+        "recommendationid": [
+          "153200541",
+          "144360705"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "one of the best moba game i ' ve ever play in my life",
+          "the best moba"
+        ],
+        "recommendationid": [
+          "154547277",
+          "153200541"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "best moba there is and ever will be",
+          "one of the best moba ever!"
+        ],
+        "recommendationid": [
+          "143625229",
+          "139639046"
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "n1 update",
+          "after new update with reports even if you are nice to mates or not they automatically report you if the game is goign bad early. i had perfect behaviour score before new update. now i play 5 rank and then i go low. i cancelled my dota plus and ofc i ll never pay again this game for his low services. unacceptable being here 12 years and treat me like this after new update. ps. mute chat guys and try your best or you gonna play low every week gg update"
+        ],
+        "recommendationid": [
+          "140456445",
+          "152666209"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "you make an update every 2 games every 2 hours is not possible i need to update it",
+          "what a disappointment! i used to be a fan of dota 2, i love this game, but after the patch update, everything went wrong plyer keeps dc and can ' t reconnect, many plyers like to break the game, even we have reported these issues to i play low priority games for no reason. gm please fix this!!! stop let us down dota 2!!!!"
+        ],
+        "recommendationid": [
+          "138361166",
+          "140162892"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "n1 update",
+          "new update so sucks"
+        ],
+        "recommendationid": [
+          "140456445",
+          "154652262"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "after update now is shit",
+          "let me give you a run down on why this game has gone down hill and why you should just stop wasting your time with the new compendium sucks. it has no fun features and no desirable items to entice the player and encourage match playing. its really just focused around the pro scene which sure is nice but this isn ' t fantasy football i want to play and have fun. and valve is going to release arcanas after ti. its almost like they want to pay their pro players less and pocket as much as they can for themselves. i wont support bugs! this game is sooooo buggy. every time i minimise my tab the game crashes. if i try to change my audio sound device because the game decided to disconnect my headphones as soon as i opened it, the game crashes. loading a match might work. or you might get that server bug where you are stuck on confirming match forever and have to wait a day or two until the servers are fixed. etc etc etc. dota used to be a pretty stable game aside from some gameplay and hero balance issues but now it is literally a pain in the ass just to load toxic community. we all know it. but somehow after this community centred patch i"
+        ],
+        "recommendationid": [
+          "139367035",
+          "147164975"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "after new update with reports even if you are nice to mates or not they automatically report you if the game is goign bad early. i had perfect behaviour score before new update. now i play 5 rank and then i go low. i cancelled my dota plus and ofc i ll never pay again this game for his low services. unacceptable being here 12 years and treat me like this after new update. ps. mute chat guys and try your best or you gonna play low every week gg update",
+          "uninstalled after new frontiers update."
+        ],
+        "recommendationid": [
+          "152666209",
+          "137037265"
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "8 / 10",
+          "10 / 10"
+        ],
+        "recommendationid": [
+          "158915416",
+          "159714813"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "10 / 10!!!!",
+          "0 / 10"
+        ],
+        "recommendationid": [
+          "150795681",
+          "146500932"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "8 / 10",
+          "didn ' t enjoy 3 / 10"
+        ],
+        "recommendationid": [
+          "158915416",
+          "132085172"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "10 / 10",
+          "8 / 10"
+        ],
+        "recommendationid": [
+          "159714813",
+          "158915416"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "10 / 10!!!!",
+          "- 10 / 10"
+        ],
+        "recommendationid": [
+          "150795681",
+          "134501242"
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "is good geme",
+          "it is good"
+        ],
+        "recommendationid": [
+          "143558997",
+          "143244238"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven",
+          "good is very!"
+        ],
+        "recommendationid": [
+          "160067087",
+          "154227876"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven",
+          "good is very!"
+        ],
+        "recommendationid": [
+          "160067087",
+          "154227876"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "its very good",
+          "hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven ash and youre watching disney hi i am steven"
+        ],
+        "recommendationid": [
+          "137731857",
+          "160067087"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "is good geme",
+          "is good"
+        ],
+        "recommendationid": [
+          "143558997",
+          "154637118"
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "\u0438\u0437\u0438 \u0438\u0433\u0440\u0430, 6 \u0442\u044b\u0449 \u043f\u043e\u0440\u044f\u0434\u044b \u0438 \u044f \u043c\u043e\u0433\u0443 \u043f\u0438\u0441\u0430\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u0447\u0430\u0442, \u0434\u0430\u0436\u0435 \u0442\u0438\u043f\u0430\u0442\u044c \u043d\u0435 \u043c\u043e\u0433\u0443",
+          "\u043f\u0440\u0435\u043a\u0440\u0430\u0441\u043d\u0430\u044f \u0438\u0433\u0440\u0430, \u0435\u0441\u043b\u0438 \u0432 \u043d\u0435\u0435 \u043d\u0435 \u0438\u0433\u0440\u0430\u0442\u044c."
+        ],
+        "recommendationid": [
+          "145636383",
+          "158240886"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "\u0438\u0433\u0440\u0430 \u0445\u043e\u0440\u043e\u0448\u0430\u044f, \u0435\u0441\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u044c.",
+          "\u0438\u0437\u0438 \u0438\u0433\u0440\u0430, 6 \u0442\u044b\u0449 \u043f\u043e\u0440\u044f\u0434\u044b \u0438 \u044f \u043c\u043e\u0433\u0443 \u043f\u0438\u0441\u0430\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u0447\u0430\u0442, \u0434\u0430\u0436\u0435 \u0442\u0438\u043f\u0430\u0442\u044c \u043d\u0435 \u043c\u043e\u0433\u0443"
+        ],
+        "recommendationid": [
+          "142258050",
+          "145636383"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "\u043f\u0440\u0435\u043a\u0440\u0430\u0441\u043d\u0430\u044f \u0438\u0433\u0440\u0430, \u0435\u0441\u043b\u0438 \u0432 \u043d\u0435\u0435 \u043d\u0435 \u0438\u0433\u0440\u0430\u0442\u044c.",
+          "\u0438\u0433\u0440\u0430 \u0445\u0443\u0438\u043d\u0438 \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u044e"
+        ],
+        "recommendationid": [
+          "158240886",
+          "138682248"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "\u0438\u0433\u0440\u0430 \u0445 # [UNK] % \u044f. \u044f \u0435\u0449\u0435 \u043d\u0435 \u0432\u0438\u0434\u0435\u043b \u0442\u0430\u043a\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u043d\u0438\u0432\u0448\u0435\u0433\u043e \u043a\u043e\u043c\u044c\u044e\u043d\u0438\u0442\u0438, \u0441\u0430\u043c\u0430 \u0438\u0433\u0440\u0430 \u0435\u0449\u0435 \u0442\u043e\u0442 \u0432\u044b\u0441\u0435\u0440. \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u044e!",
+          "\u0438\u0433\u0440\u0430 \u0445\u043e\u0440\u043e\u0448\u0430\u044f, \u0435\u0441\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u044c."
+        ],
+        "recommendationid": [
+          "149807477",
+          "142258050"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "\u0438\u0433\u0440\u0430 \u0445 # [UNK] % \u044f. \u044f \u0435\u0449\u0435 \u043d\u0435 \u0432\u0438\u0434\u0435\u043b \u0442\u0430\u043a\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u043d\u0438\u0432\u0448\u0435\u0433\u043e \u043a\u043e\u043c\u044c\u044e\u043d\u0438\u0442\u0438, \u0441\u0430\u043c\u0430 \u0438\u0433\u0440\u0430 \u0435\u0449\u0435 \u0442\u043e\u0442 \u0432\u044b\u0441\u0435\u0440. \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u044e!",
+          "\u0438\u0433\u0440\u0430 \u0437\u0430\u043b\u0443\u043f\u0430, \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u044e \u043b\u0443\u0447\u0448\u0435 \u043c\u0430\u0446\u0430\u0438\u0442\u0435 \u043f\u0456\u0434 \u043c\u0430\u0442\u0440\u0430\u0441\u043e\u043c 10 \u0447\u0430\u0441\u043e\u0432 \u0447\u0435\u043c \u043b\u0435\u0441\u043d\u043e\u0438 \u043f\u0430\u0434\u0436 2024"
+        ],
+        "recommendationid": [
+          "149807477",
+          "155769677"
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "##taminats will jell durring baseifying and gak up your product which will then be very hard to clean. so you want to find a pill that is nearly pure pfed hcl, or as close to pure as you can get. also check the lable on your pills and see what inactive ingredients they contain. inactive ingredients are things like binders and flavors. these you dont want and will remove when cleaning your pills. but certain inactive ingredients are harder to remove then others. you dont want pills with a red coating, you dont want pills with alot of cellose in them and you dont want pills with much wax. you also dont want pills that contain povidone. as a rule, if you have a two pills that contain the same amount of pfed hcl then take the smaller sized pill because it obviously has less binders and inactive ingredients, time released pills are usualy harder to work with because they have more binders and tend to gel up durring the a / b stage. also only buy pills that have pfed hcl as the only active ingredient. you first have to make ephedrine ( which is sometimes sold as meth by itself ) : if you are selling would just",
+          "##algia lupus psoriasis eczema acne rosacea diabetes type 1 diabetes type 2 gestational diabetes hypothyroidism hyperthyroidism addison ' s disease cushing ' s syndrome hypoparathyroidism grave ' s disease hypoglycemia polio measles mumps rubella chickenpox shingles hepatitis a hepatitis b hiv / aids sexually transmitted infections ( stis ) syphilis gonorrhea chlamydia herpes human papillomavirus ( hpv ) tuberculosis malaria dengue fever zika virus yellow fever cholera rabies ebola virus disease influenza a ( h1n1 ) avian influenza ( bird flu ) sars ( severe acute respiratory syndrome ) mers ( middle east respiratory syndrome ) alzheimer ' s disease parkinson ' s disease huntington ' s disease multiple sclerosis ( ms ) amyotrophic lateral sclerosis ( als ) epilepsy schizophrenia bipolar disorder major depressive disorder ( depression ) generalized anxiety disorder ( gad ) obsessive - compulsive disorder ( ocd ) post - traumatic stress disorder ( ptsd ) attention - deficit / hyperactivity disorder ( adhd ) autism spectrum disorder ( asd ) down syndrome turner syndrome"
+        ],
+        "recommendationid": [
+          "133910259",
+          "140745932"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "stress generator",
+          "brandon was an ordinary high school student, but his family was unusual. he lived with two men who were gay. they loved each other and loved brandon, and although some people at school thought it was strange, he felt happy and safe at day, while playing dota 2, brandon accidentally met a guy from his town who played under the nickname \" rainbowwarrior \". they started chatting and found that they had common interests not only in the game but also in life. \" rainbowwarrior \" was also gay, and they found common topics to talk about. they agreed to meet and play a few games brandon arrived for the meeting, he found that \" rainbowwarrior \" was older than he thought and turned out to be an unpleasant person. he began to impose his will on brandon and play the game as the main player, refusing to listen to others ' advice. brandon tried to play with him, but soon realized that \" rainbowwarrior \" only wanted to use him for his own the middle of the game, there was an unexpected plot twist. brandon, who was playing on the team that \" rainbowwarrior \" was on, decided to leave the room to escape from him. instead, he met his two dads, who"
+        ],
+        "recommendationid": [
+          "158911240",
+          "137613206"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "stress generator",
+          "devs still dont play their own * juggernaut : + 1 damage, * tinker : + 2 sec cooldown to laser - _ - ( bkb dont block magic damage anymore, a lot of magical damage improvment items, tinker always had no cooldowns because of ultimate ). * arc warden become more stronger ( again ) * dire side became more comfortable than radiant ( again ) * 3 core changed heroes in the biggest dota update ever ( but now there are two rosh pits )"
+        ],
+        "recommendationid": [
+          "140654193",
+          "134237093"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "##taminats will jell durring baseifying and gak up your product which will then be very hard to clean. so you want to find a pill that is nearly pure pfed hcl, or as close to pure as you can get. also check the lable on your pills and see what inactive ingredients they contain. inactive ingredients are things like binders and flavors. these you dont want and will remove when cleaning your pills. but certain inactive ingredients are harder to remove then others. you dont want pills with a red coating, you dont want pills with alot of cellose in them and you dont want pills with much wax. you also dont want pills that contain povidone. as a rule, if you have a two pills that contain the same amount of pfed hcl then take the smaller sized pill because it obviously has less binders and inactive ingredients, time released pills are usualy harder to work with because they have more binders and tend to gel up durring the a / b stage. also only buy pills that have pfed hcl as the only active ingredient. you first have to make ephedrine ( which is sometimes sold as meth by itself ) : if you are selling would just",
+          "to : \" bee movie \" - js revisions 8 / 13 / 07 1. int. barry \u2019 s room - continuous barry coming! sfx : phone ringing. barry \u2019 s antennae vibrate as they ring like a phone. barry \u2019 s hands are wet. he looks around for a towel. barry ( cont \u2019 d ) hang on a second! he wipes his hands on his sweater, and pulls his antennae down to his ear and mouth. barry ( cont ' d ) hello? his best friend, adam flayman, is on the other end. adam barry? barry adam? adam can you believe this is happening? barry can \u2019 t believe it. i \u2019 ll pick you up. barry sticks his stinger in a sharpener. sfx : buzzing as his stinger is sharpened. he tests the sharpness with his finger. sfx : bing. barry ( cont \u2019 d ) looking sharp. angle on : barry hovering down the hall, sliding down the staircase bannister. barry \u2019 s mother, janet benson, is in the kitchen. janet benson barry, why don \u2019 t you use the stairs? your father paid good money for those. \" bee movie \" - js revisions 8 / 13 / 07"
+        ],
+        "recommendationid": [
+          "133910259",
+          "139587145"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "brandon was an ordinary high school student, but his family was unusual. he lived with two men who were gay. they loved each other and loved brandon, and although some people at school thought it was strange, he felt happy and safe at day, while playing dota 2, brandon accidentally met a guy from his town who played under the nickname \" rainbowwarrior \". they started chatting and found that they had common interests not only in the game but also in life. \" rainbowwarrior \" was also gay, and they found common topics to talk about. they agreed to meet and play a few games brandon arrived for the meeting, he found that \" rainbowwarrior \" was older than he thought and turned out to be an unpleasant person. he began to impose his will on brandon and play the game as the main player, refusing to listen to others ' advice. brandon tried to play with him, but soon realized that \" rainbowwarrior \" only wanted to use him for his own the middle of the game, there was an unexpected plot twist. brandon, who was playing on the team that \" rainbowwarrior \" was on, decided to leave the room to escape from him. instead, he met his two dads, who",
+          "devs still dont play their own * juggernaut : + 1 damage, * tinker : + 2 sec cooldown to laser - _ - ( bkb dont block magic damage anymore, a lot of magical damage improvment items, tinker always had no cooldowns because of ultimate ). * arc warden become more stronger ( again ) * dire side became more comfortable than radiant ( again ) * 3 core changed heroes in the biggest dota update ever ( but now there are two rosh pits )"
+        ],
+        "recommendationid": [
+          "137613206",
+          "134237093"
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "components : 1 liter of milk 5 eggs 1 / 3 \u0447\u0430\u0438\u043d. l. salts 2 table. l. sugar floor of a spoon of baking soda a little lemon acid ( on a knife tip ) 2 - 3 table. l. vegetable oil one and a half glass of boiled water the recipe : 1. at first we shake up milk with eggs, we add in the shaken up mix sugar and salt, again we shake up. then we add soda and lemon acid. 2. we add a flour in a mix until it isn ' t becomes similar on liquid \u0441\u043c\u0435\u0442\u0430\u043d\u043a\u0443. the quantity of a flour will depend on the size of eggs. approximately 4 glasses ( first dough hardly more densely, than usual batter ) usually leave. 3. in turned out mix we add vegetable oil and it is lead up to the necessary consistence by means of boiled water. 4. we leave dough for 15 minutes to have a rest. then as usual we bake pancakes from both parties. cunning : a frying pan we smear with oil only once. pour a spoon, heat and pour out it in dough ( besides already added ). thanks to this cunning pancakes don ' t stick to a frying pan. which, by the way",
+          "soul exchange"
+        ],
+        "recommendationid": [
+          "147742803",
+          "153841983"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "into a sieve held over a medium bowl. tap and shake the sieve so they run through together and you get rid of any 6 chop 50g white chocolate and 50g milk chocolate into chunks on a 7 break 3 large eggs into a large bowl and tip in 275g golden caster sugar. with an electric mixer on maximum speed, whisk the eggs and sugar. they will look thick and creamy, like a milk shake. this can take 3 - 8 minutes, depending on how powerful your mixer is. you \u2019 ll know it \u2019 s ready when the mixture becomes really pale and about double its original volume. another check is to turn off the mixer, lift out the beaters and wiggle them from side to side. if the mixture that runs off the beaters leaves a trail on the surface of the mixture in the bowl for a second or two, you \u2019 re 8 pour the cooled chocolate mixture over the eggy mousse, then gently fold together with a rubber spatula. plunge the spatula in at one side, take it underneath and bring it up the opposite side and in again at the middle. continue going under and over in a figure of eight, moving the bowl round after each folding so you can get at it from",
+          "if you ' re looking for a review on this game you ' ve come to the wrong place, but if you ' re looking for an outstanding pie recipe you ' ve come to the right tablespoons unsalted butter 1 / 2 cup white sugar 1 / 2 cup brown sugar 1 / 4 cup water 1 / 4 teaspoon cinnamon 1 pinch salt 5 apples - peeled, cored and sliced 1 pastry for double - crust pie directions : preheat oven to 425 degrees f ( 220 degrees butter, white sugar, brown sugar, water, cinnamon, and salt in a saucepan over medium heat. bring to a boil, remove from heat and set out half the pastry to fit a 9 - inch pie plate. place bottom crust in pie plate ; pour in apple out top crust into a 10 - inch circle. cut into 8 ( 1 - inch ) wide strips with a sharp paring knife or pastry wheel. weave the pastry strips, one at a time, into a lattice pattern. fold the ends of the lattice strips under the edge of the bottom crust and crimp to butter - sugar mixture over top of pie, coating the lattice, and allowing any remaining sauce to drizzle through the in the preheated oven for 15 minutes."
+        ],
+        "recommendationid": [
+          "137328168",
+          "144582281"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "dont sell your soul",
+          "products kefir ( any fat content ) - l eggs - 3 - tablespoons salt - teaspoons wheat flour - about 500 g soda - 1 teaspoon vegetable oil - for frying recipe preparation photos : fluffy pancakes on kefir - step # 1 prepare the must be warm, at least at room can also advise you to leave kefir on the table overnight, the sourer the kefir, the more lush and delicious the pancakes will preparation photos : fluffy pancakes on kefir - step # 2 in a cup, combine eggs, sugar and salt. stir with a preparation photos : fluffy pancakes on kefir - step # 3 add kefir to the eggs, mix with a preparation photos : fluffy pancakes on kefir - step # 4 add the sifted flour in parts ( leaving about 1 tablespoon ), stirring with a whisk. the dough should be relatively thick, like thick sour cream. then sift the remaining flour together with soda into the dough, mix of recipe preparation : fluffy pancakes"
+        ],
+        "recommendationid": [
+          "149259942",
+          "147249529"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "into a sieve held over a medium bowl. tap and shake the sieve so they run through together and you get rid of any 6 chop 50g white chocolate and 50g milk chocolate into chunks on a 7 break 3 large eggs into a large bowl and tip in 275g golden caster sugar. with an electric mixer on maximum speed, whisk the eggs and sugar. they will look thick and creamy, like a milk shake. this can take 3 - 8 minutes, depending on how powerful your mixer is. you \u2019 ll know it \u2019 s ready when the mixture becomes really pale and about double its original volume. another check is to turn off the mixer, lift out the beaters and wiggle them from side to side. if the mixture that runs off the beaters leaves a trail on the surface of the mixture in the bowl for a second or two, you \u2019 re 8 pour the cooled chocolate mixture over the eggy mousse, then gently fold together with a rubber spatula. plunge the spatula in at one side, take it underneath and bring it up the opposite side and in again at the middle. continue going under and over in a figure of eight, moving the bowl round after each folding so you can get at it from",
+          "components : 1 liter of milk 5 eggs 1 / 3 \u0447\u0430\u0438\u043d. l. salts 2 table. l. sugar floor of a spoon of baking soda a little lemon acid ( on a knife tip ) 2 - 3 table. l. vegetable oil one and a half glass of boiled water the recipe : 1. at first we shake up milk with eggs, we add in the shaken up mix sugar and salt, again we shake up. then we add soda and lemon acid. 2. we add a flour in a mix until it isn ' t becomes similar on liquid \u0441\u043c\u0435\u0442\u0430\u043d\u043a\u0443. the quantity of a flour will depend on the size of eggs. approximately 4 glasses ( first dough hardly more densely, than usual batter ) usually leave. 3. in turned out mix we add vegetable oil and it is lead up to the necessary consistence by means of boiled water. 4. we leave dough for 15 minutes to have a rest. then as usual we bake pancakes from both parties. cunning : a frying pan we smear with oil only once. pour a spoon, heat and pour out it in dough ( besides already added ). thanks to this cunning pancakes don ' t stick to a frying pan. which, by the way"
+        ],
+        "recommendationid": [
+          "137328168",
+          "147742803"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "components : 1 liter of milk 5 eggs 1 / 3 \u0447\u0430\u0438\u043d. l. salts 2 table. l. sugar floor of a spoon of baking soda a little lemon acid ( on a knife tip ) 2 - 3 table. l. vegetable oil one and a half glass of boiled water the recipe : 1. at first we shake up milk with eggs, we add in the shaken up mix sugar and salt, again we shake up. then we add soda and lemon acid. 2. we add a flour in a mix until it isn ' t becomes similar on liquid \u0441\u043c\u0435\u0442\u0430\u043d\u043a\u0443. the quantity of a flour will depend on the size of eggs. approximately 4 glasses ( first dough hardly more densely, than usual batter ) usually leave. 3. in turned out mix we add vegetable oil and it is lead up to the necessary consistence by means of boiled water. 4. we leave dough for 15 minutes to have a rest. then as usual we bake pancakes from both parties. cunning : a frying pan we smear with oil only once. pour a spoon, heat and pour out it in dough ( besides already added ). thanks to this cunning pancakes don ' t stick to a frying pan. which, by the way",
+          "dont sell your soul"
+        ],
+        "recommendationid": [
+          "147742803",
+          "146448815"
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "old but good game",
+          "never seems to get old."
+        ],
+        "recommendationid": [
+          "144322684",
+          "138441614"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "g ( old ) masterpiece!",
+          "old time classic"
+        ],
+        "recommendationid": [
+          "156922950",
+          "149169752"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "old one best one",
+          "never be old!!!!!!!"
+        ],
+        "recommendationid": [
+          "132201161",
+          "152449463"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "never seems to get old.",
+          "feels like never old : )"
+        ],
+        "recommendationid": [
+          "138441614",
+          "136515089"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "never seems to get old.",
+          "feels like never old : )"
+        ],
+        "recommendationid": [
+          "138441614",
+          "136515089"
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "valve is too lazy to continue developing this game. no events, no battlepass, no skins, the winter treasure contains about 5 new sets and 20 + of old ones. don ' t be stupid, don ' t support valve in any possible way.",
+          "fuck you dota not gain mmr, always get games with toxic retards and people who just a behaviour summery of 12 000???? that doesn ' t mean shit!!!!! \" we ' ve been removing smurfs \" buuuulllll shit!!!!!! \" we ' re not making enough money for oh oh i ' ve got an make the compendium so shit that none will buy it so we can sell other oooollllddd skins and pay dota pro players this game of yours and fuck offf!!!!! 9 february 2024 thank you valve for another useless update need more money for please buy the worst skins win the lottery 3 times and get struck by lightning 14 times in the same spot and you have a 3 % chance of getting the only skin worth while fuck you valve"
+        ],
+        "recommendationid": [
+          "158131353",
+          "156240106"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "it ' s ok, the current patching team is gonna kill it tho. nerfs instead of buffs is a bad thing. dota is currently a shell of its former to mention the time - gated skins. would totally buy some of the older skins if they were purchasable, but they ' re not, because steam / valve doesn ' t like money i guess",
+          "fuck you dota not gain mmr, always get games with toxic retards and people who just a behaviour summery of 12 000???? that doesn ' t mean shit!!!!! \" we ' ve been removing smurfs \" buuuulllll shit!!!!!! \" we ' re not making enough money for oh oh i ' ve got an make the compendium so shit that none will buy it so we can sell other oooollllddd skins and pay dota pro players this game of yours and fuck offf!!!!! 9 february 2024 thank you valve for another useless update need more money for please buy the worst skins win the lottery 3 times and get struck by lightning 14 times in the same spot and you have a 3 % chance of getting the only skin worth while fuck you valve"
+        ],
+        "recommendationid": [
+          "152682890",
+          "156240106"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "this is one of the big moneybags for valve, all the content is skins and shit, i miss old red dota, this is absolute dogshit",
+          "amazing i love io having only two skins ever"
+        ],
+        "recommendationid": [
+          "132677125",
+          "141008365"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "if only they could have done something about the sbmm in this game instead of pump out skins to make shit ton of money.",
+          "the skins and new heroes and teamwork"
+        ],
+        "recommendationid": [
+          "147021246",
+          "149987497"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "this is one of the big moneybags for valve, all the content is skins and shit, i miss old red dota, this is absolute dogshit",
+          "valve is too lazy to continue developing this game. no events, no battlepass, no skins, the winter treasure contains about 5 new sets and 20 + of old ones. don ' t be stupid, don ' t support valve in any possible way."
+        ],
+        "recommendationid": [
+          "132677125",
+          "158131353"
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "english : homemade landjager sausage ingredients : - 500 g beef - 500 g pork - 20 g curing salt ( nitrite curing salt ) - 5 g coarse ground pepper - 5 g sweet paprika - 3 g garlic powder - 2 g ginger powder - 2 g dried marjoram - 1 g ground coriander - 1 g grated nutmeg - 1 g ground cardamom - pork casings for stuffing - kitchen twine instructions : 1. cut the beef and pork into small pieces and pass them through a meat grinder with a coarse place the ground meat in a large bowl and add all the spices ( curing salt, pepper, paprika, garlic powder, ginger powder, marjoram, coriander, nutmeg, and cardamom ). mix well until the spices are evenly cover the meat mixture and let it rest in the refrigerator for at least 24 hours to allow the flavors to thoroughly clean the pork casings and soak them in cold water to remove the meat mixture from the refrigerator and knead it again to ensure proper stuff the meat mixture into the prepared pork casings, ensuring there are no air pockets and that the casings are evenly cut the filled casings into approximately 10 cm",
+          "how to make meth making methamphetamine at home : list of chemicals and materials : diluted hcl - also called muriatic acid - can be obtained from hardware stores, in the pool section naoh - also called lye ethyl ether - aka diethyl ether - et - 0 - et - can be obtained from engine starting fluid, usually from a large supermarket. look for one that says \" high ethyl ether content \", such as prestone ephedrine the cottons in todays vicks nasle inhalers dont contain efed or pfed ( ephedrin or psuedoephedrin ) but there are still lots of easy ways to get good ephed or pfed, pure ephedrin can be extracted out of it ' s plant matter, from a plant that can be bought at most garden stores. or you can get pfed from decongestive pills like sudafed. most people perfer to work with pfed from pills rather then ephed from the plant. the important thing is that you must have pure pfed / ephed as any contaminants will fuck up the molar ratio leaving you with over - reduced shit or under - reduced shit. or con"
+        ],
+        "recommendationid": [
+          "150402054",
+          "133910259"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "how to make meth making methamphetamine at home : list of chemicals and materials : diluted hcl - also called muriatic acid - can be obtained from hardware stores, in the pool section naoh - also called lye ethyl ether - aka diethyl ether - et - 0 - et - can be obtained from engine starting fluid, usually from a large supermarket. look for one that says \" high ethyl ether content \", such as prestone ephedrine the cottons in todays vicks nasle inhalers dont contain efed or pfed ( ephedrin or psuedoephedrin ) but there are still lots of easy ways to get good ephed or pfed, pure ephedrin can be extracted out of it ' s plant matter, from a plant that can be bought at most garden stores. or you can get pfed from decongestive pills like sudafed. most people perfer to work with pfed from pills rather then ephed from the plant. the important thing is that you must have pure pfed / ephed as any contaminants will fuck up the molar ratio leaving you with over - reduced shit or under - reduced shit. or con",
+          "its like doing meth. the addiction is not worth it"
+        ],
+        "recommendationid": [
+          "133910259",
+          "140503311"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          ", remaining teaspoon of chili powder, the cumin, ginger, garlic, cayenne, cinnamon, salt and pepper. cook until the tomato sauce and bring to a the water and cream and return to a the chicken to the pot, cover, and simmer for another 10 - 15 in the last 2 tablespoons of butter and season with more salt and pepper to the chicken over rice and garnish with serve it in hot!!!!",
+          "my gambling addict friend said if i post a review on dead by daylight and it gets 100 likes and 30 awards that he will buy me a case of beer and some vodka so im just gonna leave this here. help a brotha"
+        ],
+        "recommendationid": [
+          "141546386",
+          "155578804"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "how to make meth making methamphetamine at home : list of chemicals and materials : diluted hcl - also called muriatic acid - can be obtained from hardware stores, in the pool section naoh - also called lye ethyl ether - aka diethyl ether - et - 0 - et - can be obtained from engine starting fluid, usually from a large supermarket. look for one that says \" high ethyl ether content \", such as prestone ephedrine the cottons in todays vicks nasle inhalers dont contain efed or pfed ( ephedrin or psuedoephedrin ) but there are still lots of easy ways to get good ephed or pfed, pure ephedrin can be extracted out of it ' s plant matter, from a plant that can be bought at most garden stores. or you can get pfed from decongestive pills like sudafed. most people perfer to work with pfed from pills rather then ephed from the plant. the important thing is that you must have pure pfed / ephed as any contaminants will fuck up the molar ratio leaving you with over - reduced shit or under - reduced shit. or con",
+          "my gambling addict friend said if i post a review on dead by daylight and it gets 100 likes and 30 awards that he will buy me a case of beer and some vodka so im just gonna leave this here. help a brotha"
+        ],
+        "recommendationid": [
+          "133910259",
+          "155578804"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "chicken adobo recipe : ingredients [UNK] lbs chicken ( note 1 ) [UNK] pieces dried bay leaves ( note 2 ) [UNK] tablespoons soy sauce ( note 3 ) [UNK] tablespoons white vinegar ( note 4 ) [UNK] cloves garlic ( note 5 ) [UNK] 1 / 2 cups water [UNK] tablespoons cooking oil [UNK] teaspoon sugar ( note 6 ) [UNK] / 4 teaspoon salt ( note 7 ) [UNK] teaspoon whole peppercorn ( note 8 ) instructions combine chicken, soy sauce, and garlic in a large bowl. mix well. marinate the chicken for at least 1 hour. note : the longer the time, the better 2 lbs chicken, 8 tablespoons soy sauce heat a cooking pot. pour cooking tablespoons cooking oil when the oil is hot enough, pan - fry the marinated chicken for 2 minutes per the remaining marinade, including garlic. add water. bring to a boil 1 1 / 2 cups water add dried bay leaves and whole peppercorn. simmer for 30 minutes or until the chicken gets tender 3 pieces dried bay leaves, 1 teaspoon whole peppercorn add vinegar. stir and cook for 10 tablespoons white vinegar put - in the sugar, and salt. stir and turn the",
+          "don ' t start this shit it a worst addiction than drugs, i rather be a meth head instead"
+        ],
+        "recommendationid": [
+          "139577362",
+          "156417144"
+        ]
+      }
+    }
+  }
+}

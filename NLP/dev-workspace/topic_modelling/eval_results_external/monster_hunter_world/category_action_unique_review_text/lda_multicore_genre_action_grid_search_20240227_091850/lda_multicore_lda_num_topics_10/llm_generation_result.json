@@ -1,0 +1,586 @@
+{
+  "new_topic_labels": {
+    "0": {
+      "call_0": "Topic: \"Kill or Die\" Simulator\nLabel: \"Grindy Shooter\"",
+      "call_1": "\nTopic Label: Kill Simulator",
+      "call_2": "Topic: Violent Video Games\nLabel: \"Kill, shoot, and die in various scenarios.\"",
+      "call_3": "Topic: Kill or Die\nLabel: \"Kill\"",
+      "call_4": "\nTopic: Bloody Carnage\nLabel: \"Kill, Shoot, Die\""
+    },
+    "1": {
+      "call_0": "\nTopic: Game Crashes and Bugs\nLabel: \"Game Issues\"",
+      "call_1": "\nTopic: Game Crashes and Bugs\nLabel: \"Game Crashes\"",
+      "call_2": "\nTopic Label: \"Bad PC Port\"",
+      "call_3": "Topic: PC Work Crashes\nLabel: Bad",
+      "call_4": "\nTopic: Game Crashes and Bugs\nLabel: \"Game Crashes\""
+    },
+    "2": {
+      "call_0": "Infinite Grind",
+      "call_1": "\nLove Capturing Monsters",
+      "call_2": "Grind",
+      "call_3": "\nLabel: \"Bioshock\"",
+      "call_4": "\nLabel: \"Hunting Frenzy\""
+    },
+    "3": {
+      "call_0": "\nTopic Label: Good Fun Game",
+      "call_1": "\nTopic Label: Good Fun RPG",
+      "call_2": "Topic: Fun game with good content\nLabel: Good game",
+      "call_3": "Topic Label: Good Fun",
+      "call_4": "\nTopic: Game Play\nLabel: Fun"
+    },
+    "4": {
+      "call_0": "\nTopic Label: Incredible Gameplay Experience",
+      "call_1": "\nLabel: Monster Hunter",
+      "call_2": "\nTopic: Monster Hunter Gameplay\n\nLabel: Fun and Engaging",
+      "call_3": "\nTopic: Monster Hunter World\nLabel: \"Sophisticated Combat\"",
+      "call_4": "\nTopic: Monster Hunter Gameplay\n\nLabel: Excellent"
+    },
+    "5": {
+      "call_0": "Topic Label: Great Game",
+      "call_1": "\nTopic Label: Great Game",
+      "call_2": "Awesome Game",
+      "call_3": "\nTopic Label: Great Game",
+      "call_4": "\nTopic: Nice game with great graphics and engaging gameplay.\nLabel: \"Nice Game\""
+    },
+    "6": {
+      "call_0": "\nTopic Label: Worth Playing",
+      "call_1": "\nTopic Label: Worth Playing",
+      "call_2": "\nTopic Label: \"Monster Hunter\"",
+      "call_3": "\nTopic Label: Worth Buying",
+      "call_4": "Topic Label: Worth Buying"
+    },
+    "7": {
+      "call_0": "\nTopic Label: Best Classic FPS",
+      "call_1": "\nTopic Label: \"Old School FPS Masterpiece\"",
+      "call_2": "Topic Label: \"Classic Gaming Masterpiece\"",
+      "call_3": "Topic: Classic First-Person Shooter Games\nLabel: \"FPS Gold Standard\"",
+      "call_4": "\nTopic Label: Valve's Classic FPS Game"
+    },
+    "8": {
+      "call_0": "\nTopic Label: Garbage Game",
+      "call_1": "Topic: Monster Hunter Franchise Reviews\nLabel: \"MH Reviews\" (less than 5 words)",
+      "call_2": "Topic: Monster Hunter Franchise Reviews\nLabel: \"Hate Rathalos\"",
+      "call_3": "\nTopic Label: Garbage Game",
+      "call_4": "\nTopic Label: \"Rathalos Hate\""
+    },
+    "9": {
+      "call_0": "\nTopic Label: Monster Hunting Fun",
+      "call_1": "Topic Label: Multiplayer Fun",
+      "call_2": "\nTopic: Multiplayer Fun with Friends\nLabel: \"Mw Mw\"",
+      "call_3": "Topic: Multiplayer Fun\nLabel: \"Good for relaxing and learning\"",
+      "call_4": "Topic Label: Monster Hunter Fun"
+    }
+  },
+  "randomed_topic_reviews": {
+    "0": {
+      "call_1": {
+        "reviews": [
+          "use big sword kill big dog get bigger sword kill bigger weird dog dog simulator",
+          "eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat"
+        ],
+        "recommendationid": [
+          "131788137",
+          "133332064"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust descending thrust",
+          "eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat"
+        ],
+        "recommendationid": [
+          "158908492",
+          "133332064"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "go kill animals die try time kill animals blood thirst satisfied look animals find dragons kill dragons wear dragon skin pause bloodthirst kill bigger dragons happy",
+          "poke poke poke backstep poke poke poke backstep poke poke poke backstep poke poke poke backstep"
+        ],
+        "recommendationid": [
+          "153853686",
+          "70261516"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "eat kill mine kill eat plant kill blow eat mine kill eat plant kill eat",
+          "kill big dinomonster wear dinomonster skin hat kill die cats chuck corpse ground kill big dinomonster"
+        ],
+        "recommendationid": [
+          "133332064",
+          "150683705"
+        ]
+      }
+    },
+    "1": {
+      "call_0": {
+        "reviews": [
+          "graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed",
+          "game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system"
+        ],
+        "recommendationid": [
+          "44885236",
+          "45591305"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "launch game anymore tried every fix internet crash apparently use windows bloatware make game works windows ltsc game works removed things like xbox game bar",
+          "graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed"
+        ],
+        "recommendationid": [
+          "75963994",
+          "44885236"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "one worse pc ports played bad optimalisation bad controls lots problems graphic driver let see patches one two month",
+          "game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system"
+        ],
+        "recommendationid": [
+          "44262322",
+          "45591305"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad bad",
+          "graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed"
+        ],
+        "recommendationid": [
+          "44170230",
+          "44885236"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed graphic device crashed",
+          "game completely unplayable latest update released patch fix bug fixes broke game many recommend game current state probably denuvo messing system"
+        ],
+        "recommendationid": [
+          "44885236",
+          "45591305"
+        ]
+      }
+    },
+    "2": {
+      "call_0": {
+        "reviews": [
+          "grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind",
+          "skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn skill maximum might activated maximum might effects worn"
+        ],
+        "recommendationid": [
+          "86344923",
+          "134485751"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love capturing monsters love",
+          "grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind never see sunlight ever"
+        ],
+        "recommendationid": [
+          "156218520",
+          "91992287"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind never see sunlight ever",
+          "grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind grind"
+        ],
+        "recommendationid": [
+          "91992287",
+          "86344923"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt unless dodogama",
+          "hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster hunt monster"
+        ],
+        "recommendationid": [
+          "156501303",
+          "157578843"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt",
+          "hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt hunt unless dodogama"
+        ],
+        "recommendationid": [
+          "66008717",
+          "156501303"
+        ]
+      }
+    },
+    "3": {
+      "call_0": {
+        "reviews": [
+          "played little bit far thought would kinda meh actually pretty good far",
+          "got game play friends playing solo super boring normal hack slash game wish quest story line something"
+        ],
+        "recommendationid": [
+          "123277594",
+          "107617840"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "like like like like like good good good good",
+          "yeah would game fun action rpg played long grindy time time surely something people look fan"
+        ],
+        "recommendationid": [
+          "129023027",
+          "62118972"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "like like like like like good good good good",
+          "wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow wow"
+        ],
+        "recommendationid": [
+          "129023027",
+          "155939205"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "played little bit far thought would kinda meh actually pretty good far",
+          "fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun fun"
+        ],
+        "recommendationid": [
+          "123277594",
+          "44033250"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "got game play friends playing solo super boring normal hack slash game wish quest story line something",
+          "played little bit far thought would kinda meh actually pretty good far"
+        ],
+        "recommendationid": [
+          "107617840",
+          "123277594"
+        ]
+      }
+    },
+    "4": {
+      "call_0": {
+        "reviews": [
+          "opus brings breath fresh air series incredible experience gameplay story music breathtaking graphics recommendation incredible also recommend iceborn expansion",
+          "usually action game person game forgiving love feel setting challenges truly hard fair"
+        ],
+        "recommendationid": [
+          "86164755",
+          "59319869"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment",
+          "fan since mhfu world iceborne easily hours fun gameplay highly recommend anyone action rpg"
+        ],
+        "recommendationid": [
+          "52630431",
+          "61535865"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "first introduction monster hunter game fantastic lot fun early game little rough without lot introduction really succeed part games character",
+          "huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment"
+        ],
+        "recommendationid": [
+          "52385613",
+          "52630431"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "compared previous monster hunter games graphics worlds apart also combat styles sophisticated definitely recommend try interested monster hunter games",
+          "excellent game polished controls sometimes clunky better previous monster hunter game far monsters excellent design superb extremely fun game give"
+        ],
+        "recommendationid": [
+          "98776458",
+          "99497678"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "huge fan ds monster hunter games definitely worthy successor complaint monster variety slightly lacking due extensive reactions monster environment",
+          "excellent game polished controls sometimes clunky better previous monster hunter game far monsters excellent design superb extremely fun game give"
+        ],
+        "recommendationid": [
+          "52630431",
+          "99497678"
+        ]
+      }
+    },
+    "5": {
+      "call_0": {
+        "reviews": [
+          "amazing game great graphics much could recommend",
+          "great game awesome gameplay nice graphics recommend"
+        ],
+        "recommendationid": [
+          "84424233",
+          "54540714"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "amazing game great graphics much could recommend",
+          "love game great graphics great gameplay everything great"
+        ],
+        "recommendationid": [
+          "84424233",
+          "44181936"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "awesome gameplay awesome graphics awesome monsters",
+          "graphics great story amazing highly recommend"
+        ],
+        "recommendationid": [
+          "70024385",
+          "45245688"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "amazing game great graphics much could recommend",
+          "great game great graphics runs great great"
+        ],
+        "recommendationid": [
+          "84424233",
+          "50327148"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "nice nice nice nice nice",
+          "cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake garlic bread ouuuchh corn brutha yeah like corn yeah mooiieet yeah moiiet moooieets back tha menyoo boys fuh fish chips"
+        ],
+        "recommendationid": [
+          "56111464",
+          "148782015"
+        ]
+      }
+    },
+    "6": {
+      "call_0": {
+        "reviews": [
+          "weeks hours played weeks hours hours sleep per day days last weeks spent hours playing monster hunter",
+          "hours game ps hr definitly recommend game anyone thinks buying worth money"
+        ],
+        "recommendationid": [
+          "51513396",
+          "60852234"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "dud installing played game non stop hours currently install let play",
+          "game months still playing know keeps pulling back maybe monsters maybe game play know love game definitely recommend buying worth money"
+        ],
+        "recommendationid": [
+          "84891577",
+          "75904181"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "dud installing played game non stop hours currently install let play",
+          "first monster hunter game ever played best monster hunter game ever played rise sale cheap search discounted keys definitely get iceborne dlc"
+        ],
+        "recommendationid": [
+          "84891577",
+          "147989033"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "hours game ps hr definitly recommend game anyone thinks buying worth money",
+          "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blablabla l"
+        ],
+        "recommendationid": [
+          "60852234",
+          "45530382"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "hours game ps hr definitly recommend game anyone thinks buying worth money",
+          "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blablabla l"
+        ],
+        "recommendationid": [
+          "60852234",
+          "45530382"
+        ]
+      }
+    },
+    "7": {
+      "call_0": {
+        "reviews": [
+          "far best monster hunter played even new releases still best one play nowadays",
+          "favorite game series ever iceborne expansion prompted get back game love seeing old favorites come back play"
+        ],
+        "recommendationid": [
+          "114616261",
+          "61783410"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "absolute masterpiece playing games years far favorite",
+          "much love generations ultimate deny world qol changes best way play monster hunter today"
+        ],
+        "recommendationid": [
+          "53327826",
+          "56941195"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "absolute masterpiece playing games years far favorite",
+          "much love generations ultimate deny world qol changes best way play monster hunter today"
+        ],
+        "recommendationid": [
+          "53327826",
+          "56941195"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "best gaming days life thank comrades",
+          "playing game years far best version played"
+        ],
+        "recommendationid": [
+          "116427828",
+          "77162884"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "favorite game series ever iceborne expansion prompted get back game love seeing old favorites come back play",
+          "rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke rajang best monke"
+        ],
+        "recommendationid": [
+          "61783410",
+          "156375787"
+        ]
+      }
+    },
+    "8": {
+      "call_0": {
+        "reviews": [
+          "kind garbage game let skip cut scenes stupid programmers yeah giving bad review skip cut scenes wasting time stupid crap",
+          "one minute rushing home work finally play game next thing know felt like played lose real life game"
+        ],
+        "recommendationid": [
+          "73325886",
+          "44038900"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos",
+          "monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime"
+        ],
+        "recommendationid": [
+          "120658616",
+          "114699789"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos",
+          "monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime"
+        ],
+        "recommendationid": [
+          "120658616",
+          "114699789"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "kind garbage game let skip cut scenes stupid programmers yeah giving bad review skip cut scenes wasting time stupid crap",
+          "yes updated yes steam wants update review yes iceborne coming soon even update even yes"
+        ],
+        "recommendationid": [
+          "73325886",
+          "44263535"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos hate rathalos",
+          "monster hunter franchise say eventually come around trying wonder never picked title earlier franchise lifetime"
+        ],
+        "recommendationid": [
+          "120658616",
+          "114699789"
+        ]
+      }
+    },
+    "9": {
+      "call_0": {
+        "reviews": [
+          "reached hours less week f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw f mw",
+          "game monster hunter gameplay hunting monsters pros hunting monsters cons enough monster need monster must monster eraaagh overall monster hunting fun extra monster hunting friends fun"
+        ],
+        "recommendationid": [
+          "44158700",
+          "62648747"
+        ]
+      },
+      "call_1": {
+        "reviews": [
+          "mostly relaxing game yet still lots depth things learn game gets fun learn better get tend experience multiplayer games rare experience willing put time",
+          "mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw"
+        ],
+        "recommendationid": [
+          "157698071",
+          "44142423"
+        ]
+      },
+      "call_2": {
+        "reviews": [
+          "mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw u wanted break router apart",
+          "mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw"
+        ],
+        "recommendationid": [
+          "44096505",
+          "44142423"
+        ]
+      },
+      "call_3": {
+        "reviews": [
+          "mostly relaxing game yet still lots depth things learn game gets fun learn better get tend experience multiplayer games rare experience willing put time",
+          "mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw fuck"
+        ],
+        "recommendationid": [
+          "157698071",
+          "44144242"
+        ]
+      },
+      "call_4": {
+        "reviews": [
+          "game monster hunter gameplay hunting monsters pros hunting monsters cons enough monster need monster must monster eraaagh overall monster hunting fun extra monster hunting friends fun",
+          "mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw mw"
+        ],
+        "recommendationid": [
+          "62648747",
+          "44142423"
+        ]
+      }
+    }
+  }
+}
