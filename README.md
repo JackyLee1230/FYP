@@ -185,7 +185,7 @@ The project's directory strcture is as follows.
 - `Frontend/`: Contains the frontend code of the project.
 - `NLP/`: Contains the Natural Language Processing related code.
 - `Gatling/`: Contains the Gatling performance test scripts.
-- `dump-FYP-202309081844.sql`: SQL dump file for the database.
+- `DB_Dump.sql`: SQL dump file for the database instance already with users and game data included.
 - `SaveToDB.py`: Python script to save data to the database.
 - `steam-review-scraper.ipynb`: Jupyter notebook for scraping Steam reviews.
 
